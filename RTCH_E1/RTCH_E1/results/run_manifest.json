@@ -1,0 +1,57 @@
+{
+  "experiment": "RTCH-E1",
+  "timestamp_utc": "2026-09-18T21:48:45Z",
+  "input": "RTCH_E1/data/demo_torus.csv",
+  "input_sha256": "ce3e2d8dd919c83362de1fcbe099f8074abe8a693d1dc2664da6956240021e69",
+  "config": {
+    "max_conductor": 500000,
+    "download_limit": 20000,
+    "page_size": 1000,
+    "sample_size": 350,
+    "k_neighbors": 12,
+    "maxdim": 2,
+    "n_nulls": 2,
+    "n_resamples": 2,
+    "alpha": 0.01,
+    "seed": 20260917,
+    "max_homology_edges": 120000,
+    "n_geodesic_pairs": 50,
+    "geodesic_k": 12,
+    "max_dense_topology_points": 350,
+    "demo_mode": true,
+    "demo_topology_points": 350,
+    "demo_nulls": 2,
+    "demo_resamples": 2,
+    "demo_maxdim": 2,
+    "demo_vr_thresh": 1.8
+  },
+  "n_raw": 350,
+  "n_analysis": 350,
+  "feature_sets": {
+    "intrinsic": [
+      "log_conductor",
+      "signed_log_discriminant",
+      "log_abs_j",
+      "faltings_height",
+      "log_regulator"
+    ],
+    "no_regulator": [
+      "log_conductor",
+      "signed_log_discriminant",
+      "log_abs_j",
+      "faltings_height"
+    ],
+    "minimal": [
+      "log_conductor",
+      "signed_log_discriminant",
+      "log_abs_j"
+    ]
+  },
+  "primary_topology_metric": "intrinsic",
+  "rank_excluded_from_primary_metric": true,
+  "topology_method": "complete Euclidean Vietoris-Rips metric on a bounded deterministic subset; graph shortest paths are reserved for geodesics",
+  "software": {
+    "python": "3.13.12 | packaged by conda-forge | (main, Feb  5 2026, 05:53:46) [GCC 14.3.0]",
+    "ripser_available": true
+  }
+}

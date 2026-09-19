@@ -1,0 +1,49 @@
+{
+  "experiment": "RTCH-E1",
+  "timestamp_utc": "2026-09-18T20:42:17Z",
+  "input": "RTCH_E1/data/demo_torus.csv",
+  "input_sha256": "2790c3bdebb665ffa9a5df3ec6b8093dc678c743303b56732be751678bdcfce7",
+  "config": {
+    "max_conductor": 500000,
+    "download_limit": 20000,
+    "page_size": 1000,
+    "sample_size": 6000,
+    "k_neighbors": 12,
+    "maxdim": 3,
+    "n_nulls": 100,
+    "n_resamples": 30,
+    "alpha": 0.01,
+    "seed": 20260917,
+    "max_homology_edges": 120000,
+    "n_geodesic_pairs": 100,
+    "geodesic_k": 12
+  },
+  "n_raw": 900,
+  "n_analysis": 900,
+  "feature_sets": {
+    "intrinsic": [
+      "log_conductor",
+      "signed_log_discriminant",
+      "log_abs_j",
+      "faltings_height",
+      "log_regulator"
+    ],
+    "no_regulator": [
+      "log_conductor",
+      "signed_log_discriminant",
+      "log_abs_j",
+      "faltings_height"
+    ],
+    "minimal": [
+      "log_conductor",
+      "signed_log_discriminant",
+      "log_abs_j"
+    ]
+  },
+  "primary_topology_metric": "intrinsic",
+  "rank_excluded_from_primary_metric": true,
+  "software": {
+    "python": "3.12.14 (main, Sep  2 2026, 23:27:36) [GCC 15.3.0]",
+    "ripser_available": true
+  }
+}
