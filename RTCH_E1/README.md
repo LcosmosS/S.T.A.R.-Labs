@@ -1,15 +1,17 @@
-# RTCH-E1 — Arithmetic–Geodesic–Cohomological Test
+# Relativistic Thermodynamic Cohomology (RTCH)
+
+## RTCH-E1 — Arithmetic–Geodesic–Cohomological Test
 
 RTCH-E1 is a falsifiable computational experiment for testing whether the arithmetic
 state space of elliptic curves over Q develops reproducible nontrivial topology
-(H^1/H^2/H^3 signatures), whether that topology survives null models, and whether
+($H^1/H^2/H^3$ signatures), whether that topology survives null models, and whether
 geodesic/scalar constructions reveal invariant quantities.
 
 ## Important interpretation rule
 
-A persistent H_k feature in a finite point cloud is evidence for a topological
+A persistent $H_k$ feature in a finite point cloud is evidence for a topological
 feature of the sampled metric space at a scale. It is NOT, by itself, proof that
-the full arithmetic state space is a smooth manifold with H^k != 0.
+the full arithmetic state space is a smooth manifold with $H^k != 0$.
 
 RTCH-E1 therefore reports:
 
@@ -26,13 +28,13 @@ map, or a desired topology.
 ## Recommended progression
 
 Start with:
-    python rtch_e1.py --mode demo
+    `python rtch_e1.py --mode demo`
 
 Then use a local CSV:
-    python rtch_e1.py --mode analyze --input your_lmfdb.csv
+    `python rtch_e1.py --mode analyze --input your_lmfdb.csv`
 
 Or let the program query the LMFDB API:
-    python rtch_e1.py --mode download --max-conductor 500000 --download-limit 20000
+    `python rtch_e1.py --mode download --max-conductor 500000 --download-limit 20000`
 
 Then analyze:
     python rtch_e1.py --mode analyze --input data/lmfdb_curves.csv --n-sample 6000
@@ -44,10 +46,10 @@ For H^1/H^2/H^3, increase `--n-sample` only after the pilot is stable.
 Python 3.10+ recommended.
 
 Install:
-    pip install -r requirements.txt
+    `pip install -r requirements.txt`
 
 Optional:
-    pip install gudhi
+    `pip install gudhi`
 
 The core persistent-homology calculation uses ripser when installed.
 A fallback Vietoris-Rips implementation is included for small demo data, but it
