@@ -1,7 +1,19 @@
 Claim_ID,Experiment_ID,Role,Required_Control
-CLAIM-ACSC-001,EXP-MAP-A01,primary,Registered mapping parameters and reproducible arithmetic inputs
-CLAIM-ACSC-002,EXP-MAP-A02,primary,BSD-independent alternative mapping
-CLAIM-ACSC-003,EXP-TOPO-A01,primary,Null models and predefined TDA distance
-CLAIM-ECC-001,EXP-ECC-B01,primary,Independent field/cohomology test
-CLAIM-RTCH-001,EXP-RTCH-B01,primary,Standard-physics recovery limit
+CLAIM-ACSC-001,EXP-DATA-A01,primary,Registered dataset matching parameters and reproducible arithmetic inputs
+CLAIM-ACSC-001,EXP-DATA-A02,primary,Registered dataset matching parameters and reproducible arithmetic inputs
+CLAIM-ACSC-001,EXP-CTRL-A01,control,Provenance control and permutation procedure
+CLAIM-ACSC-001,EXP-CTRL-A02,control,Leakage detection and exclusion procedure
+CLAIM-ACSC-001,EXP-CTRL-A03,control,Registered model/control parameters and arithmetic inputs
+CLAIM-ACSC-001,EXP-K001,primary,Registered K mapping definition and null model
+CLAIM-ACSC-001,EXP-L001,primary,Registered Lcosmo mapping definition and null model
 CLAIM-SFR-001,EXP-SFR-A01,primary,Train/test separation and baseline comparison
+CLAIM-SFR-001,EXP-SFR-A02,primary,Arithmetic/cosmological feature model with leakage controls
+CLAIM-SFR-001,EXP-SFR-A03,primary,Robustness and null-model comparison
+CLAIM-ACSC-001,EXP-RANK-A01,primary,Registered arithmetic rank inputs and null model
+CLAIM-ACSC-003,EXP-RANK-A02,primary,Registered cosmic-environment data and rank null model
+CLAIM-ACSC-003,EXP-TOPO-A01,primary,Predefined TDA metric and null model
+CLAIM-ACSC-001,EXP-MAP-A01,primary,Registered primary mapping parameters and reproducible arithmetic inputs
+CLAIM-ACSC-002,EXP-MAP-A02,primary,BSD-independent PTD mapping
+CLAIM-ACSC-002,EXP-MAP-A03,primary,BSD-independent MCJ mapping
+CLAIM-RTCH-001,EXP-RTCH-B01,primary,Standard-physics recovery limit
+CLAIM-ECC-001,EXP-ECC-B01,primary,Independent field/cohomology test
