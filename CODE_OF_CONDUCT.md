@@ -2,7 +2,7 @@
 
 ## Preamble
 
-The **S.T.A.R. Program** (Symbolic–Topological–Arithmetic–Relativity) is an open scientific research project dedicated to advancing the frontiers of mathematical and theoretical physics through rigorous, reproducible, and collaborative inquiry. We are committed to fostering an inclusive, respectful, and intellectually honest environment for all participants.
+The **S.T.A.R. Labs Research Program** (Symbolic–Topological–Arithmetic–Relativity) is an open scientific research project dedicated to advancing the frontiers of mathematical and theoretical physics through rigorous, reproducible, and collaborative inquiry. We are committed to fostering an inclusive, respectful, and intellectually honest environment for all participants.
 
 ## Our Values
 
