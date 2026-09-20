@@ -1,4 +1,4 @@
-# S.T.A.R. Program — Overview
+# S.T.A.R. Labs Research Program — Overview
 ---
 ## S.T.A.R. — Symbolic Topoloical Arithmetic Relativity
 ---
@@ -46,11 +46,11 @@ This naturally produces different effective expansion rates at late times (local
  docker/ & environment.yml — Reproducible environments
 ```
 ### How to Get Started
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Program)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs)
 
 ```
-git clone https://github.com/LcosmosS/S.T.A.R.-Program.git
-cd S.T.A.R.-Program
+git clone https://github.com/LcosmosS/S.T.A.R.-Labs.git
+cd S.T.A.R.-Labs
 conda env create -f environment.yml
 conda activate star-env
 ```
@@ -62,6 +62,6 @@ The framework combines rigorous number theory, topological data analysis, and sy
 
 ### Citation
 ```
-Patrick J. McNamara, The S.T.A.R. Program for Mathematical and Theoretical Physics, 2025–2026.
+Patrick J. McNamara, The S.T.A.R. Labs Research Program for Mathematical and Theoretical Physics, 2025–2026.
 GitHub Repository
 ```
