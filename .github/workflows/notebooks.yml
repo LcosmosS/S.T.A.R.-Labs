@@ -51,7 +51,7 @@ jobs:
           "
           for nb in $expected; do
             test -s "$nb"
-            sage -python -m jupyter nbconvert --to notebook --execute "$nb"               --output "/tmp/$(basename "$nb")"               --ExecutePreprocessor.timeout=300               --ExecutePreprocessor.kernel_name=python3
+            sage -python -m jupyter nbconvert --to notebook --execute "$nb"               --output "/tmp/$(basename "$nb")"               --ExecutePreprocessor.timeout=300               --ExecutePreprocessor.kernel_name=python3               --ExecutePreprocessor.cwd=.
           done
           sage -python - <<'PY'
           from pathlib import Path
