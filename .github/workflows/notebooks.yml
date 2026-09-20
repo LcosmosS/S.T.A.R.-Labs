@@ -2,6 +2,9 @@ name: Controlled Notebooks
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - "restructure/charter-registry-ci-v2"
   pull_request:
     paths:
       - "notebooks/**"
