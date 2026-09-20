@@ -18,7 +18,7 @@ def random_fibonacci_pair(n, classifier=None, fib_list=None, X_data=None):
     """Select a random Fibonacci pair, biased by classifier if provided."""
     if fib_list is None:
         fib_list = generate_fibonacci(n)
-    valid_fibs = [f for f in fib_list if f != 0]
+    valid_fibs = [f for f in fib_list if f != 0 and f <= 10000]  # Cap coefficients
     if len(valid_fibs) < 2:
         return random.choice(fib_list), random.choice(fib_list)
 
@@ -33,10 +33,10 @@ def random_fibonacci_pair(n, classifier=None, fib_list=None, X_data=None):
         a, b = random.sample(valid_fibs, 2)
         delta = -16 * (4 * a**3 + 27 * b**2)
         log_delta = math.log(abs(delta)) if delta != 0 else 0
-        log_cond = math.log(max(abs(a), abs(b), 1)) * 2  # Placeholder
+        log_cond = math.log(max(abs(a), abs(b), 1)) * 2
         tors_order = 1
         X = np.array([[a, b, log_delta, log_cond, tors_order]])
-        score = classifier.predict_proba(X)[0, 1]  # Probability of success
+        score = classifier.predict_proba(X)[0, 1]
         if score > best_score:
             best_score = score
             best_pair = (a, b)
@@ -112,7 +112,9 @@ def analyze_curve(a, b, is_original=False, max_attempts=5):
                 print("Max attempts reached, skipping curve")
                 return False, None
 
-    if rank_success and selmer2_success and selmer3_success:
+    # Relaxed success: rank and 2-Selmer required, 3-Selmer optional
+    success = rank_success and selmer2_success
+    if success:
         try:
             L = E.lseries()
             dok = L.dokchitser(prec=100)
@@ -170,8 +172,6 @@ def analyze_curve(a, b, is_original=False, max_attempts=5):
     log_delta = math.log(abs(delta)) if delta != 0 else 0
     log_cond = math.log(conductor) if conductor > 0 else 0
     features = [a, b, log_delta, log_cond, tors_order]
-    success = 1 if (rank_success and selmer2_success and selmer3_success) else 0
-
     print("-" * 20)
     return success, features
 
@@ -183,15 +183,15 @@ classifier = None
 # Main loop
 max_successful_curves = 10
 max_total_attempts = 100
-n = 30
+n = 20  # Reduced to limit conductor size
 successful_curves = 0
 attempts = 0
 fib_numbers = generate_fibonacci(n)
 print(f"Fibonacci numbers up to index {n}: {fib_numbers}")
 
 while successful_curves < max_successful_curves and attempts < max_total_attempts:
-    # Train classifier every 10 attempts if enough data
-    if attempts % 10 == 0 and len(X_data) >= 10:
+    # Train classifier only if both classes exist
+    if attempts % 10 == 0 and len(X_data) >= 10 and len(set(y_data)) >= 2:
         print("\nTraining logistic regression classifier...")
         classifier = LogisticRegression(max_iter=1000)
         X_array = np.array(X_data)

@@ -32,36 +32,17 @@ def analyze_curve(a, b, is_original=False):
     tors_order = E.torsion_subgroup().order()
     print(f"Discriminant: {delta}")
     print(f"Conductor: {conductor} = {factor(conductor)}")
-    print(f"Torsion order: {tors_order} (cyclic nodes in 3-sphere interweb)")
+    print(f"Torsion order: {tors_order}")
 
     try:
         selmer_rank = E.selmer_rank()
         two_torsion_rank = 1 if tors_order % 2 == 0 else 0
         rank_bound = selmer_rank - two_torsion_rank
         rank = E.rank()
-        # Robust rank verification
-        try:
-            E.two_descent(verbose=False)
-            gens = E.gens()
-            descent_rank = len(gens)
-            if rank != descent_rank:
-                print(f"Warning: Rank {rank} differs from descent rank {descent_rank}, using {descent_rank}")
-                rank = descent_rank
-        except:
-            print("Two-descent failed")
-            # Point search fallback
-            try:
-                points = E.points(bound=100)
-                non_torsion = [p for p in points if p.order() == 0]
-                if non_torsion:
-                    print(f"Found non-torsion points: {non_torsion}")
-                    rank = max(1, rank)
-                else:
-                    print("No non-torsion points found, rank likely 0 if Selmer agrees")
-                    rank = 0 if selmer_rank == two_torsion_rank else rank
-            except:
-                print("Point search failed")
-        print(f"Algebraic rank: {rank} (independent nodes in cosmic web)")
+        if rank > rank_bound:
+            print(f"Warning: Rank {rank} exceeds descent bound {rank_bound}, adjusting to {rank_bound}")
+            rank = rank_bound
+        print(f"Algebraic rank: {rank}")
         print(f"2-Selmer rank: {selmer_rank}")
         try:
             S3 = E.selmer_group(3, [])
@@ -92,12 +73,27 @@ def analyze_curve(a, b, is_original=False):
         analytic_rank = 0
         leading_coeff = L1
     print(f"Analytic rank: {analytic_rank}")
-    print(f"Leading coefficient: {leading_coeff} (topological density in cosmic web)")
+    print(f"Leading coefficient: {leading_coeff}")
 
     if rank is not None and rank == analytic_rank:
         print("Weak BSD holds: Algebraic rank = Analytic rank")
     else:
         print("Weak BSD fails: Algebraic rank != Analytic rank or computation failed")
+
+    # Try Heegner point for Curve 3
+    if a == 13 and b == 34:
+        D = -163
+        try:
+            P = E.heegner_point(D, c=1)
+            P_Q = P.point()
+            print(f"Heegner point (traced to Q): {P_Q}")
+            order = P_Q.order()
+            if order == 0:
+                print("Heegner point has infinite order, suggesting rank >= 1")
+            else:
+                print(f"Heegner point has order {order}, suggesting rank 0 or torsion")
+        except ValueError as e:
+            print(f"Failed to compute Heegner point: {e}")
 
     try:
         omega = E.period_lattice().real_period(prec=100)
@@ -107,9 +103,9 @@ def analyze_curve(a, b, is_original=False):
             tamagawa = 4
         sha_order = 1
         rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)
-        print(f"Real period (Omega): {omega} (3-sphere scale factor)")
-        print(f"Regulator: {reg} (node interaction strength)")
-        print(f"Product of Tamagawa numbers: {tamagawa} (local edge constraints)")
+        print(f"Real period (Omega): {omega}")
+        print(f"Regulator: {reg}")
+        print(f"Product of Tamagawa numbers: {tamagawa}")
         print(f"Right-hand side of strong BSD (with |Sha(E)| = 1): {rhs}")
 
         if abs(leading_coeff - rhs) < 1e-10:
@@ -124,12 +120,12 @@ def analyze_curve(a, b, is_original=False):
     print("-" * 20)
 
 # Generate random Fibonacci coefficients
-n = 20  # Increased for cosmic web complexity
+n = 10
 fib_numbers = generate_fibonacci(n)
 print(f"Fibonacci numbers up to index {n}: {fib_numbers}")
 
 # Analyze original and Fibonacci curves
-fib_pairs = [(89, 144), (144, 233), (233, 377)]  # Larger coefficients
+fib_pairs = [(5, 13), (8, 21), (13, 34)]
 for a, b in fib_pairs:
     analyze_curve(a, b)
 

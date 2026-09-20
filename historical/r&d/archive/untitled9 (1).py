@@ -1,5 +1,11 @@
 import optuna
-from sage.all import *
+from sage.all import 
+from cypari2 import Pari*
+from cypari2 import Pari
+
+pari.allocatemem(10**9)  # Allocate 1GB
+
+
 
 def objective(trial):
     i = trial.suggest_int('i', 1, 15)  # Smaller range

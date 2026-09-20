@@ -15,17 +15,21 @@ def generate_fibonacci(n):
     return fib
 
 def random_fibonacci_pair(n, classifier=None, fib_list=None, X_data=None):
-    """Select a random Fibonacci pair, biased by classifier if provided."""
+    """Select a random Fibonacci pair, biased by classifier or heuristic."""
     if fib_list is None:
         fib_list = generate_fibonacci(n)
-    valid_fibs = [f for f in fib_list if f != 0]
+    valid_fibs = [f for f in fib_list if f != 0 and f <= 5000]  # Tighter cap
     if len(valid_fibs) < 2:
         return random.choice(fib_list), random.choice(fib_list)
 
-    if classifier is None or X_data is None:
+    if classifier is None or X_data is None or len(X_data) < 10:
+        # Heuristic: prefer smaller coefficients to reduce conductor
+        small_fibs = [f for f in valid_fibs if f <= 1000]
+        if len(small_fibs) >= 2:
+            return random.sample(small_fibs, 2)
         return random.sample(valid_fibs, 2)
 
-    # Use classifier to score pairs
+    # Use classifier
     best_score = -float('inf')
     best_pair = None
     attempts = min(50, len(valid_fibs) * (len(valid_fibs) - 1) // 2)
@@ -33,16 +37,16 @@ def random_fibonacci_pair(n, classifier=None, fib_list=None, X_data=None):
         a, b = random.sample(valid_fibs, 2)
         delta = -16 * (4 * a**3 + 27 * b**2)
         log_delta = math.log(abs(delta)) if delta != 0 else 0
-        log_cond = math.log(max(abs(a), abs(b), 1)) * 2  # Placeholder
+        log_cond = math.log(max(abs(a), abs(b), 1)) * 2
         tors_order = 1
         X = np.array([[a, b, log_delta, log_cond, tors_order]])
-        score = classifier.predict_proba(X)[0, 1]  # Probability of success
+        score = classifier.predict_proba(X)[0, 1]
         if score > best_score:
             best_score = score
             best_pair = (a, b)
     return best_pair if best_pair else random.sample(valid_fibs, 2)
 
-def analyze_curve(a, b, is_original=False, max_attempts=5):
+def analyze_curve(a, b, is_original=False, max_attempts=5, require_3selmer=False):
     """Analyze an elliptic curve, returning success status and features."""
     curve_name = 'Original curve' if is_original else 'Fibonacci curve'
     print(f"\n{curve_name}: y² = x³ + {a}x + {b}")
@@ -51,7 +55,7 @@ def analyze_curve(a, b, is_original=False, max_attempts=5):
         E = EllipticCurve(QQ, [0, 0, 0, a, b])
     except ValueError as e:
         print(f"Error creating curve: {e}")
-        return False, None
+        return False, None, None
 
     delta = E.discriminant()
     conductor = E.conductor()
@@ -110,9 +114,11 @@ def analyze_curve(a, b, is_original=False, max_attempts=5):
             print(f"Rank computation failed on attempt {attempt + 1}")
             if attempt == max_attempts - 1:
                 print("Max attempts reached, skipping curve")
-                return False, None
+                return False, None, None
 
-    if rank_success and selmer2_success and selmer3_success:
+    # Success criteria
+    success = rank_success and selmer2_success and (selmer3_success if require_3selmer else True)
+    if success:
         try:
             L = E.lseries()
             dok = L.dokchitser(prec=100)
@@ -142,7 +148,7 @@ def analyze_curve(a, b, is_original=False, max_attempts=5):
                 print("Weak BSD fails: Algebraic rank != Analytic rank")
         except:
             print("L-function computation failed")
-            return False, None
+            return False, None, None
 
         try:
             omega = E.period_lattice().real_period(prec=100)
@@ -165,33 +171,32 @@ def analyze_curve(a, b, is_original=False, max_attempts=5):
                 print(f"Adjusted |Sha(E)| to match: {sha_order}")
         except Exception as e:
             print(f"Failed to compute BSD invariants: {e}")
-            return False, None
+            return False, None, None
 
     log_delta = math.log(abs(delta)) if delta != 0 else 0
     log_cond = math.log(conductor) if conductor > 0 else 0
     features = [a, b, log_delta, log_cond, tors_order]
-    success = 1 if (rank_success and selmer2_success and selmer3_success) else 0
-
     print("-" * 20)
-    return success, features
+    return success, features, rank
 
-# Initialize data for classifier
+# Initialize data
 X_data = []
 y_data = []
 classifier = None
+interweb_data = []  # Store node-edge data
 
 # Main loop
 max_successful_curves = 10
 max_total_attempts = 100
-n = 30
+n = 15  # Further reduced
+require_3selmer = False  # Toggle for strict criteria
 successful_curves = 0
 attempts = 0
 fib_numbers = generate_fibonacci(n)
 print(f"Fibonacci numbers up to index {n}: {fib_numbers}")
 
 while successful_curves < max_successful_curves and attempts < max_total_attempts:
-    # Train classifier every 10 attempts if enough data
-    if attempts % 10 == 0 and len(X_data) >= 10:
+    if attempts % 10 == 0 and len(X_data) >= 10 and len(set(y_data)) >= 2:
         print("\nTraining logistic regression classifier...")
         classifier = LogisticRegression(max_iter=1000)
         X_array = np.array(X_data)
@@ -201,23 +206,36 @@ while successful_curves < max_successful_curves and attempts < max_total_attempt
 
     a, b = random_fibonacci_pair(n, classifier, fib_numbers, X_data)
     print(f"\nAttempt {attempts + 1}: Testing Fibonacci curve with a={a}, b={b}")
-    success, features = analyze_curve(a, b)
+    success, features, rank = analyze_curve(a, b, require_3selmer=require_3selmer)
     if features:
         X_data.append(features)
         y_data.append(success)
-    if success:
+        if success and rank is not None:
+            interweb_data.append((a, b, rank, features[2], features[3]))  # Store a, b, rank, log_delta, log_cond
+    if success and (rank is None or rank >= 2):  # Prioritize rank 2+
         successful_curves += 1
     attempts += 1
 
 # Analyze original curve
 print(f"\nAnalyzing original curve")
-success, features = analyze_curve(-1706, 6320, is_original=True)
+success, features, rank = analyze_curve(-1706, 6320, is_original=True, require_3selmer=require_3selmer)
 if features:
     X_data.append(features)
     y_data.append(success)
+    if success and rank is not None:
+        interweb_data.append((-1706, 6320, rank, features[2], features[3]))
+
+# Save interweb data
+with open("interweb_nodes.txt", "w") as f:
+    f.write("a,b,rank,log_delta,log_cond\n")
+    for a, b, rank, log_delta, log_cond in interweb_data:
+        f.write(f"{a},{b},{rank},{log_delta},{log_cond}\n")
 
 print(f"\nCompleted: {successful_curves} successful curves analyzed out of {attempts} attempts")
 if X_data:
     print("\nFinal classifier data summary:")
     print(f"Total curves analyzed: {len(X_data)}")
     print(f"Success rate: {sum(y_data) / len(y_data):.2%}")
+if interweb_data:
+    print("\nInterweb nodes saved to interweb_nodes.txt")
+    print("Sample nodes:", interweb_data[:2])
