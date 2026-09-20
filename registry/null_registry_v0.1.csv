@@ -1,0 +1,18 @@
+Null_ID,Scope,Definition_Status,Preregistration_Status,Historical_RandD,Definition
+NULL-MATCH-001,matching,placeholder,not_preregistered,no,Matching null model and its exchangeability assumptions to be fixed before execution.
+NULL-PROV-001,provenance,placeholder,not_preregistered,no,Provenance permutation/null procedure to be fixed before execution.
+NULL-LEAK-001,leakage,placeholder,not_preregistered,no,Leakage-control null procedure to be fixed before execution.
+NULL-RF-001,arithmetic reconstruction,placeholder,not_preregistered,no,Model/control null for arithmetic reconstruction to be fixed before execution.
+NULL-K-001,K mapping,placeholder,not_preregistered,no,Null model for K mapping to be fixed before execution.
+NULL-LCOSMO-001,Lcosmo mapping,placeholder,not_preregistered,no,Null model for Lcosmo mapping to be fixed before execution.
+NULL-SFR-001,SFR prediction,placeholder,not_preregistered,no,Baseline SFR null/permutation procedure to be fixed before execution.
+NULL-SFR-002,SFR prediction,placeholder,not_preregistered,no,Feature-label null for SFR model to be fixed before execution.
+NULL-SFR-003,SFR prediction,placeholder,not_preregistered,no,Robust SFR null procedure to be fixed before execution.
+NULL-RANK-001,rank analysis,placeholder,not_preregistered,no,Rank null model to be fixed before execution.
+NULL-RANK-002,rank environment,placeholder,not_preregistered,no,Rank/environment null model to be fixed before execution.
+NULL-TOPO-001,topology,placeholder,not_preregistered,no,TDA point-cloud null model to be fixed before execution.
+NULL-MAP-001,primary mapping,placeholder,not_preregistered,no,Primary mapping null model to be fixed before execution.
+NULL-MAP-002,PTD mapping,placeholder,not_preregistered,no,PTD mapping null model to be fixed before execution.
+NULL-MAP-003,MCJ mapping,placeholder,not_preregistered,no,MCJ mapping null model to be fixed before execution.
+NULL-RTCH-001,RTCH recovery,placeholder,not_preregistered,no,RTCH recovery-limit null/control procedure to be fixed before execution.
+NULL-ECC-001,ECC field/cohomology,placeholder,not_preregistered,no,ECC field/cohomology null model to be fixed before execution.
