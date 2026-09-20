@@ -1,135 +1,64 @@
-"""
-ACSC Projection Module -
-ArithmeticProjector class + low-level project function
-"""
+"""Deterministic arithmetic-to-coordinate projection primitives."""
 
-from typing import Sequence, List, Dict, Any, Optional, Tuple
+from typing import Sequence, Dict, Any
 import numpy as np
 import pandas as pd
-from src.data.load_sky_surveys import load_sky_surveys
 
-
-def test_sky_surveys_load():
-    df1, df2 = load_sky_surveys(downsample=100, validate_schema=True)
-    assert len(df1) > 0
-    assert len(df2) > 0
-
-
-def _safe_log10(x: np.ndarray, floor: float = 1.0) -> np.ndarray:
-    """Compute log10 of absolute values with a floor to avoid -inf."""
+def _safe_log10(x, floor=1.0):
     x = np.asarray(x, dtype=float)
-    # replace non-finite and zeros with floor
-    mask = ~np.isfinite(x) | (x == 0)
     out = np.empty_like(x)
+    mask = ~np.isfinite(x) | (x == 0)
     out[mask] = np.log10(float(floor))
     out[~mask] = np.log10(np.abs(x[~mask]))
     return out
 
-
-def _scale_to_range(arr: np.ndarray, out_min: float, out_max: float) -> np.ndarray:
-    """Linearly scale arr to [out_min, out_max]. If constant, return midpoint."""
+def _scale_to_range(arr, out_min, out_max):
     arr = np.asarray(arr, dtype=float)
     if arr.size == 0:
         return arr
-    mn = np.nanmin(arr)
-    mx = np.nanmax(arr)
+    mn, mx = np.nanmin(arr), np.nanmax(arr)
     if not np.isfinite(mn) or not np.isfinite(mx) or mn == mx:
         return np.full_like(arr, 0.5 * (out_min + out_max))
-    scaled = (arr - mn) / (mx - mn)
-    return out_min + scaled * (out_max - out_min)
+    return out_min + (arr - mn) / (mx - mn) * (out_max - out_min)
 
+def _saturating_rank_map(ranks, v0=1.0):
+    r = np.nan_to_num(np.asarray(ranks, dtype=float), nan=0.0)
+    return np.clip(np.arctan(r / float(v0)) / (0.5 * np.pi), 0.0, 1.0)
 
-def _saturating_rank_map(ranks: np.ndarray, v0: float = 1.0) -> np.ndarray:
-    """Map integer ranks to a bounded real axis using arctan-like saturation.
-    v0 controls the scale where saturation begins.
-    """
-    r = np.asarray(ranks, dtype=float)
-    # replace NaN with 0
-    r = np.nan_to_num(r, nan=0.0)
-    # use arctan to bound values between -pi/2 and pi/2, then rescale to [0,1]
-    mapped = np.arctan(r / float(v0)) / (0.5 * np.pi)
-    # mapped in [0,1); ensure finite
-    mapped = np.clip(mapped, 0.0, 1.0)
-    return mapped
+def project(records: Sequence[Dict[str, Any]], method="primary",
+            Amax=1.0, Nmax=1.0, V0=1.0):
+    """Project arithmetic records deterministically into R^3.
 
-
-def project(
-    records: Sequence[Dict[str, Any]],
-    method: str = "primary",
-    Amax: float = 1.0,
-    Nmax: float = 1.0,
-    V0: float = 1.0,
-) -> np.ndarray:
-    """
-    Convert a sequence of record dicts into Nx3 coordinates.
-
-    Parameters
-    - records: sequence of dict-like objects with keys 'delta', 'conductor', 'rank'
-    - method: 'primary'|'ptd'|'mcj' (kept for API compatibility; same mapping here)
-    - Amax, Nmax, V0: scaling parameters used in mapping
-
-    Returns
-    - coords: numpy array shape (n,3)
+    The method parameter is retained for compatibility. Distinct registered
+    mapping definitions should be implemented as separate named mappings rather
+    than silently sharing an implementation.
     """
     if records is None:
         return np.zeros((0, 3), dtype=float)
-
-    # Convert to DataFrame for robust column handling
     df = pd.DataFrame.from_records(records)
-    n = len(df)
-    if n == 0:
+    if df.empty:
         return np.zeros((0, 3), dtype=float)
-
-    # Ensure columns exist
-    for col in ["delta", "conductor", "rank"]:
-        if col not in df.columns:
+    for col in ("delta", "conductor", "rank"):
+        if col not in df:
             df[col] = np.nan
-
-    # Coerce numeric
-    df["delta"] = pd.to_numeric(df["delta"], errors="coerce")
-    df["conductor"] = pd.to_numeric(df["conductor"], errors="coerce")
-    df["rank"] = pd.to_numeric(df["rank"], errors="coerce")
-
-    # X: log10|delta| scaled to [0, Amax]
-    logd = _safe_log10(df["delta"].to_numpy(), floor=1.0)
-    x = _scale_to_range(logd, 0.0, float(Amax))
-
-    # Y: log10(conductor) scaled to [0, Nmax]; treat conductor<=1 as floor
-    cond = df["conductor"].to_numpy()
-    cond_safe = np.where(np.isfinite(cond) & (cond > 0), cond, 1.0)
-    logn = _safe_log10(cond_safe, floor=1.0)
-    y = _scale_to_range(logn, 0.0, float(Nmax))
-
-    # Z: rank mapped via saturating transform and scaled to [0,1] then to [0,1]*V0
-    rank_map = _saturating_rank_map(df["rank"].to_numpy(), v0=float(V0))
-    z = rank_map * float(V0)
-
-    coords = np.vstack([x, y, z]).T
-    # If method variants are needed, you can branch here; for now return same coords
-    return coords
+        df[col] = pd.to_numeric(df[col], errors="coerce")
+    x = _scale_to_range(_safe_log10(df["delta"].to_numpy()), 0.0, float(Amax))
+    cond = np.where(np.isfinite(df["conductor"]) & (df["conductor"] > 0), df["conductor"], 1.0)
+    y = _scale_to_range(_safe_log10(cond), 0.0, float(Nmax))
+    z = _saturating_rank_map(df["rank"].to_numpy(), float(V0)) * float(V0)
+    return np.column_stack([x, y, z])
 
 class ArithmeticProjector:
-    """Main class expected by notebooks"""
-    def __init__(self, method: str = "primary", Amax: float = 1.0, Nmax: float = 1.0, V0: float = 1.0):
-        self.method = method
-        self.Amax = Amax
-        self.Nmax = Nmax
-        self.V0 = V0
-
-    def project(self, records: Sequence[Dict[str, Any]]) -> np.ndarray:
-        """Project elliptic curve records to 3D coordinates"""
-        return project(records, method=self.method, Amax=self.Amax, Nmax=self.Nmax, V0=self.V0)
-    
-    def embed_to_cosmic(self, coords: np.ndarray) -> np.ndarray:
-        """
-        Simple embedding from projected coordinates into 'cosmic' space.
-        You can expand this with redshift scaling, distance modulus, etc.
-        """
-        # Basic version: add a small noise + scale
+    def __init__(self, method="primary", Amax=1.0, Nmax=1.0, V0=1.0):
+        self.method, self.Amax, self.Nmax, self.V0 = method, Amax, Nmax, V0
+    def project(self, records):
+        return project(records, self.method, self.Amax, self.Nmax, self.V0)
+    def embed_to_cosmic(self, coords, seed=0, noise_scale=0.0, depth_scale=1.8):
+        """Optional reproducible embedding; noise is explicit and disabled by default."""
         embedded = np.asarray(coords, dtype=float).copy()
-        embedded += np.random.normal(0, 0.05, embedded.shape)
-        # Optional: scale Z by a mock distance factor
-        if embedded.shape[1] >= 3:
-            embedded[:, 2] *= 1.8   # mock "depth" scaling
-        embedded += np.random.normal(0, 0.03, embedded.shape)
+        if noise_scale:
+            rng = np.random.default_rng(seed)
+            embedded += rng.normal(0.0, noise_scale, embedded.shape)
+        if embedded.ndim == 2 and embedded.shape[1] >= 3:
+            embedded[:, 2] *= float(depth_scale)
         return embedded
