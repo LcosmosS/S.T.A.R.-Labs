@@ -26,7 +26,7 @@ jobs:
           python -m pip install pytest
       - name: Run unit tests
         env:
-          PYTHONPATH: ${{ github.workspace }}/src
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/src
         run: pytest -q
 
   registry-validation:
