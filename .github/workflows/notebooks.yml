@@ -7,6 +7,7 @@ on:
       - "notebooks/**"
       - "src/**"
       - "registry/**"
+      - "requirements.txt"
       - ".github/workflows/notebooks.yml"
 
 permissions:
@@ -31,16 +32,26 @@ jobs:
           sage -python -m pip install --upgrade pip
           sage -python -m pip install -r requirements.txt
           sage -python -m pip install nbconvert nbclient ipykernel
-      - name: Validate controlled notebooks
+      - name: Execute controlled notebooks
+        env:
+          PYTHONPATH: /__w/S.T.A.R.-Program/S.T.A.R.-Program:/__w/S.T.A.R.-Program/S.T.A.R.-Program/src
         run: |
-          sage -python - <<'PY'
-          from pathlib import Path
-          import json
-          notebooks = sorted(Path("notebooks").glob("*.ipynb"))
-          assert notebooks, "no controlled notebooks found"
-          for p in notebooks:
-              assert p.stat().st_size > 100, f"empty or placeholder notebook: {p}"
-              nb = json.loads(p.read_text(encoding="utf-8"))
-              assert nb.get("nbformat", 0) >= 4, f"invalid notebook: {p}"
-          print(f"validated {len(notebooks)} controlled notebooks")
-          PY
+          set -euo pipefail
+          expected="
+          notebooks/00_registry_overview.ipynb
+          notebooks/01_preprocessing.ipynb
+          notebooks/02_arithmetic_reconstruction.ipynb
+          notebooks/03_mapping_benchmark.ipynb
+          notebooks/04_rank_environment.ipynb
+          notebooks/05_rank_topology.ipynb
+          notebooks/06_null_models.ipynb
+          notebooks/07_sfr_prediction.ipynb
+          notebooks/08_robustness.ipynb
+          "
+          for nb in $expected; do
+            test -s "$nb"
+            sage -python -m jupyter nbconvert --to notebook --execute "$nb"               --output "/tmp/$(basename "$nb")"               --ExecutePreprocessor.timeout=300               --ExecutePreprocessor.kernel_name=python3
+          done
+          extras=$(find notebooks -maxdepth 1 -name '*.ipynb' -printf '%p\n' | sort | grep -v -F -e "$expected" || true)
+          test -z "$extras"
+          echo "executed all controlled notebooks"
