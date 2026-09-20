@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The S.T.A.R. Program is an active research project. We currently support security updates for the **latest stable release** and the `main` branch.
+The S.T.A.R. Labs Research Program is an active research project. We currently support security updates for the **latest stable release** and the `main` branch.
 
 | Version / Branch      | Supported          |
 |-----------------------|--------------------|
@@ -19,7 +19,7 @@ We take the security of this project seriously. If you discover a security vulne
 ### How to Report
 - Email: security@ LcosmosS@pm.me (or open a **private** vulnerability report on GitHub if you prefer).
  
-Please include **"S.T.A.R. Program Security Report"** in the subject line and provide as much detail as possible, including:
+Please include **"S.T.A.R. Labs Research Program Security Report"** in the subject line and provide as much detail as possible, including:
   - Description of the vulnerability
   - Steps to reproduce
   - Potential impact
@@ -50,6 +50,6 @@ When a security vulnerability is confirmed:
 
 ## Acknowledgments
 
-We greatly appreciate responsible security research that helps keep the S.T.A.R. Program and the broader open-source scientific community secure.
+We greatly appreciate responsible security research that helps keep the S.T.A.R. Labs Research Program and the broader open-source scientific community secure.
 
 Security researchers who report valid issues will be acknowledged in the release notes (unless anonymity is requested).
