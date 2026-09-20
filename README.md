@@ -1,6 +1,6 @@
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Program)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs)
 
-# S.T.A.R. Labs 
+# S.T.A.R. Labs
 ## Symbolic–Topological–Arithmetic–Relativity
 
 **Author:** Patrick J. McNamara  
@@ -369,11 +369,11 @@ These are research directions, not claims of completed validation.
 
 ## Citation
 
-If you use the S.T.A.R. Labs or associated software, please cite:
+If you use S.T.A.R. Labs Research or associated software, please cite:
 
 ```text
 McNamara, P. J. (2026).
-The S.T.A.R. Labs: A Symbolic–Topological–Arithmetic–Relativity Program.
+S.T.A.R. Labs Research: A Symbolic–Topological–Arithmetic–Relativity Program.
 GitHub Repository.
 https://github.com/LcosmosS/S.T.A.R.-Labs
 ```
@@ -383,7 +383,7 @@ BibTeX:
 ```bibtex
 @misc{mcnamara2026star,
   author       = {Patrick J. McNamara},
-  title        = {S.T.A.R. Labs: A Symbolic--Topological--Arithmetic--Relativity Program},
+  title        = {S.T.A.R. Labs Research: A Symbolic--Topological--Arithmetic--Relativity Program},
   year         = {2026},
   howpublished = {\url{https://github.com/LcosmosS/S.T.A.R.-Labs}},
   note         = {Research framework combining ACSC, ECC, GLMPCT, RTCH, and related computational programs}
