@@ -112,7 +112,7 @@ jobs:
               assert r["Provenance_Status"] in allowed_provenance_status, f"invalid Provenance_Status: {r['Dataset_ID']}"
               assert r["Source_Reference"].strip(), f"empty Source_Reference: {r['Dataset_ID']}"
               assert r["Acquisition_or_Derivation"].strip(), f"empty Acquisition_or_Derivation: {r['Dataset_ID']}"
-              artifact_ids = [x for x in r["Historical_RandD_Artifact_IDs"].split(";") if x.strip()]
+              artifact_ids = [x.strip() for x in r["Historical_RandD_Artifact_IDs"].split(";") if x.strip()]
               known_artifact_ids = {a["Artifact_ID"] for a in artifacts}
               assert all(x in known_artifact_ids for x in artifact_ids), f"unknown historical R&D artifact ID in provenance: {r['Dataset_ID']}"
 
