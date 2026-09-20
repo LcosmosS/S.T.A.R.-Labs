@@ -396,4 +396,4 @@ The **Research Charter** is the authoritative reference for the repository's cur
 
 When README descriptions, historical documents, exploratory notebooks, or older results differ from the charter, the charter governs the interpretation of controlled research.
 
-**PR #25 remains an open, unmerged restructuring effort.**
+
