@@ -35,6 +35,7 @@ jobs:
       - name: Execute controlled notebooks
         env:
           PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/src
+        shell: bash
         run: |
           set -euo pipefail
           expected="
