@@ -49,23 +49,23 @@ The charter establishes the project's scientific posture and repository controls
 
 The S.T.A.R. research program currently spans several related components.
 
-### ACSC — Arithmetic–Cosmic Structure Conjecture
+### **[ACSC](The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf)** — Arithmetic–Cosmic Structure Conjecture
 
 ACSC investigates whether computable arithmetic invariants can be mapped into geometric/topological representations that can be compared with cosmic data.
 
 The repository treats the mapping problem as an empirical question. Candidate mappings and their null models are registered separately, including BSD-independent alternatives where specified.
 
-### ECC — Entropy Cohomology Conjecture
+### **[ECC](The_Entropy_Cohomology_Conjecture_(ECC).pdf)** — Entropy Cohomology Conjecture
 
 ECC develops a symbolic entropy/cohomology framework intended to operationalize information-flow and field-like structures computationally.
 
 Its registry status is a hypothesis requiring defined observables and falsifiable tests.
 
-### GLMPCT — Global-to-Local Mapping Paradox Correction Theory
+### **[GLMPCT](_Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography_.pdf)** — Global-to-Local Mapping Paradox Correction Theory
 
 GLMPCT addresses the proposed relationship between global structure and local observations in the project's mapping framework. Its constructions are part of the broader research program and remain subject to explicit mathematical and empirical validation.
 
-### RTCH
+### **[RTCH](Relativistic_Thermodynamic_Cohomology.pdf)**
 
 RTCH is a proposed thermodynamic/geometric coupling framework. The registered RTCH program includes a **standard-physics recovery limit** and numerical tests intended to determine whether the proposed construction can reproduce appropriate conventional limits.
 
