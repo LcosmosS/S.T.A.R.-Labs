@@ -1,13 +1,13 @@
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Program)
 
-# The S.T.A.R. Program
+# S.T.A.R. Labs 
 ## Symbolic–Topological–Arithmetic–Relativity
 
 **Author:** Patrick J. McNamara  
 **ORCiD:** 0009-0002-8978-5563  
 **Project:** March 2025 — active research
 
-The **S.T.A.R. Program** is a research framework for investigating proposed relationships among arithmetic invariants, geometric and topological structure, symbolic fields, and physical/cosmological observables.
+**S.T.A.R. Labs** is a research program for investigating proposed relationships among arithmetic invariants, geometric and topological structure, symbolic fields, and physical/cosmological observables.
 
 The repository is both a computational research archive and a controlled-experiment framework. Its purpose is to make speculative constructions explicit, testable, reproducible, and separable from established results.
 
@@ -47,7 +47,7 @@ The charter establishes the project's scientific posture and repository controls
 
 ## Research architecture
 
-The S.T.A.R. research program currently spans several related components.
+The S.T.A.R. Labs research program currently spans several related components.
 
 ### **[ACSC](The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf)** — Arithmetic–Cosmic Structure Conjecture
 
@@ -164,7 +164,7 @@ They are not part of the controlled notebook manifest unless explicitly promoted
 The repository contains both the current control layer and a substantial body of scientific code and historical research material.
 
 ```text
-S.T.A.R.-Program/
+S.T.A.R.-Labs/
 ├── charter/
 │   └── RESEARCH_CHARTER_v0.2.md
 │
@@ -313,8 +313,8 @@ Preservation is important for scientific provenance, but **version control is no
 Basic installation:
 
 ```bash
-git clone https://github.com/LcosmosS/S.T.A.R.-Program.git
-cd S.T.A.R.-Program
+git clone https://github.com/LcosmosS/S.T.A.R.-Labs.git
+cd S.T.A.R.-Labs
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python -m pip install -e . --no-deps
@@ -367,13 +367,13 @@ These are research directions, not claims of completed validation.
 
 ## Citation
 
-If you use the S.T.A.R. Program or associated software, please cite:
+If you use the S.T.A.R. Labs or associated software, please cite:
 
 ```text
 McNamara, P. J. (2026).
-The S.T.A.R. Program: A Symbolic–Topological–Arithmetic–Relativity Model.
+The S.T.A.R. Labs: A Symbolic–Topological–Arithmetic–Relativity Program.
 GitHub Repository.
-https://github.com/LcosmosS/S.T.A.R.-Program
+https://github.com/LcosmosS/S.T.A.R.-Labs
 ```
 
 BibTeX:
@@ -381,9 +381,9 @@ BibTeX:
 ```bibtex
 @misc{mcnamara2026star,
   author       = {Patrick J. McNamara},
-  title        = {The S.T.A.R. Program: A Symbolic--Topological--Arithmetic--Relativity Model},
+  title        = {S.T.A.R. Labs: A Symbolic--Topological--Arithmetic--Relativity Program},
   year         = {2026},
-  howpublished = {\url{https://github.com/LcosmosS/S.T.A.R.-Program}},
+  howpublished = {\url{https://github.com/LcosmosS/S.T.A.R.-Labs}},
   note         = {Research framework combining ACSC, ECC, GLMPCT, RTCH, and related computational programs}
 }
 ```
