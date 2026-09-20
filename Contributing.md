@@ -1,8 +1,8 @@
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Program)
 
-# Contributing to S.T.A.R. Program
+# Contributing to S.T.A.R. Labs Research Program
 
-**S.T.A.R. Program** (Symbolic–Topological–Arithmetic–Relativity) is an open research project exploring a novel framework for mathematical and theoretical physics. Contributions are welcome from researchers, developers, and enthusiasts committed to rigorous, reproducible, and innovative work at the intersection of mathematical-physics and number theory, topology, symbolic computation, theroetical-physics, and cosmology.
+**S.T.A.R. Labs Research Program** (Symbolic–Topological–Arithmetic–Relativity) is an open research project exploring a novel framework for mathematical and theoretical physics. Contributions are welcome from researchers, developers, and enthusiasts committed to rigorous, reproducible, and innovative work at the intersection of mathematical-physics and number theory, topology, symbolic computation, theroetical-physics, and cosmology.
 
 ## Code of Conduct
 
@@ -30,11 +30,11 @@ Contributions are welcome in several areas:
 
 ```bash
 # Clone the repository
-git clone https://github.com/LcosmosS/S.T.A.R.-Program.git
+git clone https://github.com/LcosmosS/S.T.A.R.-Labs.git
 ```
 ```bash
 # Checkout the repository
-cd S.T.A.R.-Program
+cd S.T.A.R.-Labs
 ```
 ```bash
 # Install in editable mode with development dependencies
@@ -77,9 +77,9 @@ If your contribution results in academic output (papers, theses, presentations),
 ```bash
 bibtex@software{star_program,
   author       = {LcosmosS and contributors},
-  title        = {S.T.A.R. Program: Symbolic--Topological--Arithmetic--Relativity Framework},
+  title        = {S.T.A.R. Labs Research Program: Symbolic--Topological--Arithmetic--Relativity Framework},
   year         = {2025},
-  url          = {https://github.com/LcosmosS/S.T.A.R.-Program},
+  url          = {https://github.com/LcosmosS/S.T.A.R.-Labs},
   doi          = {TBD},
 }
 ```
