@@ -111,6 +111,7 @@ The current registry layer is:
 | [claim_experiment_crosswalk_v0.2.csv](registry/claim_experiment_crosswalk_v0.2.csv) | Claim-to-experiment relationships and required controls |
 | [experiment_registry_v0.2.csv](registry/experiment_registry_v0.2.csv) | Registered controlled experiments |
 | [dataset_registry_v0.1.csv](registry/dataset_registry_v0.1.csv) | Datasets and their current control/provenance status |
+| [data_provenance_registry_v0.1.csv](registry/data_provenance_registry_v0.1.csv) | Dataset-level provenance, lineage, asset class, and provenance status |
 | [parameter_registry_v0.1.csv](registry/parameter_registry_v0.1.csv) | Parameter sets and preregistration status |
 | [null_registry_v0.1.csv](registry/null_registry_v0.1.csv) | Null/control models |
 | [r&d_artifact_registry_v0.1.csv](registry/r%26d_artifact_registry_v0.1.csv) | Retained exploratory and historical artifacts |
