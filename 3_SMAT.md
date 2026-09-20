@@ -1,9 +1,9 @@
 # S.M.A.T. 
-# S.T.A.R. Mission Analysis Tool
+# S.T.A.R. Manifold Analysis Tool
 
 ## Vision
 
-**S.M.A.T.** (S.T.A.R. Mission Analysis Tool) is the applied mission-planning and operations component of the S.T.A.R. Program. Inspired by NASA’s **General Mission Analysis Tool (GMAT)**, S.M.A.T. leverages the underlying **Symbolic Field** model — arithmetic projections (ACSC), entropy cohomology (ECC), and symbolic dynamics — to provide a next-generation framework for interplanetary and interstellar mission design, optimization, and real-time decision support.
+**S.M.A.T.** (S.T.A.R. Manifold Analysis Tool) is the applied mission-planning and operations component of the S.T.A.R. Labs Research Program. Inspired by NASA’s **General Mission Analysis Tool (GMAT)**, S.M.A.T. proposes to leverage the underlying **Symbolic Field** model — arithmetic projections (ACSC), entropy cohomology (ECC), and symbolic dynamics — to provide a next-generation framework for interplanetary and interstellar mission design, optimization, and real-time decision support.
 
 S.M.A.T. treats spacetime not as a passive background but as an active **arithmetic-symbolic manifold**. Mission trajectories, communication windows, gravitational assists, and risk assessments are informed by the same number-theoretic structures that govern cosmic large-scale structure.
 
@@ -66,10 +66,10 @@ S.M.A.T. consumes topographical maps produced by S.T.A.R.M.A.P. and returns miss
 **Phase 3 (2027+)**: GPU acceleration, GMAT interoperability, public web interface for mission scenario exploration.  
 **Phase 4**: Application to real missions (e.g., interstellar precursor concepts) and contribution to open spaceflight tools.
 
-## Broader Implications
+## Broader Theoretical Implications
 
-S.M.A.T. represents a paradigm shift: mission design informed by the deepest mathematical structures of the cosmos. By embedding arithmetic-symbolic physics into practical tools, the S.T.A.R. Program moves from pure theory toward enabling humanity’s long-term exploration and settlement of the solar system and beyond.
+S.M.A.T. represents a paradigm shift: mission design informed by the deepest mathematical structures of the cosmos. By embedding arithmetic-symbolic physics into practical tools, the S.T.A.R. Labs Research Program moves from pure theory toward enabling humanity’s long-term exploration and settlement of the solar system and beyond.
 
-**S.T.A.R.M.A.P. + S.M.A.T.** together close the loop from fundamental number theory to operational spaceflight.
+**S.T.A.R.M.A.P. + S.M.A.T.** together propose to close the loop from fundamental number theory to operational spaceflight.
 
 ---
