@@ -4,209 +4,151 @@ on:
   push:
     branches: [ main, master ]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  unit-tests:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-
-    env:
-      DEBIAN_FRONTEND: noninteractive
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          submodules: 'true'
-          fetch-depth: 0
-
-      - name: Cache submodules
-        id: cache
-        uses: actions/cache@v4
+          persist-credentials: false
+      - uses: actions/setup-python@v5
         with:
-          path: |
-            data/ecdata
-            data/eclib
-            data/lmfdb
-          key: submodules-${{ hashFiles('.gitmodules') }}
-          restore-keys: submodules-
-
-      - name: Initialize submodules or clone from GitHub
-        shell: bash -l {0}
-        run: |
-          echo "Attempting to initialize submodules..."
-          git submodule update --init --recursive --depth 1 2>/dev/null || {
-            echo "Submodule initialization failed, attempting direct clone from GitHub..."
-            
-            if [ ! -d "data/ecdata" ] || [ -z "$(ls -A data/ecdata 2>/dev/null)" ]; then
-              echo "Cloning JohnCremona/ecdata..."
-              mkdir -p data/ecdata
-              git clone --depth 1 https://github.com/JohnCremona/ecdata.git data/ecdata || true
-            fi
-            
-            if [ ! -d "data/eclib" ] || [ -z "$(ls -A data/eclib 2>/dev/null)" ]; then
-              echo "Cloning JohnCremona/eclib..."
-              mkdir -p data/eclib
-              git clone --depth 1 https://github.com/JohnCremona/eclib.git data/eclib || true
-            fi
-            
-            if [ ! -d "data/lmfdb" ] || [ -z "$(ls -A data/lmfdb 2>/dev/null)" ]; then
-              echo "Cloning LMFDB/lmfdb..."
-              mkdir -p data/lmfdb
-              git clone --depth 1 https://github.com/LMFDB/lmfdb.git data/lmfdb || true
-            fi
-          }
-          echo "=== Submodule Status After Initialization ==="
-          echo "ecdata: $([ -d data/ecdata ] && [ -n "$(ls -A data/ecdata)" ] && echo 'populated' || echo 'empty')"
-          echo "eclib: $([ -d data/eclib ] && [ -n "$(ls -A data/eclib)" ] && echo 'populated' || echo 'empty')"
-          echo "lmfdb: $([ -d data/lmfdb ] && [ -n "$(ls -A data/lmfdb)" ] && echo 'populated' || echo 'empty')"
-
-      - name: Setup Miniforge3
-        uses: conda-incubator/setup-miniconda@v3
-        with:
-          auto-update-conda: true
           python-version: "3.12"
-          environment-file: environment.yml
-          activate-environment: star-env
-          channels: conda-forge
-          use-mamba: true
-
-      - name: Install additional dependencies
-        shell: bash -l {0}
+      - name: Install test dependencies
         run: |
-          conda install -y joblib
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pytest
+      - name: Run unit tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/src
+        run: pytest -q
 
-      - name: Add src to PYTHONPATH
-        shell: bash -l {0}
-        run: |
-          echo "PYTHONPATH=${GITHUB_WORKSPACE}/src:${PYTHONPATH}" >> $GITHUB_ENV
-
-      - name: Verify environment
-        shell: bash -l {0}
-        run: |
-          echo "=== Python & Conda ==="
-          python --version
-          which python
-          conda list | grep -E "sage|joblib" || true
-
-      - name: Run tests
-        shell: bash -l {0}
-        run: |
-          pytest -q
-
-      - name: Generate CI subset from ecdata submodule (Final Fixed)
-        shell: bash -l {0}
-        run: |
-          mkdir -p data/raw results
-          echo "=== Generating clean CI subset from ecdata (Final) ==="
-
-          cat > generate_ci_subset.sage << 'EOF'
-          from sage.all import *
-          import csv
-          import os
-
-          print("Generating clean CI subset from ecdata submodule...")
-
-          ecdata_path = "data/ecdata"
-          labels = []
-
-          # Priority 1: alllabels directory
-          alllabels_dir = os.path.join(ecdata_path, "alllabels")
-          if os.path.isdir(alllabels_dir):
-              print("Reading from alllabels directory...")
-              for root, dirs, files in os.walk(alllabels_dir):
-                  for file in files:
-                      if file.endswith((".txt", ".csv")) or "alllabels" in file.lower():
-                          filepath = os.path.join(root, file)
-                          try:
-                              with open(filepath) as f:
-                                  for line in f:
-                                      label = line.strip()
-                                      if label and not label.startswith('#') and len(label) > 3:
-                                          labels.append(label)
-                                      if len(labels) >= 800:
-                                          break
-                          except:
-                              continue
-                          if len(labels) >= 800:
-                              break
-                  if len(labels) >= 800:
-                      break
-
-          # Priority 2: curves directory
-          if len(labels) < 100:
-              print("Falling back to curves directory...")
-              curves_dir = os.path.join(ecdata_path, "curves")
-              if os.path.isdir(curves_dir):
-                  for root, dirs, files in os.walk(curves_dir):
-                      for file in files:
-                          if file.endswith((".csv", ".txt")) and len(file) > 3:
-                              base = file.split('.')[0]
-                              if base and len(base) > 3 and base not in labels:
-                                  labels.append(base)
-                              if len(labels) >= 800:
-                                  break
-                      if len(labels) >= 800:
-                          break
-
-          print(f"Collected {len(labels)} labels.")
-
-          # Final hardcoded fallback
-          if len(labels) == 0:
-              print("WARNING: Using hardcoded fallback")
-              labels = ["11a1","14a1","15a1","17a1","19a1","20a1","21a1","24a1","26a1","37a1","37b1","43a1"]
-
-          # Write clean CSV
-          with open("data/raw/ci_subset.csv", "w", newline="") as f:
-              writer = csv.writer(f)
-              writer.writerow(["label"])
-              for label in labels:
-                  writer.writerow([label])
-
-          print("CI subset written successfully.")
-          print("First 10 labels:", labels[:10])
-          EOF
-
-                    sage generate_ci_subset.sage
-
-                    echo "=== Final ci_subset.csv Contents ==="
-                    cat data/raw/ci_subset.csv
-          
-      - name: Commit CI Subset to Repository
-        shell: bash -l {0}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          if [ -f data/raw/ci_subset.csv ]; then
-            git add data/raw/ci_subset.csv
-            if git diff --staged --quiet; then
-              echo "No changes to ci_subset.csv - skipping commit"
-            else
-              git commit -m "ci: update ci_subset.csv (auto-generated from ecdata)"
-              git push || echo "Push skipped (may need permissions)"
-              echo "Successfully committed and pushed updated ci_subset.csv"
-            fi
-          else
-            echo "ERROR: ci_subset.csv was not generated!"
-            exit 1
-          fi
-
-      - name: Build EC Dataset from Committed Subset
-        shell: bash -l {0}
-        run: |
-          echo "=== Running dataset builder on committed subset ==="
-          sage -python scripts/build_ec_dataset_parallel.sage \
-            --labels-file data/raw/ci_subset.csv \
-            --output results/ci_ec_subset.csv \
-            --workers 2 \
-            --batch-size 50
-
-      - name: Upload CI artifacts
-        uses: actions/upload-artifact@v4
+  registry-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
         with:
-          name: ci-results
-          path: results/
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate registry tables
+        run: |
+          python - <<'PY'
+          import csv
+          from pathlib import Path
+
+          root = Path("registry")
+          required = [
+              "claim_evidence_v0.2.csv",
+              "claim_experiment_crosswalk_v0.2.csv",
+              "experiment_registry_v0.2.csv",
+              "dataset_registry_v0.1.csv",
+              "parameter_registry_v0.1.csv",
+              "null_registry_v0.1.csv",
+              "r&d_artifact_registry_v0.1.csv",
+          ]
+          for name in required:
+              assert (root / name).exists(), f"missing registry: {name}"
+
+          def rows(name):
+              with (root / name).open(newline="", encoding="utf-8") as f:
+                  return list(csv.DictReader(f))
+
+          claims = rows("claim_evidence_v0.2.csv")
+          crosswalk = rows("claim_experiment_crosswalk_v0.2.csv")
+          experiments = rows("experiment_registry_v0.2.csv")
+          datasets = rows("dataset_registry_v0.1.csv")
+          parameters = rows("parameter_registry_v0.1.csv")
+          nulls = rows("null_registry_v0.1.csv")
+          artifacts = rows("r&d_artifact_registry_v0.1.csv")
+
+          claim_ids = {r["Claim_ID"] for r in claims}
+          exp_ids = [r["Experiment_ID"] for r in experiments]
+          dataset_ids = {r["Dataset_ID"] for r in datasets}
+          parameter_ids = {r["Parameter_Set_ID"] for r in parameters}
+          null_ids = {r["Null_ID"] for r in nulls}
+
+          assert len(exp_ids) == len(set(exp_ids)), "duplicate Experiment_ID"
+          assert len(claim_ids) == len(claims), "duplicate Claim_ID"
+          assert len(dataset_ids) == len(datasets), "duplicate Dataset_ID"
+          assert len(parameter_ids) == len(parameters), "duplicate Parameter_Set_ID"
+          assert len(null_ids) == len(nulls), "duplicate Null_ID"
+
+          crosswalk_pairs = {(r["Claim_ID"], r["Experiment_ID"]) for r in crosswalk}
+          for r in claims:
+              assert r["Claim_ID"] in claim_ids
+              assert r["Evidence_Requirement"].strip(), f"empty evidence requirement: {r['Claim_ID']}"
+
+          for r in experiments:
+              assert r["Mode"] == "controlled", f"non-controlled experiment in controlled registry: {r['Experiment_ID']}"
+              for cid in r["Claim_IDs"].split(";"):
+                  assert cid in claim_ids, f"unknown Claim_ID: {cid}"
+                  assert (cid, r["Experiment_ID"]) in crosswalk_pairs, f"missing crosswalk: {cid}/{r['Experiment_ID']}"
+              assert r["Dataset_ID"] in dataset_ids, f"unknown Dataset_ID: {r['Dataset_ID']}"
+              assert r["Parameter_Set_ID"] in parameter_ids, f"unknown Parameter_Set_ID: {r['Parameter_Set_ID']}"
+              assert r["Null_ID"] in null_ids, f"unknown Null_ID: {r['Null_ID']}"
+
+          for r in crosswalk:
+              assert r["Claim_ID"] in claim_ids
+              assert r["Experiment_ID"] in set(exp_ids)
+              assert r["Role"].strip()
+              assert r["Required_Control"].strip()
+
+          for r in artifacts:
+              assert r["Artifact_ID"].strip()
+              assert r["Path"].strip()
+              assert r["Evidence_Status"] in {"historical_or_illustrative", "exploratory", "controlled"}
+
+          print(
+              f"validated {len(claims)} claims, {len(experiments)} experiments, "
+              f"{len(datasets)} datasets, {len(parameters)} parameter sets, "
+              f"{len(nulls)} null models, {len(artifacts)} R&D artifacts"
+          )
+          PY
+
+  arithmetic-smoke:
+    runs-on: ubuntu-latest
+    container:
+      image: sagemath/sagemath:latest
+      options: --user root
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install dependencies
+        run: sage -python -m pip install -r requirements.txt
+      - name: Projection smoke test
+        env:
+          PYTHONPATH: ${{ github.workspace }}/src
+        run: |
+          sage -python - <<'PY'
+          import numpy as np
+          from src.acsc.projection import project
+          coords = project([{"delta": -11, "conductor": 11, "rank": 0}])
+          assert coords.shape == (1, 3) and np.isfinite(coords).all()
+          print("projection smoke test passed")
+          PY
+
+  ci-artifact:
+    runs-on: ubuntu-latest
+    needs: [unit-tests, registry-validation, arithmetic-smoke]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build CI metadata artifact
+        run: |
+          mkdir -p results
+          printf 'ci_commit,%s\n' "$GITHUB_SHA" > results/ci_metadata.csv
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ci-metadata
+          path: results/ci_metadata.csv
           retention-days: 7

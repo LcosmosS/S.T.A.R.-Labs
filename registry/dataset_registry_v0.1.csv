@@ -1,0 +1,9 @@
+Dataset_ID,Name,Type,Status,Source_or_Definition,Provenance_Status,Notes
+DATA-SDSS18-200K,SDSS DR18 200K working sample,observational,planned,Repository sky-survey working sample,deferred,Dataset provenance is tracked separately from this control registry.
+DATA-MANGA-HI-ALL,MaNGA HI all-galaxy working sample,observational,planned,MaNGA HI working dataset,deferred,Use only with documented release/version before execution.
+DATA-PROVENANCE-ALL,Integrated provenance control dataset,metadata,planned,Future provenance-controlled dataset,deferred,Reserved for provenance and leakage controls.
+DATA-ARITHMETIC,Elliptic-curve arithmetic inputs,computational,planned,Registered arithmetic fixtures or LMFDB/EC data source,deferred,Exact source/version must be recorded before execution.
+DATA-SFR-MANGA-PIP3D,MaNGA Pipe3D SFR data,observational,planned,Pipe3D star-formation-rate measurements,deferred,Exact release/version and selection must be recorded before execution.
+DATA-COSMIC-ENV,Cosmic environment measures,observational,planned,Registered cosmic-environment measurements,deferred,Exact release/version and selection must be recorded before execution.
+DATA-PHYS-CONSTRAINTS,Physical constraints for RTCH,physical_constraints,planned,Registered physical constants and recovery-limit constraints,deferred,Exact constants/version must be recorded before execution.
+DATA-ECC-THEORY,ECC symbolic field/cohomology inputs,theoretical,planned,Registered ECC definitions and computational fixtures,deferred,Exact theory revision must be recorded before execution.

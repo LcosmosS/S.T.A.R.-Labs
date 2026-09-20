@@ -1,0 +1,18 @@
+Parameter_Set_ID,Scope,Definition_Status,Preregistration_Status,Historical_RandD,Definition
+PAR-MATCH-001,matching,placeholder,not_preregistered,no,Coordinate-match tolerance and matching policy to be fixed before controlled execution.
+PAR-PERM-001,provenance,placeholder,not_preregistered,no,Permutation/control parameters to be fixed before controlled execution.
+PAR-LEAK-001,leakage,placeholder,not_preregistered,no,Leakage-detection and exclusion parameters to be fixed before controlled execution.
+PAR-RF-001,arithmetic reconstruction,placeholder,not_preregistered,no,Random-forest/control-model parameters to be fixed before controlled execution.
+PAR-K-001,K mapping,placeholder,not_preregistered,no,K-mapping definition and parameters to be fixed before controlled execution.
+PAR-LCOSMO-001,Lcosmo mapping,placeholder,not_preregistered,no,Lcosmo mapping definition and parameters to be fixed before controlled execution.
+PAR-SFR-001,SFR prediction,placeholder,not_preregistered,no,Baseline SFR model parameters to be fixed before controlled execution.
+PAR-SFR-002,SFR prediction,placeholder,not_preregistered,no,Arithmetic/cosmological feature model parameters to be fixed before controlled execution.
+PAR-SFR-003,SFR prediction,placeholder,not_preregistered,no,Robust SFR model parameters to be fixed before controlled execution.
+PAR-RANK-001,rank analysis,placeholder,not_preregistered,no,Arithmetic rank analysis parameters to be fixed before controlled execution.
+PAR-RANK-002,rank environment,placeholder,not_preregistered,no,Rank/environment comparison parameters to be fixed before controlled execution.
+PAR-TOPO-001,topology,placeholder,not_preregistered,no,TDA construction and distance parameters to be fixed before controlled execution.
+PAR-MAP-001,primary mapping,placeholder,not_preregistered,no,Primary mapping parameters to be fixed before controlled execution.
+PAR-MAP-002,PTD mapping,placeholder,not_preregistered,no,BSD-independent PTD mapping parameters to be fixed before controlled execution.
+PAR-MAP-003,MCJ mapping,placeholder,not_preregistered,no,BSD-independent MCJ mapping parameters to be fixed before controlled execution.
+PAR-RTCH-001,RTCH recovery,placeholder,not_preregistered,no,RTCH recovery-limit parameters to be fixed before controlled execution.
+PAR-ECC-001,ECC field/cohomology,placeholder,not_preregistered,no,ECC computational parameters to be fixed before controlled execution.

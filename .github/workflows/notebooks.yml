@@ -1,119 +1,76 @@
-name: Notebook Pipeline
+name: Controlled Notebooks
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
+  push:
+    branches:
+      - "restructure/charter-registry-ci-v2"
+  pull_request:
+    paths:
+      - "notebooks/**"
+      - "src/**"
+      - "registry/**"
+      - "requirements.txt"
+      - "pyproject.toml"
+      - ".github/workflows/notebooks.yml"
 
 permissions:
-  contents: write
-  packages: write
+  contents: read
 
 jobs:
-  execute-notebooks:
+  smoke:
     runs-on: ubuntu-latest
     container:
       image: sagemath/sagemath:latest
-      options: --user root --memory=16g
-      
-    env:
-      DEBIAN_FRONTEND: noninteractive
-
+      options: --user root --memory=8g
     steps:
-      - name: Install Git inside container 
-        run: |
-          apt-get update
-          apt-get install -y git
-          git --version
-
-      - name: Checkout repository
-        uses: actions/checkout@v6
+      - name: Install Git
+        run: apt-get update && apt-get install -y git
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          submodules: recursive
-
-      - name: Debug paths
-        run: |
-          echo "PWD: $(pwd)"
-          echo "Listing /__w:"
-          ls -R /__w || true      
-
-      - name: Install system tools
-        run: |
-          apt-get update
-          apt-get install -y pandoc texlive texlive-latex-extra texlive-xetex
-
-      - name: Install Python dependencies
+          fetch-depth: 1
+          submodules: false
+          persist-credentials: false
+      - name: Install notebook dependencies
         run: |
           sage -python -m pip install --upgrade pip
-          sage -python -m pip install --no-cache-dir \
-            numpy pandas tqdm plotly==5.18.0 corner ripser persim \
-            nbconvert nbclient ipykernel nest_asyncio
-
-      - name: Cache heavy data
-        uses: actions/cache@v4
-        with:
-          path: |
-            data/ecdata
-            data/raw
-            data/processed
-            examples/exports
-          key: notebook-cache-${{ hashFiles('data/**', 'examples/**') }}
-          restore-keys: notebook-cache-
-
-      - name: Execute notebooks
+          sage -python -m pip install -r requirements.txt
+          sage -python -m pip install nbconvert nbclient ipykernel
+          sage -python -m pip install -e . --no-deps
+          echo "PYTHONPATH=$GITHUB_WORKSPACE:$GITHUB_WORKSPACE/src" >> "$GITHUB_ENV"
+      - name: Execute controlled notebooks
+        shell: bash
         run: |
-          mkdir -p results exports
-          for nb in examples/*.ipynb; do
-            echo "Running $nb"
-            sage -python -m jupyter nbconvert \
-              --to notebook \
-              --execute "$nb" \
-              --output "$(basename $nb .ipynb)-executed.ipynb" \
-              --ExecutePreprocessor.timeout=7200 \
-              --ExecutePreprocessor.kernel_name=python3
-            # Clear memory between notebooks
-            sleep 10
+          set -euo pipefail
+          expected="
+          notebooks/00_registry_overview.ipynb
+          notebooks/01_preprocessing.ipynb
+          notebooks/02_arithmetic_reconstruction.ipynb
+          notebooks/03_mapping_benchmark.ipynb
+          notebooks/04_rank_environment.ipynb
+          notebooks/05_rank_topology.ipynb
+          notebooks/06_null_models.ipynb
+          notebooks/07_sfr_prediction.ipynb
+          notebooks/08_robustness.ipynb
+          "
+          for nb in $expected; do
+            test -s "$nb"
+            sage -python -m jupyter nbconvert --to notebook --execute "$nb"               --output "/tmp/$(basename "$nb")"               --ExecutePreprocessor.timeout=300               --ExecutePreprocessor.kernel_name=python3
           done
-        env:
-          JUPYTER_ENABLE_LAB: "yes"
-          PYTHONUNBUFFERED: "1"
-
-      - name: Commit CI Executed Notebooks to Repo
-        shell: bash -l {0}
-        run: |
-          git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            
-            GIT_DIR=$REPO_ROOT/.git git --git-dir=$REPO_ROOT/.git --work-tree=$REPO_ROOT add "$output"
-            
-            if GIT_DIR=$REPO_ROOT/.git git --git-dir=$REPO_ROOT/.git --work-tree=$REPO_ROOT diff --staged --quiet; then
-              echo "No changes for $base"
-            else
-              GIT_DIR=$REPO_ROOT/.git git --git-dir=$REPO_ROOT/.git --work-tree=$REPO_ROOT commit -m "ci: update executed notebook ${base} [skip ci]" || true
-              GIT_DIR=$REPO_ROOT/.git git --git-dir=$REPO_ROOT/.git --work-tree=$REPO_ROOT push || echo "Push skipped (may need permissions)"
-              echo "Committed $base"
-            fi
-          done
-
-          echo "=== All notebooks processed ==="
-
-      - name: Export HTML and PDF
-        run: |
-          mkdir -p exports
-          for nb in examples/*-executed.ipynb; do
-            base=$(basename "$nb" .ipynb)
-            sage -python -m jupyter nbconvert --to html "$nb" --output-dir exports --output "${base}.html"
-            sage -python -m jupyter nbconvert --to pdf  "$nb" --output-dir exports --output "${base}.pdf"
-          done
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v6
-        with:
-          name: notebook-outputs
-          path: |
-            results/
-            examples/*-executed.ipynb
-            exports/
+          sage -python - <<'PY'
+          from pathlib import Path
+          expected = {
+              "00_registry_overview.ipynb",
+              "01_preprocessing.ipynb",
+              "02_arithmetic_reconstruction.ipynb",
+              "03_mapping_benchmark.ipynb",
+              "04_rank_environment.ipynb",
+              "05_rank_topology.ipynb",
+              "06_null_models.ipynb",
+              "07_sfr_prediction.ipynb",
+              "08_robustness.ipynb",
+          }
+          actual = {p.name for p in Path("notebooks").glob("*.ipynb")}
+          assert actual == expected, f"controlled notebook set mismatch: {sorted(actual ^ expected)}"
+          PY
+          echo "executed all canonical controlled notebooks"
