@@ -2,3 +2,4 @@ Artifact_ID,Path,Artifact_Type,Status,Evidence_Status,Notes
 ART-RD-001,historical/legacy_notebooks/01_preprocessing_legacy.ipynb,legacy_notebook,retained,historical_or_illustrative,Preserved from earlier exploratory workflow; not controlled evidence.
 ART-RD-002,historical/r&d/ACSC_Verification.ipynb,exploratory_notebook,retained,historical_or_illustrative,Retained outside the controlled notebook manifest.
 ART-RD-003,historical/r&d/symbolic_regression_Hz.ipynb,exploratory_notebook,retained,historical_or_illustrative,Retained outside the controlled notebook manifest.
+ART-RD-004,historical/r&d/archive/,legacy_archive_collection,retained,historical_or_illustrative,Migrated intact from the former repository-level archive/ directory; includes exploratory source, tests, generated/intermediate artifacts, and editor metadata. Not controlled evidence.
