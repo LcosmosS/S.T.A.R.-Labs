@@ -57,7 +57,7 @@ RUN micromamba run -n ${CONDA_ENV} python -m pip install --upgrade pip setuptool
 USER ${USER}
 
 # Ensure PYTHONPATH is defined and points to the app
-ENV PYTHONPATH=/home/${USER}/app:$PYTHONPATH
+ENV PYTHONPATH=/home/${USER}/app
 WORKDIR /home/${USER}/app
 
 # Default verification command (override in CI)
