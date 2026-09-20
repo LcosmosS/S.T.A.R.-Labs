@@ -1,0 +1,7 @@
+Claim_ID,Claim_Type,Statement,Status,Evidence_Requirement
+CLAIM-ACSC-001,theory,Arithmetic invariants can be mapped into a defined geometric representation.,hypothesis,Controlled mapping specification plus reproducible computation
+CLAIM-ACSC-002,geometry,Alternative mappings should be testable independently of BSD proof status.,testable,Use registered BSD-independent mappings where specified
+CLAIM-ACSC-003,topology,Arithmetic-derived point clouds may exhibit statistically testable topological correspondence with comparison cosmic data.,hypothesis,Predefined TDA metric plus null models and independent validation
+CLAIM-ECC-001,field,The ECC framework proposes entropy/cohomological structure that can be operationalized computationally.,hypothesis,Defined observables and falsifiable computational tests
+CLAIM-RTCH-001,physics,RTCH proposes a thermodynamic/geometric coupling that must recover standard physics in an appropriate limit.,hypothesis,Analytic recovery plus registered numerical tests
+CLAIM-SFR-001,application,Arithmetic/cosmological features may provide predictive information for star-formation-rate modeling.,hypothesis,Leakage-controlled prediction against registered baselines
