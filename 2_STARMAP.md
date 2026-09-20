@@ -1,9 +1,9 @@
 # S.T.A.R.M.A.P.
-# Symbolic-Topological-Arithmetic-Relativity-Mission-Analysis-Program
+# Symbolic-Topological-Arithmetic-Relativity-Manifold-Analysis-Program
 
 ## Vision
 
-**S.T.A.R.M.A.P.** is the applied mapping and visualization engine of the S.T.A.R. Program. It aims to generate high-fidelity, dynamically evolving **topographical maps** of the observable universe by projecting deep arithmetic invariants of elliptic curves onto cosmic geometry, modulated by entropy cohomology fields, and rendered through persistent homology and symbolic regression.
+**S.T.A.R.M.A.P.** is the applied mapping and visualization engine of the S.T.A.R. Labs Research Program. It aims to generate high-fidelity, dynamically evolving **topographical** and **topological maps** of the observable universe by projecting deep arithmetic invariants of elliptic curves onto cosmic geometry, modulated by entropy cohomology fields, and rendered through persistent homology and symbolic regression.
 
 These maps will reveal the large-scale structure — **filaments, voids, clusters, gravitational density variations, and cosmic radiation patterns** — not as random outcomes of inflation, but as the deterministic geometric shadow of an underlying **Symbolic Field**.
 
@@ -12,8 +12,8 @@ These maps will reveal the large-scale structure — **filaments, voids, cluster
 - Produce multi-layered 3D/4D maps of the cosmic web using arithmetic projections.
 - Integrate entropy cohomology for dynamical evolution and radiation density.
 - Enable scale-dependent cosmological features, including the effective Hubble parameter $\(H_{\rm eff}(z)\)$.
-- Support mission analysis through **S.M.A.T.** (S.T.A.R. Mission Analysis Tool) for trajectory optimization, communication planning, and gravitational assist navigation informed by the model’s arithmetic skeleton.
-
+- Support mission analysis through **S.M.A.T.** (S.T.A.R. Manifold Analysis Tool, similar to NASA's G.M.A.T.)
+  
 ## Mapping Architecture
 
 ### Input Layer — Arithmetic Data
@@ -63,7 +63,7 @@ and weights $\(w_E(z)\)$ are determined by:
 This produces naturally different expansion rates at low $\(z\)$ (local ladder) and high $\(z\)$ (CMB), offering a potential number-theoretic resolution to the Hubble tension.
 
 ### Visualization & Mission Layer — S.M.A.T. Integration
-- 3D/4D rendering of density fields, filaments, voids, and radiation patterns.
+- 3D/4D rendering of density fields, filaments, voids, walls, and radiation patterns.
 - Overlay of gravitational potential and entropy gradients.
 - Export formats compatible with mission planning tools (trajectories, communication windows, risk assessment based on topological stability).
 
@@ -88,10 +88,6 @@ This produces naturally different expansion rates at low $\(z\)$ (local ladder) 
 **Phase 2**: Dynamic time evolution with entropy cohomology, symbolic law refinement.  
 **Phase 3**: High-resolution S.T.A.R.M.A.P. maps and integration with S.M.A.T. for mission planning.  
 **Phase 4**: Public release of interactive cosmic maps and open-source mission analysis toolkit.
-
----
-
-**S.T.A.R.M.A.P.** transforms abstract number theory into concrete, explorable maps of the cosmos — and ultimately into practical tools for humanity’s expansion beyond Earth.
 
 ---
 
