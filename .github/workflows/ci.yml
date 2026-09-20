@@ -50,6 +50,7 @@ jobs:
               "claim_experiment_crosswalk_v0.2.csv",
               "experiment_registry_v0.2.csv",
               "dataset_registry_v0.1.csv",
+              "data_provenance_registry_v0.1.csv",
               "parameter_registry_v0.1.csv",
               "null_registry_v0.1.csv",
               "r&d_artifact_registry_v0.1.csv",
@@ -65,6 +66,7 @@ jobs:
           crosswalk = rows("claim_experiment_crosswalk_v0.2.csv")
           experiments = rows("experiment_registry_v0.2.csv")
           datasets = rows("dataset_registry_v0.1.csv")
+          provenance = rows("data_provenance_registry_v0.1.csv")
           parameters = rows("parameter_registry_v0.1.csv")
           nulls = rows("null_registry_v0.1.csv")
           artifacts = rows("r&d_artifact_registry_v0.1.csv")
@@ -72,12 +74,16 @@ jobs:
           claim_ids = {r["Claim_ID"] for r in claims}
           exp_ids = [r["Experiment_ID"] for r in experiments]
           dataset_ids = {r["Dataset_ID"] for r in datasets}
+          provenance_ids = [r["Dataset_ID"] for r in provenance]
+          provenance_by_id = {r["Dataset_ID"]: r for r in provenance}
           parameter_ids = {r["Parameter_Set_ID"] for r in parameters}
           null_ids = {r["Null_ID"] for r in nulls}
 
           assert len(exp_ids) == len(set(exp_ids)), "duplicate Experiment_ID"
           assert len(claim_ids) == len(claims), "duplicate Claim_ID"
           assert len(dataset_ids) == len(datasets), "duplicate Dataset_ID"
+          assert len(provenance_ids) == len(provenance), "duplicate provenance Dataset_ID"
+          assert set(provenance_ids) == dataset_ids, "provenance Dataset_IDs must match dataset registry"
           assert len(parameter_ids) == len(parameters), "duplicate Parameter_Set_ID"
           assert len(null_ids) == len(nulls), "duplicate Null_ID"
 
@@ -92,8 +98,23 @@ jobs:
                   assert cid in claim_ids, f"unknown Claim_ID: {cid}"
                   assert (cid, r["Experiment_ID"]) in crosswalk_pairs, f"missing crosswalk: {cid}/{r['Experiment_ID']}"
               assert r["Dataset_ID"] in dataset_ids, f"unknown Dataset_ID: {r['Dataset_ID']}"
+              assert r["Dataset_ID"] in provenance_by_id, f"missing provenance record: {r['Dataset_ID']}"
+              assert provenance_by_id[r["Dataset_ID"]]["Provenance_Status"] in {"deferred", "documented", "controlled"}, f"invalid provenance status: {r['Dataset_ID']}"
               assert r["Parameter_Set_ID"] in parameter_ids, f"unknown Parameter_Set_ID: {r['Parameter_Set_ID']}"
               assert r["Null_ID"] in null_ids, f"unknown Null_ID: {r['Null_ID']}"
+
+          allowed_provenance_status = {"deferred", "documented", "controlled"}
+          allowed_asset_classes = {"physical_dataset", "computational_dataset", "metadata_collection", "constraint_set", "theory_source"}
+
+          for r in provenance:
+              assert r["Dataset_ID"] in dataset_ids, f"provenance references unknown Dataset_ID: {r['Dataset_ID']}"
+              assert r["Asset_Class"] in allowed_asset_classes, f"invalid provenance Asset_Class: {r['Dataset_ID']}"
+              assert r["Provenance_Status"] in allowed_provenance_status, f"invalid Provenance_Status: {r['Dataset_ID']}"
+              assert r["Source_Reference"].strip(), f"empty Source_Reference: {r['Dataset_ID']}"
+              assert r["Acquisition_or_Derivation"].strip(), f"empty Acquisition_or_Derivation: {r['Dataset_ID']}"
+              artifact_ids = [x for x in r["Historical_RandD_Artifact_IDs"].split(";") if x.strip()]
+              known_artifact_ids = {a["Artifact_ID"] for a in artifacts}
+              assert all(x in known_artifact_ids for x in artifact_ids), f"unknown historical R&D artifact ID in provenance: {r['Dataset_ID']}"
 
           for r in crosswalk:
               assert r["Claim_ID"] in claim_ids
@@ -109,7 +130,7 @@ jobs:
           print(
               f"validated {len(claims)} claims, {len(experiments)} experiments, "
               f"{len(datasets)} datasets, {len(parameters)} parameter sets, "
-              f"{len(nulls)} null models, {len(artifacts)} R&D artifacts"
+              f"{len(nulls)} null models, {len(artifacts)} R&D artifacts, {len(provenance)} provenance records"
           )
           PY
 
