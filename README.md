@@ -127,7 +127,7 @@ In particular:
 - dataset records identify the intended data source but do not imply that a particular release/version has already been provenance-locked;
 - the R&D artifact registry preserves historical work without promoting it to controlled evidence.
 
-The **Data Provenance Registry is intentionally deferred** to subsequent repository work, as specified by Charter v0.2.
+The **Data Provenance Registry is part of the current repository control layer** and is validated by the existing registry-validation CI job. Individual provenance records may still carry a `deferred` status when their exact source, release/version, selection, or lineage has not yet been provenance-locked for controlled execution.
 
 ---
 
@@ -174,6 +174,7 @@ S.T.A.R.-Labs/
 │   ├── claim_experiment_crosswalk_v0.2.csv
 │   ├── experiment_registry_v0.2.csv
 │   ├── dataset_registry_v0.1.csv
+│   ├── data_provenance_registry_v0.1.csv
 │   ├── parameter_registry_v0.1.csv
 │   ├── null_registry_v0.1.csv
 │   └── r&d_artifact_registry_v0.1.csv
