@@ -1,258 +1,375 @@
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Program)
----
 
-# **The S.T.A.R. Program**  
-## **Symbolic–Topological–Arithmetic–Relativity**
-### **A Proposed Model for Mathematical & Theoretical Physics to Address Cosmic Expansion & the Hubble–Planck Tension**
-
----
+# The S.T.A.R. Program
+## Symbolic–Topological–Arithmetic–Relativity
 
 **Author:** Patrick J. McNamara  
-**ORCiD:** 0009‑0002‑8978‑5563  
-**Project Start:** March 2025 — Active  
-**Keywords:** Number Theory, Cosmology, Entropy Cohomology, Persistent Homology, Elliptic Curves, Symbolic Regression, Mathematical Physics, Theoretical Physics, Holography 
+**ORCiD:** 0009-0002-8978-5563  
+**Project:** March 2025 — active research
+
+The **S.T.A.R. Program** is a research framework for investigating proposed relationships among arithmetic invariants, geometric and topological structure, symbolic fields, and physical/cosmological observables.
+
+The repository is both a computational research archive and a controlled-experiment framework. Its purpose is to make speculative constructions explicit, testable, reproducible, and separable from established results.
+
+> **Scientific status:** ACSC, ECC, GLMPCT, RTCH, and related constructions are hypotheses and formal models under test. They are not presented by this repository as established physical laws or mathematical theorems.
 
 ---
 
-## **Overview**
+## Research Charter
 
-This repository is the **primary research archive** for the **S.T.A.R. Program** — the *Symbolic–Topological–Arithmetic–Relativity Model* — a proposed theoretical physics framework that couples:
+The governing document is:
 
-- **ACSC** — *Arithmetic–Cosmic Structure Conjecture*
-    - *(See [/docs/The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf](/docs/The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf) for complete comjecture and construction logic)*
-- **ECC** — *Entropy Cohomology Conjecture*
-    - *([/docs/The_Entropy_Cohomology_Conjecture_(ECC).pdf](/docs/The_Entropy_Cohomology_Conjecture_(ECC).pdf))*
+- **[RESEARCH_CHARTER_v0.2.md](charter/RESEARCH_CHARTER_v0.2.md)**
 
-Together, these form a dual‑layer architecture:
+The charter establishes the project's scientific posture and repository controls.
 
-- **ACSC** provides the *geometric projection law* mapping elliptic curve invariants into a cosmological manifold.  
-- **ECC** provides the *entropy‑cohomological conservation law* governing symbolic information flow across that manifold.
+### Core principles
 
-The S.T.A.R. Program proposes that the **large‑scale structure of the universe**, the **effective expansion rate**, and the **Hubble–Planck tension** arise from the interaction between:
+1. **Hypotheses remain hypotheses.**  
+   ACSC, ECC, GLMPCT, RTCH, and related constructions are research hypotheses or formal models unless supported by appropriate evidence.
 
-- arithmetic projection geometry  
-- entropy curvature  
-- persistent cohomology classes  
-- symbolic geodesics  
-- scalar‑field coupling  
+2. **BSD is inspiration, not a claimed proof.**  
+   Birch–Swinnerton-Dyer is used as structural inspiration, analogy, and a computational source of arithmetic objects. The project does not claim to prove BSD. Where registered, empirical tests are designed to be independent of BSD's proof status.
 
-This repository contains the **full theoretical monographs**, **computational toolkit**, **TDA stability pipeline**, and **symbolic regression engine** that define the S.T.A.R. Program.
+3. **Mappings are not assumed to be bijections.**  
+   The project treats mappings from arithmetic objects to cosmic or geometric representations as projection families that may exhibit degeneracy, many-to-one behavior, and isogeny-class structure. These properties must be measured rather than assumed away.
 
-- *(See [OVERVIEW.md](OVERVIEW.md) for a more in depth overview.)* 
-- *(See  [/docs/_Arithmetic Invariants and Cosmological Geometry in Cartography_.pdf](/docs/_Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography_.pdf) for project details.)* 
-- *(See [First_Principles.md](First_Principles.md), [/docs/first_principals.py](/docs/first_principals.py) & [/docs/first_principals_results.txt](/docs/first_principals_results.txt) for evidance towards Hubble-Planck Tension resolution.)*
+4. **Exploration is not automatically evidence.**  
+   Historical computational results are retained as R&D artifacts, but exploratory or illustrative results are not silently promoted to controlled evidence.
 
+5. **Controls precede strong claims.**  
+   Controlled experiments must identify their claim, dataset, parameter set, null model, and reproducibility/provenance information.
 
----
-
-## **Core Idea**
-
-The S.T.A.R. Program asserts that the universe can be projected as a **Symbolic Field**, where:
-
-- arithmetic invariants  
-- entropy curvature  
-- topological persistence  
-- and geometric projection laws  
-
-jointly determine cosmic structure.
-
-A central prediction of the S.T.A.R. Program is a **scale-dependent effective Hubble parameter** that naturally emerges from the arithmetic projection and entropy dynamics:
-
-$H_{\rm eff}(z) = H_0 \cdot \langle \Omega_E \rangle_z$
-
-where $\(\Omega_E\)$ is the real period of the elliptic curve \(E\), and the redshift-dependent average is taken over curves that are “visible” or dominant at redshift $\(z\)$:
-
-$\langle \Omega_E \rangle_z = \frac{\sum_E w_E(z) \, \Omega_E}{\sum_E w_E(z)}.$
-
-The weight function $\(w_E(z)\)$ is constructed from the model’s natural mechanisms:
-
-- **Projection distortions and local-versus-global sampling**: At low $\(z\)$ (late universe, local distance ladder), the observer preferentially samples a biased subset of the projected point cloud $\(\{\Phi(E)\}\)$, favoring denser regions or lower-distortion patches after sinusoidal, oblate, and force-directed corrections. At high $\(z\)$ (CMB epoch), the average approaches the full global distribution.
-  
-- **Isogeny class density**: Curves connected by higher-degree isogenies contribute progressively more at later times, shifting the effective scale factor according to $\(g_{E'}(t) = g_E(t) + \eta \log m\)$.
-
-This formulation produces regime-dependent values consistent with current observations:
-
-$$
-\frac{\dot{a}}{a}\bigg|_{\text{local (low } z)}
-\approx H_0 \cdot \langle \Omega_E \rangle_{\text{late}}
-\quad (\sim 72{-}74\ \text{km/s/Mpc})
-$$
-
-$$
-\frac{\dot{a}}{a}\bigg|_{\text{CMB (high } z)}
-\approx H_0 \cdot \langle \Omega_E \rangle_{\text{early}}
-\quad (\sim 67.4\ \text{km/s/Mpc})
-$$
-
-The precise functional form of the weights $\(w_E(z)\)$ (including any tunable parameters) is **not imposed a priori**. Instead, the symbolic regression engine in [/src/symbolic_regression/](/src/symbolic_regression/) is trained on the full projected point cloud to discover the optimal weighting that best reconciles the projected arithmetic structure with observed cosmological data. This allows the model to learn the natural mapping from arithmetic invariants to effective expansion history without manual fine-tuning.
-
-- *(See [1_STAR_Model.md](1_STAR_Model.md), [Symbolic_Action_Principle.md](Symbolic_Action_Principle.md), [/docs/star_v3.1.py](/docs/star_v3.1.py), [/docs/star_v3.1 output.pdf](/docs/star_v3.1_output.pdf), & [/docs/STAR.ipynb](/docs/STAR.ipynb))*
-
----
-## Future Directions 
-
-### Program Evolution: S.T.A.R.M.A.P. & S.M.A.T.
-
-A key goal of the S.T.A.R. Program is its development into the **S.T.A.R.M.A.P.** — the **S**ymbolic-**T**opological-**A**rithmetic-**R**elativity-**M**ission-**A**nalysis-**P**rogram — which aims to produce high-fidelity topographical maps of the observable universe. These maps will integrate:
-
-- Arithmetic projections of elliptic curve invariants onto cosmic geometry,
-- Entropy cohomology fields for density and radiation structure,
-- Persistent homology for filaments, voids, clusters, and gravitational density variations.
-
-Complementing this is the **S.M.A.T.** (**S.T.A.R.**-**M**ission-**A**nalysis-**T**ool), a practical software framework inspired by *NASA’s General Mission Analysis Tool (GMAT)*. S.M.A.T. will leverage the underlying symbolic model for:
-
-- Interplanetary and interstellar trajectory optimization,
-- Communication window prediction using entropy-weighted propagation,
-- Gravitational assist planning informed by the arithmetic skeleton of spacetime,
-- Mission risk assessment via topological stability metrics.
-
-Together, S.T.A.R.M.A.P. and S.M.A.T. bridge fundamental theory with applied space exploration, turning number-theoretic insights into operational tools for humanity’s expansion into the cosmos.
-
-*(See [2_STARMAP.md](2_STARMAP.md), & [3_SMAT.md](3_SMAT.md) for more details.)*
+6. **CI validates; it does not rewrite the research record.**  
+   Continuous integration is read-only with respect to the repository source of record. Generated outputs belong in CI artifacts or explicitly versioned datasets rather than automatic commits.
 
 ---
 
-## **The S.T.A.R. Trilogy Architecture**
+## Research architecture
 
-This repository represents the **theory layering** of a three‑part research program:
+The S.T.A.R. research program currently spans several related components.
 
-### **1. ACSC — Geometry**  
-*Arithmetic–Cosmic Structure Conjecture*  
-Defines the projection map $\( \Phi(E) \)$, the k‑factor scaling, density‑equalizing rescaling, and the Global‑to‑Local Mapping Paradox Correction Theory.
+### ACSC — Arithmetic–Cosmic Structure Conjecture
 
-### **2. ECC — Field Theory**  
-*Entropy Cohomology Conjecture*  
-Defines the entropy field $\( \mathcal{M}(x) \)$, the differential forms $\( \theta = d\mathcal{M} \)$, $\( \omega = d\theta \)$, and the cohomology class $\(\omega\)$ governing symbolic conservation.
+ACSC investigates whether computable arithmetic invariants can be mapped into geometric/topological representations that can be compared with cosmic data.
 
-### **3. S.T.A.R. Program — Combined Physics**  
-*Symbolic–Topological–Arithmetic–Relativity Model*  
-Combines ACSC + ECC into a full cosmological model with:
+The repository treats the mapping problem as an empirical question. Candidate mappings and their null models are registered separately, including BSD-independent alternatives where specified.
 
-- metric perturbations  
-- scalar‑field coupling  
-- symbolic Sachs–Wolfe transfer  
-- cosmic‑web alignment  
-- symbolic regression law discovery
+### ECC — Entropy Cohomology Conjecture
 
-*(See [Symbolic_Action_Principle.md](Symbolic_Action_Principle.md), [/docs/star_v3.1.py](/docs/star_v3.1.py), [star_v3.1 output.pdf](star_v3.1_output.pdf)  [/docs/STAR.ipynb](/docs/STAR.ipynb), [/docs/_Arithmetic Invariants and Cosmological Geometry in Cartography_.pdf](/docs/_Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography_.pdf) & [/docs/Appendices for Arithmetic Invariants and Cosmological Geometry in Cartography.pdf](/docs/Appendices_for_Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography.pdf)`)*
+ECC develops a symbolic entropy/cohomology framework intended to operationalize information-flow and field-like structures computationally.
 
-This repository is the **central hub** of the S.T.A.R. Program, and ultimately proposes the introduction of a **Symbolic Field-Theory** paradigm. 
-- *(See [4_SFT.md](4_SFT.md))*
+Its registry status is a hypothesis requiring defined observables and falsifiable tests.
 
-## Why This Project Matters
+### GLMPCT — Global-to-Local Mapping Paradox Correction Theory
 
-We are standing at the threshold of a new synthesis: one that dares to merge the abstract rigor of arithmetic geometry with the observable chaos of the cosmos. Symbolic-Field Theory offers not just an innovative framework, but a philosophical reorientation. It invites us to consider that the laws governing the curvature of spacetime may be echoes of deeper number-theoretic truths—that the structure of the universe might be inscribed in elliptic curves, L-functions, and symbolic entropy.
+GLMPCT addresses the proposed relationship between global structure and local observations in the project's mapping framework. Its constructions are part of the broader research program and remain subject to explicit mathematical and empirical validation.
 
-*Why does this matter?* Because modern cosmology, for all its empirical success, lacks an axiomatic backbone. And number theory, for all its elegance, has remained observationally distant. This model proposes a bridge—one that can be tested, coded, visualized, and refined. In an era of increasing data abundance, this model gives us a symbolic scaffold for interpretation. It provides a way to organize galaxy distributions, predict star formation rates, and model topological curvature using logically grounded mappings.
+### RTCH
 
-Moreover, it rekindles a deeper question: *What is the universe really made of?*
-This project matters because it offers a new lens, one that doesn't replace our scientific frameworks but enriches them; connecting computation, observation, and symbolic insight into a unified structure that can evolve alongside our deepest inquiries into the nature of reality.
+RTCH is a proposed thermodynamic/geometric coupling framework. The registered RTCH program includes a **standard-physics recovery limit** and numerical tests intended to determine whether the proposed construction can reproduce appropriate conventional limits.
 
-## On the Vision: Merging Number Theory and Cosmology
+### SFR and astronomical applications
 
-The vision behind this work is rooted in a belief that the deepest structures of the universe are not just physical but symbolic; that the very architecture of spacetime may reflect arithmetic truths. Where classical physics models interactions, number theory models form. This project attempts to merge these two schools of thought by proposing that the patterns governing galaxies might not be entirely empirical—they may be governed, in part, by arithmetic invariants.
-
-This is not a rejection of modern cosmology, but an augmentation. We take L-functions, symbolic entropy, and the ranks of elliptic curves not as metaphors, but as plausible constructs capable of encoding physical structure. We turn galactic distributions into algebraic data and vice versa, creating an interactive, recursive view of cosmological evolution. The vision is one of synthesis. Just as quantum theory once unified the discrete and the continuous, this project seeks to unify symbolic logic with spatial curvature—mapping from curves to clusters, from rank to reality, from entropy to elevation. In doing so, we propose that the universe may not just be measured in light-years or parsecs, but also in ranks, regulators, and symbolic entropy.
-It is the dream of a new map. Not only geographic, but arithmetic. One that evolves alongside us as we refine our tools, deepen our insights, and expand our sense of the knowable universe.
+The repository also investigates whether arithmetic/cosmological features provide predictive information for **star-formation-rate (SFR)** modeling. These are application hypotheses and are subject to leakage-controlled prediction, baseline comparison, robustness testing, and null-model comparison.
 
 ---
 
-## **Repository Structure**
+## Evidence hierarchy
 
-```
+The charter uses the following evidence hierarchy:
+
+1. Reproducible controlled experiment
+2. Independent replication
+3. Robustness/null-model evidence
+4. Exploratory computational result
+5. Analytic/theoretical proposal
+6. Historical or illustrative artifact
+
+A numerical result appearing in an old notebook, manuscript, or exploratory script is therefore not by itself evidence for a registered claim.
+
+---
+
+## Registry and experiment control layer
+
+The controlled research program is organized around stable registry identifiers.
+
+Every controlled experiment is required to identify:
+
+- **Experiment_ID**
+- **Claim_ID(s)**
+- **Dataset_ID**
+- **Parameter_Set_ID**
+- **Null_ID**
+- reproducibility and provenance information sufficient to reconstruct the analysis
+
+The current registry layer is:
+
+| Registry | Purpose |
+|---|---|
+| [claim_evidence_v0.2.csv](registry/claim_evidence_v0.2.csv) | Registered claims and evidence requirements |
+| [claim_experiment_crosswalk_v0.2.csv](registry/claim_experiment_crosswalk_v0.2.csv) | Claim-to-experiment relationships and required controls |
+| [experiment_registry_v0.2.csv](registry/experiment_registry_v0.2.csv) | Registered controlled experiments |
+| [dataset_registry_v0.1.csv](registry/dataset_registry_v0.1.csv) | Datasets and their current control/provenance status |
+| [parameter_registry_v0.1.csv](registry/parameter_registry_v0.1.csv) | Parameter sets and preregistration status |
+| [null_registry_v0.1.csv](registry/null_registry_v0.1.csv) | Null/control models |
+| [r&d_artifact_registry_v0.1.csv](registry/r%26d_artifact_registry_v0.1.csv) | Retained exploratory and historical artifacts |
+
+### Current registry status
+
+The registry tables currently contain planned experiments and placeholder parameter/null definitions where the controlled specifications still need to be fixed.
+
+In particular:
+
+- a parameter value discovered after seeing an outcome is **not** retroactively preregistered;
+- planned experiments remain planned until their definitions are sufficiently specified;
+- dataset records identify the intended data source but do not imply that a particular release/version has already been provenance-locked;
+- the R&D artifact registry preserves historical work without promoting it to controlled evidence.
+
+The **Data Provenance Registry is intentionally deferred** to subsequent repository work, as specified by Charter v0.2.
+
+---
+
+## Controlled notebooks
+
+The canonical controlled notebook suite is defined directly by:
+
+- [.github/workflows/notebooks.yml](.github/workflows/notebooks.yml)
+
+The current suite contains exactly these nine notebooks:
+
+1. [00_registry_overview.ipynb](notebooks/00_registry_overview.ipynb)
+2. [01_preprocessing.ipynb](notebooks/01_preprocessing.ipynb)
+3. [02_arithmetic_reconstruction.ipynb](notebooks/02_arithmetic_reconstruction.ipynb)
+4. [03_mapping_benchmark.ipynb](notebooks/03_mapping_benchmark.ipynb)
+5. [04_rank_environment.ipynb](notebooks/04_rank_environment.ipynb)
+6. [05_rank_topology.ipynb](notebooks/05_rank_topology.ipynb)
+7. [06_null_models.ipynb](notebooks/06_null_models.ipynb)
+8. [07_sfr_prediction.ipynb](notebooks/07_sfr_prediction.ipynb)
+9. [08_robustness.ipynb](notebooks/08_robustness.ipynb)
+
+The controlled-notebook workflow executes this exact set. Controlled notebooks are expected to be deterministic where practical, to fail rather than silently substitute missing scientific dependencies, and to distinguish computational fixtures from empirical evidence.
+
+Exploratory and historical notebooks are retained separately under:
+
+- [historical/r&d/](historical/r%26d/)
+- [historical/legacy_notebooks/](historical/legacy_notebooks/)
+
+They are not part of the controlled notebook manifest unless explicitly promoted through the research-control process.
+
+---
+
+## Repository structure
+
+The repository contains both the current control layer and a substantial body of scientific code and historical research material.
+
+```text
 S.T.A.R.-Program/
-├── README.md
-├── LICENSE
-├── CITATION.cff
+├── charter/
+│   └── RESEARCH_CHARTER_v0.2.md
+│
+├── registry/
+│   ├── claim_evidence_v0.2.csv
+│   ├── claim_experiment_crosswalk_v0.2.csv
+│   ├── experiment_registry_v0.2.csv
+│   ├── dataset_registry_v0.1.csv
+│   ├── parameter_registry_v0.1.csv
+│   ├── null_registry_v0.1.csv
+│   └── r&d_artifact_registry_v0.1.csv
 │
 ├── src/
-|   ├── acsc/                     # # ACSC projection geometry
-|   ├── analysis/                 # Documentation generation
-|   ├── blender/                  # Paradox correction + infinite zoom
-|   ├── cli/                      # Cosmological inference constraints
-|   ├── data/                     # Sky survey integration preprocessing
-│   ├── entropy/                  # ECC entropy/cohomology machinery               
-│   ├── likelihoods/              # Comparisons to Planck/SH0ES + DESI BAO + PANTHEON+
-|   ├── pipeline/                 # Inference + PaperFigure pipelines
-│   ├── physics/                  # S.T.A.R. cosmological physics
-│   ├── symbolic_regression/      # Constrained GP + law discovery
-│   ├── tda/                      # Persistent homology + stability
-|   ├── tests/                    # Sky survey integration
-|   ├── utils/                    # Astronomical utilities
-|   └── visualization/            # PaperFigure + plotting
-│    
-├── data/
-│   ├── raw/                      # LMFDB + Cremona datasets
-│   └── processed/                # Cleaned + merged arithmetic data
+│   ├── acsc/                  # ACSC projection and arithmetic geometry
+│   ├── analysis/              # Analysis/documentation utilities
+│   ├── blender/               # Visualization and mapping utilities
+│   ├── cli/                   # Command-line interfaces
+│   ├── data/                  # Data and survey integration
+│   ├── entropy/               # ECC entropy/cohomology machinery
+│   ├── likelihoods/           # Cosmological likelihood components
+│   ├── mappings/              # Mapping and projection machinery
+│   ├── nulls/                 # Null-model utilities
+│   ├── physics/               # Cosmological/physical model components
+│   ├── pipeline/              # Analysis and inference pipelines
+│   ├── statistics/            # Statistical utilities
+│   ├── symbolic_regression/   # Symbolic law discovery
+│   ├── tda/                   # Persistent homology and TDA
+│   ├── tests/                 # Survey/integration tests
+│   ├── utils/                 # Astronomical/general utilities
+│   └── visualization/         # Figures and plotting
 │
-├── notebooks/
-│   ├── projection_demo.ipynb
-│   ├── entropy_field_demo.ipynb
-│   ├── hubble_tension_fit.ipynb
-│   └── tda_analysis.ipynb
+├── experiments/
+│   ├── priority_a/
+│   └── priority_b/
 │
-├── scripts/
-│   ├── generate_raw.py
-│   ├── compute_3selmer_full_pari.py
-│   └── star_validation_batch.py
+├── notebooks/                 # Canonical controlled notebook suite
 │
-├── results/
-│   ├── figures/
-│   └── tables/
+├── historical/
+│   ├── r&d/                  # Retained exploratory research
+│   ├── legacy_notebooks/     # Legacy notebooks
+│   ├── legacy_scripts/       # Legacy scripts
+│   └── legacy_results/      # Historical outputs
 │
-├── manuscript/                   # Full S.T.A.R. monograph (PDF + LaTeX)
-├── theory-verification/          # PH barcodes + arithmetic point clouds
-└── docs/                         # High-resolution diagrams + maps
+├── tests/                    # Automated software tests
+├── docs/                     # Project documentation and research documents
+├── RTCH_E1/                  # RTCH experimental implementation
+├── tools/                    # Supporting conversion/utility tools
+│
+├── .github/workflows/        # CI, controlled notebooks, survey tests
+├── pyproject.toml
+├── requirements.txt
+└── README.md
 ```
 
+The repository also contains manuscript-level documents, legacy material, survey integrations, RTCH experimental files, and other research artifacts that are intentionally not represented as controlled evidence merely because they are versioned.
+
 ---
 
-## **Reproducibility Statement**
+## Computational methods
 
-Reproducibility is a core principle of the S.T.A.R. Program.
+The codebase supports several complementary computational approaches:
 
-- All projection operators  
-- All entropy/cohomology computations  
-- All TDA pipelines  
-- All symbolic regression constraints  
-- All cosmological fits  
+- elliptic-curve and arithmetic-invariant computation;
+- arithmetic-to-geometric projection experiments;
+- alternative mapping constructions;
+- persistent homology and related topological data analysis;
+- Wasserstein and related persistence comparisons;
+- null and permutation controls;
+- symbolic regression and law-discovery experiments;
+- cosmological likelihood and inference utilities;
+- scalar-field, metric-perturbation, entropy, and related physics prototypes;
+- astronomical/survey data integration;
+- SFR prediction experiments;
+- RTCH computational experiments.
 
-are implemented in this repository.
+The presence of an implementation does not imply that the corresponding scientific hypothesis has been validated.
 
-The **v3.1 leakage‑free pipeline** achieves:
-
-$R^2 = 0.9864$ (undergoing rigorous confirmation)
-
-on synthetic cosmic structures, validated through:
-
-- bootstrap persistence landscapes  
-- Wasserstein stability  
-- null‑scramble rejection  
-- isogeny‑invariance tests  
-
-Researchers are encouraged to:
-
-- inspect the manuscript and thesis pdf's in [/docs](/docs)
-- run the full validation pipeline in [/scripts](/scripts)  
-- explore the symbolic regression manifold in [/examples/exports](/examples/exports)  
-- [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Program)
 ---
 
-## **Installation**
+## Reproducibility and CI
+
+The repository uses automated checks to protect the research control layer.
+
+The main CI workflow:
+
+- runs the software test suite;
+- validates registry foreign-key relationships and required fields;
+- runs an arithmetic projection smoke test;
+- produces CI metadata as an artifact;
+- does not automatically commit generated research results.
+
+The controlled-notebook workflow separately executes the nine canonical notebooks in a SageMath environment with the registered scientific dependencies.
+
+Relevant workflows:
+
+- [S.T.A.R. CI](.github/workflows/ci.yml)
+- [Controlled Notebooks](.github/workflows/notebooks.yml)
+- [Tests](.github/workflows/test.yml)
+- [Sky Survey Pipeline](.github/workflows/sky_surveys.yml)
+
+For local software testing:
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -e . --no-deps
+pytest -q
+```
+
+The project currently targets **Python 3.12 or newer**.
+
+For the controlled notebooks, the authoritative execution environment is defined by the workflow and currently uses the SageMath container.
+
+---
+
+## Documentation and theory
+
+The repository contains the project's evolving theoretical and explanatory documents, including:
+
+- [OVERVIEW.md](OVERVIEW.md)
+- [1_STAR_Model.md](1_STAR_Model.md)
+- [2_STARMAP.md](2_STARMAP.md)
+- [3_SMAT.md](3_SMAT.md)
+- [4_SFT.md](4_SFT.md)
+- [First_Principles.md](First_Principles.md)
+- [Symbolic_Action_Principle.md](Symbolic_Action_Principle.md)
+
+The `docs/` area contains additional research documents, figures, manuscripts, and computational material.
+
+These documents describe proposed theory and historical development; the charter and registries determine how claims are treated within the controlled research program.
+
+---
+
+## Historical and exploratory material
+
+The repository deliberately preserves earlier research.
+
+This includes exploratory notebooks, legacy scripts, earlier mapping experiments, prototype physics implementations, and historical numerical results.
+
+Preservation is important for scientific provenance, but **version control is not equivalent to validation**. Historical material should be interpreted according to its registry status and the evidence hierarchy rather than its age, sophistication, or numerical performance.
+
+---
+
+## Installation
+
+Basic installation:
 
 ```bash
 git clone https://github.com/LcosmosS/S.T.A.R.-Program.git
-cd ~/S.T.A.R.-Program
-pip install -r requirements.txt
+cd S.T.A.R.-Program
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -e . --no-deps
 ```
+
+For development/testing:
+
+```bash
+pytest -q
+```
+
+For TDA functionality, the repository requirements include GUDHI, POT, Ripser, and Persim. The controlled notebook workflow installs the same repository requirements before execution.
 
 ---
 
-## **Citation**
+## Current research scope
 
-If you use the S.T.A.R. Program, ACSC, ECC, or any associated data pipelines, please cite:
+The current program is organized around several registered research areas:
 
-```
+- arithmetic reconstruction and mapping;
+- BSD-independent alternative mapping tests;
+- rank/environment and rank/topology studies;
+- TDA correspondence and null-model testing;
+- SFR prediction;
+- RTCH standard-physics recovery;
+- ECC field/cohomology testing.
+
+The corresponding registered experiments are currently marked **planned** until their dataset versions, parameter definitions, null models, and execution specifications are sufficiently fixed.
+
+This distinction is intentional: the repository is being built so that future numerical results can be evaluated against predefined controls rather than retrofitted into the research record.
+
+---
+
+## Future directions
+
+Longer-term directions include:
+
+- expanded arithmetic-to-cosmic mapping studies;
+- independent replication of controlled results;
+- stronger observational data provenance;
+- expanded TDA and null-model analysis;
+- development of the RTCH theoretical and computational framework;
+- empirical testing of ECC structures;
+- SFR prediction and astronomical applications;
+- continued development of S.T.A.R.M.A.P. and S.M.A.T. concepts.
+
+These are research directions, not claims of completed validation.
+
+---
+
+## Citation
+
+If you use the S.T.A.R. Program or associated software, please cite:
+
+```text
 McNamara, P. J. (2026).
 The S.T.A.R. Program: A Symbolic–Topological–Arithmetic–Relativity Model.
 GitHub Repository.
@@ -267,8 +384,16 @@ BibTeX:
   title        = {The S.T.A.R. Program: A Symbolic--Topological--Arithmetic--Relativity Model},
   year         = {2026},
   howpublished = {\url{https://github.com/LcosmosS/S.T.A.R.-Program}},
-  note         = {Combined ACSC + ECC Framework}
+  note         = {Research framework combining ACSC, ECC, GLMPCT, RTCH, and related computational programs}
 }
 ```
 
 ---
+
+## Research governance
+
+The **Research Charter** is the authoritative reference for the repository's current scientific-control policy.
+
+When README descriptions, historical documents, exploratory notebooks, or older results differ from the charter, the charter governs the interpretation of controlled research.
+
+**PR #25 remains an open, unmerged restructuring effort.**
