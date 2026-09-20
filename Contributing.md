@@ -75,10 +75,10 @@ Test notebooks with both standard Python and SageMath kernels when possible.
 ### Citation Guidelines
 If your contribution results in academic output (papers, theses, presentations), please cite the project as:
 ```bash
-bibtex@software{star_program,
-  author       = {LcosmosS and contributors},
-  title        = {S.T.A.R. Labs Research Program: Symbolic--Topological--Arithmetic--Relativity Framework},
-  year         = {2025},
+bibtex@software{star_labs,
+  author       = {Patrick J. McNamara and contributors},
+  title        = {S.T.A.R. Labs Research: A Symbolic--Topological--Arithmetic--Relativity Program},
+  year         = {2026},
   url          = {https://github.com/LcosmosS/S.T.A.R.-Labs},
   doi          = {TBD},
 }
