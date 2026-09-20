@@ -25,6 +25,7 @@ jobs:
         with:
           fetch-depth: 1
           submodules: false
+          persist-credentials: false
       - name: Install notebook dependencies
         run: |
           sage -python -m pip install --upgrade pip
