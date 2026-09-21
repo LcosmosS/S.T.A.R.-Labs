@@ -25,7 +25,7 @@ The charter establishes the project's scientific posture and repository controls
 
 ### Core principles
 
-`Do not ask whether the theory can be made to fit the universe. Ask whether a fixed mathematical construction predicts structure that was not used to construct it.`
+> Do not ask whether the theory can be made to fit the universe. Ask whether a fixed mathematical construction predicts structure that was not used to construct it.
 
 
 1. **Hypotheses remain hypotheses.**  
