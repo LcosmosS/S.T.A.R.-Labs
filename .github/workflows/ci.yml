@@ -164,10 +164,25 @@ jobs:
               assert r["Provenance_Status"] in allowed_provenance_status, f"invalid Provenance_Status: {r['Dataset_ID']}"
               assert r["Evidence_Status"] in allowed_evidence_status, f"invalid Evidence_Status: {r['Dataset_ID']}"
 
-              parent = r["Parent_Dataset_ID"].strip()
-              if parent:
-                  assert parent in dataset_ids, f"unknown Parent_Dataset_ID: {r['Dataset_ID']}"
-                  assert parent != r["Dataset_ID"], f"self-referential Parent_Dataset_ID: {r['Dataset_ID']}"
+              parent_map = {
+                  row["Dataset_ID"]: row["Parent_Dataset_ID"]
+                  for row in provenance_rows
+                  if row["Parent_Dataset_ID"]
+              }
+
+              for dataset_id in parent_map:
+                  seen = set()
+                  current = dataset_id
+
+                  while current in parent_map:
+                      if current in seen:
+                          errors.append(
+                              f"Parent_Dataset_ID lineage cycle detected starting at {dataset_id}"
+                          )
+                          break
+
+                      seen.add(current)
+                      current = parent_map[current]
 
               # Derived records may omit a parent when no single registered upstream
               # dataset is known; the unresolved chain must remain explicit in Notes.
