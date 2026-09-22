@@ -1,18 +1,18 @@
 Null_ID,Scope,Definition_Status,Preregistration_Status,Historical_RandD,Definition
-NULL-MATCH-001,matching,placeholder,not_preregistered,no,Matching null model and its exchangeability assumptions to be fixed before execution.
-NULL-PROV-001,provenance,placeholder,not_preregistered,no,Provenance permutation/null procedure to be fixed before execution.
-NULL-LEAK-001,leakage,placeholder,not_preregistered,no,Leakage-control null procedure to be fixed before execution.
-NULL-RF-001,arithmetic reconstruction,placeholder,not_preregistered,no,Model/control null for arithmetic reconstruction to be fixed before execution.
-NULL-K-001,K mapping,placeholder,not_preregistered,no,Null model for K mapping to be fixed before execution.
-NULL-LCOSMO-001,Lcosmo mapping,placeholder,not_preregistered,no,Null model for Lcosmo mapping to be fixed before execution.
-NULL-SFR-001,SFR prediction,placeholder,not_preregistered,no,Baseline SFR null/permutation procedure to be fixed before execution.
-NULL-SFR-002,SFR prediction,placeholder,not_preregistered,no,Feature-label null for SFR model to be fixed before execution.
-NULL-SFR-003,SFR prediction,placeholder,not_preregistered,no,Robust SFR null procedure to be fixed before execution.
-NULL-RANK-001,rank analysis,placeholder,not_preregistered,no,Rank null model to be fixed before execution.
-NULL-RANK-002,rank environment,placeholder,not_preregistered,no,Rank/environment null model to be fixed before execution.
-NULL-TOPO-001,topology,placeholder,not_preregistered,no,TDA point-cloud null model to be fixed before execution.
-NULL-MAP-001,primary mapping,placeholder,not_preregistered,no,Primary mapping null model to be fixed before execution.
-NULL-MAP-002,PTD mapping,placeholder,not_preregistered,no,PTD mapping null model to be fixed before execution.
-NULL-MAP-003,MCJ mapping,placeholder,not_preregistered,no,MCJ mapping null model to be fixed before execution.
-NULL-RTCH-001,RTCH recovery,placeholder,not_preregistered,no,RTCH recovery-limit null/control procedure to be fixed before execution.
-NULL-ECC-001,ECC field/cohomology,placeholder,not_preregistered,no,ECC field/cohomology null model to be fixed before execution.
+NULL-MATCH-001,matching,historical_candidate,not_preregistered,yes,"Raw R&D documents both 1 arcsec and 5 arcsec coordinate-match attempts; earlier R&D also documents 2 arcsec. The archive therefore supports sensitivity/null comparison across radii, but not one fixed null."
+NULL-PROV-001,provenance,placeholder,not_preregistered,yes,"Historical workflows contain permutation/randomization concepts, but no single provenance permutation null was recovered."
+NULL-LEAK-001,leakage,historical_candidate,not_preregistered,yes,"Historical model validation uses held-out test data and reconstruction/leakage diagnostics; the exact controlled leakage null remains to be fixed."
+NULL-RF-001,arithmetic reconstruction,placeholder,not_preregistered,yes,"Historical RandomForest control models exist, but a dedicated arithmetic-reconstruction null specification was not recovered."
+NULL-K-001,K mapping,historical_candidate,not_preregistered,yes,"Historical K test uses log-normal simulated masses with N=500, mu=9.7843, sigma=0.3645 and 100 simulations per cluster as a simulation control; independent null calibration remains required."
+NULL-LCOSMO-001,Lcosmo mapping,historical_candidate,not_preregistered,yes,"Historical L_cosmo work includes baseline-versus-expanded feature comparisons and alternative constructions, but no single null-preserving L_cosmo null is fixed."
+NULL-SFR-001,SFR prediction,historical_candidate,not_preregistered,yes,"Historical SFR work compares RF/GB baselines and held-out performance; exact baseline/null construction for the controlled experiment remains to be fixed."
+NULL-SFR-002,SFR prediction,historical_candidate,not_preregistered,yes,"Historical R&D includes permutation/control logic and arithmetic-feature comparisons; exact feature-label permutation procedure remains to be fixed."
+NULL-SFR-003,SFR prediction,historical_candidate,not_preregistered,yes,"Raw R&D documents 3-IQR outlier filtering for SFR_PETRORAD_R and log_SFR_Ha, plus held-out and 5-fold validation. These are historical robustness controls; the controlled null-preserving robustness procedure remains to be fixed."
+NULL-RANK-001,rank analysis,placeholder,not_preregistered,yes,"Historical arithmetic rank calculations exist, but no fixed rank-preserving/randomized null model was recovered."
+NULL-RANK-002,rank environment,historical_candidate,not_preregistered,yes,"Raw R&D contains morphology/environment-derived cosmo_rank controls, but this is not elliptic rank and no rank-preserving elliptic-rank/environment null was recovered."
+NULL-TOPO-001,topology,historical_candidate,not_preregistered,yes,"Historical TDA comparisons use persistence diagrams and Wasserstein/bottleneck distances; null calibration, including the exploratory W2<0.01 threshold, remains unresolved."
+NULL-MAP-001,primary mapping,placeholder,not_preregistered,yes,"Historical mapping work discusses alternative projections and degeneracy, but no fixed primary-mapping null construction was recovered."
+NULL-MAP-002,PTD mapping,placeholder,not_preregistered,yes,"PTD is documented as BSD-independent, but no fixed PTD null construction was recovered."
+NULL-MAP-003,MCJ mapping,placeholder,not_preregistered,yes,"MCJ is documented as BSD-independent, but no fixed MCJ null construction was recovered."
+NULL-RTCH-001,RTCH recovery,placeholder,not_preregistered,yes,"Historical RTCH formulation requires a standard-physics recovery limit, but no fixed numerical null/control construction was recovered."
+NULL-ECC-001,ECC field/cohomology,historical_candidate,not_preregistered,yes,"Historical ECC experiments compare baseline and expanded feature sets and include held-out testing; a dedicated field/cohomology null remains to be fixed."
