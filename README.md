@@ -115,7 +115,7 @@ The current registry layer is:
 | [claim_experiment_crosswalk_v0.2.csv](registry/claim_experiment_crosswalk_v0.2.csv) | Claim-to-experiment relationships and required controls |
 | [experiment_registry_v0.2.csv](registry/experiment_registry_v0.2.csv) | Registered controlled experiments |
 | [dataset_registry_v0.1.csv](registry/dataset_registry_v0.1.csv) | Datasets and their current control/provenance status |
-| [data_provenance_registry_v0.1.csv](registry/data_provenance_registry_v0.1.csv) | Dataset-level provenance, lineage, asset class, and provenance status |
+| [data_provenance_registry_v0.1.csv](registry/data_provenance_registry_v0.1.csv) | Dataset-level provenance, lineage, acquisition history, and provenance status |
 | [parameter_registry_v0.1.csv](registry/parameter_registry_v0.1.csv) | Parameter sets and preregistration status |
 | [null_registry_v0.1.csv](registry/null_registry_v0.1.csv) | Null/control models |
 | [r&d_artifact_registry_v0.1.csv](registry/r%26d_artifact_registry_v0.1.csv) | Retained exploratory and historical artifacts |
@@ -131,7 +131,7 @@ In particular:
 - dataset records identify the intended data source but do not imply that a particular release/version has already been provenance-locked;
 - the R&D artifact registry preserves historical work without promoting it to controlled evidence.
 
-The **Data Provenance Registry is part of the current repository control layer** and is validated by the existing registry-validation CI job. Individual provenance records may still carry a `deferred` status when their exact source, release/version, selection, or lineage has not yet been provenance-locked for controlled execution.
+The **Data Provenance Registry is part of the current repository control layer** and is validated by the existing registry-validation CI job. Individual provenance records may still carry an `unknown`, `unverified`, or `partially_verified` status when their exact source, release/version, selection, acquisition history, or lineage has not yet been established. The provenance registry does not preregister experiment parameters, null models, or scientific claims.
 
 ---
 
