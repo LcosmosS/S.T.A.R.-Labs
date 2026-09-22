@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The S.T.A.R. Labs Program is a research framework for testing proposed relationships among arithmetic invariants, geometric/topological structure, symbolic fields, and physical/cosmological observables.
+S.T.A.R. Labs is a research program for testing proposed relationships among arithmetic invariants, geometric/topological structure, symbolic fields, and physical/cosmological observables.
 
 This repository separates theory, claims, evidence, and experiments so that speculative statements are not silently treated as established results.
 
