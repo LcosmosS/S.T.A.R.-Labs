@@ -1,18 +1,18 @@
 Parameter_Set_ID,Scope,Definition_Status,Preregistration_Status,Historical_RandD,Definition
-PAR-MATCH-001,matching,placeholder,not_preregistered,no,Coordinate-match tolerance and matching policy to be fixed before controlled execution.
-PAR-PERM-001,provenance,placeholder,not_preregistered,no,Permutation/control parameters to be fixed before controlled execution.
-PAR-LEAK-001,leakage,placeholder,not_preregistered,no,Leakage-detection and exclusion parameters to be fixed before controlled execution.
-PAR-RF-001,arithmetic reconstruction,placeholder,not_preregistered,no,Random-forest/control-model parameters to be fixed before controlled execution.
-PAR-K-001,K mapping,placeholder,not_preregistered,no,K-mapping definition and parameters to be fixed before controlled execution.
-PAR-LCOSMO-001,Lcosmo mapping,placeholder,not_preregistered,no,Lcosmo mapping definition and parameters to be fixed before controlled execution.
-PAR-SFR-001,SFR prediction,placeholder,not_preregistered,no,Baseline SFR model parameters to be fixed before controlled execution.
-PAR-SFR-002,SFR prediction,placeholder,not_preregistered,no,Arithmetic/cosmological feature model parameters to be fixed before controlled execution.
-PAR-SFR-003,SFR prediction,placeholder,not_preregistered,no,Robust SFR model parameters to be fixed before controlled execution.
-PAR-RANK-001,rank analysis,placeholder,not_preregistered,no,Arithmetic rank analysis parameters to be fixed before controlled execution.
-PAR-RANK-002,rank environment,placeholder,not_preregistered,no,Rank/environment comparison parameters to be fixed before controlled execution.
-PAR-TOPO-001,topology,placeholder,not_preregistered,no,TDA construction and distance parameters to be fixed before controlled execution.
-PAR-MAP-001,primary mapping,placeholder,not_preregistered,no,Primary mapping parameters to be fixed before controlled execution.
-PAR-MAP-002,PTD mapping,placeholder,not_preregistered,no,BSD-independent PTD mapping parameters to be fixed before controlled execution.
-PAR-MAP-003,MCJ mapping,placeholder,not_preregistered,no,BSD-independent MCJ mapping parameters to be fixed before controlled execution.
-PAR-RTCH-001,RTCH recovery,placeholder,not_preregistered,no,RTCH recovery-limit parameters to be fixed before controlled execution.
-PAR-ECC-001,ECC field/cohomology,placeholder,not_preregistered,no,ECC computational parameters to be fixed before controlled execution.
+PAR-MATCH-001,matching,historical_candidate,not_preregistered,yes,"Historical merged_sdss_hi construction used a KDTree sky-coordinate match with a 2 arcsec tolerance and retained arcsec_separation; this remains a historical candidate, not a locked controlled value."
+PAR-PERM-001,provenance,placeholder,not_preregistered,yes,"Historical R&D contains permutation/randomization controls, but no single provenance-permutation specification was recovered; controlled definition remains to be fixed."
+PAR-LEAK-001,leakage,historical_candidate,not_preregistered,yes,"Historical SFR workflows include train/test separation and leakage-aware reconstruction work; exact controlled leakage thresholds/exclusions were not recovered as a single specification."
+PAR-RF-001,arithmetic reconstruction,historical_candidate,not_preregistered,yes,"Historical ML controls include RandomForest baselines; documented variants include 100 trees/max_depth 12 and 200 trees/max_depth 10. No single controlled setting is selected."
+PAR-K-001,K mapping,historical_candidate,not_preregistered,yes,"Historical log-normal K test used N=500, mu=9.7843, sigma=0.3645, M0=exp(mu), with 100 simulations per cluster; these values remain historical simulation settings."
+PAR-LCOSMO-001,Lcosmo mapping,historical_candidate,not_preregistered,yes,"Historical R&D contains multiple non-equivalent L_cosmo constructions, including sum_i(M0/M_i)^s/N and an entropy feature log10(log_Mass_gas+1e-6)*(1+z)^0.7*(Smooth-Featured). Controlled definition must select and lock one construction before execution."
+PAR-SFR-001,SFR prediction,historical_candidate,not_preregistered,yes,"Historical SFR baseline uses target log_SFR_Ha, 80/20 train-test separation, random_state=42 in documented workflows, and RF/GB baselines; exact controlled baseline remains to be fixed."
+PAR-SFR-002,SFR prediction,historical_candidate,not_preregistered,yes,"Historical arithmetic/cosmological SFR models use features including log_Mass_gas, log_Mass_stellar, Av_gas_Re, OH_O3N2_cen, Smooth, Featured, pS, fM, z, Re_kpc, L_cosmo(s), and BSD_likelihood; documented models include RF 200/max_depth 10, GB 300/lr 0.03/max_depth 8, and other ensembles. These remain historical candidates."
+PAR-SFR-003,SFR prediction,historical_candidate,not_preregistered,yes,"Historical robustness work includes IQR-based outlier handling and extreme-SFR residual analysis; an exact controlled robustness rule is not yet fixed."
+PAR-RANK-001,rank analysis,historical_candidate,not_preregistered,yes,"Historical arithmetic workflows compute elliptic-curve rank and related invariants, including explicit rank-1/rank-2/rank-4 cases; exact controlled sampling and rank-analysis parameters remain to be fixed."
+PAR-RANK-002,rank environment,placeholder,not_preregistered,yes,"Historical R&D contains morphology/redshift/arithmetic feature work including cosmo_rank, but no controlled elliptic-rank/environment specification was recovered."
+PAR-TOPO-001,topology,historical_candidate,not_preregistered,yes,"Historical TDA work used Vietoris-Rips persistent homology with Ripser/GUDHI and Wasserstein/bottleneck comparisons; an exploratory W2 threshold of 0.01 appears in historical material but is not null-calibrated and must not be treated as preregistered."
+PAR-MAP-001,primary mapping,historical_candidate,not_preregistered,yes,"Historical primary projection uses Phi(E)=(log|Delta|, log N, alpha*r), with alpha=200 as a historical rank-elevation candidate; spherical/angular normalization variants are also documented."
+PAR-MAP-002,PTD mapping,historical_candidate,not_preregistered,yes,"Historical BSD-independent PTD mapping: (log|Delta|, log Omega, log(1+|E(Q)_tors|)). Exact scaling/normalization remains to be fixed."
+PAR-MAP-003,MCJ mapping,historical_candidate,not_preregistered,yes,"Historical BSD-independent MCJ mapping: (log N, Re(log j(E)), Im(log j(E))). Exact branch/scaling/normalization remains to be fixed."
+PAR-RTCH-001,RTCH recovery,placeholder,not_preregistered,yes,"Historical RTCH formulation contains a standard-physics recovery requirement and candidate couplings, but no controlled numerical recovery parameter set was recovered."
+PAR-ECC-001,ECC field/cohomology,historical_candidate,not_preregistered,yes,"Historical ECC workflows use train/test random_state=42, symbolic features including L_cosmo(s) and BSD_likelihood, RF/GB/XGBoost/LightGBM/CatBoost/GPlearn, and Optuna; these are historical settings, not preregistered controls."
