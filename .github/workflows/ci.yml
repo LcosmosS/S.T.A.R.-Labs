@@ -60,12 +60,13 @@ jobs:
 
           def rows(name):
               with (root / name).open(newline="", encoding="utf-8") as f:
-                  reader = csv.DictReader(f)
-                  field_count = len(reader.fieldnames or [])
+                  reader = csv.reader(f)
+                  fieldnames = next(reader, [])
+                  field_count = len(fieldnames)
                   records = []
-                  for line_no, row in enumerate(reader, start=2):
-                      assert len(row) == field_count, f"CSV field-count mismatch: {name}:{line_no} expected {field_count} fields, got {len(row)}"
-                      records.append(row)
+                  for line_no, values in enumerate(reader, start=2):
+                      assert len(values) == field_count, f"CSV field-count mismatch: {name}:{line_no} expected {field_count} fields, got {len(values)}"
+                      records.append(dict(zip(fieldnames, values)))
                   return records
 
           claims = rows("claim_evidence_v0.2.csv")
