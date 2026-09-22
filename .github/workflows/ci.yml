@@ -60,7 +60,13 @@ jobs:
 
           def rows(name):
               with (root / name).open(newline="", encoding="utf-8") as f:
-                  return list(csv.DictReader(f))
+                  reader = csv.DictReader(f)
+                  field_count = len(reader.fieldnames or [])
+                  records = []
+                  for line_no, row in enumerate(reader, start=2):
+                      assert len(row) == field_count, f"CSV field-count mismatch: {name}:{line_no} expected {field_count} fields, got {len(row)}"
+                      records.append(row)
+                  return records
 
           claims = rows("claim_evidence_v0.2.csv")
           crosswalk = rows("claim_experiment_crosswalk_v0.2.csv")
