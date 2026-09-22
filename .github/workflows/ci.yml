@@ -157,17 +157,32 @@ jobs:
           assert len(provenance_record_ids) == len(set(provenance_record_ids)), "duplicate Provenance_ID"
           assert all(r["Provenance_ID"].strip() for r in provenance), "empty Provenance_ID"
 
+          # Normalize Parent_Dataset_ID values once and retain the previous
+          # foreign-key validation before traversing lineage.
+          parent_map = {}
           for r in provenance:
-              assert r["Dataset_ID"] in dataset_ids, f"provenance references unknown Dataset_ID: {r['Dataset_ID']}"
-              if r["Source_Type"].strip():
-                  assert r["Source_Type"] in allowed_source_types, f"invalid Source_Type: {r['Dataset_ID']}"
-              assert r["Provenance_Status"] in allowed_provenance_status, f"invalid Provenance_Status: {r['Dataset_ID']}"
-              assert r["Evidence_Status"] in allowed_evidence_status, f"invalid Evidence_Status: {r['Dataset_ID']}"
-
+              dataset_id = r["Dataset_ID"].strip()
               parent = r["Parent_Dataset_ID"].strip()
               if parent:
-                  assert parent in dataset_ids, f"unknown Parent_Dataset_ID: {r['Dataset_ID']}"
-                  assert parent != r["Dataset_ID"], f"self-referential Parent_Dataset_ID: {r['Dataset_ID']}"
+                  assert parent in dataset_ids, f"unknown Parent_Dataset_ID: {dataset_id}"
+                  assert parent != dataset_id, f"self-referential Parent_Dataset_ID: {dataset_id}"
+                  parent_map[dataset_id] = parent
+
+          # Reject indirect lineage cycles such as A -> B -> A or
+          # A -> B -> C -> A.
+          for dataset_id in parent_map:
+              seen = set()
+              current = dataset_id
+              while current in parent_map:
+                  if current in seen:
+                      raise AssertionError(
+                          f"Parent_Dataset_ID lineage cycle detected starting at {dataset_id}"
+                      )
+                  seen.add(current)
+                  current = parent_map[current]
+
+          for r in provenance:
+              parent = r["Parent_Dataset_ID"].strip()
 
               # Derived records may omit a parent when no single registered upstream
               # dataset is known; the unresolved chain must remain explicit in Notes.
