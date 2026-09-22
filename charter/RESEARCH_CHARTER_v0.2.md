@@ -1,10 +1,12 @@
-# S.T.A.R. Research Charter v0.2
+# S.T.A.R. Labs Research Charter v0.2
 
 ## Purpose
 
-The S.T.A.R. Program is a research framework for testing proposed relationships among arithmetic invariants, geometric/topological structure, symbolic fields, and physical/cosmological observables.
+The S.T.A.R. Labs Program is a research framework for testing proposed relationships among arithmetic invariants, geometric/topological structure, symbolic fields, and physical/cosmological observables.
 
 This repository separates theory, claims, evidence, and experiments so that speculative statements are not silently treated as established results.
+
+> The full charter is available **[here](STAR_Research_Charter_v0-2.pdf)**.
 
 ## Scientific posture
 
