@@ -106,22 +106,122 @@ jobs:
                   assert (cid, r["Experiment_ID"]) in crosswalk_pairs, f"missing crosswalk: {cid}/{r['Experiment_ID']}"
               assert r["Dataset_ID"] in dataset_ids, f"unknown Dataset_ID: {r['Dataset_ID']}"
               assert r["Dataset_ID"] in provenance_by_id, f"missing provenance record: {r['Dataset_ID']}"
-              assert provenance_by_id[r["Dataset_ID"]]["Provenance_Status"] in {"deferred", "documented", "controlled"}, f"invalid provenance status: {r['Dataset_ID']}"
+              assert provenance_by_id[r["Dataset_ID"]]["Provenance_Status"] in {"verified", "partially_verified", "unverified", "unknown"}, f"invalid provenance status: {r['Dataset_ID']}"
               assert r["Parameter_Set_ID"] in parameter_ids, f"unknown Parameter_Set_ID: {r['Parameter_Set_ID']}"
               assert r["Null_ID"] in null_ids, f"unknown Null_ID: {r['Null_ID']}"
 
-          allowed_provenance_status = {"deferred", "documented", "controlled"}
-          allowed_asset_classes = {"physical_dataset", "computational_dataset", "metadata_collection", "constraint_set", "theory_source"}
+          # Data Provenance Registry v0.1 validation.
+          provenance_fields = [
+              "Provenance_ID",
+              "Dataset_ID",
+              "Source_Name",
+              "Source_URL",
+              "Source_Type",
+              "Provider",
+              "Version_or_Release",
+              "Acquisition_Method",
+              "Acquisition_Date",
+              "Original_Format",
+              "Transformation_History",
+              "Parent_Dataset_ID",
+              "Spatial_Match_Method",
+              "Match_Tolerance",
+              "Selection_Criteria",
+              "Missingness_Policy",
+              "Integrity_Check",
+              "License_or_Usage",
+              "Provenance_Status",
+              "Evidence_Status",
+              "Notes",
+          ]
+          assert provenance, "data provenance registry must contain at least one record"
+          assert list(provenance[0].keys()) == provenance_fields, "unexpected data provenance schema"
+          assert all(list(r.keys()) == provenance_fields for r in provenance), "inconsistent data provenance schema"
+
+          allowed_provenance_status = {"verified", "partially_verified", "unverified", "unknown"}
+          allowed_evidence_status = {"controlled", "derived", "exploratory", "historical", "unknown"}
+          allowed_source_types = {
+              "survey",
+              "catalog",
+              "simulation",
+              "theory",
+              "derived",
+              "observational",
+              "computational",
+              "internal_registry",
+              "constraint_set",
+              "other",
+          }
+
+          provenance_record_ids = [r["Provenance_ID"] for r in provenance]
+          assert len(provenance_record_ids) == len(set(provenance_record_ids)), "duplicate Provenance_ID"
+          assert all(r["Provenance_ID"].strip() for r in provenance), "empty Provenance_ID"
 
           for r in provenance:
               assert r["Dataset_ID"] in dataset_ids, f"provenance references unknown Dataset_ID: {r['Dataset_ID']}"
-              assert r["Asset_Class"] in allowed_asset_classes, f"invalid provenance Asset_Class: {r['Dataset_ID']}"
+              if r["Source_Type"].strip():
+                  assert r["Source_Type"] in allowed_source_types, f"invalid Source_Type: {r['Dataset_ID']}"
               assert r["Provenance_Status"] in allowed_provenance_status, f"invalid Provenance_Status: {r['Dataset_ID']}"
-              assert r["Source_Reference"].strip(), f"empty Source_Reference: {r['Dataset_ID']}"
-              assert r["Acquisition_or_Derivation"].strip(), f"empty Acquisition_or_Derivation: {r['Dataset_ID']}"
-              artifact_ids = [x.strip() for x in r["Historical_RandD_Artifact_IDs"].split(";") if x.strip()]
-              known_artifact_ids = {a["Artifact_ID"] for a in artifacts}
-              assert all(x in known_artifact_ids for x in artifact_ids), f"unknown historical R&D artifact ID in provenance: {r['Dataset_ID']}"
+              assert r["Evidence_Status"] in allowed_evidence_status, f"invalid Evidence_Status: {r['Dataset_ID']}"
+
+              parent = r["Parent_Dataset_ID"].strip()
+              if parent:
+                  assert parent in dataset_ids, f"unknown Parent_Dataset_ID: {r['Dataset_ID']}"
+                  assert parent != r["Dataset_ID"], f"self-referential Parent_Dataset_ID: {r['Dataset_ID']}"
+
+              # Derived records may omit a parent when no single registered upstream
+              # dataset is known; the unresolved chain must remain explicit in Notes.
+              if r["Evidence_Status"] == "derived" and not parent:
+                  note = r["Notes"].lower()
+                  assert any(term in note for term in (
+                      "upstream",
+                      "generation chain",
+                      "provenance chain",
+                      "parent",
+                  )), f"derived provenance lacks Parent_Dataset_ID or unresolved-chain note: {r['Dataset_ID']}"
+
+              # A record may be marked verified only when source/acquisition evidence
+              # required to support that status is actually recorded.
+              if r["Provenance_Status"] == "verified":
+                  required_verified = [
+                      "Source_Name",
+                      "Source_URL",
+                      "Provider",
+                      "Version_or_Release",
+                      "Acquisition_Method",
+                      "Acquisition_Date",
+                      "Original_Format",
+                  ]
+                  assert all(r[field].strip() for field in required_verified), (
+                      f"verified provenance lacks source/acquisition evidence: {r['Dataset_ID']}"
+                  )
+
+              # Integrity is intentionally optional until an actual source artifact
+              # has been archived or hashed.
+              if r["Integrity_Check"].strip():
+                  assert r["Integrity_Check"].strip().lower() not in {"unknown", "tbd", "placeholder"}
+
+              # Experimental definitions remain in their dedicated registries.
+              forbidden_experiment_fields = {
+                  "Experiment_ID",
+                  "Claim_ID",
+                  "Parameter_Set_ID",
+                  "Null_ID",
+                  "Primary_Endpoint",
+              }
+              assert not forbidden_experiment_fields.intersection(r.keys()), (
+                  f"experimental metadata leaked into provenance schema: {r['Dataset_ID']}"
+              )
+
+          # Every dataset used by a controlled experiment must have a provenance record.
+          controlled_dataset_ids = {
+              r["Dataset_ID"] for r in experiments if r["Mode"] == "controlled"
+          }
+          assert controlled_dataset_ids.issubset(
+              {r["Dataset_ID"] for r in provenance}
+          ), "controlled dataset missing provenance record"
+
+
 
           for r in crosswalk:
               assert r["Claim_ID"] in claim_ids
