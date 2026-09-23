@@ -1,0 +1,241 @@
+name: Sync Google Docs provenance sources
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: google-docs-provenance-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-provenance-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download Google Docs as plain text
+        shell: bash
+        env:
+          DOC_IDS: |
+            1p40dNYbbV8ec6EKCkNzh1lcqxh5N_0FYTJn81UeqIXo
+            1cGAlp-E2tirmj_RRBI55W_XLm-jyu8kZTwM2HXZ8kgE
+            1M1IXefVUSCaz_SKdhhfJZuo0p3yREsbNPEEM-AP6ubc
+            1hEcMq4nBUn0BxNJHi6dOblBHoIH2LJJangwiZl0e_Fw
+            1pL6xWc71sV85dKVHecgg7ofTf8CdI982mQyf8NL-0r0
+            12lTW636WXBJLbhsEhk5Zg5tRsfErnIgoZQRzP1NXTxc
+            1c5rBqlaxPRYN4PwsYI8xXKQ0JelFBNjds30OPUj6Xms
+            1B6s-CC1jSn6bdFr20viCxL4vDCekzN4s-fIequX65BA
+            12fNMrxaVa4lXn8d4vE7s3qwd1EgMPjlx1LNwBUIZrCI
+            1E21SgxTWepeuptRP0N2K95EaV2Bi7cWeW4yUxTm-OYU
+            1RXchz4dVkI-VYFkXcRz2gpklUmljUNOcPrhmXr99lQo
+            1PU6e6pYQQ5kpQ9KqLg5RFrP2JyYJ1Qejv97GKN8leYU
+            1CYBXBFbtC8PpnCXcNOTKiH6yql89ceuqfwtOStNZJfE
+            1jwwd3VE-NA8Cde4DLyz_18MXCmx_ukPpLKM3ss1TkeI
+            1qNiEbFTR6qgrpObaUafXk5mv9kH4679dyC-gZlhAfgc
+            1CoxtVuPSO806BBkeK9FABHI19QsZmpV1MCZ7OrY1BbA
+            1_vCjhToSrdSnU9jj7JwgRPaZKSwHPuSRE3U5rDOldY4
+            1MxT5M2g62O6r44dRkMyt_A6X7wY0rmmSB_Y-HtGdl0c
+            1HHXAlKCheh05nuNoGW372ysO2faJvcPtKfblKNVADqQ
+            16kzZPz122zwcyNxQ7BbIoHzxFoZ6nQ5dN8n44XnGrO0
+            1q-hywsbiqNGWUudpBIhwZpKhSgRdNCc4M2iPrGR8HP0
+            1E_a21bIt2Fu6lrRrZ3igjSwZVZTU2zPfAh-0GCm06dM
+            1Nej0kivdvGbdd25wOt4n9jD0NTbtRc9EQJnUO6mGcyA
+            1h9btNcVRKiDnr2HKQAtH2D6rQ3RjxaeMilXY35GWBz8
+            1N02kHhLYI9R5e4-HZnjv3-5TUIR2eiVLQa_j08aSiOU
+            1bDdC-CduDgaJKDf2DBMOLEYtm8jDZWKJ8rlNEIY9k8w
+            18XnJgaHvXM0j7VsRXQE-ampoUzEXrFS-Z-cPNFxSz74
+            13kHna8LuUoBbMwFJbYsYSfzlnS-K3_TY2p_NLbPf-8w
+            1dmDmx0E2gz4uuUfCST9eUinYbBNSFClbSQuqTTXwrWk
+            1kSn4WgVltY5UaJUYMb1xzCJW_g5rZ9QGuTkYDSK4858
+            1WVuzu9tsAuL5J7-lc_kwPZhrqYm2J4es5DQOyuhcPSk
+            1Ln0UvFG-Ada8J2Z3L5bfIeClIaKTVZABKWM0vCDqUlI
+            1331uw9FH0RCOkHsDnmkm-KsvnmXWOTsdYQDdlhaNjSY
+            1ZdknmHzoHmN5_Eu2zywsh3P783pcUI1mbUxuLiCt7Wk
+            1yfcJKZOzF_SaezeNiCLdS_QiZrNader3HW01oLs2JWA
+            1SGIANf7fKHk8ah1dXYt3irFB5UUyi0TTrBi7jwC8FMA
+            1nCpQxhokMWy3GF5zp5B-DsuBsEXEoocmtPVwuy4URt8
+            1X-8_1A3b-5GAnZph3lw8SjoYRyLV2Lk2z20_mp8GmSk
+            1ELJ2dFMcRAVHmF_K8MQFCE_DNosOPbkRSUJSWK5Fkz8
+            11Gpbqm66oxeSpXI9w2ORVd4_OStA4HImAJ_8QsgfAI8
+            1zcMyY0dWkHCzn7LY83GJTofc1-Vi0S0IHz0KSef6hCs
+            1hLDmyK1tX7Ph65st3M9Tq9Qib2yN3VCWogknHoWc-gU
+            1VnNfV_VWtHBmrkVzNGR9GJO52VUIPzgdRz7FiH2Tias
+            183oxw7KW0J7zNh2aREG6tO-RjgQTLCHwJfx7u2dcgDI
+            1c8h95_AtkGOkx8Bfq4QOwGOUv-YTeZuBrd3S6NBk8C4
+            1eeM6RDRGhWNNvazkz7zeO2azMg0Arg-GjrthoJU2iYo
+            1Ogt6y_zt3jAx61YMbBwmoq3UDopEgOW5b8e2-DCtZAU
+            1YF6IasxUZxpzFD1F7zbs5m2WFNNK9iYu8csFfkPkE4s
+            1wWVKhTHFXzH-pqkGLNjmQOswOYZ10EgwA5rGRCosCgc
+            1l0FyU4cIMyDYMAtOC_4-_vso8Jw661aH0M1HocOpung
+            1IZAgRXwJMgm-xeVbdlt2ojcjQbopLT_u1k5hjrl7YwM
+            1Qz46ohMleDHfXOPCBRqgwR_uq_XjBcjhquJE4N9Lywg
+            1YfBgpSV1DmlDAhAZv7n0yMy9HU3U2XphLwGnknuvwUs
+            17UlBpJS7PD96vbGxwfkT4uD_s0MOHW4yMv8ebf-6yFI
+            134QwQ9qrbhnP4ZyBCaexMNR1ivkcEFCEeXY6G54_kwE
+            1tr8ZKoBZjaBW2F2ncDxBPVHqC9oBXgo7VIj9t3NywMM
+            1j80pnKjIjIYfeN_qZJ_OhV2QbGKEEYRfNDba6jw56FY
+            1CxR4jCWluln9Nu-zo7hVn4iiQkE0I1sxdk87pGFJABM
+            1E6c3a4aIcQOjS7oN_B5PFLM-DcHMuqGoUVSnz3ObUR4
+            1xC6Y3bGWfWqv3ohrM80RW8kaMbt7jdsPNEPOABpunJo
+            1q_Iie8vH91gsgurAZxf3zrlzPE8IfXCJnDocmJh3flU
+            14m3PlS-W0CLOdAAYwt4gvGMw2aNVbZdzDmXWJRcvpV0
+            1kHh5cljKJs9qQPssO6uL505bFQbnFZDF4aP25Z-YDo4
+            1ZVWuuwAS8zRrEsLIYNNSFNuZRGjUWdHbl4WSxpFVreo
+            1OHlWpYVrbDkHMb4b6OQJaz81S9DOILOkDf7JmhOuJg8
+            17Zd-LeWHBysgECZQ1ZhyYWcu2pXQ_hejWpjEUGRcfFs
+            1pMqIsePzVqAMI4uIBmYnBaeFAcuPNUxLQbGza94RRgQ
+            1B2s2NKoD3PK5-OwkPpDvrScWUn56BOmxLQtZBRd6jdo
+            1CZV_rGv_VEJ1HbZ6XaPZmUk_vQFqtlIdakHFpiJ_HqE
+            1gRVaofuHZ10FUOmP7fA195LOOWQINygfC_TMW895gqY
+            1Ayw-hUEETjIKTxsZETsW8LrD7PC8vpezerR5xBzTkUM
+            1iAulNlRoZBwoiZ95jQpIkK_8bgv0is58P7OJmGCXg-w
+            13X60BsElNhEWUw2cAmofpjrxIJi_s3S9sRmVeLPDfGE
+            1inxfIfMORINFVjvGPHcjWc6w3cSu068cW0kD-bx7DYs
+            1HoiEv-QFpcOso8SiTnvjeEkOehPa5ijMZqSJBmtJdBs
+            1SgevvYM8lVIUUslvoOrskG2TuaYLHbMJsz9tGzrETRk
+            1exWB3IRAw4ABsRlNwGuE0imV31LPKiz6UHgSNsgSot0
+            1tTXF5CdWSYbOhO0lw5FQLKQ3kwm5KCLAtQGRYuCv08A
+            1f_qHvCDGLF2-DkmRuw3BZzjCilynHPZnt1STAJMw51g
+            1OwHrb9k_WTBtC-ahTaRHvr8IklcC3_vaLn5D9P1_NZc
+            1lfU5NAcBiDA7chbcdPs7tej2BUuGtXxtGb82ufUB0LU
+            19F1Tmnhzv4mc81aq19JoF1jfkiGWgWtWM-Bt6_qmzUU
+            17NJ_579ZPvJrqD3iUgQrUyDK0-0EB_x20zIyZGNaGQo
+            1A11_s4hrNSyZo2Q2zhuroQ1asKToUvWPOXk9P9xyB98
+            1MeGdv5Fl2N9gIuYYxAPZINIen2YvtEyna__hp45p0Wg
+            19TKXg5mnOX32gE-wmfKPoU4kO1YWt5KkkFzN3pCoJWs
+            1-CyOh6iLuS5N-rJOSydH_bPjCzkFI4GRQDe-LyamrBA
+            155k6Snxu82pNufcSAHRn_HC-_T7wEtGr3Tm20Jm1dI0
+            13oRhdwOVCVlM-vyUAM9-_tx1S6gKirctUp_2yVjnrSg
+            17hnCf46AbdPobyJ3OPwqiT_n-OIRmloK2I1Mq-86TxM
+            1VYdHUXzgLy2dWj7N7dJqCBFvBo8Bzc1Y88x7ZdSp31s
+            1xmS90-3uW_-EMRjE13TLqVD7w3ExlIvTBMc8D7Sa18g
+            1J9eyxqBbrO1oZk5DHf4zMraWmsk_maU6nOOYHHSX8o4
+            1HnYJYUP7s9CQIoKafaFlY_v3kP8lgXzba-g1Jds53Cs
+            1kdvWMO3Tr8FReWWE4xwSdqELe5gaR-hee3oGH-yhUQo
+            1d2tzQQ0qqGe36x_5MOpWb43U9gF4QG6nvX4DGfsDrR8
+            138l3C4Za4JBce5q5f_fzXKnJ1k6xSjQvddlPnTXrjTI
+            1wAfB3ygyrGXJ6ia60PgwvA_6gP5JgB-89ND9ZjUlOIU
+            1TZrb6J83MTxvRl9xSYg6tWZOheR-MpWGPIOKT7ysJ1A
+            1VZeoPvkAkeMYxI5-zm20ryspxWhuuFM4BOLAvQCuJJA
+            1sTMY0i2khqo685eJNvnNYXAow6ZdLlSLHRVHOLzw0AA
+            1PnRAhygi61yWwmTHwplbnfMTqKcOQoUjBYSxFhPeHBk
+            1Kt-YjIyxF0kBbQi3BGFSQAoZfZS4qwXvG2Y9bSRzzaI
+            1BedP3xcYTlGPS0nOK4Bz8oHRlsA0dQOJT4vvKGbd0zo
+            1xGAlALS8h2znGA7wDMyeaUmWOySVbvUqni6iLWF4pRk
+            1apuuIqOc2ycGywS_3UPQ05OFF3D65izpfwJNhr-3-1w
+            1SLxZL7bUIgfg89Af-oJEEjtVjiC7zxpWX1z8lRKu7D4
+            1tL9XZ45n0fpf0Wt14I0keNiuJ5gCyIMvZPu2G6cUhYQ
+            11sMYEzjM393XMBoLCVzZqbZiylPGgHbXpavAdUlYLxU
+            1QazVGCQYTNRVbN4cdrH8Bl6BUoyzLgbcXjD1kpQMdvw
+            1o2WlnbcAiGN7N-mOKhoKkllMMDgGml9doDiTUBf0YJs
+            1ZveaUvLn8S1fT4SZrYWWYoETSfz_Zc9BGLb-UjNLhug
+            1Z4sgb74ahshOZarrX6NCAmqy5-vVMu1uC087qXQ5Wm8
+            15xZk07ms_ok3shB6W22mOiK1nMoFVL9DQKefOV84JTk
+            1rM97_ittjyj7yCrPzCL-PrM3nQd-a6TodPewSMuxyWE
+            1qMiLpl3kwcs3ksADHzDi6_P_QB6r-6UrXWbq-KXskDE
+            10qZRdjboNkp6DbpdeZbV50AwuuBqxW9mwyEn93OXSkw
+            1qSkMYPbRGytMD4qEB-llHcBt_V3cXb4nAQs7JtAo96U
+            1hwtGPSusx4mbqPY0KtbBAdhKXBPZ71uJ5g6ZpUyKaaM
+            1yiseSKrKyEVTvXYaU6lyWPmO9W8yN5xZIF5K6Wds5rA
+            10pyF5xEaxljmVoDkA6BzkPlh9w7clGpsWrDckxLQiys
+            15X4UUJDSOu-ZwXhUcps2eC3F2bXMQEQ6pNpKokbai1A
+            1udtnvwtemnUry1EgKKeI_uefhZAEKpvZRdvJASRFH0g
+            1GxD41nwIIJRi9IUHnwwcMNetx14ftb2cPiXcphcrsw4
+            19xBzjcUiVHi_DPmMEuNU1AJqhNjtwicVsRitM7VVPHs
+            1ctp-2OYLZzXqKe3cFkJb2LzPdXlTDBJrczPXYBqQBWg
+            1NCW3uoapiuqQvLNfbIzuyMKaDWCSbf93V_G9bi1Ul_s
+            1oF5yJ9W3fknvG8wfTQo6gGF4XS8BnaWo0eGAXsCiaBQ
+            1faQSfLGCyHqmRdOKSQNYCPQvXpgDRsjdyP2oqDxwnSY
+            1rgvFvWIXyDF0lRj_1LhW9Eo-D3p120uG0RCBmGVp1V8
+            1AW6rFu-PAtHhZarE4mNbiwU5ndkPN3QhV4bgk7ueUq0
+            1bTA8q9w1dx36SPjzPFwN_jBtgme59eX31GhQLXygJ5A
+            1-KG2zRkqqob2ubsVY5k0aMKvwSqtXkY8_r7CCYAg_oU
+            13PBHn4fNW2YOhwF-gwSdC2JqfiXplX8oRBVmzDPCp8E
+            1U_H1y5kL2dK0HnYDwYSLI7gkMZjjMRXOjgw2Tym3rRc
+            1z2bMgwMnvIBh9eyKe3drLaR9XGC2z2Xuu-AcrWPq9pg
+            1KgP_P0QDtnigQraMekhd_CJaWmG2qaBxOqh93SKrRfI
+            1ZGDGLyT7QJTSk7o8KF_uqaAZz7kBh2qEPC-xU56JtBU
+            1bzrY4bg5_Vi3RucO7NIIkPtYpI8GptmqIRtP_WF_qaw
+            1Jv22ent4jDYKzUpDYXcOWq4Lx2OMIQf_r8ArfTo8JE0
+            1Bs3MSXCuFQUlTltb9gfubRuhlqHSgaLMIvAqzYjx25E
+            1MyEUsgRJXu_5ROpHJOhJThra9c0bRs1JewvMWuNgzao
+            1IOH5ClI5j-kWlXm8CmDtDSpRlGmNQID_cDRkPHXcNH8
+            1T5GSQOTg39UTxa458h3qjUYweRasupytRJp4oj_htLY
+            1oYn1RT5DdI_y6IUJsXLoxRbhu73hXoys131pGUlTvCE
+            1g8TiCGoj9vmy462oyIbuK9NxC5WzF8wJklayML05uIE
+            1nJvqDTr3CPhPmEVVpLbPAQAILwB5UwKnR6yQ2qNk2QQ
+            1D0oX2Ehcs-ucN3eNyYYuVAfxQA7bcXg6UjbPmcmrFnk
+            1lzJvyyl_WSAGDe--IdU8LhOupC3fU8qLG6fzcFbSJSY
+            1IcDer-q8RD3ElO4JmeksfXXiWfWuHuKctHekmUrbxfw
+            1bWSgwWue4b1c13sg76asudEw6OUcnGIhjf1ofazAW-4
+            1SSUyaJAu69mb6DXxtXEXmHC4HogxMqvsoDvDFFlQRLA
+            1A1hptgnb6dwOLGYKt6k7BMu-5sFg_uLRTYsLBRG97uk
+            1FkHvkYWwMzBXqNYtMSXCbZlY1Hm_fYl-EO79sHlu_NY
+            1w7KO_9kVF-Q2r7kyxUpnm2N3HL6tn8GnABOVksfZKeQ
+            1T-KIM5CT5OCXj56GZftIAd6lPza62R05Tm35G1gjWjk
+            1OnV3zI_cl527NKCTYJ4fbD2AvnXfuQpaa4QS14ykhRQ
+            13T0W_rTtWT5IHA23oCDcUoBwt7rbCHFdSY7FXu6t3lQ
+            1ZQb63zTjLO7Y4BHrEy-WKcpOdrs1cMPTfCKbI0ZISSE
+            1AwvcCbPoQojusUijyMiWToGby4wqhrwZjJJhlgtFF90
+            1n8MX4iKcSGo_zk5nXwbUcjs3Wi6j7WYDCbYjUNEtGr8
+            13y1HctJqJXQpOKep7i-H-ojonAoEQKZvhZ0RBwRpjMQ
+            1fNkcuY3KnSmQGtrimv8YKalZ9LyDJixavRl9PE-jjZo
+            1VkOutOOisv3r3MGk39p2SA5a1jCjjpym2u-cQ6eQv4A
+            12JHesMxPW5SzVRzLLy5eU0FrxFoUFA_7ECTJLZT6ruM
+            1s11WHRwo0IvtXGhKOIkvmE4b_g4B3HePLrGT_ILhv5I
+            158GSBUnaAKPJ0jxzoN18Ztp-K-rSV6jxtvrUIZ7mag8
+            1ZZu08ZQZrPqPnxhf6iIhD1bSMWw92CxOuTTDFPJYIIg
+            1IQIBiR9AMRaY55z6wxPNjv_AaNRr3GnWMjBMFUQo0_8
+            1nC_2qkY0Iv4xe4JWsBO8lteNzlgsgE2BLngzY9PPHPc
+            1HFMAz3bh-cYTCLtauqI3VWvmt37xEg5hade2GSJs77M
+            1w84U7nG59v8lhPrJmkLt169LF_swSELuKbGVO5kLx5A
+            1MxoaNLJ5lqEbIOJ5ESfY6oIoCjdS1Xe5hq0MaRQcdYo
+            1FwgXJNoRvYTgmVbabmMjC3cHcVrymzAxy6vsQTKOsYo
+            1hJIavNi5kY60uA2Fuuamx17C1i8bRD62mKpYb-OdbMY
+            16-9-KztClXU85wNTK7ojqcu_ZlKGYkjEQMUgCfooyLA
+            14_0IOKc8mzL4l_oklZw8Rq-XUMumf2D_f-ULzPqflzY
+        run: |
+          set -euo pipefail
+          mkdir -p data/provenance/raw
+          manifest=data/provenance/google_docs_manifest.csv
+          printf 'document_index,document_id,source_url,output_path\n' > "$manifest"
+          index=0
+          while IFS= read -r doc_id; do
+            [[ -z "$doc_id" ]] && continue
+            index=$((index + 1))
+            output="data/provenance/raw/doc_$(printf '%03d' "$index")_${doc_id}.txt"
+            url="https://docs.google.com/document/d/${doc_id}/export?format=txt"
+            echo "Downloading Google Doc ${index}: ${doc_id}"
+            curl --fail --location --silent --show-error --retry 3 \
+              --connect-timeout 15 --max-time 60 \
+              "$url" --output "$output"
+            test -s "$output"
+            printf '%s,%s,%s,%s\n' \
+              "$index" "$doc_id" \
+              "https://docs.google.com/document/d/${doc_id}/edit?usp=sharing" \
+              "$output" >> "$manifest"
+          done <<< "$DOC_IDS"
+          echo "Downloaded $index Google Docs."
+          wc -l "$manifest"
+
+      - name: Commit changed provenance files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/provenance/
+          if git diff --cached --quiet; then
+            echo "No provenance changes detected."
+            exit 0
+          fi
+          git commit -m "chore: sync Google Docs provenance sources"
+          git push
