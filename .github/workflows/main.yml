@@ -214,9 +214,16 @@ jobs:
             output="data/provenance/raw/doc_$(printf '%03d' "$index")_${doc_id}.txt"
             url="https://docs.google.com/document/d/${doc_id}/export?format=txt"
             echo "Downloading Google Doc ${index}: ${doc_id}"
-            curl --fail --location --silent --show-error --retry 3 \
+            meta=$(curl --fail --location --silent --show-error --retry 3 \
               --connect-timeout 15 --max-time 60 \
-              "$url" --output "$output"
+              --write-out '%{content_type} %{url_effective}' \
+              "$url" --output "$output")
+            content_type=${meta%% *}
+            final_url=${meta#* }
+            if [[ "$content_type" != text/plain* || "$final_url" != https://docs.google.com/* ]]; then
+              echo "::error::Doc ${doc_id} did not export as text (type=${content_type}, url=${final_url}). Check sharing settings."
+              exit 1
+            fi
             test -s "$output"
             printf '%s,%s,%s,%s\n' \
               "$index" "$doc_id" \
