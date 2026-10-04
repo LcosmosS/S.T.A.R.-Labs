@@ -79,6 +79,24 @@ for the execution-spec schema, manifest fields, and reproduction workflow.
 
 ---
 
+## First controlled candidate: EXP-MAP-A01
+
+`EXP-MAP-A01` is preregistered as the repository's first controlled-execution
+candidate because it has a narrow deterministic arithmetic surface.
+
+The protocol is locked to the pinned `data/ecdata` Cremona submodule source,
+one representative per isogeny class, the historical primary projection
+constants, one local rank-coherence endpoint, and one seeded rank-permutation
+null. The preregistration intentionally keeps controlled execution disabled.
+
+See [preregistrations/EXP-MAP-A01/protocol.md](preregistrations/EXP-MAP-A01/protocol.md).
+
+`data/raw/ci_subset.csv` is only a CI fixture. It is regenerated as a genuine
+one-column Cremona-label CSV from the pinned `allcurves` source and is not a
+controlled scientific input.
+
+---
+
 ## Research architecture
 
 The S.T.A.R. Labs research program currently spans several related components.

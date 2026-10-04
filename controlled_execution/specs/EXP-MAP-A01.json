@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "EXP-MAP-A01",
+  "registry_bindings": {
+    "experiment": "ed619da1e17f6de6c0e2ac4460484ea9739010c15ebebdbf908e2ebca350fbe1",
+    "dataset": "8cd747a0cbd57bd63f1fe7b82087e5064f98c80e9238a4299949301dbd68293a",
+    "provenance": "051578934af53b190605257f49da77ff83683638b12e9d176c74b7b8cc4a0aa1",
+    "parameter": "e7dfec16360935d3d5b9c6f4b54f7099f8455d2a3617f55e64a344eaaacc4372",
+    "null": "5e8cbc1393093df3f552d0e162a1325175057eb89cbad73912ff1a28ef29eac8"
+  },
+  "command": [
+    "python",
+    "-m",
+    "src.experiments.exp_map_a01",
+    "--input",
+    "{repo_root}/data/ecdata/allcurves/allcurves.00000-09999",
+    "--output-dir",
+    "{run_dir}"
+  ],
+  "dataset_inputs": [
+    {
+      "path": "data/ecdata/allcurves/allcurves.00000-09999",
+      "sha256": "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968"
+    }
+  ],
+  "code_inputs": [
+    {
+      "path": "src/data/cremona_ecdata.py",
+      "sha256": "7e3f79a9fd7ddf6af9c95d5dd4637015cc871b628ec6bf78f9060febc3067b97"
+    },
+    {
+      "path": "src/experiments/exp_map_a01.py",
+      "sha256": "eb5f4b32c9e07dd1d69608c1122d85044eccf8787562d42616a0254315dcf40f"
+    }
+  ],
+  "config": {
+    "endpoint": {
+      "base_metric": "euclidean",
+      "direction": "greater_or_equal_is_more_extreme",
+      "k": 10,
+      "name": "base_knn_elevation_coherence",
+      "neighbor_coordinates": [
+        "longitude",
+        "latitude"
+      ],
+      "statistic": "negative_mean_absolute_elevation_difference",
+      "tie_break": "cremona_label_ascii",
+      "undirected_edge_policy": "unique_sorted"
+    },
+    "inference": {
+      "alpha": 0.01,
+      "multiple_testing": "none_single_endpoint",
+      "p_value": "(1 + count(T_null >= T_obs)) / (B + 1)",
+      "sidedness": "one-sided"
+    },
+    "input": {
+      "allow_rank_fallback": false,
+      "allow_row_exclusion": false,
+      "analysis_rows": 38042,
+      "deduplicate": "fail",
+      "selection": "curve_number_equals_1_per_isogeny_class",
+      "source_format": "ecdata-allcurves-v1",
+      "source_rows": 64687
+    },
+    "null": {
+      "name": "rank_permutation_fixed_base",
+      "preserve": [
+        "curve_identities",
+        "delta",
+        "conductor",
+        "base_coordinates",
+        "rank_multiset",
+        "neighbor_graph"
+      ],
+      "prng": "splitmix64-fisher-yates-v1",
+      "realizations": 999,
+      "seed": 1729
+    },
+    "projection": {
+      "clip": false,
+      "conductor_max": "1e9",
+      "delta_max": "1e30",
+      "latitude_scale_degrees": 180.0,
+      "logarithm": "natural",
+      "longitude_scale_degrees": 360.0,
+      "rank_scale": 200.0,
+      "regulator_used": false
+    },
+    "protocol_version": "EXP-MAP-A01-prereg-v1"
+  },
+  "config_files": [
+    {
+      "path": "preregistrations/EXP-MAP-A01/config.json",
+      "sha256": "f3818f2753961feab603cd6c69b1ab0c1d743705e51de1641757d4d5fd96be75"
+    },
+    {
+      "path": "preregistrations/EXP-MAP-A01/dataset_manifest.json",
+      "sha256": "8550aaf6b5769fbf33f0a9ac6ee6fd8aa1cc59635bb92c59b461d107af34da42"
+    },
+    {
+      "path": "preregistrations/EXP-MAP-A01/protocol.md",
+      "sha256": "762f2ab0e457e3a396e799fc7349d9652383c9449f68922f02c0df174466df71"
+    }
+  ],
+  "rng_seeds": {
+    "rank_permutation": 1729
+  },
+  "output_paths": [
+    "summary.json",
+    "observed_projection.csv",
+    "null_statistics.csv"
+  ],
+  "timeout_seconds": 3600,
+  "container_image_digest": null
+}
