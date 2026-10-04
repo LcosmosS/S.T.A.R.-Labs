@@ -8,6 +8,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
+from src.control.execution import PreflightError, preflight_controlled_experiment
+from src.control.registry import RegistrySnapshot
 from src.data.cremona_ecdata import (
     CremonaDataError,
     parse_allcurves_line,
@@ -27,6 +29,7 @@ from src.experiments.exp_map_a01 import (
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "preregistrations" / "EXP-MAP-A01" / "config.json"
 CI_SUBSET = ROOT / "data" / "raw" / "ci_subset.csv"
+SPEC = ROOT / "controlled_execution" / "specs" / "EXP-MAP-A01.json"
 
 
 def _config():
@@ -35,6 +38,22 @@ def _config():
 
 def test_preregistered_config_matches_locked_implementation():
     _require_locked_config(_config())
+
+
+def test_committed_execution_spec_binds_current_preregistration_records():
+    spec = json.loads(SPEC.read_text(encoding="utf-8"))
+    resolved = RegistrySnapshot.load(ROOT).resolve("EXP-MAP-A01")
+    assert spec["registry_bindings"] == resolved.record_hashes
+
+
+def test_preregistration_remains_inactive_after_spec_binding_refresh():
+    resolved = RegistrySnapshot.load(ROOT).resolve("EXP-MAP-A01")
+    assert resolved.experiment["Controlled_Execution_Eligible"].lower() == "false"
+    assert resolved.dataset["Controlled_Execution_Eligible"].lower() == "false"
+    assert resolved.experiment["Controlled_Support_Eligible"].lower() == "false"
+    assert resolved.experiment["Physical_Support_Eligible"].lower() == "false"
+    with pytest.raises(PreflightError, match="not controlled-execution eligible"):
+        preflight_controlled_experiment(ROOT, SPEC)
 
 
 def test_allcurves_parser_uses_actual_upstream_schema():
