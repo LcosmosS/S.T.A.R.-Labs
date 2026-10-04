@@ -16,7 +16,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "STARMAP laboratory for the S.T.A.R. Program — research charter, claim registry, rank–web test, RTCH unified dynamics, and nested null hypotheses.",
+          "STARMAP by S.T.A.R. Labs: explore illustrative arithmetic and dynamics models, save demo settings, and inspect the repository's preregistration gates.",
       },
     ],
     links: [

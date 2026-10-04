@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -35,18 +35,23 @@ function ExperimentPage() {
   return (
     <div className="space-y-8">
       <header className="max-w-2xl">
-        <Badge tone="steel">Active tests</Badge>
-        <h1 className="mt-3 font-display text-4xl tracking-tight">Falsifiable structure</h1>
+        <Badge tone="steel">Educational demonstrations</Badge>
+        <h1 className="mt-3 font-display text-4xl tracking-tight">Explore structure and nulls</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Two locked experiments. Topology treats rank as held-out of the metric. Rank–web asks whether rank tracks
-          local-density environment on Φ(E). Neither is a proof that elliptic curves generate cosmic structure.
+          Two browser demonstrations use 12 handwritten illustrative entries and 148 deterministic synthetic fixtures.
+          Generated features depend on rank, so omitting its direct axis is not independence. Runs are unregistered,
+          exploratory, and provide no controlled or physical support.
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          EXP-MAP-A01 separately fixes 38,042 source rows, k = 10, 999 SplitMix64 rank permutations, and α = 0.01.
+          These browser protocols differ. <Link to="/registry" className="text-steel underline underline-offset-4">Inspect the recorded gates</Link>.
         </p>
       </header>
 
       <Tabs defaultValue="topology">
         <TabsList className="flex w-full flex-wrap">
-          <TabsTrigger value="topology">RTCH-E1 topology</TabsTrigger>
-          <TabsTrigger value="rankweb">Rank–web H₁–H₃</TabsTrigger>
+          <TabsTrigger value="topology">Topology demonstration</TabsTrigger>
+          <TabsTrigger value="rankweb">Rank–density demonstration</TabsTrigger>
         </TabsList>
 
         <TabsContent value="topology" className="mt-6 space-y-8">
@@ -75,9 +80,10 @@ function TopologyPanel({
   return (
     <>
       <p className="max-w-2xl text-sm leading-relaxed text-muted">
-        A persistent feature of a finite point cloud is evidence at a scale — not a proof that the arithmetic state
-        space is a manifold with H^k ≠ 0. Rank is held out of the metric. Structure is compared to N1: independent
-        column permutation, preserving every marginal.
+        H0 persistence and graph cycles describe a chosen finite fixture cloud. Rank is omitted as a direct metric
+        column, but generated regulator and height values depend on it. N1 independently permutes feature columns
+        while preserving marginal distributions. With 18 nulls, the smallest possible p-value is 1/19 ≈ 0.053;
+        this lightweight demonstration cannot reach a 0.05 threshold.
       </p>
 
       <div className="flex flex-wrap gap-2">
@@ -114,7 +120,7 @@ function TopologyPanel({
 
       <section className="grid gap-4 lg:grid-cols-2">
         <article className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
-          <h2 className="font-display text-xl tracking-tight">Null protocol</h2>
+          <h2 className="font-display text-xl tracking-tight">Demonstration protocol</h2>
           <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
             <li>N1 — independently permute each intrinsic column.</li>
             <li>Primary features: log N, sgn log |Δ|, log |j|, Faltings height, log R.</li>
@@ -169,9 +175,9 @@ function RankWebPanel({ result, onShuffle }: { result: RankWebResult; onShuffle:
   return (
     <>
       <p className="max-w-2xl text-sm leading-relaxed text-muted">
-        ACSC-008 / CROSS-001: does arithmetic rank track cosmic-web morphology? Environments are kNN-density tertiles
-        on Φ(E) — a geometric analogue of void / filament / cluster, not a survey classification. The null shuffles
-        ranks while freezing the point cloud.
+        Explore rank against kNN-density tertiles of the fixture projection. The words void, filament, and cluster
+        name geometric density bins; they are not observed cosmic environments. The null shuffles rank assignments
+        while freezing the point cloud. Fixture generation already correlates several features with rank.
       </p>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -190,7 +196,12 @@ function RankWebPanel({ result, onShuffle }: { result: RankWebResult; onShuffle:
             χ² = {result.chi2.toFixed(2)} · p = {result.p.toFixed(3)}
           </span>
         </div>
-        <p className="mt-3 text-sm leading-relaxed text-fg">{result.verdict}</p>
+        <p className="mt-3 text-sm leading-relaxed text-fg">
+          {result.p < 0.05
+            ? "This seeded fixture cloud shows a rank–density association under this shuffle. Built-in feature correlations can produce it."
+            : "This seeded fixture cloud is compatible with shuffled ranks under this diagnostic."}
+          {" "}Neither outcome establishes correspondence with independent astronomical data.
+        </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-4">
@@ -261,8 +272,9 @@ function RankWebPanel({ result, onShuffle }: { result: RankWebResult; onShuffle:
         <ul className="mt-3 max-w-2xl space-y-2 text-sm leading-relaxed text-muted">
           <li>Density tertiles live in the arithmetic projection, not in a galaxy survey.</li>
           <li>A significant χ² is a geometric association on Φ — not an identification of rank with clusters.</li>
-          <li>The catalog mixes named LMFDB curves with a synthetic fill; treat p-values as laboratory diagnostics.</li>
-          <li>Locked alternative: shuffle ranks (done here). Next: alternative maps MCJ / PTD / FT as controls.</li>
+          <li>The catalog mixes 12 unverified illustrative entries with 148 synthetic fixtures; p-values describe this demonstration only.</li>
+          <li>Regulator, period, and height fixtures depend on rank; excluding a direct rank axis does not remove this correlation.</li>
+          <li>These rerunnable seeds and mapping choices are exploratory settings, not a preregistered controlled comparison.</li>
         </ul>
       </section>
     </>
@@ -280,7 +292,13 @@ function Verdict({ result, busy }: { result: ExperimentResult; busy: boolean }) 
           {busy ? " · running" : ""}
         </span>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-fg">{result.verdict}</p>
+      <p className="mt-3 text-sm leading-relaxed text-fg">
+        {result.kind === "torus"
+          ? "Synthetic torus control: inspect its H0 persistence and kNN graph cycles. A graph-cycle count is not a Vietoris–Rips H1 or H2 calculation."
+          : result.kind === "scrambled"
+            ? "This is a column-permuted fixture cloud. Its diagnostics illustrate the N1 null construction."
+            : "These diagnostics summarize the fixture cloud against 18 column-permuted nulls. They are educational outputs, not controlled scientific evidence."}
+      </p>
     </div>
   );
 }

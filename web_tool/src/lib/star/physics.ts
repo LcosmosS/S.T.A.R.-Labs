@@ -9,7 +9,7 @@ export const Z_STAR = 1100;
 export type Vec3 = { x: number; y: number; z: number };
 
 export type MappingFamily = "acsc" | "mcj" | "ptd" | "ft" | "rank-elev";
-export type ProvenanceFilter = "all" | "lmfdb" | "synthetic";
+export type ProvenanceFilter = "all" | "illustrative" | "synthetic";
 export type ColorMode = "rank" | "entropy" | "omega" | "provenance";
 
 export const MAPPING_META: Record<
@@ -19,13 +19,13 @@ export const MAPPING_META: Record<
   acsc: {
     label: "ACSC Φ",
     short: "ACSC",
-    note: "Official 2_STARMAP.md map: (Δ, N, r, Reg) → (θ, φ, ρ, λ)",
+    note: "Historical 2_STARMAP.md illustration: (Δ, N, r, Reg) → (θ, φ, ρ, λ). Separate from EXP-MAP-A01.",
     circularRank: false,
   },
   mcj: {
     label: "MCJ",
     short: "MCJ",
-    note: "j-invariant angular map — alternative family for locked comparison",
+    note: "j-invariant angular map — educational alternative, not preregistered",
     circularRank: false,
   },
   ptd: {
@@ -87,8 +87,9 @@ function sphere(theta: number, phi: number, rad: number) {
  *   ρ = (2/π) arctan(r)
  *   λ = log(1+Reg) / (1 + log(1+Reg))
  *   Φ = (sinφ cosθ, sinφ sinθ, cosφ, ρ, λ)
- * The 3-cloud is a 3-embedding of that 5-tuple. Rank is held out of position
- * unless rankLift is on or the family is the historical rank-elev map.
+ * The 3-cloud is a 3-embedding of that 5-tuple. Rank has no direct position axis
+ * unless rankLift is on or the family is the historical rank-elev map. Fixture
+ * regulator values depend on rank, so this does not establish independence.
  */
 export function projectCurve(c: Curve, family: MappingFamily = "acsc", rankLift = false): Projected {
   const { theta: thA, phi: phA, rho, lambda } = acscAngles(c);

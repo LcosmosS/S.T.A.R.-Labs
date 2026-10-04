@@ -31,25 +31,25 @@ const CHAPTERS = [
     to: "/charter",
     kicker: "Charter v1",
     title: "What the program asks",
-    body: "Not “elliptic curves determine the universe.” Correspondence is a test: arithmetic maps vs independent structure, with locked nulls and a claim registry.",
+    body: "Explore the research questions and canonical claim registry. Independent data, preregistration, and null controls are required before support can be considered.",
   },
   {
     to: "/experiment",
-    kicker: "RTCH-E1 · H₁–H₃",
-    title: "Falsifiable topology",
-    body: "Persistent H0, kNN Betti-1, N1 column-permutation nulls, rank–web, and a locked mapping-family benchmark.",
+    kicker: "Educational demonstrations",
+    title: "Explore topology",
+    body: "Persistent H0, kNN graph cycles, and permutation examples on illustrative fixtures. These browser runs are unregistered demonstrations.",
   },
   {
     to: "/projection",
     kicker: "2_STARMAP.md",
-    title: "Official Φ map",
+    title: "Historical Φ illustration",
     body: "θ(Δ), φ(N), ρ(r), λ(Reg). Switch ACSC against MCJ, PTD, FT, and the historical rank-elevation family.",
   },
   {
     to: "/hubble",
     kicker: "S.T.A.R.",
     title: "Scale-dependent Hubble",
-    body: "Local sampling of ⟨Ω_E⟩_z plus entropy curvature lifts H_eff at low z without touching last scatter.",
+    body: "Adjust an illustrative period-weighting model. Its chosen normalization approaches a reference anchor; this is not an observational fit.",
   },
   {
     to: "/cohomology",
@@ -83,7 +83,7 @@ const COLOR_MODES: { id: ColorMode; label: string }[] = [
 
 const PROVENANCE: { id: ProvenanceFilter; label: string }[] = [
   { id: "all", label: "All" },
-  { id: "lmfdb", label: "Named" },
+  { id: "illustrative", label: "Illustrative" },
   { id: "synthetic", label: "Synthetic" },
 ];
 
@@ -127,14 +127,14 @@ function Home() {
             <a href={LABS_URL} target="_blank" rel="noreferrer" className="text-steel underline-offset-4 hover:underline">
               S.T.A.R. Labs
             </a>
-            . It does not assume elliptic curves determine the universe. It tests whether a locked arithmetic map
-            produces structure that was not used to construct it.
+            . Explore arithmetic projections using 12 handwritten illustrative entries and 148 deterministic synthetic
+            fixtures. No fixture here is verified source data, and browser demonstrations do not execute registered experiments.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-6 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
-          <Metric label="H_eff(z)" value={Hnow.toFixed(2)} unit="km/s/Mpc" hint={`z = ${z.toFixed(2)} · SH0ES ${H0_SHOES.toFixed(2)}`} />
+          <Metric label="Toy H_eff(z)" value={Hnow.toFixed(2)} unit="km/s/Mpc" hint={`z = ${z.toFixed(2)} · reference ${H0_SHOES.toFixed(2)}`} />
           <Metric label="Planck H0" value={H0_PLANCK.toFixed(1)} unit="km/s/Mpc" hint="CMB anchor" />
-          <Metric label="Curves" value={String(points.length)} hint={`${stats.famous} named · ${stats.ranks[1]} rank 1`} />
+          <Metric label="Fixtures" value={String(points.length)} hint={`${stats.famous} illustrative · ${stats.ranks[1]} rank 1`} />
           <Metric label="⟨Ω_E⟩" value={stats.meanOmega.toFixed(3)} hint="catalog mean period" />
         </div>
       </section>
@@ -294,10 +294,10 @@ function Home() {
           </div>
         </div>
         <div>
-          <h2 className="font-display text-2xl tracking-tight">Official ACSC map</h2>
+          <h2 className="font-display text-2xl tracking-tight">Historical ACSC illustration</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted">
-            The 5-tuple from 2_STARMAP.md. The cloud is a 3-embedding; rank is held out of position unless Rank lift is
-            on.
+            The 5-tuple from 2_STARMAP.md. Rank has no direct axis unless Rank lift is on, but generated regulator,
+            period, and height values depend on rank. This is not an independent rank test or the EXP-MAP-A01 protocol.
           </p>
           <div className="mt-5">
             <Eq boxed>

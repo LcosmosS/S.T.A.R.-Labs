@@ -21,6 +21,8 @@ const PRIMARY = [
 ] as const;
 
 const SECONDARY = [
+  { to: "/notebook", label: "Notebook", icon: BookOpen },
+  { to: "/registry", label: "Registry", icon: FileText },
   { to: "/hubble", label: "Hubble", icon: Waves },
   { to: "/action", label: "Action", icon: Hexagon },
   { to: "/projection", label: "Projection", icon: Orbit },
@@ -89,14 +91,14 @@ export function Shell({ children }: { children: ReactNode }) {
           <Wordmark />
           <div className="ml-auto flex items-center gap-4">
             <div className="hidden text-right sm:block">
-              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-subtle">H0_eff</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-subtle">Toy H0_eff</div>
               <div className="font-mono text-sm tabular-nums text-fg">
                 {H.toFixed(2)} <span className="text-muted">km/s/Mpc</span>
               </div>
             </div>
             <div className="hidden text-right md:block">
               <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-subtle">Catalog</div>
-              <div className="font-mono text-sm tabular-nums text-fg">{n} curves</div>
+              <div className="font-mono text-sm tabular-nums text-fg">{n} fixtures</div>
             </div>
             <a
               href={LABS_URL}
@@ -126,7 +128,15 @@ export function Shell({ children }: { children: ReactNode }) {
               Labs repo
             </a>
           </aside>
-          <main className="min-w-0 flex-1 px-4 py-6 pb-24 lg:px-8 lg:pb-10">{children}</main>
+          <main className="min-w-0 flex-1 px-4 py-6 pb-24 lg:px-8 lg:pb-10">
+            <div className="mb-6 rounded-md border border-brass/25 bg-brass/5 px-4 py-3 text-xs leading-relaxed text-muted">
+              <span className="font-medium text-brass">Illustrative prototype.</span>{" "}
+              Explore toy models and save demo settings. Browser results cannot authorize controlled execution or support research claims.{" "}
+              <Link to="/registry" className="underline underline-offset-4 hover:text-fg">View repository gates</Link>
+              {" · "}<Link to="/notebook" className="underline underline-offset-4 hover:text-fg">Open notebook</Link>
+            </div>
+            {children}
+          </main>
         </div>
 
         <nav className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-6 border-t border-border bg-bg/95 lg:hidden">

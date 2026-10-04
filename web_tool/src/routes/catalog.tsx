@@ -28,17 +28,17 @@ function CatalogPage() {
   return (
     <div className="space-y-8">
       <header className="max-w-2xl">
-        <Badge>LMFDB-style seed</Badge>
-        <h1 className="mt-3 font-display text-4xl tracking-tight">Elliptic-curve catalog</h1>
+        <Badge>Illustrative fixture catalog</Badge>
+        <h1 className="mt-3 font-display text-4xl tracking-tight">Explore curve fixtures</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Named curves keep their LMFDB labels. The remainder is a synthetic, seeded draw used so the projection and
-          RTCH-E1 pipeline can run entirely in the browser. Rank is a response variable — never part of the primary
-          topology metric.
+          The catalog contains 12 handwritten illustrative entries with catalog-like labels and 148 deterministic
+          synthetic fixtures. These values are not verified LMFDB or Cremona records. Generated regulator, period,
+          and height values depend on rank; omitting a rank column does not make the remaining features independent.
         </p>
       </header>
 
       <div className="grid gap-4 sm:grid-cols-4">
-        <Metric label="Curves" value={String(stats.n)} hint={`${stats.famous} named`} />
+        <Metric label="Fixtures" value={String(stats.n)} hint={`${stats.famous} illustrative · ${stats.n - stats.famous} synthetic`} />
         <Metric label="Rank 0 / 1" value={`${stats.ranks[0]} / ${stats.ranks[1]}`} />
         <Metric label="Rank 2+" value={String(stats.ranks[2] + stats.ranks[3] + stats.ranks[4])} />
         <Metric label="⟨Ω_E⟩" value={stats.meanOmega.toFixed(3)} />
@@ -96,7 +96,7 @@ function CatalogPage() {
                   <td className="px-3 py-2 font-mono tabular-nums text-muted">{c.disc}</td>
                   <td className="px-3 py-2 font-mono text-muted">{c.torsion}</td>
                   <td className="px-3 py-2">
-                    <Badge tone={c.provenance === "lmfdb" ? "ok" : "default"}>{c.provenance}</Badge>
+                    <Badge tone="default">{c.provenance}</Badge>
                   </td>
                 </tr>
               );

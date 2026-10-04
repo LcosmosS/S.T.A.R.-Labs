@@ -1,4 +1,4 @@
-import { hash32, mulberry32 } from "./rng";
+import { hash32, mulberry32 } from "./rng.ts";
 
 export type Curve = {
   label: string;
@@ -12,7 +12,7 @@ export type Curve = {
   ainvs: [number, number, number, number, number];
   torsion: string;
   isogeny: string;
-  provenance: "lmfdb" | "synthetic";
+  provenance: "illustrative" | "synthetic";
 };
 
 export type Cluster = {
@@ -27,20 +27,21 @@ export type Cluster = {
   derivedA: number;
 };
 
-/** Illustrative LMFDB/Cremona labels used as the ACSC projection seed. */
+/** Handwritten teaching fixtures. Labels resemble published catalogs, but these
+ * values have no verified acquisition/version record and are not source data. */
 const FAMOUS: Curve[] = [
-  { label: "11.a3", conductor: 11, rank: 0, regulator: 1, omega: 6.34605, disc: -11, jinv: -122023936 / 161051, faltingsHeight: -1.21, ainvs: [0, -1, 1, 0, 0], torsion: "Z/5", isogeny: "11.a", provenance: "lmfdb" },
-  { label: "11.a2", conductor: 11, rank: 0, regulator: 1, omega: 1.26921, disc: -161051, jinv: -122023936 / 161051, faltingsHeight: 0.42, ainvs: [0, -1, 1, -10, -20], torsion: "Z/5", isogeny: "11.a", provenance: "lmfdb" },
-  { label: "11.a1", conductor: 11, rank: 0, regulator: 1, omega: 0.25384, disc: 11, jinv: -122023936 / 161051, faltingsHeight: 1.87, ainvs: [0, -1, 1, -7820, -263580], torsion: "Z/5", isogeny: "11.a", provenance: "lmfdb" },
-  { label: "37.a1", conductor: 37, rank: 1, regulator: 0.05111, omega: 5.98692, disc: -37, jinv: 110592 / 37, faltingsHeight: -0.18, ainvs: [0, 0, 1, -1, 0], torsion: "1", isogeny: "37.a", provenance: "lmfdb" },
-  { label: "43.a1", conductor: 43, rank: 1, regulator: 0.03248, omega: 5.47113, disc: -43, jinv: 4096 / 43, faltingsHeight: -0.09, ainvs: [0, 1, 1, 0, 0], torsion: "1", isogeny: "43.a", provenance: "lmfdb" },
-  { label: "53.a1", conductor: 53, rank: 1, regulator: 0.14298, omega: 4.87201, disc: -53, jinv: -16 / 53, faltingsHeight: 0.11, ainvs: [1, -1, 1, 0, 0], torsion: "1", isogeny: "53.a", provenance: "lmfdb" },
-  { label: "61.a1", conductor: 61, rank: 1, regulator: 0.04865, omega: 4.9812, disc: -61, jinv: 20736 / 61, faltingsHeight: -0.05, ainvs: [1, 0, 0, -2, 1], torsion: "1", isogeny: "61.a", provenance: "lmfdb" },
-  { label: "89.a1", conductor: 89, rank: 1, regulator: 0.1723, omega: 4.2104, disc: -89, jinv: -1 / 89, faltingsHeight: 0.22, ainvs: [1, 1, 0, -2, 0], torsion: "1", isogeny: "89.a", provenance: "lmfdb" },
-  { label: "389.a1", conductor: 389, rank: 2, regulator: 0.15246, omega: 2.49014, disc: -389, jinv: -144 / 389, faltingsHeight: 0.54, ainvs: [0, 1, 1, -2, 0], torsion: "1", isogeny: "389.a", provenance: "lmfdb" },
-  { label: "433.a1", conductor: 433, rank: 2, regulator: 0.2341, omega: 2.3188, disc: -433, jinv: 1728 / 433, faltingsHeight: 0.61, ainvs: [1, -1, 0, -3, 2], torsion: "1", isogeny: "433.a", provenance: "lmfdb" },
-  { label: "5077.a1", conductor: 5077, rank: 3, regulator: 0.4172, omega: 1.1024, disc: -5077, jinv: -1728 / 5077, faltingsHeight: 1.14, ainvs: [0, 0, 1, -7, 6], torsion: "1", isogeny: "5077.a", provenance: "lmfdb" },
-  { label: "234446.a1", conductor: 234446, rank: 4, regulator: 1.528, omega: 0.4122, disc: -234446, jinv: 0, faltingsHeight: 2.41, ainvs: [1, 0, 1, -36, -70], torsion: "1", isogeny: "234446.a", provenance: "lmfdb" },
+  { label: "11.a3", conductor: 11, rank: 0, regulator: 1, omega: 6.34605, disc: -11, jinv: -122023936 / 161051, faltingsHeight: -1.21, ainvs: [0, -1, 1, 0, 0], torsion: "Z/5", isogeny: "11.a", provenance: "illustrative" },
+  { label: "11.a2", conductor: 11, rank: 0, regulator: 1, omega: 1.26921, disc: -161051, jinv: -122023936 / 161051, faltingsHeight: 0.42, ainvs: [0, -1, 1, -10, -20], torsion: "Z/5", isogeny: "11.a", provenance: "illustrative" },
+  { label: "11.a1", conductor: 11, rank: 0, regulator: 1, omega: 0.25384, disc: 11, jinv: -122023936 / 161051, faltingsHeight: 1.87, ainvs: [0, -1, 1, -7820, -263580], torsion: "Z/5", isogeny: "11.a", provenance: "illustrative" },
+  { label: "37.a1", conductor: 37, rank: 1, regulator: 0.05111, omega: 5.98692, disc: -37, jinv: 110592 / 37, faltingsHeight: -0.18, ainvs: [0, 0, 1, -1, 0], torsion: "1", isogeny: "37.a", provenance: "illustrative" },
+  { label: "43.a1", conductor: 43, rank: 1, regulator: 0.03248, omega: 5.47113, disc: -43, jinv: 4096 / 43, faltingsHeight: -0.09, ainvs: [0, 1, 1, 0, 0], torsion: "1", isogeny: "43.a", provenance: "illustrative" },
+  { label: "53.a1", conductor: 53, rank: 1, regulator: 0.14298, omega: 4.87201, disc: -53, jinv: -16 / 53, faltingsHeight: 0.11, ainvs: [1, -1, 1, 0, 0], torsion: "1", isogeny: "53.a", provenance: "illustrative" },
+  { label: "61.a1", conductor: 61, rank: 1, regulator: 0.04865, omega: 4.9812, disc: -61, jinv: 20736 / 61, faltingsHeight: -0.05, ainvs: [1, 0, 0, -2, 1], torsion: "1", isogeny: "61.a", provenance: "illustrative" },
+  { label: "89.a1", conductor: 89, rank: 1, regulator: 0.1723, omega: 4.2104, disc: -89, jinv: -1 / 89, faltingsHeight: 0.22, ainvs: [1, 1, 0, -2, 0], torsion: "1", isogeny: "89.a", provenance: "illustrative" },
+  { label: "389.a1", conductor: 389, rank: 2, regulator: 0.15246, omega: 2.49014, disc: -389, jinv: -144 / 389, faltingsHeight: 0.54, ainvs: [0, 1, 1, -2, 0], torsion: "1", isogeny: "389.a", provenance: "illustrative" },
+  { label: "433.a1", conductor: 433, rank: 2, regulator: 0.2341, omega: 2.3188, disc: -433, jinv: 1728 / 433, faltingsHeight: 0.61, ainvs: [1, -1, 0, -3, 2], torsion: "1", isogeny: "433.a", provenance: "illustrative" },
+  { label: "5077.a1", conductor: 5077, rank: 3, regulator: 0.4172, omega: 1.1024, disc: -5077, jinv: -1728 / 5077, faltingsHeight: 1.14, ainvs: [0, 0, 1, -7, 6], torsion: "1", isogeny: "5077.a", provenance: "illustrative" },
+  { label: "234446.a1", conductor: 234446, rank: 4, regulator: 1.528, omega: 0.4122, disc: -234446, jinv: 0, faltingsHeight: 2.41, ainvs: [1, 0, 1, -36, -70], torsion: "1", isogeny: "234446.a", provenance: "illustrative" },
 ];
 
 function syntheticCurve(i: number, rng: () => number): Curve {
@@ -116,7 +117,7 @@ export function catalogStats(curves: Curve[] = getCatalog()) {
     ranks[Math.min(c.rank, 4)] += 1;
     om += c.omega;
     ent += Math.log(Math.abs(c.disc) + 1);
-    if (c.provenance === "lmfdb") famous += 1;
+    if (c.provenance === "illustrative") famous += 1;
   }
   return {
     n,
@@ -137,7 +138,8 @@ export function idColor(label: string) {
   return hash32(label);
 }
 
-/** RTCH-E1 intrinsic feature vector — rank is held out as a response. */
+/** Educational feature vector. No direct rank column is included, but generated
+ * regulator and Faltings-height values depend on rank. This is not independence. */
 export function intrinsicFeatures(c: Curve): number[] {
   return [
     Math.log1p(c.conductor),

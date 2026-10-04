@@ -114,7 +114,7 @@ export function OrbitCloud({
       if (lit || hover) return "rgb(215, 222, 232)";
       const mode = colorRef.current;
       if (mode === "provenance") {
-        return p.provenance === "lmfdb" ? "rgba(196, 165, 116, 0.95)" : "rgba(110, 128, 148, 0.82)";
+        return p.provenance === "illustrative" ? "rgba(196, 165, 116, 0.95)" : "rgba(110, 128, 148, 0.82)";
       }
       if (mode === "entropy") {
         const t = (p.entropy - eMin) / Math.max(1e-6, eMax - eMin);

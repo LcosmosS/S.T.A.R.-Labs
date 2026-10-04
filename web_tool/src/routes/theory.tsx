@@ -34,11 +34,11 @@ function TheoryPage() {
         <p className="mt-3 text-sm leading-relaxed text-muted">
           The RTCH paper is explicit: conformal matter coupling and closed-form pullbacks are differential geometry.
           Identifying elliptic-curve invariants with thermodynamic fields, and asserting that A depends on 𝒥_Q, are
-          conjectural until constrained against nested nulls. Historical wording lives in the{" "}
+          conjectural until constrained against nested nulls. Current repository hypotheses appear in the{" "}
           <Link to="/charter" className="text-fg underline-offset-4 hover:underline">
             claim registry
           </Link>
-          ; its status is set by the Charter.
+          ; their recorded statuses come from the canonical repository snapshot. Browser demonstrations provide no controlled or physical support.
         </p>
       </header>
 

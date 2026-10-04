@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -8,15 +8,8 @@ import { CLAIMS, CORE_QUESTIONS, type ClaimStatus } from "@/lib/star/claims";
 export const Route = createFileRoute("/charter")({ component: CharterPage });
 
 const STATUS_TONE: Record<ClaimStatus, "default" | "steel" | "warn" | "ok" | "danger"> = {
-  "ACTIVE TEST": "steel",
-  EXPLORATORY: "warn",
-  PRELIMINARY: "warn",
-  OPEN: "default",
-  SUPPORTED: "ok",
-  SPECULATIVE: "warn",
-  RECLASSIFIED: "default",
-  FALSIFIED: "danger",
-  DERIVED: "ok",
+  hypothesis: "warn",
+  testable: "steel",
 };
 
 function CharterPage() {
@@ -50,7 +43,7 @@ function CharterPage() {
       <Tabs defaultValue="charter">
         <TabsList className="flex w-full flex-wrap">
           <TabsTrigger value="charter">Charter</TabsTrigger>
-          <TabsTrigger value="registry">Claim registry</TabsTrigger>
+          <TabsTrigger value="registry">Repository claims</TabsTrigger>
         </TabsList>
 
         <TabsContent value="charter" className="mt-6 space-y-8">
@@ -105,13 +98,13 @@ function CharterPage() {
 
         <TabsContent value="registry" className="mt-6 space-y-6">
           <p className="max-w-2xl text-sm leading-relaxed text-muted">
-            Historical statements are preserved. Their scientific status is set by the Charter, not by the original
-            wording. A claim is not evidence for the claim.
+            These qualified claims and recorded statuses come from registry/claim_evidence_v0.2.csv in the hashed
+            repository snapshot. They do not inherit support from browser demonstrations. <Link to="/registry" className="text-steel underline underline-offset-4">Inspect source hashes and experiment gates</Link>.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search claim id or text" aria-label="Search claims" />
             <div className="flex flex-wrap gap-1">
-              {(["all", "ACTIVE TEST", "DERIVED", "SUPPORTED", "EXPLORATORY", "SPECULATIVE", "FALSIFIED"] as const).map(
+              {["all", ...new Set(CLAIMS.map((claim) => claim.status))].map(
                 (s) => (
                   <button
                     key={s}
@@ -129,13 +122,16 @@ function CharterPage() {
             {rows.map((c) => (
               <article key={c.id} className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-mono text-xs text-fg">{c.id}</span>
+                  <span className="break-all font-mono text-xs text-fg">{c.qualifiedId}</span>
                   <Badge>{c.module}</Badge>
                   <Badge>{c.category}</Badge>
-                  <Badge tone={STATUS_TONE[c.status]}>{c.status}</Badge>
+                  <Badge tone={STATUS_TONE[c.status] ?? "default"}>{c.status}</Badge>
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-fg">{c.statement}</p>
                 <p className="mt-2 text-xs leading-relaxed text-muted">{c.support}</p>
+                <p className="mt-2 text-xs text-muted">
+                  Controlled support eligible: {String(c.controlledSupportEligible)} · Physical support eligible: {String(c.physicalSupportEligible)}
+                </p>
                 <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-subtle">Next · {c.next}</p>
               </article>
             ))}

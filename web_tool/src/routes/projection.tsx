@@ -21,9 +21,10 @@ function ProjectionPage() {
         <Badge tone="warn">ACSC · conjectural map</Badge>
         <h1 className="mt-3 font-display text-4xl tracking-tight">Arithmetic projection Φ(E)</h1>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          Elliptic-curve invariants are placed on a 3-manifold by a density-equalizing map of log-conductor, with rank
-          as a mild offset. The RTCH paper is careful: this does not establish that those invariants are thermodynamic
-          fields. It supplies a possible Y^A(E) on which the cohomological machinery can act.
+          This historical 2_STARMAP.md illustration maps discriminant and conductor to angles, and regulator to radius.
+          It uses 12 handwritten illustrative entries and 148 deterministic synthetic fixtures. Generated features
+          depend on rank, so omitting a direct rank axis does not establish independence. The registered EXP-MAP-A01
+          map, dataset, and null protocol are separate; no registered experiment runs here.
         </p>
       </header>
 
@@ -31,7 +32,7 @@ function ProjectionPage() {
 
       <div className="grid gap-4 sm:grid-cols-3">
         <Metric label="Points" value={String(PROJECTED.length)} />
-        <Metric label="Filaments" value={String(FILAMENTS.length)} hint="3-NN" />
+        <Metric label="Graph links" value={String(FILAMENTS.length)} hint="3-NN illustration" />
         <Metric label="⟨entropy⟩" value={stats.meanEntropy.toFixed(2)} hint="log |Δ|" />
       </div>
 

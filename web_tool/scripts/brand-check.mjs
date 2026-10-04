@@ -135,7 +135,10 @@ function brandWarningsOnDisk({
     );
   }
 
-  if (hasCanvas && !siteDeclaresOgTypeGame(site)) {
+  // Scientific canvas visualizations can explicitly identify as websites.
+  // They still require the custom card above, but must not masquerade as games.
+  const inferredGame = hasCanvas && site?.type !== "website";
+  if (inferredGame && !siteDeclaresOgTypeGame(site)) {
     warnings.push(
       'BRAND WARNING: this looks like a game/canvas app but src/lib/og/site.json is missing '
         + '"type": "x:game". X uses og:type=x:game to present the unfurl as a game card — set '
@@ -146,7 +149,7 @@ function brandWarningsOnDisk({
 
   // Games with a custom link card must also ship the 50:11 X feed card.
   // Skip while still on the og.grok.me placeholder — that pass has not started yet.
-  if (hasCanvas && cardPath !== undefined) {
+  if (inferredGame && cardPath !== undefined) {
     const bannerPath = join(workspaceRoot, "public/x-banner.jpg");
     if (!existsSync(bannerPath)) {
       warnings.push(
