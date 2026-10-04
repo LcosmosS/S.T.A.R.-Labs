@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/LcosmosS/S.T.A.R.-Labs/controlled_execution/spec.schema.json",
+  "title": "S.T.A.R. controlled-experiment execution spec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "registry_bindings",
+    "command",
+    "dataset_inputs",
+    "code_inputs",
+    "config",
+    "config_files",
+    "rng_seeds",
+    "output_paths",
+    "timeout_seconds",
+    "container_image_digest"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "experiment_id": {"type": "string", "minLength": 1},
+    "registry_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["experiment", "dataset", "provenance", "parameter", "null"],
+      "properties": {
+        "experiment": {"$ref": "#/$defs/sha256"},
+        "dataset": {"$ref": "#/$defs/sha256"},
+        "provenance": {"$ref": "#/$defs/sha256"},
+        "parameter": {"$ref": "#/$defs/sha256"},
+        "null": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "command": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "dataset_inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/hashedPath"}
+    },
+    "code_inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/hashedPath"}
+    },
+    "config": {"type": "object"},
+    "config_files": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/hashedPath"}
+    },
+    "rng_seeds": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "output_paths": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "timeout_seconds": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "integer", "minimum": 1}
+      ]
+    },
+    "container_image_digest": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hashedPath": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

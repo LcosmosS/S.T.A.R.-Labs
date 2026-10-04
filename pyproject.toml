@@ -43,3 +43,4 @@ python_files = ["test_*.py", "*_test.py"]
 
 [project.scripts]
 star-run-inference = "src.cli.star_run_inference:main"
+star-controlled-experiment = "src.cli.star_controlled_experiment:main"
