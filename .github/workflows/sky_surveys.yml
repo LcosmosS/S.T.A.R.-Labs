@@ -8,70 +8,53 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  packages: write
-  
+  contents: read
+
 jobs:
-  execute-notebooks:
+  sky-survey-smoke:
     runs-on: ubuntu-latest
     container:
       image: sagemath/sagemath:latest
-      options: --user root          
+      options: --user root
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v6
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-         python-version: '3.12'
+      - name: Detect project root
+        id: root
+        run: |
+          set -euo pipefail
+          ROOT=$(find "$GITHUB_WORKSPACE" -maxdepth 3 -type d -name src -printf '%h\n' | head -n 1)
+          test -n "$ROOT"
+          echo "ROOT=$ROOT" >> "$GITHUB_OUTPUT"
+          echo "Detected project root: $ROOT"
 
-    - name: Detect project root
-      id: root
-      run: |
-        echo "Searching for project root inside $GITHUB_WORKSPACE..."
-        ROOT=$(find "$GITHUB_WORKSPACE" -maxdepth 3 -type d -name src -printf '%h\n' | head -n 1)
-        echo "ROOT=$ROOT" >> $GITHUB_OUTPUT
-        echo "Detected project root: $ROOT"
+      - name: Install dependencies
+        run: |
+          cd "${{ steps.root.outputs.ROOT }}"
+          sage -python -m pip install -r requirements.txt
+          sage -python -m pip install pyarrow
+          sage -python -m pip install -e . --no-deps
 
-    - name: Install dependencies
-      run: |
-        cd "${{ steps.root.outputs.ROOT }}"
-        sage -python -m pip install -r requirements.txt
+      - name: Run cosmology diagnostics
+        run: |
+          set -euo pipefail
+          cd "${{ steps.root.outputs.ROOT }}"
+          sage -python ci_diagnostics/diagnose_cosmology.py | tee ci_diagnostics/output.txt
 
-    - name: Install parquet engine
-      run: |
-        cd "${{ steps.root.outputs.ROOT }}"
-        sage -python -m pip install pyarrow
+      - name: Validate sky survey loader
+        run: |
+          cd "${{ steps.root.outputs.ROOT }}"
+          sage -python -m pytest -q src/tests/test_load_sky_surveys.py
 
-    - name: Install package
-      run: |
-        cd "${{ steps.root.outputs.ROOT }}"
-        sage -python -m pip install -e .
-
-    - name: Verify working directory
-      run: |
-        cd "${{ steps.root.outputs.ROOT }}"
-        pwd
-        ls -al
-
-    - name: Run cosmology diagnostics
-      run: |
-        python ci_diagnostics/diagnose_cosmology.py > ci_diagnostics/output.txt 2>&1 || true
-        echo "=== DIAGNOSTICS OUTPUT ==="
-        sed -n '1,200p' ci_diagnostics/output.txt
-
-    - name: Validate sky survey loader
-      run: |
-        cd "${{ steps.root.outputs.ROOT }}"
-        sage -python -m pytest -q src/tests/test_load_sky_surveys.py
-
-    - name: Run dataset builder (downsampled)
-      run: |
-        cd "${{ steps.root.outputs.ROOT }}"
-        sage -python - <<'EOF'
-        from src.data.sky_survey_dataset_builder import SkySurveyDatasetBuilder
-        builder = SkySurveyDatasetBuilder(downsample=200)
-        builder.save("sky_surveys_ci.parquet")
-        EOF
+      - name: Run dataset union builder (downsampled)
+        run: |
+          cd "${{ steps.root.outputs.ROOT }}"
+          sage -python - <<'PY'
+          from src.data.sky_survey_dataset_builder import SkySurveyUnionBuilder
+          builder = SkySurveyUnionBuilder(downsample=200)
+          builder.save("sky_surveys_ci.parquet")
+          PY

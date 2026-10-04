@@ -1,4 +1,4 @@
-name: Sync Google Docs provenance sources
+name: Capture Google Docs provenance sources
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     - cron: "17 3 * * *"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: google-docs-provenance-sync
@@ -19,7 +19,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
+          persist-credentials: false
 
       - name: Download Google Docs as plain text
         shell: bash
@@ -204,45 +205,48 @@ jobs:
             14_0IOKc8mzL4l_oklZw8Rq-XUMumf2D_f-ULzPqflzY
         run: |
           set -euo pipefail
-          mkdir -p data/provenance/raw
-          manifest=data/provenance/google_docs_manifest.csv
-          printf 'document_index,document_id,source_url,output_path\n' > "$manifest"
+          capture_dir=provenance_capture
+          mkdir -p "$capture_dir/raw"
+          manifest="$capture_dir/google_docs_manifest.csv"
+          printf 'document_index,document_id,source_url,output_path,sha256,content_type,final_url\n' > "$manifest"
           index=0
           while IFS= read -r doc_id; do
             [[ -z "$doc_id" ]] && continue
             index=$((index + 1))
-            output="data/provenance/raw/doc_$(printf '%03d' "$index")_${doc_id}.txt"
+            output="$capture_dir/raw/doc_$(printf '%03d' "$index")_${doc_id}.txt"
             url="https://docs.google.com/document/d/${doc_id}/export?format=txt"
             echo "Downloading Google Doc ${index}: ${doc_id}"
             meta=$(curl --fail --location --silent --show-error --retry 3 \
               --connect-timeout 15 --max-time 60 \
-              --write-out '%{content_type} %{url_effective}' \
+              --write-out '%{content_type}\n%{url_effective}' \
               "$url" --output "$output")
-            content_type=${meta%% *}
-            final_url=${meta#* }
-            if [[ "$content_type" != text/plain* || "$final_url" != https://docs.google.com/* ]]; then
-              echo "::error::Doc ${doc_id} did not export as text (type=${content_type}, url=${final_url}). Check sharing settings."
+            content_type=$(printf '%s\n' "$meta" | sed -n '1p')
+            final_url=$(printf '%s\n' "$meta" | sed -n '2p')
+            if [[ "$content_type" != text/plain* ]]; then
+              echo "::error::Doc ${doc_id} did not export as text (type=${content_type})."
               exit 1
             fi
+            case "$final_url" in
+              https://docs.google.com/*|https://*.googleusercontent.com/*) ;;
+              *)
+                echo "::error::Doc ${doc_id} redirected to unexpected host: ${final_url}"
+                exit 1
+                ;;
+            esac
             test -s "$output"
-            printf '%s,%s,%s,%s\n' \
+            sha256=$(sha256sum "$output" | awk '{print $1}')
+            printf '%s,%s,%s,%s,%s,%s,%s\n' \
               "$index" "$doc_id" \
               "https://docs.google.com/document/d/${doc_id}/edit?usp=sharing" \
-              "$output" >> "$manifest"
+              "$output" "$sha256" "$content_type" "$final_url" >> "$manifest"
           done <<< "$DOC_IDS"
-          echo "Downloaded $index Google Docs."
+          echo "Captured $index Google Docs."
           wc -l "$manifest"
 
-      - name: Commit changed provenance files
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/provenance/
-          if git diff --cached --quiet; then
-            echo "No provenance changes detected."
-            exit 0
-          fi
-          git commit -m "chore: sync Google Docs provenance sources"
-          git push
+      - name: Upload provenance capture artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: google-docs-provenance-capture
+          path: provenance_capture/
+          retention-days: 14
+          if-no-files-found: error
