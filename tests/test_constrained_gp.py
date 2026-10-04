@@ -31,21 +31,17 @@ def test_random_tree_respects_feature_width():
 def test_population_two_still_generates_offspring(monkeypatch):
     gp = ConstrainedGP(population=2, seed=1)
     generated = {"count": 0}
-    original = gp.random_tree
 
     def counted_random_tree(*args, **kwargs):
         generated["count"] += 1
-        return original(*args, **kwargs)
+        return GPNode("var", value=0)
 
     monkeypatch.setattr(gp, "random_tree", counted_random_tree)
+    monkeypatch.setattr(gp.manifold, "admissible", lambda *args, **kwargs: True)
 
     data = np.array([[0.0], [1.0], [2.0], [3.0]])
     scrambled = data[::-1].copy()
-
-    try:
-        gp.evolve(data, [], scrambled, generations=2)
-    except RuntimeError:
-        pass
+    gp.evolve(data, [], scrambled, generations=2)
 
     assert generated["count"] > gp.population
 

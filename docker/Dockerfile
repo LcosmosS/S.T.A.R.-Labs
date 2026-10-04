@@ -1,5 +1,5 @@
 # docker/Dockerfile (fixed)
-FROM mambaorg/micromamba:2.3.2-debian12
+FROM mambaorg/micromamba:2.3.2-debian12@sha256:3b193e1c7253aa670e15456ba2bdde4330ab61872cffd32a06bf477835604e69
 
 ARG USER=star
 ARG UID=1000
