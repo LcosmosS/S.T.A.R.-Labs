@@ -1,37 +1,24 @@
-"""
-acsc.statistics
-Functions to compute W2 distances, empirical p-values, and basic effect sizes.
-"""
+"""Behavioral tests for production ACSC statistics."""
 
 import numpy as np
-from typing import Sequence, List
-from acsc.tda_pipeline import persistence_wasserstein
+import pytest
+
+from acsc.statistics import effect_size, empirical_p_value, w2_between_diagrams
 
 
-def w2_between_diagrams(dgmA, dgmB) -> float:
-    """
-    Compute 2-Wasserstein distance between two persistence diagrams.
-    """
-    return float(persistence_wasserstein(np.asarray(dgmA), np.asarray(dgmB), order=2))
+def test_empirical_p_value_has_finite_sample_correction():
+    assert empirical_p_value(1.0, [0.5, 2.0, 3.0]) == pytest.approx(0.5)
 
 
-def empirical_p_value(observed: float, null_samples: Sequence[float]) -> float:
-    """
-    One-sided empirical p-value: proportion of null samples <= observed (smaller is better).
-    Uses +1 numerator/denominator correction.
-    """
-    null = np.asarray(null_samples, dtype=float)
-    m = len(null)
-    count = np.sum(null <= observed)
-    return float((1 + count) / (1 + m))
+def test_effect_size_direction_is_documented():
+    value = effect_size(1.0, [2.0, 3.0, 4.0])
+    assert value > 0
 
 
-def effect_size(observed: float, null_samples: Sequence[float]) -> float:
-    """
-    Cohen-like effect size: (mean_null - observed) / std_null
-    Positive means observed is smaller (better match) than null mean.
-    """
-    null = np.asarray(null_samples, dtype=float)
-    mu = float(np.mean(null))
-    sigma = float(np.std(null, ddof=1) if len(null) > 1 else 1.0)
-    return float((mu - observed) / (sigma if sigma > 0 else 1.0))
+def test_statistics_reject_nonfinite_nulls():
+    with pytest.raises(ValueError, match="finite"):
+        empirical_p_value(1.0, [1.0, np.nan])
+
+
+def test_cardinality_diagnostic_remains_explicitly_lightweight():
+    assert w2_between_diagrams([[0.0, 1.0]], [[0.0, 1.0], [0.2, 0.7]]) == 1.0
