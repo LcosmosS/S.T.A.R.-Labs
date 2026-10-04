@@ -20,18 +20,20 @@ class MCMCCosmologyFitter:
         self.H_expr = H_expr
         self.param_names = list(param_names)
         self.priors = priors
-        self.proposal_widths = proposal_widths
         self.seed = int(seed)
         self.rng = np.random.default_rng(self.seed)
 
+        normalized_widths = {}
         for name in self.param_names:
-            if name not in self.proposal_widths:
+            if name not in proposal_widths:
                 raise KeyError(f"missing proposal width for {name}")
-            width = float(self.proposal_widths[name])
+            width = float(proposal_widths[name])
             if not np.isfinite(width) or width <= 0:
                 raise ValueError(
                     f"proposal width must be finite and positive for {name}"
                 )
+            normalized_widths[name] = width
+        self.proposal_widths = normalized_widths
 
     def _log_prior(self, theta):
         lp = 0.0
@@ -47,7 +49,13 @@ class MCMCCosmologyFitter:
     def _log_likelihood(self, theta, z, mu_obs, sigma_mu):
         params = dict(zip(self.param_names, theta))
         model = SymbolicCosmology(self.H_expr, params)
-        mu_model = np.asarray([model.distance_modulus(zi) for zi in z], dtype=float)
+        try:
+            mu_model = np.asarray(
+                [model.distance_modulus(zi) for zi in z],
+                dtype=float,
+            )
+        except FloatingPointError:
+            return -np.inf
         if not np.all(np.isfinite(mu_model)):
             return -np.inf
         chi2 = np.sum(((mu_obs - mu_model) / sigma_mu) ** 2)

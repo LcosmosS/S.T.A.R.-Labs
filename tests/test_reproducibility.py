@@ -101,3 +101,65 @@ def test_legacy_cosmology_fitter_rejects_invalid_proposal_width(width):
             {"H0": width},
             seed=5,
         )
+
+
+def test_legacy_cosmology_fitter_rejects_invalid_model_proposal_without_aborting():
+    fitter = MCMCCosmologyFitter(
+        "H0",
+        ["H0"],
+        {"H0": (70.0, 2.0)},
+        {"H0": 0.1},
+        seed=5,
+    )
+
+    class _RejectingRNG:
+        def normal(self, loc, scale):
+            assert loc == 0.0
+            assert scale == pytest.approx(0.1)
+            return -100.0
+
+        def random(self):
+            return 0.5
+
+    fitter.rng = _RejectingRNG()
+    chain = fitter.run(
+        np.array([0.1]),
+        np.array([38.0]),
+        np.array([1.0]),
+        [70.0],
+        nsteps=3,
+    )
+
+    assert np.array_equal(chain, np.array([[70.0], [70.0], [70.0]]))
+
+
+def test_legacy_cosmology_fitter_copies_validated_proposal_widths():
+    widths = {"H0": 0.1}
+    fitter = MCMCCosmologyFitter(
+        "H0",
+        ["H0"],
+        {"H0": (70.0, 2.0)},
+        widths,
+        seed=5,
+    )
+    widths["H0"] = 0.0
+
+    class _ScaleCheckingRNG:
+        def normal(self, loc, scale):
+            assert loc == 0.0
+            assert scale == pytest.approx(0.1)
+            return 0.0
+
+        def random(self):
+            return 0.5
+
+    fitter.rng = _ScaleCheckingRNG()
+    fitter.run(
+        np.array([0.1]),
+        np.array([38.0]),
+        np.array([1.0]),
+        [70.0],
+        nsteps=2,
+    )
+
+    assert fitter.proposal_widths == {"H0": 0.1}

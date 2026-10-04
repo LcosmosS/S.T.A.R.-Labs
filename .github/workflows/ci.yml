@@ -320,8 +320,9 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p results
-          python scripts/check_controlled_readiness.py | tee results/controlled_readiness.txt
+          python scripts/check_controlled_readiness.py 2>&1 | tee results/controlled_readiness.txt
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: controlled-readiness
           path: results/controlled_readiness.txt
