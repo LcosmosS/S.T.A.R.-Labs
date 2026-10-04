@@ -26,12 +26,14 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Detect project root
+      - name: Validate Python project root
         id: root
         run: |
           set -euo pipefail
-          ROOT=$(find "$GITHUB_WORKSPACE" -maxdepth 3 -type d -name src -printf '%h\n' | head -n 1)
-          test -n "$ROOT"
+          ROOT="$GITHUB_WORKSPACE"
+          for input in requirements.txt pyproject.toml ci_diagnostics/diagnose_cosmology.py src/tests/test_load_sky_surveys.py src/data/sky_survey_dataset_builder.py; do
+            test -f "$ROOT/$input" || { echo "Missing Python project input: $ROOT/$input" >&2; exit 1; }
+          done
           echo "ROOT=$ROOT" >> "$GITHUB_OUTPUT"
           echo "Detected project root: $ROOT"
 

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { BookOpen, Compass, FileText, FlaskConical, Github, Hexagon, Menu, Orbit, Table2, Waves } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -55,9 +55,9 @@ function NavLinks({ onClick }: { onClick?: () => void }) {
   );
 }
 
-function Wordmark() {
+function Wordmark({ onClick }: { onClick?: () => void }) {
   return (
-    <Link to="/" className="flex min-w-0 items-baseline gap-2 whitespace-nowrap">
+    <Link to="/" onClick={onClick} className="flex min-w-0 items-baseline gap-2 whitespace-nowrap">
       <span className="font-display text-2xl leading-none tracking-tight text-fg">STARMAP</span>
       <span className="font-sans text-xs font-medium leading-none tracking-wide text-steel">by S.T.A.R. Labs</span>
     </Link>
@@ -65,6 +65,7 @@ function Wordmark() {
 }
 
 export function Shell({ children }: { children: ReactNode }) {
+  const [navigationOpen, setNavigationOpen] = useState(false);
   const z = useLab((s) => s.z);
   const beta = useLab((s) => s.beta);
   const gamma = useLab((s) => s.gamma);
@@ -75,7 +76,7 @@ export function Shell({ children }: { children: ReactNode }) {
     <TooltipProvider delayDuration={200}>
       <div className="min-h-dvh bg-bg text-fg">
         <header className="sticky top-0 z-40 flex h-16 items-center gap-3 border-b border-border bg-bg/90 px-4 backdrop-blur-sm">
-          <Sheet>
+          <Sheet open={navigationOpen} onOpenChange={setNavigationOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open navigation">
                 <Menu className="size-5" />
@@ -83,9 +84,9 @@ export function Shell({ children }: { children: ReactNode }) {
             </SheetTrigger>
             <SheetContent side="left">
               <div className="mb-6 mt-2">
-                <Wordmark />
+                <Wordmark onClick={() => setNavigationOpen(false)} />
               </div>
-              <NavLinks />
+              <NavLinks onClick={() => setNavigationOpen(false)} />
             </SheetContent>
           </Sheet>
           <Wordmark />

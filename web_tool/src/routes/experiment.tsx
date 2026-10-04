@@ -49,7 +49,7 @@ function ExperimentPage() {
       </header>
 
       <Tabs defaultValue="topology">
-        <TabsList className="flex w-full flex-wrap">
+        <TabsList className="flex h-auto min-h-11 w-full flex-wrap">
           <TabsTrigger value="topology">Topology demonstration</TabsTrigger>
           <TabsTrigger value="rankweb">Rank–density demonstration</TabsTrigger>
         </TabsList>
@@ -123,7 +123,7 @@ function TopologyPanel({
           <h2 className="font-display text-xl tracking-tight">Demonstration protocol</h2>
           <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted">
             <li>N1 — independently permute each intrinsic column.</li>
-            <li>Primary features: log N, sgn log |Δ|, log |j|, Faltings height, log R.</li>
+            <li>Features: {result.features.join(", ")}.</li>
             <li>Graph geodesics exclude direct kNN neighbors, so reported tortuosity is a multi-edge path.</li>
             <li>Positive control uses a sampled torus in R³, not Fibonacci or golden-ratio maps.</li>
           </ul>

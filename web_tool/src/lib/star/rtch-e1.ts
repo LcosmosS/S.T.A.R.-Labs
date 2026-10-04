@@ -397,7 +397,7 @@ export function runExperiment(opts: {
   return {
     kind: opts.kind,
     n: X.length,
-    features: INTRINSIC_NAMES,
+    features: opts.kind === "torus" ? ["x", "y", "z"] : INTRINSIC_NAMES,
     seed,
     nNulls,
     k,

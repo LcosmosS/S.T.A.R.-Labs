@@ -1,10 +1,10 @@
 name: STARMAP prototype
 on:
   pull_request:
-    paths: ['web_tool/**', 'registry/**', 'controlled_execution/specs/**', '.github/workflows/starmap.yml']
+    paths: ['web_tool/**', 'registry/**', 'preregistrations/**', 'controlled_execution/specs/**', '.github/workflows/starmap.yml']
   push:
     branches: [main, prototype/starmap]
-    paths: ['web_tool/**', 'registry/**', 'controlled_execution/specs/**', '.github/workflows/starmap.yml']
+    paths: ['web_tool/**', 'registry/**', 'preregistrations/**', 'controlled_execution/specs/**', '.github/workflows/starmap.yml']
 permissions:
   contents: read
 jobs:
