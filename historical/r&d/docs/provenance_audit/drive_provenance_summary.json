@@ -1,0 +1,68 @@
+{
+  "document_assets": 288,
+  "readable_snapshots": 288,
+  "total_snapshot_chars": 56009501,
+  "exact_duplicate_snapshot_groups": [
+    {
+      "sha256": "4e55aab3ef8e1737ce82627316c933203ac5c86fc1f678fcf1d37be295beddd2",
+      "source_ids": [
+        "1n8MX4iKcSGo_zk5nXwbUcjs3Wi6j7WYDCbYjUNEtGr8",
+        "13y1HctJqJXQpOKep7i-H-ojonAoEQKZvhZ0RBwRpjMQ"
+      ]
+    },
+    {
+      "sha256": "327761e0d71a5dea51c20ab2fbf08d945f06d09e7d46efa67fa09599b5de7443",
+      "source_ids": [
+        "13OdV8qvMdl_i8p7TYSYOOoAioYOG7hzgAtVIyAY0etw",
+        "1ko4ny_cNrsQM4ZGJB88uGgREcpwb1vTJBgLksxARTJE"
+      ]
+    },
+    {
+      "sha256": "395107a77ee43a117448b7812649156b8ecc7d4d62fe1501a03abdbadbf32c52",
+      "source_ids": [
+        "1-GTA6NsdlI69FJk-6228q0FD1olCOYrn",
+        "1A-3pjSGrnC5y2b0oqGBwoJDH-NkQ4B1g"
+      ]
+    }
+  ],
+  "root_assets": 291,
+  "root_folder_children": 0,
+  "media_not_transcribed": 2,
+  "raw_export_limitation": "Authenticated streaming references were returned; their Windows-host download requests returned HTTP403. Readable connector content used. Snapshot hashes are hashes of fetched text, not canonical provider binary/revision hashes.",
+  "version_metadata_limitation": "Normalized metadata did not expose requested Drive version/headRevision/owner fields; revision history examined on four key documents only. Historical executions are not bound retroactively.",
+  "revision_summary": [
+    {
+      "id": "1X-8_1A3b-5GAnZph3lw8SjoYRyLV2Lk2z20_mp8GmSk",
+      "title": "First_Principles_Results ",
+      "currentRevisionId": "2",
+      "previousRevisionId": "1",
+      "revisions_returned": 2,
+      "truncated": false
+    },
+    {
+      "id": "1B6s-CC1jSn6bdFr20viCxL4vDCekzN4s-fIequX65BA",
+      "title": "Origins",
+      "currentRevisionId": "1788",
+      "previousRevisionId": "1751",
+      "revisions_returned": 8,
+      "truncated": false
+    },
+    {
+      "id": "1ZVWuuwAS8zRrEsLIYNNSFNuZRGjUWdHbl4WSxpFVreo",
+      "title": "raw data log",
+      "currentRevisionId": "300",
+      "previousRevisionId": "1",
+      "revisions_returned": 2,
+      "truncated": false
+    },
+    {
+      "id": "1bzrY4bg5_Vi3RucO7NIIkPtYpI8GptmqIRtP_WF_qaw",
+      "title": "SFR_Prediction_Model_Refinement",
+      "currentRevisionId": "42",
+      "previousRevisionId": "33",
+      "revisions_returned": 3,
+      "truncated": false
+    }
+  ],
+  "semantic_review": "Claim-targeted documentary review; inventory/code discovery scans cover all readable snapshots, not independent verification of every statement."
+}

@@ -1,0 +1,953 @@
+[
+  {
+    "experiment_id": "EXP-CTRL-A03",
+    "title": "Leakage and Contamination Audit",
+    "baseline_source_page": 7,
+    "baseline_evidence_state": "R",
+    "audit_date": "2026-10-03",
+    "current_status": "STATIC AUDIT FINDINGS RECORDED / CONTROLLED COMPARATIVE RERUN NOT PERFORMED",
+    "associated_claim_ids": [
+      "CORE-001",
+      "COSMO-L001",
+      "SFR-A001",
+      "CTRL-A002"
+    ],
+    "finding_ids": [
+      "E-LCL-009",
+      "E-LCL-010",
+      "E-LCL-012",
+      "E-LCL-013",
+      "E-LCL-014",
+      "E-DRV-002",
+      "E-DRV-003"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting.",
+      "Set Leakage Status POTENTIAL LEAKAGE for rank generalization and CONFIRMED TARGET CONTAMINATION for Faltings-held-out interpretation; rebuild fold-local embeddings and remove target-defining inputs for independent prediction tests.",
+      "Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion.",
+      "Classify as historical random-feature stellar-mass baseline/control candidate, preserve absent-target diagnostic, and require exact input/schema plus explicit outcome exclusion and SFR-specific control reconstruction.",
+      "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.",
+      "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance.",
+      "Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test."
+    ]
+  },
+  {
+    "experiment_id": "EXP-CTRL-A01",
+    "title": "Random-Feature Baseline",
+    "baseline_source_page": 8,
+    "baseline_evidence_state": "C/R",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "CTRL-RF001"
+    ],
+    "finding_ids": [
+      "E-LCL-013",
+      "E-LCL-014"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Classify as historical random-feature stellar-mass baseline/control candidate, preserve absent-target diagnostic, and require exact input/schema plus explicit outcome exclusion and SFR-specific control reconstruction.",
+      "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update."
+    ]
+  },
+  {
+    "experiment_id": "EXP-CTRL-A02",
+    "title": "Arithmetic Permutation Control",
+    "baseline_source_page": 10,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "ARITH-001",
+      "SFR-A001",
+      "CTRL-A001"
+    ],
+    "finding_ids": [
+      "E-LCL-009",
+      "E-LCL-014"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting.",
+      "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update."
+    ]
+  },
+  {
+    "experiment_id": "EXP-K001",
+    "title": "Log-Normal Reciprocal-Normalization Test",
+    "baseline_source_page": 11,
+    "baseline_evidence_state": "R",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "MATH-K001",
+      "MATH-K002"
+    ],
+    "finding_ids": [
+      "E-DRV-001"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation."
+    ]
+  },
+  {
+    "experiment_id": "EXP-L001",
+    "title": "(L_{\\rm cosmo}(s)) Model Validation",
+    "baseline_source_page": 13,
+    "baseline_evidence_state": "R",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "COSMO-L001"
+    ],
+    "finding_ids": [
+      "E-LCL-012",
+      "E-DRV-003"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion.",
+      "Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test."
+    ]
+  },
+  {
+    "experiment_id": "EXP-SFR-A01",
+    "title": "Arithmetic Incremental SFR Prediction",
+    "baseline_source_page": 15,
+    "baseline_evidence_state": "N/R",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "COSMO-L002",
+      "SFR-A001"
+    ],
+    "finding_ids": [
+      "E-LCL-012",
+      "E-DRV-002",
+      "E-DRV-003"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion.",
+      "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance.",
+      "Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test."
+    ]
+  },
+  {
+    "experiment_id": "EXP-SFR-A02",
+    "title": "Arithmetic-Only SFR Prediction",
+    "baseline_source_page": 16,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED",
+    "associated_claim_ids": [
+      "SFR-A002"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-SFR-A03",
+    "title": "Extreme-SFR Robustness",
+    "baseline_source_page": 17,
+    "baseline_evidence_state": "R/N",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "SFR-E001",
+      "SFR-A003"
+    ],
+    "finding_ids": [
+      "E-DRV-002"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance."
+    ]
+  },
+  {
+    "experiment_id": "EXP-RANK-A01",
+    "title": "Rank and Cosmic Environment",
+    "baseline_source_page": 18,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "CORE-001",
+      "RANK-001",
+      "RANK-002",
+      "RANK-003",
+      "HIST-001",
+      "HIST-002",
+      "HIST-003",
+      "HIST-004",
+      "HIST-005",
+      "HIST-006"
+    ],
+    "finding_ids": [
+      "E-LCL-004",
+      "E-LCL-005"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing.",
+      "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results."
+    ]
+  },
+  {
+    "experiment_id": "EXP-RANK-A02",
+    "title": "Rank-Weighted Cosmic Topology",
+    "baseline_source_page": 20,
+    "baseline_evidence_state": "N/R",
+    "audit_date": "2026-10-03",
+    "current_status": "PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED",
+    "associated_claim_ids": [
+      "RANK-002",
+      "RANK-003",
+      "TOPO-001",
+      "TOPO-002",
+      "HIST-002",
+      "HIST-003",
+      "HIST-004",
+      "HIST-005",
+      "HIST-006"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-TOPO-A01",
+    "title": "Null-Calibrated Persistent Homology",
+    "baseline_source_page": 22,
+    "baseline_evidence_state": "R/N",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "CORE-001",
+      "TOPO-001",
+      "TOPO-002",
+      "TOPO-003",
+      "HIST-001",
+      "HIST-007",
+      "HIST-008"
+    ],
+    "finding_ids": [
+      "E-LCL-003",
+      "E-LCL-006",
+      "E-LCL-007",
+      "E-LCL-008"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs.",
+      "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.",
+      "Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01.",
+      "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion."
+    ]
+  },
+  {
+    "experiment_id": "EXP-MAP-A01",
+    "title": "Mapping-Family Comparison",
+    "baseline_source_page": 23,
+    "baseline_evidence_state": "R/N",
+    "audit_date": "2026-10-03",
+    "current_status": "HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED",
+    "associated_claim_ids": [
+      "MAP-001",
+      "MAP-002",
+      "MAP-003",
+      "MAP-004",
+      "MAP-005",
+      "HIST-001",
+      "HIST-008"
+    ],
+    "finding_ids": [
+      "E-LCL-003",
+      "E-LCL-004",
+      "E-LCL-006",
+      "E-LCL-016"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs.",
+      "Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing.",
+      "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.",
+      "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation."
+    ]
+  },
+  {
+    "experiment_id": "EXP-MAP-A02",
+    "title": "Rank-Scale Sensitivity",
+    "baseline_source_page": 24,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED",
+    "associated_claim_ids": [
+      "MAP-003"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-MAP-A03",
+    "title": "Arithmetic Generator Controls",
+    "baseline_source_page": 25,
+    "baseline_evidence_state": "N/R",
+    "audit_date": "2026-10-03",
+    "current_status": "PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED",
+    "associated_claim_ids": [
+      "ARITH-001"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-DATA-A01",
+    "title": "Cross-Survey Matching Validation",
+    "baseline_source_page": 26,
+    "baseline_evidence_state": "U/R",
+    "audit_date": "2026-10-03",
+    "current_status": "INSPECTED ASSOCIATIONS FAILED / MATCH REBUILD REQUIRED",
+    "associated_claim_ids": [
+      "CORE-001",
+      "DATA-M001"
+    ],
+    "finding_ids": [
+      "E-LCL-001",
+      "E-LCL-002",
+      "E-LCL-015"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Retain failed data-quality evidence; quarantine these tables from controlled analyses until matching is rebuilt from source catalogs with spherical distance, keyed joins, duplicate controls, tolerance sensitivity, and saved data/code hashes.",
+      "Record code variants separately and reconstruct EXP-DATA-A01 using a registered coordinate system, exact input IDs, spherical matching, and explicit identity crosswalks.",
+      "Preserve upstream identifiers as observed provenance fields; add exact release/query and processing/code bindings before declaring complete lineage."
+    ]
+  },
+  {
+    "experiment_id": "EXP-DATA-A02",
+    "title": "Data-Lineage Reconstruction",
+    "baseline_source_page": 27,
+    "baseline_evidence_state": "R",
+    "audit_date": "2026-10-03",
+    "current_status": "PROVENANCE AUDIT PARTIALLY COMPLETED / LINEAGE GAPS REMAIN",
+    "associated_claim_ids": [
+      "CORE-001",
+      "DATA-M002",
+      "HIST-008"
+    ],
+    "finding_ids": [
+      "E-DRV-004",
+      "E-LCL-003",
+      "E-LCL-004",
+      "E-LCL-014",
+      "E-LCL-015"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims.",
+      "Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs.",
+      "Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing.",
+      "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.",
+      "Preserve upstream identifiers as observed provenance fields; add exact release/query and processing/code bindings before declaring complete lineage."
+    ]
+  },
+  {
+    "experiment_id": "EXP-RTCH-B01",
+    "title": "RTCH Mathematical Consistency",
+    "baseline_source_page": 28,
+    "baseline_evidence_state": "D",
+    "audit_date": "2026-10-03",
+    "current_status": "THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE",
+    "associated_claim_ids": [
+      "RTCH-M001",
+      "RTCH-M002",
+      "RTCH-H004"
+    ],
+    "finding_ids": [
+      "E-LCL-007"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01."
+    ]
+  },
+  {
+    "experiment_id": "EXP-RTCH-B02",
+    "title": "RTCH Fifth-Force Constraint",
+    "baseline_source_page": 30,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED",
+    "associated_claim_ids": [
+      "RTCH-H001",
+      "RTCH-H003"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-RTCH-B03",
+    "title": "Trace-Free Radiation Control",
+    "baseline_source_page": 31,
+    "baseline_evidence_state": "D/N",
+    "audit_date": "2026-10-03",
+    "current_status": "THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE",
+    "associated_claim_ids": [
+      "RTCH-H002"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-FIELD-B01",
+    "title": "Arithmetic Field Construction",
+    "baseline_source_page": 32,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE",
+    "associated_claim_ids": [
+      "FIELD-001"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-FIELD-B02",
+    "title": "Arithmetic Field vs Einstein Tensor",
+    "baseline_source_page": 33,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE",
+    "associated_claim_ids": [
+      "FIELD-002",
+      "FIELD-003"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-ECC-B01",
+    "title": "Entropy/Cohomology Consistency",
+    "baseline_source_page": 34,
+    "baseline_evidence_state": "D/R",
+    "audit_date": "2026-10-03",
+    "current_status": "THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE",
+    "associated_claim_ids": [
+      "ECC-001",
+      "ECC-002"
+    ],
+    "finding_ids": [
+      "E-LCL-007",
+      "E-DRV-004"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01.",
+      "Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims."
+    ]
+  },
+  {
+    "experiment_id": "EXP-ENERGY-B01",
+    "title": "Generalized Mass-Energy Relation",
+    "baseline_source_page": 35,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE",
+    "associated_claim_ids": [
+      "ECC-003",
+      "ENERGY-001"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-COSMO-B01",
+    "title": "Arithmetic/Topological Evolution",
+    "baseline_source_page": 36,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED",
+    "associated_claim_ids": [
+      "COSMO-E001"
+    ],
+    "finding_ids": [],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution."
+    ]
+  },
+  {
+    "experiment_id": "EXP-COSMO-C01",
+    "title": "Hubble–Planck Tension Application",
+    "baseline_source_page": 36,
+    "baseline_evidence_state": "N",
+    "audit_date": "2026-10-03",
+    "current_status": "DEFERRED / PREREQUISITES UNVERIFIED; CALIBRATED DEMO INSUFFICIENT",
+    "associated_claim_ids": [
+      "COSMO-E002"
+    ],
+    "finding_ids": [
+      "E-LCL-016"
+    ],
+    "results_classification": "NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed",
+    "canonical_protocol_completed": false,
+    "evidence_promotion": false,
+    "reproducibility": "PARTIAL / EXECUTION CHAIN NOT ESTABLISHED",
+    "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED",
+    "required_manifest_fields": [
+      "source dataset identifier/release/acquisition",
+      "source and derived checksums",
+      "preprocessing and experiment code revision",
+      "environment/packages",
+      "locked parameters and mapping",
+      "random seeds and split IDs",
+      "target/outcome definition",
+      "null generation and count",
+      "effect/uncertainty/multiple comparisons",
+      "output metrics/plots",
+      "independent dataset/implementation binding"
+    ],
+    "next_actions": [
+      "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation."
+    ]
+  }
+]

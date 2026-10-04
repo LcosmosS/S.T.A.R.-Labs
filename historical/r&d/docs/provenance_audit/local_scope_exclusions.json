@@ -1,0 +1,1074 @@
+{
+  "exclusions": [
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.docker",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.ipython",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.jupyter",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.cache",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.nv",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.config",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\acsc.egg-info",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.yarn",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.conda",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.ollama",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.mamba",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.npm",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.pytest_cache",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.sage",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.gnupg",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.vscode-remote-containers",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\miniforge3",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.local",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.landscape",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.profile",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.gitconfig",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.bash_history",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.python_history",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.lesshst",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.bash_logout",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.motd_shown",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.viminfo",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.wget-hsts",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.sudo_as_admin_successful",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.bashrc",
+      "reason": "shell configuration/history or symlink"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\lmfdb\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\tests\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\tests\\__pycache__",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\.pytest_cache",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\__pycache__",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\RTCH_E1\\results\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\open-webui\\.venv",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\PythonCall.jl\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\star_docgen_v0_1\\.venv",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\ecdata\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\src\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\outputs\\20260410_013307_D816nn\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\outputs\\20260413_232621_Q7MTuI\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\outputs\\20260413_205746_pOHen1\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\acsc\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\acsc\\__pycache__",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\synthetic_cosmos_parallel\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\side quest\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\side quest\\outputs\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\side quest\\outputs\\20260406_043940_bOLTQb\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\side quest\\outputs\\20260406_050402_3M1GWT\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\side quest\\outputs\\cosmic_gs_dataset\\splatfacto\\2026-04-06_053428\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\acsc.egg-info",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\.pytest_cache",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\lmfdb\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\tests\\__pycache__",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\ecdata\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\eclib\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\acsc\\.ipynb_checkpoints",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\acsc\\__pycache__",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\GitHub\\ACSC-GLMPCT\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\GitHub\\sagemath\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\GitHub\\Symbolic-Physics-A-Unified-Cartographic-Framework\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\GitHub\\ACSC-GLMPCT\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\GitHub\\sagemath\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\GitHub\\Symbolic-Physics-A-Unified-Cartographic-Framework\\.git",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\Unreal Projects\\BSD_Map\\Intermediate\\PipInstall\\Lib\\site-packages",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\Unreal Projects\\BSD_Mapping\\Intermediate\\PipInstall\\Lib\\site-packages",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\Unreal Projects\\BSD_Paradox_Map\\Intermediate\\PipInstall\\Lib\\site-packages",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\Unreal Projects\\DalGaissianMap\\Intermediate\\PipInstall\\Lib\\site-packages",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\Unreal Projects\\DalGaissianParadox\\Intermediate\\PipInstall\\Lib\\site-packages",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\Unreal Projects\\ParadoxCorrectionMap\\Intermediate\\PipInstall\\Lib\\site-packages",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\Unreal Projects\\ParadoxMap\\Intermediate\\PipInstall\\Lib\\site-packages",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\star_docgen\\star_docgen_v0_1\\.venv",
+      "reason": "dependency/cache/credential/generated code-log/symlink tree; excluded from research content audit"
+    }
+  ],
+  "errors": [
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.azure",
+      "error": "[WinError 3] The system cannot find the path specified: '\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\kepler\\\\.azure'"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\.aws",
+      "error": "[WinError 3] The system cannot find the path specified: '\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\kepler\\\\.aws'"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\docs\\\uf02aSTAR.ipynb",
+      "error": "[WinError 2] The system cannot find the file specified: '\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\kepler\\\\S.T.A.R.-Program\\\\docs\\\\\\uf02aSTAR.ipynb'"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\historical\\r&d\\archive\\regenerate_pantheon_module.py\uf03aZone.Identifier.trashinfo",
+      "error": "[WinError 2] The system cannot find the file specified: '\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\kepler\\\\S.T.A.R.-Program\\\\historical\\\\r&d\\\\archive\\\\regenerate_pantheon_module.py\\uf03aZone.Identifier.trashinfo'"
+    },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\historical\\r&d\\archive\\regenerate_pantheon_module.py\uf03aZone.Identifier",
+      "error": "[WinError 2] The system cannot find the file specified: '\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\kepler\\\\S.T.A.R.-Program\\\\historical\\\\r&d\\\\archive\\\\regenerate_pantheon_module.py\\uf03aZone.Identifier'"
+    },
+    "[WinError 3] The system cannot find the path specified: '\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\kepler\\\\S.T.A.R.M.A.P.'",
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\\uf02aSTAR.ipynb",
+      "error": "[WinError 2] The system cannot find the file specified: '\\\\\\\\wsl.localhost\\\\Ubuntu\\\\home\\\\kepler\\\\Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\\\\\uf02aSTAR.ipynb'"
+    }
+  ],
+  "additional_content_exclusions": "Vendor LMFDB/eclib/PythonCall.jl/open-webui trees inventoried but not hashed or validated; archives inventoried but their content audit handled by extraction agent; large kepler catalogs profiled at header+1000 rows; OneDrive files over20MB inventoried as metadata-only because large cloud catalog header reads stalled on hydration; selected exact-read datasets under20MB profiled in full. Image/video/large binary assets inventoried but not content-hashed in this pass.",
+  "native_recovery": {
+    "files": 139,
+    "exclusions": [
+      {
+        "path": "/home/kepler/S.T.A.R.M.A.P./.git",
+        "reason": "dependency/cache/credential/Git/symlink"
+      },
+      {
+        "path": "/home/kepler/S.T.A.R.M.A.P./.grok",
+        "reason": "dependency/cache/credential/Git/symlink"
+      },
+      {
+        "path": "/home/kepler/S.T.A.R.M.A.P./node_modules",
+        "reason": "dependency/cache/credential/Git/symlink"
+      },
+      {
+        "path": "/home/kepler/S.T.A.R.M.A.P./.vercel",
+        "reason": "dependency/cache/credential/Git/symlink"
+      }
+    ],
+    "errors": [],
+    "five_noncredential_UNC_errors_resolved": true
+  },
+  "cloud_content_gaps": [
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\2Mass.csv",
+      "size_bytes": "105082595",
+      "mtime_utc": "2025-04-08T14:20:56Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\ALLWISE_SDSSDR12.csv",
+      "size_bytes": "407300184",
+      "mtime_utc": "2025-04-17T04:56:52Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\ALLWISE_SDSSDR16.csv",
+      "size_bytes": "973095809",
+      "mtime_utc": "2025-04-13T22:44:36Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Cosmic_Interweb.zip",
+      "size_bytes": "25464432",
+      "mtime_utc": "2025-04-23T05:01:00Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\final_sdss_dataset.csv",
+      "size_bytes": "36581702",
+      "mtime_utc": "2025-04-16T09:55:31Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Flux.csv",
+      "size_bytes": "70671688",
+      "mtime_utc": "2025-04-12T23:46:29Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Flux_pmqr771.csv",
+      "size_bytes": "34172758",
+      "mtime_utc": "2025-04-12T22:49:12Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\GAIADR3AP_SDSSDR16.csv",
+      "size_bytes": "1056115579",
+      "mtime_utc": "2025-04-14T08:07:33Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\GAIAEDR3_SSDSDR12.csv",
+      "size_bytes": "1028873779",
+      "mtime_utc": "2025-04-17T05:32:48Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\galah_dr4_vac_wise_tmass_gaiadr3_240705.fits",
+      "size_bytes": "778199040",
+      "mtime_utc": "2025-04-12T22:06:50Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\GALAXGR6+7AIS_SDSSDR16.csv",
+      "size_bytes": "1048354434",
+      "mtime_utc": "2025-04-14T02:56:07Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\GalSpecExtra_Bigsby.csv",
+      "size_bytes": "93780286",
+      "mtime_utc": "2025-04-12T23:17:15Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\GZ2.csv",
+      "size_bytes": "402172469",
+      "mtime_utc": "2025-04-13T01:31:28Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\gz2_hart16.fits.gz",
+      "size_bytes": "66801851",
+      "mtime_utc": "2025-04-13T01:14:37Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\GZ_410166.csv",
+      "size_bytes": "116384821",
+      "mtime_utc": "2025-04-05T19:33:49Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\GZ_410166_2.csv",
+      "size_bytes": "93651344",
+      "mtime_utc": "2025-04-05T19:37:56Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\merged_galspec_gz2.csv",
+      "size_bytes": "413688392",
+      "mtime_utc": "2025-04-13T01:46:36Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\PanST2DR1_SDSSDR16.csv",
+      "size_bytes": "1059007605",
+      "mtime_utc": "2025-04-14T10:38:03Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\PanSTARRSDR1_SDSSDR9.csv",
+      "size_bytes": "200353785",
+      "mtime_utc": "2025-04-17T05:57:00Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\PanSTDR1_SDSSDR16.csv",
+      "size_bytes": "1059007605",
+      "mtime_utc": "2025-04-14T20:24:42Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\PhotoObj_pmqr771.csv",
+      "size_bytes": "120891007",
+      "mtime_utc": "2025-04-07T15:06:32Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Research-Analysis+Testing_pt.4.zip",
+      "size_bytes": "4118965488",
+      "mtime_utc": "2025-04-30T13:02:17Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\result.csv",
+      "size_bytes": "23272467",
+      "mtime_utc": "2025-04-06T00:54:31Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\SDSSDR18_G_pmqr771.csv",
+      "size_bytes": "5264526",
+      "mtime_utc": "2025-04-04T18:19:10Z",
+      "reason": "cloud_file_read_stalled_metadata_only"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\SDSS_MangaSpec.csv",
+      "size_bytes": "71708840",
+      "mtime_utc": "2025-04-12T15:57:11Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\spAllLine-v6_0_4.fits",
+      "size_bytes": "69946560",
+      "mtime_utc": "2025-04-12T02:13:29Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\spec_galaxies.csv",
+      "size_bytes": "145445404",
+      "mtime_utc": "2025-04-16T02:12:04Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\STARHORSE2021_SDSSDR16.csv",
+      "size_bytes": "1035818380",
+      "mtime_utc": "2025-04-14T00:48:53Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Stellar_Mass_Bigsby.csv",
+      "size_bytes": "107940",
+      "mtime_utc": "2025-03-28T04:17:50Z",
+      "reason": "cloud_file_read_stalled_metadata_only"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\UKIDSSDR9LAS_SDSSDR16..csv",
+      "size_bytes": "1019317332",
+      "mtime_utc": "2025-04-14T05:09:58Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Unconfirmed 701093.crdownload",
+      "size_bytes": "526392232",
+      "mtime_utc": "2025-03-27T04:23:45Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\V147sdss12.csv",
+      "size_bytes": "159849965",
+      "mtime_utc": "2025-04-08T14:32:08Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\_STAR_preprocess.csv",
+      "size_bytes": "324676317",
+      "mtime_utc": "2025-04-15T22:19:55Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\best_rf_model.pkl",
+      "size_bytes": "83429553",
+      "mtime_utc": "2025-04-03T15:38:21Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\GalSpecExtra.csv",
+      "size_bytes": "93780286",
+      "mtime_utc": "2025-04-12T23:17:15Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\GZ_410166.csv",
+      "size_bytes": "116384821",
+      "mtime_utc": "2025-04-05T19:33:49Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\merged_data.csv",
+      "size_bytes": "110628824",
+      "mtime_utc": "2025-04-03T12:17:04Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\TwoMass_SDSSDR16.csv",
+      "size_bytes": "1001913542",
+      "mtime_utc": "2025-04-13T19:56:26Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\1775435298739A.csv",
+      "size_bytes": "77016139",
+      "mtime_utc": "2026-04-06T00:34:22Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\1775520650130A.csv",
+      "size_bytes": "306793834",
+      "mtime_utc": "2026-04-07T00:17:25Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\2Mass.csv",
+      "size_bytes": "105082595",
+      "mtime_utc": "2025-04-08T14:20:56Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\ALLWISE_SDSSDR12.csv",
+      "size_bytes": "407300184",
+      "mtime_utc": "2025-04-17T04:56:52Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\ALLWISE_SDSSDR16.csv",
+      "size_bytes": "973095809",
+      "mtime_utc": "2025-04-13T22:44:36Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\COM_CosmoParams_base-plikHM-TTTEEE-lowl-lowE_R3.00.zip",
+      "size_bytes": "65362284",
+      "mtime_utc": "2026-04-30T06:43:51Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\cosmic_web_expansion.csv",
+      "size_bytes": "57776279",
+      "mtime_utc": "2026-04-10T19:36:49Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\DataRelease-main.zip",
+      "size_bytes": "509089980",
+      "mtime_utc": "2026-05-03T04:47:23Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\DESIDR8_SDSSDR16.csv",
+      "size_bytes": "77016139",
+      "mtime_utc": "2026-04-06T08:09:58Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\GalSpecExtra.csv",
+      "size_bytes": "93780286",
+      "mtime_utc": "2026-04-09T02:44:58Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\III286.csv",
+      "size_bytes": "81797094",
+      "mtime_utc": "2026-04-07T20:55:26Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\JApJ94494_2MASS.csv",
+      "size_bytes": "150875133",
+      "mtime_utc": "2026-04-07T02:12:24Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\JApJ94494_2MASS_GAIADR3_EPOCH.csv",
+      "size_bytes": "392590812",
+      "mtime_utc": "2026-04-08T16:23:01Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\lmfdb_raw_parsed.7z",
+      "size_bytes": "49086714",
+      "mtime_utc": "2026-04-18T13:14:04Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\lmfdb_raw_parsed.csv",
+      "size_bytes": "195840806",
+      "mtime_utc": "2026-04-18T08:59:50Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\merged_galspec_gz2.csv",
+      "size_bytes": "413688392",
+      "mtime_utc": "2026-04-08T23:59:00Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\NULL STAR R&D.zip",
+      "size_bytes": "2206990646",
+      "mtime_utc": "2026-09-19T20:58:56Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\NULL_STAR_R&D_4.zip",
+      "size_bytes": "655884309",
+      "mtime_utc": "2026-09-19T21:12:53Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\PhotoObj_pmqr771.csv",
+      "size_bytes": "120891007",
+      "mtime_utc": "2025-04-07T15:06:32Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\pipe3d_data.csv",
+      "size_bytes": "86685754",
+      "mtime_utc": "2025-04-03T05:31:11Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\pipe3d_data2.csv",
+      "size_bytes": "96560331",
+      "mtime_utc": "2025-04-03T07:52:22Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\pipe3d_data_part1.csv",
+      "size_bytes": "24084566",
+      "mtime_utc": "2025-04-03T08:26:57Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\pipe3d_data_part2.csv",
+      "size_bytes": "24297787",
+      "mtime_utc": "2025-04-03T08:26:58Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\pipe3d_data_part3.csv",
+      "size_bytes": "24176490",
+      "mtime_utc": "2025-04-03T08:26:59Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\pipe3d_data_part4.csv",
+      "size_bytes": "24033783",
+      "mtime_utc": "2025-04-03T08:27:00Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\result.csv",
+      "size_bytes": "23272467",
+      "mtime_utc": "2025-04-06T00:54:31Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\S.T.A.R.-Program-main.zip",
+      "size_bytes": "122984095",
+      "mtime_utc": "2026-09-19T04:09:45Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\SDSS17Pipe3D_v3_1_1.fits",
+      "size_bytes": "55889280",
+      "mtime_utc": "2025-04-03T04:45:10Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\SDSSDR18_200000.csv",
+      "size_bytes": "33007497",
+      "mtime_utc": "2025-04-05T01:57:25Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\SDSSDR18_G2.csv",
+      "size_bytes": "80030904",
+      "mtime_utc": "2025-04-04T20:33:06Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\SDSS_MangaSpec.csv",
+      "size_bytes": "71708840",
+      "mtime_utc": "2025-04-12T15:57:11Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\SDSS_MangaSpec_with_fluxes.csv",
+      "size_bytes": "51957133",
+      "mtime_utc": "2025-04-12T23:55:49Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\spAllLine-v6_0_4.fits",
+      "size_bytes": "69946560",
+      "mtime_utc": "2025-04-12T02:13:29Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STARHORSE2021_SDSSDR16.csv",
+      "size_bytes": "528087420",
+      "mtime_utc": "2025-04-11T04:38:28Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\star_doc_gen.zip",
+      "size_bytes": "46161362",
+      "mtime_utc": "2026-09-26T03:31:13Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STAR_R&D.zip",
+      "size_bytes": "1193533591",
+      "mtime_utc": "2026-09-19T18:32:26Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STAR_R&D_1.zip",
+      "size_bytes": "190649173",
+      "mtime_utc": "2026-09-19T20:52:39Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STAR_R&D_2.zip",
+      "size_bytes": "56726855",
+      "mtime_utc": "2026-09-19T20:54:39Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STAR_R&D_3.zip",
+      "size_bytes": "167115544",
+      "mtime_utc": "2026-09-19T21:09:19Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STAR_R&D_4.zip",
+      "size_bytes": "195073412",
+      "mtime_utc": "2026-09-19T21:23:40Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STAR_R&D_5.zip",
+      "size_bytes": "458489639",
+      "mtime_utc": "2026-09-19T21:26:02Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\StellarMassesLambdar.csv",
+      "size_bytes": "123684281",
+      "mtime_utc": "2025-04-04T11:13:30Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\StellarMassesLambdar.fits",
+      "size_bytes": "53251200",
+      "mtime_utc": "2025-04-04T11:06:58Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\TwoMass_pmqr771_1.csv",
+      "size_bytes": "408959043",
+      "mtime_utc": "2025-04-12T01:14:12Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\TwoMass_SDSSDR16.csv",
+      "size_bytes": "393069426",
+      "mtime_utc": "2025-04-11T04:41:48Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\UKIDSSDR9LAS_SDSSDR16.csv",
+      "size_bytes": "391104227",
+      "mtime_utc": "2025-04-11T04:17:32Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\v147.csv",
+      "size_bytes": "134245724",
+      "mtime_utc": "2025-04-10T06:14:53Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\V147sdss12.csv",
+      "size_bytes": "159849965",
+      "mtime_utc": "2025-04-08T14:32:08Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\v154.csv",
+      "size_bytes": "214800314",
+      "mtime_utc": "2025-04-10T06:12:32Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\_STAR_preprocess.csv",
+      "size_bytes": "324676317",
+      "mtime_utc": "2025-04-15T22:19:55Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\best_rf_model.pkl",
+      "size_bytes": "83429553",
+      "mtime_utc": "2025-04-03T15:38:21Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\GalSpecExtra.csv",
+      "size_bytes": "93780286",
+      "mtime_utc": "2025-04-12T23:17:15Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\GZ_410166.csv",
+      "size_bytes": "116384821",
+      "mtime_utc": "2025-04-05T19:33:49Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\merged_data.csv",
+      "size_bytes": "110628824",
+      "mtime_utc": "2025-04-03T12:17:04Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\TwoMass_SDSSDR16.csv",
+      "size_bytes": "1001913542",
+      "mtime_utc": "2025-04-13T19:56:26Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\PhotoObj_pmqr771.csv",
+      "size_bytes": "120891007",
+      "mtime_utc": "2025-04-07T15:06:32Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\pipe3d_data.csv",
+      "size_bytes": "86685754",
+      "mtime_utc": "2025-04-03T05:31:11Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\pipe3d_data2.csv",
+      "size_bytes": "96560331",
+      "mtime_utc": "2025-04-03T07:52:22Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\pipe3d_data_part1.csv",
+      "size_bytes": "24084566",
+      "mtime_utc": "2025-04-03T08:26:57Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\pipe3d_data_part2.csv",
+      "size_bytes": "24297787",
+      "mtime_utc": "2025-04-03T08:26:58Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\pipe3d_data_part3.csv",
+      "size_bytes": "24176490",
+      "mtime_utc": "2025-04-03T08:26:59Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\pipe3d_data_part4.csv",
+      "size_bytes": "24033783",
+      "mtime_utc": "2025-04-03T08:27:00Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\result.csv",
+      "size_bytes": "23272467",
+      "mtime_utc": "2025-04-06T00:54:31Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\SDSS17Pipe3D_v3_1_1.fits",
+      "size_bytes": "55889280",
+      "mtime_utc": "2025-04-03T04:45:10Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\SDSSDR18_200000.csv",
+      "size_bytes": "33007497",
+      "mtime_utc": "2025-04-05T01:57:25Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\SDSSDR18_G2.csv",
+      "size_bytes": "80030904",
+      "mtime_utc": "2025-04-04T20:33:06Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\SDSS_MangaSpec.csv",
+      "size_bytes": "71708840",
+      "mtime_utc": "2025-04-12T15:57:11Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\SDSS_MangaSpec_with_fluxes.csv",
+      "size_bytes": "51957133",
+      "mtime_utc": "2025-04-12T23:55:49Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\spAllLine-v6_0_4.fits",
+      "size_bytes": "69946560",
+      "mtime_utc": "2025-04-12T02:13:29Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\STARHORSE2021_SDSSDR16.csv",
+      "size_bytes": "528087420",
+      "mtime_utc": "2025-04-11T04:38:28Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\StellarMassesLambdar.csv",
+      "size_bytes": "123684281",
+      "mtime_utc": "2025-04-04T11:13:30Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\StellarMassesLambdar.fits",
+      "size_bytes": "53251200",
+      "mtime_utc": "2025-04-04T11:06:58Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\TwoMass_pmqr771_1.csv",
+      "size_bytes": "408959043",
+      "mtime_utc": "2025-04-12T01:14:12Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\TwoMass_SDSSDR16.csv",
+      "size_bytes": "393069426",
+      "mtime_utc": "2025-04-11T04:41:48Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\UKIDSSDR9LAS_SDSSDR16.csv",
+      "size_bytes": "391104227",
+      "mtime_utc": "2025-04-11T04:17:32Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\v147.csv",
+      "size_bytes": "134245724",
+      "mtime_utc": "2025-04-10T06:14:53Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\V147sdss12.csv",
+      "size_bytes": "159849965",
+      "mtime_utc": "2025-04-08T14:32:08Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    },
+    {
+      "path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\Documents\\STAR\\v154.csv",
+      "size_bytes": "214800314",
+      "mtime_utc": "2025-04-10T06:12:32Z",
+      "reason": "large_onedrive_metadata_only_cloud_hydration_not_completed"
+    }
+  ],
+  "hash_read_errors": []
+}

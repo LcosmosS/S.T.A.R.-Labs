@@ -1,0 +1,129 @@
+{
+  "audit_date": "2026-10-03",
+  "baseline_claims": 51,
+  "updated_claims": 51,
+  "baseline_canonical_experiments": 25,
+  "updated_canonical_experiments": 25,
+  "baseline_overall_crosswalk_rows": 43,
+  "updated_crosswalk_rows": 51,
+  "historical_claims_added_to_explicit_current_crosswalk": 8,
+  "duplicate_claim_ids": [],
+  "duplicate_experiment_ids": [],
+  "missing_claim_updates": [],
+  "broken_registered_links": [],
+  "unresolved_original_references": [
+    {
+      "historical_reference": "EXP-CORE-A01",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "CORE-001"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-RANK-A03",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "RANK-003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-TOPO-A02",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "TOPO-002"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-TOPO-A03",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "TOPO-003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-K002",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "MATH-K003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "CTRL-COSMO-001",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "COSMO-R001"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "DATA-PROV-001",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": "EXP-DATA-A02",
+      "alias_resolution": "UNCONFIRMED",
+      "referencing_claims": [
+        "DATA-M002"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-FIELD-B03",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "FIELD-003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-ECC-B02",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "ECC-003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-COSMO-B02",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": "EXP-COSMO-C01",
+      "alias_resolution": "UNCONFIRMED",
+      "referencing_claims": [
+        "COSMO-E002"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    }
+  ],
+  "new_controlled_experiments_marked_complete": 0,
+  "new_independent_replications": 0,
+  "source_preservation": "Original PDFs, native baseline text and all research source files preserved; current supplements govern the audit assessment."
+}
