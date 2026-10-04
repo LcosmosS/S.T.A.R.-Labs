@@ -166,12 +166,11 @@ def _metadata_paths(
     direct_ranges = root.with_suffix(".ranges")
     direct_properties = root.with_suffix(".properties.ini")
 
-    if paramnames_path is None and not direct_paramnames.is_file():
-        if root.name.endswith("_post_BAO"):
-            base_root = root.with_name(root.name.removesuffix("_post_BAO"))
-            fallback = base_root.with_suffix(".paramnames")
-            if fallback.is_file():
-                direct_paramnames = fallback
+    if paramnames_path is None and root.name.endswith("_post_BAO"):
+        # Importance-sampled post-BAO chains reuse the base parameter schema.
+        # A caller may override this only by passing paramnames_path explicitly.
+        base_root = root.with_name(root.name.removesuffix("_post_BAO"))
+        direct_paramnames = base_root.with_suffix(".paramnames")
 
     resolved = {
         "paramnames": (
