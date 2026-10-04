@@ -6,6 +6,7 @@ of manufacturing finite likelihoods.
 
 from __future__ import annotations
 
+import numpy as np
 import yaml
 
 from src.likelihoods.cosmic_chronometers import CosmicChronometers
@@ -39,28 +40,59 @@ def load_dataset(name):
     return DATASET_REGISTRY[name]
 
 
+def _validate_positive_finite(mapping, key):
+    try:
+        value = float(mapping[key])
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"likelihoods.{key} must be numeric") from exc
+    if not np.isfinite(value) or value <= 0:
+        raise ValueError(f"likelihoods.{key} must be finite and positive")
+    return value
+
+
 def _validate_config(config):
     if not isinstance(config, dict):
         raise ValueError("inference config must be a mapping")
-    for key in ("model", "datasets", "priors", "proposal_widths", "mcmc", "output_dir"):
+    for key in (
+        "model",
+        "datasets",
+        "likelihoods",
+        "priors",
+        "proposal_widths",
+        "mcmc",
+        "output_dir",
+    ):
         if key not in config:
             raise KeyError(f"inference config missing required section: {key}")
     for key in ("planck", "bao", "cc", "sn"):
         if key not in config["datasets"]:
             raise KeyError(f"inference config missing datasets.{key}")
+    for key in ("shoes_H0", "shoes_sigma", "bao_r_d"):
+        if key not in config["likelihoods"]:
+            raise KeyError(f"inference config missing likelihoods.{key}")
+        _validate_positive_finite(config["likelihoods"], key)
     if "seed" not in config["mcmc"]:
         raise KeyError("inference config must declare mcmc.seed")
 
 
 def build_joint_likelihood(config):
+    _validate_config(config)
+
     planck = load_dataset(config["datasets"]["planck"])
     bao = load_dataset(config["datasets"]["bao"])
     cc = load_dataset(config["datasets"]["cc"])
+    sn = load_dataset(config["datasets"]["sn"])
 
-    planck_like = PlanckSH0ESJointLikelihood(planck)
-    bao_like = DESIBAO(bao)
+    nuisance = config["likelihoods"]
+    planck_like = PlanckSH0ESJointLikelihood(
+        planck,
+        H0_shoes=float(nuisance["shoes_H0"]),
+        sigma_shoes=float(nuisance["shoes_sigma"]),
+    )
+    bao_like = DESIBAO(bao, r_d=float(nuisance["bao_r_d"]))
     cc_like = CosmicChronometers(cc)
-    return JointLikelihood(planck_like, bao_like, cc_like)
+    sn_like = PantheonPlusLikelihood(sn)
+    return JointLikelihood(planck_like, bao_like, cc_like, sn_like)
 
 
 def run_full_inference(config_path):
@@ -73,7 +105,6 @@ def run_full_inference(config_path):
     cc = load_dataset(config["datasets"]["cc"])
     sn = load_dataset(config["datasets"]["sn"])
 
-    PantheonPlusLikelihood(sn)
     joint = build_joint_likelihood(config)
 
     mcmc = JointMCMCPipeline(

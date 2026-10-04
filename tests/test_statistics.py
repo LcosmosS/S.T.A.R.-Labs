@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from acsc.statistics import effect_size, empirical_p_value, w2_between_diagrams
+from src.acsc.statistics import effect_size, empirical_p_value, w2_between_diagrams
 
 
 def test_empirical_p_value_has_finite_sample_correction():

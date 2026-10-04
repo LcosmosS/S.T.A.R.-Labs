@@ -25,7 +25,9 @@ tda = ["gudhi>=3.10.0", "POT>=0.9.5,<1.0", "ripser==0.6.14", "persim==0.3.8"]
 dev = ["pytest", "pytest-cov", "black", "isort", "pre-commit"]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
+include = ["src*", "scripts*"]
+namespaces = true
 
 [tool.black]
 line-length = 88
@@ -41,4 +43,3 @@ python_files = ["test_*.py", "*_test.py"]
 
 [project.scripts]
 star-run-inference = "src.cli.star_run_inference:main"
-

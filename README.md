@@ -245,11 +245,15 @@ The presence of an implementation does not imply that the corresponding scientif
 
 ### Scientific runtime policy
 
-Controlled scientific execution is fail-fast. Invalid or missing physical inputs are not replaced with typical cosmological values, non-finite likelihoods are not converted into finite penalties, and stochastic utilities require declared seeds. Historical exploratory behavior remains preserved in the repository history rather than being silently carried into controlled execution.
+Controlled scientific execution is fail-fast. Invalid or missing physical inputs are not replaced with typical cosmological values, non-finite likelihoods are not converted into finite penalties, and stochastic utilities require declared seeds. Legacy Planck handling is also fail-closed: the tracked `base_plikHM_TTTEEE_lowl_lowE*.txt` objects are high-dimensional GetDist/CosmoMC sample chains, not three-column `z, mu, sigma_mu` observations. Supplied `.paramnames`, `.ranges`, and `.properties.ini` metadata are now parsed to assign validated names to the base chain and the post-BAO extension; the legacy compressed interpretation remains forbidden. This metadata work does not alter registry eligibility or constitute scientific-support promotion. Historical exploratory behavior remains preserved in the repository history rather than being silently carried into controlled execution.
 
 Arithmetic projection retains the historical sample-relative normalization for backward-compatible exploratory use, but controlled mapping experiments should provide fixed normalization bounds from their registered parameter set so the coordinate assigned to an arithmetic object does not change when unrelated records are added to the sample.
 
-Scheduled Google Docs acquisition is capture-only: CI downloads and hashes source text into a workflow artifact for review. It does not commit generated provenance material back into the research source of record.
+Scheduled Google Docs acquisition is capture-only: CI downloads and hashes source text into a workflow artifact for review. It does not commit generated provenance material back into the research source of record. Captures are validated against their manifest and hashes before upload; persistent provenance still requires a reviewed registry update and is never auto-promoted.
+
+The installable package uses the canonical `src.*` namespace. CI builds a wheel and installs it outside the repository checkout before testing the installed CLI, so repository-root path injection cannot make a broken distribution appear healthy.
+
+A separate controlled-readiness check validates any future `Controlled_Execution_Eligible=true` claim against verified provenance and preregistered parameter/null definitions. Zero ready experiments is a valid software state and is reported explicitly; a green software check is not scientific support.
 
 
 The repository uses automated checks to protect the research control layer.

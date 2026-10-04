@@ -6,6 +6,9 @@ on:
     paths:
       - docker/Dockerfile
       - requirements.txt
+      - pyproject.toml
+      - setup.py
+      - "src/**"
 
 jobs:
   build:

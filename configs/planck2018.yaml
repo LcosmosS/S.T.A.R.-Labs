@@ -26,10 +26,15 @@ datasets:
   cc: COSMIC_CHRONOMETERS
   sn: PANTHEON_PLUS_FULL
 
+# Explicit nuisance/software assumptions. These are not registered evidence.
+likelihoods:
+  shoes_H0: 73.04
+  shoes_sigma: 1.04
+  bao_r_d: 147.1
+
 mcmc:
   seed: 0
   theta0: [70, 0.3, 0.7, 0, 0]
   nsteps: 8000
 
 output_dir: "paper_figures_planck2018"
-
