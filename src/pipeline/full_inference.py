@@ -6,6 +6,7 @@ of manufacturing finite likelihoods.
 
 from __future__ import annotations
 
+import numpy as np
 import yaml
 
 from src.likelihoods.cosmic_chronometers import CosmicChronometers
@@ -39,6 +40,16 @@ def load_dataset(name):
     return DATASET_REGISTRY[name]
 
 
+def _validate_positive_finite(mapping, key):
+    try:
+        value = float(mapping[key])
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"likelihoods.{key} must be numeric") from exc
+    if not np.isfinite(value) or value <= 0:
+        raise ValueError(f"likelihoods.{key} must be finite and positive")
+    return value
+
+
 def _validate_config(config):
     if not isinstance(config, dict):
         raise ValueError("inference config must be a mapping")
@@ -59,10 +70,7 @@ def _validate_config(config):
     for key in ("shoes_H0", "shoes_sigma", "bao_r_d"):
         if key not in config["likelihoods"]:
             raise KeyError(f"inference config missing likelihoods.{key}")
-    if float(config["likelihoods"]["shoes_sigma"]) <= 0:
-        raise ValueError("likelihoods.shoes_sigma must be positive")
-    if float(config["likelihoods"]["bao_r_d"]) <= 0:
-        raise ValueError("likelihoods.bao_r_d must be positive")
+        _validate_positive_finite(config["likelihoods"], key)
     if "seed" not in config["mcmc"]:
         raise KeyError("inference config must declare mcmc.seed")
 

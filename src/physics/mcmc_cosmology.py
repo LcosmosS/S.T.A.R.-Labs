@@ -24,12 +24,23 @@ class MCMCCosmologyFitter:
         self.seed = int(seed)
         self.rng = np.random.default_rng(self.seed)
 
+        for name in self.param_names:
+            if name not in self.proposal_widths:
+                raise KeyError(f"missing proposal width for {name}")
+            width = float(self.proposal_widths[name])
+            if not np.isfinite(width) or width <= 0:
+                raise ValueError(
+                    f"proposal width must be finite and positive for {name}"
+                )
+
     def _log_prior(self, theta):
         lp = 0.0
         for val, name in zip(theta, self.param_names):
             mu, sigma = self.priors[name]
-            if sigma <= 0:
-                raise ValueError(f"prior sigma must be positive for {name}")
+            if not np.isfinite(mu) or not np.isfinite(sigma) or sigma <= 0:
+                raise ValueError(
+                    f"prior parameters must be finite with positive sigma for {name}"
+                )
             lp += -0.5 * ((val - mu) / sigma) ** 2
         return float(lp)
 
@@ -56,10 +67,16 @@ class MCMCCosmologyFitter:
 
         if not (z.shape == mu_obs.shape == sigma_mu.shape):
             raise ValueError("z, mu_obs, and sigma_mu must have equal shapes")
+        if z.size == 0:
+            raise ValueError("at least one observation is required")
+        if not np.all(np.isfinite(z)) or not np.all(np.isfinite(mu_obs)):
+            raise ValueError("z and mu_obs must contain only finite values")
         if np.any(sigma_mu <= 0) or not np.all(np.isfinite(sigma_mu)):
             raise ValueError("sigma_mu must be finite and positive")
         if theta0.size != len(self.param_names):
             raise ValueError("theta0 length must match param_names")
+        if not np.all(np.isfinite(theta0)):
+            raise ValueError("theta0 must contain only finite values")
         if int(nsteps) < 2:
             raise ValueError("nsteps must be at least 2")
 
@@ -72,7 +89,9 @@ class MCMCCosmologyFitter:
         for i in range(1, int(nsteps)):
             proposal = chain[i - 1].copy()
             for j, name in enumerate(self.param_names):
-                proposal[j] += self.rng.normal(0.0, self.proposal_widths[name])
+                proposal[j] += self.rng.normal(
+                    0.0, float(self.proposal_widths[name])
+                )
 
             logp_new = self._log_posterior(proposal, z, mu_obs, sigma_mu)
             accept = False

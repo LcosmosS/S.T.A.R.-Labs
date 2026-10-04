@@ -155,3 +155,27 @@ def test_inference_config_requires_explicit_likelihood_assumptions():
     del config["likelihoods"]["bao_r_d"]
     with pytest.raises(KeyError, match="likelihoods.bao_r_d"):
         full._validate_config(config)
+
+
+@pytest.mark.parametrize(
+    ("key", "value"),
+    [
+        ("shoes_H0", np.inf),
+        ("shoes_H0", np.nan),
+        ("shoes_H0", 0.0),
+        ("shoes_sigma", np.inf),
+        ("shoes_sigma", np.nan),
+        ("shoes_sigma", 0.0),
+        ("bao_r_d", np.inf),
+        ("bao_r_d", np.nan),
+        ("bao_r_d", 0.0),
+    ],
+)
+def test_inference_config_rejects_nonfinite_or_nonpositive_likelihood_values(
+    key, value
+):
+    config = _base_config({"planck": "p", "bao": "b", "cc": "c", "sn": "s"})
+    config["likelihoods"][key] = value
+
+    with pytest.raises(ValueError, match=f"likelihoods.{key}"):
+        full._validate_config(config)

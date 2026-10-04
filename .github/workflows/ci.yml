@@ -41,23 +41,37 @@ jobs:
         run: |
           python -m pip install --upgrade pip build
           python -m build
-      - name: Install wheel outside repository checkout
+      - name: Install and test wheel outside repository checkout
         shell: bash
         run: |
           set -euo pipefail
           python -m venv /tmp/star-wheel
           /tmp/star-wheel/bin/python -m pip install --upgrade pip
-          /tmp/star-wheel/bin/python -m pip install dist/*.whl
+          /tmp/star-wheel/bin/python -m pip install -r requirements.txt pytest
+          /tmp/star-wheel/bin/python -m pip install dist/*.whl --no-deps
+
+          rm -rf /tmp/star-wheel-tests
+          mkdir -p /tmp/star-wheel-tests
+          cp             tests/test_projection.py             tests/test_statistics.py             tests/test_tda.py             tests/test_fail_closed_runtime.py             tests/test_reproducibility.py             tests/test_inference_control.py             tests/test_witness_complex.py             tests/test_bootstrap_stability.py             tests/test_planck_compressed_loader.py             tests/test_controlled_readiness.py             tests/test_provenance_capture_validator.py             /tmp/star-wheel-tests/
+
           cd /tmp
+          export PYTHONSAFEPATH=1
           /tmp/star-wheel/bin/python - <<'PY'
+          from pathlib import Path
           import src
           from src.pipeline.full_inference import run_full_inference
           from src.acsc.projection import project
+          from src.likelihoods.data.planck_compressed import PLANCK_COMPRESSED
+
+          package_path = Path(src.__file__).resolve()
+          assert "site-packages" in str(package_path), package_path
           assert callable(run_full_inference)
           assert callable(project)
-          print("clean wheel imports passed")
+          assert PLANCK_COMPRESSED is not None
+          print("clean wheel imports passed:", package_path)
           PY
           /tmp/star-wheel/bin/star-run-inference --help
+          /tmp/star-wheel/bin/python -m pytest -q /tmp/star-wheel-tests
 
   registry-validation:
     runs-on: ubuntu-latest
@@ -304,6 +318,7 @@ jobs:
           python-version: "3.12"
       - name: Validate controlled-execution readiness claims
         run: |
+          set -o pipefail
           mkdir -p results
           python scripts/check_controlled_readiness.py | tee results/controlled_readiness.txt
       - uses: actions/upload-artifact@v4

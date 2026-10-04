@@ -245,7 +245,7 @@ The presence of an implementation does not imply that the corresponding scientif
 
 ### Scientific runtime policy
 
-Controlled scientific execution is fail-fast. Invalid or missing physical inputs are not replaced with typical cosmological values, non-finite likelihoods are not converted into finite penalties, and stochastic utilities require declared seeds. Historical exploratory behavior remains preserved in the repository history rather than being silently carried into controlled execution.
+Controlled scientific execution is fail-fast. Invalid or missing physical inputs are not replaced with typical cosmological values, non-finite likelihoods are not converted into finite penalties, and stochastic utilities require declared seeds. Legacy Planck compressed-table loading is also fail-closed: the observational table is not bundled from the current zero-byte repository placeholder; callers must provide a provenance-resolved path explicitly or via `STAR_PLANCK_COMPRESSED_PATH`. Historical exploratory behavior remains preserved in the repository history rather than being silently carried into controlled execution.
 
 Arithmetic projection retains the historical sample-relative normalization for backward-compatible exploratory use, but controlled mapping experiments should provide fixed normalization bounds from their registered parameter set so the coordinate assigned to an arithmetic object does not change when unrelated records are added to the sample.
 

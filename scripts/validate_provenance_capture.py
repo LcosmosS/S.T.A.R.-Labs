@@ -46,10 +46,12 @@ def validate(capture_dir: Path):
         seen_ids.add(doc_id)
         seen_indices.add(index)
 
-        output = Path(row["output_path"])
-        if not output.is_absolute():
-            output = Path.cwd() / output
-        output = output.resolve()
+        relative_output = Path(row["output_path"])
+        if relative_output.is_absolute():
+            raise ValueError(
+                f"captured output_path must be artifact-relative: {relative_output}"
+            )
+        output = (capture_dir / relative_output).resolve()
         if capture_dir not in output.parents:
             raise ValueError(f"captured file escapes capture directory: {output}")
         if not output.is_file() or output.stat().st_size == 0:

@@ -12,6 +12,9 @@ import csv
 from pathlib import Path
 
 
+ALLOWED_READY_EVIDENCE_STATUSES = {"controlled", "derived"}
+
+
 def _rows(path):
     with path.open(newline="", encoding="utf-8") as stream:
         return list(csv.DictReader(stream))
@@ -74,11 +77,14 @@ def assess(root: Path):
             failures.append(
                 f"{exp['Experiment_ID']}: provenance is not verified"
             )
-        if prov.get("Evidence_Status") in {"historical", "unknown", "negative_null"}:
+
+        evidence_status = prov.get("Evidence_Status")
+        if evidence_status not in ALLOWED_READY_EVIDENCE_STATUSES:
             failures.append(
-                f"{exp['Experiment_ID']}: provenance evidence status is "
-                f"{prov.get('Evidence_Status')}"
+                f"{exp['Experiment_ID']}: provenance evidence status "
+                f"{evidence_status!r} is not accepted for controlled execution"
             )
+
         if parameter.get("Preregistration_Status") not in {"preregistered", "locked"}:
             failures.append(
                 f"{exp['Experiment_ID']}: parameter set is not preregistered"

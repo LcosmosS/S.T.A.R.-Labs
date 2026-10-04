@@ -213,7 +213,8 @@ jobs:
           while IFS= read -r doc_id; do
             [[ -z "$doc_id" ]] && continue
             index=$((index + 1))
-            output="$capture_dir/raw/doc_$(printf '%03d' "$index")_${doc_id}.txt"
+            relative_output="raw/doc_$(printf '%03d' "$index")_${doc_id}.txt"
+            output="$capture_dir/$relative_output"
             url="https://docs.google.com/document/d/${doc_id}/export?format=txt"
             echo "Downloading Google Doc ${index}: ${doc_id}"
             meta=$(curl --fail --location --silent --show-error --retry 3 \
@@ -238,7 +239,7 @@ jobs:
             printf '%s,%s,%s,%s,%s,%s,%s\n' \
               "$index" "$doc_id" \
               "https://docs.google.com/document/d/${doc_id}/edit?usp=sharing" \
-              "$output" "$sha256" "$content_type" "$final_url" >> "$manifest"
+              "$relative_output" "$sha256" "$content_type" "$final_url" >> "$manifest"
           done <<< "$DOC_IDS"
           echo "Captured $index Google Docs."
           wc -l "$manifest"

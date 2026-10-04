@@ -71,3 +71,33 @@ def test_legacy_cosmology_fitter_now_repeats_for_declared_seed():
         z, mu, sigma, [70.0], nsteps=12
     )
     assert np.array_equal(a, b)
+
+
+def test_legacy_cosmology_fitter_rejects_empty_observations():
+    fitter = MCMCCosmologyFitter(
+        "H0",
+        ["H0"],
+        {"H0": (70.0, 2.0)},
+        {"H0": 0.1},
+        seed=5,
+    )
+    with pytest.raises(ValueError, match="at least one observation"):
+        fitter.run(
+            np.array([]),
+            np.array([]),
+            np.array([]),
+            [70.0],
+            nsteps=5,
+        )
+
+
+@pytest.mark.parametrize("width", [0.0, -0.1, np.inf, np.nan])
+def test_legacy_cosmology_fitter_rejects_invalid_proposal_width(width):
+    with pytest.raises(ValueError, match="proposal width"):
+        MCMCCosmologyFitter(
+            "H0",
+            ["H0"],
+            {"H0": (70.0, 2.0)},
+            {"H0": width},
+            seed=5,
+        )
