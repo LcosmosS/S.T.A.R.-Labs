@@ -45,11 +45,22 @@ Changes:
 
 ## EG-STAB-004 — Mathematical regression tests
 
-**Status:** pending
+**Status:** completed
 
-Planned file: `tests/test_fisher_rao_entropy_geodesics.py`.
+Implemented `tests/test_fisher_rao_entropy_geodesics.py`.
 
-Required tests are listed in the mathematical specification.
+Coverage:
+- positivity of the entropy-derived Fisher metric on a nonzero tangent vector;
+- square-root isometry between Fisher norm and Euclidean sphere norm;
+- raw-velocity pushforward satisfies the simplex tangent constraint;
+- exact geodesic conserves simplex normalization and Fisher speed;
+- RuntimeWarnings are elevated to errors in the stabilization fixture;
+- zero velocity gives a stationary geodesic;
+- first boundary contact is analytic, reported, and never crossed by clipping;
+- zero weights require an explicit pseudocount;
+- an explicit pseudocount produces an interior state;
+- negative raw weights remain invalid even with a pseudocount;
+- direct simplex velocities must satisfy the tangent constraint.
 
 ## Integrity statement
 
@@ -60,3 +71,13 @@ The existing files
 - `tests/test_entropy_geodesics.py`
 
 remain historical/current prototype artifacts unless a later reviewed change explicitly supersedes them. v0.1 is additive.
+
+## EG-STAB-005 — Review boundary
+
+**Status:** active
+
+This branch is ready for CI/review as an additive candidate treatment. No registry,
+claim-status, evidence-status, or historical-source mutation is included. Promotion
+into a controlled experiment requires a separate reviewed decision that fixes the
+input interpretation, any pseudocount, integration interval, and acceptance/null
+criteria.
