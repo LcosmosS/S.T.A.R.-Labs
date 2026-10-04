@@ -1,0 +1,55 @@
+{
+  "endpoint": {
+    "base_metric": "euclidean",
+    "direction": "greater_or_equal_is_more_extreme",
+    "k": 10,
+    "name": "base_knn_elevation_coherence",
+    "neighbor_coordinates": [
+      "longitude",
+      "latitude"
+    ],
+    "statistic": "negative_mean_absolute_elevation_difference",
+    "tie_break": "cremona_label_ascii",
+    "undirected_edge_policy": "unique_sorted"
+  },
+  "inference": {
+    "alpha": 0.01,
+    "multiple_testing": "none_single_endpoint",
+    "p_value": "(1 + count(T_null >= T_obs)) / (B + 1)",
+    "sidedness": "one-sided"
+  },
+  "input": {
+    "allow_rank_fallback": false,
+    "allow_row_exclusion": false,
+    "analysis_rows": 38042,
+    "deduplicate": "fail",
+    "selection": "curve_number_equals_1_per_isogeny_class",
+    "source_format": "ecdata-allcurves-v1",
+    "source_rows": 64687
+  },
+  "null": {
+    "name": "rank_permutation_fixed_base",
+    "preserve": [
+      "curve_identities",
+      "delta",
+      "conductor",
+      "base_coordinates",
+      "rank_multiset",
+      "neighbor_graph"
+    ],
+    "prng": "splitmix64-fisher-yates-v1",
+    "realizations": 999,
+    "seed": 1729
+  },
+  "projection": {
+    "clip": false,
+    "conductor_max": "1e9",
+    "delta_max": "1e30",
+    "latitude_scale_degrees": 180.0,
+    "logarithm": "natural",
+    "longitude_scale_degrees": 360.0,
+    "rank_scale": 200.0,
+    "regulator_used": false
+  },
+  "protocol_version": "EXP-MAP-A01-prereg-v1"
+}
