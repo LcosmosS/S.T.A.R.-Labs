@@ -28,18 +28,20 @@ This log records changes to the candidate stabilization treatment. Historical en
 
 ## EG-STAB-003 — Reference implementation
 
-**Status:** pending
+**Status:** completed
 
-Planned file: `src/entropy/fisher_rao_geodesics.py`.
+Implemented `src/entropy/fisher_rao_geodesics.py`.
 
-Implementation requirements:
-- exact great-circle evaluation;
-- raw-weight-to-simplex pushforward;
-- explicit optional pseudocount;
-- first-boundary-time calculation;
-- invariant checks;
-- structured diagnostics;
-- no silent clipping.
+Changes:
+- added the exact radius-2 great-circle representation of Fisher–Rao geodesics;
+- added the raw-weight normalization and velocity pushforward;
+- added an explicit nonnegative `pseudocount` parameter with default zero;
+- reject negative raw weights and undeclared zero-weight interiorization;
+- added analytic first-boundary-time detection;
+- stop before the singular simplex boundary instead of clipping through it;
+- added runtime checks for simplex normalization, sphere radius, and constant Fisher speed;
+- return structured diagnostics containing model ID, boundary time, termination state, and invariant errors;
+- added no dependency on the historical approximate Christoffel or Euler integrator.
 
 ## EG-STAB-004 — Mathematical regression tests
 
