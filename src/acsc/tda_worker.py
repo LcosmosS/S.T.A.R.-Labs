@@ -34,7 +34,7 @@ worker_code = r"""
 # scripts/tda_worker.py
 import sys, json, pickle, numpy as np
 from pathlib import Path
-from acsc.tda_pipeline import compute_persistence
+from src.acsc.tda_pipeline import compute_persistence
 
 def main(coords_npz, out_dir, start, end, maxdim="1", thresh="None"):
     coords_npz = Path(coords_npz)

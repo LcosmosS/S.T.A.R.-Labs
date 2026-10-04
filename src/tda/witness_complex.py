@@ -1,14 +1,4 @@
-"""
-witness_complex.py
-------------------
-Implements a Witness Complex for TDA stability analysis in the
-S.T.A.R. Model and ECC.
-
-This module constructs:
-- landmark selection
-- witness assignment
-- simplicial complex generation
-"""
+"""Deterministic witness-complex utilities for S.T.A.R. TDA."""
 
 import numpy as np
 from scipy.spatial.distance import cdist
@@ -23,31 +13,33 @@ def test_sky_surveys_load():
 
 
 class WitnessComplex:
-    """
-    Builds a witness complex from a point cloud.
-    """
+    """Build a witness complex with an explicit private random stream."""
 
-    def __init__(self, num_landmarks=20):
-        self.num_landmarks = num_landmarks
+    def __init__(self, num_landmarks=20, *, seed: int = 0):
+        self.num_landmarks = int(num_landmarks)
+        self.seed = int(seed)
+        if self.num_landmarks < 1:
+            raise ValueError("num_landmarks must be positive")
+        self.rng = np.random.default_rng(self.seed)
 
     def select_landmarks(self, X):
-        """
-        Randomly select landmark points.
-        """
-        idx = np.random.choice(len(X), self.num_landmarks, replace=False)
+        """Select landmark points reproducibly."""
+        X = np.asarray(X)
+        if X.ndim != 2 or len(X) == 0:
+            raise ValueError("X must be a non-empty 2D array")
+        if self.num_landmarks > len(X):
+            raise ValueError("num_landmarks cannot exceed the number of points")
+        idx = self.rng.choice(len(X), self.num_landmarks, replace=False)
         return X[idx]
 
     def assign_witnesses(self, X, L):
-        """
-        Assign each point in X to its nearest landmark.
-        """
+        """Assign each point in X to its nearest landmark."""
         D = cdist(X, L)
         return np.argmin(D, axis=1)
 
     def build_complex(self, X):
-        """
-        Construct the witness complex (0- and 1-simplices).
-        """
+        """Construct the witness complex (0- and 1-simplices)."""
+        X = np.asarray(X)
         L = self.select_landmarks(X)
         W = self.assign_witnesses(X, L)
 
@@ -57,4 +49,4 @@ class WitnessComplex:
                 if W[i] == W[j]:
                     edges.add((i, j))
 
-        return {"landmarks": L, "edges": list(edges)}
+        return {"landmarks": L, "edges": sorted(edges)}

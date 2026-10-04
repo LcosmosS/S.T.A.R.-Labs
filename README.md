@@ -249,7 +249,11 @@ Controlled scientific execution is fail-fast. Invalid or missing physical inputs
 
 Arithmetic projection retains the historical sample-relative normalization for backward-compatible exploratory use, but controlled mapping experiments should provide fixed normalization bounds from their registered parameter set so the coordinate assigned to an arithmetic object does not change when unrelated records are added to the sample.
 
-Scheduled Google Docs acquisition is capture-only: CI downloads and hashes source text into a workflow artifact for review. It does not commit generated provenance material back into the research source of record.
+Scheduled Google Docs acquisition is capture-only: CI downloads and hashes source text into a workflow artifact for review. It does not commit generated provenance material back into the research source of record. Captures are validated against their manifest and hashes before upload; persistent provenance still requires a reviewed registry update and is never auto-promoted.
+
+The installable package uses the canonical `src.*` namespace. CI builds a wheel and installs it outside the repository checkout before testing the installed CLI, so repository-root path injection cannot make a broken distribution appear healthy.
+
+A separate controlled-readiness check validates any future `Controlled_Execution_Eligible=true` claim against verified provenance and preregistered parameter/null definitions. Zero ready experiments is a valid software state and is reported explicitly; a green software check is not scientific support.
 
 
 The repository uses automated checks to protect the research control layer.

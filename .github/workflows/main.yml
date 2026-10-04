@@ -243,10 +243,13 @@ jobs:
           echo "Captured $index Google Docs."
           wc -l "$manifest"
 
+      - name: Validate staged provenance capture
+        run: python scripts/validate_provenance_capture.py provenance_capture
+
       - name: Upload provenance capture artifact
         uses: actions/upload-artifact@v4
         with:
           name: google-docs-provenance-capture
           path: provenance_capture/
-          retention-days: 14
+          retention-days: 90
           if-no-files-found: error

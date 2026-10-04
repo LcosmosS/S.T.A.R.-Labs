@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from acsc.tda_pipeline import compute_persistence, persistence_wasserstein
+from src.acsc.tda_pipeline import compute_persistence, persistence_wasserstein
 
 
 def test_compute_persistence_uses_production_pipeline():

@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from acsc.projection import ArithmeticProjector, project
+from src.acsc.projection import ArithmeticProjector, project
 
 
 def test_project_exercises_production_api():

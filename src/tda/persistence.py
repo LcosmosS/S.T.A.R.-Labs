@@ -1,59 +1,75 @@
-"""
-TDA Persistence Computation - Main entry point for notebooks
-"""
+"""Fail-closed persistence computation for current S.T.A.R. code."""
+
 from __future__ import annotations
+
 import numpy as np
-from typing import Dict, Any
 
 _persistence_cache = {}
 
+
+def _validate_point_cloud(point_cloud, max_dim):
+    points = np.asarray(point_cloud, dtype=float)
+    if points.ndim != 2:
+        raise ValueError("point_cloud must be a 2D array")
+    if points.shape[0] == 0 or points.shape[1] == 0:
+        raise ValueError("point_cloud must contain at least one point and feature")
+    if not np.all(np.isfinite(points)):
+        raise ValueError("point_cloud must contain only finite values")
+    max_dim = int(max_dim)
+    if max_dim < 0:
+        raise ValueError("max_dim must be non-negative")
+    return points, max_dim
+
+
 def compute_persistence(point_cloud, max_dim=2):
+    """Compute persistence diagrams using Ripser or GUDHI.
+
+    Missing TDA dependencies are an execution error. This function never
+    manufactures placeholder persistence diagrams.
     """
-    Compute persistence diagrams from a point cloud.
-    Uses ripser → gudhi → placeholder fallback.
-    """
-    key = (tuple(point_cloud.flatten()), max_dim)
+    points, max_dim = _validate_point_cloud(point_cloud, max_dim)
+    key = (points.shape, points.dtype.str, points.tobytes(), max_dim)
     if key in _persistence_cache:
         return _persistence_cache[key]
-    
-    point_cloud = np.asarray(point_cloud, dtype=float)
 
     try:
-        # Try to use ripser
         from ripser import ripser
-        result = ripser(point_cloud, maxdim=max_dim)
-        diagrams = result['dgms']
-        _persistence_cache[key] = result
-        return result
-        print(f" Computed persistence with ripser (dim 0-{max_dim})")
-    except ImportError:
+    except ImportError as ripser_error:
         try:
-            # Fallback: gudhi
             import gudhi
-            rips = gudhi.RipsComplex(points=point_cloud, max_edge_length=2.0)
-            st = rips.create_simplex_tree(max_dimension=max_dim)
-            persistence = st.persistence()
-            
-            diagrams = [[] for _ in range(max_dim + 1)]
-            for birth_death in persistence:
-                dim = birth_death[0]
-                if dim <= max_dim:
-                    diagrams[dim].append(birth_death[1])
-            print(" Computed persistence with gudhi")
-        except ImportError:
-            # Ultimate fallback for CI / no libraries
-            print(" No TDA library (ripser/gudhi) found. Using placeholder.")
-            n = len(point_cloud) if len(point_cloud.shape) > 0 else 100
-            diagrams = [
-                [(0.0, 1.0 + np.random.rand()) for _ in range(n//3)],   # H0
-                [(0.3, 0.8) for _ in range(n//10)] if max_dim >= 1 else []   # H1
-            ]
-    
-    return {
-        "dgms": diagrams,
-        "betti": [len(d) for d in diagrams],
-        "persistence_intervals": diagrams
-    }
+        except ImportError as gudhi_error:
+            raise RuntimeError(
+                "Ripser or GUDHI is required for persistence computation; "
+                "placeholder diagrams are forbidden"
+            ) from gudhi_error
 
-# Alias for backward compatibility
+        rips = gudhi.RipsComplex(points=points)
+        st = rips.create_simplex_tree(max_dimension=max_dim + 1)
+        st.compute_persistence()
+        diagrams = [
+            np.asarray(st.persistence_intervals_in_dimension(dim), dtype=float)
+            for dim in range(max_dim + 1)
+        ]
+        result = {
+            "dgms": diagrams,
+            "betti": [len(d) for d in diagrams],
+            "persistence_intervals": diagrams,
+            "backend": "gudhi",
+        }
+    else:
+        result = ripser(points, maxdim=max_dim)
+        diagrams = result["dgms"]
+        result = dict(result)
+        result.update(
+            {
+                "betti": [len(d) for d in diagrams],
+                "persistence_intervals": diagrams,
+                "backend": "ripser",
+            }
+        )
+
+    _persistence_cache[key] = result
+    return result
+
+
 compute_persistence_diagrams = compute_persistence

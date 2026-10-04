@@ -8,7 +8,31 @@ import src.pipeline.full_inference as full
 from src.physics.symbolic_cosmology import SymbolicCosmology
 
 
-def test_build_joint_likelihood_consumes_config_mapping(monkeypatch):
+def _base_config(datasets):
+    return {
+        "model": {
+            "H_expr": "H0*sqrt(Ωm*(1+z)**3 + ΩΛ)",
+            "param_names": ["H0", "Ωm", "ΩΛ"],
+            "fixed_params": {"Ωb": 0.04530612244897959, "r_s": 147.05},
+        },
+        "datasets": datasets,
+        "likelihoods": {
+            "shoes_H0": 73.04,
+            "shoes_sigma": 1.04,
+            "bao_r_d": 147.1,
+        },
+        "priors": {
+            "H0": [70.0, 2.0],
+            "Ωm": [0.3, 0.05],
+            "ΩΛ": [0.7, 0.05],
+        },
+        "proposal_widths": {"H0": 0.1, "Ωm": 0.01, "ΩΛ": 0.01},
+        "mcmc": {"theta0": [70.0, 0.3, 0.7], "nsteps": 2, "seed": 1},
+        "output_dir": "unused",
+    }
+
+
+def test_build_joint_likelihood_includes_supernova_term(monkeypatch):
     datasets = {
         "PLANCK": {
             "R": 1.7,
@@ -24,13 +48,16 @@ def test_build_joint_likelihood_consumes_config_mapping(monkeypatch):
             "sigma_H": [10000.0],
         },
         "CC": {"z": [0.1], "H": [73.0], "sigma": [10.0]},
+        "SN": {"z": [0.1], "mu": [38.0], "sigma_mu": [0.2]},
     }
     monkeypatch.setattr(full, "DATASET_REGISTRY", datasets)
-    config = {"datasets": {"planck": "PLANCK", "bao": "BAO", "cc": "CC"}}
+    config = _base_config(
+        {"planck": "PLANCK", "bao": "BAO", "cc": "CC", "sn": "SN"}
+    )
     joint = full.build_joint_likelihood(config)
 
     model = SymbolicCosmology(
-        "H0*sqrt(Ωm*(1+z)**3 + ΩΛ)",
+        config["model"]["H_expr"],
         {
             "H0": 70.0,
             "Ωm": 0.3,
@@ -39,17 +66,25 @@ def test_build_joint_likelihood_consumes_config_mapping(monkeypatch):
             "r_s": 147.05,
         },
     )
-    assert np.isfinite(joint(model))
+    total = joint(model)
+    without_sn = (
+        joint.planck_like.log_likelihood(model)
+        + joint.bao_like.log_likelihood(model)
+        + joint.cc_like.log_likelihood(model)
+    )
+    assert np.isfinite(total)
+    assert total == pytest.approx(without_sn + joint.sn_like.log_likelihood(model))
 
 
 def test_repository_placeholder_bao_is_rejected():
-    config = {
-        "datasets": {
+    config = _base_config(
+        {
             "planck": "PLANCK_2015",
             "bao": "DESI_BAO_DR1",
             "cc": "COSMIC_CHRONOMETERS",
+            "sn": "PANTHEON_PLUS_FULL",
         }
-    }
+    )
     with pytest.raises(ValueError, match="DESI BAO dataset is empty"):
         full.build_joint_likelihood(config)
 
@@ -61,11 +96,11 @@ def test_run_full_inference_passes_full_config_to_builder(monkeypatch, tmp_path)
             "param_names": ["H0"],
             "fixed_params": {},
         },
-        "datasets": {
-            "planck": "p",
-            "bao": "b",
-            "cc": "c",
-            "sn": "s",
+        "datasets": {"planck": "p", "bao": "b", "cc": "c", "sn": "s"},
+        "likelihoods": {
+            "shoes_H0": 73.04,
+            "shoes_sigma": 1.04,
+            "bao_r_d": 147.1,
         },
         "priors": {"H0": [70.0, 2.0]},
         "proposal_widths": {"H0": 0.1},
@@ -113,3 +148,10 @@ def test_run_full_inference_passes_full_config_to_builder(monkeypatch, tmp_path)
     result = full.run_full_inference(path)
     assert observed["config"]["datasets"]["planck"] == "p"
     assert result["ok"] is True
+
+
+def test_inference_config_requires_explicit_likelihood_assumptions():
+    config = _base_config({"planck": "p", "bao": "b", "cc": "c", "sn": "s"})
+    del config["likelihoods"]["bao_r_d"]
+    with pytest.raises(KeyError, match="likelihoods.bao_r_d"):
+        full._validate_config(config)

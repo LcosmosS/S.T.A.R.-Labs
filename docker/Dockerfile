@@ -51,13 +51,13 @@ RUN chown -R ${USER}:${USER} /home/${USER}/app
 # Install package into the conda env using the env's python (run as root)
 # This guarantees the editable install uses the exact interpreter that has gudhi/ripser
 RUN micromamba run -n ${CONDA_ENV} python -m pip install --upgrade pip setuptools wheel \
- && micromamba run -n ${CONDA_ENV} python -m pip install --no-cache-dir -e ".[dev,tda]"
+ && micromamba run -n ${CONDA_ENV} python -m pip install --no-cache-dir ".[dev,tda]"
 
 # Switch to non-root user for runtime
 USER ${USER}
 
-# Ensure PYTHONPATH is defined and points to the app
-ENV PYTHONPATH=/home/${USER}/app
+# Prevent the working directory from shadowing the installed package.
+ENV PYTHONSAFEPATH=1
 WORKDIR /home/${USER}/app
 
 # Default verification command (override in CI)

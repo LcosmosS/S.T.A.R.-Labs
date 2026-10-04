@@ -1,59 +1,84 @@
-"""
-MCMC Cosmology Fitter
-=====================
-
-Runs Metropolis–Hastings MCMC to infer posterior distributions for
-S.T.A.R. Model parameters.
-"""
+"""Seeded Metropolis-Hastings cosmology fitter."""
 
 from __future__ import annotations
+
 import numpy as np
+
 from src.physics.symbolic_cosmology import SymbolicCosmology
 
 
 class MCMCCosmologyFitter:
-    def __init__(self, H_expr, param_names, priors, proposal_widths):
-        """
-        priors : dict[param] = (mean, sigma)
-        proposal_widths : dict[param] = step size
-        """
+    def __init__(
+        self,
+        H_expr,
+        param_names,
+        priors,
+        proposal_widths,
+        *,
+        seed: int,
+    ):
         self.H_expr = H_expr
-        self.param_names = param_names
+        self.param_names = list(param_names)
         self.priors = priors
         self.proposal_widths = proposal_widths
+        self.seed = int(seed)
+        self.rng = np.random.default_rng(self.seed)
 
     def _log_prior(self, theta):
-        lp = 0
+        lp = 0.0
         for val, name in zip(theta, self.param_names):
             mu, sigma = self.priors[name]
+            if sigma <= 0:
+                raise ValueError(f"prior sigma must be positive for {name}")
             lp += -0.5 * ((val - mu) / sigma) ** 2
-        return lp
+        return float(lp)
 
     def _log_likelihood(self, theta, z, mu_obs, sigma_mu):
         params = dict(zip(self.param_names, theta))
         model = SymbolicCosmology(self.H_expr, params)
-        mu_model = np.array([model.distance_modulus(zi) for zi in z])
+        mu_model = np.asarray([model.distance_modulus(zi) for zi in z], dtype=float)
+        if not np.all(np.isfinite(mu_model)):
+            return -np.inf
         chi2 = np.sum(((mu_obs - mu_model) / sigma_mu) ** 2)
-        return -0.5 * chi2
+        return float(-0.5 * chi2) if np.isfinite(chi2) else -np.inf
 
     def _log_posterior(self, theta, z, mu_obs, sigma_mu):
-        return self._log_prior(theta) + self._log_likelihood(theta, z, mu_obs, sigma_mu)
+        value = self._log_prior(theta) + self._log_likelihood(
+            theta, z, mu_obs, sigma_mu
+        )
+        return float(value) if np.isfinite(value) else -np.inf
 
     def run(self, z, mu_obs, sigma_mu, theta0, nsteps=5000):
-        chain = np.zeros((nsteps, len(theta0)))
+        z = np.asarray(z, dtype=float)
+        mu_obs = np.asarray(mu_obs, dtype=float)
+        sigma_mu = np.asarray(sigma_mu, dtype=float)
+        theta0 = np.asarray(theta0, dtype=float)
+
+        if not (z.shape == mu_obs.shape == sigma_mu.shape):
+            raise ValueError("z, mu_obs, and sigma_mu must have equal shapes")
+        if np.any(sigma_mu <= 0) or not np.all(np.isfinite(sigma_mu)):
+            raise ValueError("sigma_mu must be finite and positive")
+        if theta0.size != len(self.param_names):
+            raise ValueError("theta0 length must match param_names")
+        if int(nsteps) < 2:
+            raise ValueError("nsteps must be at least 2")
+
+        chain = np.zeros((int(nsteps), len(theta0)), dtype=float)
         chain[0] = theta0
         logp = self._log_posterior(theta0, z, mu_obs, sigma_mu)
+        if not np.isfinite(logp):
+            raise ValueError("initial parameter vector has a non-finite posterior")
 
-        for i in range(1, nsteps):
-            proposal = chain[i - 1] + np.array(
-                [
-                    np.random.normal(0, self.proposal_widths[name])
-                    for name in self.param_names
-                ]
-            )
+        for i in range(1, int(nsteps)):
+            proposal = chain[i - 1].copy()
+            for j, name in enumerate(self.param_names):
+                proposal[j] += self.rng.normal(0.0, self.proposal_widths[name])
 
             logp_new = self._log_posterior(proposal, z, mu_obs, sigma_mu)
-            accept = np.random.rand() < np.exp(logp_new - logp)
+            accept = False
+            if np.isfinite(logp_new):
+                log_alpha = min(0.0, logp_new - logp)
+                accept = np.log(self.rng.random()) < log_alpha
 
             if accept:
                 chain[i] = proposal
