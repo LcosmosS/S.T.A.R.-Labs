@@ -134,3 +134,10 @@ def test_direct_simplex_velocity_must_be_tangent():
             np.array([0.1, 0.0, 0.0]),
             steps=1,
         )
+
+
+def test_entropy_helper_rejects_unnormalized_positive_vector():
+    model = FisherRaoEntropyGeodesics()
+
+    with pytest.raises(ValueError, match="sum to 1"):
+        model.entropy_of(np.array([2.0, 2.0]))

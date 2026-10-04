@@ -121,11 +121,9 @@ class FisherRaoEntropyGeodesics:
             )
         return u
 
-    @staticmethod
-    def entropy_of(p) -> float:
-        p = np.asarray(p, dtype=float)
-        if p.ndim != 1 or np.any(p <= 0) or not np.all(np.isfinite(p)):
-            raise ValueError("entropy_of requires finite strictly positive probabilities")
+    def entropy_of(self, p) -> float:
+        """Evaluate Shannon entropy only on a validated open-simplex state."""
+        p = self._validate_simplex(p)
         return float(-np.sum(p * np.log(p)))
 
     def metric_matrix(self, p) -> np.ndarray:

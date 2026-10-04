@@ -81,3 +81,20 @@ claim-status, evidence-status, or historical-source mutation is included. Promot
 into a controlled experiment requires a separate reviewed decision that fixes the
 input interpretation, any pseudocount, integration interval, and acceptance/null
 criteria.
+
+## EG-STAB-006 — Review correction: entropy domain enforcement
+
+**Status:** completed
+
+Sourcery review identified that the public `entropy_of` helper accepted positive but
+unnormalized vectors. That behavior was inconsistent with the declared model domain.
+
+Correction:
+- `entropy_of` now calls the common open-simplex validator;
+- entropy is rejected unless all components are positive and sum to one within the
+  declared invariant tolerance;
+- added a regression test using `[2, 2]` to ensure unnormalized positive vectors
+  cannot enter the model through the entropy helper.
+
+This correction narrows the implementation to the written mathematical specification;
+it does not alter the specified dynamics.
