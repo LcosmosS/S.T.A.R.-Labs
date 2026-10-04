@@ -1,0 +1,9 @@
+name: "S.T.A.R. controlled-source CodeQL scope"
+
+# CodeQL should analyze executable/current source, not immutable provenance
+# captures whose .py suffix reflects extracted code fragments rather than
+# syntactically complete Python modules.
+paths-ignore:
+  - "historical/**"
+  - "web_tool/artifacts/**"
+  - "web_tool/attachments/**"
