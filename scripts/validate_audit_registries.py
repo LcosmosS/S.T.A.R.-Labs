@@ -126,7 +126,24 @@ def validate(repo, overlay=None):
         current=rows(name)
         assert len(current)==len(snapshot['rows'])
         for original, row in zip(snapshot['rows'],current):
-            assert all(row[key]==original[key] for key in snapshot['fields']), f'original controlled ID/definition changed: {name}'
+            # Historical audit snapshots remain immutable. The operational
+            # experiment registry may make one explicit reviewed lifecycle
+            # transition for EXP-MAP-A01: Status planned -> preregistered.
+            # IDs, claims, dataset/parameter/null bindings, mode, priority and
+            # Historical_RandD must remain identical to the audit snapshot.
+            allowed_transition = (
+                name == 'experiment_registry_v0.2.csv'
+                and original.get('Experiment_ID') == 'EXP-MAP-A01'
+                and original.get('Status') == 'planned'
+                and row.get('Status') == 'preregistered'
+            )
+            protected = [
+                key for key in snapshot['fields']
+                if not (allowed_transition and key == 'Status')
+            ]
+            assert all(row[key]==original[key] for key in protected), f'original controlled ID/definition changed: {name}'
+            if name == 'experiment_registry_v0.2.csv' and original.get('Experiment_ID') == 'EXP-MAP-A01':
+                assert allowed_transition, 'EXP-MAP-A01 audit transition must be explicit planned -> preregistered'
         assert_no_support_promotion(current,name)
     datasets=rows('dataset_registry_v0.1.csv'); provenance=rows('data_provenance_registry_v0.1.csv'); assets=rows('audit_quarantine_dataset_status_v0.3.csv')
     ds_map={r['Dataset_ID']:r for r in datasets}; prov_map={r['Dataset_ID']:r for r in provenance}
