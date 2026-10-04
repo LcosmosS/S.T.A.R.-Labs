@@ -138,8 +138,8 @@ jobs:
           assert list(provenance[0].keys()) == provenance_fields, "unexpected data provenance schema"
           assert all(list(r.keys()) == provenance_fields for r in provenance), "inconsistent data provenance schema"
 
-          allowed_provenance_status = {"verified", "partially_verified", "unverified", "unknown"}
-          allowed_evidence_status = {"controlled", "derived", "exploratory", "historical", "unknown"}
+          allowed_provenance_status = {"verified", "partially_verified", "unverified", "unknown", "quarantined"}
+          allowed_evidence_status = {"controlled", "derived", "exploratory", "historical", "unknown", "negative_null"}
           allowed_source_types = {
               "survey",
               "catalog",
@@ -152,6 +152,11 @@ jobs:
               "constraint_set",
               "other",
           }
+
+          for r in provenance:
+              assert r["Provenance_Status"] in allowed_provenance_status, f"invalid provenance status: {r['Dataset_ID']}"
+              assert r["Evidence_Status"] in allowed_evidence_status, f"invalid evidence status: {r['Dataset_ID']}"
+              assert not r["Source_Type"] or r["Source_Type"] in allowed_source_types, f"invalid source type: {r['Dataset_ID']}"
 
           provenance_record_ids = [r["Provenance_ID"] for r in provenance]
           assert len(provenance_record_ids) == len(set(provenance_record_ids)), "duplicate Provenance_ID"
@@ -255,6 +260,8 @@ jobs:
               f"{len(nulls)} null models, {len(artifacts)} R&D artifacts, {len(provenance)} provenance records"
           )
           PY
+      - name: Validate audit namespaces and quarantine eligibility
+        run: python scripts/validate_audit_registries.py
 
   arithmetic-smoke:
     runs-on: ubuntu-latest

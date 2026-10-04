@@ -50,4 +50,4 @@ Generated data belong in CI artifacts or explicitly versioned datasets, not auto
 
 ## Current scope
 
-This charter governs the repository control layer and controlled experiment framework. The Data Provenance Registry is intentionally a subsequent work item and is not defined by this charter revision.
+This charter governs the repository control layer and controlled experiment framework. The Data Provenance Registry is now part of the repository control layer. Its source-level fields distinguish unknown provenance from verified acquisition; intended controlled use does not establish achieved evidence. The 2026-10-03 audit assessment and namespace controls are documented in [docs/registries/NAMESPACE.md](../docs/registries/NAMESPACE.md). Historical definitions remain intact, and quarantine assets require explicit identity and execution gates before reuse.
