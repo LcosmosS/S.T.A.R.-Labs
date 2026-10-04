@@ -1,107 +1,138 @@
 from __future__ import annotations
+
+from functools import lru_cache
+
 import numpy as np
 import sympy as sp
 from scipy.integrate import quad
 
 
-class Cosmology:
-    """
-    Cosmology engine with pluggable symbolic H(z).
-    H_expr : str
-        Sympy-compatible expression for H(z) (units: km/s/Mpc).
-    params : dict
-        Numeric parameter values used in H_expr.
-    """
+_PARAM_ALIASES = {"Ωm": "Om", "ΩΛ": "OL", "Ωb": "Ob"}
 
-    c = 299792.458  # km/s
+
+def _normalize_param_name(name: str) -> str:
+    return _PARAM_ALIASES.get(name, name)
+
+
+def _normalize_expression(expr: str) -> str:
+    normalized = expr
+    for original, replacement in _PARAM_ALIASES.items():
+        normalized = normalized.replace(original, replacement)
+    return normalized
+
+
+class Cosmology:
+    """Cosmology engine with a strict symbolic H(z)."""
+
+    c = 299792.458
 
     def __init__(self, H_expr: str, params: dict):
-        self.H_expr = H_expr.strip()
-        self.params = {k: float(v) for k, v in (params or {}).items()}
-        self.expr = self.H_expr  # keep original string
+        if not isinstance(H_expr, str) or not H_expr.strip():
+            raise ValueError("H_expr must be a non-empty string")
 
-        # Symbolic setup
+        self.H_expr = H_expr.strip()
+        self.params = {str(k): float(v) for k, v in (params or {}).items()}
+        self.normalized_params = {}
+
+        for key, value in self.params.items():
+            normalized = _normalize_param_name(key)
+            if (
+                normalized in self.normalized_params
+                and self.normalized_params[normalized] != value
+            ):
+                raise ValueError(f"Conflicting values supplied for parameter {normalized}")
+            self.normalized_params[normalized] = value
+
         z_sym = sp.symbols("z")
         try:
-            expr_clean = self.H_expr.replace("Ωm", "Om").replace("ΩΛ", "OL")
-            self.H_sym = sp.sympify(expr_clean)
-            keys = tuple(self.params.keys())
-            self.H_func = sp.lambdify((z_sym, *keys), self.H_sym, modules="numpy")
-        except Exception as e:
-            raise ValueError(f"Failed to parse/lambdify H_expr: {e}")
+            self.H_sym = sp.sympify(_normalize_expression(self.H_expr))
+        except Exception as exc:
+            raise ValueError(f"Failed to parse H_expr: {exc}") from exc
+
+        required = {str(symbol) for symbol in self.H_sym.free_symbols if symbol != z_sym}
+        missing = sorted(required - set(self.normalized_params))
+        if missing:
+            raise ValueError(f"H_expr references parameters with no value: {missing}")
+
+        keys = tuple(sorted(required))
+        symbols = tuple(sp.Symbol(key) for key in keys)
+        self._parameter_keys = keys
+        self.H_func = sp.lambdify((z_sym, *symbols), self.H_sym, modules="numpy")
+
+    @staticmethod
+    def _validate_redshift(z):
+        if z is Ellipsis or isinstance(z, type(...)):
+            raise TypeError("redshift cannot be Ellipsis")
+        try:
+            arr = np.asarray(z, dtype=float)
+        except (TypeError, ValueError) as exc:
+            raise TypeError("redshift must be numeric") from exc
+        if not np.all(np.isfinite(arr)):
+            raise ValueError("redshift must contain only finite values")
+        if np.any(arr < 0):
+            raise ValueError("redshift must be non-negative")
+        return arr
 
     def H_of_z(self, z):
-        """Evaluate H(z)."""
-        z = np.asarray(z)
+        """Evaluate H(z), requiring finite strictly positive output."""
+        z_arr = self._validate_redshift(z)
+        values = [self.normalized_params[key] for key in self._parameter_keys]
         try:
-            return self.H_func(z, *self.params.values())
-        except Exception:
-            # Fallback numerical
-            H0 = self.params.get("H0", 70.0)
-            Om = self.params.get("Ωm", 0.3)
-            OL = self.params.get("ΩΛ", 0.7)
-            a = self.params.get("a", 0.0)
-            b = self.params.get("b", 0.0)
-            inside = Om * (1 + z) ** 3 + OL + a * z + b * z**2
-            return H0 * np.sqrt(np.maximum(inside, 1e-10))
-   
-    from functools import lru_cache
+            evaluated = np.asarray(self.H_func(z_arr, *values), dtype=float)
+        except Exception as exc:
+            raise ValueError(f"Failed to evaluate H(z): {exc}") from exc
 
-    @lru_cache(maxsize=1024)
+        if evaluated.ndim == 0 and z_arr.ndim > 0:
+            evaluated = np.full(z_arr.shape, float(evaluated))
+        if not np.all(np.isfinite(evaluated)):
+            raise FloatingPointError("H(z) produced non-finite values")
+        if np.any(evaluated <= 0):
+            raise FloatingPointError("H(z) must be strictly positive")
+        return float(evaluated) if evaluated.ndim == 0 else evaluated
+
+    def H(self, z):
+        return self.H_of_z(z)
+
+    @lru_cache(maxsize=4096)
     def _comoving_scalar(self, zi: float) -> float:
-        """Comoving distance for single scalar redshift."""
-        if not np.isfinite(zi) or zi < 0:
-            raise ValueError(f"Invalid redshift: {zi}")
+        zi = float(zi)
+        self._validate_redshift(zi)
+        if zi == 0.0:
+            return 0.0
 
         def integrand(zp):
-            Hz = float(self.H_of_z(zp))
-            if Hz <= 0:
-                Hz = 1e-8
-            return self.c / Hz
+            return self.c / float(self.H_of_z(zp))
 
-        result, _ = quad(integrand, 0.0, float(zi), limit=300, epsabs=1e-9, epsrel=1e-9)
-        return max(float(result), 0.0)
+        result, error = quad(
+            integrand, 0.0, zi, limit=300, epsabs=1e-9, epsrel=1e-9
+        )
+        if not np.isfinite(result) or not np.isfinite(error):
+            raise FloatingPointError("comoving-distance integration failed")
+        if result < 0:
+            raise FloatingPointError("comoving distance cannot be negative")
+        return float(result)
 
     def comoving_distance(self, z):
-        # Catch ellipsis and other garbage early
-        if (
-            z is Ellipsis
-            or isinstance(z, type(...))
-            or (isinstance(z, np.ndarray) and z.dtype == object)
-        ):
-            print(
-                "Warning: Ellipsis detected in comoving_distance - using safe fallback"
-            )
-            z = np.array([0.01, 0.5, 1.0])
+        z_arr = self._validate_redshift(z)
+        if z_arr.ndim == 0:
+            return self._comoving_scalar(float(z_arr))
+        flat = [self._comoving_scalar(float(zi)) for zi in z_arr.ravel()]
+        return np.asarray(flat, dtype=float).reshape(z_arr.shape)
 
-        z = np.asarray(z, dtype=float)
-        z = np.nan_to_num(z, nan=0.0, posinf=2.0, neginf=0.0)
-        z = np.clip(z, 1e-6, 10.0)  # avoid z=0 problems
-
-        if z.ndim == 0 or z.size == 1:
-            return self._comoving_scalar(float(z.ravel()[0]))
-
-        return np.array([self._comoving_scalar(float(zi)) for zi in z.ravel()]).reshape(
-            z.shape
-        )
+    def DM(self, z):
+        return self.comoving_distance(z)
 
     def luminosity_distance(self, z):
-        """DL = (1 + z) * Dc(z)"""
-        Dc = self.comoving_distance(z)
-        z_arr = np.asarray(z)
-        z_arr = np.nan_to_num(z_arr, nan=0.0, posinf=2.0, neginf=0.0)
-        z_arr = z_arr.astype(float)
-        return Dc * (1.0 + z_arr)
+        z_arr = self._validate_redshift(z)
+        return self.comoving_distance(z_arr) * (1.0 + z_arr)
 
     def distance_modulus(self, z):
-        """μ = 5 log10(DL / 10 pc)"""
-        DL = self.luminosity_distance(z)
-        DL = np.maximum(DL, 1e-6)
-
-        if np.isscalar(DL) or DL.size == 1:
-            dl = float(DL)
-            return 5.0 * (np.log10(dl * 1e6) - 1.0) if dl > 0 else -np.inf
-
+        dl = np.asarray(self.luminosity_distance(z), dtype=float)
         with np.errstate(divide="ignore", invalid="ignore"):
-            mu = 5.0 * (np.log10(DL * 1e6) - 1.0)
-        return mu
+            mu = 5.0 * (np.log10(dl * 1e6) - 1.0)
+        if np.any((dl < 0) | np.isnan(mu)):
+            raise FloatingPointError("invalid luminosity distance in distance modulus")
+        return float(mu) if mu.ndim == 0 else mu
+
+    def mu(self, z):
+        return self.distance_modulus(z)
