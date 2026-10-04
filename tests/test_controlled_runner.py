@@ -73,6 +73,8 @@ def _fixture_root(tmp_path, *, experiment_eligible=True, provenance_hash=None):
             "Parameter_Set_ID",
             "Null_ID",
             "Mode",
+            "Claim_IDs",
+            "Namespace_Resolution",
             "Controlled_Execution_Eligible",
         ],
         [
@@ -82,6 +84,8 @@ def _fixture_root(tmp_path, *, experiment_eligible=True, provenance_hash=None):
                 "Parameter_Set_ID": "PAR-TEST",
                 "Null_ID": "NULL-TEST",
                 "Mode": "controlled",
+                "Claim_IDs": "CLAIM-TEST",
+                "Namespace_Resolution": "explicit_non_alias",
                 "Controlled_Execution_Eligible": (
                     "true" if experiment_eligible else "false"
                 ),
@@ -270,10 +274,19 @@ def test_execution_emits_content_addressed_manifest(tmp_path):
     assert manifest["transaction_status"] == "completed"
     assert manifest["exit_status"] == 0
     assert manifest["experiment_id"] == "EXP-TEST"
+    assert manifest["claim_ids"] == ["CLAIM-TEST"]
     assert manifest["dataset_id"] == "DATA-TEST"
     assert manifest["parameter_set_id"] == "PAR-TEST"
     assert manifest["null_id"] == "NULL-TEST"
     assert manifest["git"]["sha"] == "a" * 40
+    assert manifest["transaction_identity"]["experiment_id"] == "EXP-TEST"
+    assert manifest["transaction_identity"]["claim_ids"] == ["CLAIM-TEST"]
+    assert manifest["transaction_identity"]["dataset_id"] == "DATA-TEST"
+    assert manifest["transaction_identity"]["parameter_set_id"] == "PAR-TEST"
+    assert manifest["transaction_identity"]["null_id"] == "NULL-TEST"
+    assert manifest["transaction_identity"]["git_sha"] == "a" * 40
+    assert manifest["transaction_identity"]["environment_sha256"]
+    assert manifest["transaction_identity"]["execution_binding_sha256"]
     assert manifest["dataset"]["inputs"][0]["sha256"] == dataset_sha
     assert manifest["parameters"]["definition"] == "alpha=200; log_base=e"
     assert (

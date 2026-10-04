@@ -23,6 +23,8 @@ def _registry_root(tmp_path, evidence_status):
             "Experiment_ID",
             "Controlled_Execution_Eligible",
             "Mode",
+            "Claim_IDs",
+            "Namespace_Resolution",
             "Dataset_ID",
             "Parameter_Set_ID",
             "Null_ID",
@@ -32,6 +34,8 @@ def _registry_root(tmp_path, evidence_status):
                 "Experiment_ID": "EXP-TEST",
                 "Controlled_Execution_Eligible": "true",
                 "Mode": "controlled",
+                "Claim_IDs": "CLAIM-TEST",
+                "Namespace_Resolution": "explicit_non_alias",
                 "Dataset_ID": "DATA-TEST",
                 "Parameter_Set_ID": "PARAM-TEST",
                 "Null_ID": "NULL-TEST",
@@ -108,3 +112,73 @@ def test_readiness_rejects_verified_provenance_without_sha256_integrity(tmp_path
 
     assert claimed == ["EXP-TEST"]
     assert any("no explicit SHA256" in failure for failure in failures)
+
+
+def test_readiness_rejects_pending_namespace_resolution(tmp_path):
+    root = _registry_root(tmp_path, "controlled")
+    experiment = root / "registry" / "experiment_registry_v0.2.csv"
+    _write(
+        experiment,
+        [
+            "Experiment_ID",
+            "Controlled_Execution_Eligible",
+            "Mode",
+            "Claim_IDs",
+            "Namespace_Resolution",
+            "Dataset_ID",
+            "Parameter_Set_ID",
+            "Null_ID",
+        ],
+        [
+            {
+                "Experiment_ID": "EXP-TEST",
+                "Controlled_Execution_Eligible": "true",
+                "Mode": "controlled",
+                "Claim_IDs": "CLAIM-TEST",
+                "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
+                "Dataset_ID": "DATA-TEST",
+                "Parameter_Set_ID": "PARAM-TEST",
+                "Null_ID": "NULL-TEST",
+            }
+        ],
+    )
+
+    claimed, failures = assess(root)
+
+    assert claimed == ["EXP-TEST"]
+    assert any("namespace resolution is not closed" in failure for failure in failures)
+
+
+def test_readiness_rejects_missing_claim_binding(tmp_path):
+    root = _registry_root(tmp_path, "controlled")
+    experiment = root / "registry" / "experiment_registry_v0.2.csv"
+    _write(
+        experiment,
+        [
+            "Experiment_ID",
+            "Controlled_Execution_Eligible",
+            "Mode",
+            "Claim_IDs",
+            "Namespace_Resolution",
+            "Dataset_ID",
+            "Parameter_Set_ID",
+            "Null_ID",
+        ],
+        [
+            {
+                "Experiment_ID": "EXP-TEST",
+                "Controlled_Execution_Eligible": "true",
+                "Mode": "controlled",
+                "Claim_IDs": "",
+                "Namespace_Resolution": "explicit_non_alias",
+                "Dataset_ID": "DATA-TEST",
+                "Parameter_Set_ID": "PARAM-TEST",
+                "Null_ID": "NULL-TEST",
+            }
+        ],
+    )
+
+    claimed, failures = assess(root)
+
+    assert claimed == ["EXP-TEST"]
+    assert any("Claim_IDs must be explicitly bound" in failure for failure in failures)

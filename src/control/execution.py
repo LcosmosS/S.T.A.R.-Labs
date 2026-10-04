@@ -470,6 +470,10 @@ def _portable_hashed_inputs(items: list[dict]) -> list[dict]:
 def _execution_binding(prepared: PreparedExecution) -> dict:
     binding = {
         "experiment_id": prepared.spec["experiment_id"],
+        "claim_ids": prepared.resolved.experiment.get("Claim_IDs", ""),
+        "dataset_id": prepared.resolved.dataset.get("Dataset_ID", ""),
+        "parameter_set_id": prepared.resolved.parameter.get("Parameter_Set_ID", ""),
+        "null_id": prepared.resolved.null.get("Null_ID", ""),
         "git_sha": prepared.git["sha"],
         "spec_sha256": prepared.spec_sha256,
         "registry_record_sha256": prepared.resolved.record_hashes,
@@ -835,6 +839,11 @@ def _execute_prepared(
         "runner_exit_status": runner_exit_status,
         "executor_id": executor_id,
         "experiment_id": resolved.experiment["Experiment_ID"],
+        "claim_ids": [
+            value.strip()
+            for value in resolved.experiment.get("Claim_IDs", "").split(";")
+            if value.strip()
+        ],
         "dataset_id": resolved.dataset["Dataset_ID"],
         "parameter_set_id": resolved.parameter["Parameter_Set_ID"],
         "null_id": resolved.null["Null_ID"],
@@ -881,6 +890,20 @@ def _execute_prepared(
             "runtime_error": runtime_error,
         },
         "environment": environment,
+        "transaction_identity": {
+            "experiment_id": resolved.experiment["Experiment_ID"],
+            "claim_ids": [
+                value.strip()
+                for value in resolved.experiment.get("Claim_IDs", "").split(";")
+                if value.strip()
+            ],
+            "dataset_id": resolved.dataset["Dataset_ID"],
+            "parameter_set_id": resolved.parameter["Parameter_Set_ID"],
+            "null_id": resolved.null["Null_ID"],
+            "git_sha": prepared.git["sha"],
+            "execution_binding_sha256": _execution_binding_sha256(prepared),
+            "environment_sha256": environment["environment_sha256"],
+        },
         "timestamps": {
             "started_at_utc": _iso(start),
             "ended_at_utc": _iso(end),

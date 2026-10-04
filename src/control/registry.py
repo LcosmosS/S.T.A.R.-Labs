@@ -226,6 +226,11 @@ def execution_gate_failures(resolved: ResolvedExperiment) -> list[str]:
 
     if experiment.get("Mode") != "controlled":
         failures.append(f"{experiment_id}: Mode must be controlled")
+    if not experiment.get("Claim_IDs", "").strip():
+        failures.append(f"{experiment_id}: Claim_IDs must be explicitly bound")
+    namespace_resolution = experiment.get("Namespace_Resolution", "").strip()
+    if not namespace_resolution or "pending" in namespace_resolution.lower():
+        failures.append(f"{experiment_id}: namespace resolution is not closed")
     if not _truth(experiment.get("Controlled_Execution_Eligible", "false")):
         failures.append(
             f"{experiment_id}: experiment is not controlled-execution eligible"
