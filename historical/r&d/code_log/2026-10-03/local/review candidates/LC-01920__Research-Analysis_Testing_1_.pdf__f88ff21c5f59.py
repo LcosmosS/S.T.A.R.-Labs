@@ -1,0 +1,3 @@
+P = E.point([2, 54])
+Reg = P.height(prec=100)
+print(Reg)

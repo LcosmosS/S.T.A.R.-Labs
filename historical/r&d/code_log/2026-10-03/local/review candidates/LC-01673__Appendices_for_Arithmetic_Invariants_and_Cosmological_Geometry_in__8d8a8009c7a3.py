@@ -1,0 +1,48 @@
+        title='3D Galaxy Features with KDE Density'
+    )
+    fig.write_html(f'{OUTPUT_PLOT_PREFIX}_3d_scatter_kde.html')
+
+    # KDE contour plot
+    X_kde = df[['selmer_rank', 'var_ap']].dropna()
+    if not X_kde.empty:
+        plt.figure(figsize=(10, 6))
+        sns.kdeplot(data=X_kde, x='selmer_rank', y='var_ap', fill=True)
+        plt.title('KDE of Selmer Rank and var_ap')
+        plt.savefig(f'{OUTPUT_PLOT_PREFIX}_kde_contour.png')
+        plt.close()
+
+    # t-SNE visualization
+    X_valid = df[feature_cols].dropna()
+    if not X_valid.empty:
+        tsne = TSNE(n_components=2, random_state=42)
+        X_tsne = tsne.fit_transform(X_valid)
+        df_tsne = pd.DataFrame(X_tsne, columns=['TSNE1', 'TSNE2'],
+index=X_valid.index)
+        df_tsne['generator_type'] = df.loc[X_valid.index, 'generator_type']
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(data=df_tsne, x='TSNE1', y='TSNE2', hue='generator_type')
+        plt.title('t-SNE of Galaxy Features with KDE')
+        plt.savefig(f'{OUTPUT_PLOT_PREFIX}_tsne_scatter_kde.png')
+        plt.close()
+
+    # Interactive widget
+    @widgets.interact(feature=feature_cols)
+    def plot_histogram(feature):
+        plt.figure(figsize=(10, 6))
+        sns.histplot(data=df, x=feature, hue='generator_type', bins=50)
+        plt.title(f'Distribution of {feature} by Generator Type')
+        plt.savefig(f'{OUTPUT_PLOT_PREFIX}_histogram_{feature}.png')
+        plt.show()
+
+# --- 17. Shape Analysis ---
+def analyze_noise_points(df, feature_cols):
+    log_function("analyze_noise_points")
+    recursive_df = df[df['generator_type'] == 'Recursive']
+    noise_df = recursive_df[recursive_df['structure_cluster'] == -1]
+    clustered_df = recursive_df[recursive_df['structure_cluster'] != -1]
+
+    noise_stats = noise_df[feature_cols].describe()
+    clustered_stats = clustered_df[feature_cols].describe()
+    noise_nan_prop = noise_df[feature_cols].isna().mean()
+    clustered_nan_prop = clustered_df[feature_cols].isna().mean()
+    noise_structure_dist = noise_df['generator_structure'].apply(lambda x:

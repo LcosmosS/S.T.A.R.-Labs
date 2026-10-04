@@ -1,0 +1,6 @@
+# Assume 'y_test' is the actual target values and 'y_pred' is the predicted values
+residuals = y_test - y_pred
+# Scatter plot: Residuals vs. Predicted Values
+plt.figure(figsize=(8, 6)) plt.scatter(y_pred, residuals, alpha=0.5) plt.axhline(y=0, color='red', linestyle='--') plt.xlabel('Predicted Values') plt.ylabel('Residuals (Actual - Predicted)') plt.title('Residuals vs. Predicted Values') plt.savefig('residuals_vs_predicted.png') # Save the plot plt.show()
+# Histogram: Distribution of Residuals
+plt.figure(figsize=(8, 6)) plt.hist(residuals, bins=30, edgecolor='black') plt.xlabel('Residuals') plt.ylabel('Frequency') plt.title('Histogram of Residuals') plt.savefig('residuals_histogram.png') # Save the plot plt.show()

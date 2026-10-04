@@ -1,0 +1,12 @@
+# Handle invalid sfr values (e.g., -9999)
+df['sfr'] = df['sfr'].replace(-9999, np.nan)  # Replace -9999 with NaN
+
+
+# Extract relevant columns
+try:
+    z = df['z'].values
+    sfr = df['sfr'].values
+    ra = df['ra'].values
+    dec = df['dec'].values
+    logmass = df['logmass'].values
+except KeyError as e:

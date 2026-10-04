@@ -1,0 +1,9 @@
+        if nan_idx.any():
+            df.loc[nan_idx, col] = X_imputed.loc[nan_idx, col]
+            print(f"impute_derived_features: Imputed {col} for {nan_idx.sum()} rows")
+    return df
+
+# --- 6. Thermodynamic Entropy Calculation ---
+def estimate_entropy(row):
+    log_function("estimate_entropy")
+    if not (np.isfinite(row['z']) and np.isfinite(row['metallicity']) and

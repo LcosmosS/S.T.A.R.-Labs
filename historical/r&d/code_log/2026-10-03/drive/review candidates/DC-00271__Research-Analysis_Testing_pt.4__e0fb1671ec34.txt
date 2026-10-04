@@ -1,0 +1,14 @@
+E_twist = EllipticCurve(QQ, [0, 0, 0, -102, 918])
+omega = E_twist.period_lattice().real_period(prec=50)
+tamagawa = prod(E_twist.tamagawa_numbers())
+L = E_twist.lseries()
+dok = L.dokchitser(prec=50)
+leading_coeff = dok.derivative(1, 3) / 6  # Rank 3
+tors_order = E_twist.torsion_subgroup().order()
+sha_order = 1
+rhs = leading_coeff * (tors_order**2)
+reg = rhs / (omega * tamagawa * sha_order)
+cosmo_scale = VIRGO_DISTANCE / (omega * SQRT_KAPPA)
+comoving_volume = (omega * reg * cosmo_scale**3) / 2.5e11  # Rank 3 denominator
+      * print(f"Comoving volume: {comoving_volume} Mly^3")
+      * Result (computed):

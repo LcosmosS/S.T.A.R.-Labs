@@ -1,0 +1,3 @@
+X_data.append(synth_feat) \n y_data.append(1) \n classifier.fit(np.array(X_data),
+np.array(y_data)) \n print(f"Classifier trained Coefficients: {classifier.coef_}") \n \n a,
+b = random_fibonacci_pair(n, classifier, fib_numbers, X_data, force_failure,

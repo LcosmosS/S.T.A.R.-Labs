@@ -1,0 +1,2 @@
+tamagawa := &*[TamagawaNumber(E, p) : p in PrimeDivisors(N)];
+sha_order := 1;  // Initial hypothesis

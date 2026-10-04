@@ -1,0 +1,11 @@
+symbolic_model = PySRRegressor(
+    model_selection="best",
+    niterations=40,
+    binary_operators=["+", "-", "*", "/", "^2"],
+    unary_operators=["exp", "log", "sqrt", "sin", "cos"],
+    extra_sympy_mappings={"log": lambda x: np.log(np.abs(x) + 1e-5), "^2": lambda x: x**2},
+    loss="loss(x, y) = (x - y)^2",
+    maxsize=25,
+    verbosity=1,
+    random_state=42,
+    procs=1

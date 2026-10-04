@@ -1,0 +1,7 @@
+t_H = 1.44e10;
+Omega_cosmo = 1.38e10; /* Universe age */
+Omega_tilde = Omega_cosmo / t_H; /* ≈ 0.958 */
+Reg_cosmo = 9.3e10 / 5.38e7; /* ≈ 1728.62 */
+prod_c_p_cosmo = 1000;
+Sha_cosmo = 0.857;
+T_cosmo = 38; /* Calibrated */

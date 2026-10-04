@@ -1,0 +1,12 @@
+# Optional: Plot feature importances for Random Forest
+importances = rf_best_model.feature_importances_
+indices = np.argsort(importances)[::-1]
+features = X.columns
+
+
+plt.figure(figsize=(10, 6))
+plt.title('Random Forest Feature Importances')
+plt.bar(range(X.shape[1]), importances[indices], align='center')
+plt.xticks(range(X.shape[1]), features[indices], rotation=90)
+plt.xlim([-1, X.shape[1]])
+plt.show()

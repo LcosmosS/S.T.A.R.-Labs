@@ -1,0 +1,108 @@
+    if success:
+        try:
+            weak_bsd_holds = (rank == analytic_rank) if analytic_rank is not None else False
+            log_print(f"Weak BSD holds: {weak_bsd_holds}")
+            
+            omega = E.period_lattice().real_period(prec=24)
+            tamagawa = prod(E.tamagawa_numbers())
+            sha_order = 1
+            rhs = leading_coeff * (tors_order**2)
+            reg = rhs / (omega * tamagawa * sha_order) if rank > 0 else 1.0
+
+
+            if conductor <= dynamic_limit and rank >= 2:
+                heegner_coords = compute_heegner_point(E, conductor)
+                heegner_x, heegner_y = heegner_coords
+                heegner_x *= scale_factor**2
+                heegner_y *= scale_factor**3
+
+
+            log_delta_normalized = (log_delta - 4) / (35 - 4)
+            log_cond_normalized = (log_cond - 3) / (28 - 3)
+            log_delta_normalized = max(min(log_delta_normalized, 1), 0)
+            log_cond_normalized = max(min(log_cond_normalized, 1), 0)
+
+
+            a_offset = (a % 100) / 100.0
+            b_offset = (b % 100) / 100.0
+            heegner_factor = math.log1p(abs(heegner_x) + abs(heegner_y) + 1)
+            spread_factor = np.sin(np.pi/2 * log_delta_normalized) * (1 + heegner_factor) * (1 + PHI * 0.1)
+
+
+            max_lat = 75
+            max_lon = 180
+            if rank == 3:
+                phi = 60 + spread_factor * 15
+            elif rank == 2:
+                phi = -60 - spread_factor * 15
+            else:
+                phi = max_lat * (2 * log_delta_normalized - 1) * 0.8
+
+
+            if rank == 1:
+                lambda_ = max_lon * (2 * log_cond_normalized - 1) * 0.7
+            else:
+                lambda_ = max_lon * (2 * log_cond_normalized - 1) * 0.9
+
+
+            phi_offset = (a_offset - 0.5) * 20 * (1 + rank) * (1 + PHI * 0.05)
+            lambda_offset = (b_offset - 0.5) * 30 * (1 + rank) * (1 + PHI * 0.05)
+            phi += phi_offset
+            lambda_ += lambda_offset
+
+
+            phi = max_lat * np.tanh(phi / max_lat)
+            lambda_ = max_lon * np.tanh(lambda_ / max_lon)
+
+
+            flattening = (A - C) / A
+            phi_adjusted = compute_authalic_latitude(phi, flattening)
+
+
+            latitude_weight = abs(np.sin(np.radians(phi_adjusted)))
+            longitude_weight = abs(np.cos(np.radians(lambda_)))
+            correction_factor = 1 + (rank * 2) if rank is not None else 1
+            adjusted_correction = correction_factor * (1 + latitude_weight)
+            lambda_correction = correction_factor * (1 + longitude_weight)
+
+
+            phi_adjusted = phi_adjusted + (adjusted_correction - 1) * (90 - abs(phi_adjusted)) * np.sign(phi_adjusted) + (a_offset * 0.1)
+            lambda_adjusted = lambda_ + (lambda_correction - 1) * (180 - abs(lambda_)) * np.sign(lambda_) + (b_offset * 0.2)
+
+
+            phi_adjusted = max(min(phi_adjusted, 89.9), -89.9)
+            lambda_adjusted = max(min(lambda_adjusted, 180), -180)
+
+
+            if rank == 0:
+                elevation = 0
+            else:
+                elevation = rank * 1000 + heegner_factor * 500 * (1 + PHI * 0.1)
+            elevation = min(elevation, 10000)
+
+
+            if rank == 3:
+                z = C * np.sin(np.radians(phi_adjusted))
+                z += spread_factor * 1e5 * scale_factor
+            else:
+                z = C * np.sin(np.radians(phi_adjusted))
+
+
+            ue_scale = 1000
+            latitude = phi_adjusted * ue_scale
+            longitude = lambda_adjusted * ue_scale
+            size = math.sqrt(reg / 1000) if reg > 0 else 0.1
+            size = max(min(size * 100, 10), 0.1) * ue_scale / 100 * scale_factor
+
+
+            log_print(f"Earth mapping: Longitude={longitude} UE units, Latitude={latitude} UE units, Elevation={elevation} UE units, Size={size} UE units, Z={z} UE units")
+
+
+        except Exception as e:
+            log_print(f"Failed to compute BSD invariants: {e}")
+
+
+    features = [a, b, log_delta, log_cond, tors_order]
+    try:
+        del E, delta, conductor, tors_order, E_pari
+    except NameError:

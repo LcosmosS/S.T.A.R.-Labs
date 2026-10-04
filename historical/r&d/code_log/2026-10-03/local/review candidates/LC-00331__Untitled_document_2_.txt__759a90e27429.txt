@@ -1,0 +1,2 @@
+all_desired_features = base_features + additional_features
+available_features = [feat for feat in all_desired_features if feat in df.columns]

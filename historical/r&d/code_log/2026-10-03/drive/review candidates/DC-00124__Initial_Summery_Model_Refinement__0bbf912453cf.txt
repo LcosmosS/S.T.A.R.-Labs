@@ -1,0 +1,2 @@
+s_range = np.linspace(0.5, 2, 50)
+L_vals = [df.groupby('z_bin')['a_n'].mean() / (np.arange(1, 21) ** s) for s in s_range]

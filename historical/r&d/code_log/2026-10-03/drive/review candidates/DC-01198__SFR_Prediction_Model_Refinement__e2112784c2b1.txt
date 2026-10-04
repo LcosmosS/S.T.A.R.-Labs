@@ -1,0 +1,16 @@
+# Save residuals plot
+plt.figure(figsize=(8, 6))
+plt.scatter(y_pred_rf, residuals_rf, alpha=0.5)
+plt.axhline(0, color='red', linestyle='--')
+plt.xlabel('Predicted SFR')
+plt.ylabel('Residuals')
+plt.title('Residuals vs Predicted SFR (Random Forest)')
+plt.savefig('/home/pmqr7/residuals_plot.png')
+
+
+# Save feature importances plot
+plt.figure(figsize=(8, 6))
+plt.barh(feature_names[sorted_idx], importances[sorted_idx])
+plt.xlabel('Importance')
+plt.title('Feature Importances (Random Forest)')
+plt.savefig('/home/pmqr7/feature_importances_plot.png')

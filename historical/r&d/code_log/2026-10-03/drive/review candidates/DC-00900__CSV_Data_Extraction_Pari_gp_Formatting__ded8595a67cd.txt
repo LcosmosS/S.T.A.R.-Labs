@@ -1,0 +1,8 @@
+# Extract relevant columns
+try:
+    z = df['z'].values
+    sfr = df['sfr'].values
+    ra = df['ra'].values
+    dec = df['dec'].values
+    logmass = df['logmass'].values
+except KeyError as e:

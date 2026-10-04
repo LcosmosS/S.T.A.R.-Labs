@@ -1,0 +1,8 @@
+# Proxy for Betti Ratio using seed rank and conductor
+betti_ratio_proxy = seed.rank / (np.log10(seed.conductor + 1) + 1e-8)
+
+
+# Complexity 14 Equation (Mapping Discovered Entropy to Projection Depth)
+# Using the form: inv(exp((((B_ratio^2) - T) + (exp(T) * 0.403)) / 0.461))
+term_inner = ((betti_ratio_proxy**2 - t_cosmo) + (np.exp(t_cosmo) * 0.4032015)) / 0.4610014
+z_projected = self.LAMBDA * (1.0 / np.exp(term_inner))

@@ -1,0 +1,2 @@
+tf_proxy = (seed.rank * self.ALPHA) + np.log(seed.regulator + 1.1)
+z_projected = self.LAMBDA * ((t_cosmo * tf_proxy) + self.ALPHA) - (t_cosmo * self.BETA)

@@ -1,0 +1,7 @@
+regime.capitalize())
+ 
+     
+    X_test_df  =  pd.DataFrame(X_test,  columns=X_clf_cols)  
+    X_test_df['predicted_type']  =  gen_clf.predict(X_test)  
+     
+    #  PNG  Scatter  (PySR)  

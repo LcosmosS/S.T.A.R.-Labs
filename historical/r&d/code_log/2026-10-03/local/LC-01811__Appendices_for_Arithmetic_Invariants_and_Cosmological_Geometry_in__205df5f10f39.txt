@@ -1,0 +1,1 @@
+     var_ap  =  np.var([tr_p1,  tr_p2,  tr_p3])  if  all(np.isfinite([tr_p1,  tr_p2,  tr_p3]))  

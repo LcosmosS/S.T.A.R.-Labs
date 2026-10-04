@@ -1,0 +1,4 @@
+I'm calculating that for K_theory = 0.00803, sum(M_i / M_0) ≈ 155, while sum(M_0 / M_i) ≈ 1.93e6, showing a huge difference.
+Mean(M / M_0) ≈ 15500 / 9214 ≈ 1.68, much smaller than expected e^{(ln(10)^2 sigma^2)/2} ≈ 210, suggesting M_0 might be miscomputed.
+I'm planning to check if the number of M[i] above and below M_0 is balanced, expecting around 4607 each for N=9214.
+M[i] = 10^log_mass[i], so if log_mass[i] ranges from 8 to 12, M[i] is from 1e8 to 1e12.

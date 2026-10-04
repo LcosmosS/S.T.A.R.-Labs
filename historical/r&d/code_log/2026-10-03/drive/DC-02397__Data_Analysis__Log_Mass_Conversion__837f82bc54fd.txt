@@ -1,0 +1,7 @@
+# Optional: Visualize for a specific z bin, e.g., 0.05 to 0.1
+df_z_05_1 = df[(df['z'] >= 0.05) & (df['z'] < 0.1)]
+plt.hist(df_z_05_1[df_z_05_1['sfr'] > df_z_05_1['sfr'].median()]['logmass'], bins=30, density=True, alpha=0.5, label='high_sfr')
+plt.hist(df_z_05_1[df_z_05_1['sfr'] <= df_z_05_1['sfr'].median()]['logmass'], bins=30, density=True, alpha=0.5, label='low_sfr')
+plt.legend()
+plt.title('Log_Mass Distribution for z: 0.05 to 0.1 by SFR')
+plt.show()

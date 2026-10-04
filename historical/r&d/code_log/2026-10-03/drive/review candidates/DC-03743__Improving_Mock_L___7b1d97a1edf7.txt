@@ -1,0 +1,7 @@
+t_H = 1.44e10; /* Hubble time in years */
+Omega_cosmo = 5.38e7; /* Light travel time to Virgo in years */
+Omega_tilde = Omega_cosmo / t_H; /* ≈ 0.00374 */
+Reg_cosmo = 9.3e10 / 5.38e7; /* ≈ 1728.62 */
+prod_c_p_cosmo = 50; /* Cluster count */
+Sha_cosmo = 0.27; /* Dark matter density */
+T_cosmo = 5; /* Supercluster count */

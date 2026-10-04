@@ -1,0 +1,3 @@
+    num_y = round(num_x * multiplier)
+
+    return num_x, num_y

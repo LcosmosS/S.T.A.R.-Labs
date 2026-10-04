@@ -1,0 +1,2 @@
+global_stacker.fit(X_eval, y_eval, strata_eval)
+final_preds = global_stacker.predict(X_eval)

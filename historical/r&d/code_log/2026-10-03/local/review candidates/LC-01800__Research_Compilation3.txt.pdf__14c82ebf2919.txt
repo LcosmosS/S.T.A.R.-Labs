@@ -1,0 +1,2 @@
+print("Reference mass M_0: ", M_0);/ Compute Reg_cosmo as average mass ratio /
+Reg_cosmo = sum(i=1, N, M[i] / M_0) / N; / Data-driven regulator / print("Reg_cosmo: ",

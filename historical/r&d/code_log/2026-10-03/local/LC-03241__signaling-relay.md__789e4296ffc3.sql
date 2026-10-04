@@ -1,0 +1,18 @@
+-- CREATE TABLE IF NOT EXISTS webrtc_peers (
+--   room TEXT NOT NULL,
+--   peer_id TEXT NOT NULL,
+--   name TEXT NOT NULL DEFAULT '',
+--   last_seen TIMESTAMPTZ NOT NULL DEFAULT now(),
+--   PRIMARY KEY (room, peer_id)
+-- );
+-- CREATE TABLE IF NOT EXISTS webrtc_signals (
+--   id BIGSERIAL PRIMARY KEY,
+--   room TEXT NOT NULL,
+--   to_peer TEXT NOT NULL,
+--   from_peer TEXT NOT NULL,
+--   kind TEXT NOT NULL,
+--   payload JSONB NOT NULL,
+--   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+-- );
+-- CREATE INDEX IF NOT EXISTS webrtc_signals_inbox
+--   ON webrtc_signals (room, to_peer, id);

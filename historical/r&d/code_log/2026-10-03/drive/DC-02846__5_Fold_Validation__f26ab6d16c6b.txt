@@ -1,0 +1,2 @@
+missing_features = [feat for feat in all_features if feat not in df.columns]
+if missing_features:

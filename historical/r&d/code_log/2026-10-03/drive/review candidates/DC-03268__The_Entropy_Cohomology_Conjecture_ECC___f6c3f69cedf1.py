@@ -1,0 +1,4 @@
+from catboost import CatBoostRegressor
+
+cat_model = CatBoostRegressor(iterations=500, depth=7, learning_rate=0.05, loss_function='RMSE')
+cat_model.fit(X_train, y_train, cat_features=cat_cols, verbose=100)

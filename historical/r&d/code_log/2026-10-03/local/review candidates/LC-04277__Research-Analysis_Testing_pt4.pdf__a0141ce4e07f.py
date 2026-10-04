@@ -1,0 +1,6 @@
+E = EllipticCurve(QQ, [0, 0, 0, a, b])
+ delta = E.discriminant()
+conductor = E.conductor()
+tors_order = E.torsion_subgroup().order()
+print(f"Fibonacci curve: y² = x³ + {a}x + {b}")
+print(f"Discriminant: {delta}")

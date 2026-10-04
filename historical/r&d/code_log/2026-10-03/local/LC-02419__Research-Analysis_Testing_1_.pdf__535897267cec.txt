@@ -1,0 +1,1 @@
+E  =  EllipticCurve([-1706,  6320])  3.  print(E.rank())  4.  If  the  rank  is  1,  the  weak  BSD  holds.  If  not,  we’d  need  to  use  Magma  or  PARI/GP  for  

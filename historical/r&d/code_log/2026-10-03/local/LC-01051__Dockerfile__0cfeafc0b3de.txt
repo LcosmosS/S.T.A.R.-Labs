@@ -1,0 +1,4 @@
+ENV SAGE_DATABASES=/usr/local/share/sage/databases
+ENV PYTHONNOUSERSITE=1
+
+# Project workspace

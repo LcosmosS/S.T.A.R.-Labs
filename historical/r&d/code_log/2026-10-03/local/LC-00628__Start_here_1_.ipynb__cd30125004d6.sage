@@ -1,0 +1,1 @@
+var('x')  # make sure x is a symbolic variable

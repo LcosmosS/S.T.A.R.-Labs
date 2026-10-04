@@ -1,0 +1,8 @@
+Omega_tilde = 0.9583;
+Sha_cosmo = 0.315;
+N = 10000;
+* T_cosmo = sqrt(Omega_tilde * N * Sha_cosmo);
+* Normalization Constant ( K ): Compute using the simplified formula:
+* gp
+* K = Reg_cosmo / L_cosmo;
+* Expect K \approx 1 for large N due to log-normal mass distribution.

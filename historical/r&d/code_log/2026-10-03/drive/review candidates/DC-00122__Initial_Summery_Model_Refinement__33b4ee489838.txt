@@ -1,0 +1,2 @@
+df["cosmo_rank_mass"] = df["cosmo_rank"] * df["log_Mass"]
+df["L_cosmo_s1_mass"] = df["L_cosmo_s1.0"] * df["log_Mass"]

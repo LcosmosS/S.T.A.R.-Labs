@@ -1,0 +1,7 @@
+Define columns = ['log_mass', 'ra', 'sfr', 'z']
+
+
+For each column in columns, df[col] = pd.to_numeric(df[col], errors='coerce')
+
+
+df = df.dropna(subset=columns)

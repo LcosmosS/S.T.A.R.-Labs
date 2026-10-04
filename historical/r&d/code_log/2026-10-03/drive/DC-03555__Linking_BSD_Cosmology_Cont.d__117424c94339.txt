@@ -1,0 +1,2 @@
+X = df.drop(columns=['SFR_PETRORAD_R'])  # Features
+y = df['SFR_PETRORAD_R']                # Target

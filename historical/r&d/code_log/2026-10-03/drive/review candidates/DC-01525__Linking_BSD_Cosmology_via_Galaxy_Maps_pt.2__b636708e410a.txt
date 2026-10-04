@@ -1,0 +1,2 @@
+Then, first_1000 = values[:1000]
+Then, result = ','.join(first_1000)

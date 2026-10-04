@@ -1,0 +1,9 @@
+omega = if(E.disc>0, 2, 1) * E.omega;  \\ Real period
+G = ellgenerators(E);  \\ Generators
+reg = if(#G>0, matdet(ellheightmatrix(E, G)), 0);  \\ Regulator
+print("Tamagawa product: ", prod([t | t <- tamagawa]));
+print("Analytic rank: ", r, ", L'(E,1): ", L1r);
+print("Real period: ", omega);
+print("Regulator: ", reg);
+selmer = ellselmer(E, 2);  \\ 2-Selmer group
+print("2-Selmer rank: ", #selmer);

@@ -1,0 +1,2 @@
+         if  sym_reg_gen:              getattr(sym_reg_gen,  'equations_',  
+pd.DataFrame()).to_csv(f'{OUTPUT_PLOT_PREFIX}_symbolic_regression_generator_{method}.c

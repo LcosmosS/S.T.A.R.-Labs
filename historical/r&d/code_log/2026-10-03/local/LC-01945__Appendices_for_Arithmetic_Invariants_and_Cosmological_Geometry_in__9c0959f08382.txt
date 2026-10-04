@@ -1,0 +1,6 @@
+    chunk  =  chunk.dropna(subset=key_cols)  
+    chunk  =  chunk[(chunk['Fg']  >  0)  &  (chunk['Fr']  >  0)  &  (chunk['Fz']  >  0)]  
+     
+    coeff_cols  =  [col  for  col  in  chunk.columns  if  col.startswith('COEFF')]  
+    if  coeff_cols:  
+        chunk['coeff_sum']  =  chunk[coeff_cols].sum(axis=1)  

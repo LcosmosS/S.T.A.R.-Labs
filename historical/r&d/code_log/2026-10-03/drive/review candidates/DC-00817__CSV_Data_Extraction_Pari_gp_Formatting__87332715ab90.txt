@@ -1,0 +1,16 @@
+n = length(logmass);
+mu = sum(i=1, n, logmass[i]) / n;
+variance = sum(i=1, n, (logmass[i] - mu)^2) / (n - 1);
+std_dev = sqrt(variance);
+N = n;
+num_sim = 8807;
+K_sum = 0;
+kurtosis_sum = 0;
+
+
+box_muller() = {
+  my(u1, u2, r, theta);
+  u1 = random(1.0);
+  u2 = random(1.0);
+  r = sqrt(-2 * log(u1));
+  theta = 2 * Pi * u2;

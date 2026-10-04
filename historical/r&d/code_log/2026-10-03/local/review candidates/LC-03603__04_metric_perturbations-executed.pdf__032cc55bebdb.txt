@@ -1,0 +1,6 @@
+      fft  =  np.fft.rfft(modes     -  np.mean(modes))
+      ps  = np.abs(fft)**2
+
+
+
+                                                        2

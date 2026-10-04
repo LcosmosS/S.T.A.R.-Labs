@@ -1,0 +1,23 @@
+   import sympy as sp
+   import pandas as pd
+   import numpy as np
+
+
+   # Symbolic derivation
+   r, R, Omega, T, alpha = sp.symbols('r R Omega T alpha')
+   psi = r * (r + 1) / 2
+   V = (Omega * R**(1/r) * alpha**r / T) * sp.exp(-psi)
+   print("Universal ψ(r):", psi)
+   print("Invariant V:", V.simplify())
+
+
+   # Test on corpus curves (e.g., from "MyTable_Bigsby.csv" proxies or file 9 examples)
+   df = pd.DataFrame({  # Sample from corpus: rank, R, Omega, T, alpha=1 placeholder
+       'rank': [1, 2, 3],
+       'R': [3.38, 2.3e-5, 5.77e-4],  # Virgo r=1, example r=2/3
+       'Omega': [0.42, 1.0, 0.06],  # Placeholders from logs
+       'T': [1, 2, 1]
+   })
+   df['psi'] = df['rank'] * (df['rank'] + 1) / 2
+   df['V'] = (df['Omega'] * df['R']**(1/df['rank']) * 1**df['rank'] / df['T']) * np.exp(-df['psi'])
+   print(df[['rank', 'V']])  # Check invariance

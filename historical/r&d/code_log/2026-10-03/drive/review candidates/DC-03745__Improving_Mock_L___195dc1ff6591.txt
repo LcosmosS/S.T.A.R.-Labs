@@ -1,0 +1,4 @@
+k_min = 0.001; k_max = 1.0; steps = 1000;
+delta_k = (k_max - k_min) / steps;
+/* Replace with real P(k) data */
+P_k(n) = 1e4 * ((n * delta_k)^0.96); /* Simplified model, ns ≈ 0.96 */

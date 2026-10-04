@@ -1,0 +1,4 @@
+target_cols=['logmass',
+ 
+'petrorad_r']):
+     log_function("impute_input_features")      chunk  =  chunk.copy()      imputer  =  KNNImputer(n_neighbors=5,  weights='distance')      X  =  chunk[impute_cols  +  target_cols]      X_imputed  =  pd.DataFrame(imputer.fit_transform(X),  columns=impute_cols  +  

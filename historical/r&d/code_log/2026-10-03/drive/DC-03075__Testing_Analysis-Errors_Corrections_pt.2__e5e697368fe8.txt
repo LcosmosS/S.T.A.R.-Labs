@@ -1,0 +1,6 @@
+if(abs(modified_leading_coeff - rhs) < 1e-5,
+    print("Modified strong BSD holds with Fibonacci, pi, and phi substitutions");
+,
+    print("Modified strong BSD fails with Fibonacci, pi, and phi substitutions");
+    adjusted_sha = (modified_leading_coeff * tors_order^2) / (omega_scaled * reg_scaled * tamagawa);
+    print("Adjusted |Sha(E)| to match: ", adjusted_sha);

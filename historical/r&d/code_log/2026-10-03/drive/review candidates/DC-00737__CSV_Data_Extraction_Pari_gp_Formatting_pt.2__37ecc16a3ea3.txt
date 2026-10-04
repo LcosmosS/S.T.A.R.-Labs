@@ -1,0 +1,3 @@
+df = df_mytable.merge(df_mangahi, left_on='mangaid', right_on=merge_key, how='left')
+if merge_key != 'mangaid':
+    df = df.drop(columns=[merge_key], errors='ignore')

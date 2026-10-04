@@ -1,0 +1,15 @@
+tamagawa = 1;
+bad_primes = factor(conductor)[,1];
+for(i = 1, #bad_primes, tamagawa *= elltamagawa(E, bad_primes[i]));
+         6. print("Product of Tamagawa numbers: ", tamagawa);
+         * Retype the loop manually to avoid parsing errors.
+         7. Update BSD Check and Sha:
+         * With rhs as a scalar, the remaining lines should work:
+         8. pari
+rhs = (omega_scaled * reg_scaled * p * tamagawa) / (tors_order^2);
+print("Right-hand side of modified strong BSD: ", rhs);
+modified_leading_coeff = 8;
+print("Modified leading coefficient (F_6 = 8): ", modified_leading_coeff);
+if (abs(modified_leading_coeff - rhs) < 1e-5, print("Modified strong BSD holds with pi and phi substitutions"), print("Modified strong BSD fails with pi and phi substitutions"));
+adjusted_sha = modified_leading_coeff / (omega_scaled * reg_scaled * tamagawa) * (tors_order^2);
+         9. print("Adjusted |Sha(E)| to match: ", adjusted_sha);

@@ -1,0 +1,4 @@
+T_cosmo = c * sqrt(N), where c is chosen so that for N=1000, T_cosmo=17, so c = 17 /
+sqrt(1000) ≈ 0.537 Then, for N=9, T_cosmo = 0.537 * sqrt(9) = 0.537 * 3 = 1.611 For N=5,
+T_cosmo = 0.537 * sqrt(5) ≈ 0.537 * 2.236 ≈ 1.2 Then, in the script, for the full sample, use
+T_cosmo_full = 1.611, and for the subsample, use T_cosmo_sub = 1.2 But since the script

@@ -1,0 +1,15 @@
+# Remove rows with NaN in logmass
+df_clean = df.dropna(subset=['logmass'])
+
+
+# Extract cleaned data
+z = df_clean['z'].values
+sfr = df_clean['sfr'].values
+ra = df_clean['ra'].values
+dec = df_clean['dec'].values
+logmass = df_clean['logmass'].values
+
+
+# Fit GMM on cleaned logmass
+gmm = GaussianMixture(n_components=5, random_state=0).fit(logmass.reshape(-1, 1))
+groups = gmm.predict(logmass.reshape(-1, 1))

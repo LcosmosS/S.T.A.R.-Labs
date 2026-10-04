@@ -1,0 +1,9 @@
+grouped = df.groupby('subpopulation')
+K_values = {}
+for subpop, group in grouped:
+    masses = group['mass']
+    M0 = masses.median()
+    sum_M_over_M0 = (masses / M0).sum()
+    sum_M0_over_M = (M0 / masses).sum()
+    K = sum_M_over_M0 / sum_M0_over_M
+    K_values[subpop] = K

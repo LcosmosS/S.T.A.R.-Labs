@@ -1,0 +1,6 @@
+if len(valid_fibs) < 2:
+return random.choice(fib_list), random.choice(fib_list)
+if force_failure and large_fibs:
+return random.sample(large_fibs, 2) if len(large_fibs) >= 2 else
+random.sample(valid_fibs, 2)
+# Bias toward pairs that yielded rank 3 (e.g., a=2, b=144)

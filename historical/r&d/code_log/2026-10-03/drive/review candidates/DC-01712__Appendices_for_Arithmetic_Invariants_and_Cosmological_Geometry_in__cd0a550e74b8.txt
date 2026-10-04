@@ -1,0 +1,42 @@
+    print("  - Training predictive model on 75% of data...")
+    pipeline.fit(X_train, y_train)
+    
+    print("  - Evaluating model on 25% unseen test data...")
+    y_pred = pipeline.predict(X_test)
+    
+    r2 = r2_score(y_test, y_pred)
+    print(f"  - Predictive Model R² Score on Test Set: {r2:.4f}")
+
+
+    print("  - Analyzing model's ability to 'zero in' on the scaling factor K...")
+    test_results = pd.DataFrame({
+        'K_actual': y_test / X_test['discriminant'],
+        'K_predicted': y_pred / X_test['discriminant']
+    }).replace([np.inf, -np.inf], np.nan).dropna()
+
+
+    k_low_act, k_high_act = test_results['K_actual'].quantile(0.01), test_results['K_actual'].quantile(0.99)
+    test_results['K_actual_clipped'] = test_results['K_actual'].clip(k_low_act, k_high_act)
+    test_results['K_predicted_clipped'] = test_results['K_predicted'].clip(k_low_act, k_high_act)
+    
+    plt.figure(figsize=(12, 8))
+    sns.kdeplot(data=test_results, x='K_actual_clipped', fill=True, label='Actual K', alpha=0.7)
+    sns.kdeplot(data=test_results, x='K_predicted_clipped', fill=True, label='Predicted K', alpha=0.7)
+    plt.title("Predictive Test: 'Zeroing In' on the Scaling Factor K", fontsize=16)
+    plt.xlabel("Value of Scaling Constant K (Clipped)", fontsize=12)
+    plt.ylabel("Probability Density", fontsize=12)
+    plt.legend()
+    plt.savefig(f"{OUTPUT_PLOT_PREFIX}_k_prediction_comparison.png")
+    plt.close()
+    
+    print("\n" + "="*70); print("      PREDICTIVE MODELING SUMMARY"); print("="*70)
+    print(f"\nThe model, trained on 75% of the data, was able to predict the Virial Energy")
+    print(f"on the unseen 25% with an R² score of {r2:.4f}.")
+    print("\nThe plot 'k_prediction_comparison.png' visually demonstrates how well the")
+    print("model learned the underlying physical law, showing the alignment between the")
+    print("actual and predicted distributions of the scaling factor K.")
+    print("="*70)
+
+
+if __name__ == "__main__":
+    main()

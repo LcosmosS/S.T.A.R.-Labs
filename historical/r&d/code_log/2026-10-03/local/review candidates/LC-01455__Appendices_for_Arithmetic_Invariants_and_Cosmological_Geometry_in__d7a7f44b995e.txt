@@ -1,0 +1,5 @@
+t_H = 1.44e10; /* Hubble time in years */
+Omega_cosmo = 1.38e10; /* Age of universe in years */
+Omega_tilde = Omega_cosmo / t_H; /* Dimensionless age ratio */
+
+/* The 'log_mass' vector must be populated with the 978 values from the 'logmass'

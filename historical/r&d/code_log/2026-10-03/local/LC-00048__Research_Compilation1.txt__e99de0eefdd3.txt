@@ -1,0 +1,2 @@
+Let's check the relationship between log_mass and M, since M = 10^log_mass, and ln(M) = log_mass * ln(10).
+I'm exploring how M follows a log-normal distribution, with E[M] = exp(μ * ln(10) + (σ * ln(10))² / 2).

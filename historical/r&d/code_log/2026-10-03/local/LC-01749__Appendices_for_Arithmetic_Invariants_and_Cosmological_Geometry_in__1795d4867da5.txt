@@ -1,0 +1,1 @@
+        valid_data  =  chunk['radius_ly'].notna()  &  (chunk['radius_ly']  >  0)  &  

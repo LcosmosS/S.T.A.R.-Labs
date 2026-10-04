@@ -1,0 +1,1 @@
+  python  #  Define  the  elliptic  curve  E  =  EllipticCurve(QQ,  [-1706,  6320])   

@@ -1,0 +1,2 @@
+left_side = L_cosmo(1);
+print("Unscaled L_cosmo(1): ", sum(n=2, 2500, (C_l[n] / T_cmb^2) / n));

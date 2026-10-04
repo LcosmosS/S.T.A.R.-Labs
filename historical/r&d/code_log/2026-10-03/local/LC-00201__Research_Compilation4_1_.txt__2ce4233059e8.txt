@@ -1,0 +1,7 @@
+To fix the error, change the line M0 = median(log_mass); in your compute_K_theory function to M0 = compute_median(log_mass);. This is because PARI/GP does not have a built-in median function, and you likely need to use a custom function you’ve defined, such as compute_median. Ensure compute_median is defined as:
+compute_median(v) = {
+  v_sorted = vecsort(v);
+  n = #v_sorted;
+  if (n % 2 == 0,
+    (v_sorted[n/2] + v_sorted[n/2 + 1]) / 2,
+    v_sorted[(n+1)/2]

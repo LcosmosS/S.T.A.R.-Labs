@@ -1,0 +1,4 @@
+E := EllipticCurve([0, 0, 0, -1706, 6320]);
+N := Conductor(E);
+print "Conductor:", N;
+rank := Rank(E);

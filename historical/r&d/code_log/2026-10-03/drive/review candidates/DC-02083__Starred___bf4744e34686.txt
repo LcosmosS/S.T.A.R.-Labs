@@ -1,0 +1,4 @@
+mass = vector(#log_mass, i, 10^log_mass[i]) computes the actual masses from log_mass.
+
+
+M_sorted = vecsort(mass) sorts these masses.

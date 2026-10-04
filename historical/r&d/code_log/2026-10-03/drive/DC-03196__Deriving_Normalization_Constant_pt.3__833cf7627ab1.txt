@@ -1,0 +1,7 @@
+if (a < b, \
+    print("a is less than b"), \
+    print("a is not less than b") \
+                     * );
+                     * This tells PARI/GP that the statement continues on the next line.
+                     3. Run From a Script File:
+                     * Write the entire script in a file (e.g., script.gp), then load it with \r script.gp in PARI/GP. This avoids any issues with line-by-line entry.

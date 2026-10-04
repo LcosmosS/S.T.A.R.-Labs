@@ -1,0 +1,5 @@
+    tractable_ranks = ['Rank 0', 'Rank 1', 'Rank 2', 'Rank 3+']
+    df_ranked = df_full[df_full['rank'].isin(tractable_ranks)].copy()
+
+    if df_ranked.empty:
+        print("    - SCIENTIFIC FINDING: No galaxies with a computationally tractable

@@ -1,0 +1,3 @@
+# Assign to another DataFrame if needed
+X = pd.DataFrame()
+X['cosmo_rank'] = gz_df['cosmo_rank']

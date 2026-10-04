@@ -1,0 +1,2 @@
+ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=colors, cmap='viridis') 263
+plt.colorbar(scatter, label='Weak BSD Holds') 264 ax.set_xlabel('Log(Discriminant)')

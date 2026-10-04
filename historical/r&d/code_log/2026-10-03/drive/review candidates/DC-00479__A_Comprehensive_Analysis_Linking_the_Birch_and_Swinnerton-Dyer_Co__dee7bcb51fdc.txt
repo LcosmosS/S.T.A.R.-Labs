@@ -1,0 +1,8 @@
+    logmass = galaxy['logmass']
+    z = galaxy['z']
+    dec = galaxy['dec']
+    petrorad_r = galaxy['petrorad_r']
+    environment = galaxy['environment']
+    
+    if rank == 1:
+        return (alpha * logmass + beta * z + gamma * l_value + 

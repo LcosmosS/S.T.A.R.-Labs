@@ -1,0 +1,35 @@
+        if sha_two_rank eq 0 then
+            print "Sha(E)[2] = 0, suggesting |Sha(E)| is odd or 1";
+        else
+            print "|Sha(E)[2]| =", 2^sha_two_rank;
+        end if;
+    catch e
+        print "Failed to compute 2-Selmer group:", e;
+    end try;
+
+    // Compute BSD invariants for strong BSD
+    omega := RealPeriod(E);
+    if rank eq 0 then
+        reg := 1.0;
+    else
+        reg := Regulator(E);
+    end if;
+    tamagawa := &*[TamagawaNumber(E, p) : p in PrimeDivisors(N)];
+    sha_order := 1;  // Initial hypothesis
+
+    // Compute the right-hand side of the strong BSD formula
+    rhs := (omega * reg * sha_order * tamagawa) / (tors_order^2);
+    print "Real period (Omega):", omega;
+    print "Regulator:", reg;
+    print "Product of Tamagawa numbers:", tamagawa;
+    print "Right-hand side of strong BSD (with |Sha(E)| = 1):", rhs;
+
+    // Verify strong BSD
+    if Abs(leading_coeff - rhs) lt 1e-10 then
+        print "Strong BSD holds: Leading coefficient matches with |Sha(E)| = 1";
+    else
+        print "Strong BSD fails: Leading coefficient does not match with |Sha(E)| = 1";
+        sha_order := (leading_coeff * tors_order^2) / (omega * reg * tamagawa);
+        print "Adjusted |Sha(E)| to match:", sha_order;
+    end if;
+end if;

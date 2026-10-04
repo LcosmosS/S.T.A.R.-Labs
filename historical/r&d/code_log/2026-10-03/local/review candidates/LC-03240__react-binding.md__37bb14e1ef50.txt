@@ -1,0 +1,38 @@
+import { useP2PRoom } from "@/lib/multiplayer";
+
+function Game() {
+  const p2p = useP2PRoom({ name: "ani" }); // room defaults per deployment
+  const [positions, setPositions] = useState<Record<string, Pos>>({});
+
+  useEffect(
+    () =>
+      p2p.onMessage((from, data, channel) => {
+        if (channel === "state") {
+          setPositions((p) => ({ ...p, [from]: data as Pos }));
+        }
+      }),
+    [p2p.onMessage],
+  );
+
+  // Game-rate state: broadcast on the unreliable channel (stale packets drop).
+  // 20-30 sends/s is plenty; interpolate between updates for smooth motion.
+  useEffect(() => {
+    let raf = 0;
+    let lastSent = 0;
+    const loop = (now: number) => {
+      if (now - lastSent >= 50) {
+        // ~20 sends/s
+        p2p.broadcast(myPositionRef.current);
+        lastSent = now;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, [p2p.broadcast]);
+
+  // One-shot actions (chat, "start game"): reliable + ordered.
+  const sendChat = (text: string) => p2p.send({ chat: text });
+
+  return <Board peers={p2p.peers} positions={positions} />;
+}

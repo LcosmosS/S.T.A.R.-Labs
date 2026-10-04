@@ -1,0 +1,9 @@
+X = df.drop(columns=['log_SFR_Ha'])  # Features
+   * y = df['log_SFR_Ha']                # Target
+   * If it’s named differently (e.g., SFR_PETRORAD_R), adjust accordingly:
+   * python
+X = df.drop(columns=['SFR_PETRORAD_R'])
+   * y = df['SFR_PETRORAD_R']
+* Feature Columns: By default, the script might assume all columns except the target are features. If your dataset includes columns you don’t want to use (e.g., an ID column like galaxy_id), exclude them:
+* python
+* X = df.drop(columns=['SFR_PETRORAD_R', 'galaxy_id'])

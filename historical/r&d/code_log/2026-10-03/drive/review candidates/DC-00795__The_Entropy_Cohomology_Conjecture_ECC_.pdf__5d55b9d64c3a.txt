@@ -1,0 +1,6 @@
+data['error'] = np.abs(preds - y_test.values)
+plt.hist(data['error'], bins=30)
+plt.title("Symbolic Projection Residuals")
+plt.xlabel("Prediction Error")
+plt.ylabel("Count")
+plt.show()

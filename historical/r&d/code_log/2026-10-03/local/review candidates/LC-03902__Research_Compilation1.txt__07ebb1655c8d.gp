@@ -1,0 +1,53 @@
+expected_N = 9214;
+t_H=1.44e10; Omega_cosmo=1.38e10; Omega_tilde=Omega_cosmo/t_H; print("Omega_tilde: ", Omega_tilde);
+print("Attempting to read file...");
+read("C:/temp/data_extract.txt");
+print("File read successfully (if no error above)");
+if (type(log_mass) != "t_VEC", error("log_mass is not a vector: ", type(log_mass)));
+print("log_mass type: ", type(log_mass));
+print("Number of elements in log_mass: ", #log_mass);
+if (#log_mass != expected_N, error("log_mass does not have ", expected_N, " entries"));
+N = #log_mass;
+print("Min log_mass: ", vecmin(log_mass));
+print("Max log_mass: ", vecmax(log_mass));
+mean_log_mass = sum(i=1,N,log_mass[i])/N;
+var_log_mass = sum(i=1,N,(log_mass[i] - mean_log_mass)^2)/(N-1);
+sigma_log_mass = sqrt(var_log_mass);
+print("Mean log_mass: ", mean_log_mass);
+print("Sigma log_mass: ", sigma_log_mass);
+\\ Compute quartiles using IQR method for outlier detection
+sorted_log_mass = vecsort(log_mass);
+Q1 = sorted_log_mass[ceil(0.25 * N)];
+Q3 = sorted_log_mass[ceil(0.75 * N)];
+IQR = Q3 - Q1;
+lower_bound = Q1 - 1.5 * IQR;
+upper_bound = Q3 + 1.5 * IQR;
+print("Q1: ", Q1);
+print("Q3: ", Q3);
+print("IQR: ", IQR);
+print("Lower bound for outliers: ", lower_bound);
+print("Upper bound for outliers: ", upper_bound);
+\\ Filter outliers
+log_mass_filtered = select(x -> x >= lower_bound && x <= upper_bound, log_mass);
+N_filtered = #log_mass_filtered;
+print("Number of filtered log_mass: ", N_filtered);
+if (N_filtered > 0, {
+  M_filtered = vector(N_filtered, i, 10^log_mass_filtered[i]);
+  M_0_filtered = mymedian(M_filtered);
+  print("Filtered reference mass M_0: ", M_0_filtered);
+  Reg_cosmo = 2.8;
+  Sha_cosmo = 0.315;
+  T_cosmo_filtered = sqrt((841 * N_filtered) / 1000);
+  print("T_cosmo_filtered: ", T_cosmo_filtered);
+  unscaled_L_cosmo_1_filtered = sum(i=1,N_filtered,(M_0_filtered / M_filtered[i])) / N_filtered;
+  print("Filtered unscaled L_cosmo(1): ", unscaled_L_cosmo_1_filtered);
+  right_side_filtered = (Omega_tilde * Reg_cosmo * N_filtered * Sha_cosmo) / (T_cosmo_filtered^2);
+  print("Filtered right side: ", right_side_filtered);
+  K_filtered = right_side_filtered / unscaled_L_cosmo_1_filtered;
+  print("Filtered normalization constant K: ", K_filtered);
+  print("Filtered cosmological BSD analogue holds within 10%: ", abs(1 - K_filtered) < 0.1);
+  // Compute theoretical K for filtered data
+  sum_Mi_over_M0_filtered = sum(i=1, N_filtered, M_filtered[i] / M_0_filtered);
+  sum_M0_over_Mi_filtered = sum(i=1, N_filtered, M_0_filtered / M_filtered[i]);
+  K_theory_filtered = sum_Mi_over_M0_filtered / sum_M0_over_Mi_filtered;
+  print("Theoretical K for filtered sample: ", K_theory_filtered);

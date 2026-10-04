@@ -1,0 +1,6 @@
+plt.figure()
+plt.plot(n_components_range, bic_scores)
+plt.xlabel('Number of components')
+plt.ylabel('BIC score')
+plt.title('BIC scores for different number of components')
+* plt.savefig('bic_scores.png')

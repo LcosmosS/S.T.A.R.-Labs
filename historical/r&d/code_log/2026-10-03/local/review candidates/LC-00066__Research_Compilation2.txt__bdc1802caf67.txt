@@ -1,0 +1,7 @@
+Omega_tilde = 0.9583;
+Sha_cosmo = 0.315;
+N = 10000;
+T_cosmo = sqrt(Omega_tilde * N * Sha_cosmo);
+Reg_cosmo = sum(i=1, #masses, masses[i] / M0) / #masses;
+L_value = L_cosmo(1, M0, masses);
+K = (Omega_tilde * Reg_cosmo * N * Sha_cosmo) / (T_cosmo^2 * L_value);

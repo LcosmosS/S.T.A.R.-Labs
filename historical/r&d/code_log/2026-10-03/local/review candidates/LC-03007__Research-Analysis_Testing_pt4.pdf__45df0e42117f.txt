@@ -1,0 +1,5 @@
+EllipticCurve_generic.__init__(self, K, ainvs, category) 166 self.__ainvs = tuple(K(a) for a in
+ainvs) 167 if self.discriminant() == 0: --> 168
+
+raise ArithmeticError(self._equation_string() + " defines a singular curve") 169 PP =
+projective_space.ProjectiveSpace(2, K, names='xyz') 170 x, y, z =

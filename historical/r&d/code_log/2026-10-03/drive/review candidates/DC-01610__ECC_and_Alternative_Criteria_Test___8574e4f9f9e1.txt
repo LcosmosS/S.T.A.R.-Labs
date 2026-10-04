@@ -1,0 +1,50 @@
+    df = pd.concat(df_list, ignore_index=True)
+    gc.collect()
+    summary = {'Total Rows Processed': len(df), 'Betti_1 Values': betti_1_vals}
+    print_step(21, "Cohomology Processing", summary)
+
+
+    print_step(7, "Entropy Gradient Calculation")
+    df, entropy_gradient, summary = compute_entropy_gradient(df)
+    print_step(7, "Entropy Gradient Calculation", summary)
+
+
+    print_step(9, "KDE Features Calculation")
+    df, log_dens, summary = compute_kde_features(df, 'selmer_rank', 'var_ap')
+    print_step(9, "KDE Features Calculation", summary)
+
+
+    print_step(22, "Check Class Distribution")
+    class_dist = df['generator_type'].value_counts().to_dict()
+    analysis_logger.info("Generator Type Distribution:\n" + str(class_dist))
+    summary = {'Generator Type Distribution': class_dist}
+    print_step(22, "Check Class Distribution", summary)
+
+
+    feature_cols = ['logmass', 'metallicity', 'petrorad_r', 'reg_cosmo', 't_cosmo', 'log_delta', 'log_omega',
+                    'log_torsion', 'log_conductor', 'real_log_j', 'imag_log_j', 'tr_p1', 'var_ap', 'sato_tate',
+                    'isogeny_count', 'log_min_isogeny', 'log_torsion_type', 'is_simple_generator', 'selmer_rank',
+                    'torsion', 'j_invariant', 'discriminant', 'entropy', 'betti_1', 'entropy_gradient', 'kde_selmer_rank_var_ap']
+    print_step(22, "Check NaN Counts")
+    nan_counts = df[feature_cols].isna().sum().to_dict()
+    analysis_logger.info("NaN Counts in Features:\n" + str(nan_counts))
+    pd.Series(nan_counts).to_csv(f'{OUTPUT_PLOT_PREFIX}_nan_counts.csv')
+    summary = {'NaN Counts': {k: v for k, v in nan_counts.items() if v > 0}}
+    print_step(22, "Check NaN Counts", summary)
+
+
+    print_step(5, "Impute Derived Features")
+    df = impute_derived_features(df, feature_cols)
+    summary = {'Rows Processed': len(df)}
+    print_step(5, "Impute Derived Features", summary)
+
+
+    X = df[feature_cols]
+    y = df['generator_type']
+
+
+    print_step(16, "Train Stacking Classifier")
+    catboost_params_clf = optimize_catboost_classifier(X, y) if CatBoostClassifier and create_study else None
+    classifiers = [
+        ('RandomForest', RandomForestClassifier(random_state=42, n_jobs=-1)),
+        ('HistGradientBoosting', HistGradientBoostingClassifier(random_state=42))

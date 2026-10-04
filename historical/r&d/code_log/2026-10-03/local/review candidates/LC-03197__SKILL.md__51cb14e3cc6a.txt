@@ -1,0 +1,2 @@
+W = +forward, S = −forward, D = +right, A = −right   // position, not yaw
+mouse: yaw -= movementX * sens; pitch -= movementY * sens; clamp pitch

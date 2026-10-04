@@ -1,0 +1,3 @@
+tors = elltors(E);
+tors_order = tors[1];
+print("Torsion subgroup order: ", tors_order);

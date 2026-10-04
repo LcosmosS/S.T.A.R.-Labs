@@ -1,0 +1,9 @@
+curves = [[1, 2]];  /* Curve: y^2 = x^3 + x + 2 */
+print("Curves defined: ", curves);
+i = 1;
+print("Processing curve ", i);
+a = curves[i][1];
+b = curves[i][2];
+print("Curve: y^2 = x^3 + ", a, "x + ", b);
+E = ellinit([0, 0, 0, a, b], 1);  /* Initialize with real flag */
+print("Elliptic curve initialized");

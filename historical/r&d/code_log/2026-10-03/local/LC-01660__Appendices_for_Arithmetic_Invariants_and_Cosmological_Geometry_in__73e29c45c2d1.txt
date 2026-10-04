@@ -1,0 +1,2 @@
+axis=1)
+          physical_curves  =  df[df['Galaxy_Type']  !=  -1]      unphysical_curves  =  df[df['Galaxy_Type']  ==  -1]           avg_stability_physical  =  physical_curves['stability_score'].mean()      avg_stability_unphysical  =  unphysical_curves['stability_score'].mean()           print(f"   >  Average  stability  score  for  'Physical'  curves  (Rank  1):  

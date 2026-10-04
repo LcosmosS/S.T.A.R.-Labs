@@ -1,0 +1,5 @@
+prod_c_p_cosmo_sub=N_sub;
+ 
+unscaled_left_sub=sum(i=1,N_sub,(M_0_sub/M_sub[i]))/N_sub;
+ 
+print("Subsample

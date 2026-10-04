@@ -1,0 +1,5 @@
+Omega_tilde = Omega_cosmo / t_H; computes the dimensionless age ratio.
+Reg_cosmo = 1; is a placeholder for the average mass ratio (update with real data).
+prod_c_p_cosmo = 1000; is the number of galaxies in the sample.
+Sha_cosmo = 0.315; is the matter density parameter (Planck 2018).
+T_cosmo = 10; is the number of large-scale structures (adjust based on clustering analysis).

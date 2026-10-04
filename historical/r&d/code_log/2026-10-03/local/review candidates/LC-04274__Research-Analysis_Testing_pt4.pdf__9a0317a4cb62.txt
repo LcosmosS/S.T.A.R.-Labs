@@ -1,0 +1,13 @@
+# Regenerate the interweb plot
+fig = plt.figure(figsize=(12, 10))
+ax = fig.add_subplot(111, projection='3d')
+node_counts = {}
+for node in interweb_data:
+    key = (node[0], node[1], node[2])
+    node_counts[key] = node_counts.get(key, 0) + 1
+filtered_data = []
+for node in interweb_data:
+    key = (node[0], node[1], node[2])
+    if node_counts[key] > 0:
+        filtered_data.append(node)
+        node_counts[key] -= 1

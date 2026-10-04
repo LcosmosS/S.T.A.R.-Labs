@@ -1,0 +1,4 @@
+# If additional features are present, impute them too
+additional_features = ['metallicity', 'environment'] for feat in additional_features: if feat in df.columns: df[feat].fillna(df[feat].mean(), inplace=True)
+# Set up k-fold CV
+k = 5 kf = KFold(n_splits=k, shuffle=True, random_state=42)

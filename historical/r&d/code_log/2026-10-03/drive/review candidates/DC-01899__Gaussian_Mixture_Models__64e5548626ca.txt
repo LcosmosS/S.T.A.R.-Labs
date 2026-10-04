@@ -1,0 +1,11 @@
+  L_cosmo = 1;
+  rank = 0;
+  for(k = 1, 5,
+    if(k == 1, start = 1, start = end_indices[k-1] + 1);
+    end = end_indices[k];
+    print("k = ", k, ", start = ", start, ", end = ", end);
+    bin_M = M_sorted[start..end];
+    print("Type of bin_M: ", type(bin_M));
+    if(type(bin_M) != "t_VEC", error("bin_M is not a vector"));
+    M0_k = vecmedian(bin_M);
+    print("Bin ", k, ": M0_k = ", M0_k)

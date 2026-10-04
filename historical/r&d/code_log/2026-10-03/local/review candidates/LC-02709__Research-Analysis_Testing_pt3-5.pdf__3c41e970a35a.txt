@@ -1,0 +1,5 @@
+    high_rank_fibs = [2, 144, 3, 5, 233, 8, 610, 377, 34, 13]
+    seen_pairs = seen_pairs or {}
+
+    if classifier is None or X_data is None or len(X_data) < 10:
+        if random.random() < 0.997 and high_rank_pairs:  # 99.7% bias

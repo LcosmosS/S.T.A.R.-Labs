@@ -1,0 +1,4 @@
+selmer2_success = True \n try: \n rank = E.rank(only_use_mwrank=False) \n
+rank_success = True \n except Exception: \n print("Trying two-descent...") \n
+E.two_descent(verbose=False, second_limit=20) \n gens = E.gens() \n rank =
+len(gens) \n rank_success = True \n print(f"Algebraic rank: {rank}") \n print(f"2-

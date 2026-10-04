@@ -1,0 +1,12 @@
+      freqs   = np.fft.rfftfreq(len(modes), d=1.0)
+
+      plt.figure(figsize=(6,4))
+      plt.loglog(freqs[1:], ps[1:],         '-o', markersize=3)
+      plt.xlabel('k (arb)')
+      plt.ylabel('Power')
+      plt.title('Symbolic Power Spectrum')
+      plt.savefig('results/symbolic_power_spectrum.png', dpi=200)
+      plt.show()
+
+     /tmp/ipykernel_5823/2486210633.py:12: UserWarning: Data has no positive values,
+     and therefore cannot be log-scaled.

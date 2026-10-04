@@ -1,0 +1,7 @@
+k_min = 0.001; k_max = 1.0; steps = 1000;
+delta_k = (k_max - k_min) / steps;
+/* Replace with real P(k) data */
+P_k(n) = 1e4 * ((n * delta_k)^0.96); /* Simplified model, ns ≈ 0.96 */
+   * L_cosmo(s) = sum(n=1, steps, (k^3 * P_k(n) / (2 * Pi^2)) / (n * delta_k)^s) * delta_k;
+   * Preprocess ( P(k) ) externally and import as a vector.
+* Benefit: Ties the L-function to structure formation, potentially aligning better with T_{\text{cosmo}} and \prod c_{p,\text{cosmo}}.

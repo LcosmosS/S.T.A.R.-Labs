@@ -1,0 +1,3 @@
+fig = model.plot(sympy_format="unicode")
+fig.savefig("pysr_expression_plot.png")
+plt.clf()

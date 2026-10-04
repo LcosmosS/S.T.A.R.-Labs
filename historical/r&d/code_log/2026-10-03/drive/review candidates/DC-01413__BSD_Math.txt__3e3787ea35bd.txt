@@ -1,0 +1,4 @@
+  M0 = median(log_mass);
+sum1 = sum(i=1, #log_mass, exp(log_mass[i] - M0));
+sum2 = sum(i=1, #log_mass, exp(M0 - log_mass[i]));
+K_theory = sum1 / sum2;

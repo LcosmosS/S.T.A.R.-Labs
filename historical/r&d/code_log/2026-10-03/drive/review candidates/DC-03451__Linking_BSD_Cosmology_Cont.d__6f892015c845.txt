@@ -1,0 +1,6 @@
+# Step 1: Explore Trends # Plot logmass vs. SFR and z vs. SFR to identify patterns
+plt.figure(figsize=(10, 5))
+plt.subplot(1, 2, 1) plt.scatter(df[logmass_col], df[sfr_col], alpha=0.5) plt.xlabel('Log Stellar Mass') plt.ylabel('Star Formation Rate') plt.title('Logmass vs. SFR')
+plt.subplot(1, 2, 2) plt.scatter(df[z_col], df[sfr_col], alpha=0.5) plt.xlabel('Redshift (z)') plt.ylabel('Star Formation Rate') plt.title('z vs. SFR')
+plt.tight_layout() plt.show()
+# Step 2: Group Analysis # Analyze properties of galaxy groups if 'group' column exists

@@ -1,0 +1,11 @@
+for(i=1, n\2,
+  U1 = random(1.0);
+  U2 = random(1.0);
+  R = sqrt(-2 * log(U1));
+  Theta = 2 * Pi * U2;
+  Z0 = R * cos(Theta);
+  Z1 = R * sin(Theta);
+  log_mass[2*i-1] = mu + sigma * Z0;
+  log_mass[2*i] = mu + sigma * Z1
+* );
+* This generates pairs of standard normal variables, scales and shifts them, and fills the vector.

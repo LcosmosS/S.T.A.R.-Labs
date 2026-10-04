@@ -1,0 +1,16 @@
+# Plot interweb with filaments
+if interweb_data:
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
+    ranks = [x[2] for x in interweb_data]
+    log_deltas = [x[8] for x in interweb_data]
+    log_conds = [x[9] for x in interweb_data]
+    sizes = [float(max(x[3] * 100, 1e-6)) for x in interweb_data]  # Fix for plotting error
+    colors = [x[7] for x in interweb_data]
+    scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=colors, cmap='viridis', alpha=0.7)
+    plt.colorbar(scatter, label='Weak BSD Holds')
+
+    # Add filaments between nodes with close regulators
+    for i in range(len(interweb_data)):
+        for j in range(i + 1, len(interweb_data)):
+            if abs(interweb_data[i][5] - interweb_data[j][5]) < 1:  # Close regulators

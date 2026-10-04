@@ -1,0 +1,4 @@
+available_base_features = [feat for feat in base_features if feat in df.columns]
+poly = PolynomialFeatures(degree=2, include_bias=False)
+X_poly = poly.fit_transform(df[available_base_features])
+feature_names = poly.get_feature_names_out(available_base_features)

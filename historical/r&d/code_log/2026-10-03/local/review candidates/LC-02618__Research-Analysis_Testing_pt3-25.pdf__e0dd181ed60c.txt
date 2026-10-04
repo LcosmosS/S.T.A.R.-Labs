@@ -1,0 +1,5 @@
+with open("failed_curves.txt", "w") as f:
+    f.write("a,b,conductor,reason\n")
+with open("rank3_curves.txt", "w") as f:
+    f.write("a,b,rank,selmer3\n")
+with open("unique_curves.txt", "w") as f:

@@ -1,0 +1,4 @@
+    if selected_modes == 0:
+        parser.error(
+            "Specify --extract-only, --enrich, "
+            "or --synthesize-only"

@@ -1,0 +1,11 @@
+try:
+pdf_document = fitz.open(doc)
+text = ''
+for page in range(len(pdf_document)):
+text += pdf_document[page].get_text()
+extracted_texts_all[doc] = text
+pdf_document.close()
+except Exception as e:
+extracted_texts_all[doc] = str(e)
+# Displaying the titles of the documents and the first 500 characters of their 
+extracted_texts_all_summary = {doc: text[:500] for doc, text in extracted_texts

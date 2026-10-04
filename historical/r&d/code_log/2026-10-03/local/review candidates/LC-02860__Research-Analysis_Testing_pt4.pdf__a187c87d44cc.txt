@@ -1,0 +1,4 @@
+rank = Integer(C.rank()) 2176 proven = C.certain() 2177
+
+self.__rank = (rank, proven) File /ext/sage/10.4/src/sage/libs/eclib/interface.py:415, in
+mwrank_EllipticCurve.rank(self) 389 def rank(self): 390 """ 391

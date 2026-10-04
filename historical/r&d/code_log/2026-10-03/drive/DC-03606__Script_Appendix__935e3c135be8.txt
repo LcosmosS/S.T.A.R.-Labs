@@ -1,0 +1,4 @@
+E = EllipticCurve(QQ, [-1706, 6320])
+L = E.lseries()
+L.dokchitser(prec=100).derivative(1, 1)
+E.period_lattice().real_period(prec=100)

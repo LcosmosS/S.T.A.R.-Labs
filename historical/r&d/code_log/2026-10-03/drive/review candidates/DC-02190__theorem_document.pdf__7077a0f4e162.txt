@@ -1,0 +1,2 @@
+normalized_L_cosmo_1=unscaled_L_cosmo_1 * \nnormalization_constant_K;
+print("Normalized L_cosmo(1): ", normalized_L_cosmo_1); \nprint("Cosmological BSD

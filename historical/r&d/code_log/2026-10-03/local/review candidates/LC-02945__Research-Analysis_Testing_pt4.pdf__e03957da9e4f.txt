@@ -1,0 +1,6 @@
+plt.title(f'Curve y² = x³ + {a}x + {b}, Density: {leading_coeff * 177:.0f}') plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.grid(True)
+plt.savefig(f"curve_{a}_{b}.png")
+plt.close() print(f"Polynomial plot saved as curve_{a}_{b}.png") print("-" * 20)

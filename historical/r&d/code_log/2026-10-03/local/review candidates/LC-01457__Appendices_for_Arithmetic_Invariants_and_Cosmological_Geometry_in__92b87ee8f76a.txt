@@ -1,0 +1,4 @@
+M_0 = 10^my_median(log_mass); /* Median mass */
+
+/* Compute Reg_cosmo as average mass ratio */
+Reg_cosmo = sum(i=1, N, M[i] / M_0) / N; /* Data-driven regulator */

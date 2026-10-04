@@ -1,0 +1,5 @@
+bins = pd.qcut(df['Re_kpc'], q=20, labels=False, duplicates='drop') + 1
+df['z_bin'] = bins
+n_bins = df['z_bin'].nunique()
+grouped_means = df.groupby('z_bin')['a_n'].mean().reindex(range(1, n_bins + 1), fill_value=0)
+* L_vals = [grouped_means / (np.arange(1, n_bins + 1) ** s) for s in s_range]

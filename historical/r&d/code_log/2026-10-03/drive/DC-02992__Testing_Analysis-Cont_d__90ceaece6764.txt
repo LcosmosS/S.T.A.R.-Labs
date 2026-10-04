@@ -1,0 +1,5 @@
+curves = [[1, 2]]; print("Curves defined: ", curves);
+p = 5; print("p set to: ", p);
+phi = (1 + sqrt(5))/2; print("phi set to: ", phi);
+   * pi_val = Pi; print("pi_val set to: ", pi_val);
+   * Output matches expectations, confirming these lines are correct.

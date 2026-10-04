@@ -1,0 +1,7 @@
+periods = ellperiods(E, 1);  /* Real periods */
+omega = periods[1];          /* Real period */
+         * Error: *** variable name expected: omega=periods[1];
+         * Explanation: This error suggests that PARI/GP is not recognizing omega as a valid variable for assignment. This could be due to:
+         * A prior definition of omega as a function or closure in your session.
+         * A syntax issue, such as an invisible character or typo in the line.
+         * Impact: omega remains undefined or symbolic, causing subsequent errors.

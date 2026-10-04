@@ -1,0 +1,4 @@
+return
+ 
+np.nan
+     angle_rad  =  (angular_size_arcsec  *  u.arcsec).to(u.rad).value      radius_mpc  =  distance_mpc  *  angle_rad  

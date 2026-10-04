@@ -1,0 +1,8 @@
+periods = ellperiods(E, 1);
+omega_val = real(periods[1]);  /* Ensure scalar; restart PARI/GP if vector persists */
+print("Real period (Omega): ", omega_val);
+omega_scaled = pi_val * omega_val;
+         3. print("Scaled real period (Omega * pi): ", omega_scaled);
+         * If omega_val still outputs a vector, restart PARI/GP (\q then relaunch`) to clear any session state issues.
+         4. Fix Tamagawa Loop:
+         5. pari

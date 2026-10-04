@@ -1,0 +1,15 @@
+twomass_data = pd.read_csv("2mass_xsc.csv")  # From II/246
+df = deg_to_rad(df, 'objra_y', 'objdec')
+twomass_data = deg_to_rad(twomass_data, 'RA', 'Dec')
+coords1 = np.array([df['ra_rad'], df['dec_rad']]).T
+coords2 = np.array([twomass_data['ra_rad'], twomass_data['dec_rad']]).T
+tree = cKDTree(coords2)
+dist, idx = tree.query(coords1, k=1, distance_upper_bound=max_dist)
+matched = dist < max_dist
+df_matched = df[matched].copy()
+twomass_matched = twomass_data.iloc[idx[matched]].copy()
+df_matched = df_matched.reset_index(drop=True)
+twomass_matched = twomass_matched.reset_index(drop=True)
+df = pd.concat([df_matched, twomass_matched[['Jmag', 'Kmag', 'e_Jmag', 'e_Kmag']]], axis=1)
+df['J_K_color'] = df['Jmag'] - df['Kmag']
+df['e_J_K_color'] = np.sqrt(df['e_Jmag']**2 + df['e_Kmag']**2)

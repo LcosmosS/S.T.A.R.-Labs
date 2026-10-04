@@ -1,0 +1,16 @@
+M = vector(N, i, 10^log_mass[i]);
+print("Type of M: ", type(M));
+print("Number of elements in M: ", #M);
+M_0 = mymedian(M); print("Reference mass M_0: ", M_0);
+Reg_cosmo=2.8; print("Reg_cosmo: ", Reg_cosmo);
+prod_c_p_cosmo=N; print("prod_c_p_cosmo: ", prod_c_p_cosmo);
+Sha_cosmo=0.315; print("Sha_cosmo: ", Sha_cosmo);
+T_cosmo=sqrt((841 * N) / 1000); print("T_cosmo: ", T_cosmo);
+unscaled_L_cosmo_1=sum(i=1,N,(M_0/M[i]))/N; print("Unscaled L_cosmo(1): ", unscaled_L_cosmo_1);
+right_side=(Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo)/(T_cosmo^2); print("Right side: ", right_side);
+normalization_constant_K=right_side/unscaled_L_cosmo_1; print("Normalization constant K: ", normalization_constant_K);
+normalized_L_cosmo_1=unscaled_L_cosmo_1 * normalization_constant_K; print("Normalized L_cosmo(1): ", normalized_L_cosmo_1);
+print("Cosmological BSD analogue holds within 10%: ", abs(1-normalization_constant_K)<0.1);
+N_sub1=floor(N/2);
+N_sub2=N-N_sub1;
+print("N: ", N); print("N_sub1: ", N_sub1); print("N_sub2: ", N_sub2);

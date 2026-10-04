@@ -1,0 +1,2 @@
+df_mytable['mangaid'] = df_mytable['mangaid'].astype(str)
+df_gema2['mangaid'] = df_gema2['mangaid'].astype(str)

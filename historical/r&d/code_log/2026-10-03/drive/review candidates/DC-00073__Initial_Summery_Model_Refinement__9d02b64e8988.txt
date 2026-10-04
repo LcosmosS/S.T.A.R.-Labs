@@ -1,0 +1,8 @@
+if best_gb is not None:
+    explainer_gb = shap.Explainer(best_gb, X_train_scaled)
+    shap_values_gb = explainer_gb(X_test_scaled)
+    shap.plots.beeswarm(shap_values_gb, show=False)
+    plt.title("SHAP Summary - Gradient Boosting")
+    plt.savefig("shap_summary_gb.png")
+    plt.close()
+    pd.DataFrame(shap_values_gb.values, columns=X.columns).to_csv("shap_values_gb.csv", index=False)

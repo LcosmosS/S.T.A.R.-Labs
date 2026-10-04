@@ -1,0 +1,5 @@
+    print("actual and predicted distributions of the scaling factor K.")
+    print("="*70)
+
+if __name__ == "__main__":
+    main()

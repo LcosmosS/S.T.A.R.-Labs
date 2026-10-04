@@ -1,0 +1,4 @@
+for a, b in previous_curves:
+    result = analyze_curve(a, b, conductor_limit=1e14)
+
+    if len(result) == 10:

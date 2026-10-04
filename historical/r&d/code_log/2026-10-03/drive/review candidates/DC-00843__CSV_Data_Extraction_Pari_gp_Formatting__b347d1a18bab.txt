@@ -1,0 +1,9 @@
+# Write to PARI/GP file
+with open('C:\\temp\\STM_Extract_Valid.gp', 'w') as f:
+    for col in key_columns:
+        # Convert to float and then to string for PARI/GP compatibility
+        values = ','.join(valid_df[col].astype(float).astype(str))
+        f.write(f"{col}=[{values}];\n")
+    # Handle objid separately as a string (not used in computations)
+    objid_values = ','.join(valid_df['objid'].astype(str))
+    f.write(f"objid=[{objid_values}];\n")

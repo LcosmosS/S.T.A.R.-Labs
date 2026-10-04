@@ -1,0 +1,9 @@
+# Create placeholder columns 'K' and 'L' if they don't exist
+if 'K' not in df1.columns:
+    df1['K'] = 0  # Or some default value
+if 'L' not in df1.columns:
+    df1['L'] = 0  # Or some default value
+
+
+# Impute missing values in all numerical columns
+imputer = SimpleImputer(strategy='mean')  # You can change to 'median' if desired

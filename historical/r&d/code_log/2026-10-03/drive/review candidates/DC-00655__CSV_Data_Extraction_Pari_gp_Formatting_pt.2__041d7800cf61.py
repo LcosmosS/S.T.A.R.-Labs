@@ -1,0 +1,40 @@
+    # Observed vs. Predicted SFR
+    plt.figure()
+    plt.scatter(test_df['sfr'], test_pred, alpha=0.5)
+    plt.plot([-5, 2], [-5, 2], 'r--')  # 1:1 line
+    plt.xlabel('Observed SFR')
+    plt.ylabel('Predicted SFR')
+    plt.title(f'Fold {fold+1}: Observed vs. Predicted SFR (MSE: {mse:.4f})')
+    plt.savefig(f'plots/fold_{fold+1}_observed_vs_predicted.png')
+    plt.close()
+    
+    # Residuals vs. Logmass
+    residuals = test_df['sfr'] - test_pred
+    plt.figure()
+    plt.scatter(test_df['logmass'], residuals, alpha=0.5)
+    plt.axhline(0, color='r', linestyle='--')
+    plt.xlabel('Logmass')
+    plt.ylabel('Residuals (Observed - Predicted)')
+    plt.title(f'Fold {fold+1}: Residuals vs. Logmass')
+    plt.savefig(f'plots/fold_{fold+1}_residuals_vs_logmass.png')
+    plt.close()
+    
+    # Residuals vs. Redshift (z)
+    plt.figure()
+    plt.scatter(test_df['z'], residuals, alpha=0.5)
+    plt.axhline(0, color='r', linestyle='--')
+    plt.xlabel('Redshift (z)')
+    plt.ylabel('Residuals (Observed - Predicted)')
+    plt.title(f'Fold {fold+1}: Residuals vs. z')
+    plt.savefig(f'plots/fold_{fold+1}_residuals_vs_z.png')
+    plt.close()
+
+
+def main():
+    # Load dataset
+    csv_file = 'Stellar_Mass2_Table_cleaned.csv'
+    try:
+        df = pd.read_csv(csv_file)
+        print(f"Loaded '{csv_file}' successfully.")
+    except FileNotFoundError:
+        print(f"Error: '{csv_file}' not found.")

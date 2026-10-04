@@ -1,0 +1,15 @@
+sdss_photo = pd.read_csv("sdss_dr12_photo.csv")  # From V/147
+df = deg_to_rad(df, 'objra_y', 'objdec')
+sdss_photo = deg_to_rad(sdss_photo, 'RA', 'Dec')
+coords1 = np.array([df['ra_rad'], df['dec_rad']]).T
+coords2 = np.array([sdss_photo['ra_rad'], sdss_photo['dec_rad']]).T
+tree = cKDTree(coords2)
+dist, idx = tree.query(coords1, k=1, distance_upper_bound=max_dist)
+matched = dist < max_dist
+df_matched = df[matched].copy()
+sdss_photo_matched = sdss_photo.iloc[idx[matched]].copy()
+df_matched = df_matched.reset_index(drop=True)
+sdss_photo_matched = sdss_photo_matched.reset_index(drop=True)
+df = pd.concat([df_matched, sdss_photo_matched[['petroMag_g', 'petroMag_r', 'petroMagErr_g', 'petroMagErr_r']]], axis=1)
+df['g_r_color'] = df['petroMag_g'] - df['petroMag_r']
+df['e_g_r_color'] = np.sqrt(df['petroMagErr_g']**2 + df['petroMagErr_r']**2)

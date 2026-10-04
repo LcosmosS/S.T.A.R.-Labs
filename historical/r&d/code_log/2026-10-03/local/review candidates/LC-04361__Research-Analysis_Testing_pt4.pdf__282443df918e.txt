@@ -1,0 +1,10 @@
+    sizes = [float(max(x[3] * 100, 1e-6)) for x in interweb_data]
+    scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=volumes, cmap='magma',
+alpha=0.7)
+    plt.colorbar(scatter, label='Comoving Volume (Mly^3)')
+    # Manually adjust label positions to avoid overlaps
+    for i, (a, b, rank, _, _, reg, _, _, log_delta, log_cond, _) in enumerate(interweb_data):
+        for j in range(i + 1, len(interweb_data)):
+            reg_diff = abs(interweb_data[i][5] - interweb_data[j][5])
+            if reg_diff < 10000:
+                weight = 1 / (1 + reg_diff / 100)

@@ -1,0 +1,15 @@
+    sizes = [float(max(x[3] * 100, 1e-6)) for x in filtered_data]
+    colors = [x[7] for x in filtered_data]
+    scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=colors, cmap='viridis', alpha=0.7)
+    plt.colorbar(scatter, label='Weak BSD Holds')
+
+
+    # Filaments weighted by regulator difference
+    for i in range(len(filtered_data)):
+        for j in range(i + 1, len(filtered_data)):
+            reg_diff = abs(filtered_data[i][5] - filtered_data[j][5])
+            if reg_diff < 100:  # Wider threshold for filaments
+                weight = 1 / (1 + reg_diff / 10)
+                ax.plot(
+                    [log_deltas[i], log_deltas[j]],
+                    [log_conds[i], log_conds[j]],

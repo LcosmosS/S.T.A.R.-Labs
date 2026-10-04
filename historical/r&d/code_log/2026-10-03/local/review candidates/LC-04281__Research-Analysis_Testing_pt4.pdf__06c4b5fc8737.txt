@@ -1,0 +1,2 @@
+key = (node[0], node[1], node[2]) if node_counts[key] > 0: filtered_data.append(node)
+node_counts[key] -= 1

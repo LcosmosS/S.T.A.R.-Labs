@@ -1,0 +1,4 @@
+from sklearn.mixture import GaussianMixture
+data = pd.read_csv("subgroup_z_0.05_0.1_low_sfr.txt", header=None)
+gmm = GaussianMixture(n_components=3).fit(data[0].values.reshape(-1, 1))
+print("Optimal components:", gmm.n_components)

@@ -1,0 +1,19 @@
+regime.capitalize())
+ 
+     
+    X_test_df  =  pd.DataFrame(X_test,  columns=X_clf_cols)  
+    X_test_df['predicted_type']  =  gen_clf.predict(X_test)  
+     
+    #  PNG  Scatter  (PySR)  
+    fig,  ax  =  plt.subplots(figsize=(10,  6))  
+    scatter  =  ax.scatter(X_test_df['flux_gr'],  y_pred_pysr,  c=X_test_df['EBV'],  cmap='viridis')  
+    ax.set_title(f'{regime.capitalize()}  PySR  Projection')  
+    ax.set_xlabel('g/r  Flux')  
+    ax.set_ylabel('Predicted  z')  
+    fig.colorbar(scatter,  label='EBV')  
+    fig.savefig(f"visualizations/{regime}_pysr_scatter.png")  
+    plt.close(fig)  
+     
+    #  HTML  3D  (Stacked)  
+    fig  =  go.Figure(data=go.Scatter3d(  
+        x=X_test_df['flux_gr'],  y=X_test_df['flux_rz'],  z=y_pred_stack,  

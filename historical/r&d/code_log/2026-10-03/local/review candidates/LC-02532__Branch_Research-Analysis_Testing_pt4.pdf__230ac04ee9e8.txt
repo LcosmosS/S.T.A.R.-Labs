@@ -1,0 +1,7 @@
+                analytic_rank := 3;
+                leading_coeff := Lderiv2 / 2;
+            else
+                analytic_rank := 2;
+                leading_coeff := Lderiv2 / 2;
+            end if;
+        else

@@ -1,0 +1,1 @@
+python star_docgen.py --corpus /home/Kepler/star_docgen/corpus --output /home/Kepler/star_docgen/output --model YOUR_MODEL --docs Origins.pdf Research-Analysis+Testing.pdf Research-Analysis+Testing_pt.2.pdf Research-Analysis+Testing_pt.3.pdf Branch_Rersearch-Analysis+Testing_pt.4.pdf --extract-only

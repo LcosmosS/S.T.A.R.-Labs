@@ -1,0 +1,2 @@
+if missing_cols:
+raise ValueError(f"Missing columns: {missing_cols}")

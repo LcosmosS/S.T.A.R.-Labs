@@ -1,0 +1,3 @@
+    merged_df = merged_df.drop_duplicates(subset=['objra_y', 'objdec'], keep='first')
+    print(f"Rows after merging {file}: {len(merged_df)}")
+# - Save intermediate result per file

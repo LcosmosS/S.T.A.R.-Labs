@@ -1,0 +1,4 @@
+for i in range(gmm.n_components):
+    group_logmass = logmass[groups == i]
+    K_theory = compute_K_theory(group_logmass)
+   *     print(f"Group {i}: K_theory = {K_theory:.4f}")

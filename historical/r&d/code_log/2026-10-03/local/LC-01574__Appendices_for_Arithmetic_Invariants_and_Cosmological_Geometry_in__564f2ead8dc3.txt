@@ -1,0 +1,3 @@
+         plt.scatter(x_vals,  -y_vals,  s=float(max(density_size,  1)),  c=color,  
+alpha=0.5)
+         plt.title(f'Curve  y²  =  x³  +  {a}x  +  {b}  (Rank  {rank})')          plt.xlabel('x');  plt.ylabel('y')          plt.legend();  plt.grid(True)          plt.savefig(f"curve_{a}_{b}.png",  dpi=150,  bbox_inches='tight')          plt.close()          print(f" ✓  Plot  saved:  curve_{a}_{b}.png")                   success  =  True               except  Exception  as  e:          print(f" ✗  Analysis  failed  for  ({a},  {b}):  {e}")          return  False,  None,  None,  None,  None,  None,  None,  False,  None           print(f"{'='*60}\n")      return  success,  [float(a),  float(b)],  rank,  leading_coeff,  omega,  reg,  tamagawa,  

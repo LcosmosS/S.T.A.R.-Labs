@@ -1,0 +1,13 @@
+p = 5  # Choose a prime
+E = EllipticCurve([0, 0, 0, -1706, 6320])
+L_padic = E.padic_lseries(p)
+   * print("p-adic L-function at s=1:", L_padic(1))
+   * This can be used to study the analytic rank in a p-adic context, supporting higher-rank constructions.
+* Kolyvagin Systems:
+   * Jetchev, Skinner, and others have developed Kolyvagin systems for higher ranks, constructing cohomology classes in H^1(K_{\ell}, T).
+   * SageMath lacks direct support, but we can compute Selmer groups for multiple primes:
+   * python
+for p in [2, 3, 5]:
+    E.two_descent(verbose=False)
+    selmer_rank = E.selmer_rank(p)
+   *     print(f"{p}-Selmer rank:", selmer_rank)

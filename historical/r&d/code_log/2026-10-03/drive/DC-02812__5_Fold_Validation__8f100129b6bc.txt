@@ -1,0 +1,2 @@
+best_rf_model = RandomForestRegressor(**best_params, random_state=42)
+best_rf_model.fit(X_train, y_train)

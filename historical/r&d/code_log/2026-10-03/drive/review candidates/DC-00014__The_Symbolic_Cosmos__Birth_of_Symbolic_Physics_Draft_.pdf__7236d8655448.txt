@@ -1,0 +1,7 @@
+rank_coma = E_coma.rank() # Algebraic rank via 2-descent (hoping for 1)
+print(f"Predicted Rank: {rank_coma}") # If >0, indicates non-trivial structure
+if rank_coma > 0:
+P_coma = E_coma.gens()[0] # Finds minimal generator point
+print(f"Generator: {P_coma}") # Rational point; fractions may encode cosmic data
+else:
+print("No generator (Rank 0)") # Would falsify prediction if true

@@ -1,0 +1,3 @@
+So, periods = ellperiods(E,1) should be a vector with one element, the real period.
+Then, temp_periods = periods, so temp_periods is also that vector.
+Then, omega = temp_periods[1] should work, as it extracts the first element.

@@ -1,0 +1,2 @@
+     return  df_analysis   def  clean_and_prepare_data(df):      df_clean  =  df.dropna(subset=['virial_energy_j',  'discriminant',  'logmass',  
+'distance_mpc',

@@ -1,0 +1,13 @@
+    sns.barplot(x=gen_feature_importance.values, y=gen_feature_importance.index)
+    plt.title('Generator Type Feature Importance')
+    plt.savefig(f'{OUTPUT_PLOT_PREFIX}_generator_feature_importance.png')
+    plt.close()
+
+    # Symbolic regression for generator type
+    log_function("symbolic_regression_generator")
+    for method in ['pysr', 'gplearn']:
+        sym_reg_gen = run_symbolic_regression(X, y.map({'Simple': 0, 'Recursive': 1,
+'unknown': 2}), feature_cols, method)
+        if sym_reg_gen:
+            getattr(sym_reg_gen, 'equations_',
+pd.DataFrame()).to_csv(f'{OUTPUT_PLOT_PREFIX}_symbolic_regression_generator_{method}.c

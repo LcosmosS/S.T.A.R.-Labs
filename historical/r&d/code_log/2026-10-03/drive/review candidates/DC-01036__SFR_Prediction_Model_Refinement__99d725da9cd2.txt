@@ -1,0 +1,6 @@
+metallicity_mask = df['qcflag_metallicity'] == 1
+sfr_mask = df['qcflag_sfr'] == 1
+mass_mask = df['qcflag_mass'] == 1
+
+
+df = df[metallicity_mask & sfr_mask & mass_mask]

@@ -1,0 +1,6 @@
+print("Subsample (N=500) K: ", K_sub);
+
+/* Check stability of K */
+if(abs(K_sub - K) / K < 0.1,
+  print("K is stable within 10% between subsample and full sample"),
+  print("K varies >10%; consider adjusting T_cosmo or L-function"));

@@ -1,0 +1,11 @@
+    Lderiv := Evaluate(L, 1 : Derivative := 1);  // Compute L'(1)
+    if Abs(Lderiv) lt 1e-10 then
+        Lderiv2 := Evaluate(L, 1 : Derivative := 2);  // Compute L''(1)
+        if Abs(Lderiv2) lt 1e-10 then
+            analytic_rank := 3;
+            leading_coeff := Lderiv2 / 2;
+        else
+            analytic_rank := 2;
+            leading_coeff := Lderiv2 / 2;
+        end if;
+    else

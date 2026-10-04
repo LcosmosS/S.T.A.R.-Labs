@@ -1,0 +1,2 @@
+Reg_cosmo = sum(i=1, #masses, masses[i] / M0) / #masses;
+14. K = (Omega_tilde * Reg_cosmo * N * Sha_cosmo) / (T_cosmo^2 * L_value);

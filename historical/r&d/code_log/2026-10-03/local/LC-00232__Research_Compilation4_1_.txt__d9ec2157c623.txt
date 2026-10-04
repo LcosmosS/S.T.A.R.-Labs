@@ -1,0 +1,3 @@
+print("Writing data for z=0.05 to 0.1, low SFR, count: ", #log_mass_low_sfr);
+Writing data for z=0.05 to 0.1, low SFR, count: 5
+write("subgroup_z_0.05_0.1_low_sfr.txt", log_mass_low_sfr)

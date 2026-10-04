@@ -1,0 +1,8 @@
+# After data splitting
+X_train, X_test, y_train, y_test = train_test_split(X_poly, y, test_size=0.2, random_state=42)
+outliers_test = outliers.loc[y_test.index]  # Subset outliers for test set
+
+
+# When evaluating models
+rf_results = evaluate_model(best_rf, X_test, y_test, outliers_test, ~outliers_test)
+gb_results = evaluate_model(best_gb, X_test, y_test, outliers_test, ~outliers_test)

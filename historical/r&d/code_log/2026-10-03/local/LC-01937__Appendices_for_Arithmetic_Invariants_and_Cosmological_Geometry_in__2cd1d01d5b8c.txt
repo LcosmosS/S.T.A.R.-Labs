@@ -1,0 +1,2 @@
+    fig.update_layout(title=f'{regime.capitalize()}  Stacked  Manifold  Binned  by  Type')  
+    fig.write_html(f"visualizations/{regime}_type_binned_3d.html")  

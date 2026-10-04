@@ -1,0 +1,3249 @@
+{
+  "snapshot_context": "Prepared after provenance audit ingestion commit 2109cd0; source SHA256 identifies inspected bytes. No source changes authorized by this sidecar.",
+  "expected_benchmark_reference": {
+    "curve": "y^2 = x^3 - 1706*x + 6320",
+    "a_invariants": [
+      0,
+      0,
+      0,
+      -1706,
+      6320
+    ],
+    "N": 150258963712,
+    "prod_cp": 2,
+    "Omega_display": "0.844725383566516",
+    "Sha_expected": 1,
+    "expectation_authority": "user-supplied corrections corroborated by saved reference output; no research code executed in this phase",
+    "Sha_certification": "not independently validated; saved full-period numerical inference is not integer certification",
+    "reference_sources": [
+      {
+        "native_path": "/home/kepler/Virgo.ipynb",
+        "source_sha256": "1f7cf8679cd1913a72940f6c785abb28cbad6e95cf09da8aecf4efd6f37174b4",
+        "bytes": 59552,
+        "preserved_repository_path": "historical/r&d/code_log_triage/2026-10-03/correction_sources/Virgo.ipynb"
+      },
+      {
+        "native_path": "/home/kepler/bsd_period_normalization_test.py",
+        "source_sha256": "41c1586e0749acac5647f16be1a69a242c201fd03ce50d8f27f661dc53b49ef8",
+        "bytes": 25132,
+        "preserved_repository_path": "historical/r&d/code_log_triage/2026-10-03/correction_sources/bsd_period_normalization_test.py"
+      }
+    ]
+  },
+  "files": [
+    {
+      "repository_path": "docs/first_principals.py",
+      "source_sha256": "37e2da166103d98a027456df5a00affe230b0e51cdd5d3f9025656ac7823a4c6",
+      "bytes": 7934,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "pending_review",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "model_mismatch",
+        "separate_[0,a,0,b,0]_model"
+      ],
+      "benchmark_evidence": [],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "reason": "Results use different coefficient positions; short-benchmark correction values are not applied.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "docs/first_principals_results.txt",
+      "source_sha256": "4d84ac1ea945464711f2df23de59a066af8ac4516bbb889f927e32276344cd23",
+      "bytes": 26816,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "pending_review",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "model_mismatch",
+        "separate_[0,a,0,b,0]_model"
+      ],
+      "benchmark_evidence": [],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "reason": "Results use different coefficient positions; short-benchmark correction values are not applied.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "docs/STAR.ipynb",
+      "source_sha256": "4a67567155969a6d756b9deaf00c983d96484c4c6039fd0266d024515c0e6c8a",
+      "bytes": 7148461,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "mixed_scoped_dispositions",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "mixed_notebook_preserve_all_cells_and_saved_outputs",
+        "cell_specific_arithmetic_dispositions"
+      ],
+      "benchmark_evidence": [],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "cells": [
+        {
+          "cell": 6,
+          "cell_id": "db03ba19-e59b-4f5d-a243-bebb1402b4b3",
+          "cell_type": "code",
+          "source_text_sha256": "6e5c659593442340fb49734ff68defa933f84194a00ba071ac35bfc062cc8a61",
+          "saved_text_output_sha256": "7c012c101696af282a41c0c96e112a0dc24a31ed9327dc6656a7de0750ec66e5",
+          "status": "pending_review",
+          "origin_status": "existing_repository_notebook_cell",
+          "review_status": "pending_review",
+          "benchmark_evidence_status": "superseded",
+          "scientific_validation_status": "not_validated",
+          "flags": [
+            "pre_correction_benchmark_arithmetic",
+            "review_of_wider_code_still_pending"
+          ],
+          "benchmark_evidence": [
+            {
+              "issue": "benchmark_period_convention_requires_full_period_reference",
+              "artifact_locator": "line 5",
+              "observed_text": "cCurve(QQ, [-1706, 6320])\n\n# Compute the real period with higher precision\nomega_high_precision = E.period_lattice().real_period(prec=100)\nprint(omega_high_precision)\n",
+              "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+            },
+            {
+              "issue": "benchmark_half_period_used_as_Omega",
+              "artifact_locator": "saved output line 1",
+              "observed_text": "cision\nomega_high_precision = E.period_lattice().real_period(prec=100)\nprint(omega_high_precision)\n\n0.42236269178325809849360427108\n",
+              "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+            }
+          ],
+          "code_manifest_exact_artifact_matches": [
+            "LC-00833"
+          ],
+          "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+        },
+        {
+          "cell": 10,
+          "cell_id": "2c94c6f1-e9f2-4895-bfa2-32e7eab1437e",
+          "cell_type": "code",
+          "source_text_sha256": "ae71b95e995bcf1023f958fcfdc48ece8022c59732f31df022752405993f3b46",
+          "saved_text_output_sha256": "3f128fa142cbd75581a16c741e2c5e4dda991db6b7b3ca1793c53ec934f54621",
+          "status": "pending_review",
+          "origin_status": "existing_repository_notebook_cell",
+          "review_status": "pending_review",
+          "benchmark_evidence_status": "superseded",
+          "scientific_validation_status": "not_validated",
+          "flags": [
+            "pre_correction_benchmark_arithmetic",
+            "review_of_wider_code_still_pending"
+          ],
+          "benchmark_evidence": [
+            {
+              "issue": "benchmark_period_convention_requires_full_period_reference",
+              "artifact_locator": "line 36",
+              "observed_text": "erivative_high_precision)\n\n# Compute the real period with higher precision\nomega_high_precision = E.period_lattice().real_period(prec=100)\nprint(omega_high_precision)\n\n# Compute the regulator with higher precision\nP = E.gens()[0]\nregulator_high_precision = P.height(precision=100)\nprint(r",
+              "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+            }
+          ],
+          "code_manifest_exact_artifact_matches": [
+            "LC-00837"
+          ],
+          "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+        },
+        {
+          "cell": 18,
+          "cell_id": "7bf0d350-1e7a-4d46-9571-d66681f8dd86",
+          "cell_type": "code",
+          "source_text_sha256": "bd47d5421e207f4556b27cd7f543bdf8ea7ef8b2f9b495000039a43bec79e949",
+          "saved_text_output_sha256": "4dfdf28891d9a61fa9c842e34907059323ecf70419195c35c3f8cc992d52e0e4",
+          "status": "pending_review",
+          "origin_status": "existing_repository_notebook_cell",
+          "review_status": "pending_review",
+          "benchmark_evidence_status": "superseded",
+          "scientific_validation_status": "not_validated",
+          "flags": [
+            "pre_correction_benchmark_arithmetic",
+            "review_of_wider_code_still_pending"
+          ],
+          "benchmark_evidence": [
+            {
+              "issue": "benchmark_Tamagawa_product_override_4",
+              "artifact_locator": "line 91",
+              "observed_text": "0 else 1.0\n        tamagawa = float(prod(E.tamagawa_numbers()))\n        if is_original:\n            tamagawa = 4.0\n        \n        # Dynamic scaling to hit exactly 54 Mly\n        cosmo_scale = VIRGO_DISTANCE / (omega * SQRT_KAPPA)\n        scaled_period = omega * ",
+              "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+            },
+            {
+              "issue": "benchmark_period_convention_requires_full_period_reference",
+              "artifact_locator": "line 87",
+              "observed_text": "s      : {weak_bsd}\")\n        \n        # --- Final Cosmological Scaling ---\n        omega = float(E.period_lattice().real_period(prec=100))\n        reg = float(E.regulator()) if rank > 0 else 1.0\n        tamagawa = float(prod(E.tamagawa_numbers()))\n        if is_original:\n            tama",
+              "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+            }
+          ],
+          "code_manifest_exact_artifact_matches": [
+            "LC-00845"
+          ],
+          "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+        },
+        {
+          "cell": 23,
+          "cell_id": "60f70ea3-ae2e-457b-9aca-5e6afbcb247d",
+          "cell_type": "code",
+          "source_text_sha256": "6ccc251bd3bd7218b4b744d2a0cae34b571516c3c0fe9d9e183237f0cf8eb30f",
+          "saved_text_output_sha256": "6de5f15ae73b5ff0c7503919c12a27e806c7285fb8b5b78061a50db51896c91c",
+          "status": "pending_review",
+          "origin_status": "existing_repository_notebook_cell",
+          "review_status": "pending_review",
+          "benchmark_evidence_status": "pending_review",
+          "scientific_validation_status": "not_validated",
+          "flags": [
+            "model_mismatch",
+            "coefficient_positions_differ_from_short_benchmark"
+          ],
+          "benchmark_evidence": [
+            {
+              "issue": "different_Weierstrass_coefficient_positions",
+              "artifact_locator": "line 43",
+              "observed_text": "minimal_model(a, b):\n    print(f\"    Creating Sage model for a={a}, b={b}...\")\n    try:\n        E = EllipticCurve([0, a, 0, b, 0], minimal_twist=True)\n        E_min = E.minimal_model()\n        ainvs = E_min.ainvs()\n        print(f\"    ✓ Minimal model created: {ainvs}\")\n        r",
+              "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+            }
+          ],
+          "code_manifest_exact_artifact_matches": [
+            "LC-00850"
+          ],
+          "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+        },
+        {
+          "cell": 24,
+          "cell_id": "8b22886a-c9cf-4e9c-8517-3f146ea64bab",
+          "cell_type": "code",
+          "source_text_sha256": "25c85cc6553f058ce0b9b65d73fe437fa00e61214123d46a442401d36922a03e",
+          "saved_text_output_sha256": "8b7d792e733e46026e5fec2898c6a3c325a2e5164de027a0c22dc1f36fc9a09b",
+          "status": "pending_review",
+          "origin_status": "existing_repository_notebook_cell",
+          "review_status": "pending_review",
+          "benchmark_evidence_status": "pending_review",
+          "scientific_validation_status": "not_validated",
+          "flags": [
+            "model_mismatch",
+            "coefficient_positions_differ_from_short_benchmark"
+          ],
+          "benchmark_evidence": [
+            {
+              "issue": "different_Weierstrass_coefficient_positions",
+              "artifact_locator": "line 50",
+              "observed_text": "minimal_model(a, b):\n    print(f\"    Creating Sage model for a={a}, b={b}...\")\n    try:\n        E = EllipticCurve([0, a, 0, b, 0], minimal_twist=True)\n        E_min = E.minimal_model()\n        ainvs = E_min.ainvs()\n        print(f\"    ✓ Minimal model: {ainvs}\")\n\n        # === HI",
+              "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+            }
+          ],
+          "code_manifest_exact_artifact_matches": [
+            "LC-00851"
+          ],
+          "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+        },
+        {
+          "cell": 25,
+          "cell_id": "85a37eb5-2b13-46d2-9f68-6399495ca32f",
+          "cell_type": "code",
+          "source_text_sha256": "7950c67e22fd2bec88d6528a3a0a166dae8b46d16bb0fcc5cefc423b2a1c4cc1",
+          "saved_text_output_sha256": "9328e3d2599360e3340c49b3de27121d2b1dba1c7b4f3b30f586240b2140ba02",
+          "status": "pending_review",
+          "origin_status": "existing_repository_notebook_cell",
+          "review_status": "pending_review",
+          "benchmark_evidence_status": "pending_review",
+          "scientific_validation_status": "not_validated",
+          "flags": [
+            "model_mismatch",
+            "coefficient_positions_differ_from_short_benchmark"
+          ],
+          "benchmark_evidence": [
+            {
+              "issue": "different_Weierstrass_coefficient_positions",
+              "artifact_locator": "line 75",
+              "observed_text": "minimal_model(a, b):\n    print(f\"    Creating Sage model for a={a}, b={b}...\")\n    try:\n        E = EllipticCurve([0, a, 0, b, 0], minimal_twist=True)\n        E_min = E.minimal_model()\n        ainvs = E_min.ainvs()\n        print(f\"     Minimal model: {ainvs}\")\n\n        # === HIG",
+              "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+            }
+          ],
+          "code_manifest_exact_artifact_matches": [
+            "LC-00852"
+          ],
+          "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+        }
+      ],
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "First_Principles.md",
+      "source_sha256": "7b4d8c8e8ebaefa2594765b3d675ba628ac3ae3fe665b7afa37a280645a98308",
+      "bytes": 8941,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "pending_review",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "model_mismatch",
+        "separate_[0,a,0,b,0]_model"
+      ],
+      "benchmark_evidence": [],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "reason": "Results use different coefficient positions; short-benchmark correction values are not applied.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/estimated (1).py",
+      "source_sha256": "18993907310c789a7359585ddee8bafe5bac320be0c4a54323f52611122e8285",
+      "bytes": 17234,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 167",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 163",
+          "observed_text": "_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n            \r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00616"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00616"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/estimated.py",
+      "source_sha256": "18993907310c789a7359585ddee8bafe5bac320be0c4a54323f52611122e8285",
+      "bytes": 17234,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 167",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 163",
+          "observed_text": "_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n            \r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00616"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00616"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/generate.py",
+      "source_sha256": "a41a36e301fe43eb5c4717973f07fa4bbfcac68b1d98791c52b317d67530c674",
+      "bytes": 7083,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 137",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega} (3-sphere ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 133",
+          "observed_text": "        print(\"L-function computation failed\")\r\n        return False\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00629"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00629"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (1).txt",
+      "source_sha256": "11216e29f7be84c735b41c7a81098a3b1e36b9231bbff586f77fb272d996f4b1",
+      "bytes": 4112,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (10).txt",
+      "source_sha256": "eae8425d28bca788ba340e3c7ae4af34d4049d5884b695ab78aa49818ac2167b",
+      "bytes": 4126,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (11).txt",
+      "source_sha256": "fd3da70fc7eb1846f2e2f42f7300be143d051b7d9cab977052a7f3e05f478cad",
+      "bytes": 4128,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (2).txt",
+      "source_sha256": "1ed5f9a0df89f7068a839a7a96830edb283eef6abafb129f10be791b506c3eb2",
+      "bytes": 4098,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (3).txt",
+      "source_sha256": "33274e133d001ddff572a06e9af3d9d4e0152b926288302d5d3a155661613c4b",
+      "bytes": 4113,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (4).txt",
+      "source_sha256": "33274e133d001ddff572a06e9af3d9d4e0152b926288302d5d3a155661613c4b",
+      "bytes": 4113,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (5).txt",
+      "source_sha256": "33274e133d001ddff572a06e9af3d9d4e0152b926288302d5d3a155661613c4b",
+      "bytes": 4113,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (6).txt",
+      "source_sha256": "2d7263cb6f1f30e4d308ea64843bef63edf588ad74501c795805719b68d51561",
+      "bytes": 4101,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (7).txt",
+      "source_sha256": "6f92bb963beb83c8d80a29fb9aa28050ff88011f284d41faad715f875ea9a269",
+      "bytes": 4131,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (8).txt",
+      "source_sha256": "0407d2a87157de0d1bf49e86bdec70e7305b922ef500c8cae9bd93dbde51c6fb",
+      "bytes": 4111,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes (9).txt",
+      "source_sha256": "043790b0b3306c33751b6c8b324688505efefee1308fd779206177db33764045",
+      "bytes": 4099,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/interweb_nodes.txt",
+      "source_sha256": "a7114cc9367052509763d0f8285f2500c70b562b2f560df79caaa2c4a18dcef6",
+      "bytes": 4139,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.57161472701821916623395660050,0.42236269178325809849360427108,3.38343524498343,4,True,26.428773247791085,25.73562606723114",
+          "issue": "half_period_Omega_and_Tamagawa4",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn.py",
+      "source_sha256": "5e8d0b82832bf3023ee2ae9c7969b1f6703f7b7858a9d73fe1f40f1741573102",
+      "bytes": 8937,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 152",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 148",
+          "observed_text": "unction computation failed\")\r\n            return False, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00634"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00634"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn10.py",
+      "source_sha256": "9b66481f4e94b7788e01f58a548b3d2faf6d8d219a585c3bff95bef5ae84c87c",
+      "bytes": 14292,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 190",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            comoving_volume = (omega**3) * (COS",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 186",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00635"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00635"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn12.py",
+      "source_sha256": "3b6b8ac67ffd82fb5564b114853a11e257e53736cc99dbb0d0f63bfc4d67ad25",
+      "bytes": 14004,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 181",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            comoving_volume = (omega**2 * reg) ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 177",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00636"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00636"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn2.py",
+      "source_sha256": "822dcc9238871dac591f937cf2e444a4f3127ec823bc18032455a38d77ab5658",
+      "bytes": 8975,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 154",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 150",
+          "observed_text": "unction computation failed\")\r\n            return False, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00637"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00637"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn3.py",
+      "source_sha256": "6c33672c0fe849cac0e8ec7836adcbd30bf046cd217fb714b1e9688202ba71e2",
+      "bytes": 10025,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 158",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 154",
+          "observed_text": "n computation failed\")\r\n            return False, None, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00638"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00638"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn4.py",
+      "source_sha256": "90788cf77359879580a68e4a1ef074eea7fdd77317c94fe2c3cd7da46bd211ce",
+      "bytes": 10780,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 169",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 165",
+          "observed_text": "ed\")\r\n            return False, None, None, None, None, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00639"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00639"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn7.py",
+      "source_sha256": "f322513a55b706d3ad96a15878ca4724c114fd2849eb8d2fad2fac5c6c7dd683",
+      "bytes": 10824,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 167",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 163",
+          "observed_text": "            return False, None, None, None, None, None, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00640"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00640"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn8.py",
+      "source_sha256": "22e7f8dfc74d62e2c7cff137a74d0087b9368d65a0decd40f3d0b5a97d03fb1d",
+      "bytes": 12031,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 175",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 171",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00641"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00641"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learn9.py",
+      "source_sha256": "748cfb0a8d4c39b6f17c8ef09cbbe8ceb50e16039414b404b8636af64e7cf57f",
+      "bytes": 13762,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 184",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 180",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00642"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00642"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learning.py",
+      "source_sha256": "e4c2bb94ff41f965eb6a5896571f773d7ceb688e18468447a940116fc8265b2d",
+      "bytes": 14660,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 181",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            # Dynamic scaling to target 54 Mly\r",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 177",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00643"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00643"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learning10.py",
+      "source_sha256": "e5c1d9d38b52a7d6d6aa762db56460b5911e7249f6c080b5145c1a5c775f4cf3",
+      "bytes": 19225,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 191",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 187",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00644"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00644"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learning2.py",
+      "source_sha256": "17dc95305595e4b228a4e177e666617097ecea2cf84ba78ca5fd4decb42dcebf",
+      "bytes": 15925,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 185",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 181",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00645"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00645"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learning3.py",
+      "source_sha256": "b976354cd323af3b8ec30bd07f4d8de0a6164cdb1008ceecd5cd76cd9e4d9f1e",
+      "bytes": 16336,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 185",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 181",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00646"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00646"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learning4.py",
+      "source_sha256": "da05f721165cfae6ed5faae3f77e239bed043af44a9f42475e10d370412f652b",
+      "bytes": 16271,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 186",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 182",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00647"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00647"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learning6.py",
+      "source_sha256": "bf6aa13ad56d3ad86e2c8101a56350c0ef63d305bd93ec73a9e63edda3b00658",
+      "bytes": 17762,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 188",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 184",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00648"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00648"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learning8.py",
+      "source_sha256": "cee843c6eefa3017b38ab7dd5f7d970007778d8ceaa48962f08b4ecb44250489",
+      "bytes": 18553,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 191",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 187",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00649"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00649"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/learning9.py",
+      "source_sha256": "4c59d03d1031d813299e088b26184da2ae958da2f5ef1c1252cb2be62c4a4562",
+      "bytes": 18719,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 191",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 187",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00650"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00650"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/poly.py",
+      "source_sha256": "ac84300798a788ff1f893cfc71a5b9412e8213abc5408b2c95e5777b9abde67d",
+      "bytes": 19289,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 191",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 187",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00736"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00736"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/random.py",
+      "source_sha256": "b3a4192f6eaf227b05df979d19ad5361a33e3a53f15b1e05079170d756737fa4",
+      "bytes": 3985,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 82",
+          "observed_text": "rank > 0 else 1.0\n        tamagawa = prod(E.tamagawa_numbers())\n        if is_original:\n            tamagawa = 4\n        sha_order = 1\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\n        print(f\"Real period (Omega): {omega}\")\n        pri",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 78",
+          "observed_text": "Weak BSD fails: Algebraic rank != Analytic rank or computation failed\")\n\n    try:\n        omega = E.period_lattice().real_period(prec=100)\n        reg = E.regulator() if rank > 0 else 1.0\n        tamagawa = prod(E.tamagawa_numbers())\n        if is_original:\n            tamagawa = 4\n     ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00741"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00741"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/random2.py",
+      "source_sha256": "865a8f1aa740da20afd3b3a073f2673f788114e103878d62c3c4a3af3ce8cfa1",
+      "bytes": 4871,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 103",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega}\")\r\n       ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 99",
+          "observed_text": "or as e:\r\n            print(f\"Failed to compute Heegner point: {e}\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00742"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00742"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/random3.py",
+      "source_sha256": "146b2bb1f956d20a887495dee8cd6e235ea8c20b49d3436c9396ceda71493912",
+      "bytes": 5078,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 109",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega}\")\r\n       ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 105",
+          "observed_text": "or as e:\r\n            print(f\"Failed to compute Heegner point: {e}\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00743"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00743"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/random4.py",
+      "source_sha256": "7182ba99cd6657427960fb223fc1c1e59602c328668fe0e79d0106d5bf940df7",
+      "bytes": 5289,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 115",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega}\")\r\n       ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 111",
+          "observed_text": "or as e:\r\n            print(f\"Failed to compute Heegner point: {e}\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00744"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00744"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/random5.py",
+      "source_sha256": "cdad6c42fe3918313e8d0992222d23f18eb14adc675bc256f3f1bd4396a2b65c",
+      "bytes": 5685,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 123",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega}\")\r\n       ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 119",
+          "observed_text": "or as e:\r\n            print(f\"Failed to compute Heegner point: {e}\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00745"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00745"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/random6.py",
+      "source_sha256": "7cd8aa09c21eca6c80a2a47be60cdce6872a80a4c53f72d5d31cd9df85df50d4",
+      "bytes": 5357,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 107",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega} (3-sphere ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 103",
+          "observed_text": "k BSD fails: Algebraic rank != Analytic rank or computation failed\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00746"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00746"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/test11 (1).py",
+      "source_sha256": "d1d34d9a84e2d79bb5d9ce5693f56dffd280102ed81fc7c6f0487b8122566f40",
+      "bytes": 4253,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 89",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        sha_order = 1  # Initial hypothesis\r\n      ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00760"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00760"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/test11.py",
+      "source_sha256": "d1d34d9a84e2d79bb5d9ce5693f56dffd280102ed81fc7c6f0487b8122566f40",
+      "bytes": 4253,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 89",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        sha_order = 1  # Initial hypothesis\r\n      ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00760"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00760"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/test12.py",
+      "source_sha256": "9dee5199444c1d6aace5e552bb2496a7ab8b8d837558733bff59555f6ce8dd88",
+      "bytes": 4686,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 96",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        sha_order = 1  # Initial hypothesis\r\n      ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00761"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00761"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/test13.py",
+      "source_sha256": "ed1eb14a84a6d8dedd19c5cd3a18e8d9ff06505f912441e1cc991f0702e51b66",
+      "bytes": 4747,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 100",
+          "observed_text": "gawa_numbers())\r\n        # Adjust tamagawa for original curve\r\n        if is_original:\r\n            tamagawa = 4  # Based on previous verification\r\n        sha_order = 1  # Initial hypothesis\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 95",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        # Adjust tamagawa for original curve\r\n     ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00762"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00762"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/test14.py",
+      "source_sha256": "c1dba46c727f5c5adeebce057b9f99b5d5a0c2c5d2ab1976947df18ccf876cf2",
+      "bytes": 4964,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 105",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4  # Based on previous verification\r\n        sha_order = 1  # Initial hypothesis\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 101",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4  ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00763"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00763"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (1).txt",
+      "source_sha256": "9179dcbb3d21f05341e3223203eb46cf13a5983c29bc43d212fa72a0e8f86372",
+      "bytes": 2242,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,1.34918035948271e6",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (10).txt",
+      "source_sha256": "8fe992963355dbb58b8e8bf7cb0a6cabfab602b9042e9c14373cdf1010230771",
+      "bytes": 4583,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,1.57404375272983e6,855.948935186994,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (11).txt",
+      "source_sha256": "0664b69546edbf3c9df865e778acee88a05c2a46975655337052143ae37fa3c8",
+      "bytes": 4589,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,1.18053281454737e6,1069.93616898374,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (2).txt",
+      "source_sha256": "623f682dc44484e0d78419b137b66d317b70e55eb81570d24a28d40904c7f461",
+      "bytes": 2774,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,944426.251637899,2139.87233796748",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (3).txt",
+      "source_sha256": "e3e01c860e93b8ff20ec8d8df35d70212b169df954cbe84c998e4c097a687d68",
+      "bytes": 4518,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,944426.251637899,2139.87233796748,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (4).txt",
+      "source_sha256": "e3e01c860e93b8ff20ec8d8df35d70212b169df954cbe84c998e4c097a687d68",
+      "bytes": 4518,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,944426.251637899,2139.87233796748,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (5).txt",
+      "source_sha256": "e3e01c860e93b8ff20ec8d8df35d70212b169df954cbe84c998e4c097a687d68",
+      "bytes": 4518,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,944426.251637899,2139.87233796748,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (6).txt",
+      "source_sha256": "009462306a099738d9d132f98c6aa79b88f3bb2fa073a40bfc20d566c00652ea",
+      "bytes": 4521,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,944426.251637899,1604.90425347561,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (7).txt",
+      "source_sha256": "e12f50b8218bbf6f9c4f3dc097bb211ebdb9eb0e61fdc100b854b257a84721c5",
+      "bytes": 4577,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,944426.251637899,1069.93616898374,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (8).txt",
+      "source_sha256": "ea8f833a1247d920d134f9a9fceb822de51e26bc7e1cb1bb305491e89aa2a421",
+      "bytes": 4535,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,1.18053281454737e6,534.968084491871,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves (9).txt",
+      "source_sha256": "e28911f160e74e1efa8d74b071a033c5520ffc9d66852b5454af54e48936afe0",
+      "bytes": 4561,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,1.34918035948271e6,748.955318288620,5.7161472701821916623395660050,150258963712,curve_-1706_6320.png",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/unique_curves.txt",
+      "source_sha256": "73e18566d77b94d992060177024bffcbdec3d57af694b1fd5d9ec283a9e0d94e",
+      "bytes": 2269,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "only_benchmark_row_superseded"
+      ],
+      "benchmark_evidence": [
+        {
+          "artifact_locator": "line 32",
+          "observed_text": "-1706,6320,1,0.42236269178325809849360427108,3.38343524498343,944426.251637899",
+          "issue": "half_period_Omega",
+          "scope": "only row with a=-1706,b=6320; other rows remain pending review"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [],
+      "code_manifest_audited_source_digest_matches": [],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled (2).py",
+      "source_sha256": "18993907310c789a7359585ddee8bafe5bac320be0c4a54323f52611122e8285",
+      "bytes": 17234,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 167",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 163",
+          "observed_text": "_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n            \r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00616"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00616"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled (3).py",
+      "source_sha256": "18993907310c789a7359585ddee8bafe5bac320be0c4a54323f52611122e8285",
+      "bytes": 17234,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 167",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 163",
+          "observed_text": "_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n            \r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00616"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00616"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled.py",
+      "source_sha256": "d1d34d9a84e2d79bb5d9ce5693f56dffd280102ed81fc7c6f0487b8122566f40",
+      "bytes": 4253,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 89",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        sha_order = 1  # Initial hypothesis\r\n      ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00760"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00760"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled1.py",
+      "source_sha256": "9dee5199444c1d6aace5e552bb2496a7ab8b8d837558733bff59555f6ce8dd88",
+      "bytes": 4686,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 96",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        sha_order = 1  # Initial hypothesis\r\n      ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00761"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00761"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled11.py",
+      "source_sha256": "a41a36e301fe43eb5c4717973f07fa4bbfcac68b1d98791c52b317d67530c674",
+      "bytes": 7083,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 137",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega} (3-sphere ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 133",
+          "observed_text": "        print(\"L-function computation failed\")\r\n        return False\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00629"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00629"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled12.py",
+      "source_sha256": "5e8d0b82832bf3023ee2ae9c7969b1f6703f7b7858a9d73fe1f40f1741573102",
+      "bytes": 8937,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 152",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 148",
+          "observed_text": "unction computation failed\")\r\n            return False, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00634"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00634"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled13.py",
+      "source_sha256": "822dcc9238871dac591f937cf2e444a4f3127ec823bc18032455a38d77ab5658",
+      "bytes": 8975,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 154",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 150",
+          "observed_text": "unction computation failed\")\r\n            return False, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00637"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00637"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled14.py",
+      "source_sha256": "6c33672c0fe849cac0e8ec7836adcbd30bf046cd217fb714b1e9688202ba71e2",
+      "bytes": 10025,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 158",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 154",
+          "observed_text": "n computation failed\")\r\n            return False, None, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00638"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00638"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled15.py",
+      "source_sha256": "90788cf77359879580a68e4a1ef074eea7fdd77317c94fe2c3cd7da46bd211ce",
+      "bytes": 10780,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 169",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 165",
+          "observed_text": "ed\")\r\n            return False, None, None, None, None, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00639"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00639"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled16.py",
+      "source_sha256": "f322513a55b706d3ad96a15878ca4724c114fd2849eb8d2fad2fac5c6c7dd683",
+      "bytes": 10824,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 167",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 163",
+          "observed_text": "            return False, None, None, None, None, None, None\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00640"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00640"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled17.py",
+      "source_sha256": "22e7f8dfc74d62e2c7cff137a74d0087b9368d65a0decd40f3d0b5a97d03fb1d",
+      "bytes": 12031,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 175",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 171",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00641"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00641"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled18.py",
+      "source_sha256": "748cfb0a8d4c39b6f17c8ef09cbbe8ceb50e16039414b404b8636af64e7cf57f",
+      "bytes": 13762,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 184",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            print(f\"Real period (Omega): {omega",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 180",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00642"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00642"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled19.py",
+      "source_sha256": "9b66481f4e94b7788e01f58a548b3d2faf6d8d219a585c3bff95bef5ae84c87c",
+      "bytes": 14292,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 190",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            comoving_volume = (omega**3) * (COS",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 186",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00635"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00635"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled2.py",
+      "source_sha256": "ed1eb14a84a6d8dedd19c5cd3a18e8d9ff06505f912441e1cc991f0702e51b66",
+      "bytes": 4747,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 100",
+          "observed_text": "gawa_numbers())\r\n        # Adjust tamagawa for original curve\r\n        if is_original:\r\n            tamagawa = 4  # Based on previous verification\r\n        sha_order = 1  # Initial hypothesis\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 95",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        # Adjust tamagawa for original curve\r\n     ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00762"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00762"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled20.py",
+      "source_sha256": "db1f926557310bc7edb0bf6cd857d75201fce75ad90b7b1b5d02925cf9d21600",
+      "bytes": 14006,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 181",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            comoving_volume = (omega**2 * reg) ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 177",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00768"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00768"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled22.py",
+      "source_sha256": "e4c2bb94ff41f965eb6a5896571f773d7ceb688e18468447a940116fc8265b2d",
+      "bytes": 14660,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 181",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            # Dynamic scaling to target 54 Mly\r",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 177",
+          "observed_text": "     return False, None, None, None, None, None, None, False\r\n\r\n        try:\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00643"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00643"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled24.py",
+      "source_sha256": "17dc95305595e4b228a4e177e666617097ecea2cf84ba78ca5fd4decb42dcebf",
+      "bytes": 15925,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 185",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 181",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00645"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00645"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled25.py",
+      "source_sha256": "b976354cd323af3b8ec30bd07f4d8de0a6164cdb1008ceecd5cd76cd9e4d9f1e",
+      "bytes": 16336,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 185",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 181",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00646"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00646"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled26.py",
+      "source_sha256": "cee843c6eefa3017b38ab7dd5f7d970007778d8ceaa48962f08b4ecb44250489",
+      "bytes": 18553,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 191",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 187",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00649"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00649"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled28.py",
+      "source_sha256": "da05f721165cfae6ed5faae3f77e239bed043af44a9f42475e10d370412f652b",
+      "bytes": 16271,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 186",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 182",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00647"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00647"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled3.py",
+      "source_sha256": "c1dba46c727f5c5adeebce057b9f99b5d5a0c2c5d2ab1976947df18ccf876cf2",
+      "bytes": 4964,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 105",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4  # Based on previous verification\r\n        sha_order = 1  # Initial hypothesis\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 101",
+          "observed_text": "compute 2-Selmer rank\")\r\n\r\n    # Compute BSD invariants for strong BSD\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4  ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00763"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00763"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled30.py",
+      "source_sha256": "bf6aa13ad56d3ad86e2c8101a56350c0ef63d305bd93ec73a9e63edda3b00658",
+      "bytes": 17762,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 188",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 184",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00648"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00648"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled32.py",
+      "source_sha256": "4c59d03d1031d813299e088b26184da2ae958da2f5ef1c1252cb2be62c4a4562",
+      "bytes": 18719,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 191",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 187",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00650"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00650"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled33.py",
+      "source_sha256": "e5c1d9d38b52a7d6d6aa762db56460b5911e7249f6c080b5145c1a5c775f4cf3",
+      "bytes": 19225,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 191",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 187",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00644"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00644"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled34.py",
+      "source_sha256": "ac84300798a788ff1f893cfc71a5b9412e8213abc5408b2c95e5777b9abde67d",
+      "bytes": 19289,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 191",
+          "observed_text": ".0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n                tamagawa = 4\r\n            sha_order = 1\r\n            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n            cosmo_scale = VIRGO_DISTANCE / (ome",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 187",
+          "observed_text": " == analytic_rank)\r\n            print(f\"Weak BSD holds: {weak_bsd_holds}\")\r\n\r\n            omega = E.period_lattice().real_period(prec=100)\r\n            reg = E.regulator() if rank > 0 else 1.0\r\n            tamagawa = prod(E.tamagawa_numbers())\r\n            if is_original:\r\n              ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00736"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00736"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled4.py",
+      "source_sha256": "b3a4192f6eaf227b05df979d19ad5361a33e3a53f15b1e05079170d756737fa4",
+      "bytes": 3985,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 82",
+          "observed_text": "rank > 0 else 1.0\n        tamagawa = prod(E.tamagawa_numbers())\n        if is_original:\n            tamagawa = 4\n        sha_order = 1\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\n        print(f\"Real period (Omega): {omega}\")\n        pri",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 78",
+          "observed_text": "Weak BSD fails: Algebraic rank != Analytic rank or computation failed\")\n\n    try:\n        omega = E.period_lattice().real_period(prec=100)\n        reg = E.regulator() if rank > 0 else 1.0\n        tamagawa = prod(E.tamagawa_numbers())\n        if is_original:\n            tamagawa = 4\n     ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00741"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00741"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled5.py",
+      "source_sha256": "865a8f1aa740da20afd3b3a073f2673f788114e103878d62c3c4a3af3ce8cfa1",
+      "bytes": 4871,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 103",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega}\")\r\n       ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 99",
+          "observed_text": "or as e:\r\n            print(f\"Failed to compute Heegner point: {e}\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00742"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00742"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled6.py",
+      "source_sha256": "146b2bb1f956d20a887495dee8cd6e235ea8c20b49d3436c9396ceda71493912",
+      "bytes": 5078,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 109",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega}\")\r\n       ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 105",
+          "observed_text": "or as e:\r\n            print(f\"Failed to compute Heegner point: {e}\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00743"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00743"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled7.py",
+      "source_sha256": "7182ba99cd6657427960fb223fc1c1e59602c328668fe0e79d0106d5bf940df7",
+      "bytes": 5289,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 115",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega}\")\r\n       ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 111",
+          "observed_text": "or as e:\r\n            print(f\"Failed to compute Heegner point: {e}\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00744"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00744"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled8.py",
+      "source_sha256": "cdad6c42fe3918313e8d0992222d23f18eb14adc675bc256f3f1bd4396a2b65c",
+      "bytes": 5685,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 123",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega}\")\r\n       ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 119",
+          "observed_text": "or as e:\r\n            print(f\"Failed to compute Heegner point: {e}\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00745"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00745"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    },
+    {
+      "repository_path": "historical/r&d/archive/untitled9.py",
+      "source_sha256": "7cd8aa09c21eca6c80a2a47be60cdce6872a80a4c53f72d5d31cd9df85df50d4",
+      "bytes": 5357,
+      "source_preservation_required": true,
+      "status": "pending_review",
+      "origin_status": "existing_repository_source",
+      "review_status": "pending_review",
+      "benchmark_evidence_status": "superseded",
+      "scientific_validation_status": "not_validated",
+      "flags": [
+        "pre_correction_benchmark_arithmetic",
+        "review_of_wider_code_still_pending"
+      ],
+      "benchmark_evidence": [
+        {
+          "issue": "benchmark_Tamagawa_product_override_4",
+          "artifact_locator": "line 107",
+          "observed_text": "k > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n        sha_order = 1\r\n        rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)\r\n        print(f\"Real period (Omega): {omega} (3-sphere ",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        },
+        {
+          "issue": "benchmark_period_convention_requires_full_period_reference",
+          "artifact_locator": "line 103",
+          "observed_text": "k BSD fails: Algebraic rank != Analytic rank or computation failed\")\r\n\r\n    try:\r\n        omega = E.period_lattice().real_period(prec=100)\r\n        reg = E.regulator() if rank > 0 else 1.0\r\n        tamagawa = prod(E.tamagawa_numbers())\r\n        if is_original:\r\n            tamagawa = 4\r\n",
+          "scope": "benchmark arithmetic only; unrelated curves and wider implementation remain unreviewed"
+        }
+      ],
+      "code_manifest_exact_artifact_matches": [
+        "LC-00746"
+      ],
+      "code_manifest_audited_source_digest_matches": [
+        "LC-00746"
+      ],
+      "manifest_link_policy": "Links are based only on exact inspected-byte or audited-source digest equality; the existing repository path remains its own source identity.",
+      "code_triage_manifest": "historical/r&d/code_log_triage/2026-10-03/CODE_TRIAGE.json"
+    }
+  ]
+}

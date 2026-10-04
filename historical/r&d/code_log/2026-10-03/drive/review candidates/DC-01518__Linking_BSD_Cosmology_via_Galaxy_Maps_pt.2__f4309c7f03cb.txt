@@ -1,0 +1,5 @@
+log_mass = readvec("log_mass.txt");  
+z = readvec("z.txt");  
+if (#log_mass != 1000, error("log_mass does not have 1000 entries"));  
+if (#z != 1000, error("z does not have 1000 entries"));  
+print("Vectors loaded: log_mass has ", #log_mass, " entries, z has ", #z, " entries"); 

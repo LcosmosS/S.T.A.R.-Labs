@@ -1,0 +1,6 @@
+# Merge df1 and df2 on 'objid'
+merged_df = pd.merge(df1, df2, on='objid', how='outer')  # 'outer' keeps all rows from both datasets
+
+
+# Now merge with df3
+merged_df = pd.merge(merged_df, df3, on='objid', how='outer')

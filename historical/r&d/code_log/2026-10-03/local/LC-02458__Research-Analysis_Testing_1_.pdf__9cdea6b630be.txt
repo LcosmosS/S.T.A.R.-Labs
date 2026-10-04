@@ -1,0 +1,5 @@
+P  =  E.point([2,  54])  Reg  =  P.height(prec=100)  3.  print(Reg)  4.  Cross-check  with  PARI/GP  or  LMFDB  to  confirm  |\text{Sha}(E)|.  
+P  =  E.point([2,  54])  Reg  =  P.height(prec=100)  print(Reg)  ---------------------------------------------------------------------------  AttributeError  Traceback  (most  recent  call  last)  Cell  In  [1],  line  1  ---->  1  P  =  
+E.point([Integer(2),
+ 
+Integer(54)])

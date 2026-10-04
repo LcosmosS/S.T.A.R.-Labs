@@ -1,0 +1,3 @@
+print("Bin size before IQR for sfr bin2: ", #logmass_bin2);
+filtered_bin2 = filter_IQR(logmass_bin2);
+print("Bin size after IQR for sfr bin2: ", #filtered_bin2);

@@ -1,0 +1,3 @@
+alpha = -1.5
+bins = pd.cut(df['Re_kpc'], bins=20, labels=False) + 1
+      * df['z_bin'] = bins

@@ -1,0 +1,11 @@
+                curves_data.append((None, data_tuple))
+                try:
+                    with open(csv_file, 'a', newline='') as csv_f:
+                        csv_writer = csv.writer(csv_f)
+                        csv_writer.writerow(data_tuple)
+                except IOError as e:
+                    log_print(f"Failed to write to CSV file {csv_file}: {e}")
+
+
+                plot_data['ranks'].append(rank)
+                plot_data['heegner_x'].append(heegner_x)

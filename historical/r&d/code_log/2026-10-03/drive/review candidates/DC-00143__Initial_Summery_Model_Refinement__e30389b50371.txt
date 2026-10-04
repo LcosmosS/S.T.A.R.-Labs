@@ -1,0 +1,6 @@
+plt.plot(s_range, L_vals)
+plt.xlabel("s")
+plt.ylabel("L_cosmo(s)")
+plt.title("L_cosmo(s) Behavior")
+plt.savefig("L_cosmo_curve.png")
+plt.close()

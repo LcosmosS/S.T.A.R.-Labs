@@ -1,0 +1,10 @@
+sum_M_over_M0 = sum(bin_M[i] / M0_k): Sum of bin values divided by the median.
+
+
+sum_M0_over_M = sum(M0_k / bin_M[i]): Sum of the median divided by bin values.
+
+
+K = sum_M_over_M0 / sum_M0_over_M: A ratio used to increment rank if |K - 1| < 0.2.
+
+
+L_k = sum((M0_k / bin_M[i])^s): The L-function for each bin at ( s ).

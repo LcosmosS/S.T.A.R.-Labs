@@ -1,0 +1,4 @@
+# Compute modular transformations
+transformations = compute_modular_transformations(cosmic_data)
+# Test invariance
+invariance_scores = test_modular_invariance(

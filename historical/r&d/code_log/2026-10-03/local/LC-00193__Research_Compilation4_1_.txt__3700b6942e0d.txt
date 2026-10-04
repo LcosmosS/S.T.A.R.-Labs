@@ -1,0 +1,5 @@
+  n = #log_mass;
+  mean = sum(i=1, n, log_mass[i]) / n;
+  variance = sum(i=1, n, (log_mass[i] - mean)^2) / (n - 1);
+  stddev = sqrt(variance);
+  skewness = (sum(i=1, n, (log_mass[i] - mean)^3) / n) / stddev^3;

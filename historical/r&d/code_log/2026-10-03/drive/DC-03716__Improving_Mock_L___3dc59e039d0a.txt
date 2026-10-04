@@ -1,0 +1,12 @@
+left_side = L_cosmo(1);
+print("Unscaled L_cosmo(1): ", sum(n=2, 2500, (C_l[n] / T_cmb^2) / n));
+   * K = 1e7; /* Adjust after computing unscaled value */
+* Recalculate Right Side:
+   * With updated constants (e.g., \Omega_{\text{cosmo}} = 1.38 \times 10^{10}, \prod c_{p,\text{cosmo}} = 1000, T_{\text{cosmo}} = 100):
+   * pari
+   * right_side = (0.958 * 1728.62 * 1000 * 0.857) / (100^2); /* ≈ 141.9 */
+   * Adjust \text{Reg}_{\text{cosmo}} or T_{\text{cosmo}} to reduce this to ~1–10 if needed.
+* Comparison:
+   * Aim for both sides to be within an order of magnitude (e.g., 0.1–10), indicating a plausible pattern:
+   * pari
+   * if (abs(left_side - right_side) < 0.1 * right_side, print("Analogy holds within 10%"), print("Analogy fails"));

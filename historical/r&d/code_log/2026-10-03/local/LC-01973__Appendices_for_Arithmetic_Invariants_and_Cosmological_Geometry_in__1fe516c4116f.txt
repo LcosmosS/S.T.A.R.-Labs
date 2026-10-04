@@ -1,0 +1,4 @@
+        mode='markers',  marker=dict(size=5,  color=X_test_df['predicted_type'],  colorscale='Viridis',  
+showscale=True,
+ 
+colorbar_title='Generator

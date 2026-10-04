@@ -1,0 +1,9 @@
+    sizes = [float(max(x[3] * 100, 1e-6)) for x in interweb_data]
+    scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=volumes, cmap='magma',
+alpha=0.7)
+    plt.colorbar(scatter, label='Comoving Volume (Mly^3)')
+
+    # Add Virgo Supercluster marker
+    virgo_rank = 3  # Supercluster
+    virgo_volume = VIRGO_COMOVING_VOLUME  # 1e9 Mly^3
+    # Position near the largest rank 3 node (a=170, b=-4250)

@@ -1,0 +1,6 @@
+  if(n == 0, return(0));  \\ Handle empty vectors
+  my(mean = sum(i=1, n, v[i]) / n);
+  my(m4 = sum(i=1, n, (v[i] - mean)^4) / n);
+  my(m2 = sum(i=1, n, (v[i] - mean)^2) / n);
+  if(m2 == 0, return(0), m4 / m2^2);  \\ Avoid division by zero
+}

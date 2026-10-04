@@ -1,0 +1,2 @@
+param_grid=param_grid, \n cv=5, \n\n scoring=\'neg_mean_squared_error\', \n
+n_jobs=-1) # Use all available cores \n \n# Fit the grid search to the training data

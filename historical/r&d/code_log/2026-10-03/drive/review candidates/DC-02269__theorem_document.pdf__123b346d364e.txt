@@ -1,0 +1,11 @@
+entropy = 0
+for p in primes:
+if E.has_good_reduction(p):
+ap = E.ap(p)
+weight = 1/p # Simple weight function
+if ap != 0:
+entropy -= np.log(abs(ap)) * weight
+return entropy
+# Example usage
+E = EllipticCurve([0, 0, 1, -1, 0]) # Example curve
+entropy = compute_symbolic_entropy(E)

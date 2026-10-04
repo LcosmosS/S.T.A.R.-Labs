@@ -1,0 +1,8 @@
+    print "Analytic rank: 0, L(1):", Lval;
+end if;
+tors := #TorsionSubgroup(E);
+print "Torsion order:", tors;
+tamagawa := &*[TamagawaNumber(E, p) : p in PrimeDivisors(N)];
+
+    ●    print "Product of Tamagawa numbers:", tamagawa;
+    ●    Hypothetical Output:

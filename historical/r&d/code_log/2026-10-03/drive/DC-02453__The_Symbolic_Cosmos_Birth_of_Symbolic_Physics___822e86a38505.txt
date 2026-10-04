@@ -1,0 +1,11 @@
+E = EllipticCurve([-1706, 6320])  # Define the elliptic curve using Virgo-derived coefficients a=-1706, b=6320  
+print(E.rank())  # Computes the Mordell-Weil rank (expected: 1 for 'special' curves)  
+print(E.torsion_subgroup())  # Checks for finite-order points (trivial group means no torsion)  
+L = E.lseries()  # Initializes the L-function for analytic rank verification  
+print(L(1))  # Evaluates L at s=1; a zero here suggests rank >0 per BSD  
+print(L.dokchitser().derivative(1, 1))  # First derivative at s=1; non-zero confirms analytic rank=1
+
+
+L = E.lseries()
+print(L(1))
+print(L.dokchitser().derivative(1, 1))

@@ -1,0 +1,3 @@
+L = E.lseries()
+dok = L.dokchitser(prec=100)
+   * print(dok.derivative(1, 3))

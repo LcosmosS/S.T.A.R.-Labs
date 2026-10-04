@@ -1,0 +1,14 @@
+data = readvec("C:\\temp\\load_vectors.txt");
+masses = vector(length(data), i, 10^data[i]);
+n = length(masses);
+sorted_masses = vecsort(masses);
+m0 = sorted_masses[floor((n+1)/2)];
+sum_m_over_m0 = sum(i=1, n, masses[i] / m0);
+sum_m0_over_m = sum(i=1, n, m0 / masses[i]);
+k = sum_m_over_m0 / sum_m0_over_m;
+print("K = ", k);
+mean_logmass = sum(i=1, n, data[i]) / n;
+variance = sum(i=1, n, (data[i] - mean_logmass)^2) / (n - 1);
+std_dev = sqrt(variance);
+print("Mean logmass = ", mean_logmass);
+print("Standard deviation = ", std_dev);

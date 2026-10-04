@@ -1,0 +1,4 @@
+tamagawa_list = gr[5];
+tamagawa = 1;
+for(i=1, length(tamagawa_list), tamagawa *= tamagawa_list[i][4]);
+print("Product of Tamagawa numbers: ", tamagawa);

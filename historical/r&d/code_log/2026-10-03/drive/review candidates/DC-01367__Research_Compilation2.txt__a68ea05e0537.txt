@@ -1,0 +1,6 @@
+sum_L = sum(i=1, N, M0 / masses[i]);
+K = N / sum_L;
+print("Number of galaxies: ", N);
+print("Reference mass M0: ", M0);
+print("L_cosmo(1): ", sum_L);
+                                                * print("Normalization constant K: ", K);

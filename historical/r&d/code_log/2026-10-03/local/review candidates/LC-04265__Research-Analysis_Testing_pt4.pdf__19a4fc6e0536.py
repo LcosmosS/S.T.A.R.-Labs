@@ -1,0 +1,25 @@
+            successful_curves += 1
+    attempts += 1
+
+# Final output
+print(f"\nCompleted: {successful_curves} successful curves analyzed out of {attempts} attempts")
+if X_data:
+    print(f"Total curves analyzed: {len(X_data)}")
+    success_rate = float(sum(y_data) / len(y_data))
+    print(f"Success rate: {success_rate:.2%}")
+if interweb_data:
+    fig = plt.figure(figsize=(12, 10))
+    ax = fig.add_subplot(111, projection='3d')
+    node_counts = {}
+    for node in interweb_data:
+        key = (node[0], node[1], node[2])
+        node_counts[key] = node_counts.get(key, 0) + 1
+    filtered_data = []
+    for node in interweb_data:
+        key = (node[0], node[1], node[2])
+        if node_counts[key] == 1:
+            filtered_data.append(node)
+            node_counts[key] -= 1
+
+    ranks = [x[2] for x in filtered_data]
+    log_deltas = [x[8] for x in filtered_data]

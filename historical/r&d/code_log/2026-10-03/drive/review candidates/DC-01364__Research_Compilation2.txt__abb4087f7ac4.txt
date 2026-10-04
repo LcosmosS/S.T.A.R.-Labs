@@ -1,0 +1,11 @@
+lines = readstr("C:\\temp\\Stellar_Mass2_Table.csv");  \\ Full path, double backslashes
+masses = /* adjust parsing based on CSV, e.g., strsplit(lines[1], ",") */;
+N = length(masses);
+if (N == 0, error("No valid masses found"));
+M0 = median(masses);  \\ Use correct function
+sum_L = sum(i=1, N, /* fix luminosity calc, e.g., masses[i] */);
+K = N / sum_L;
+print("Number of galaxies: ", N);
+print("Reference mass M0: ", M0);
+print("L_cosmo(1): ", sum_L);
+print("Normalization constant K: ", K);

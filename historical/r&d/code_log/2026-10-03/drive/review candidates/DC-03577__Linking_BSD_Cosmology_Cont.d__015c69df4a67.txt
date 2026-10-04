@@ -1,0 +1,7 @@
+# Load the dataset (replace 'your_data.csv' with your file name)
+df = pd.read_csv('your_data.csv')
+
+
+# Define features (X) and target (y)
+X = df.drop(columns=['target_column'])  # Replace 'target_column' with your target name
+y = df['target_column']

@@ -1,0 +1,3 @@
+# Generate the polynomial and its derivative for the training data
+df1['polynomial_fit'] = poly_func(df1['ra'])  # Polynomial fit for 'ra'
+df1['polynomial_derivative'] = derivative_func(df1['ra'])  # Derivative of the polynomial for 'ra'

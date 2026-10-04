@@ -1,0 +1,8 @@
+// src/router.tsx
+import { createRouter } from "@tanstack/react-router";
+import { AppErrorComponent } from "@/lib/error-component";
+import { routeTree } from "./routeTree.gen"; // generated on first dev/build
+
+export function getRouter() {
+  return createRouter({ routeTree, defaultErrorComponent: AppErrorComponent });
+}

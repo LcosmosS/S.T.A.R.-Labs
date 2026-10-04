@@ -1,0 +1,8 @@
+scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=colors,
+cmap='viridis', alpha=0.7)
+plt.colorbar(scatter, label='Weak BSD Holds')
+# Add filaments between nodes with close regulators
+for i in range(len(interweb_data)):
+for j in range(i + 1, len(interweb_data)):
+if abs(interweb_data[i][5] - interweb_data[j][5]) < 1: # Close regulators
+ax.plot(

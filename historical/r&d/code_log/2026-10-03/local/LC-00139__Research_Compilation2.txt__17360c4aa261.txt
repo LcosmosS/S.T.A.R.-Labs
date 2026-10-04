@@ -1,0 +1,14 @@
+  fields = split(lines[i], ",");
+  /* Extract the fifth field (logmass), assuming it’s a string */
+  logmass_str = fields[5];
+  /* Check if the field is a string and not an invalid marker like "-9999" */
+  if (type(logmass_str) == "t_STR" && logmass_str != "-9999", {
+    /* Convert the string to a number */
+    logmass = eval(logmass_str);
+    /* Ensure it’s a real number and positive */
+    if (type(logmass) == "t_REAL" && logmass > 0, {
+      /* Convert logmass to linear mass: M_i = 10^logmass */
+      mass = 10^logmass;
+      /* Append the mass to the masses vector */
+      masses = concat(masses, mass);
+    });

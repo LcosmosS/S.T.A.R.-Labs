@@ -1,0 +1,2 @@
+for col in columns:
+    df[col] = pd.to_numeric(df[col], errors='coerce')

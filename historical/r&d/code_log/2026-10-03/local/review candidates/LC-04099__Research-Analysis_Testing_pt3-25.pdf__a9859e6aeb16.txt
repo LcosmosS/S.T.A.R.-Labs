@@ -1,0 +1,18 @@
+    if len(valid_fibs) < 2:
+        return random.choice(fib_list), random.choice(fib_list)
+
+    if force_failure and large_fibs:
+        return random.sample(large_fibs, 2) if len(large_fibs) >= 2 else random.sample(valid_fibs, 2)
+
+    # Updated rank 3 candidates
+    high_rank_pairs = [(2, 144), (5, 377), (34, 610), (3, 377), (5, 144), (34, 144), (2, 610), (3, 1597)]
+    high_rank_fibs = [2, 144, 377, 610, 5, 34, 3, 1597]
+    seen_pairs = seen_pairs or {}
+
+    if classifier is None or X_data is None or len(X_data) < 10:
+        if random.random() < 0.98 and high_rank_pairs:  # 98% bias for rank 3
+            available_pairs = [(a, b) for (a, b) in high_rank_pairs if seen_pairs.get((a, b), 0) < 1]
+            if available_pairs:
+                return random.choice(available_pairs)
+        if len(high_rank_fibs) >= 2:
+            pair = random.sample(high_rank_fibs, 2)

@@ -1,0 +1,31 @@
+periods = ellperiods(E, 1);  /* Returns [w1, w2] with w1 real */
+omega = periods[1];  /* Real period, scalar */
+print("Real period (Omega): ", omega);
+omega_scaled = pi_val * omega;
+print("Scaled real period (Omega * pi): ", omega_scaled);
+
+
+/* Compute regulator */
+reg = 1;  /* Default for rank 0 */
+if (alg_rank != 0, gens = ellgenerators(E); if (#gens > 0, reg = ellheight(E, gens[1])));
+reg_scaled = reg * phi;
+print("Scaled regulator (Reg * phi): ", reg_scaled);
+
+
+/* Compute Tamagawa product over all bad primes */
+tamagawa = 1;
+bad_primes = factor(conductor)[,1];
+for(i = 1, #bad_primes, tamagawa *= elltamagawa(E, bad_primes[i]));
+print("Product of Tamagawa numbers: ", tamagawa);
+
+
+/* Compute right-hand side of modified BSD */
+rhs = (omega_scaled * reg_scaled * tamagawa) / (tors_order^2);
+print("Right-hand side of modified BSD: ", rhs);
+
+
+/* Compare with L-series leading coefficient */
+modified_leading_coeff = L_val;  /* Adjust if your modification changes this */
+print("Modified leading coefficient: ", modified_leading_coeff);
+sha_estimate = abs(modified_leading_coeff - rhs);
+print("Estimated Sha size (difference): ", sha_estimate);

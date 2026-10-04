@@ -1,0 +1,5 @@
+plt.scatter(bsd_likelihood, sfr, c=metallicity, cmap='viridis', alpha=0.5)
+plt.colorbar(label='Metallicity')
+plt.xlabel("BSD Likelihood (symbolic)")
+plt.ylabel("Star Formation Rate (SFR)")
+plt.title("BSD-inspired Metric vs SFR (colored by Metallicity)")

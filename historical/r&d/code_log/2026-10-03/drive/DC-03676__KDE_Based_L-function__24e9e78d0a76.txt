@@ -1,0 +1,6 @@
+selected_features = [
+    'z', 'rMag', 'Ar', 'Pth100', 'Smooth', 'Featured',
+    'pE', 'pEdg', 'pDK', 'pMg', 'pS', 'pE0', 'pS0',
+    'fS', 'fE', 'fU', 'pEm', 'pSm', 'fM'
+]
+gz_df = gz_df[selected_features].copy()

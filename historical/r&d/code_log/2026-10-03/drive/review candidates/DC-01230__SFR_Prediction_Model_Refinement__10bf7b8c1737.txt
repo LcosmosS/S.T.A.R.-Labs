@@ -1,0 +1,4 @@
+merged_df = pd.merge(df1, df2, on='objid', how='outer')
+merged_df = pd.merge(merged_df, df3, on='objid', how='outer')
+merged_df.fillna(0, inplace=True)
+merged_df.to_csv('merged_output.csv', index=False)

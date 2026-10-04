@@ -1,0 +1,2 @@
+df["cosmo_rank_EW"] = df["cosmo_rank"] * df["EW_Ha_cen"]
+df["L_cosmo_s1_EW"] = df["L_cosmo_s1.0"] * df["EW_Ha_cen"]

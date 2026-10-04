@@ -1,0 +1,2 @@
+population_size=2000, \n binary_operators=["+", "-", "*", "/"], \n
+unary_operators=["sqrt", "log", "exp", "sin", "cos"], \n loss="loss(x, y) = (x - y)^2",

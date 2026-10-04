@@ -1,0 +1,19 @@
+expected_N = 9214;
+t_H=1.44e10; Omega_cosmo=1.38e10; Omega_tilde=Omega_cosmo/t_H; print("Omega_tilde: ", Omega_tilde);
+
+
+// Try to read the file with forward slashes for better compatibility
+print("Attempting to read file...");
+read("C:/temp/data_extract.txt");
+print("File read successfully (if no error above)");
+
+
+// Check if log_mass is defined and is a vector
+if (type(log_mass) != "t_VEC", error("log_mass is not a vector: ", type(log_mass)));
+print("log_mass type: ", type(log_mass));
+print("Number of elements in log_mass: ", #log_mass);
+
+
+// Filter invalid log_mass entries
+valid_log_mass = select(x -> x > -9999, log_mass);
+N = #valid_log_mass;

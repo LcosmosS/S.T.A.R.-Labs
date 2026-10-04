@@ -1,0 +1,5 @@
+np.array([[a, b, log_delta, log_cond, tors_order]]) \n score =
+classifier.predict_proba(X)[0, 1] \n if score > best_score: \n best_score = score \n
+best_pair = (a, b) \n return best_pair if best_pair else
+random.choice(high_rank_pairs) \n \ndef analyze_curve(a, b, is_original=False,
+max_attempts=5, require_3selmer=False): \n curve_name = \'Original curve\' if

@@ -1,0 +1,30 @@
+    parser.add_argument(
+        "--corpus",
+        type=Path,
+        required=True,
+        help="Directory containing source PDFs",
+    )
+
+
+    parser.add_argument(
+        "--output",
+        type=Path,
+        required=True,
+        help="Output directory",
+    )
+
+
+    parser.add_argument(
+        "--model",
+        default=None,
+        help="Ollama model used for synthesis",
+    )
+
+
+    parser.add_argument(
+        "--docs",
+        nargs="+",
+        default=DEFAULT_DOCS,
+        help=(
+            "PDF filenames to process. "
+            "Defaults to the five S.T.A.R. corpus documents."

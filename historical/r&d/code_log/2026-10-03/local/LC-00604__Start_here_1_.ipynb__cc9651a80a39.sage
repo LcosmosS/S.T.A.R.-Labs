@@ -1,0 +1,5 @@
+Suits   = Set(["Hearts", "Diamonds", "Spades", "Clubs"])
+Values  = Set([2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"])
+Cards   = cartesian_product([Values, Suits])
+Hands   = Subsets(Cards, 5)
+Hands.random_element()

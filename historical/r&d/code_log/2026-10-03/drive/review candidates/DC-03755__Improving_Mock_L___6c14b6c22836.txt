@@ -1,0 +1,8 @@
+Cl_TE = np.loadtxt("COM_PowerSpect_CMB-TE-full_R3.01.txt", skiprows=1)[:, 1]
+Cl_EE = np.loadtxt("COM_PowerSpect_CMB-EE-full_R3.01.txt", skiprows=1)[:, 1]
+l = np.arange(2, 1997)
+Cl_TE = Cl_TE * 2 * np.pi / (l * (l + 1))
+Cl_EE = Cl_EE * 2 * np.pi / (l * (l + 1))
+with open("cl_te.txt", "w") as f:
+    f.write("C_l_TE = [0, 0" + "".join([f", {Cl_TE[i-2]}" for i in range(2, 1997)]) + "];")
+with open("cl_ee.txt", "w") as f:

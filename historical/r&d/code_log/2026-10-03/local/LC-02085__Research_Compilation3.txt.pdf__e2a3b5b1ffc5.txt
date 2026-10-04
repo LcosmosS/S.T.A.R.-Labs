@@ -1,0 +1,1 @@
+ if  (abs(K_sub  -  K)  /  K  <  0.1,  print("K  is  stable"),  print("K  varies  >10%"));  This  ensures  (  K  )’s  consistency,  which  can  be  scaled  for  larger  datasets.  Output  with  Your  9-Galaxy  Sample  Running  the  script  yields:  Precision  set  to  38  Omega_tilde:  0.95833333333333333333333333333333333333  Number  

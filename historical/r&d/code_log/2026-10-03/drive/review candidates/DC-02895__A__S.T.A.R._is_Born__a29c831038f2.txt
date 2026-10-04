@@ -1,0 +1,3 @@
+with open('2Mass.csv', 'r') as f:
+    lines = f.readlines()
+   *     print(lines[10049])  # Line numbers are 1-based, list indices are 0-based

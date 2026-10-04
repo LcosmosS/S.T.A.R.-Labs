@@ -1,0 +1,6 @@
+Delta_Cl = data[:, 1] - best_fit_Cl  # Best-fit from Planck model
+with open("delta_cl.txt", "w") as f:
+*     f.write("Delta_Cl = [0, 0" + "".join([f", {Delta_Cl[i-2]}" for i in range(2, 2509)]) + "];")
+* pari
+read("delta_cl.txt");
+* L_cosmo(s) = K * sum(n=2, 2508, ((C_l[n] + Delta_Cl[n]) / T_cmb^2) / n^s);

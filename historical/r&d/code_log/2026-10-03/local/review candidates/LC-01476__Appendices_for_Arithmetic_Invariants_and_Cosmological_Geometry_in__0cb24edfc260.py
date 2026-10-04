@@ -1,0 +1,19 @@
+        else:
+            print(f"  SKIPPED: Predicted rank is {rank}, not 1.")
+            return None
+
+    except Exception as e:
+        print(f"  ERROR processing {cluster_name}: {e}")
+        return None
+
+# Process all clusters except the holdout case
+analysis_results = []
+for name, data in cluster_data.items():
+    if name != HOLDOUT_CLUSTER:
+        result = derive_and_analyze_cluster_curve(name, data['r'], data['rho'])
+        if result:
+            analysis_results.append(result)
+
+# Process the holdout cluster separately for validation later
+holdout_result = derive_and_analyze_cluster_curve(HOLDOUT_CLUSTER,
+                                                   cluster_data[HOLDOUT_CLUSTER]['r'],

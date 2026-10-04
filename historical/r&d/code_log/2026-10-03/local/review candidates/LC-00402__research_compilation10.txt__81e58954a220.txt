@@ -1,0 +1,10 @@
+# Merge GEMA_2 and mangaHIall using different column names
+merged_data = pd.merge(GEMA_2, mangaHIall, left_on='mangaid', right_on='MANGAID', how='inner')
+
+
+# Since the merge will create both 'mangaid' and 'MANGAID' columns, you might want to drop one of them
+merged_data = merged_data.drop(columns=['MANGAID'])
+
+
+# Now merge with pipe3d_data2
+final_merged_data = pd.merge(merged_data, pipe3d_data2, on='mangaid', how='inner')

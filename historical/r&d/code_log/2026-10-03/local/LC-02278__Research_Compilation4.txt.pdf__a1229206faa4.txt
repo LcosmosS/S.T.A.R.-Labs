@@ -1,0 +1,9 @@
+N_sub=5;
+ 
+log_mass_sub=vector(N_sub,i,log_mass[i]);
+ 
+M_sub=vector(N_sub,i,10^log_mass_sub[i]);
+ 
+M_0_sub=10^my_median(log_mass_sub);
+ 
+print("Subsample

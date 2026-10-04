@@ -1,0 +1,6 @@
+ax = fig.add_subplot(111, projection='3d')
+
+
+ax.scatter(data['rank'], data['log_delta'], data['log_cond'], s=data['leading_coeff'])
+
+             ●    plt.show()

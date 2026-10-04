@@ -1,0 +1,4 @@
+print("\nExchange Rate Analysis:")
+print(df[['cluster', 'r', 'y_coord', 'exchange_rate', 'regulator']])
+
+# Here you would perform a correlation analysis between 'exchange_rate' and

@@ -1,0 +1,2 @@
+if (#log_mass != 1000, error("log_mass does not have 1000 entries"));
+N=1000;

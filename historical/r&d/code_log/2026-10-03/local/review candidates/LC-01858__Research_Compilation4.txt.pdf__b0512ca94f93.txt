@@ -1,0 +1,18 @@
+M_0 = 10^my_median(log_mass);
+print("Reference mass M_0: ", M_0);
+
+/* Compute regularization factor */
+Reg_cosmo = sum(i=1, N, M[i] / M_0) / N;
+print("Reg_cosmo: ", Reg_cosmo);
+
+/* Product term */
+prod_c_p_cosmo = N;
+print("prod_c_p_cosmo: ", prod_c_p_cosmo);
+
+/* Shape parameter */
+Sha_cosmo = 0.315;
+print("Sha_cosmo: ", Sha_cosmo);
+
+/* Cosmological threshold */
+T_cosmo = 27;
+print("T_cosmo: ", T_cosmo);

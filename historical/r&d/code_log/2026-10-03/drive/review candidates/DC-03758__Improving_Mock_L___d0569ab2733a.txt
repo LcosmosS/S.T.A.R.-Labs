@@ -1,0 +1,8 @@
+T_cmb = 2.7255e6;
+unscaled = sum(n=2, 2508, (C_l[n] / T_cmb^2) / n) + 
+           sum(n=2, 1996, (C_l_TE[n] / T_cmb^2) / n) + 
+           sum(n=2, 1996, (C_l_EE[n] / T_cmb^2) / n);
+K = 1.0 / unscaled;
+L_cosmo(s) = K * (sum(n=2, 2508, (C_l[n] / T_cmb^2) / n^s) + 
+                  sum(n=2, 1996, (C_l_TE[n] / T_cmb^2) / n^s) + 
+                  sum(n=2, 1996, (C_l_EE[n] / T_cmb^2) / n^s));

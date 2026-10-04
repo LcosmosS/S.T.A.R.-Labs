@@ -1,0 +1,4 @@
+sum_Mi_over_M0 = sum(i=1, N, M[i] / M_0);
+sum_M0_over_Mi = sum(i=1, N, M_0 / M[i]);
+K_theory = sum_Mi_over_M0 / sum_M0_over_Mi;
+print("Theoretical K: ", K_theory);

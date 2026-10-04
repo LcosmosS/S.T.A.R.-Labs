@@ -1,0 +1,8 @@
+# Define column names for readability
+logmass_col = 'logmass'  # Logarithmic stellar mass
+z_col = 'z'              # Redshift
+sfr_col = 'sfr'          # Star formation rate
+
+
+# Verify all required columns are present
+required_columns = [logmass_col, z_col, sfr_col]

@@ -1,0 +1,44 @@
+    chart.save(f'{OUTPUT_PLOT_PREFIX}_interactive_scatter_cohomology.html')
+
+    # Plotly 3D scatter plot
+    fig = px.scatter_3d(
+        df, x='logmass', y='entropy', z='betti_1',
+        color='generator_type', size='entropy_gradient',
+        hover_data=['objid', 'selmer_rank', 'selmer_status', 'entropy', 'betti_1',
+'entropy_gradient', 'kde_selmer_rank_var_ap'],
+        title='3D Galaxy Features with Cohomology and Entropy Gradient'
+    )
+    fig.write_html(f'{OUTPUT_PLOT_PREFIX}_3d_scatter_cohomology.html')
+
+    # Persistence diagram
+    if gudhi is not None:
+        X_coords = df[['ra', 'dec', 'z', 'entropy']].dropna()
+        if not X_coords.empty:
+            rips_complex = gudhi.RipsComplex(points=X_coords[['ra', 'dec', 'z']],
+max_edge_length=1.0)
+            simplex_tree = rips_complex.create_simplex_tree(max_dimension=2)
+            simplex_tree.set_filtration(X_coords['entropy'].values)
+            persistence = simplex_tree.persistence()
+            gudhi.plot_persistence_diagram(persistence)
+            plt.title('Persistence Diagram for Galaxy Coordinates (Entropy-Weighted)')
+            plt.savefig(f'{OUTPUT_PLOT_PREFIX}_persistence_diagram.png')
+            plt.close()
+
+    # Entropy gradient vs. betti_1
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(data=df, x='entropy_gradient', y='betti_1', hue='generator_type',
+size='selmer_rank')
+    plt.title('Entropy Gradient vs. Betti_1 by Generator Type')
+    plt.savefig(f'{OUTPUT_PLOT_PREFIX}_entropy_gradient_betti1.png')
+    plt.close()
+
+    # t-SNE visualization
+    X_valid = df[feature_cols].dropna()
+    if not X_valid.empty:
+        tsne = TSNE(n_components=2, random_state=42)
+        X_tsne = tsne.fit_transform(X_valid)
+        df_tsne = pd.DataFrame(X_tsne, columns=['TSNE1', 'TSNE2'],
+index=X_valid.index)
+        df_tsne['generator_type'] = df.loc[X_valid.index, 'generator_type']
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(data=df_tsne, x='TSNE1', y='TSNE2', hue='generator_type')

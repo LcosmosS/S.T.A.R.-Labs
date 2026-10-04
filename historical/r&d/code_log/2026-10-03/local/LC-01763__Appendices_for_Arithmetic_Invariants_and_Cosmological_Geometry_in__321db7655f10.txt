@@ -1,0 +1,1 @@
+    return  (radius_mpc  *  u.Mpc).to(u.lyr).value   def  calculate_virial_energy(mass_sm,  radius_ly):      if  not  (np.isfinite(mass_sm)  and  np.isfinite(radius_ly)  and  mass_sm  >  0  and  

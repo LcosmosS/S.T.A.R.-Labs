@@ -1,0 +1,19 @@
+  sorted_vec = vecsort(vec);
+  Q1_index = floor(0.25 * (n + 1));
+  Q3_index = floor(0.75 * (n + 1));
+  Q1 = sorted_vec[Q1_index];
+  Q3 = sorted_vec[Q3_index];
+  IQR = Q3 - Q1;
+  lower_bound = Q1 - 1.5 * IQR;
+  upper_bound = Q3 + 1.5 * IQR;
+  select(x -> x >= lower_bound && x <= upper_bound, vec)
+}
+
+compute_K_theory(logmass_vec) = {
+  M = vector(#logmass_vec, i, 10^logmass_vec[i]);
+  sorted_M = vecsort(M);
+  n = #M;
+  if (n == 0, return(0));
+  if (n % 2 == 1,
+    M0 = sorted_M[(n+1)/2],
+    M0 = (sorted_M[n/2] + sorted_M[n/2 + 1]) / 2

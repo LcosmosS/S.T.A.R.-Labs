@@ -1,0 +1,6 @@
+  n = #log_mass;
+  mean = sum(i=1, n, log_mass[i]) / n;
+  variance = sum(i=1, n, (log_mass[i] - mean)^2) / (n - 1);
+  stddev = sqrt(variance);
+  fourth_moment = sum(i=1, n, (log_mass[i] - mean)^4) / n;
+  kurtosis = fourth_moment / stddev^4;

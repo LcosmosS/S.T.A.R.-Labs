@@ -1,0 +1,7 @@
+log_mass = [10.29471, 11.36537, 10.56586, 9.363875, 11.16167, 11.16527, 9.958716, 10.3831, 9.767632];
+   * z = [0.02122228, 0.02037833, 0.06465632, 0.05265425, 0.2138606, 0.1212705, 0.05598059, 0.09708638, 0.06477907];
+   * For your full dataset (e.g., 1000 galaxies), replace these with your complete log_mass and z columns:
+   * pari
+log_mass = [10.29471, 11.36537, 10.56586, /* ... your remaining values ... */];
+   * z = [0.02122228, 0.02037833, 0.06465632, /* ... your remaining values ... */];
+   * Ensure both vectors have the same length.

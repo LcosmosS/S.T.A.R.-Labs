@@ -1,0 +1,34 @@
+print("Precision set to 38");
+
+
+/* Mock L_cosmo from CMB or galaxy data (example coefficients) */
+L_cosmo(s) = sum(n=2, 100, 1000/n^s); /* Simplified from C_ℓ or P(k) */
+print("L_cosmo defined from mock data");
+
+
+/* Cosmological constants */
+Omega_cosmo = 5.4e7; print("Omega_cosmo: ", Omega_cosmo);
+Reg_cosmo = 9.3e10 / 5.4e7; print("Reg_cosmo: ", Reg_cosmo);
+prod_c_p_cosmo = 2; print("Tamagawa: ", prod_c_p_cosmo);
+Sha_cosmo = 0.87; print("Sha_cosmo: ", Sha_cosmo);
+T_cosmo = 4; print("T_cosmo: ", T_cosmo);
+
+
+/* Left side */
+left_side = L_cosmo(1); print("Left side: ", left_side);
+
+
+/* Right side */
+right_side = (Omega_cosmo * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2);
+print("Right side: ", right_side);
+
+
+/* Check */
+if (abs(left_side - right_side) < 1e-5 * right_side, 
+    print("Cosmological BSD holds"), 
+    print("Cosmological BSD fails"));
+
+
+/* Adjusted Sha */
+adjusted_Sha_cosmo = left_side * (T_cosmo^2) / (Omega_cosmo * Reg_cosmo * prod_c_p_cosmo);
+print("Adjusted Sha_cosmo: ", adjusted_Sha_cosmo);

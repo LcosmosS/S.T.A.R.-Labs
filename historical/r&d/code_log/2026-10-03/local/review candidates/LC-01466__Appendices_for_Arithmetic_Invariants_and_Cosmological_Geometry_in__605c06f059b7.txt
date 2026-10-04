@@ -1,0 +1,3 @@
+# 3.2: Model the Numerators
+X_train = df[['r', 'rho']]
+y_train_x_num = df['x_num']

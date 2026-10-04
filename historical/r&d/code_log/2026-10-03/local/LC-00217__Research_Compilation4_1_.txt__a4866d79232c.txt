@@ -1,0 +1,2 @@
+    z = box_muller()[1];
+    v[i] = mu + sigma * z;

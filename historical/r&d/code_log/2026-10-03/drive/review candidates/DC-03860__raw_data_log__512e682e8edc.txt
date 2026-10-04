@@ -1,0 +1,5 @@
+st.compute_persistence()
+betti = st.betti_numbers()          # returns list [Betti_0, Betti_1, Betti_2, ...]
+df[name + '_local_betti_1'] = betti[1] if len(betti) > 1 else 0
+      * Betti_0 (number of connected components) → computed but discarded.
+      * Betti_1 (loops / filaments) → used as the target.

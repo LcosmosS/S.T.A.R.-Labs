@@ -1,0 +1,8 @@
+for page in doc:
+text += page.get_text()
+doc.close()
+return text
+except Exception as e:
+return str(e)
+# First analyze the main theoretical framework documents
+key_papers = [

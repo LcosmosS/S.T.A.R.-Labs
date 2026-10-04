@@ -1,0 +1,29 @@
+// src/routes/login.tsx
+import { createFileRoute } from "@tanstack/react-router";
+import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
+
+export const Route = createFileRoute("/login")({ component: Login });
+
+function Login() {
+  return (
+    <main className="grid min-h-screen place-items-center p-6">
+      <div className="w-full max-w-sm space-y-3">
+        <h1 className="text-xl font-semibold">Sign in</h1>
+        {authEnabled ? (
+          GROK_PROVIDERS.map((p) => (
+            <button
+              key={p.providerId}
+              type="button"
+              onClick={() => signIn(p.providerId, { callbackURL: "/" })}
+              className="w-full cursor-pointer rounded-md border border-neutral-300 px-4 py-2 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-900"
+            >
+              Continue with {p.label}
+            </button>
+          ))
+        ) : (
+          <p className="text-sm text-neutral-500">Sign-in is disabled.</p>
+        )}
+      </div>
+    </main>
+  );
+}

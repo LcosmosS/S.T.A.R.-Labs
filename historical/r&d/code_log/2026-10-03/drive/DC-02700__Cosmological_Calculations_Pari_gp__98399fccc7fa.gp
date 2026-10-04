@@ -1,0 +1,110 @@
+print("Precision set to 38");
+
+
+expected_N = 9214;
+t_H=1.44e10;
+Omega_cosmo=1.38e10;
+Omega_tilde=Omega_cosmo/t_H;
+print("Omega_tilde: ", Omega_tilde);
+
+
+// Ensure data_extract.txt has the first line commented out, e.g., \ Number of selected rows: 9214
+read("C:/temp/data_extract.txt");
+
+
+// Check if log_mass is defined and is a vector
+if (type(log_mass) != "t_VEC", error("log_mass is not a vector: ", type(log_mass)));
+print("log_mass type: ", type(log_mass));
+print("Number of elements in log_mass: ", #log_mass);
+
+
+if (#log_mass != expected_N, error("log_mass does not have ", expected_N, " entries"));
+
+
+N = #log_mass;
+M = vector(N, i, 10^log_mass[i]);
+M_0 = mymedian(M);
+print("Reference mass M_0: ", M_0);
+
+
+Reg_cosmo=2.8;
+print("Reg_cosmo: ", Reg_cosmo);
+
+
+prod_c_p_cosmo=N;
+print("prod_c_p_cosmo: ", prod_c_p_cosmo);
+
+
+Sha_cosmo=0.315;
+print("Sha_cosmo: ", Sha_cosmo);
+
+
+T_cosmo=sqrt((841 * N) / 1000);
+print("T_cosmo: ", T_cosmo);
+
+
+unscaled_L_cosmo_1=sum(i=1,N,(M_0/M[i]))/N;
+print("Unscaled L_cosmo(1): ", unscaled_L_cosmo_1);
+
+
+right_side=(Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo)/(T_cosmo^2);
+print("Right side: ", right_side);
+
+
+normalization_constant_K=right_side/unscaled_L_cosmo_1;
+print("Normalization constant K: ", normalization_constant_K);
+
+
+normalized_L_cosmo_1=unscaled_L_cosmo_1 * normalization_constant_K;
+print("Normalized L_cosmo(1): ", normalized_L_cosmo_1);
+
+
+print("Cosmological BSD analogue holds within 10%: ", abs(1-normalization_constant_K)<0.1);
+
+
+N_sub1 = floor(N/2);
+M_sub1 = vector(N_sub1, i, M[i]);
+M_0_sub1 = mymedian(M_sub1);
+print("Subsample M_0_sub1: ", M_0_sub1);
+
+
+Reg_cosmo_sub1=Reg_cosmo;
+print("Subsample Reg_cosmo_sub1: ", Reg_cosmo_sub1);
+
+
+subsample_unscaled_left_sub1=sum(i=1,N_sub1,(M_0_sub1/M_sub1[i]))/N_sub1;
+print("Subsample unscaled left sub1: ", subsample_unscaled_left_sub1);
+
+
+subsample_right_side_sub1=(Omega_tilde * Reg_cosmo_sub1 * N_sub1 * Sha_cosmo)/(T_cosmo^2);
+print("Subsample right side sub1: ", subsample_right_side_sub1);
+
+
+subsample_K_sub1=subsample_right_side_sub1/subsample_unscaled_left_sub1;
+print("Subsample (N=", N_sub1, ") K_sub1: ", subsample_K_sub1);
+
+
+N_sub2 = N - N_sub1;
+M_sub2 = vector(N_sub2, i, M[N_sub1 + i]);
+M_0_sub2 = mymedian(M_sub2);
+print("Subsample M_0_sub2: ", M_0_sub2);
+
+
+Reg_cosmo_sub2=Reg_cosmo;
+print("Subsample Reg_cosmo_sub2: ", Reg_cosmo_sub2);
+
+
+subsample_unscaled_left_sub2=sum(i=1,N_sub2,(M_0_sub2/M_sub2[i]))/N_sub2;
+print("Subsample unscaled left sub2: ", subsample_unscaled_left_sub2);
+
+
+subsample_right_side_sub2=(Omega_tilde * Reg_cosmo_sub2 * N_sub2 * Sha_cosmo)/(T_cosmo^2);
+print("Subsample right side sub2: ", subsample_right_side_sub2);
+
+
+subsample_K_sub2=subsample_right_side_sub2/subsample_unscaled_left_sub2;
+print("Subsample (N=", N_sub2, ") K_sub2: ", subsample_K_sub2);
+
+
+print("K is stable within 10% for Subgroup1: ", abs(normalization_constant_K - subsample_K_sub1)/abs(normalization_constant_K) < 0.1);
+print("K is stable within 10% for Subgroup2: ", abs(normalization_constant_K - subsample_K_sub2)/abs(normalization_constant_K) < 0.1);

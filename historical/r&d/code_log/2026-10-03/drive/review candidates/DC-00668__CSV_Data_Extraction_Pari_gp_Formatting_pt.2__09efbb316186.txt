@@ -1,0 +1,7 @@
+# Example diagnostic plot: Observed vs. Predicted SFR
+plt.scatter(df['sfr'], df['predicted_sfr'], alpha=0.5)
+plt.xlabel('Observed SFR')
+plt.ylabel('Predicted SFR')
+plt.title('Observed vs. Predicted SFR')
+plt.savefig('observed_vs_predicted_sfr.png')
+plt.close()

@@ -1,0 +1,4 @@
+s = 1;
+log_L_cosmo_1 = log_L_cosmo(s);
+L_cosmo_1 = exp(log_L_cosmo_1);
+print("L_cosmo(1) = ", L_cosmo_1);

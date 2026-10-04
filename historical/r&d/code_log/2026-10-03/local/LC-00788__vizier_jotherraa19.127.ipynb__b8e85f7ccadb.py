@@ -1,0 +1,1 @@
+aladin.add_table(conesearch_records.to_table(), color="lightskyblue", shape="plus")

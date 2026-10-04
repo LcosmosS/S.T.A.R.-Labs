@@ -1,0 +1,19 @@
+            if available_pairs:
+                return random.choice(available_pairs)
+        if len(high_rank_fibs) >= 2:
+            pair = random.sample(high_rank_fibs, 2)
+            if seen_pairs.get(tuple(pair), 0) < 1:
+                return pair
+        pair = random.sample(valid_fibs, 2)
+        if seen_pairs.get(tuple(pair), 0) < 1:
+            return pair
+        return random.choice(high_rank_pairs)
+
+    best_score = -float('inf')
+    best_pair = None
+    attempts = min(50, len(valid_fibs) * (len(valid_fibs) - 1) // 2)
+    for _ in range(attempts):
+        a, b = random.sample(valid_fibs, 2)
+        if seen_pairs.get((a, b), 0) >= 1:
+            continue
+        delta = -16 * (4 * a**3 + 27 * b**2)

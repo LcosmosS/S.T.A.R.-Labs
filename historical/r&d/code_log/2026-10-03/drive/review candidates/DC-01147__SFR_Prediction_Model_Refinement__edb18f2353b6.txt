@@ -1,0 +1,20 @@
+# --- Step 2: Train a Gradient Boosting Model ---
+X = df.drop("log_SFR", axis=1)
+y = df["log_SFR"]
+
+
+model = GradientBoostingRegressor()
+model.fit(X, y)
+
+
+# --- Step 3: Use SHAP to Interpret the Model ---
+explainer = shap.Explainer(model)
+shap_values = explainer(X)
+
+
+# Summary plot (most important features)
+shap.summary_plot(shap_values, X)
+
+
+# Optional: save the plot to file if running headless
+# plt.savefig("shap_summary.png", dpi=300, bbox_inches='tight')

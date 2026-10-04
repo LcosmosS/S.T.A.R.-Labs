@@ -1,0 +1,7 @@
+# Define redshift bins for grouping
+sfr_bins = [-9999, -0.1, 0, 0.1, 1, 10]  # Example bins, adjust based on data
+for i in range(len(sfr_bins) - 1):
+    sfr_min = sfr_bins[i]
+    sfr_max = sfr_bins[i+1]
+    df_bin = df[(df['sfr'] >= sfr_min) & (df['sfr'] < sfr_max) & (df['sfr'] != -9999)]
+         *     ...

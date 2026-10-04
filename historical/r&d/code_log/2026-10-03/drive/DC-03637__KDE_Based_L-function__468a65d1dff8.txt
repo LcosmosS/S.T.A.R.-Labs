@@ -1,0 +1,8 @@
+# Combine features and target to drop NaNs across the board
+Xy_combined = pd.concat([pd.DataFrame(X_train_scaled), pd.Series(y_train, name='target')], axis=1)
+Xy_combined.dropna(inplace=True)
+
+
+# Split again into X and y
+X_train_scaled_clean = Xy_combined.drop('target', axis=1).values
+y_train_clean = Xy_combined['target'].values

@@ -1,0 +1,5 @@
+plt.figure(figsize=(6,5))
+plt.quiver(X[:200,0], X[:200,1], curvature[:200], entropy[:200], angles='xy')
+plt.title("Cohomology Flow (Entropy vs Curvature)")
+plt.savefig('figures/cohomology_flow.png', dpi=200)
+plt.show()

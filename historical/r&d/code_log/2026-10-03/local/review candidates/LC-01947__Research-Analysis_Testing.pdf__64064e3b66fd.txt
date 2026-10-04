@@ -1,0 +1,7 @@
+Omega = E.period_lattice().real_period()
+Reg = E.regulator()
+Tamagawa = prod(E.tamagawa_numbers())
+
+
+    7.  print(Omega, Reg, Tamagawa)
+    8.  Then estimate |\text{Sha}(E)|:

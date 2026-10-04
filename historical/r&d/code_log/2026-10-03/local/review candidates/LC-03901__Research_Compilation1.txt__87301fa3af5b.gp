@@ -1,0 +1,42 @@
+expected_N = 9214;
+t_H=1.44e10; Omega_cosmo=1.38e10; Omega_tilde=Omega_cosmo/t_H; print("Omega_tilde: ", Omega_tilde);
+print("Attempting to read file...");
+read("C:/temp/data_extract.txt");
+print("File read successfully (if no error above)");
+if (type(log_mass) != "t_VEC", error("log_mass is not a vector: ", type(log_mass)));
+print("log_mass type: ", type(log_mass));
+print("Number of elements in log_mass: ", #log_mass);
+if (#log_mass != expected_N, error("log_mass does not have ", expected_N, " entries"));
+N = #log_mass;
+print("Min log_mass: ", vecmin(log_mass));
+print("Max log_mass: ", vecmax(log_mass));
+mean_log_mass = sum(i=1,N,log_mass[i])/N;
+var_log_mass = sum(i=1,N,(log_mass[i] - mean_log_mass)^2)/(N-1);
+sigma_log_mass = sqrt(var_log_mass);
+print("Mean log_mass: ", mean_log_mass);
+print("Sigma log_mass: ", sigma_log_mass);
+print("Expected K_theory (theoretical): ", exp((log(10)^2 * sigma_log_mass^2)/2));
+skewness_log_mass = sum(i=1,N,(log_mass[i] - mean_log_mass)^3)/(N * sigma_log_mass^3);
+print("Skewness of log_mass: ", skewness_log_mass);
+print("Number of log_mass < 8: ", #select(x->x<8,log_mass));
+print("Number of log_mass > 12: ", #select(x->x>12,log_mass));
+\\ Filter outliers for testing
+log_mass_filtered = select(x->x>=8 && x<=12, log_mass);
+N_filtered = #log_mass_filtered;
+print("Number of filtered log_mass (8 to 12): ", N_filtered);
+if (N_filtered > 0, {
+  M_filtered = vector(N_filtered, i, 10^log_mass_filtered[i]);
+  M_0_filtered = mymedian(M_filtered);
+  print("Filtered reference mass M_0: ", M_0_filtered);
+  unscaled_L_cosmo_1_filtered = sum(i=1,N_filtered,(M_0_filtered/M_filtered[i]))/N_filtered;
+  print("Filtered unscaled L_cosmo(1): ", unscaled_L_cosmo_1_filtered);
+  right_side_filtered = (Omega_tilde * Reg_cosmo * N_filtered * Sha_cosmo)/(T_cosmo^2);
+  print("Filtered right side: ", right_side_filtered);
+  K_filtered = right_side_filtered / unscaled_L_cosmo_1_filtered;
+  print("Filtered normalization constant K: ", K_filtered);
+  print("Filtered cosmological BSD analogue holds within 10%: ", abs(1 - K_filtered) < 0.1);
+  // Compute theoretical K for filtered data
+  sum_Mi_over_M0_filtered = sum(i=1, N_filtered, M_filtered[i] / M_0_filtered);
+  sum_M0_over_Mi_filtered = sum(i=1, N_filtered, M_0_filtered / M_filtered[i]);
+  K_theory_filtered = sum_Mi_over_M0_filtered / sum_M0_over_Mi_filtered;
+  print("Theoretical K for filtered sample: ", K_theory_filtered);

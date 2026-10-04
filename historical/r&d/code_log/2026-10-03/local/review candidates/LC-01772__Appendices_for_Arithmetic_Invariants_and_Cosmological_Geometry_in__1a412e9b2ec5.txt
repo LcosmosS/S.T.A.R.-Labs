@@ -1,0 +1,8 @@
+        mode='markers', marker=dict(size=5, color=X_test_df['predicted_type'], colorscale='Viridis',
+showscale=True, colorbar_title='Generator Type')
+
+    ))
+
+    fig.update_layout(title=f'{regime.capitalize()} Stacked Manifold Binned by Type')
+
+    fig.write_html(f"visualizations/{regime}_type_binned_3d.html")

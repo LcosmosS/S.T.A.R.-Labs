@@ -1,0 +1,11 @@
+    stacking_clf.fit(X,  y)      gen_accuracy  =  cross_val_score(stacking_clf,  X,  y,  cv=5).mean()      print("Stacking  Classifier  Accuracy:",  gen_accuracy)      print("Classification  Report:\n",  classification_report(y,  
+stacking_clf.predict(X)))
+      #  Feature  importance      log_function("compute_generator_feature_importance")      gen_perm_importance  =  permutation_importance(stacking_clf,  X,  y,  n_repeats=10,  
+random_state=42)
+     gen_feature_importance  =  pd.Series(gen_perm_importance.importances_mean,  
+index=X.columns).sort_values(ascending=False)
+     print("\nGenerator  Type  Feature  Importance:\n",  gen_feature_importance)      
+gen_feature_importance.to_csv(f'{OUTPUT_PLOT_PREFIX}_generator_feature_importance.csv'
+)
+      plt.figure(figsize=(10,  6))      sns.barplot(x=gen_feature_importance.values,  y=gen_feature_importance.index)      plt.title('Generator  Type  Feature  Importance')      plt.savefig(f'{OUTPUT_PLOT_PREFIX}_generator_feature_importance.png')      plt.close()       #  Symbolic  regression  for  generator  type      log_function("symbolic_regression_generator")      for  method  in  ['pysr',  'gplearn']:          sym_reg_gen  =  run_symbolic_regression(X,  y.map({'Simple':  0,  'Recursive':  1,  
+'unknown':

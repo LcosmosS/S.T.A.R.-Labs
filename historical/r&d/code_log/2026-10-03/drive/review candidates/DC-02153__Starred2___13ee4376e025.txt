@@ -1,0 +1,3 @@
+sfr_bin4 = sfr[group1_indices][bin4_mask]
+avg_sfr = np.mean(sfr_bin4)
+      * print(f"Bin 4 average sfr: {avg_sfr:.4f}")

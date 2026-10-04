@@ -1,0 +1,8 @@
+# If you want to keep all galaxies and fill missing SDSS data
+df['flux_Ha'] = df['flux_Ha'].fillna(0)
+df['flux_Hb'] = df['flux_Hb'].fillna(0)
+df['flux_OIII_5007'] = df['flux_OIII_5007'].fillna(0)
+df['flux_NII_6584'] = df['flux_NII_6584'].fillna(0)
+df['e_flux_Ha'] = df['e_flux_Ha'].fillna(df['e_flux_Ha'].median())
+df['log_SFR_Ha_raw'] = df['log_SFR_Ha_raw'].fillna(df['log_SFR_Ha'])
+df['OH_O3N2_raw'] = df['OH_O3N2_raw'].fillna(df['OH_O3N2_cen'])

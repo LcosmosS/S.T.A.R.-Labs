@@ -1,0 +1,9 @@
+    return {
+        "empirical_T": float(t_empirical),
+        "theoretical_T": float(t_theoretical),
+        "consistent": bool(is_consistent)
+    }
+
+def run_stage_2_scaling_law_test(ucf_data):
+    """
+    Tests if the UCF's arithmetic invariants can reproduce established

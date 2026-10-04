@@ -1,0 +1,6 @@
+        sizes = [float(max(x[3] * 100, 1e-6)) for x in interweb_data]
+        
+        colors = ['k' if r == 0 else 'g' if r == 1 else 'b' if r == 2 else 'r' for r in ranks]
+        scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=colors, alpha=0.7)
+        
+        virgo_rank = 3

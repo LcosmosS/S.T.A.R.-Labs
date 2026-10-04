@@ -1,0 +1,27 @@
+    print("Analytic rank: ", analytic_rank);
+    print("Leading coefficient L^(r)(E, 1): ", L);
+    if(alg_rank == analytic_rank,
+        print("Weak BSD holds: Algebraic rank = Analytic rank");
+    ,
+        print("Weak BSD fails: Algebraic rank != Analytic rank");
+    );
+    L_padic = ellpadiclseries(E, p, 10); L_padic_val = L_padic[1];
+    print("p-adic L-function at s=1 (p=", p, "): ", L_padic_val);
+    if(alg_rank == 0,
+        print("p-adic L-function suggests rank 0");
+    ,
+        print("p-adic L-function suggests higher rank");
+    );
+    omega = ellomega(E)[1];
+    omega_scaled = pi_val * omega;
+    print("Scaled real period (Omega * pi): ", omega_scaled);
+    if(alg_rank == 0,
+        reg = 1;
+    ,
+        gens = ellgenerators(E);
+        if(length(gens) > 0,
+            reg = ellheight(E, gens[1]);
+        ,
+            reg = 1;
+        );
+    );

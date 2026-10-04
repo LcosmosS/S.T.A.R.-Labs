@@ -1,0 +1,14 @@
+        df[col] = df[col].fillna(df[col].median())
+
+df['Ha_Hb_observed'] = df['flux_Ha'] / df['flux_Hb']
+Ha_Hb_intrinsic = 2.86
+k_Ha = 2.468
+k_Hb = 3.634
+df['A_Ha'] = 2.5 * np.log10(df['Ha_Hb_observed'] / Ha_Hb_intrinsic) * (k_Ha / (k_Hb - k_Ha))
+df['flux_Ha_corr'] = df['flux_Ha'] * 10**(0.4 * df['A_Ha'])
+H0 = 70  # km/s/Mpc
+c = 3e5  # km/s
+df['DL'] = (c * df['zsp'] / H0) * 3.0856e24  # cm, using zsp
+df['L_Ha'] = df['flux_Ha_corr'] * 4 * np.pi * df['DL']**2  # erg/s
+df['log_SFR_Ha_raw'] = np.log10(df['L_Ha'] * 7.9e-42)  # M_sun/yr
+df['log_O3N2_raw'] = np.log10((df['flux_OIII_5007'] / df['flux_Hb']) / (df['flux_NII_6584'] /

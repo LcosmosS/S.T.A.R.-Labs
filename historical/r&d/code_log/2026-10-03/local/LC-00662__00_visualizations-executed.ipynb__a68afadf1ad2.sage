@@ -1,0 +1,8 @@
+fig = px.scatter_3d(
+    x=X[:,0], y=X[:,1], z=X[:,2],
+    color=X[:,2],
+    opacity=0.7,
+    title="ACSC Projection (Interactive)"
+)
+fig.write_html("figures/acsc_interactive.html")
+fig.show()

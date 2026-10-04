@@ -1,0 +1,2 @@
+min_samples_split=5: Requires at least 5 samples to split a node, helping prevent overfitting by avoiding overly specific splits.
+n_estimators=300: Uses 300 trees in the forest, creating a robust ensemble to reduce variance.

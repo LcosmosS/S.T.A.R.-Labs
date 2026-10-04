@@ -1,0 +1,6 @@
+# Calculate p-value
+p_value = np.mean(np.abs(bootstrap_corr) >= np.abs(correlation))
+results['correlation'] = correlation
+results['p_value'] = p_value
+results['confidence_interval'] = np.percentile(bootstrap_corr, [2.5, 97.5])
+return results

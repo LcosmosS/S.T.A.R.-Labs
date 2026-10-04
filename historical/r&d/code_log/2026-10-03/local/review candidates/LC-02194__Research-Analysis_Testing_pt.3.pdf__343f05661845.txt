@@ -1,0 +1,5 @@
+p = 5  # Choose a prime
+E = EllipticCurve([0, 0, 0, -1706, 6320])
+L_padic = E.padic_lseries(p)
+
+             ○    print("p-adic L-function at s=1:", L_padic(1))

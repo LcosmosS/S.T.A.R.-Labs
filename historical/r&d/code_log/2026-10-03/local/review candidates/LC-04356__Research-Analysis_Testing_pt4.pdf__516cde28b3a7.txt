@@ -1,0 +1,4 @@
+    fig = plt.figure(figsize=(14, 12))
+    ax = fig.add_subplot(111, projection='3d')
+    ranks = [x[2] for x in interweb_data]
+    log_deltas = [x[8] for x in interweb_data]

@@ -1,0 +1,3 @@
+  if (sample_size % 2 == 1,
+    pair = box_muller();
+    v[sample_size] = mean_val + std_val * pair[1];

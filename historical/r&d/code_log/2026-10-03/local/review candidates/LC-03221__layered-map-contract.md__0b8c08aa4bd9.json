@@ -1,0 +1,14 @@
+{
+  "mapSize": { "width": 1672, "height": 941 },
+  "spawn": { "x": 836, "y": 782 },
+  "walkBounds": [
+    { "id": "main-courtyard", "type": "ellipse", "x": 838, "y": 548, "rx": 604, "ry": 304 }
+  ],
+  "blockers": [
+    { "id": "torii-left-pillar", "type": "rect", "x": 704, "y": 668, "w": 52, "h": 176 }
+  ],
+  "zones": {
+    "grass": { "type": "rect", "x": 180, "y": 306, "w": 382, "h": 302 },
+    "rest": { "type": "circle", "x": 760, "y": 548, "radius": 122 }
+  }
+}

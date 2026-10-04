@@ -1,0 +1,2 @@
+with open('data.gp', 'w') as f:
+    f.write(f"masses = {masses};\n")

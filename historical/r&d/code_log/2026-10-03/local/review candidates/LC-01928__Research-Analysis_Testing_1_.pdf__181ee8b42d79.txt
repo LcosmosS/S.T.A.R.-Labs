@@ -1,0 +1,4 @@
+E = EllipticCurve(QQ, [-1706, 6320])
+S = E.selmer_rank_bound()
+
+    5.  print(S)

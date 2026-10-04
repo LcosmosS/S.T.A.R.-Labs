@@ -1,0 +1,4 @@
+# Numbers for lines 14-16 of manin.txt (edit the lines below):
+Nall=`cat ~/ecdata/curves/curves.*9 | awk '($1>200000)&&($1<500000)' | wc -l`
+N2=`cat ~/ecdata/allcurves/allcurves.*9 | awk '($3==2)&&($1>200000)&&($1<500000)' | wc -l`
+let 'N1=Nall-N2'

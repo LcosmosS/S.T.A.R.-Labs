@@ -1,0 +1,2 @@
+y_train = y_train[np.isfinite(y_train)]
+X_train_scaled = X_train_scaled[np.isfinite(X_train_scaled).all(axis=1)]

@@ -1,0 +1,7 @@
+N = length(masses);
+sorted_masses = vecsort(masses);
+if (N % 2 == 1,
+M0 = sorted_masses[(N+1)/2],
+
+
+M0 = (sorted_masses[N/2] + sorted_masses[N/2 + 1]) / 2

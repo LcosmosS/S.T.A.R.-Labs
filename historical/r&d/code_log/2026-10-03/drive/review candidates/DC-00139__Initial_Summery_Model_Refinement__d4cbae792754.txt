@@ -1,0 +1,14 @@
+# After SHAP computation
+shap_values_rf_mean = np.abs(shap_values_rf.values).mean(axis=0)
+feature_importance = pd.DataFrame({"feature": features, "importance": shap_values_rf_mean})
+feature_importance = feature_importance.sort_values("importance", ascending=False)
+top_features = feature_importance["feature"].head(10).tolist()
+# Ensure BSD features are included
+for bsd_feature in ["cosmo_rank", "L_cosmo_s1.0", "cosmo_rank_L"]:
+    if bsd_feature not in top_features:
+        top_features.append(bsd_feature)
+X_selected = df[top_features]
+X_train_selected, X_test_selected, _, _ = train_test_split(X_selected, y, test_size=0.2, random_state=42)
+X_train_selected_scaled = scaler.fit_transform(X_train_selected)
+X_test_selected_scaled = scaler.transform(X_test_selected)
+symbolic_model.fit(X_train_selected_scaled, y_train)

@@ -1,0 +1,39 @@
+    print(f"{regime.capitalize()} XGBoost R²: {r2_xgb:.4f}, MAE: {mae_xgb:.4f}")
+
+
+
+    return pysr_model, xgb_model, X_test, y_pred_pysr, y_pred_xgb
+
+
+
+# Run for regimes
+
+for regime, dfr in [('galactic', df_gal), ('cluster', df_clust)]:
+
+    if len(dfr) < 2: continue
+
+    Xr = dfr[['Fg', 'Fr', 'Fz', 'EBV', 'plx', 'pmRA', 'pmDE', 'flux_gr', 'flux_rz', 'log_EBV', 'pm_mag']]
+
+    yr = dfr['z']
+
+    pysr_model, xgb_model, X_test, y_pred_pysr, y_pred_xgb = run_models(Xr, yr, regime)
+
+
+
+    # Visuals (use X_test as DF for columns)
+
+    X_test_df = pd.DataFrame(X_test, columns=Xr.columns)  # Reconstruct DF
+
+
+
+    # PNG Scatter
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    scatter = ax.scatter(X_test_df['flux_gr'], y_pred_pysr, c=X_test_df['EBV'], cmap=cm.viridis)
+
+    ax.set_title(f'{regime.capitalize()} PySR Projection: g/r Flux vs Predicted z')
+
+    ax.set_xlabel('g/r Flux Ratio')
+
+    ax.set_ylabel('Predicted z')

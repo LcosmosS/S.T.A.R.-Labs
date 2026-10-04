@@ -1,0 +1,4 @@
+mass_part1 = [values];
+...
+mass_part9 = [values];
+Then, presumably, mass = concat([mass_part1, mass_part2, ..., mass_part9]);

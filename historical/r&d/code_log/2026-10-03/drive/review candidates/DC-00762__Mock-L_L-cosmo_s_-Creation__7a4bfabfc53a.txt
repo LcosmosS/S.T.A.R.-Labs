@@ -1,0 +1,4 @@
+k = np.logspace(-3, 0, 1000)  # Example k range
+Pk = 1e4 * (k / 0.1)**0.96  # Simplified model, replace with real data
+Delta2 = k^3 * Pk / (2 * np.pi^2)
+with open("delta2.txt", "w") as f:

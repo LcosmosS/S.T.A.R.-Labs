@@ -1,0 +1,2 @@
+L1.abs() < RealNumber('1e-10'): # Check if L(1) is approximately 0 95 L1_deriv =
+L.dokchitser(prec=Integer(100)).derivative(Integer(1), Integer(1))

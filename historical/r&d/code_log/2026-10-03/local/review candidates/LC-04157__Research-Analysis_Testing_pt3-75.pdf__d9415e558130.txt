@@ -1,0 +1,3 @@
+            for feat in rank3_features:
+                synth_feat = [f + random.gauss(0, 0.1) for f in feat]
+                X_data.append(synth_feat)

@@ -1,0 +1,24 @@
+        unary_operators=["log",  "exp",  "sqrt",  "sin",  "cos"],   #  Enhanced  for  COEFF  Fourier  
+        extra_sympy_mappings={'inv':  lambda  x:  1/x},  
+        elementwise_loss="loss(prediction,  target)  =  (prediction  -  target)^2",  
+        model_selection="best",  
+        complexity_of_operators={"pow":  3,  "exp":  2,  "log":  2,  "sin":  2,  "cos":  2},  
+        maxsize=30,  
+        maxdepth=6,  
+        parsimony=0.005,  
+        random_state=42,  
+        deterministic=True,  
+        parallelism='serial',  
+        constraints={'^':  (-1,  1)}  
+    )  
+    pysr_model.fit(X_train_scaled,  y_train)  
+     
+    xgb_model  =  XGBRegressor(n_estimators=200,  learning_rate=0.03,  max_depth=6,  
+random_state=42,
+ 
+early_stopping_rounds=20)
+ 
+    xgb_model.fit(X_train_scaled,  y_train,  eval_set=[(X_test_scaled,  y_test)],  verbose=False)  
+     
+    #  Non-linear  stacking:  Use  XGB  as  meta  on  PySR  +  XGB  preds  
+    pysr_pred_train  =  pysr_model.predict(X_train_scaled).reshape(-1,  1)  

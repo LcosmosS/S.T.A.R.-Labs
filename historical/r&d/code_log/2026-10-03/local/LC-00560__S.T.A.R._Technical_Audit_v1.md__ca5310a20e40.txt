@@ -1,0 +1,11 @@
+outer spatial/group split
+    ↓
+training-only preprocessing
+    ↓
+training-only topology construction where appropriate
+    ↓
+inner cross-validation for hyperparameters
+    ↓
+out-of-fold stacking predictions
+    ↓
+untouched outer test set

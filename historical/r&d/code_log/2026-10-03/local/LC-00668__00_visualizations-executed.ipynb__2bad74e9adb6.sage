@@ -1,0 +1,6 @@
+plt.figure(figsize=(6,5))
+plt.scatter(X[:,0], X[:,1], c=curvature, cmap='plasma', s=10)
+plt.colorbar(label='Curvature κ(x)')
+plt.title("Entropy Curvature")
+plt.savefig('figures/entropy_curvature.png', dpi=200)
+plt.show()

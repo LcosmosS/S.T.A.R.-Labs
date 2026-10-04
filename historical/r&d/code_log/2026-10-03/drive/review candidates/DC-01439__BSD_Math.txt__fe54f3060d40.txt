@@ -1,0 +1,4 @@
+  sum_term = sum(j=1, #masses_k, (M0_k / masses_k[j])^s);
+  if (sum_term <= 0, error("Sum term is non-positive"));
+  log_L_k_s = log(sum_term);
+  log_L_cosmo_s += log_L_k_s;

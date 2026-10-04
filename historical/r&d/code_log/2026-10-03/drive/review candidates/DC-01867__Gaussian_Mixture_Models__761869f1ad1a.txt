@@ -1,0 +1,2 @@
+values = Strsplit(values_str, ",")
+log_mass = vector(#values, i, eval(values[i]))

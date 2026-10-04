@@ -1,0 +1,2 @@
+joblib.dump(best_rf, 'best_rf_model.pkl')
+joblib.dump(best_gb, 'best_gb_model.pkl')

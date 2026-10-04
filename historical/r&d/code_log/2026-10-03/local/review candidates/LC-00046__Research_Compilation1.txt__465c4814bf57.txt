@@ -1,0 +1,11 @@
+sorted_log_mass = vecsort(log_mass);
+Q1 = sorted_log_mass[ceil(0.25 * N)];
+Q3 = sorted_log_mass[ceil(0.75 * N)];
+IQR = Q3 - Q1;
+lower_bound = Q1 - 1.5 * IQR;
+upper_bound = Q3 + 1.5 * IQR;
+print("Q1: ", Q1);
+print("Q3: ", Q3);
+print("IQR: ", IQR);
+print("Lower bound for outliers: ", lower_bound);
+print("Upper bound for outliers: ", upper_bound);

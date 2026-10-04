@@ -1,0 +1,4 @@
+betti = st.betti_numbers()   # returns list [Betti_0, Betti_1, Betti_2, ...]
+df[name + '_local_betti_0'] = betti[0]
+df[name + '_local_betti_1'] = betti[1]
+df[name + '_local_betti_2'] = betti[2]

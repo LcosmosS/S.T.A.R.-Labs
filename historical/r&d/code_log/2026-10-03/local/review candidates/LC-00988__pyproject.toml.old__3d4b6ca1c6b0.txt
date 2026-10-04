@@ -1,0 +1,2 @@
+tda = ["gudhi>=3.5.0", "ripser>=0.6.0", "persim>=0.6.0"]
+dev = ["pytest", "black", "isort", "pre-commit"]

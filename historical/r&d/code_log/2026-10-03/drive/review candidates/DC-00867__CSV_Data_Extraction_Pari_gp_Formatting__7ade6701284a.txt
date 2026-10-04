@@ -1,0 +1,13 @@
+group1_indices = np.where(groups == 1)[0]
+z_group1 = z[group1_indices]
+sfr_group1 = sfr[group1_indices]
+logmass_group1 = logmass[group1_indices]
+
+
+# Example: Bin by z within Group 1
+z_bins = np.percentile(z_group1, [0, 33, 66, 100])
+for i in range(len(z_bins) - 1):
+    bin_indices = np.where((z_group1 >= z_bins[i]) & (z_group1 < z_bins[i+1]))[0]
+    bin_logmass = logmass_group1[bin_indices]
+    K_theory_bin = compute_K_theory(bin_logmass)
+   *     print(f"Group 1, z bin {i}: K_theory = {K_theory_bin:.4f}")

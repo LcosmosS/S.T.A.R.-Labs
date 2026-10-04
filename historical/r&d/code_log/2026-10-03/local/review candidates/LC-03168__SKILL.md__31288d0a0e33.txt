@@ -1,0 +1,4 @@
+// Vehicle yaw body (chase cam): A must increase yaw with this basis
+forward = (-sin(yaw), 0, -cos(yaw))
+// KeyA → steer = +1;  yaw += steer * turnRate * speedFactor * dt
+// WRONG (ships inverted): KeyA → steer = -1; yaw += steer * turnRate * dt

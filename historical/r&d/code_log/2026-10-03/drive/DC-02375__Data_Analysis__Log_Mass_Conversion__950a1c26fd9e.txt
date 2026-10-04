@@ -1,0 +1,11 @@
+for(j=1, n\2, {
+  U1 = random(1.0);
+  U2 = random(1.0);
+  R = sqrt(-2 * log(U1));
+  Theta = 2 * Pi * U2;
+  Z0 = R * cos(Theta);
+  Z1 = R * sin(Theta);
+  log_mass[2*j-1] = mu + sig * Z0;
+  log_mass[2*j] = mu + sig * Z1;
+   * })
+   * Enter the entire loop at once, using { } to group statements, and press Enter after the closing brace and parenthesis.

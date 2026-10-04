@@ -1,0 +1,11 @@
+python3 .grok/skills/generate2dmap/scripts/extract_prop_pack.py \
+  --input assets/props/raw/forest-props-sheet.png \
+  --rows 3 \
+  --cols 3 \
+  --labels mossy-rock,shrub,fallen-log,small-lantern,wooden-sign,flower-patch,stump,crate,grass-tuft \
+  --output-dir assets/props \
+  --manifest assets/props/forest-prop-pack.json \
+  --component-mode largest \
+  --component-padding 8 \
+  --min-component-area 200 \
+  --reject-edge-touch

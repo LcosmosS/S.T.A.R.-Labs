@@ -1,0 +1,6 @@
+        s_vals = [0.5, 1.0, 1.5, 2.0]
+        for s in s_vals:
+            col_name = f'L_cosmo_s_{s:.1f}'
+            df[col_name] = df.groupby('z_bin')['a_n'].transform('mean') / (df['z_bin'] ** s)
+
+# ======== Replace any NaN or inf values in L_cosmo_s_* with 0

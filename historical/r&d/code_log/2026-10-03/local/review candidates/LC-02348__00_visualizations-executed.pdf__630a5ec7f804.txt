@@ -1,0 +1,5 @@
+       plt.figure(figsize=(6,5))
+       plt.hist(traces, bins=40, color='C3')
+       plt.title("Trace(￿g) Distribution")
+       plt.savefig('figures/metric_trace.png', dpi=200)
+       plt.show()

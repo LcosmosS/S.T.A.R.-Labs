@@ -1,0 +1,6 @@
+    typical_ebv = 0.05
+    A_Ha_mw = k_Ha * typical_ebv * 3.1  # Rv = 3.1
+    A_Ha_mw = np.full(len(df), A_Ha_mw, dtype=np.float32)
+else:
+    A_Ha_mw = k_Ha * ebv * 3.1  # Rv = 3.1
+# Diagnostics for A_Ha_mw

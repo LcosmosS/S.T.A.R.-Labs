@@ -1,0 +1,4 @@
+# Load the dataset
+df = pd.read_csv('Filtered_Pipe3D.csv')
+# Define features (X) and target (y)
+X = df.drop(columns=['log_SFR_Ha']) # Features y = df['log_SFR_Ha'] # Target

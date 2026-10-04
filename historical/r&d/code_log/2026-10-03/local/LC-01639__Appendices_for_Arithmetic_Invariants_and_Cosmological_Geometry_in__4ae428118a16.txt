@@ -1,0 +1,1 @@
+df['regulator']  =  df['curve_obj'].apply(lambda  E:  E.regulator()  if  E.rank()  >  0  else  

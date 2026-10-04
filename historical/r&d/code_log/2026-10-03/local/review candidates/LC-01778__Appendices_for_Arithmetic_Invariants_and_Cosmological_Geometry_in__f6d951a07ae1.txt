@@ -1,0 +1,11 @@
+E2 = EllipticCurve(QQ, [5, 144])
+
+hierarchy_evidence(E2, "Rank 2 Example")
+
+
+
+# Twist for higher rank
+
+E_twist = EllipticCurve(QQ, [170, -4250])  # From file 9
+
+hierarchy_evidence(E_twist, "Twisted Rank 2")

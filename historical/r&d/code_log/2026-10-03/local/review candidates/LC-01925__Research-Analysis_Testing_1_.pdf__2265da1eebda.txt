@@ -1,0 +1,4 @@
+E = EllipticCurve([-1706, 6320]) P = E([2, 54]) # Create the point P = (2, 54) on E Reg =
+P.height(prec=100) # Compute the canonical height with 100 bits of precision print(Reg)
+AttributeError Traceback (most recent call last) Cell In [1], line 1 ----> 1 P =
+E.point([Integer(2), Integer(54)]) 3 Reg = P.height(prec=Integer(100)) 5 print(Reg)

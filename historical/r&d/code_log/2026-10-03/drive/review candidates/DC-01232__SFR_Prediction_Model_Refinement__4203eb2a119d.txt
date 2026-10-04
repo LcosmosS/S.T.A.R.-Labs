@@ -1,0 +1,6 @@
+# Merge df1 and df2 on 'recno'
+merged_df = pd.merge(df1, df2, on='recno', how='outer')
+
+
+# Merge the result with df3
+merged_df = pd.merge(merged_df, df3, on='recno', how='outer')

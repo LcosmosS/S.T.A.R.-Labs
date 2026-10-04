@@ -1,0 +1,13 @@
+Cl_TE = np.loadtxt("COM_PowerSpect_CMB-TE-full_R3.01.txt", skiprows=1)[:, 1]
+Cl_EE = np.loadtxt("COM_PowerSpect_CMB-EE-full_R3.01.txt", skiprows=1)[:, 1]
+with open("cl_te.txt", "w") as f:
+    f.write("C_l_TE = [0, 0" + "".join([f", {Cl_TE[i-2]}" for i in range(2, 1997)]) + "];")
+with open("cl_ee.txt", "w") as f:
+   *     f.write("C_l_EE = [0, 0" + "".join([f", {Cl_EE[i-2]}" for i in range(2, 1997)]) + "];")
+   * Combine in PARI/GP:
+   * pari
+read("cl_te.txt"); read("cl_ee.txt");
+L_cosmo(s) = K * (sum(n=2, 2508, (C_l[n] / T_cmb^2) / n^s) + 
+                  sum(n=2, 1996, (C_l_TE[n] / T_cmb^2) / n^s) + 
+   *                   sum(n=2, 1996, (C_l_EE[n] / T_cmb^2) / n^s));
+* Benefit: A composite L-function reflects the full CMB signal (temperature and polarization), potentially aligning with BSD’s holistic nature.

@@ -1,0 +1,1 @@
+def bsd_predicted_sfr(logmass, z, quenching=False, threshold=10.0, gamma=0.1): base_sfr = 0.5 * logmass - 0.1 * z # Placeholder BSD formula if quenching: quenching_term = -gamma * (logmass > threshold) return base_sfr + quenching_term else: return base_sfr

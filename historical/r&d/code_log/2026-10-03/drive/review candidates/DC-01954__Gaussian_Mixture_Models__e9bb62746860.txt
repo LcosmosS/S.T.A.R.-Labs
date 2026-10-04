@@ -1,0 +1,3 @@
+str = readstr("C:\\temp\\GMM.txt")[1];
+parts = strsplit(str, ";");
+                                             * readstr reads the file into a string.

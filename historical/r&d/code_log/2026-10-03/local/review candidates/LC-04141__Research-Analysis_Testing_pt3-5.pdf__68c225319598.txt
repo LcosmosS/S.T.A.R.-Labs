@@ -1,0 +1,6 @@
+        if node_counts[key] == 1:  # Strictly one instance
+            filtered_data.append(node)
+            node_counts[key] -= 1
+
+    ranks = [x[2] for x in filtered_data]
+    log_deltas = [x[8] for x in filtered_data]

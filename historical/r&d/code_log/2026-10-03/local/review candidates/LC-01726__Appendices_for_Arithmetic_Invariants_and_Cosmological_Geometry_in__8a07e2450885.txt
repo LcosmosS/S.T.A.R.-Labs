@@ -1,0 +1,8 @@
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
+    scatter = ax.scatter(df_proj['ra_norm'], df_proj['dec_norm'],
+                         df_proj['comoving_norm'], c=df_proj['rank'], cmap='viridis')
+    ax.set_xlabel('RA (norm, +/-)')
+    ax.set_ylabel('DEC (norm, +/-)')
+    ax.set_zlabel('Comoving (norm, +/-)')
+    ax.set_title('HD 3D Manifold (Binned by Generator Type)')

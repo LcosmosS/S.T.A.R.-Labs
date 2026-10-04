@@ -1,0 +1,3 @@
+delta = E.disc;
+print("Discriminant: ", delta);
+if(delta == 0, print("Not an elliptic curve (singular). Skipping."); next);

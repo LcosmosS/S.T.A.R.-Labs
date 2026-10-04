@@ -1,0 +1,41 @@
+print("Precision set to 38");
+
+
+/* Mock cosmological L-function: L_cosmo(s) = sum_{n=1 to 100} 1/n^s */
+L_cosmo(s) = sum(n=1, 100, 1/n^s);
+print("Mock L_cosmo defined");
+
+
+/* Cosmological constants */
+Omega_cosmo = 5.4e7; /* Light travel time to Virgo in years */
+print("Omega_cosmo (Virgo distance): ", Omega_cosmo);
+Reg_cosmo = 9.3e10 / 5.4e7; /* Observable universe diameter / Virgo distance */
+print("Reg_cosmo (size ratio): ", Reg_cosmo);
+prod_c_p_cosmo = 2; /* Number of major density peaks (simplified) */
+print("Product of cosmological Tamagawa numbers: ", prod_c_p_cosmo);
+Sha_cosmo = 1; /* Placeholder for dark matter contribution */
+print("Sha_cosmo (dark matter factor): ", Sha_cosmo);
+T_cosmo = 4; /* Number of structural units (e.g., superclusters) */
+print("T_cosmo (torsion): ", T_cosmo);
+
+
+/* Compute left side: L_cosmo(1) with r_cosmo = 0 */
+left_side = L_cosmo(1);
+print("Left side (L_cosmo(1)): ", left_side);
+
+
+/* Compute right side */
+right_side = (Omega_cosmo * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2);
+print("Right side: ", right_side);
+
+
+/* Check if they match within a tolerance */
+tolerance = 1e-5;
+if (abs(left_side - right_side) < tolerance * right_side,
+    print("Cosmological BSD analogue holds within tolerance"),
+    print("Cosmological BSD analogue fails: Left side != Right side"));
+
+
+/* Compute adjusted Sha_cosmo to match left side */
+adjusted_Sha_cosmo = left_side * (T_cosmo^2) / (Omega_cosmo * Reg_cosmo * prod_c_p_cosmo);
+print("Adjusted Sha_cosmo to match: ", adjusted_Sha_cosmo);

@@ -1,0 +1,6 @@
+print("Analytic rank: ", r, ", L'(E,1): ", Lr); 
+rank = ellrank(E)[1]; \\ Algebraic rank 
+print("Algebraic rank: ", rank); 
+tors = elltors(E)[1]; \\ Torsion order 
+print("Torsion order: ", tors); 
+gr = ellglobalred(E); \\ Global reduction data tamagawa = prod

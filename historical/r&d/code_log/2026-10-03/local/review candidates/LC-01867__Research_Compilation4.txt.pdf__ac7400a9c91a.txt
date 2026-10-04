@@ -1,0 +1,10 @@
+# Select the first 1,000 valid entries
+df_valid_1000 = df_valid.head(1000)
+
+# Extract logmass and z as lists
+logmass = df_valid_1000['logmass'].tolist()
+z = df_valid_1000['z'].tolist()
+
+# Format the data for PARI/GP
+print("log_mass = [", ", ".join(map(str, logmass)), "];")
+print("z = [", ", ".join(map(str, z)), "];")

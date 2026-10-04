@@ -1,0 +1,37 @@
+        # Strong BSD check (with |Sha| = 1)
+        rhs = (omega * reg * 1.0 * tamagawa) / (tors_order**2)
+        print(f"Strong BSD RHS (|Sha|=1)   : {rhs:.6f}")
+        if abs(leading_coeff - rhs) < 1e-8:
+            print("Strong BSD holds")
+        else:
+            sha_adj = (leading_coeff * tors_order**2) / (omega * reg * tamagawa)
+            print(f"Strong BSD fails. Adjusted |Sha(E)| ≈ {sha_adj:.6f}")
+
+        # --- 2D Polynomial Plot ---
+        x_range = 10 if abs(a) <= 5 else 4 * math.sqrt(abs(a))
+        x_vals = np.linspace(-x_range, x_range, 1000)
+        y_vals = np.sqrt(np.maximum(x_vals**3 + a*x_vals + b, 0))
+
+        density_size = min(leading_coeff * 177 / 30, 120) if leading_coeff else 10
+
+        plt.figure(figsize=(8, 6))
+        color = 'green' if rank == 3 else 'blue' if rank == 2 else 'black'
+        plt.scatter(x_vals, y_vals, s=float(max(density_size, 1)), c=color, alpha=0.5,
+label=f'Rank {rank}')
+        plt.scatter(x_vals, -y_vals, s=float(max(density_size, 1)), c=color,
+alpha=0.5)
+        plt.title(f'Curve y² = x³ + {a}x + {b} (Rank {rank})')
+        plt.xlabel('x'); plt.ylabel('y')
+        plt.legend(); plt.grid(True)
+        plt.savefig(f"curve_{a}_{b}.png", dpi=150, bbox_inches='tight')
+        plt.close()
+        print(f"✓ Plot saved: curve_{a}_{b}.png")
+
+        success = True
+
+    except Exception as e:
+        print(f"✗ Analysis failed for ({a}, {b}): {e}")
+        return False, None, None, None, None, None, None, False, None
+
+    print(f"{'='*60}\n")
+    return success, [float(a), float(b)], rank, leading_coeff, omega, reg, tamagawa,

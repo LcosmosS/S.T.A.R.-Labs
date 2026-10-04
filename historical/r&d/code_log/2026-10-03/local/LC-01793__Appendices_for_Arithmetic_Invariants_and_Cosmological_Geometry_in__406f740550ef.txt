@@ -1,0 +1,7 @@
+          if  df_full.empty:          print("     -  No  valid  data  available  for  valuative  prediction.  Skipping.")      else:          print(f"     -  Using  all  {len(df_full)}  valid  rows  for  valuative  prediction.")          df_full['log_abs_virial_energy']  =  
+np.log10(np.abs(df_full['virial_energy_j']))
+         df_exponents  =  pd.json_normalize(df_full['prime_exponents']).fillna(0)                   for  p  in  TARGET_PRIMES:              if  p  not  in  df_exponents.columns:  df_exponents[p]  =  0                   feature_cols  =  [p  for  p  in  TARGET_PRIMES  if  p  in  df_exponents.columns]          X,  y  =  df_exponents[feature_cols],  df_full['log_abs_virial_energy']                   X_train,  X_test,  y_train,  y_test  =  train_test_split(X,  y,  test_size=0.25,  
+random_state=42)
+         pipeline  =  Pipeline([('scaler',  StandardScaler()),  ('model',  
+lgb.LGBMRegressor(random_state=42))])
+         pipeline.fit(X_train,  y_train)          r2  =  r2_score(y_test,  pipeline.predict(X_test))                   print("\n"  +  "="*80);  print("       VALUATIVE  NORMALIZATION:  PREDICTING  ENERGY  

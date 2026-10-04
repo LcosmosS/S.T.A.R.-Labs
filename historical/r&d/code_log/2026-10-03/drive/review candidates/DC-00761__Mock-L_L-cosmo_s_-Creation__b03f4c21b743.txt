@@ -1,0 +1,4 @@
+T_cmb = 2.7255e6; /* CMB temperature in μK */
+read("cl_tt.txt"); read("cl_te.txt"); read("cl_ee.txt");
+L_cosmo(s) = sum(n=2, 2508, (C_l_tt[n] / T_cmb^2) / n^s) +
+             sum(n=2, 1996, (abs(C_l_te[n]) / T_cmb^2) / n^s) +

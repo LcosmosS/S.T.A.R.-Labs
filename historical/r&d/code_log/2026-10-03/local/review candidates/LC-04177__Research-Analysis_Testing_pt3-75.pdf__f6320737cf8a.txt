@@ -1,0 +1,9 @@
+    seen_pairs = seen_pairs or {}
+
+    if force_failure and large_fibs:
+        pair = random.sample(large_fibs, 2) if len(large_fibs) >= 2 else random.sample(valid_fibs, 2)
+        if seen_pairs.get(tuple(pair), 0) < 1:
+            return pair
+        return random.sample(valid_fibs, 2)
+
+    high_rank_pairs = [(2, 144), (233, 377), (144, 233), (89, 233), (34, 144), (21, 377), (5, 144), (3, 144),

@@ -1,0 +1,2 @@
+analytic_rank = 3 \n leading_coeff = L1_deriv3 / 6 \n else: \n analytic_rank = 2 \n
+leading_coeff = L1_deriv2 / 2 \n else: \n analytic_rank = 1 \n leading_coeff =

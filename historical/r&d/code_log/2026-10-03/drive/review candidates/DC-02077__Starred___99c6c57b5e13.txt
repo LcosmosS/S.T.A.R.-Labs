@@ -1,0 +1,3 @@
+  end = floor((k/5)*n)
+  bin_k = [start..end]
+  start = end +1

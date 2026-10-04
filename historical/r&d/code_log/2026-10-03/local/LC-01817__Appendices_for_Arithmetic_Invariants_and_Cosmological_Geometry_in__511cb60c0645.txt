@@ -1,0 +1,1 @@
+         return  {'type':  'Simple',  'structure':  'integer'}      denom_x  =  x.denominator()  if  hasattr(x,  'denominator')  else  1  

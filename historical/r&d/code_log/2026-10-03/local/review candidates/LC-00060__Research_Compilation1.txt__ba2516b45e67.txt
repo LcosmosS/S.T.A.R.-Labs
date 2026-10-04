@@ -1,0 +1,5 @@
+with open("C:/temp/filtered_log_mass.txt", "r") as f:
+    values = f.read().splitlines()
+formatted = "log_mass = [\n" + ",\n".join(values) + "\n];"
+print(formatted)  # Copy this output for PARI/GP
+* Copy to PARI/GP: Copy the printed output, which will look like log_mass = [10.093849999999999767, 11.251799999999999358, ...] with each value on a new line, and paste it into PARI/GP. This defines log_mass as a vector for your computations.

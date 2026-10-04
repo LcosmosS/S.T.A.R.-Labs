@@ -1,0 +1,3 @@
+np.savetxt("filtered_log_mass.txt", filtered_log_mass, fmt='%.18f', header="log_mass = [", footer="];", comments='')
+This produces a file with a header "log_mass = [", each filtered log_mass value on a new line, and a footer "];", like:
+log_mass = [

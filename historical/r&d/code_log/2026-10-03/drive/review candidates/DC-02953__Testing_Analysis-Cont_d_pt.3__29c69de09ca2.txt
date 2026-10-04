@@ -1,0 +1,6 @@
+periods = ellperiods(E, 1);  /* Returns [w1, w2] */
+real_period = real(periods[1]);  /* Extract real part for BSD */
+print("Real period (Omega): ", real_period);
+omega_scaled = pi_val * real_period;
+         24. print("Scaled real period (Omega * pi): ", omega_scaled);
+         25. Compute regulator:

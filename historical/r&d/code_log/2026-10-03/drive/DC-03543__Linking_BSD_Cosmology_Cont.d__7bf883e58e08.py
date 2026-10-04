@@ -1,0 +1,8 @@
+import matplotlib.pyplot as plt
+residuals = y_test - y_pred_best
+plt.scatter(y_test, residuals)
+plt.axhline(0, color='red', linestyle='--')
+plt.xlabel('Actual SFR')
+plt.ylabel('Residuals')
+plt.title('Residuals vs. Actual SFR')
+plt.show()

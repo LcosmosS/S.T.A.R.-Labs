@@ -1,0 +1,4 @@
+        # Draw Betti-1 Bars (Loops/Voids - the signal of Rank)
+        # These represent the 'entropy' your model is predicting
+        b1_heights = np.linspace(0.5, 0.9, b1)
+        ax.hlines(b1_heights, 0.1, 0.7, colors=colors[i], linewidth=4, label=f'$\\beta_1$ (Voids:

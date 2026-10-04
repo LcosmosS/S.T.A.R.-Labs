@@ -1,0 +1,7 @@
+# Load the SDSS datasets
+sdss_dr16 = pd.read_csv("V154sdss16.csv")  # V/154: SDSS DR16
+sdss_dr12 = pd.read_csv("V147sdss12.csv")  # V/147: SDSS DR12
+
+
+# Merge V/154 and V/147 on objID
+sdss_merged = pd.merge(

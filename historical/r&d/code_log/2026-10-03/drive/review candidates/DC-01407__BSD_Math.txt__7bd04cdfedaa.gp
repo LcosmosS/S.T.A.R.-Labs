@@ -1,0 +1,5 @@
+  v_sorted = vecsort(v);
+  n = #v;
+  if (n % 2 == 0,
+    return (v_sorted[n/2] + v_sorted[n/2 + 1]) / 2,
+    return v_sorted[(n+1)/2]

@@ -1,0 +1,24 @@
+N = #masses;
+
+
+/* Check if any valid masses were found */
+if (N == 0, error("No valid masses found"));
+
+
+/* Compute the reference mass M0 as the median of the masses */
+M0 = vecmedian(masses);
+
+
+/* Compute L_cosmo(1) = sum(M0 / M_i) over all galaxies */
+sum_L = sum(i = 1, N, M0 / masses[i]);
+
+
+/* Compute the normalization constant K = N / L_cosmo(1) */
+K = N / sum_L;
+
+
+/* Output the results */
+print("Number of galaxies: ", N);
+print("Reference mass M0: ", M0);
+print("L_cosmo(1): ", sum_L);
+print("Normalization constant K: ", K);

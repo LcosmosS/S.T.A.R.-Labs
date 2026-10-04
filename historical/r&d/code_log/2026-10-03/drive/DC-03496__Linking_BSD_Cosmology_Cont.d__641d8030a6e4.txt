@@ -1,0 +1,9 @@
+elif rank >= 2:
+    return (alpha * logmass + beta * z + gamma * l_value + 
+            delta * (l_value**2) + epsilon * dec + zeta * petrorad_r + 
+            eta * environment + theta * (logmass * z))
+else:
+    raise ValueError("Rank must be 1 or >=2")
+# Load the data
+galaxy_data = pd.read_csv("Stellar_Mass2_Table_cleaned.csv") # Ensure the correct path
+# Preprocess data: Fill missing values

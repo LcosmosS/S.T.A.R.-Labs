@@ -1,0 +1,2 @@
+T = elltamagawa(E);
+            TamProduct = prod(i=1, #T, T[i]);

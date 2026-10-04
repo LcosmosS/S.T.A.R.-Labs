@@ -1,0 +1,6 @@
+group1_indices = groups == 1 z_group1 = z[group1_indices] bins = np.percentile(z_group1, [0, 33, 66, 100]) for i in range(len(bins) - 1): bin_mask = (z_group1 >= bins[i]) & (z_group1 < bins[i + 1]) K = compute_K_theory(logmass[group1_indices][bin_mask]) print(f"Group 1, z bin {i}: K_theory = {K:.4f}")
+gmm = GaussianMixture(n_components=5, random_state=0).fit(logmass.reshape(-1, 1)) groups = gmm.predict(logmass.reshape(-1, 1))
+for i in range(3): plt.hist(logmass[groups == i], bins=50, density=True, alpha=0.6, label=f"Group {i}") plt.legend() plt.title(f"Logmass Distribution - Group {i}") plt.show()
+from scipy.stats import gamma for i in range(3): params = gamma.fit(logmass[groups == i]) print(f"Group {i} gamma fit: {params}")
+bins = np.percentile(z_group1, [0, 20, 40, 60, 80, 100]) # 5 bins for i in range(len(bins) - 1): bin_mask = (z_group1 >= bins[i]) & (z_group1 < bins[i + 1]) K = compute_K_theory(logmass[group1_indices][bin_mask]) print(f"Group 1, z bin {i}: K_theory = {K:.4f}")
+for s in [0.5, 1.5, 2]: for i in range(3): L = compute_L_cosmo(logmass[groups == i], s) print(f"Group {i}: L_cosmo(s={s}) = {L:.4f}")

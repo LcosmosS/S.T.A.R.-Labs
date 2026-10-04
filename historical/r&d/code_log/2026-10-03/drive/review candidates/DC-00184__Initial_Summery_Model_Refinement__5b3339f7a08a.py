@@ -1,0 +1,55 @@
+import pandas as pd import numpy as np import shap import matplotlib.pyplot as plt import seaborn as sns from sklearn.model_selection import train_test_split from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor from sklearn.metrics import r2_score from sklearn.preprocessing import StandardScaler, MinMaxScaler from gplearn.genetic import SymbolicRegressor import optuna import warnings from numpy.polynomial import Polynomial
+warnings.filterwarnings("ignore")
+# Load the merged dataset
+df = pd.read_csv("PhotoObj_pmqr771.csv")
+# Drop rows with missing target or excessive NaNs
+df = df.dropna(subset=["t01_smooth_or_features_a01_smooth_fraction"]) df = df.dropna(axis=0, thresh=int(0.8 * df.shape[1])) df.fillna(df.median(numeric_only=True), inplace=True)
+# Step 1: Cosmo-Rank Construction
+gz_df = df.copy()
+# Define morphological columns for morph_sum
+morph_cols = [ "t01_smooth_or_features_a01_smooth_fraction", "t01_smooth_or_features_a02_features_or_disk_fraction", "t02_edgeon_a01_yes_fraction", "t03_bar_a01_bar_fraction", "t04_spiral_a01_spiral_fraction", "t05_bulge_prominence_a01_no_bulge_fraction", "t06_odd_a01_yes_fraction", "t07_rounded_a01_completely_round_fraction", "t08_odd_feature_a01_ring_fraction", "t09_bulge_shape_a01_rounded_fraction", "t10_arms_winding_a01_tight_fraction", "t11_arms_number_a01_1_fraction", "t12_clumpy_a01_yes_fraction", "t13_bright_clump_a01_yes_fraction", "t14_bright_clump_central_a01_yes_fraction", "t15_clumps_arrangement_a01_line_fraction", "t16_clumps_count_a01_1_fraction", "t17_clumps_symmetrical_a01_yes_fraction", "t18_clumps_embedded_a01_yes_fraction" ]
+gz_df['morph_sum'] = gz_df[morph_cols].sum(axis=1)
+# Replace Num_w with the mean of u, g, r, i, z magnitudes # Removed 'Num_w' and directly used available photometric data
+gz_df['mean_magnitude'] = (gz_df['u'] + gz_df['g'] + gz_df['r'] + gz_df['i'] + gz_df['z']) / 5
+# Normalize morph_sum, mean_magnitude, and redshift
+scaler_rank = MinMaxScaler() gz_df[['morph_sum_norm', 'mean_magnitude_norm', 'redshift_norm']] = scaler_rank.fit_transform( gz_df[['morph_sum', 'mean_magnitude', 'redshift']] # Replaced RA with redshift )
+# Define cosmo_rank (removed Num_w, using 'mean_magnitude' instead)
+gz_df['cosmo_rank'] = (0.4 * gz_df['mean_magnitude_norm'] + 0.3 * gz_df['morph_sum_norm'] + 0.3 * gz_df['redshift_norm'])
+df['cosmo_rank'] = gz_df['cosmo_rank']
+# Step 2: L_cosmo(s) Construction # Since log_Mass_gas is not available, use a proxy (e.g., r-band magnitude)
+alpha = -1.3 M_star = df['r'].median() # Use r-band magnitude as a proxy df['a_n'] = (10 ** df['r'])**(1 + alpha) * np.exp(-10 ** df['r'] / (10 ** M_star))
+# Bin by redshift
+bins = pd.cut(df['redshift'], bins=20, labels=False) + 1 df['z_bin'] = bins
+# Compute L_cosmo(s)
+s_vals = [0.5, 1.0, 1.5, 2.0] for s in s_vals: df[f'L_cosmo_s{s}'] = df.groupby('z_bin')['a_n'].transform('mean') / (df['z_bin'] ** s)
+# Plot L_cosmo(s) vs s
+L_vals = [df.groupby('z_bin')['a_n'].mean() / (np.arange(1, 21) ** s) for s in np.linspace(0.5, 2, 50)] L_vals = np.array([sum(l) for l in L_vals]) plt.plot(np.linspace(0.5, 2, 50), L_vals) plt.xlabel("s") plt.ylabel("L_cosmo(s)") plt.title("L_cosmo(s) Behavior") plt.savefig("L_cosmo_curve.png") plt.close()
+# Step 3: Define features and target
+target = "t01_smooth_or_features_a01_smooth_fraction" base_features = [ "zooniverse_id", "survey_id", "RA", "DEC", "total_count", "total_weight", "t01_smooth_or_features_a01_smooth_fraction", "t01_smooth_or_features_a01_smooth_weighted_fraction", "t01_smooth_or_features_a02_features_or_disk_fraction", "t01_smooth_or_features_a02_features_or_disk_weighted_fraction", "t02_edgeon_a01_yes_fraction", "t02_edgeon_a01_yes_weighted_fraction", "t03_bar_a01_bar_fraction", "t03_bar_a01_bar_weighted_fraction", "t04_spiral_a01_spiral_fraction", "t04_spiral_a01_spiral_weighted_fraction", "t05_bulge_prominence_a01_no_bulge_fraction", "t06_odd_a01_yes_fraction", "t07_rounded_a01_completely_round_fraction", "t08_odd_feature_a01_ring_fraction", "t09_bulge_shape_a01_rounded_fraction", "t10_arms_winding_a01_tight_fraction", "t11_arms_number_a01_1_fraction", "t12_clumpy_a01_yes_fraction", "t13_bright_clump_a01_yes_fraction", "t14_bright_clump_central_a01_yes_fraction", "t15_clumps_arrangement_a01_line_fraction", "t16_clumps_count_a01_1_fraction", "t17_clumps_symmetrical_a01_yes_fraction", "t18_clumps_embedded_a01_yes_fraction" ]
+# Derived & interaction features (using available columns)
+df["color_ug"] = df["u"] - df["g"] df["color_gr"] = df["g"] - df["r"] df["color_ri"] = df["r"] - df["i"] df["color_iz"] = df["i"] - df["z"] df["mag_ratio"] = df["r"] / (df["i"] + 1e-5) df["redshift_morph"] = df["redshift"] * df["t01_smooth_or_features_a01_smooth_fraction"] df["cosmo_rank_mag"] = df["cosmo_rank"] * df["r"]
+# Include L_cosmo_s features
+features = base_features + [ "color_ug", "color_gr", "color_ri", "color_iz", "mag_ratio", "redshift_morph", "cosmo_rank_mag", "cosmo_rank", "L_cosmo_s0.5", "L_cosmo_s1.0", "L_cosmo_s1.5", "L_cosmo_s2.0" ]
+X = df[features] y = df[target]
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, n_jobs=2)
+# Normalize features
+scaler = StandardScaler() X_train_scaled = scaler.fit_transform(X_train) X_test_scaled = scaler.transform(X_test)
+# Random Forest
+rf = RandomForestRegressor(n_estimators=200, max_depth=12, random_state=42, n_jobs=2) rf.fit(X_train_scaled, y_train) y_pred_rf = rf.predict(X_test_scaled) r2_rf = r2_score(y_test, y_pred_rf)
+# Gradient Boosting
+gb = GradientBoostingRegressor(n_estimators=300, learning_rate=0.05, max_depth=6, random_state=42, n_jobs=2) gb.fit(X_train_scaled, y_train) y_pred_gb = gb.predict(X_test_scaled) r2_gb = r2_score(y_test, y_pred_gb)
+print(f"R^2 Score (Random Forest): {r2_rf:.4f}") print(f"R^2 Score (Gradient Boosting): {r2_gb:.4f}")
+# SHAP
+explainer_rf = shap.Explainer(rf, X_train_scaled) shap_values_rf = explainer_rf(X_test_scaled)
+explainer_gb = shap.Explainer(gb, X_train_scaled) shap_values_gb = explainer_gb(X_test_scaled)
+shap.summary_plot(shap_values_rf, X_test_scaled, plot_type="bar", show=False) plt.title("SHAP Summary - Random Forest") plt.tight_layout() plt.savefig("shap_rf_summary.png") plt.clf()
+shap.summary_plot(shap_values_gb, X_test_scaled, plot_type="bar", show=False) plt.title("SHAP Summary - Gradient Boosting") plt.tight_layout() plt.savefig("shap_gb_summary.png") plt.clf()
+# Symbolic Regression with gplearn
+symbolic_model = SymbolicRegressor( population_size=1000, generations=20, stopping_criteria=0.01, p_crossover=0.7, p_subtree_mutation=0.1, p_hoist_mutation=0.05, p_point_mutation=0.1, max_samples=0.9, verbose=1, parsimony_coefficient=0.01, random_state=42 ) symbolic_model.fit(X_train_scaled, y_train) y_pred_sym = symbolic_model.predict(X_test_scaled)
+# Print the symbolic expression
+print("Symbolic Expression:") print(symbolic_model._program)
+# Save symbolic expression as polynomial fit plot
+x = np.linspace(min(y_test), max(y_test), 500) y_expr = symbolic_model.predict(scaler.transform(np.tile(X_test.mean().values, (500,1)))) p = Polynomial.fit(y_test, y_pred_sym, deg=3) plt.plot(*p.linspace(), label="Polynomial Fit") plt.scatter(y_test, y_pred_sym, s=10, alpha=0.5, label="Symbolic Predictions") plt.xlabel("True t01_smooth_or_features_a01_smooth_fraction") plt.ylabel("Predicted t01_smooth_or_features_a01_smooth_fraction") plt.title("Symbolic Regression Fit") plt.legend() plt.tight_layout() plt.savefig("pysr_expression_plot.png") plt.clf()
+# Plot predictions vs true
+plt.scatter(y_test, y_pred_rf, alpha=0.5, label="RF", marker="o") plt.scatter(y_test, y_pred_gb, alpha=0.5, label="GB", marker="s") plt.scatter(y_test, y_pred_sym, alpha=0.5, label="Symbolic", marker="^") plt.plot([y.min(), y.max()], [y.min(), y.max()], "k--") plt.xlabel("True t01_smooth_or_features_a01_smooth_fraction") plt.ylabel("Predicted")

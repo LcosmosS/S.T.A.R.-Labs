@@ -1,0 +1,1 @@
+def bin_by_generator(df_curves): bins = df_curves.groupby(['gen_type', 'rational_gen']) bin_summary = {name: len(group) for name, group in bins} logger.info(f"Bin summary: {bin_summary}") with open('ucf_analysis.txt', 'a') as f: f.write(f"Bin summary: {bin_summary}\n") return bin_summary

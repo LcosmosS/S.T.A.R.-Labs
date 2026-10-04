@@ -1,0 +1,5 @@
+bins = pd.cut(df['Re_kpc'], bins=10, labels=False) + 1
+df['z_bin'] = bins
+# Update L_cosmo(s) computation accordingly
+grouped_means = df.groupby('z_bin')['a_n'].mean().reindex(range(1, 11), fill_value=0)
+* L_vals = [grouped_means / (np.arange(1, 11) ** s) for s in s_range]

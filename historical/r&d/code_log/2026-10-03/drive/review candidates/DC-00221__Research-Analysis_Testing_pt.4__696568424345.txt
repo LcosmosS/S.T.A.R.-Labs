@@ -1,0 +1,4 @@
+selmer2_success = True 112 try: --> 113 rank = E.rank(only_use_mwrank=False) 114 
+
+
+rank_success = True 115 except 

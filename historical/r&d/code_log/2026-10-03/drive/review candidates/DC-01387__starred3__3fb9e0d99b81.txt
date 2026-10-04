@@ -1,0 +1,3 @@
+for group in range(5):
+    group_indices = (groups == group)
+    median_logmass = np.median(logmass[group_indices])

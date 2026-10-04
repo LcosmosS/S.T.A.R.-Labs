@@ -1,0 +1,9 @@
+        print(f"  - Predictive Model Fit (R² Score): {r2:.6f}"); print("="*80)
+
+        feature_importances = pipeline.named_steps['model'].feature_importances_
+        importance_df = pd.DataFrame({'feature': X_train.columns.astype(str),
+'importance': feature_importances}).sort_values('importance',
+ascending=False).head(15)
+        plt.figure(figsize=(12, 8)); sns.barplot(x='importance', y='feature',
+data=importance_df, palette='viridis', orient='h')
+        plt.title("Valuative Prediction: Importance of Prime Factors in Predicting

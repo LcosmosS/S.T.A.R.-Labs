@@ -1,0 +1,10 @@
+    chunk['generator_coords'] = chunk['log_delta'].apply(lambda x: (x, x*2) if not pd.isna(x) else np.nan)
+    chunk[['generator_structure', 'structure_summary']] = chunk['generator_coords'].apply(analyze_generator_structure).apply(pd.Series)
+    summary = {
+        'Rows Processed': len(chunk),
+        'NaN Counts': chunk[['logmass', 'petrorad_r', 'metallicity']].isna().sum().to_dict(),
+        'Distance Summary': distance_summaries.agg(lambda x: pd.Series(x).value_counts().to_dict())
+    }
+    summary.update(impute_summary)
+    print_step(20, f"process_chunk (Chunk {chunk_idx+1}/{total_chunks})", summary)
+    return chunk

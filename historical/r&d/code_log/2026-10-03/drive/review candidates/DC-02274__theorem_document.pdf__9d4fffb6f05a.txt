@@ -1,0 +1,7 @@
+data['sfr_normalized'] = data['sfr'] / data['stellar_mass']
+# Apply quality cuts
+mask = (data['z'] > 0.01) & (data['z'] < 0.5)
+data = data[mask]
+return data
+# Example usage
+galaxy_data = collect_galaxy_data()

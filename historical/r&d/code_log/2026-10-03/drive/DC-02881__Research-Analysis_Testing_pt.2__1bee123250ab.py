@@ -1,0 +1,125 @@
+# Define the Fibonacci function
+def fibonacci(n): if n < 0: raise ValueError("Fibonacci sequence not defined for negative indices") if n == 0: return 0 if n == 1: return 1 fib = [0, 1] for i in range(2, n + 1): fib.append(fib[i-1] + fib[i-2]) return fib[n]
+# Define the pairs of indices for Fibonacci curves, plus the original curve
+pairs = [(5, 7), (6, 8), (7, 9), (None, None)] # (None, None) for the original curve
+# Loop over each pair to construct and analyze the curve
+for n1, n2 in pairs: if n1 is None and n2 is None: a = -1706 b = 6320 print(f"\nOriginal curve: y^2 = x^3 + {a}x + {b}") else: a = fibonacci(n1) b = fibonacci(n2) print(f"\nCurve with a = F_{n1} = {a}, b = F_{n2} = {b}: y^2 = x^3 + {a}x + {b}")
+# Define the elliptic curve
+E = EllipticCurve(QQ, [a, b])
+
+
+# Compute the discriminant
+delta = E.discriminant()
+print(f"Discriminant: {delta}")
+if delta == 0:
+    print("Not an elliptic curve (singular). Skipping.")
+    continue
+
+
+# Compute the conductor
+conductor = E.conductor()
+print(f"Conductor: {conductor}")
+
+
+# Compute the torsion subgroup
+tors = E.torsion_subgroup()
+tors_order = tors.order()
+print(f"Torsion subgroup order: {tors_order}")
+
+
+# Compute the rank
+rank = E.rank()
+print(f"Algebraic rank (via SageMath): {rank}")
+
+
+# Compute the L-function and analytic rank
+L = E.lseries()
+L_dok = L.dokchitser(prec=100)
+L1 = L_dok(1)  # Evaluate L(1)
+if abs(L1) < 1e-10:  # Check if L(1) is approximately 0
+    L1_deriv = L_dok.derivative(1, 1)  # Compute L'(1)
+    if abs(L1_deriv) < 1e-10:  # Check if L'(1) is approximately 0
+        L1_deriv2 = L_dok.derivative(1, 2)  # Compute L''(1)
+        if abs(L1_deriv2) < 1e-10:
+            analytic_rank = 3  # Continue for higher ranks if needed
+            leading_coeff = L1_deriv2 / 2  # Leading term is L''(1)/2!
+        else:
+            analytic_rank = 2
+            leading_coeff = L1_deriv2 / 2
+    else:
+        analytic_rank = 1
+        leading_coeff = L1_deriv
+else:
+    analytic_rank = 0
+    leading_coeff = L1
+print(f"Analytic rank: {analytic_rank}")
+print(f"Leading coefficient L^{(r)}(E, 1): {leading_coeff}")
+
+
+# Verify weak BSD
+if rank == analytic_rank:
+    print("Weak BSD holds: Algebraic rank = Analytic rank")
+else:
+    print("Weak BSD fails: Algebraic rank != Analytic rank")
+
+
+# Use Heegner points to construct rational points (Euler system approach)
+# Choose a discriminant D for the quadratic imaginary field K = Q(sqrt(D))
+# D must satisfy the Heegner hypothesis: D coprime to conductor, and local conditions
+D = -3  # Example: K = Q(sqrt(-3))
+try:
+    # Compute a Heegner point with conductor 1
+    P_K = E.heegner_point(D, 1)  # Heegner point in E(K)
+    P = P_K.trace_to_rational()  # Trace to E(Q)
+    print(f"Heegner point (traced to Q): {P.xy()}")
+    # Check if the point has infinite order
+    if P.order() == 0:
+        print("Heegner point has infinite order, suggesting rank >= 1")
+    else:
+        print(f"Heegner point has order {P.order()}, suggesting rank 0 or torsion")
+except ValueError as e:
+    print(f"Failed to compute Heegner point: {e}")
+
+
+# Compute the 2-Selmer group to bound the rank and Sha(E)
+try:
+    selmer_group, _ = E.selmer_group(2)  # 2-Selmer group
+    selmer_rank = len(selmer_group)
+    print(f"2-Selmer rank: {selmer_rank}")
+    # Selmer rank = rank + rank of E(Q)[2] + rank of Sha(E)[2]
+    two_torsion_rank = 1 if tors_order % 2 == 0 else 0  # Approximate
+    sha_two_rank = selmer_rank - rank - two_torsion_rank
+    print(f"Rank of Sha(E)[2]: {sha_two_rank}")
+    if sha_two_rank == 0:
+        print("Sha(E)[2] = 0, suggesting |Sha(E)| is odd or 1")
+    else:
+        print(f"|Sha(E)[2]| = 2^{sha_two_rank}")
+except ValueError as e:
+    print(f"Failed to compute 2-Selmer group: {e}")
+
+
+# Compute BSD invariants for strong BSD
+omega = E.period_lattice().real_period(prec=100)
+if rank == 0:
+    reg = 1.0
+else:
+    reg = E.regulator()
+tamagawa = prod(E.tamagawa_numbers())
+sha_order = 1  # Initial hypothesis
+
+
+# Compute the right-hand side of the strong BSD formula
+rhs = (omega * reg * sha_order * tamagawa) / (tors_order^2)
+print(f"Real period (Omega): {omega}")
+print(f"Regulator: {reg}")
+print(f"Product of Tamagawa numbers: {tamagawa}")
+print(f"Right-hand side of strong BSD (with |Sha(E)| = 1): {rhs}")
+
+
+# Verify strong BSD
+if abs(leading_coeff - rhs) < 1e-10:
+    print("Strong BSD holds: Leading coefficient matches with |Sha(E)| = 1")
+else:
+    print("Strong BSD fails: Leading coefficient does not match with |Sha(E)| = 1")
+    sha_order = (leading_coeff * tors_order^2) / (omega * reg * tamagawa)
+    print(f"Adjusted |Sha(E)| to match: {sha_order}")

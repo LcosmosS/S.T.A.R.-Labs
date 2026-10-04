@@ -1,0 +1,6 @@
+    parser.add_argument(
+        "--enrich",
+        action="store_true",
+        help=(
+            "Run Ollama page-level evidence extraction "
+            "after deterministic PDF extraction."

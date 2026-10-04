@@ -1,0 +1,48 @@
+        analytic_rank := 0;
+        leading_coeff := Lval;
+    end if;
+    print "Analytic rank:", analytic_rank;
+    print "Leading coefficient L^(r)(E, 1):", leading_coeff;
+
+    // Verify weak BSD
+    if rank eq analytic_rank then
+        print "Weak BSD holds: Algebraic rank = Analytic rank";
+    else
+        print "Weak BSD fails: Algebraic rank != Analytic rank";
+    end if;
+
+    // Use Heegner points to construct rational points (Euler system approach)
+    // Choose a discriminant D for the quadratic imaginary field K = Q(sqrt(D))
+    D := -67;  // Satisfies Heegner hypothesis for this curve
+    try
+        // Compute a Heegner point directly on the elliptic curve
+        P_K := HeegnerPoint(E, D);  // Heegner point in E(K)
+        P := Trace(P_K);  // Trace to E(Q)
+        print "Heegner point (traced to Q):", P;
+        // Check if the point has infinite order
+        if Order(P) eq 0 then
+            print "Heegner point has infinite order, suggesting rank >= 1";
+        else
+            print "Heegner point has order", Order(P), ", suggesting rank 0 or torsion";
+        end if;
+    catch e
+        print "Failed to compute Heegner point:", e;
+    end try;
+
+    // Compute the 2-Selmer group to bound the rank and Sha(E)
+    try
+        S2 := TwoSelmerGroup(E);  // 2-Selmer group
+        selmer_rank := Ilog(2, #S2）；  // Log base 2 of the order gives the rank
+        print "2-Selmer rank:", selmer_rank;
+        // Selmer rank = rank + rank of E(Q)[2] + rank of Sha(E)[2]
+        two_torsion_rank := (tors_order mod 2 eq 0) select 1 else 0;
+        sha_two_rank := selmer_rank - rank - two_torsion_rank;
+        print "Rank of Sha(E)[2]:", sha_two_rank;
+        if sha_two_rank eq 0 then
+            print "Sha(E)[2] = 0, suggesting |Sha(E)| is odd or 1";
+        else
+            print "|Sha(E)[2]| =", 2^sha_two_rank;
+        end if;
+    catch e
+        print "Failed to compute 2-Selmer group:", e;
+    end try;

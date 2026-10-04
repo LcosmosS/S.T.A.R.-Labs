@@ -1,0 +1,6 @@
+fig = plt.figure(figsize=(6,5))
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(X[:,0], X[:,1], X[:,2], s=8, alpha=0.6)
+ax.set_title("ACSC Projection Geometry")
+plt.savefig('figures/acsc_projection.png', dpi=200)
+plt.show()

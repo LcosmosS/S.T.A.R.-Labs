@@ -1,0 +1,1 @@
+%run cosmic_bsd_pipeline.py

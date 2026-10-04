@@ -1,0 +1,4 @@
+# Define the elliptic curve E derived from our cosmological model.
+E = EllipticCurve(QQ, [-1706, 6320])
+# Perform a 2-descent on E to find the 2-Selmer rank.
+E.two_descent(verbose=True)

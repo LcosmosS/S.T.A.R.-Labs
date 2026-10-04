@@ -1,0 +1,1 @@
+P = A.characteristic_polynomial(); P

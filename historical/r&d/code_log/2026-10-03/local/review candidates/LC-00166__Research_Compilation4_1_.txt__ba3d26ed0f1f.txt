@@ -1,0 +1,6 @@
+  n = #log_mass;
+  mean = vecsum(log_mass) / n;
+  diff = log_mass - mean;
+  variance = vecsum(diff^2) / (n - 1);
+  stddev = sqrt(variance);
+  skewness = (vecsum(diff^3) / n) / stddev^3;

@@ -1,0 +1,2 @@
+if (#log_mass != 9241, error("log_mass does not have 9241 entries"));
+N=9241;

@@ -1,0 +1,3 @@
+log_mass_filtered = select(x -> x >= lower_bound && x <= upper_bound, log_mass);
+N_filtered = #log_mass_filtered;
+print("Number of filtered log_mass: ", N_filtered);

@@ -1,0 +1,6 @@
+elif rank >= 2:
+    return (alpha * logmass + beta * z + gamma * l_value + 
+            delta * (l_value**2) + epsilon * dec + zeta * petrorad_r + 
+            eta * environment + theta * (logmass * z))
+else:
+    raise ValueError("Rank must be 1 or >=2")

@@ -1,0 +1,2 @@
+if max_depth > 20 or n_estimators > 400:
+    raise optuna.exceptions.TrialPruned()

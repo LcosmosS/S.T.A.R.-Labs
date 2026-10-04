@@ -1,0 +1,2 @@
+M0_k = vecmedian(bin_M);
+sum_M_over_M0 = sum(i = 1, #bin_M, bin_M[i] / M0_k);

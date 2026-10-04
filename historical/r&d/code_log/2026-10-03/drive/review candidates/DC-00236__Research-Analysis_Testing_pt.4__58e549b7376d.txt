@@ -1,0 +1,7 @@
+# Verify lengths match
+assert len(X_data) == len(y_data), f"Length mismatch: X_data ({len(X_data)}), y_data ({len(y_data)})"
+
+
+seen_pairs = {
+    (13, 377): 1,
+    (2, 144): 1,

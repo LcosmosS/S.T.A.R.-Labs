@@ -1,0 +1,3 @@
+tamagawa = 1;
+q = 2;
+   * while(q <= 100, if(isprime(q) && valuation(conductor, q) > 0, tamagawa = tamagawa * elltamagawa(E, q)); q = q + 1);

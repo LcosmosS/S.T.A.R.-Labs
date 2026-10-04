@@ -1,0 +1,5 @@
+  sum_M_over_M0 = sum(i=1, n, M[i] / M0);
+  sum_M0_over_M = sum(i=1, n, M0 / M[i]);
+  K_theory = sum_M_over_M0 / sum_M0_over_M;
+  return K_theory;
+}

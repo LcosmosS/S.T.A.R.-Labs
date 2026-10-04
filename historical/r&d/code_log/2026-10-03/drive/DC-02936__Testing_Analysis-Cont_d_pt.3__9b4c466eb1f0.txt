@@ -1,0 +1,2 @@
+modified_leading_coeff = 8;
+if (abs(modified_leading_coeff - rhs) < 1e-5, print("Modified strong BSD holds..."), print("Modified strong BSD fails..."));

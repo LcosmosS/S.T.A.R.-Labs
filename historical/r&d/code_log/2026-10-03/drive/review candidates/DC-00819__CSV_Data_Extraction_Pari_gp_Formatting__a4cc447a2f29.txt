@@ -1,0 +1,3 @@
+  mean = sum(i=1, n, v[i]) / n;
+  m4 = sum(i=1, n, (v[i] - mean)^4) / n;
+  variance = sum(i=1, n, (v[i] - mean)^2) / n;

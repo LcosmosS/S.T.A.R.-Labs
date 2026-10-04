@@ -1,0 +1,7 @@
+    # Initialize Stacker with your optimized best_params
+    sweep_stacker = StableECCStacker(best_params)
+
+    # Train on the combined weight of both catalogs
+    sweep_stacker.fit(
+        train_df[features],
+        train_df['persistence_entropy'],

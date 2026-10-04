@@ -1,0 +1,1 @@
+ K_sub  =  right_side_sub  /  unscaled_left_sub;  print("Subsample  (N=5)  K:  ",  K_sub);   /*  Compare  K  stability  */  if  (abs(K_sub  -  K)  /  K  <  0.1,  print("K  is  stable  within  10%  between  subsample  and  full  

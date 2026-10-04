@@ -1,0 +1,4 @@
+df_mytable.columns = df_mytable.columns.str.strip()
+df_gema.columns = df_gema.columns.str.strip()
+df_mangahi.columns = df_mangahi.columns.str.strip()
+df_pipe3d.columns = df_pipe3d.columns.str.strip()

@@ -1,0 +1,11 @@
+// Small fixed translateY — indicates direction without drama
+<motion.div
+  exit={{
+    opacity: 0,
+    y: -12,
+    filter: "blur(4px)",
+    transition: { duration: 0.15, ease: "easeIn" },
+  }}
+>
+  {content}
+</motion.div>

@@ -1,0 +1,4 @@
+M_0 = 1e12;
+N = 1000;
+read("masses.txt");
+   * L_cosmo(s) = sum(i=1, N, (M_0 / M[i])^s);

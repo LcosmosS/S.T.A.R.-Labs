@@ -1,0 +1,24 @@
+L = E.lseries()
+dok = L.dokchitser(prec=100)
+   * print(dok.derivative(1, 3))
+* 3-Selmer Rank:
+   * Failures persist for small conductors (e.g., 56). Use Magma or keep relaxed mode.
+   * Test strict mode sparingly:
+   * python
+   * require_3selmer = True
+* Classifier:
+   * Adjust failure frequency if skips dominate:
+   * python
+   * force_failure = (attempts % 10 == 0 and attempts > 0 and len(set(y_data)) < 2)
+   * Add \log(a/b):
+   * python
+   * features = [a, b, log_delta, log_cond, tors_order, math.log(a/b) if b != 0 else 0]
+* Visualization:
+   * Enhance plot with edges (connect nodes by regulator proximity) or use Plotly for interactivity.
+   * Normalize ( L'(1) ) further if Virgo’s 6,320 units is critical:
+   * python
+   * normalized_leading_coeff = leading_coeff / 20 if leading_coeff else 0
+* PySR:
+   * If pysr is installed, revert to symbolic regression:
+   * bash
+   * sage -pip install pysr --user

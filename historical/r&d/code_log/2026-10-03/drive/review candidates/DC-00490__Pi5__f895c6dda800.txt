@@ -1,0 +1,5 @@
+            if success:
+                a, b = features[0], features[1]
+                data_tuple = (a, b, rank, normalized_leading_coeff, omega, reg, tamagawa, weak_bsd_holds,
+                              selmer3_rank, log_delta, log_cond, longitude, latitude, elevation, size,
+                              heegner_x, heegner_y, z)

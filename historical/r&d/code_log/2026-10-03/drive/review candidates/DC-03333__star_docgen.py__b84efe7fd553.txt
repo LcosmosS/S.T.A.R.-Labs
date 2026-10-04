@@ -1,0 +1,4 @@
+    except (requests.RequestException, ValueError) as exc:
+        raise RuntimeError(
+            f"Unable to query Ollama at {OLLAMA_URL}: {exc}"
+        ) from exc

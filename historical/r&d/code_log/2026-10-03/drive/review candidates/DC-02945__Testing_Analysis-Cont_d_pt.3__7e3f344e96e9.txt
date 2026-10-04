@@ -1,0 +1,5 @@
+periods = ellperiods(E, 1);
+omega_val = real(periods[1]);  /* Ensure scalar; restart PARI/GP if vector persists */
+print("Real period (Omega): ", omega_val);
+omega_scaled = pi_val * omega_val;
+         3. print("Scaled real period (Omega * pi): ", omega_scaled);

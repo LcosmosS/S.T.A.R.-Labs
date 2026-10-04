@@ -1,0 +1,4 @@
+start = strpos("[", part) + 1
+end = strpos("]", part) - 1
+values_str = substr(part, start, end - start + 1)
+then, values = Strsplit(values_str, ",")

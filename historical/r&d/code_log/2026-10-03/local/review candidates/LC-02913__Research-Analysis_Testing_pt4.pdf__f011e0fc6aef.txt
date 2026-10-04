@@ -1,0 +1,3 @@
+        with open("unique_curves.txt", "a") as f:
+            conductor = E.conductor() if E else 'N/A'
+            plot_file = f"curve_2584_144.png" if E else 'N/A'

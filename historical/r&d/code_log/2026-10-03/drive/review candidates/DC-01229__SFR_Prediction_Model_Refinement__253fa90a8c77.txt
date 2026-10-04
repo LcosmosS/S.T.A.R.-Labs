@@ -1,0 +1,6 @@
+merged_df = pd.merge(df1, df2, on='objid', how='outer')
+merged_df = pd.merge(merged_df, df3, on='objid', how='outer')
+
+
+# Fill NaN values with 0
+merged_df = merged_df.fillna(0)

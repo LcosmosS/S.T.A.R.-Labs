@@ -1,0 +1,6 @@
+for i in range(gmm.n_components):
+    plt.hist(logmass[groups == i], bins=50, density=True, alpha=0.6, label=f"Group {i}")
+    plt.legend()
+    plt.title(f"Logmass Distribution - Group {i}")
+    plt.savefig(f"Group_{i}_logmass.png")
+   *     plt.close()

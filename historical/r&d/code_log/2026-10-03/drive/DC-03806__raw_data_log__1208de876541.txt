@@ -1,0 +1,6 @@
+st.compute_persistence()
+betti = st.betti_numbers()          # This returns [B0, B1, B2, ...]
+df[name + '_betti_1'] = betti[1] if len(betti) > 1 else 0
+      * Betti_0 (number of connected components) → computed but discarded.
+      * Betti_1 (number of 1-dimensional loops / tunnels / filaments) → used as the topological target.
+      * Betti_2 (number of 2-dimensional voids / cavities) → computed but discarded.

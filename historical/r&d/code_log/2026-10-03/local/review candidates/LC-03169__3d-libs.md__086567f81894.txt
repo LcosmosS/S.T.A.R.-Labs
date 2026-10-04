@@ -1,0 +1,20 @@
+import { Canvas, useFrame } from "@react-three/fiber";
+import { PointerLockControls, useKeyboardControls } from "@react-three/drei";
+
+function Player() {
+  useFrame((_, delta) => {
+    const d = Math.min(delta, 0.1);       // cap delta (SKILL §1)
+    // move with a dedicated moveForward/moveRight basis (SKILL §2/§4)
+  });
+  return null;
+}
+
+export default function Game() {
+  return (
+    <Canvas camera={{ position: [0, 1.7, 5], fov: 75 }} shadows dpr={[1, 2]}>
+      {/* scene */}
+      <PointerLockControls />   {/* mouse-look ONLY — implement WASD yourself */}
+      <Player />
+    </Canvas>
+  );
+}

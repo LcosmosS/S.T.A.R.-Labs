@@ -1,0 +1,5 @@
+E := EllipticCurve([0, 0, 0, -1706, 6320]);
+for p in [2, 3, 5] do
+    S := SelmerGroup(E, p);
+    print "p-Selmer rank for p =", p, ":", #S - 1;
+    ●   end for;

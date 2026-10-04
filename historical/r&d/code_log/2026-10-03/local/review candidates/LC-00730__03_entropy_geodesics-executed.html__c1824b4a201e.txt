@@ -1,0 +1,4 @@
+/home/sage/sage/local/var/lib/sage/venv-python3.12.5/lib/python3.12/site-packages/numpy/_core/numeric.py:995: RuntimeWarning: overflow encountered in multiply
+  return multiply(a.ravel()[:, newaxis], b.ravel()[newaxis, :], out)
+/home/sage/sage/local/var/lib/sage/venv-python3.12.5/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:86: RuntimeWarning: invalid value encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)

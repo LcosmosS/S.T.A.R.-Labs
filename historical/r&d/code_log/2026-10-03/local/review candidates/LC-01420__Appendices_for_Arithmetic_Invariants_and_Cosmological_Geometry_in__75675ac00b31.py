@@ -1,0 +1,22 @@
+def generate_fibonacci(n):
+    fib = [0, 1]
+    for i in range(2, n+1):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+def random_fibonacci_pair(n, high_rank_pairs=None):
+    """Select Fibonacci pair with strong bias toward known high-rank candidates."""
+    fib_list = generate_fibonacci(n)
+    valid_fibs = [f for f in fib_list if f != 0]
+
+    # 99.8% bias to known high-rank pairs
+    if high_rank_pairs and random.random() < 0.998:
+        return random.choice(high_rank_pairs)
+
+    # Otherwise random pair
+    return random.sample(valid_fibs, 2)
+
+def analyze_curve(a, b, is_original=False):
+    """Analyze one elliptic curve with full invariants and cosmological mapping."""
+    print(f"\n{'='*60}")
+    print(f"Analyzing {'Original' if is_original else 'Fibonacci'} curve: y² = x³ +

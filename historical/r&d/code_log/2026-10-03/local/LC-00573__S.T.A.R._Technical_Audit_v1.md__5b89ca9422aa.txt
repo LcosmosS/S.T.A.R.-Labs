@@ -1,0 +1,54 @@
+                         ┌─────────────────────┐
+                         │  Arithmetic source  │
+                         │ Cremona / LMFDB /   │
+                         │ verified invariants  │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ Canonical Φ(E;θΦ)   │
+                         │ frozen + versioned   │
+                         └──────────┬──────────┘
+                                    │
+                         ┌──────────┴──────────┐
+                         ▼                     ▼
+                  arithmetic cloud       observational cloud
+                         │                     │
+                         └──────────┬──────────┘
+                                    ▼
+                         ┌─────────────────────┐
+                         │   TDA comparison    │
+                         │ fixed filtration +  │
+                         │ fixed metric + Wp   │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ ECC field layer     │
+                         │ mathematically      │
+                         │ consistent ω/θ      │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ H_STAR(z;θ)         │
+                         │ explicit weights    │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ Likelihood engine   │
+                         │ SN + BAO + CC + CMB │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ inference + model   │
+                         │ comparison + nulls  │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │ preregistered result│
+                         │ + reproducibility   │
+                         └─────────────────────┘

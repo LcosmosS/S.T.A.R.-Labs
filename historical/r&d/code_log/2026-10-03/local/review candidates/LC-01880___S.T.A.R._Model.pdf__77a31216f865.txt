@@ -1,0 +1,7 @@
+df, sdss_matched = cross_match(df, sdss_merged, 'objra_y', 'objdec', 'RA_ICRS', 'DE_ICRS',
+max_dist_arcsec=10.0)
+print(f"After SDSS cross-match: {len(df)} galaxies")
+
+# Check if cross-match succeeded; if not, fall back to original DataFrame
+if len(df) == 0:
+    print("No matches found with SDSS merged data (V/147 + V/154). Falling back to original

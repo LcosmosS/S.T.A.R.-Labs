@@ -1,0 +1,30 @@
+# Define the elliptic curve
+E = EllipticCurve(QQ, [a, b])
+
+# Compute the discriminant
+delta = E.discriminant()
+print(f"Discriminant: {delta}")
+if delta == 0:
+    print("Not an elliptic curve (singular). Skipping.")
+    continue
+
+# Compute the conductor
+conductor = E.conductor()
+print(f"Conductor: {conductor}")
+
+# Compute the torsion subgroup
+tors = E.torsion_subgroup()
+tors_order = tors.order()
+print(f"Torsion subgroup order: {tors_order}")
+
+# Compute the rank
+rank = E.rank()
+print(f"Algebraic rank (via SageMath): {rank}")
+
+# Compute the L-function and analytic rank
+L = E.lseries()
+L_dok = L.dokchitser(prec=50)  # Reduced precision for cloud efficiency
+L1 = L_dok(1)  # Evaluate L(1)
+if abs(L1) < 1e-10:  # Check if L(1) is approximately 0
+    L1_deriv = L_dok.derivative(1, 1)  # Compute L'(1)
+    if abs(L1_deriv) < 1e-10:  # Check if L'(1) is approximately 0

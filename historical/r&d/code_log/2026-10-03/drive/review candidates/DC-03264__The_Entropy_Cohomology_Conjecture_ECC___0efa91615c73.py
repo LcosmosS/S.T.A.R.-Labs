@@ -1,0 +1,6 @@
+plt.scatter(data['L_cosmo(s)'], data['log_SFR_Ha'], alpha=0.4)
+plt.title('Projection Attractor Concentration in SFR Phase Space')
+plt.xlabel('L_cosmo(s)')
+plt.ylabel('log SFR')
+plt.grid(True)
+plt.show()

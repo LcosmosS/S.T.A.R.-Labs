@@ -1,0 +1,6 @@
+        chunk['radius_ly'] = chunk.apply(lambda row:
+estimate_radius_ly(row['petrorad_r'], row['distance_mpc']), axis=1)
+        chunk['virial_energy_j'] = chunk.apply(lambda row:
+calculate_virial_energy(row['mass_sm'], row['radius_ly']), axis=1)
+
+        valid_data = chunk['radius_ly'].notna() & (chunk['radius_ly'] > 0) &

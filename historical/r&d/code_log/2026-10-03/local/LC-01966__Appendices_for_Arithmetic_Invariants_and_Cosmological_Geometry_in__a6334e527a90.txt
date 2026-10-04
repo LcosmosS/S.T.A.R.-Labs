@@ -1,0 +1,13 @@
+X_clf  =  df[X_clf_cols]  
+X_clf  =  imputer.fit_transform(X_clf)  
+y_clf  =  df['regime_label']  
+clf  =  RandomForestClassifier(random_state=42)  
+cv_scores  =  cross_val_score(clf,  X_clf,  y_clf,  cv=5)  
+print("Regime  Classifier  CV  Mean  Accuracy:",  cv_scores.mean())  
+clf.fit(X_clf,  y_clf)  
+df['predicted_regime']  =  clf.predict(X_clf)  
+ 
+#  Generator  Classifier  
+df['generator_label']  =  df['otype_int']  
+y_gen  =  df['generator_label']  
+gen_clf  =  RandomForestClassifier(random_state=42)  

@@ -1,0 +1,11 @@
+    N := Conductor(E);
+    print "Conductor:", N;
+
+    // Compute the torsion subgroup
+    tors := TorsionSubgroup(E);
+    tors_order := #tors;
+    print "Torsion subgroup order:", tors_order;
+
+    // Compute the algebraic rank
+    rank := Rank(E);
+    print "Algebraic rank:", rank;

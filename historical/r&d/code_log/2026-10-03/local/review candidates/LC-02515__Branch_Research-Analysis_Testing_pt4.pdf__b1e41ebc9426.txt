@@ -1,0 +1,10 @@
+    D := -67;  // Satisfies Heegner hypothesis for this curve
+    try
+        // Compute the Heegner system and find a point
+        H := HeegnerPoints(D, E);
+        P_K := H[1];  // Take the first Heegner point
+        P := Trace(P_K);  // Trace to E(Q)
+        print "Heegner point (traced to Q):", P;
+        // Check if the point has infinite order
+        if Order(P) eq 0 then
+            print "Heegner point has infinite order, suggesting rank >= 1";

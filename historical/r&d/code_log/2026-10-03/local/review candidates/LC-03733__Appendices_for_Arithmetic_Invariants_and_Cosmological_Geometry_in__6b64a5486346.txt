@@ -1,0 +1,8 @@
+    results = []
+
+    # 3. Main Execution Loop
+    for name, p_data in physical_data.items():
+        b_data = benchmark_data[name]
+
+        # 3a. Retrieve or calculate coefficients
+        if name in ["Virgo Cluster", "Coma Cluster"]:

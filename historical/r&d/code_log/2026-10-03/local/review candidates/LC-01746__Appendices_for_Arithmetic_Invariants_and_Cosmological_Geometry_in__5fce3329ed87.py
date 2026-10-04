@@ -1,0 +1,37 @@
+    chunk['log_chi2'] = np.log(chunk['Chi2'] + 1e-6)
+
+    chunk['chi_ratio'] = chunk['Chi2'] / (chunk['delChi2'] + 1e-6)
+
+    chunk['tsnr_ratio_elg_lrg'] = chunk['TSNR2_ELG'] / (chunk['TSNR2_LRG'] + 1e-6)
+
+
+
+    chunk['morph_int'] = chunk['Morph'].apply(lambda x: 0 if 'GALAXY' in str(x) else 1)
+
+    chunk['otype_int'] = chunk['OType'].apply(lambda x: 0 if 'GALAXY' in str(x) else 1)
+
+
+
+    return chunk
+
+
+
+# Load chunks
+
+df_list = []
+
+for chunk in pd.read_csv("1760769987443A.csv", chunksize=chunksize):
+
+    processed = process_chunk(chunk)
+
+    if not processed.empty:
+
+        df_list.append(processed)
+
+df = pd.concat(df_list, ignore_index=True)
+
+print("Full Data Info:", df.info())
+
+
+
+imputer = SimpleImputer(strategy='mean')

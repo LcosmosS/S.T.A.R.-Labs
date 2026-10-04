@@ -1,0 +1,2 @@
+# Output the vectors in PARI/GP format
+print("log_mass = [", end="") print(", ".join(map(str, log_mass)), end="];") print("\nz = [", end="") print(", ".join(map(str, z)), end="];")

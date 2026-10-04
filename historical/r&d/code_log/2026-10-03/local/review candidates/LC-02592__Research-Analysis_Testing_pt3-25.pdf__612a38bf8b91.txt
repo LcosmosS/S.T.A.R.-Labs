@@ -1,0 +1,11 @@
+    plt.colorbar(scatter, label='Weak BSD Holds')
+
+    # Filaments weighted by regulator difference
+    for i in range(len(interweb_data)):
+        for j in range(i + 1, len(interweb_data)):
+            reg_diff = abs(interweb_data[i][5] - interweb_data[j][5])
+            if reg_diff < 1:
+                weight = 1 / (1 + reg_diff)  # Thicker for closer regulators
+                ax.plot(
+                    [log_deltas[i], log_deltas[j]],
+                    [log_conds[i], log_conds[j]],

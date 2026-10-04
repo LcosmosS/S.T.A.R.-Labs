@@ -1,0 +1,2 @@
+         for  method  in  ['pysr',  'gplearn']:              sym_reg_tf  =  run_symbolic_regression(X_tf,  y_tf,  feature_cols,  method)              if  sym_reg_tf:                  getattr(sym_reg_tf,  'equations_',  
+pd.DataFrame()).to_csv(f'{OUTPUT_PLOT_PREFIX}_symbolic_regression_tully_fisher_{method

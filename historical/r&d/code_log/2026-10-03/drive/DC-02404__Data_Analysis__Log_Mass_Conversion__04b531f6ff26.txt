@@ -1,0 +1,23 @@
+  sum_M_over_M0 = sum(i=1, n, M[i] / M0);
+  sum_M0_over_M = sum(i=1, n, M0 / M[i]);
+  K_theory = sum_M_over_M0 / sum_M0_over_M;
+  return K_theory;
+         * }
+         * Compute Skewness: For sample skewness, use:
+compute_skewness(log_mass) = {
+  n = #log_mass;
+  if (n < 3, return("n too small"));
+  mean = vecsum(log_mass) / n;
+  variance = sum(i=1, n, (log_mass[i] - mean)^2) / (n - 1);
+  sd = sqrt(variance);
+  mu3 = sum(i=1, n, (log_mass[i] - mean)^3) / n;
+  skewness = (n / ((n-1)*(n-2))) * mu3 / sd^3;
+  return skewness;
+         * }
+         * Compute Median: For use in splitting by sfr, define:
+compute_median(v) = {
+  v_sorted = vecsort(v);
+  n = #v;
+  if (n % 2 == 0,
+    return (v_sorted[n/2] + v_sorted[n/2 + 1]) / 2,
+    return v_sorted[(n+1)/2]

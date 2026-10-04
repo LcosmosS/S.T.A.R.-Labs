@@ -1,0 +1,20 @@
+        # 3b. Handle Perseus Cluster failure case
+        if name == "Perseus Cluster":
+            results.append({
+                "System Name": name,
+                "Generator Type": b_data["type"],
+                "Virial Imbalance |2T + U|": f'{b_data["virial_imbalance"]:.2e}',
+                "Derived a": a,
+                "Derived b (rho)": b,
+                "Discriminant |Δ|": "(computation failed)",
+                "Calculated Equivalence Constant (Λ)": "(not calculated)"
+            })
+            continue
+
+        # 3c. Define the curve and calculate its discriminant
+        E = EllipticCurve(QQ, [a, b])
+        discriminant_abs = float(abs(E.discriminant()))   # ← Critical fix
+
+        # 3d. Calculate the Equivalence Constant Λ
+        virial_imbalance = float(b_data["virial_imbalance"])
+        lambda_constant = float(virial_imbalance / discriminant_abs)   # ← Critical

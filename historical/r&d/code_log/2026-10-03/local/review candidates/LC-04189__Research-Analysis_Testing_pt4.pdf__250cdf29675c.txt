@@ -1,0 +1,3 @@
+                    f.write(f"a={a},b={b},rank={rank},selmer3={selmer3_rank},volume={vol}\n")
+            break
+        except Exception as e:

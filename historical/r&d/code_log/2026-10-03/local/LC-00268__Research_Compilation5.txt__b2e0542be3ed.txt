@@ -1,0 +1,15 @@
+chunk_size = 1000 with open('load_vectors.gp', 'w') as f: for col in output_columns: # Use output_columns instead of df.columns values = df[col].values if df[col].dtype == 'object': # For strings values = [f'"{val}"' for val in values] else: values = [str(val) for val in values] # Consider using f"{val:.15g}" for floats for precision
+   num_parts = (len(values) + chunk_size - 1) // chunk_size
+    part_names = []
+    for part in range(num_parts):
+        start = part * chunk_size
+        end = min((part + 1) * chunk_size, len(values))
+        part_values = values[start:end]
+        part_name = f"{col}_part{part+1}"
+        part_names.append(part_name)
+        f.write(f"{part_name} = [{', '.join(part_values)}];\n")
+    
+    f.write(f"{col} = concat([{', '.join(part_names)}]);\n")
+print("PARI/GP script generated: load_vectors.gp")
+grouped = df.groupby('subpopulation') K_values = {} for subpop, group in grouped: masses = group['mass'].values M0 = np.median(masses) sum_M_over_M0 = np.sum(masses / M0) sum_M0_over_M = np.sum(M0 / masses) K = sum_M_over_M0 / sum_M0_over_M K_values[subpop] = K print(f"Subpopulation {subpop}: M0 = {M0:.2e}, K = {K:.4f}")
+for subpop, group in grouped: print(f"Subpopulation {subpop}:") print(f" Mean z: {group['z'].mean():.4f}") print(f" Mean sfr: {group['sfr'].mean():.4f}")

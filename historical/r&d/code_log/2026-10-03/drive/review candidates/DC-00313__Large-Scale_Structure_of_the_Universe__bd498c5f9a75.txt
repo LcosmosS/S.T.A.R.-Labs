@@ -1,0 +1,2 @@
+df1['L_function'] = your_L_function_computation(df1)  # Replace with actual L-function calculation
+X = df1[['ra', 'dec', 'redshift', 'polynomial_fit', 'polynomial_derivative', 'L_function']]

@@ -1,0 +1,5 @@
+group1_indices = (groups == 1) z_group1 = z[group1_indices] bins = np.percentile(z_group1, [0, 20, 40, 60, 80, 100]) # 5 bins bin4_mask = (z_group1 >= bins[4]) & (z_group1 <= bins[5]) # Bin 4 range z_bin4 = z_group1[bin4_mask] print(f"Bin 4 redshift range: {np.min(z_bin4):.4f} to {np.max(z_bin4):.4f}")
+sfr_bin4 = sfr[group1_indices][bin4_mask] avg_sfr = np.mean(sfr_bin4) print(f"Bin 4 average sfr: {avg_sfr:.4f}")
+ra_bin4 = ra[group1_indices][bin4_mask] dec_bin4 = dec[group1_indices][bin4_mask] print(f"Bin 4 ra range: {np.min(ra_bin4):.4f} to {np.max(ra_bin4):.4f}") print(f"Bin 4 dec range: {np.min(dec_bin4):.4f} to {np.max(dec_bin4):.4f}")
+plt.scatter(ra_bin4, dec_bin4) plt.xlabel("RA") plt.ylabel("Dec") plt.savefig('group1_bin4_positions.png') # Optional: save instead of show
+plt.show()

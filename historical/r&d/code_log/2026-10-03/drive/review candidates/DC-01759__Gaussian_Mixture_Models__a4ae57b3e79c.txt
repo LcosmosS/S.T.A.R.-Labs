@@ -1,0 +1,3 @@
+# Check if K is close to 1 for each subpopulation
+for i, K in enumerate(K_values):
+    if abs(K - 1) > 0.1:  # Arbitrary threshold for "close to 1"

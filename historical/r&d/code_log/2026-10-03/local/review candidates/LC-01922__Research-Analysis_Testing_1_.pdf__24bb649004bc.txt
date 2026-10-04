@@ -1,0 +1,4 @@
+P = E.point([2, 54])
+Reg = P.height(prec=100)
+    3.  print(Reg)
+    4.  Cross-check with PARI/GP or LMFDB to confirm |\text{Sha}(E)|.

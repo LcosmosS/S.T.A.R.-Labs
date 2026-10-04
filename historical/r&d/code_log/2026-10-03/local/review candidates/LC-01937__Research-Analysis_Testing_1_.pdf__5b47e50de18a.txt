@@ -1,0 +1,7 @@
+# Define the elliptic curve
+E = EllipticCurve(QQ, [-1706, 6320])
+
+# Compute the 2-Selmer group
+G, phi = E.selmer_group(2)
+
+    9.   print(len(G), G)

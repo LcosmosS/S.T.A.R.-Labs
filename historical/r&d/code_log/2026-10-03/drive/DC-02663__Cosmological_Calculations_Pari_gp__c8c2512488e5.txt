@@ -1,0 +1,4 @@
+sum_Mi_over_M0_sub1 = sum(i=1, N_sub1, M_sub1[i] / M_0_sub1);
+sum_M0_over_Mi_sub1 = sum(i=1, N_sub1, M_0_sub1 / M_sub1[i]);
+K_theory_sub1 = sum_Mi_over_M0_sub1 / sum_M0_over_Mi_sub1;
+print("Theoretical K for subgroup1: ", K_theory_sub1);

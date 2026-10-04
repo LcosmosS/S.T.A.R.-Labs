@@ -1,0 +1,2 @@
+import matplotlib.pyplot as plt
+plt.xlabel('Actual SFR (log scale)') plt.ylabel('Predicted SFR (log scale)') plt.title('Predicted vs. Actual Star Formation Rates')

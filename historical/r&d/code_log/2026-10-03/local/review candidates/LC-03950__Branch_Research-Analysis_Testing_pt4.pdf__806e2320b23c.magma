@@ -1,0 +1,12 @@
+coeffs := [0, 0, 0, 5, 13];  // Curve 1: y^2 = x^3 + 5x + 13
+
+// Define the elliptic curve
+E := EllipticCurve(coeffs);
+print "Curve:", coeffs;
+
+// Compute the discriminant
+delta := Discriminant(E);
+print "Discriminant:", delta;
+
+if delta eq 0 then
+    print "Not an elliptic curve (singular). Skipping.";

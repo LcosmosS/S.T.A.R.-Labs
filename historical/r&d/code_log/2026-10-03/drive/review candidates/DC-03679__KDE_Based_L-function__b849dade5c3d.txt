@@ -1,0 +1,4 @@
+score = cross_val_score(...)
+if np.isnan(score).any():
+    raise optuna.TrialPruned()
+return np.mean(score)

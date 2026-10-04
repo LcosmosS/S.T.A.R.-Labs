@@ -1,0 +1,6 @@
+masses = [1e9, 2e9, 5e9, 1e10, 3e10];  \\ Example masses in solar masses
+N = length(masses);
+M0 = vecmedian(masses);
+L_cosmo_1 = sum(i=1, N, M0 / masses[i]);
+K = N / L_cosmo_1;
+print("K = ", K);

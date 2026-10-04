@@ -1,0 +1,6 @@
+print "Algebraic rank:", rank;
+L := LSeries(E);
+Lval := Evaluate(L, 1);
+if Abs(Lval) < 1e-10 then
+    Lderiv := Derivative(L, 1);
+    print "Analytic rank: 1, L'(1):", Lderiv;

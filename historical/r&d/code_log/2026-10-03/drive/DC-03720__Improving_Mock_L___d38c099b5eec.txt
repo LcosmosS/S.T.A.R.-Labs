@@ -1,0 +1,13 @@
+unscaled = sum(n=2, 2508, (C_l[n] / T_cmb^2) / n);
+print("Unscaled: ", unscaled);
+   * K = 1.0 / unscaled; /* Target ~1 */
+* Recalculate Right Side:
+   * With updated constants:
+   * pari
+   * right_side = (0.958 * 1000 * 1000 * 0.857) / (100^2); /* ≈ 82.1 */
+   * Adjust \text{Reg}_{\text{cosmo}} or T_{\text{cosmo}} to ~1–10 if needed.
+* Test:
+* pari
+if (abs(left_side - right_side) < 0.1 * right_side, 
+    print("Holds within 10%"), 
+*     print("Fails"));

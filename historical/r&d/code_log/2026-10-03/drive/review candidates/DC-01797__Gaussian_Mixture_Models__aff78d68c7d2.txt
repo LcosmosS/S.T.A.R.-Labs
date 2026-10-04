@@ -1,0 +1,2 @@
+else:
+    values = [f"{val:.15g}" if isinstance(val, float) else str(val) for val in values]

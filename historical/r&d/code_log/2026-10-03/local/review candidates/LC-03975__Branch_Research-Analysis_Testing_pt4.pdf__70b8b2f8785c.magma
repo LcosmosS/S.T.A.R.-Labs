@@ -1,0 +1,6 @@
+    N := Conductor(E);
+    print "Conductor:", N;
+
+    // Compute the torsion subgroup
+    tors := TorsionSubgroup(E);
+    tors_order := #tors;

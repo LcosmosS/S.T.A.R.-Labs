@@ -1,0 +1,4 @@
+data_clean['log_mass_stellar'] = np.log10(data_clean['mass_stellar_best_fit'])
+data_clean['log_sSFR'] = np.log10(data_clean['sSFR_0_1Gyr_best_fit'])
+data_clean['log_dust_mass'] = np.log10(data_clean['mass_dust_best_fit'] + 1e-6)
+data_clean['log_Z'] = np.log10(data_clean['metalicity_Z_Zo_percentile50'] + 1e-6)

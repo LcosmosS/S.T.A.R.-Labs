@@ -1,0 +1,7 @@
+# Calculate topological string amplitudes
+F_g = self._compute_topological_amplitudes()
+# Compute Gromov-Witten invariants
+GW = self._compute_gromov_witten()return {
+'topological_amplitudes': F_g,
+'gromov_witten': GW
+}

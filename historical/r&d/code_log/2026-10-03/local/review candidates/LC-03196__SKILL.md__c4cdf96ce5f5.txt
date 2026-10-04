@@ -1,0 +1,3 @@
+// yaw = 0 faces world −Z; +yaw is CCW about +Y (nose moves toward −X)
+forward = (-sin(yaw), 0, -cos(yaw))
+right   = ( cos(yaw), 0, -sin(yaw))   // = normalize(cross(forward, worldUp))

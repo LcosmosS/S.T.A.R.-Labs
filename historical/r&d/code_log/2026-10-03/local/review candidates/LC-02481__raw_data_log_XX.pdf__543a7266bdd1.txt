@@ -1,0 +1,4 @@
+offset_v = star_tuned_offset(rho_v)  # S.T.A.R.-tuned
+
+# Enhanced recurrence
+num_y = num_x * 70 + offset_v  # Now invariant-dependent

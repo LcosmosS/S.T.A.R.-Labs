@@ -1,0 +1,4 @@
+plt.hist(df['logmass'], bins=50)
+plt.savefig('logmass_distribution.png')
+   * plt.close()
+   * Reason: The original code had redundant plotting of logmass_distribution.png and lacked plt.close(), which could cause memory issues. The adjusted code consolidates this and ensures proper resource management.

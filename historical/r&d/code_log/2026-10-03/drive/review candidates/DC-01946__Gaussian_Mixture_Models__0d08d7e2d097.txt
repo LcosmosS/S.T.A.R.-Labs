@@ -1,0 +1,4 @@
+  for(i = 1, n,
+    M_new[i,2] = M[i,2] * exp(-t/10);  \\ SFR decays exponentially
+    M_new[i,3] = M[i,3] + 0.01 * t * M[i,1];  \\ Metallicity grows with mass and time
+    if(M_new[i,2] < 0, M_new[i,2] = 0);  \\ Ensure non-negative SFR

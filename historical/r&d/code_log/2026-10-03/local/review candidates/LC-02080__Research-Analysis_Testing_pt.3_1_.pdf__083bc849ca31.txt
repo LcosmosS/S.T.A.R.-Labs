@@ -1,0 +1,4 @@
+                  two_torsion_rank := (tors_order mod 2 eq 0) select 1 else 0;
+                  sha_two_rank := selmer_rank - rank - two_torsion_rank;
+                  print "Rank of Sha(E)[2]:", sha_two_rank;
+                  if sha_two_rank eq 0 then

@@ -1,0 +1,6 @@
+fontsize=16)
+         plt.xlabel("Predicted  Algebraic  Rank  Category",  fontsize=12)          plt.ylabel("log10(|Virial  Energy|)",  fontsize=12)          plt.savefig(f"{OUTPUT_PLOT_PREFIX}_hierarchical_rank_distribution.png");  
+plt.close()
+         print("     -  Hierarchical  validation  plot  saved.")   if  __name__  ==  "__main__":      main()  
+ 
+3.2  Final  Execution  Log  and  Definitive  Null  Result   ---  [STAGE  1/2]  Starting  THEORY-DRIVEN  VALUATIVE  Data  Processing...  ---    -  Processing  chunk  1...    -  Processing  chunk  2...    -  Processing  chunk  3...    -  Reached  row  limit  of  300000.  Stopping.    -  Data  processing  complete.  5866  high-fidelity  rows  finalized.   ---  [STAGE  2/2]  Final  Synthesis:  Two-Tiered  Analysis...  ---     ---  Part  1:  Valuative  Prediction  on  Full  High-Fidelity  Dataset  ---      -  **No  valid  data  available  for  valuative  prediction.  Skipping.**     ---  Part  2:  Hierarchical  Validation  on  Computationally  Tractable  Subset  ---      -  **SCIENTIFIC  FINDING:  No  galaxies  with  a  computationally  tractable  rank  were  

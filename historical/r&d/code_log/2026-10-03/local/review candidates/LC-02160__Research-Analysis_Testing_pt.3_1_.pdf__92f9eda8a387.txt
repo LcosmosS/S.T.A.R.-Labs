@@ -1,0 +1,31 @@
+    for a, b, rank, lc, omega, reg, tamagawa, wbsd, ld, lcnd in interweb_data:
+
+
+        f.write(f"{a},{b},{rank},{lc},{omega},{reg},{tamagawa},{wbsd},{ld},{lcnd}\n")
+
+
+
+
+
+# Plot sample interweb
+
+
+if interweb_data:
+
+
+    fig = plt.figure()
+
+
+    ax = fig.add_subplot(111, projection='3d')
+
+
+    ranks = [x[2] for x in interweb_data]
+
+
+    log_deltas = [x[8] for x in interweb_data]
+
+
+    log_conds = [x[9] for x in interweb_data]
+
+
+    sizes = [x[3]*100 for x in interweb_data]

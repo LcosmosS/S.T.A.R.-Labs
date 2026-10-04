@@ -1,0 +1,24 @@
+    fig.colorbar(scatter, label='EBV (Entropy Proxy)')
+
+    fig.savefig(f"visualizations/{regime}_pysr_scatter.png")
+
+    plt.close(fig)
+
+
+
+    # HTML 3D for PySR
+
+    fig = go.Figure(data=go.Scatter3d(
+
+        x=X_test_df['flux_gr'], y=X_test_df['flux_rz'], z=y_pred_pysr,
+
+        mode='markers', marker=dict(size=5, color=y_pred_pysr, colorscale='Viridis',
+showscale=True, colorbar_title='Predicted z')
+
+    ))
+
+    fig.update_layout(title=f'{regime.capitalize()} PySR Manifold',
+
+                      scene=dict(xaxis_title='g/r Flux', yaxis_title='r/z Flux', zaxis_title='Predicted z'))
+
+    fig.write_html(f"visualizations/{regime}_pysr_manifold_3d.html")

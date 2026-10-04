@@ -1,0 +1,3 @@
+new_features_dict['age_metallicity'] = df['Age_LW_Re_fit'].values * df['ZH_LW_Re_fit'].values
+new_features_dict['sqrt_Re_kpc'] = np.sqrt(df['Re_kpc'].values + 1e-5)
+new_features_dict['BSD_likelihood'] = logMass * df['OH_O3N2_raw'].values /

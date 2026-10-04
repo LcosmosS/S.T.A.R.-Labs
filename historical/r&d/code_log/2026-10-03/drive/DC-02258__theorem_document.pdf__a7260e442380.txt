@@ -1,0 +1,10 @@
+math.sqrt(abs(a)) \n x_vals = np.linspace(-x_range, x_range, 1000) \n y_vals =
+np.sqrt(np.maximum(x_vals**3 + a * x_vals + b, 0)) \n density_size =
+min(leading_coeff * 177 / 20, 200) if leading_coeff else 10 \n plt.figure(figsize=(8, 6))\n color = \'green\' if rank == 3 else \'blue\' if rank == 2 else \'black\' \n
+plt.scatter(x_vals, y_vals, s=float(max(density_size, 1)), c=color, alpha=0.5,
+label=f\'Rank {rank}\') \n plt.scatter(x_vals, -y_vals, s=float(max(density_size, 1)),
+c=color, alpha=0.5) \n if rank > 0: \n contour_y = np.full_like(x_vals, float(5)) \n
+plt.plot(x_vals, contour_y, \'r--\', label=f\'Regulator {scaled_reg:.0f}\') \n
+plt.plot(x_vals, -contour_y, \'r--\') \n plt.title(f\'Curve y² = x³ + {a}x + {b}, Density:
+{leading_coeff * 177:.0f}\') \n plt.xlabel(\'x\') \n plt.ylabel(\'y\') \n plt.legend() \n
+plt.grid(True) \n plt.savefig(f"curve_{a}_{b}.png") \n plt.close() \n print(f"Polynomial

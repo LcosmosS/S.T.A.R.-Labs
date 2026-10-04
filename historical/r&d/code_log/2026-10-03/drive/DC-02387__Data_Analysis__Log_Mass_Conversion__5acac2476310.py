@@ -1,0 +1,12 @@
+import pandas as pd import numpy as np
+# Load the data
+df = pd.read_csv('Stellar_Mass2_Bigsby.csv')
+# Filter out missing logmass values (marked as -9999)
+df = df[df['logmass'] != -9999]
+# Define redshift bins for grouping
+sfr_bins = [-9999, -0.1, 0, 0.1, 1, 10] # Example bins, adjust based on data for i in range(len(sfr_bins) - 1): sfr_min = sfr_bins[i] sfr_max = sfr_bins[i+1] df_bin = df[(df['sfr'] >= sfr_min) & (df['sfr'] < sfr_max) & (df['sfr'] != -9999)] ...
+# Function to compute K_theory
+def compute_K_theory(log_mass): M = 10 ** log_mass M_sorted = np.sort(M) n = len(M) if n % 2 == 0: M0 = (M_sorted[n//2 - 1] + M_sorted[n//2]) / 2 else: M0 = M_sorted[n//2] sum_M_over_M0 = np.sum(M / M0) sum_M0_over_M = np.sum(M0 / M) K_theory = sum_M_over_M0 / sum_M0_over_M return K_theory
+# Compute statistics for each z bin
+results = [] for i in range(len(z_bins) - 1): z_min = z_bins[i] z_max = z_bins[i+1] df_bin = df[(df['z'] >= z_min) & (df['z'] < z_max)] if not df_bin.empty: log_mass = df_bin['logmass'].values K = compute_K_theory(log_mass) skewness = pd.Series(log_mass).skew() mean_logmass = np.mean(log_mass) sd_logmass = np.std(log_mass, ddof=1) results.append({ 'z_range': f'{z_min} to {z_max}', 'n_samples': len(df_bin), 'K_theory': K, 'skewness': skewness, 'mean_logmass': mean_logmass, 'sd_logmass': sd_logmass })
+# Print results

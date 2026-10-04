@@ -1,0 +1,2 @@
+M = matrix(n, 3);
+for(i = 1, n, M[i,1] = log_mass[i]; M[i,2] = norm_sfr[i]; M[i,3] = norm_met[i]);

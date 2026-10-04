@@ -1,0 +1,1 @@
+%run machine6.py

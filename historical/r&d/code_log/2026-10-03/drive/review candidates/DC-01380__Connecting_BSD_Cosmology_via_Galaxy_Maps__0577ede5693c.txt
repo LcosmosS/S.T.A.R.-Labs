@@ -1,0 +1,1 @@
+print("Kisstablewithin10%betweensubsampleandfullsample:",abs(NormalizationconstantK-SubsampleK)/NormalizationconstantK<0.1);

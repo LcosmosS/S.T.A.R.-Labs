@@ -1,0 +1,3 @@
+ numeric_cols  =  df.select_dtypes(include=[np.number]).columns  df[numeric_cols]  =  df[numeric_cols].replace([np.inf,  -np.inf],  np.nan).fillna(df[numeric_cols].median(skipna=True))   #  Select  features  and  target  
+=========================================================================================
+====================================================================

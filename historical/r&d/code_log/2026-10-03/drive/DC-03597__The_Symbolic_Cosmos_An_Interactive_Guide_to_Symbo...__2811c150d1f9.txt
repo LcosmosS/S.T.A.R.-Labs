@@ -1,0 +1,9 @@
+# Process a large CSV file in chunks to manage memory
+chunk_iterator = pd.read_csv('large_galaxy_catalog.csv', chunksize=100000, on_bad_lines='skip')
+processed_chunks = []
+for chunk in chunk_iterator:
+   # Apply cleaning and feature engineering to each chunk
+   processed_chunk = process_data(chunk) 
+   processed_chunks.append(processed_chunk)
+
+full_dataframe = pd.concat(processed_chunks, ignore_index=True)

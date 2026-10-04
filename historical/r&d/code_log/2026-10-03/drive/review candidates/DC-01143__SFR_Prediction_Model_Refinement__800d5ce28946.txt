@@ -1,0 +1,3 @@
+# --- Prepare data for modeling ---
+X = df.drop("log_SFR", axis=1)
+y = df["log_SFR"]

@@ -1,0 +1,14 @@
+# Load GEMA_2.csv
+GEMA_2 = pd.read_csv('GEMA_2.csv')
+
+
+# Load pipe3d_data2.csv
+pipe3d_data2 = pd.read_csv('pipe3d_data2.csv')
+
+
+# Merge GEMA_2 with mangaHIall
+merged_data = pd.merge(GEMA_2, mangaHIall, on='mangaid', how='inner')
+
+
+# Merge the result with pipe3d_data2
+final_merged_data = pd.merge(merged_data, pipe3d_data2, on='mangaid', how='inner')

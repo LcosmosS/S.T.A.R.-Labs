@@ -1,0 +1,6 @@
+return
+ 
+np.nan
+     mass_kg  =  mass_sm  *  1.989e30;  radius_m  =  radius_ly  *  9.461e15      potential_energy  =  -1  *  G.value  *  (mass_kg  **  2)  /  radius_m      return  potential_energy  /  2.0   #  ---  4.  SageMath  Core  Hypothesis  Functions  (unchanged)  ---  def  map_physics_to_curve_coeffs(distance_mly,  density_kg_m3):      if  not  (np.isfinite(distance_mly)  and  np.isfinite(density_kg_m3)):  return  np.nan,  
+np.nan
+     return  QQ(-distance_mly),  QQ(density_kg_m3)   def  estimate_rank_category(E):      try:          rank  =  E.rank()          if  rank  >=  3:  return  '3+'          elif  rank  ==  2:  return  '2'          elif  rank  ==  1:  return  '1'          else:  return  '0'      except  Exception:  return  'Unknown'   #  ---  5.  Main  Unified  Pipeline  ---  def  main():      print("---  [STAGE  1/4]  Starting  HIGH-FIDELITY  Data  Processing...  ---")      df_analysis  =  process_data()  

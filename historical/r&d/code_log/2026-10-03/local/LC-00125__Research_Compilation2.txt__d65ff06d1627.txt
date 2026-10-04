@@ -1,0 +1,3 @@
+L_cosmo_1 = sum(i=1, N, M0 / masses[i]);
+K = N / L_cosmo_1;
+print("K = ", K);

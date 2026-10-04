@@ -1,0 +1,6 @@
+# Load GEMA_2.csv
+GEMA_2 = pd.read_csv('GEMA_2.csv')
+
+
+# Merge GEMA_2 and mangaHIall on 'mangaid'
+merged_data = pd.merge(GEMA_2, mangaHIall, on='mangaid', how='inner')  # or 'outer', depending on your needs

@@ -1,0 +1,5 @@
+  variance = 1.0;
+  sigma = sqrt(variance);
+}
+  ***   variable name expected: myfunc()=variance=1.0;sigma=sqrt(variance);
+  ***                                                 ^---------------------

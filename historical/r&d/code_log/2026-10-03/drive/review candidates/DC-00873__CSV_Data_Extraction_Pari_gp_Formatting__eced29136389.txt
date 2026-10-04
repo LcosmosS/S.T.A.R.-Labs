@@ -1,0 +1,7 @@
+for i in range(3):
+    plt.hist(logmass[groups == i], bins=50, density=True, alpha=0.6, label=f"Group {i}")
+    plt.legend()
+    plt.title(f"Logmass Distribution - Group {i}")
+   *     plt.show()
+   * Fix the plt.show() issue (due to a non-interactive backend) by adding plt.savefig(f"Group_{i}_logmass.png") instead, then inspect the saved plots for skewness, multi-modality, or outliers.
+   * Test Alternative Distributions: Use scipy.stats to fit other distributions (e.g., gamma, log-normal mixtures) to logmass:

@@ -1,0 +1,4 @@
+        with open("unique_curves.txt", "a") as f:
+            f.write(f"{-1706},{6320},{rank},{omega},{reg},{comoving_volume}\n")
+
+# Plot interweb with limited nodes per curve

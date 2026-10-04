@@ -1,0 +1,4 @@
+mean = sum(i=1, n, log_mass[i]) / n;
+variance = sum(i=1, n, (log_mass[i] - mean)^2) / (n - 1);
+sd = sqrt(variance);
+mu3 = sum(i=1, n, (log_mass[i] - mean)^3) / n;

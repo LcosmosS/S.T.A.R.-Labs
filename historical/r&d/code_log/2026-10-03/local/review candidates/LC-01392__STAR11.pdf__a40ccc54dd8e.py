@@ -1,0 +1,20 @@
+    mean_score = np.nanmean(scores)
+    if np.isnan(mean_score):
+        print(f"Cat Trial {trial.number} failed: scores = {scores}")
+    return mean_score if not np.isnan(mean_score) else -np.inf
+
+# Define models and studies
+=========================================================================================
+=====================================================================
+hgb = HistGradientBoostingRegressor(random_state=42, n_jobs=2)
+symbolic_reg = SymbolicRegressor(population_size=1000, generations=20, random_state=42, n_jobs=2)
+lgb_model = lgb.LGBMRegressor(random_state=42, verbose=-1)
+xgb_model = xgb.XGBRegressor(random_state=42)
+cat_model = CatBoostRegressor(random_seed=42, verbose=0)
+
+study_hgb = optuna.create_study(direction='maximize')
+study_lgb = optuna.create_study(direction='maximize')
+study_xgb = optuna.create_study(direction='maximize')
+study_cat = optuna.create_study(direction='maximize')
+
+print("Initiating *S.T.A.R. calculations...")

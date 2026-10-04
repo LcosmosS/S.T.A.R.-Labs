@@ -1,0 +1,44 @@
+df["L_cosmo_s1_metallicity"] = df["L_cosmo_s_1.0"] * df["OH_O3N2_cen"]
+features = base_features + [
+    "mass_metallicity", "dust_metallicity", "disp_mass_ratio",
+    "age_metallicity", "sqrt_Re_kpc", "log_mass", "BSD_likelihood",
+    "cosmo_rank", "L_cosmo_s_0.5", "L_cosmo_s_1.5", "L_cosmo_s_2.0",
+    "cosmo_rank_L", "cosmo_rank_mass", "L_cosmo_s1_mass",
+    "cosmo_rank_EW", "L_cosmo_s1_EW", "cosmo_rank_scaled", "L_cosmo_s1_scaled",
+    "cosmo_rank_L_mass", "L_cosmo_s1_metallicity",
+    "log_flux_Ha", "log_flux_Hb", "log_flux_OIII_5007", "log_flux_NII_6584",
+    "log_e_flux_Ha", "log_SFR_Ha_raw", "OH_O3N2_raw"
+]
+
+# Add color features if available
+if 'color_ug' in df.columns:
+    features.extend(["color_ug", "color_gr", "color_ri", "color_iz", "e_color_ug", "e_color_gr"])
+if 'color_JK' in df.columns:
+    features.extend(["color_JK", "e_color_JK"])
+
+X = df[features]
+y = df[target]
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Normalize features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Optuna optimization for Random Forest
+def objective_rf(trial):
+    params = {
+        'n_estimators': trial.suggest_int('n_estimators', 100, 500),
+        'max_depth': trial.suggest_int('max_depth', 5, 20),
+        'min_samples_split': trial.suggest_int('min_samples_split', 2, 10),
+        'random_state': 42,
+        'n_jobs': 2  # Use 2 CPU cores
+    }
+    model = RandomForestRegressor(**params)
+    cv = KFold(n_splits=5, shuffle=True, random_state=42)
+    scores = cross_val_score(model, X_train_scaled, y_train, cv=cv, scoring='r2', n_jobs=2)
+    return scores.mean()
+
+study_rf = optuna.create_study(direction='maximize')

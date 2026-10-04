@@ -1,0 +1,5 @@
+         plt.figure(figsize=(12,  8))          sns.violinplot(x='rank',  y='log_abs_virial_energy',  data=df_ranked,  
+order=tractable_ranks,
+ 
+palette='plasma')
+         plt.title("Hierarchical  Validation:  Virial  Energy  Distribution  by  Predicted  

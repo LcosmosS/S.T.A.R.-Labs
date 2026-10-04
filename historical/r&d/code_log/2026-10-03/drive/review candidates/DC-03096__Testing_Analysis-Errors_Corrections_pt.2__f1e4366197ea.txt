@@ -1,0 +1,9 @@
+print("Analytic rank: ", analytic_rank);
+print("Leading coefficient L^(r)(E, 1): ", leading_coeff);
+
+
+\\ Verify weak BSD
+if(alg_rank == analytic_rank,
+    print("Weak BSD holds: Algebraic rank = Analytic rank");
+,
+    print("Weak BSD fails: Algebraic rank != Analytic rank");

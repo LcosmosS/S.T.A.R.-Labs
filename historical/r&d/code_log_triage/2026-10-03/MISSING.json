@@ -1,0 +1,54 @@
+{
+  "named_archive": "code log.zip",
+  "status": "not_found_in_checked_inventories",
+  "checked_inventories": [
+    {
+      "inventory": "drive_root_inventory.json",
+      "inventory_sha256": "0fa332239d726c71f87cd8ce0d5b7c429b82e0ffca2166ea31b89667dc799b66",
+      "listed_records_checked": 291,
+      "named_zip_matches": []
+    },
+    {
+      "inventory": "drive_inventory.json",
+      "inventory_sha256": "6c08afc194ba8c72e7e8a1dc97007ccbeebbc72e40be27358264c17c84428df7",
+      "listed_records_checked": 288,
+      "named_zip_matches": []
+    },
+    {
+      "inventory": "local_inventory_raw.json",
+      "inventory_sha256": "531b6b9312bfaa7c745e9c6b23ad038c2d5526c8193251d165acc9df2703ce8f",
+      "listed_records_checked": 14223,
+      "named_zip_matches": []
+    },
+    {
+      "inventory": "native_recovery.json",
+      "inventory_sha256": "5b9b6bf4c4e3a0794908068c0dbda7460b86d87eecd22e9e3ba052c8c1c9fda7",
+      "listed_records_checked": 139,
+      "named_zip_matches": []
+    },
+    {
+      "inventory": "local_inventory.csv",
+      "inventory_sha256": "0ae85701829784fe235e10205d5eec7bfc209b407040bbd33f148f19f725ea6d",
+      "listed_records_checked": 14361,
+      "named_zip_matches": []
+    }
+  ],
+  "scope_limit": "These are recorded visible/accessibly listed Google Drive, kepler and OneDrive inventory snapshots, with dependency/cache/credentials exclusions. This is not a whole-account or current unlisted-content absence claim.",
+  "available_alternative": "C:\\Users\\pmqr7\\OneDrive\\code log",
+  "alternative_file_count": 12633,
+  "blocking": false,
+  "correction_sources_found": [
+    {
+      "native_path": "/home/kepler/Virgo.ipynb",
+      "source_sha256": "1f7cf8679cd1913a72940f6c785abb28cbad6e95cf09da8aecf4efd6f37174b4",
+      "bytes": 59552,
+      "preserved_repository_path": "historical/r&d/code_log_triage/2026-10-03/correction_sources/Virgo.ipynb"
+    },
+    {
+      "native_path": "/home/kepler/bsd_period_normalization_test.py",
+      "source_sha256": "41c1586e0749acac5647f16be1a69a242c201fd03ce50d8f27f661dc53b49ef8",
+      "bytes": 25132,
+      "preserved_repository_path": "historical/r&d/code_log_triage/2026-10-03/correction_sources/bsd_period_normalization_test.py"
+    }
+  ]
+}

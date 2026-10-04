@@ -1,0 +1,2 @@
+X = data.drop(columns=["SFR"])
+y = data["SFR"]

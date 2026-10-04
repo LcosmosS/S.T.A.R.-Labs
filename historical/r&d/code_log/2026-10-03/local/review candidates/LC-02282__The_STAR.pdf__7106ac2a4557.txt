@@ -1,0 +1,9 @@
+            df[morph] = 0.1
+        df['conf_prob'] = 0.5
+
+    if merged_df is None:
+        merged_df = df
+    else:
+        # Default merge keys
+        merge_keys = None
+        # Prioritize objra_y and objdec if both datasets have them

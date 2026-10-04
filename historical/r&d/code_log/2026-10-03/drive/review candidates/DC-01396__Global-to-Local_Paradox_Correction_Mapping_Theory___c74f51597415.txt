@@ -1,0 +1,11 @@
+if rank == 0:
+    color = 'blue'
+elif rank == 1:
+    color = 'green'
+elif rank == 2:
+    color = 'orange'
+else:
+    color = 'red'
+
+
+scale_factor = np.log(1 + regulator) * 0.3

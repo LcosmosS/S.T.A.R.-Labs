@@ -1,0 +1,6 @@
+        radius_m = chunk.loc[valid_data, 'radius_ly'] * 9.461e15
+        mass_kg = chunk.loc[valid_data, 'mass_sm'] * 1.989e30
+        volume_m3 = (4/3) * np.pi * (radius_m ** 3)
+        chunk.loc[valid_data, 'density_kg_m3'] = mass_kg / volume_m3
+
+        distance_mly = chunk['distance_mpc'] * 3.26156

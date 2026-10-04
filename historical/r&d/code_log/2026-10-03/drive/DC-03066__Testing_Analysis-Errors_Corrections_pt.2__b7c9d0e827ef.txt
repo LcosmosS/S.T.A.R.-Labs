@@ -1,0 +1,15 @@
+L = elllseries(E, 1); \\ Evaluate L(E, s) at s=1
+if(abs(L) < 1e-10,
+    L_deriv = elllseries(E, 1, 1); \\ First derivative L'(E, 1)
+    if(abs(L_deriv) < 1e-10,
+        L_deriv2 = elllseries(E, 1, 2); \\ Second derivative L''(E, 1)
+        if(abs(L_deriv2) < 1e-10,
+            analytic_rank = 3; leading_coeff = L_deriv2 / 2;
+        ,
+            analytic_rank = 2; leading_coeff = L_deriv2 / 2;
+        );
+    ,
+        analytic_rank = 1; leading_coeff = L_deriv;
+    );
+,
+    analytic_rank = 0; leading_coeff = L;

@@ -1,0 +1,1 @@
+if  Abs(Lval)  <  1e-10  then      Lderiv  :=  Derivative(L,  1);      print  "Analytic  rank:  1,  L'(1):",  Lderiv;  else      print  "Analytic  rank:  0,  L(1):",  Lval;  

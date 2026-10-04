@@ -1,0 +1,3 @@
+log_deltas = [x[8] for x in interweb_data]
+log_conds = [x[9] for x in interweb_data]
+sizes = [float(max(x[3] * 100, 1e-6)) for x in interweb_data] # Fix for plotting

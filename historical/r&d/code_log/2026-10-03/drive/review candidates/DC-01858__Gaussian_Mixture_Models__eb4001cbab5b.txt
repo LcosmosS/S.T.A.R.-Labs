@@ -1,0 +1,4 @@
+s = 1;
+L_cosmo_s = 1;
+for(k=0, 4, L_cosmo_s *= L_k(k, s));
+print("L_cosmo(", s, ") = ", L_cosmo_s);

@@ -1,0 +1,17 @@
+    results = {}
+    for bin_name in df['gen_type'].unique():
+        bin_df = df[df['gen_type'] == bin_name].copy()
+        if len(bin_df) < 20:
+            continue
+        X = bin_df[feature_cols].fillna(0)
+        y_type = bin_df.get('type', np.random.randint(0,2,len(bin_df)))
+        y_V = bin_df['V_comove']
+        y_rho = bin_df['rho_scale']
+        y_b = bin_df['b_target']
+        rf = RandomForestClassifier(random_state=42)
+        gb = GradientBoostingClassifier(random_state=42)
+        rf.fit(X, y_type); gb.fit(X, y_type)
+        clf_r2 = r2_score(y_type, rf.predict(X))
+        for target, name in zip([y_V, y_rho, y_b], ['V','rho','b']):
+            for model_cls, mname in zip([XGBRegressor, LGBMRegressor, CatBoostRegressor],
+                                        ['xgb','lgb','cat']):

@@ -1,0 +1,19 @@
+        pass
+    gc.collect()
+
+
+    for attempt in range(max_attempts):
+        try:
+            E_pari = pari.ellinit([0, 0, 0, a_scaled, b_scaled])
+            rank_info = E_pari.ellrank()
+            rank = int(rank_info[0])
+            log_print(f"Algebraic rank (via PARI/GP): {rank}")
+            selmer3_rank = rank
+            success = True
+            break
+        except Exception as e:
+            log_print(f"Rank computation failed on attempt {attempt + 1}: {e}")
+            if attempt == max_attempts - 1:
+                return (success, features, rank, leading_coeff, omega, reg, tamagawa, weak_bsd_holds,
+                        selmer3_rank, log_delta, log_cond, longitude, latitude, elevation, size,
+                        heegner_x, heegner_y, z, phi_adjusted, lambda_adjusted)

@@ -1,0 +1,10 @@
+for subpop in range(5):
+    masses = 10 ** df[df['subpopulation'] == subpop]['logmass']  # Convert logmass to mass
+    M0 = np.median(masses)
+    if M0 > 0:  # Ensure no division by zero
+        sum_M_over_M0 = np.sum(masses / M0)
+        sum_M0_over_M = np.sum(M0 / masses)
+        K = sum_M_over_M0 / sum_M0_over_M
+    else:
+        K = np.nan
+*     print(f"Subpopulation {subpop}: M0 = {M0:.2e}, K = {K:.4f}")

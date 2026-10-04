@@ -1,0 +1,1 @@
+         dbscan  =  DBSCAN(eps=0.5,  min_samples=5,  metric='nan_euclidean')          cluster_labels  =  dbscan.fit_predict(X_struct)          df.loc[df['generator_type']  ==  'Recursive',  'structure_cluster']  =  

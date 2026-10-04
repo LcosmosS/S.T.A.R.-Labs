@@ -1,0 +1,5 @@
+axis=1)
+             chunk[['coeff_a',  'coeff_b']]  =  pd.DataFrame(coeffs.tolist(),  
+index=chunk.index)
+             chunk['discriminant']  =  chunk.apply(lambda  row:  
+calculate_sagemath_discriminant(row['coeff_a'],

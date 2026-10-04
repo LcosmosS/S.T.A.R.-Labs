@@ -1,0 +1,3 @@
+rank_data = ellrank(E);
+alg_rank = rank_data[1];
+print("Algebraic rank: ", alg_rank);

@@ -1,0 +1,2 @@
+P_actual_norm = normalize_point(P_actual) if P_actual else None
+match = (P_actual_norm is not None and P_pred == P_actual_norm)

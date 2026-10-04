@@ -1,0 +1,2 @@
+valid_log_mass = select(x -> x > -9999, log_mass);
+N = #valid_log_mass;

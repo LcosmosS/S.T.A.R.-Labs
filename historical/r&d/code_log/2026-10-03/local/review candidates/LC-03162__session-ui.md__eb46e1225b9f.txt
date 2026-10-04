@@ -1,0 +1,20 @@
+import { useCurrentUser, useCurrentUserState } from "@/lib/auth/use-current-user";
+import { RedirectToSignIn, SignedIn, SignedOut, UserButton } from "@/lib/auth/gates";
+
+function Navbar() {
+  const user = useCurrentUser(); // display only — null may just mean "loading"
+  return (
+    <>
+      <span>{user?.displayName ?? "Guest"}</span>
+      <SignedOut><a href="/login">Sign in</a></SignedOut>
+      <SignedIn><UserButton /></SignedIn>
+    </>
+  );
+}
+
+function AccountPage() {
+  const { user, isPending } = useCurrentUserState();
+  if (isPending) return null;             // session still resolving
+  if (!user) return <RedirectToSignIn />; // client-side Navigate — not window.location
+  return <h1>Welcome, {user.displayName}</h1>;
+}

@@ -1,0 +1,3 @@
+# Plot 3: PySR symbolic overlay
+x = np.linspace(synth['scaled_b'].min(), synth['scaled_b'].max(), 100)
+y = 5.1695 - 1.0641 / (x + 0.22756) - x

@@ -1,0 +1,4 @@
+        kmeans = KMeans(n_clusters=5, random_state=42)
+        kmeans_labels = kmeans.fit_predict(X_struct)
+        df.loc[df['generator_type'] == 'Recursive', 'kmeans_cluster'] = kmeans_labels
+        print("KMeans Clusters:", df[df['generator_type'] ==

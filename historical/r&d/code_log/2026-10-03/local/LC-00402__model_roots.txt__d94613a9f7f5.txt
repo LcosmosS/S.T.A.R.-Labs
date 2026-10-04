@@ -1,0 +1,2 @@
+for col in ['logmass', 'z', 'dec', 'petrorad_r', 'sfr']: galaxy_data[col] = galaxy_data[col].fillna(galaxy_data[col].mean())
+if 'ra' in galaxy_data.columns and 'dec' in galaxy_data.columns: galaxy_data['environment'] = galaxy_data.groupby(['ra', 'dec'])['ra'].transform('size') else: galaxy_data['environment'] = 0

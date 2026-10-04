@@ -1,0 +1,4 @@
+with open('filtered_log_mass.txt', 'w') as f:
+    f.write('log_mass = [\n')
+    for val in filtered_log_mass:
+        f.write(f'{val:.18f},\n')

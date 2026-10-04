@@ -1,0 +1,30 @@
+    manifest_path = output / "corpus_manifest.json"
+    evidence_path = output / "page_evidence.jsonl"
+
+
+    manifest = {
+        "generator": "S.T.A.R. Document Generator v0.1",
+        "generated_utc": utc_now(),
+        "corpus": str(corpus),
+        "documents": [],
+    }
+
+
+    total_pages = 0
+
+
+    with evidence_path.open(
+        "w",
+        encoding="utf-8",
+    ) as evidence_file:
+
+
+        for document_number, pdf_path in enumerate(
+            docs,
+            start=1,
+        ):
+
+
+            print(
+                f"[{document_number}/{len(docs)}] "
+                f"Reading {pdf_path.name}"

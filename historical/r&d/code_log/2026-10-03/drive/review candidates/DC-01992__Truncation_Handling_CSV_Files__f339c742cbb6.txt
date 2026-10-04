@@ -1,0 +1,5 @@
+mean_logmass = sum(i=1, n, data[i]) / n;
+variance = sum(i=1, n, (data[i] - mean_logmass)^2) / (n - 1);
+std_dev = sqrt(variance);
+print("Mean logmass = ", mean_logmass);
+print("Standard deviation = ", std_dev);

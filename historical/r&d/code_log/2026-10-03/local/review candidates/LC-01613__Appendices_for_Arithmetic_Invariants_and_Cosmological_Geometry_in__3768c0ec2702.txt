@@ -1,0 +1,22 @@
+    # --- ROBUSTNESS FIX: Dynamic Binning ---
+    try:
+        # Bin redshift data
+        z_bins_raw = pd.qcut(df['z'], q=5, duplicates='drop')
+        num_z_bins = len(z_bins_raw.cat.categories)
+        z_labels = [f"Q{i+1}" for i in range(num_z_bins)]
+        df['redshift_bin'] = pd.qcut(df['z'], q=num_z_bins, labels=z_labels,
+duplicates='drop')
+
+        # Bin density data
+        density_bins_raw = pd.qcut(df['density_kg_m3'], q=5, duplicates='drop')
+        num_density_bins = len(density_bins_raw.cat.categories)
+        density_labels = [f"Q{i+1}" for i in range(num_density_bins)]
+        df['density_bin'] = pd.qcut(df['density_kg_m3'], q=num_density_bins,
+labels=density_labels, duplicates='drop')
+
+        binned_data = df.groupby(['redshift_bin', 'density_bin'],
+observed=False)['K_clipped'].mean().unstack()
+
+        plt.figure(figsize=(12, 8)); sns.heatmap(binned_data, annot=True, fmt=".2e",
+cmap="viridis")
+        plt.title("Bayesian Binning: Mean K by Redshift and Density Quantiles (Full

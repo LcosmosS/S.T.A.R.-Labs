@@ -1,0 +1,4 @@
+So, boundaries = [log_mass_sorted[1]];
+for (k=1, 4,
+  pos = floor((k/5)*n);
+  boundaries = concat(boundaries, log_mass_sorted[pos +1]);

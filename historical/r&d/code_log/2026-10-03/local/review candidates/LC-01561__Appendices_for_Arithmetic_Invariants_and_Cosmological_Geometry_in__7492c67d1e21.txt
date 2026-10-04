@@ -1,0 +1,14 @@
+    # 1. Ingest raw physical parameters from Table 1.
+    physical_data = {
+        "Virgo Cluster": {"mass": 1.5e15, "vel_disp": 750, "radius_mpc": 2.2},
+        "Andromeda": {"mass": 1.5e12, "vel_disp": 160, "radius_mpc": 0.3},
+        "Coma Cluster": {"mass": 2.0e15, "vel_disp": 978, "radius_mpc": 3.0},
+        "Perseus Cluster": {"mass": 2.5e15, "vel_disp": 1300, "radius_mpc": 3.5}
+    }
+
+    # 2. Define known data from the source results table.
+    benchmark_data = {
+        "Virgo Cluster": {"type": "Simple", "virial_imbalance": 2.64e24, "a": -1706,
+"b": 6320},
+        "Andromeda": {"type": "Simple", "virial_imbalance": 1.93e19, "a": -79},
+        "Coma Cluster": {"type": "Recursive", "virial_imbalance": 3.44e24, "a":

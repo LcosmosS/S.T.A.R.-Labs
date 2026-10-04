@@ -1,0 +1,4 @@
+mean_K = K_sum / num_sim;
+mean_kurtosis = kurtosis_sum / num_sim;
+print("Mean simulated K_theory: ", mean_K);
+print("Mean simulated Kurtosis: ", mean_kurtosis);

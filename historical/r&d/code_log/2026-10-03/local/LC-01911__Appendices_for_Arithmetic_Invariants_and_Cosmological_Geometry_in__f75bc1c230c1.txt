@@ -1,0 +1,4 @@
+     80  fig,  ax  =  plt.subplots(figsize=(10,  6))  
+--->  81  scatter  =  ax.scatter(X_test['flux_gr'],  y_pred,  c=X_test['EBV'],  cmap='viridis')  
+     82  ax.set_title(f'{regime.capitalize()}  Projection:  g/r  Flux  vs  Predicted  z')  
+     83  ax.set_xlabel('g/r  Flux  Ratio')  

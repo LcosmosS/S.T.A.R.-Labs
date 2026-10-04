@@ -1,0 +1,4 @@
+/__w/S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics/S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics/src/symbolic_regression/constrained_gp.py:53: RuntimeWarning: overflow encountered in exp
+  return np.exp(vals[0])
+/__w/S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics/S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics/src/symbolic_regression/law_discovery_manifold.py:38: RuntimeWarning: invalid value encountered in scalar subtract
+  df = abs(f_values[i] - f_values[j])

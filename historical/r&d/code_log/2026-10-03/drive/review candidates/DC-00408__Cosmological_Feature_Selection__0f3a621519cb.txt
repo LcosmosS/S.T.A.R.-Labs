@@ -1,0 +1,8 @@
+# Extinction correction and SFR calculation
+df['Ha_Hb_observed'] = df['flux_Ha'] / df['flux_Hb'] Ha_Hb_intrinsic = 2.86 k_Ha = 2.468 k_Hb = 3.634 df['A_Ha'] = 2.5 * np.log10(df['Ha_Hb_observed'] / Ha_Hb_intrinsic) * (k_Ha / (k_Hb - k_Ha)) df['flux_Ha_corr'] = df['flux_Ha'] * 10**(0.4 * df['A_Ha']) H0 = 70 # km/s/Mpc c = 3e5 # km/s df['DL'] = (c * df['specz'] / H0) * 3.0856e24 # cm df['L_Ha'] = df['flux_Ha_corr'] * 4 * np.pi * df['DL']**2 # erg/s df['log_SFR_Ha_raw'] = np.log10(df['L_Ha'] * 7.9e-42) # M_sun/yr
+# Metallicity via O3N2
+df['log_O3N2_raw'] = np.log10((df['flux_OIII_5007'] / df['flux_Hb']) / (df['flux_NII_6584'] / df['flux_Ha'])) df['OH_O3N2_raw'] = 8.533 - 0.214 * df['log_O3N2_raw']
+# Add raw fluxes as features
+df['log_flux_Ha'] = np.log10(df['flux_Ha'] + 1e-10) df['log_flux_Hb'] = np.log10(df['flux_Hb'] + 1e-10) df['log_flux_OIII_5007'] = np.log10(df['flux_OIII_5007'] + 1e-10) df['log_flux_NII_6584'] = np.log10(df['flux_NII_6584'] + 1e-10) df['log_e_flux_Ha'] = np.log10(df['e_flux_Ha'] + 1e-10)
+# Update features list
+features.extend(['log_flux_Ha', 'log_flux_Hb', 'log_flux_OIII_5007', 'log_flux_NII_6584', 'log_e_flux_Ha', 'log_SFR_Ha_raw', 'OH_O3N2_raw'])

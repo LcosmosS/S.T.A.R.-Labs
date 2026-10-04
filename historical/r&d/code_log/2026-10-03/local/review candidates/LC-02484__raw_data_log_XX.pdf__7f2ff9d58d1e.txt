@@ -1,0 +1,9 @@
+    return (QQ(num_x)/d_x, QQ(num_y)/d_y, 1), rho
+
+# ————————————————————————
+# 4. TEST CORPUS: Known Clusters
+# ————————————————————————
+clusters = [
+    # name, r (MLy), b (from curve), mass (M_sun), v_disp (km/s), r_virial (Mpc)
+    ("Virgo",      54,  6200, 1.5e15, 750, 2.2),
+    ("Coma",      321, 9980, 2.0e15, 978, 3.0),
