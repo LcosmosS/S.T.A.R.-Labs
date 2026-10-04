@@ -29,8 +29,10 @@ class SRPipeline:
 
     def prepare_data(self, x):
         x = np.asarray(x, dtype=float)
-        if x.ndim != 2 or x.shape[0] == 0:
-            raise ValueError("symbolic-regression input must be a non-empty 2D array")
+        if x.ndim != 2 or x.shape[0] == 0 or x.shape[1] == 0:
+            raise ValueError(
+                "symbolic-regression input must be a non-empty 2D array with features"
+            )
         if not np.all(np.isfinite(x)):
             raise ValueError("symbolic-regression input must be finite")
         scale = np.max(np.abs(x), axis=0)

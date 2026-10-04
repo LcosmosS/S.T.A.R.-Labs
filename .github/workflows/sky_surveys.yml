@@ -16,6 +16,9 @@ jobs:
     container:
       image: sagemath/sagemath:latest
       options: --user root
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - name: Checkout repository
