@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "experiment_id": "EXP-MAP-A01",
   "registry_bindings": {
-    "experiment": "ed619da1e17f6de6c0e2ac4460484ea9739010c15ebebdbf908e2ebca350fbe1",
-    "dataset": "8cd747a0cbd57bd63f1fe7b82087e5064f98c80e9238a4299949301dbd68293a",
+    "experiment": "f6d0b6a6cac32554216a6aef3c762c2f1a6b20cc699b9f127cfb34074fd143cd",
+    "dataset": "0e6cbe44404f36e27a029d5e10662802ad6980accc93603b7ddaa1b5170c8605",
     "provenance": "051578934af53b190605257f49da77ff83683638b12e9d176c74b7b8cc4a0aa1",
     "parameter": "e7dfec16360935d3d5b9c6f4b54f7099f8455d2a3617f55e64a344eaaacc4372",
     "null": "5e8cbc1393093df3f552d0e162a1325175057eb89cbad73912ff1a28ef29eac8"
@@ -80,10 +80,10 @@
       "clip": false,
       "conductor_max": "1e9",
       "delta_max": "1e30",
-      "latitude_scale_degrees": 180.0,
+      "latitude_scale_degrees": 180,
       "logarithm": "natural",
-      "longitude_scale_degrees": 360.0,
-      "rank_scale": 200.0,
+      "longitude_scale_degrees": 360,
+      "rank_scale": 200,
       "regulator_used": false
     },
     "protocol_version": "EXP-MAP-A01-prereg-v1"
