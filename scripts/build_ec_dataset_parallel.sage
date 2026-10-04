@@ -8,6 +8,12 @@ import traceback
 from joblib import Parallel, delayed
 from sage.all import EllipticCurve, pari, QQ
 
+from src.data.cremona_ecdata import (
+    CremonaDataError,
+    find_allcurves_chunk,
+    parse_allcurves_line,
+)
+
 # ----------------------------------------------------------------------
 # Paths
 # ----------------------------------------------------------------------
@@ -32,33 +38,42 @@ def init_worker():
 # ----------------------------------------------------------------------
 # Load from local submodules
 # ----------------------------------------------------------------------
+_CREMONA_CHUNK_CACHE = {}
+
+
+def _load_cremona_chunk(path):
+    key = os.path.abspath(path)
+    cached = _CREMONA_CHUNK_CACHE.get(key)
+    if cached is not None:
+        return cached
+
+    records = {}
+    with open(path, encoding="utf-8") as stream:
+        for line_number, line in enumerate(stream, start=1):
+            record = parse_allcurves_line(line, line_number=line_number)
+            records[record.label] = {
+                "ainvs": list(record.a_invariants),
+                "conductor": record.conductor,
+                "torsion": record.torsion_order,
+                "rank_ecdata": record.rank,
+            }
+    _CREMONA_CHUNK_CACHE[key] = records
+    return records
+
+
 def load_cremona(label):
-    """Load from Cremona ecdata format."""
+    """Load a curve from the actual ecdata/allcurves chunk layout."""
     import re
-    m = re.match(r"(\d+)([a-z]+)(\d+)", label)
-    if not m:
+
+    match = re.fullmatch(r"(\d+)([a-z]+)(\d+)", label)
+    if not match:
         return None
-    N, iso, num = m.groups()
-    path = os.path.join(ECDATA_ROOT, N, iso, label)
-    if not os.path.exists(path):
-        return None
-    data = {}
+    conductor = int(match.group(1))
     try:
-        with open(path) as f:
-            for line in f:
-                line = line.strip()
-                if line.startswith("a-invariants:"):
-                    parts = line.split(":")[1].strip().split()
-                    data["ainvs"] = [int(x) for x in parts]
-                elif line.startswith("conductor:"):
-                    data["conductor"] = int(line.split(":")[1])
-                elif line.startswith("torsion:"):
-                    data["torsion"] = int(line.split(":")[1])
-                elif line.startswith("tamagawa:"):
-                    data["tamagawa"] = int(line.split(":")[1])
-    except:
+        chunk = find_allcurves_chunk(ECDATA_ROOT, conductor)
+        return _load_cremona_chunk(chunk).get(label)
+    except (OSError, CremonaDataError):
         return None
-    return data if "ainvs" in data else None
 
 
 def load_lmfdb(label):

@@ -126,7 +126,24 @@ def validate(repo, overlay=None):
         current=rows(name)
         assert len(current)==len(snapshot['rows'])
         for original, row in zip(snapshot['rows'],current):
-            assert all(row[key]==original[key] for key in snapshot['fields']), f'original controlled ID/definition changed: {name}'
+            # Historical audit snapshots remain immutable. The operational
+            # experiment registry may make one explicit reviewed lifecycle
+            # transition for EXP-MAP-A01: Status planned -> preregistered.
+            # IDs, claims, dataset/parameter/null bindings, mode, priority and
+            # Historical_RandD must remain identical to the audit snapshot.
+            allowed_transition = (
+                name == 'experiment_registry_v0.2.csv'
+                and original.get('Experiment_ID') == 'EXP-MAP-A01'
+                and original.get('Status') == 'planned'
+                and row.get('Status') == 'preregistered'
+            )
+            protected = [
+                key for key in snapshot['fields']
+                if not (allowed_transition and key == 'Status')
+            ]
+            assert all(row[key]==original[key] for key in protected), f'original controlled ID/definition changed: {name}'
+            if name == 'experiment_registry_v0.2.csv' and original.get('Experiment_ID') == 'EXP-MAP-A01':
+                assert allowed_transition, 'EXP-MAP-A01 audit transition must be explicit planned -> preregistered'
         assert_no_support_promotion(current,name)
     datasets=rows('dataset_registry_v0.1.csv'); provenance=rows('data_provenance_registry_v0.1.csv'); assets=rows('audit_quarantine_dataset_status_v0.3.csv')
     ds_map={r['Dataset_ID']:r for r in datasets}; prov_map={r['Dataset_ID']:r for r in provenance}
@@ -148,7 +165,29 @@ def validate(repo, overlay=None):
         assert not controlled_input_eligible(dataset,prov)
     original_ids=set(ds_map)-{r['qualified_dataset_id'] for r in assets}
     assert len(original_ids)==8
-    for did in original_ids:
+
+    # The October 3 audit rows remain immutable historical snapshots, but a
+    # later reviewed remediation may advance an operational DATA-* record.
+    # EXP-MAP-A01-prereg-v1 is the first such remediation: it pins exact ecdata
+    # source bytes while deliberately leaving execution/support eligibility off.
+    prereg_manifest=load('preregistrations/EXP-MAP-A01/dataset_manifest.json')
+    remediated_id='DATA-ARITHMETIC'
+    assert remediated_id in original_ids
+    remediated_dataset=ds_map[remediated_id]
+    remediated_provenance=prov_map[remediated_id]
+    assert remediated_dataset['Status']=='locked'
+    assert remediated_dataset['Provenance_Status']=='verified'
+    assert remediated_dataset['Achieved_Evidence_Status']=='controlled'
+    assert not truth(remediated_dataset['Controlled_Execution_Eligible'])
+    assert not truth(remediated_dataset['Controlled_Support_Eligible'])
+    assert not truth(remediated_dataset['Physical_Support_Eligible'])
+    assert remediated_provenance['Provenance_Status']=='verified'
+    assert remediated_provenance['Evidence_Status']=='controlled'
+    assert prereg_manifest['artifact']['sha256'] in remediated_provenance['Integrity_Check']
+    assert prereg_manifest['source']['git_commit'] in remediated_provenance['Version_or_Release']
+    assert not controlled_input_eligible(remediated_dataset,remediated_provenance)
+
+    for did in original_ids-{remediated_id}:
         assert ds_map[did]['Status']=='planned' and prov_map[did]['Provenance_Status']=='unknown' and prov_map[did]['Evidence_Status']=='unknown'
         assert not controlled_input_eligible(ds_map[did],prov_map[did])
     controlled=rows('experiment_registry_v0.2.csv')
@@ -162,7 +201,7 @@ def validate(repo, overlay=None):
         assert row['Relationship']=='diagnostic_context_only_not_dataset_identity'
         assert row['Accepted_Quarantine_Input_Bindings']=='' and not truth(row['Canonical_Source_Identity_Verified'])
         assert set(ids(row['Related_Quarantine_Bindings'])).issubset(asset_ids)
-    print('Validated 51 claims, 25 definitions, 51 crosswalk records, 8 planned scopes and 37 quarantined artifacts; no support promotion.')
+    print('Validated 51 claims, 25 definitions, 51 crosswalk records, 7 audit-frozen planned scopes, 1 locked preregistered arithmetic scope and 37 quarantined artifacts; no support promotion.')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(); parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[1]); parser.add_argument('--overlay',type=Path)

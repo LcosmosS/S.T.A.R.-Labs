@@ -1,78 +1,68 @@
-import os
+"""Generate the deterministic CI Cremona label fixture from pinned ecdata allcurves."""
+
+from __future__ import annotations
+
+import argparse
+import csv
 import re
-import sys 
-
-# Path to repo root
-REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-ECDATA_ROOT = os.path.join(REPO_ROOT, "data", "ecdata")
-
-LABEL_RE = re.compile(r"(\d+)([a-z]+)(\d+)$")
+from pathlib import Path
 
 
-def extract_labels_from_ecdata():
-    """
-    Walk data/ecdata/<N>/<iso>/<label>
-    and collect all valid Cremona labels.
-    """
+LINE_RE = re.compile(
+    r"^(?P<conductor>\d+)\s+(?P<iso>[a-z]+)\s+(?P<number>\d+)\s+"
+    r"\[[^\]]+\]\s+\d+\s+\d+\s*$"
+)
+
+
+def representative_labels(source: Path, limit: int) -> list[str]:
     labels = []
-
-    # Check if directory exists and has content
-    if not os.path.isdir(ECDATA_ROOT):
-        print(f"ERROR: ECDATA_ROOT not found at: {ECDATA_ROOT}", file=sys.stderr)
-        return labels
-    
-    try:
-        for N in sorted(
-            os.listdir(ECDATA_ROOT), key=lambda x: int(x) if x.isdigit() else float('inf')
-        ):
-            N_path = os.path.join(ECDATA_ROOT, N)
-            if not os.path.isdir(N_path):
+    with source.open(encoding="utf-8") as stream:
+        for line_number, line in enumerate(stream, start=1):
+            match = LINE_RE.fullmatch(line.rstrip("\r\n"))
+            if match is None:
+                raise ValueError(f"malformed allcurves line {line_number}")
+            if int(match.group("number")) != 1:
                 continue
-
-            for iso in sorted(os.listdir(N_path)):
-                iso_path = os.path.join(N_path, iso)
-                if not os.path.isdir(iso_path):
-                    continue
-
-                for fname in sorted(os.listdir(iso_path)):
-                    # Expect filenames like "11a1", "37b2", etc.
-                    if LABEL_RE.match(fname):
-                        labels.append(fname)
-    except Exception as e:
-        print(f"ERROR: Failed to extract labels from ecdata: {e}", file=sys.stderr)
-        return []
-
+            labels.append(
+                f"{match.group('conductor')}{match.group('iso')}{match.group('number')}"
+            )
+            if len(labels) == limit:
+                break
+    if len(labels) != limit:
+        raise ValueError(f"requested {limit} labels, found only {len(labels)}")
     return labels
 
 
-def main():
-    import argparse
-    
-    parser = argparse.ArgumentParser(description='Generate Cremona subset')
-    parser.add_argument('--max-labels', type=int, default=1000, help='Maximum number of labels to generate')
-    args = parser.parse_args()
-    
-    labels = extract_labels_from_ecdata()
-    
-    if not labels:
-        print("ERROR: No labels found in ecdata directory", file=sys.stderr)
-        print(f"Checked path: {ECDATA_ROOT}", file=sys.stderr)
-        print(f"Path exists: {os.path.exists(ECDATA_ROOT)}", file=sys.stderr)
-        print(f"Is directory: {os.path.isdir(ECDATA_ROOT)}", file=sys.stderr)
-        if os.path.isdir(ECDATA_ROOT):
-            try:
-                print(f"Contents: {os.listdir(ECDATA_ROOT)}", file=sys.stderr)
-            except Exception as e:
-                print(f"Error listing contents: {e}", file=sys.stderr)
-        sys.exit(1)
-    
-    # Sort lexicographically for reproducibility
-    labels = sorted(labels)
-    
-    # Print first N labels (default 1000)
-    for L in labels[:args.max_labels]:
-        print(L)
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--source",
+        type=Path,
+        default=Path("data/ecdata/allcurves/allcurves.00000-09999"),
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path("data/raw/ci_subset.csv"),
+    )
+    parser.add_argument("--max-labels", type=int, default=800)
+    args = parser.parse_args(argv)
+
+    if args.max_labels <= 0:
+        raise SystemExit("--max-labels must be positive")
+    labels = representative_labels(args.source, args.max_labels)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with args.output.open("w", newline="", encoding="utf-8") as stream:
+        writer = csv.writer(stream, lineterminator="\n")
+        writer.writerow(["label"])
+        writer.writerows([[label] for label in labels])
+
+    print(
+        f"wrote {len(labels)} representative labels from {args.source} "
+        f"to {args.output}"
+    )
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
