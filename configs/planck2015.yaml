@@ -1,6 +1,10 @@
 model:
   H_expr: "H0*sqrt(Ωm*(1+z)**3 + ΩΛ + a*z + b*z**2)"
   param_names: ["H0", "Ωm", "ΩΛ", "a", "b"]
+  # Explicit software assumptions; not registered evidence.
+  fixed_params:
+    Ωb: 0.049
+    r_s: 147.05
 
 priors:
   H0: [70, 2]
@@ -20,8 +24,10 @@ datasets:
   planck: PLANCK_2015
   bao: DESI_BAO_DR1
   cc: COSMIC_CHRONOMETERS
+  sn: PANTHEON_PLUS_FULL
 
 mcmc:
+  seed: 0
   theta0: [70, 0.3, 0.7, 0, 0]
   nsteps: 8000
 

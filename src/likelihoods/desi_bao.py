@@ -1,72 +1,61 @@
-"""
-DESI BAO Likelihood
-===================
-
-Implements Gaussian likelihood for DESI BAO measurements:
-- D_M(z) / r_d
-- H(z) * r_d
-"""
+"""DESI BAO likelihood with strict dataset validation."""
 
 from __future__ import annotations
+
 import numpy as np
 import pandas as pd
 
 
 class DESIBAO:
     def __init__(self, bao_data, r_d=147.1):
-        """
-        bao_data can be:
-        - a dict (embedded data module)
-        - a CSV file path (legacy mode)
-        """
         if isinstance(bao_data, dict):
-            self.bao = bao_data
+            self.bao = {
+                "z": np.asarray(bao_data["z"], dtype=float),
+                "DM_over_rd": np.asarray(bao_data["DM_over_rd"], dtype=float),
+                "sigma_DM": np.asarray(bao_data["sigma_DM"], dtype=float),
+                "H_rd": np.asarray(bao_data["H_rd"], dtype=float),
+                "sigma_H": np.asarray(bao_data["sigma_H"], dtype=float),
+            }
+        elif isinstance(bao_data, pd.DataFrame):
+            self.bao = {
+                key: bao_data[key].to_numpy(dtype=float)
+                for key in ("z", "DM_over_rd", "sigma_DM", "H_rd", "sigma_H")
+            }
         else:
             df = pd.read_csv(bao_data)
             self.bao = {
-                "z": df["z"].tolist(),
-                "DM_over_rd": df["DM_over_rd"].tolist(),
-                "sigma_DM": df["sigma_DM"].tolist(),
-                "H_rd": df["H_rd"].tolist(),
-                "sigma_H": df["sigma_H"].tolist(),
+                key: df[key].to_numpy(dtype=float)
+                for key in ("z", "DM_over_rd", "sigma_DM", "H_rd", "sigma_H")
             }
 
-        self.r_d = r_d
+        lengths = {len(values) for values in self.bao.values()}
+        if lengths == {0}:
+            raise ValueError("DESI BAO dataset is empty")
+        if len(lengths) != 1:
+            raise ValueError("DESI BAO arrays must have equal lengths")
+        if not all(np.all(np.isfinite(values)) for values in self.bao.values()):
+            raise ValueError("DESI BAO dataset contains non-finite values")
+        if np.any(self.bao["sigma_DM"] <= 0) or np.any(self.bao["sigma_H"] <= 0):
+            raise ValueError("DESI BAO uncertainties must be positive")
+
+        self.r_d = float(r_d)
+        if not np.isfinite(self.r_d) or self.r_d <= 0:
+            raise ValueError("r_d must be finite and positive")
 
     def log_likelihood(self, model):
-        chi2 = 0.0
+        dm_model = np.asarray(model.DM(self.bao["z"]), dtype=float) / self.r_d
+        h_model = np.asarray(model.H(self.bao["z"]), dtype=float) * self.r_d
+        if dm_model.shape != self.bao["z"].shape or h_model.shape != self.bao["z"].shape:
+            raise ValueError("model BAO predictions have incorrect shape")
+        if not np.all(np.isfinite(dm_model)) or not np.all(np.isfinite(h_model)):
+            return -np.inf
 
-        # Embedded dict mode
-        if isinstance(self.bao, dict):
-            z_list = self.bao["z"]
-            DM_over_rd_list = self.bao["DM_over_rd"]
-            sigma_DM_list = self.bao["sigma_DM"]
-            H_rd_list = self.bao["H_rd"]
-            sigma_H_list = self.bao["sigma_H"]
+        chi2_dm = np.sum(
+            ((self.bao["DM_over_rd"] - dm_model) / self.bao["sigma_DM"]) ** 2
+        )
+        chi2_h = np.sum(((self.bao["H_rd"] - h_model) / self.bao["sigma_H"]) ** 2)
+        chi2 = float(chi2_dm + chi2_h)
+        return -0.5 * chi2 if np.isfinite(chi2) else -np.inf
 
-            for z, DM_obs, sDM, H_obs, sH in zip(
-                z_list, DM_over_rd_list, sigma_DM_list, H_rd_list, sigma_H_list
-            ):
-                DM_model = model.DM(z) / self.r_d
-                H_model = model.H(z) * self.r_d
-
-                chi2 += ((DM_obs - DM_model) / sDM) ** 2
-                chi2 += ((H_obs - H_model) / sH) ** 2
-
-            return -0.5 * chi2
-
-        # Legacy CSV mode (DataFrame)
-        for _, row in self.bao.iterrows():
-            z = row["z"]
-            DM_obs = row["DM_over_rd"]
-            sDM = row["sigma_DM"]
-            H_obs = row["H_rd"]
-            sH = row["sigma_H"]
-
-            DM_model = model.DM(z) / self.r_d
-            H_model = model.H(z) * self.r_d
-
-            chi2 += ((DM_obs - DM_model) / sDM) ** 2
-            chi2 += ((H_obs - H_model) / sH) ** 2
-
-        return -0.5 * chi2
+    def __call__(self, model):
+        return self.log_likelihood(model)

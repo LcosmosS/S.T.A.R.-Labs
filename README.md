@@ -65,23 +65,23 @@ The charter establishes the project's scientific posture and repository controls
 
 The S.T.A.R. Labs research program currently spans several related components.
 
-### **[ACSC](The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf)** — Arithmetic–Cosmic Structure Conjecture
+### **[ACSC](docs/The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf)** — Arithmetic–Cosmic Structure Conjecture
 
 ACSC investigates whether computable arithmetic invariants can be mapped into geometric/topological representations that can be compared with cosmic data.
 
 The repository treats the mapping problem as an empirical question. Candidate mappings and their null models are registered separately, including BSD-independent alternatives where specified.
 
-### **[ECC](The_Entropy_Cohomology_Conjecture_(ECC).pdf)** — Entropy Cohomology Conjecture
+### **[ECC](docs/The_Entropy_Cohomology_Conjecture_(ECC).pdf)** — Entropy Cohomology Conjecture
 
 ECC develops a symbolic entropy/cohomology framework intended to operationalize information-flow and field-like structures computationally.
 
 Its registry status is a hypothesis requiring defined observables and falsifiable tests.
 
-### **[GLMPCT](_Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography_.pdf)** — Global-to-Local Mapping Paradox Correction Theory
+### **[GLMPCT](docs/_Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography_.pdf)** — Global-to-Local Mapping Paradox Correction Theory
 
 GLMPCT addresses the proposed relationship between global structure and local observations in the project's mapping framework. Its constructions are part of the broader research program and remain subject to explicit mathematical and empirical validation.
 
-### **[RTCH](Relativistic_Thermodynamic_Cohomology.pdf)**
+### **[RTCH](docs/Relativistic_Thermodynamic_Cohomology.pdf)**
 
 RTCH is a proposed thermodynamic/geometric coupling framework. The registered RTCH program includes a **standard-physics recovery limit** and numerical tests intended to determine whether the proposed construction can reproduce appropriate conventional limits.
 
@@ -147,9 +147,9 @@ The **Data Provenance Registry is part of the current repository control layer**
 
 ---
 
-## Controlled notebooks
+## Controlled software smoke notebooks
 
-The canonical controlled notebook suite is defined directly by:
+The canonical controlled software smoke suite is defined directly by:
 
 - [.github/workflows/notebooks.yml](.github/workflows/notebooks.yml)
 
@@ -165,7 +165,7 @@ The current suite contains exactly these nine notebooks:
 8. [07_sfr_prediction.ipynb](notebooks/07_sfr_prediction.ipynb)
 9. [08_robustness.ipynb](notebooks/08_robustness.ipynb)
 
-The controlled-notebook workflow executes this exact set. Controlled notebooks are expected to be deterministic where practical, to fail rather than silently substitute missing scientific dependencies, and to distinguish computational fixtures from empirical evidence.
+The workflow executes this exact set as software smoke validation. These notebooks are deterministic fixtures where practical; they are not executions of registered experiments unless a future run also resolves an Experiment_ID, Dataset_ID, Parameter_Set_ID, Null_ID, code revision, environment identity, and result manifest.
 
 Exploratory and historical notebooks are retained separately under:
 
@@ -183,58 +183,37 @@ The repository contains both the current control layer and a substantial body of
 ```text
 S.T.A.R.-Labs/
 ├── charter/
-│   └── RESEARCH_CHARTER_v0.2.md
-│
 ├── registry/
-│   ├── claim_evidence_v0.2.csv
-│   ├── claim_experiment_crosswalk_v0.2.csv
-│   ├── experiment_registry_v0.2.csv
-│   ├── dataset_registry_v0.1.csv
-│   ├── data_provenance_registry_v0.1.csv
-│   ├── parameter_registry_v0.1.csv
-│   ├── null_registry_v0.1.csv
-│   └── r&d_artifact_registry_v0.1.csv
-│
 ├── src/
-│   ├── acsc/                  # ACSC projection and arithmetic geometry
-│   ├── analysis/              # Analysis/documentation utilities
-│   ├── blender/               # Visualization and mapping utilities
-│   ├── cli/                   # Command-line interfaces
-│   ├── data/                  # Data and survey integration
-│   ├── entropy/               # ECC entropy/cohomology machinery
-│   ├── likelihoods/           # Cosmological likelihood components
-│   ├── mappings/              # Mapping and projection machinery
-│   ├── nulls/                 # Null-model utilities
-│   ├── physics/               # Cosmological/physical model components
-│   ├── pipeline/              # Analysis and inference pipelines
-│   ├── statistics/            # Statistical utilities
-│   ├── symbolic_regression/   # Symbolic law discovery
-│   ├── tda/                   # Persistent homology and TDA
-│   ├── tests/                 # Survey/integration tests
-│   ├── utils/                 # Astronomical/general utilities
-│   └── visualization/         # Figures and plotting
-│
+│   ├── acsc/
+│   ├── analysis/
+│   ├── blender/
+│   ├── cli/
+│   ├── data/
+│   ├── entropy/
+│   ├── likelihoods/
+│   ├── physics/
+│   ├── pipeline/
+│   ├── symbolic_regression/
+│   ├── tda/
+│   ├── tests/
+│   ├── utils/
+│   └── visualization/
 ├── experiments/
-│   ├── priority_a/
-│   └── priority_b/
-│
-├── notebooks/                 # Canonical controlled notebook suite
-│
+│   └── reconstruction_candidates/
+├── notebooks/
 ├── historical/
-│   ├── r&d/                  # Retained exploratory research
-│   ├── legacy_notebooks/     # Legacy notebooks
-│   ├── legacy_scripts/       # Legacy scripts
-│   └── legacy_results/      # Historical outputs
-│
-├── tests/                    # Automated software tests
-├── docs/                     # Project documentation and research documents
-├── RTCH_E1/                  # RTCH experimental implementation
-├── tools/                    # Supporting conversion/utility tools
-│
-├── .github/workflows/        # CI, controlled notebooks, survey tests
+│   ├── r&d/
+│   └── legacy_notebooks/
+├── tests/
+├── docs/
+├── RTCH_E1/
+├── tools/
+├── web_tool/
+├── .github/workflows/
+├── docker/Dockerfile
 ├── pyproject.toml
-├── requirements.txt
-└── README.md
+└── requirements.txt
 ```
 
 The repository also contains manuscript-level documents, legacy material, survey integrations, RTCH experimental files, and other research artifacts that are intentionally not represented as controlled evidence merely because they are versioned.
@@ -264,6 +243,15 @@ The presence of an implementation does not imply that the corresponding scientif
 
 ## Reproducibility and CI
 
+### Scientific runtime policy
+
+Controlled scientific execution is fail-fast. Invalid or missing physical inputs are not replaced with typical cosmological values, non-finite likelihoods are not converted into finite penalties, and stochastic utilities require declared seeds. Historical exploratory behavior remains preserved in the repository history rather than being silently carried into controlled execution.
+
+Arithmetic projection retains the historical sample-relative normalization for backward-compatible exploratory use, but controlled mapping experiments should provide fixed normalization bounds from their registered parameter set so the coordinate assigned to an arithmetic object does not change when unrelated records are added to the sample.
+
+Scheduled Google Docs acquisition is capture-only: CI downloads and hashes source text into a workflow artifact for review. It does not commit generated provenance material back into the research source of record.
+
+
 The repository uses automated checks to protect the research control layer.
 
 The main CI workflow:
@@ -274,7 +262,7 @@ The main CI workflow:
 - produces CI metadata as an artifact;
 - does not automatically commit generated research results.
 
-The controlled-notebook workflow separately executes the nine canonical notebooks in a SageMath environment with the registered scientific dependencies.
+The controlled software smoke workflow separately executes the nine canonical notebooks in a SageMath environment. Passing that workflow establishes software operability, not scientific support.
 
 Relevant workflows:
 
@@ -294,7 +282,7 @@ pytest -q
 
 The project currently targets **Python 3.12 or newer**.
 
-For the controlled notebooks, the authoritative execution environment is defined by the workflow and currently uses the SageMath container.
+For notebook smoke execution, the workflow plus requirements.txt define the CI environment. For the reusable container image, docker/Dockerfile is canonical; the root Dockerfile is only a compatibility entry point.
 
 ---
 

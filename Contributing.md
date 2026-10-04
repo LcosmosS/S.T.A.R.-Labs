@@ -145,3 +145,10 @@ All contributors will be acknowledged in the AUTHORS.md file and in relevant pub
 - *For bugs or feature requests, open an Issue.*
 
 **Thank you for contributing to the advancement of mathematical and theoretical physics.**
+
+
+## Large archival and provenance changes
+
+Large immutable research imports should be separated from executable logic changes. Prefer distinct commits or pull requests for (1) archival ingestion, (2) registry/status reconciliation, (3) quarantine operations, and (4) code or CI changes. This keeps scientific history intact while ensuring GitHub and automated reviewers can inspect the logic that changes execution or evidence eligibility.
+
+Generated source captures from scheduled CI must be uploaded as workflow artifacts or proposed through an explicit reviewed change; CI should not directly rewrite the research source of record.

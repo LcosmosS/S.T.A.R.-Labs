@@ -30,4 +30,6 @@ jobs:
           context: .
           file: docker/Dockerfile
           push: true
-          tags: ghcr.io/lcosmoss/star-sage:latest
+          tags: |
+            ghcr.io/lcosmoss/star-sage:latest
+            ghcr.io/lcosmoss/star-sage:${{ github.sha }}

@@ -16,6 +16,7 @@ dependencies = [
   "pandas>=2.2.0,<3.0",
   "scipy>=1.11.0,<2.0",
   "sympy>=1.12",
+  "PyYAML>=6.0,<7.0",
   "corner>=2.2.1"
 ]
 

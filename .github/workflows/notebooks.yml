@@ -1,11 +1,18 @@
-name: Controlled Notebooks
+name: Controlled Software Smoke Notebooks
 
 on:
   workflow_dispatch:
   push:
-    branches:
-      - "restructure/charter-registry-ci-v2"
+    branches: [ main ]
+    paths:
+      - "notebooks/**"
+      - "src/**"
+      - "registry/**"
+      - "requirements.txt"
+      - "pyproject.toml"
+      - ".github/workflows/notebooks.yml"
   pull_request:
+    branches: [ main ]
     paths:
       - "notebooks/**"
       - "src/**"
@@ -38,7 +45,7 @@ jobs:
           sage -python -m pip install nbconvert nbclient ipykernel
           sage -python -m pip install -e . --no-deps
           echo "PYTHONPATH=$GITHUB_WORKSPACE:$GITHUB_WORKSPACE/src" >> "$GITHUB_ENV"
-      - name: Execute controlled notebooks
+      - name: Execute controlled smoke notebooks
         shell: bash
         run: |
           set -euo pipefail
@@ -55,7 +62,10 @@ jobs:
           "
           for nb in $expected; do
             test -s "$nb"
-            sage -python -m jupyter nbconvert --to notebook --execute "$nb"               --output "/tmp/$(basename "$nb")"               --ExecutePreprocessor.timeout=300               --ExecutePreprocessor.kernel_name=python3
+            sage -python -m jupyter nbconvert --to notebook --execute "$nb" \
+              --output "/tmp/$(basename "$nb")" \
+              --ExecutePreprocessor.timeout=300 \
+              --ExecutePreprocessor.kernel_name=python3
           done
           sage -python - <<'PY'
           from pathlib import Path
@@ -71,6 +81,6 @@ jobs:
               "08_robustness.ipynb",
           }
           actual = {p.name for p in Path("notebooks").glob("*.ipynb")}
-          assert actual == expected, f"controlled notebook set mismatch: {sorted(actual ^ expected)}"
+          assert actual == expected, f"controlled smoke notebook set mismatch: {sorted(actual ^ expected)}"
           PY
-          echo "executed all canonical controlled notebooks"
+          echo "executed all canonical controlled software smoke notebooks"
