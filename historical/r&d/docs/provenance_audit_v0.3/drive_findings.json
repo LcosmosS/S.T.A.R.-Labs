@@ -1,0 +1,138 @@
+{
+  "audit_date": "2026-10-03",
+  "findings": [
+    {
+      "finding_id": "E-DRV-001",
+      "title": "K convergence and unstable small-sample values are historical theoretical/simulation reports",
+      "confidence": "Certain",
+      "statement": "The Cosmological L-function source describes a log-normal expectation argument and reports K=0.01176 for N=9 and Ksub=0.00322 for N=5. These are retained as theoretical/historical and negative/diagnostic provenance; this audit did not rerun the simulations or establish a BSD/cosmological physical correspondence.",
+      "claim_ids": [
+        "MATH-K001",
+        "MATH-K002",
+        "MATH-K003",
+        "COSMO-L001"
+      ],
+      "experiment_ids": [
+        "EXP-K001",
+        "EXP-K002"
+      ],
+      "evidence_provenance": [
+        "THEORETICAL",
+        "SIMULATION",
+        "HISTORICAL MODEL",
+        "NEGATIVE/NULL"
+      ],
+      "sources": [
+        {
+          "drive_id": "1lzJvyyl_WSAGDe--IdU8LhOupC3fU8qLG6fzcFbSJSY",
+          "title": "Cosmological_L-function+Galaxy_Mass_Distribution",
+          "url": "https://docs.google.com/document/d/1lzJvyyl_WSAGDe--IdU8LhOupC3fU8qLG6fzcFbSJSY/edit",
+          "locator": "lines 86-91, 116-122",
+          "snapshot_text_sha256": "e056655477defaaf2eaa4cec28f4a3d564ec408fd6f333bb1cae353d995383f3",
+          "digest_type": "SHA256 of connector-readable UTF-8 text snapshot, not canonical provider binary or revision digest",
+          "snapshot_file": "1lzJvyyl_WSAGDe--IdU8LhOupC3fU8qLG6fzcFbSJSY.txt"
+        }
+      ],
+      "registry_action": "Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation."
+    },
+    {
+      "finding_id": "E-DRV-002",
+      "title": "Drive SFR source contains preprocessing before the split in inspected script variants",
+      "confidence": "Certain",
+      "statement": "The SFR Prediction Model Refinement snapshot contains an imputer fit_transform at line 140 before train_test_split at line 161, and other whole-data feature construction variants. This is a static validation-design concern for those variants; execution of that exact variant and the magnitude of any performance effect were not established.",
+      "claim_ids": [
+        "SFR-A001",
+        "SFR-E001",
+        "SFR-A003",
+        "COSMO-L002",
+        "CTRL-A002"
+      ],
+      "experiment_ids": [
+        "EXP-CTRL-A03",
+        "EXP-SFR-A01",
+        "EXP-SFR-A03"
+      ],
+      "evidence_provenance": [
+        "HISTORICAL MODEL",
+        "EXPLORATORY"
+      ],
+      "sources": [
+        {
+          "drive_id": "1bzrY4bg5_Vi3RucO7NIIkPtYpI8GptmqIRtP_WF_qaw",
+          "title": "SFR_Prediction_Model_Refinement",
+          "url": "https://docs.google.com/document/d/1bzrY4bg5_Vi3RucO7NIIkPtYpI8GptmqIRtP_WF_qaw/edit",
+          "locator": "lines 117-166, 413-424",
+          "snapshot_text_sha256": "d2d83ffc304678df0813d76491dc8442789f0c831f47f6d120029cdcf41ac2a3",
+          "digest_type": "SHA256 of connector-readable UTF-8 text snapshot, not canonical provider binary or revision digest",
+          "snapshot_file": "1bzrY4bg5_Vi3RucO7NIIkPtYpI8GptmqIRtP_WF_qaw.txt"
+        }
+      ],
+      "registry_action": "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance."
+    },
+    {
+      "finding_id": "E-DRV-003",
+      "title": "Five-fold validation document does not itself establish independent validation",
+      "confidence": "Certain",
+      "statement": "The 5 Fold Validation document contains preprocessing/derived-statistic code and prose describing cross-validation as robustness. A readable document or a stated five-fold procedure is not a linked independent dataset execution; the inspected material does not satisfy the charter full data-code-parameters-null-results chain by itself.",
+      "claim_ids": [
+        "SFR-A001",
+        "COSMO-L001",
+        "COSMO-L002",
+        "CTRL-A002"
+      ],
+      "experiment_ids": [
+        "EXP-L001",
+        "EXP-SFR-A01",
+        "EXP-CTRL-A03"
+      ],
+      "evidence_provenance": [
+        "HISTORICAL MODEL",
+        "EXPLORATORY"
+      ],
+      "sources": [
+        {
+          "drive_id": "1qSkMYPbRGytMD4qEB-llHcBt_V3cXb4nAQs7JtAo96U",
+          "title": "5 Fold Validation",
+          "url": "https://docs.google.com/document/d/1qSkMYPbRGytMD4qEB-llHcBt_V3cXb4nAQs7JtAo96U/edit",
+          "locator": "lines 1-48",
+          "snapshot_text_sha256": "5056614627b541bc35432235a1636b9d87afd8e4c9642c3f335c56d62013ee36",
+          "digest_type": "SHA256 of connector-readable UTF-8 text snapshot, not canonical provider binary or revision digest",
+          "snapshot_file": "1qSkMYPbRGytMD4qEB-llHcBt_V3cXb4nAQs7JtAo96U.txt"
+        }
+      ],
+      "registry_action": "Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test."
+    },
+    {
+      "finding_id": "E-DRV-004",
+      "title": "Drive raw data log mixes code proposals and conversational interpretations",
+      "confidence": "Certain",
+      "statement": "The raw data log includes research interpretations, script variants and conversational requests to run future steps. These establish documentary provenance, not authenticated executions. Source directions were treated as source text and were not followed.",
+      "claim_ids": [
+        "CORE-001",
+        "DATA-M002",
+        "ECC-001"
+      ],
+      "experiment_ids": [
+        "EXP-DATA-A02",
+        "EXP-ECC-B01"
+      ],
+      "evidence_provenance": [
+        "EXPLORATORY",
+        "UNVERIFIED"
+      ],
+      "sources": [
+        {
+          "drive_id": "1ZVWuuwAS8zRrEsLIYNNSFNuZRGjUWdHbl4WSxpFVreo",
+          "title": "raw data log",
+          "url": "https://docs.google.com/document/d/1ZVWuuwAS8zRrEsLIYNNSFNuZRGjUWdHbl4WSxpFVreo/edit",
+          "locator": "lines 11-15, 48-187, 2438-2472",
+          "snapshot_text_sha256": "ccfc95874403c889504493591f95f618ba69ec3421e433c6eb2fbd9fee19c27d",
+          "digest_type": "SHA256 of connector-readable UTF-8 text snapshot, not canonical provider binary or revision digest",
+          "snapshot_file": "1ZVWuuwAS8zRrEsLIYNNSFNuZRGjUWdHbl4WSxpFVreo.txt"
+        }
+      ],
+      "registry_action": "Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims."
+    }
+  ],
+  "coverage": "All 288 readable document snapshots inventoried and scanned for code; these four documentary findings are targeted reviews, not independent verification of every statement."
+}

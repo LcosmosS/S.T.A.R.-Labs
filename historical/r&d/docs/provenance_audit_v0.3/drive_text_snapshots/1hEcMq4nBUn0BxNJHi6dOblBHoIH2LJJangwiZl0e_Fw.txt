@@ -1,0 +1,1532 @@
+﻿S.T.A.R.
+Claim → Evidence → Experiment Crosswalk
+Purpose
+This crosswalk connects the v0.2 Claim/Evidence Registry to the existing S.T.A.R. research and development archive.
+It answers four questions for every active claim:
+1. What existing R&D evidence can be used now?
+2. What evidence requires reconstruction or validation before use?
+3. What experiment formally tests the claim?
+4. Is the next step reconstruction, controlled re-analysis, or an entirely new experiment?
+The crosswalk deliberately distinguishes:
+[
+\boxed{\text{Existing Evidence}}
+\neq
+\boxed{\text{Validated Evidence}}
+]
+Existing R&D can therefore be scientifically useful while remaining exploratory, historical, or reconstruction-required.
+________________
+
+
+1. Evidence-State Legend
+Code
+	Evidence state
+	Meaning
+	U
+	Usable R&D Evidence
+	Existing artifact can enter the evidence chain as historical, theoretical, computational, or pilot evidence
+	R
+	Reconstruction Required
+	Existing result is potentially valuable but methodology/data/code must be reconstructed before controlled use
+	N
+	New Experiment Required
+	Existing R&D does not adequately test the claim
+	C
+	Control
+	Existing material can provide a baseline/null/control
+	D
+	Derivation Audit
+	Mathematical derivation exists but requires formal verification
+	H
+	Historical Only
+	Preserved for provenance; not evidence for current claim
+	X
+	Negative/Diagnostic
+	Existing result identifies instability, limitation, or contradictory behavior
+	These states may coexist.
+For example:
+[
+\boxed{U+R}
+]
+means useful historical evidence exists, but reconstruction is required before promotion to controlled evidence.
+________________
+
+
+2. Overall Crosswalk
+Claim
+	Existing R&D Evidence
+	State
+	Formal Experiment
+	Next Action
+	CORE-001
+	Multiple mapping/topology/model documents
+	U + R
+	EXP-CORE-A01
+	Reconstruction + new controlled test
+	RANK-001
+	Rank/mapping theory + historical mapping work
+	U + N
+	EXP-RANK-A01
+	New experiment
+	RANK-002
+	Persistent-homology methodology + mapping framework
+	U + N
+	EXP-RANK-A02
+	New experiment
+	RANK-003
+	Historical rank/environment hypothesis
+	H
+	EXP-RANK-A03
+	New experiment
+	MAP-001
+	Alternative-mapping document
+	U
+	EXP-MAP-A01
+	Controlled comparison
+	MAP-002
+	Historical (\Phi) implementations
+	U + R
+	EXP-MAP-A01
+	Reconstruction
+	MAP-003
+	Historical (z=200r) work
+	U + R
+	EXP-MAP-A02
+	Parameter sweep
+	MAP-004
+	Criteria for Alternative Mappings
+	U
+	EXP-MAP-A01
+	Formalize test
+	MAP-005
+	MCJ/PTD/FT alternatives
+	U
+	EXP-MAP-A01
+	New controlled comparison
+	ARITH-001
+	Fibonacci/Lucas implementations
+	U + H
+	EXP-MAP-A03
+	New control experiment
+	TOPO-001
+	TDA code/methodology + historical distance results
+	U + R
+	EXP-TOPO-A01
+	Reconstruction
+	TOPO-002
+	Void/topology framework
+	H
+	EXP-TOPO-A02
+	New experiment
+	TOPO-003
+	Connected-component methodology
+	U
+	EXP-TOPO-A03
+	New experiment
+	MATH-K001
+	Validation of BSDCT.pdf + simulations
+	U + R
+	EXP-K001
+	Mathematical reconstruction
+	MATH-K002
+	(K\approx0.998108) simulations
+	U
+	EXP-K001
+	Reproduce
+	MATH-K003
+	Conflicting historical K values
+	U + X
+	EXP-K002
+	Stability study
+	COSMO-L001
+	L-cosmo(s).py and related scripts
+	U + R
+	EXP-L001
+	Leakage-controlled reconstruction
+	COSMO-L002
+	Historical SFR/L-cosmo models
+	H + R
+	EXP-SFR-A01
+	New controlled test
+	COSMO-R001
+	cosmo_rank implementations
+	U + H
+	CTRL-COSMO-001
+	Rename/reconstruct
+	SFR-A001
+	Historical RF/GB/SHAP models
+	U + R
+	EXP-SFR-A01
+	New controlled test
+	SFR-A002
+	Historical feature/model work
+	H
+	EXP-SFR-A02
+	New experiment
+	SFR-E001
+	Historical outlier results
+	U
+	EXP-SFR-A03
+	Reproduce
+	SFR-A003
+	Existing outlier analysis
+	U
+	EXP-SFR-A03
+	Pre-register
+	CTRL-RF001
+	model5.py
+	U + C
+	EXP-CTRL-A01
+	Reproduce
+	CTRL-A001
+	No adequate completed permutation control identified
+	N
+	EXP-CTRL-A02
+	New experiment
+	CTRL-A002
+	Leakage concerns identified in scripts
+	X
+	EXP-CTRL-A03
+	Mandatory reconstruction
+	DATA-M001
+	merged_sdss_hi.csv + KDTree workflow
+	U
+	EXP-DATA-A01
+	Reproduce matching
+	DATA-M002
+	Extensive cross-survey datasets
+	U
+	DATA-PROV-001
+	Formalize provenance
+	RTCH-M001
+	RTCH manuscript/action
+	U + D
+	EXP-RTCH-B01
+	Derivation audit
+	RTCH-M002
+	Closed-pullback construction
+	U + D
+	EXP-RTCH-B01
+	Formal proof check
+	RTCH-H001
+	Candidate coupling equations
+	U
+	EXP-RTCH-B02
+	New physical test
+	RTCH-H002
+	Trace-coupling derivation
+	U + D
+	EXP-RTCH-B03
+	Derivation + test
+	RTCH-H003
+	Point-particle action/equation
+	U + D
+	EXP-RTCH-B02
+	Constraint analysis
+	RTCH-H004
+	Unified-matter construction
+	U
+	EXP-RTCH-B01
+	Formal consistency test
+	FIELD-001
+	Arithmetic-topography formulation
+	U
+	EXP-FIELD-B01
+	Formalize
+	FIELD-002
+	No controlled physical evidence
+	N
+	EXP-FIELD-B02
+	New experiment
+	FIELD-003
+	Symbolic-field proposal
+	H
+	EXP-FIELD-B03
+	New theoretical construction
+	ECC-001
+	ECC manuscript
+	U + D
+	EXP-ECC-B01
+	Formal derivation
+	ECC-002
+	Closed/non-exact form construction
+	U + D
+	EXP-ECC-B01
+	Mathematical audit
+	ECC-003
+	Proposed entropy-energy architecture
+	H
+	EXP-ECC-B02
+	New theory/limit test
+	ENERGY-001
+	Conceptual mass-energy proposals
+	H
+	EXP-ENERGY-B01
+	New derivation
+	COSMO-E001
+	Redshift/topology framework
+	H
+	EXP-COSMO-B01
+	New longitudinal experiment
+	COSMO-E002
+	No direct evidence
+	N
+	EXP-COSMO-B02
+	Downstream only
+	________________
+
+
+3. CORE-001 — Arithmetic–Cosmic Structural Correspondence
+Claim
+Arithmetic invariants may map into geometric/topological structures producing statistically nontrivial correspondence with independent astronomical data.
+Existing Evidence
+The archive contains:
+* Criteria_for_Alternative_Mappings_Φ.pdf
+* The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf
+* _Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography_.pdf
+* historical mapping scripts;
+* TDA/persistent-homology development;
+* astronomical datasets;
+* historical correspondence calculations.
+Evidence State
+U + R
+The existence of the mathematical construction and historical computational work is usable as provenance.
+The historical numerical correspondence results require reconstruction.
+Experiment
+EXP-CORE-A01 — Arithmetic/Cosmic Independent Correspondence
+Pipeline:
+[
+E
+\rightarrow I(E)
+\rightarrow \Phi(E)
+\rightarrow \mathcal H_{\rm arith}
+\rightarrow D_{\rm arith}
+\rightarrow D_{\rm cosmic}.
+]
+Required Controls
+* arithmetic permutation;
+* alternative invariant;
+* alternative mapping;
+* spatial randomization;
+* astrophysical baseline.
+Decision
+Reconstruction + genuinely new controlled experiment.
+________________
+
+
+4. RANK-001 — Rank/Environment Correspondence
+Existing Evidence
+Historical S.T.A.R. documents explicitly propose rank/environment relationships.
+Historical mapping work provides candidate rank-based coordinates.
+Evidence State
+U as hypothesis provenance.
+There is not yet sufficient controlled evidence establishing the relationship.
+Experiment
+EXP-RANK-A01 — Rank/Environment Association
+Test:
+[
+P(r_E\mid\text{environment})
+]
+against invariant and permutation controls.
+Primary Variables
+* elliptic-curve rank;
+* environment class;
+* density;
+* morphology;
+* cluster/filament/void classification.
+Status
+N — New experiment required.
+________________
+
+
+5. RANK-002 — Rank/Topological Complexity
+Existing Evidence
+The archive contains:
+* persistent-homology methodology;
+* arithmetic mapping constructions;
+* cosmic-structure topology discussions;
+* TDA computational development.
+Evidence State
+U + N
+The methodological foundation is usable, but the core rank/topology experiment is not established by the existing archive.
+Experiment
+EXP-RANK-A02 — Rank-Weighted Persistent Homology
+Compare:
+[
+D_{\rm arith}^{(r)}
+]
+against observed cosmic topology.
+Use:
+[
+\beta_0,\beta_1,\beta_2
+]
+plus persistence distances.
+Status
+New controlled experiment required.
+________________
+
+
+6. RANK-003 — Rank-Stratified Cosmic Structure
+Historical rank classes such as:
+[
+r=0,1,2,3
+]
+were associated with increasingly complex cosmic environments.
+Evidence State
+H — historical hypothesis.
+Experiment
+EXP-RANK-A03 — Rank-Stratified Environment Test
+Pre-register rank strata before examining cosmic outcomes.
+Status
+New experiment.
+________________
+
+
+7. MAP-001 — Arithmetic Projection
+Existing Evidence
+Strongest current documentary support is:
+Criteria_for_Alternative_Mappings_Φ.pdf.
+It defines:
+[
+\Phi(E)=
+(\log|\Delta|,\log N,\alpha r).
+]
+Evidence State
+U
+The mapping itself is an existing mathematical/model construction.
+Experiment
+EXP-MAP-A01 — Mapping Family Comparison
+Test (\Phi) against alternative mappings.
+Status
+Existing construction usable; controlled comparison required.
+________________
+
+
+8. MAP-002 — Extended Projection
+Historical work uses:
+(\phi_E,\theta_E,z_E,s_E).
+]
+Evidence
+Existing scripts and theoretical documents.
+State
+U + R
+Experiment
+EXP-MAP-A01
+Reconstruct the exact historical transformation and then test it against alternatives.
+Status
+Reconstruction required.
+________________
+
+
+9. MAP-003 — (z=200r)
+Historical formulation:
+[
+z=200r.
+]
+Existing Evidence
+Multiple historical mapping documents/scripts.
+State
+U + R
+The existence of the mapping is established.
+Its physical justification is not.
+Experiment
+EXP-MAP-A02 — Rank Scaling Sensitivity
+Test:
+[
+z=\lambda_r r
+]
+over a pre-registered range of (\lambda_r).
+Compare (200) against alternative values without selecting the value based on test-set performance.
+Status
+New controlled parameter experiment.
+________________
+
+
+10. MAP-004 / MAP-005 — Alternative Mappings
+Existing Evidence
+Criteria_for_Alternative_Mappings_Φ.pdf explicitly supports:
+* no strict bijection requirement;
+* equivalence classes;
+* MCJ;
+* PTD;
+* FT;
+* alternative mapping families.
+State
+U
+This is one of the strongest areas of existing documentary support.
+Experiment
+EXP-MAP-A01
+Required Outcome
+Determine whether correspondence is:
+1. mapping-specific;
+2. invariant-specific;
+3. generic to flexible transformations.
+Status
+Ready for formal experimentalization.
+________________
+
+
+11. ARITH-001 — Fibonacci/Lucas Generator Family
+Existing Evidence
+Historical mapping implementations use Fibonacci/Lucas structures.
+State
+U + H
+The computational construction exists.
+Physical significance is unestablished.
+Experiment
+EXP-MAP-A03 — Arithmetic Generator Control
+Compare:
+[
+\text{Fibonacci/Lucas}
+]
+against:
+[
+\text{primes},
+\quad
+\text{random recurrences},
+\quad
+\text{matched integer sequences}.
+]
+Status
+New experiment required.
+________________
+
+
+12. TOPO-001 — Persistent-Homology Correspondence
+Existing Evidence
+R&D includes TDA methodology and historical Wasserstein-distance claims.
+Historical threshold:
+[
+W_2<10^{-2}.
+]
+State
+U + R
+The methodology is usable.
+The historical threshold is not accepted as a universal criterion.
+Experiment
+EXP-TOPO-A01 — Null-Calibrated Topological Correspondence
+Build the empirical null distribution of Wasserstein/bottleneck distances.
+Status
+Reconstruction + controlled experiment.
+________________
+
+
+13. TOPO-002 — Void Structure
+Existing Evidence
+Theoretical framework connects topology to void structure.
+State
+H / H
+There is insufficient controlled empirical evidence.
+Experiment
+EXP-TOPO-A02 — Arithmetic/Voids Test
+Compare arithmetic-derived (\beta_2) structure with independently identified voids.
+Status
+New experiment.
+________________
+
+
+14. TOPO-003 — Connected Components
+Existing Evidence
+Persistent homology provides (\beta_0).
+State
+U methodological evidence.
+Experiment
+EXP-TOPO-A03 — Connected-Component Test
+Compare:
+[
+\beta_0^{\rm arith}
+]
+with observed component/cluster structure.
+Status
+New controlled experiment.
+________________
+
+
+15. MATH-K001 — (K_{\rm theory}\to1)
+Existing Evidence
+Validation of BSDCT.pdf contains:
+\frac{\sum_i(M_i/M_0)}
+{\sum_i(M_0/M_i)}
+]
+and the log-normal argument.
+Simulations used:
+[
+N=500,\qquad
+\mu=9.7843,\qquad
+\sigma=0.3645.
+]
+State
+U + R
+The mathematical idea is usable.
+The exact proof and simulation pipeline should be reconstructed.
+Experiment
+EXP-K001 — Log-Normal Reciprocal-Normalization Test
+Status
+Reconstruct and independently reproduce.
+________________
+
+
+16. MATH-K002 — Simulation (K\approx0.998108)
+Existing Evidence
+Historical simulations report:
+[
+K\approx0.998108.
+]
+State
+U as historical simulation evidence.
+Experiment
+EXP-K001
+Required Test
+Reproduce the simulation independently.
+Status
+Reproduction required.
+________________
+
+
+17. MATH-K003 — K Instability
+Historical R&D also reports:
+[
+K\approx0.01176
+]
+for one analysis and approximately:
+[
+K\approx0.00322
+]
+for a subsample.
+State
+U + X
+This is important negative/diagnostic evidence.
+Experiment
+EXP-K002 — K Sensitivity and Stability
+Investigate:
+* sample size;
+* distribution;
+* filtering;
+* redshift;
+* mass definition;
+* normalization;
+* outliers.
+Status
+High-value reconstruction experiment.
+________________
+
+
+18. COSMO-L001 — (L_{\rm cosmo}(s))
+Existing Evidence
+L-cosmo(s).py and related scripts implement:
+\sum_i
+\left(\frac{M_0}{M_i}\right)^s.
+]
+They also construct:
+* mass-dependent quantities;
+* redshift bins;
+* morphology-derived variables;
+* SFR targets;
+* RF/GB models;
+* SHAP analyses.
+State
+U + R
+This is a substantial existing development line.
+Critical Problem
+Some derived quantities appear to be constructed before train/test splitting.
+Therefore historical model performance cannot automatically be promoted to controlled evidence.
+Experiment
+EXP-L001 — Leakage-Controlled (L_{\rm cosmo}) Validation
+Status
+Reconstruct first.
+________________
+
+
+19. COSMO-L002 — (L_{\rm cosmo}) and SFR
+Existing Evidence
+Historical SFR scripts use (L_{\rm cosmo})-related variables.
+State
+H + R
+Experiment
+EXP-SFR-A01
+Comparison
+[
+X_{\rm astro}
+]
+versus
+[
+X_{\rm astro}+X_{L_{\rm cosmo}}.
+]
+Status
+New controlled experiment after reconstruction.
+________________
+
+
+20. COSMO-R001 — cosmo_rank
+Historical scripts construct cosmo_rank from morphology/redshift variables.
+Evidence State
+U + H
+Important Registry Action
+Rename this quantity so that it cannot be confused with elliptic-curve rank.
+Recommended:
+[
+R_{\rm cosmo}^{\rm feat}.
+]
+Experiment
+CTRL-COSMO-001 — Composite-Feature Ablation
+Test whether the composite feature adds information beyond its constituent variables.
+Status
+Reconstruction/control.
+________________
+
+
+21. SFR-A001 — Arithmetic Incremental Prediction
+Existing Evidence
+Substantial SFR ML development exists:
+* RF;
+* GB;
+* SHAP;
+* Optuna;
+* cross-validation;
+* feature interactions;
+* Pipe3D/MaNGA/SDSS datasets.
+Historical performance includes approximately:
+[
+R^2_{\rm RF}=0.8455
+]
+and
+[
+R^2_{\rm GB}=0.8476.
+]
+State
+U + R
+These establish an astrophysical ML development baseline.
+They do not establish arithmetic predictive power.
+Experiment
+EXP-SFR-A01
+Compare:
+[
+X_{\rm astro}
+]
+against:
+[
+X_{\rm astro}+X_{\rm arith}.
+]
+Primary Endpoint
+[
+\Delta R^2_{\rm OOS}.
+]
+Status
+New controlled experiment required.
+________________
+
+
+22. SFR-A002 — Arithmetic-Only SFR
+Existing Evidence
+No adequate controlled arithmetic-only result has been identified.
+State
+N
+Experiment
+EXP-SFR-A02
+[
+Y=f(X_{\rm arith}).
+]
+Compare against null and astrophysical baseline.
+Status
+Entirely new experiment.
+________________
+
+
+23. SFR-E001 — Extreme-SFR Behavior
+Historical results distinguish:
+* full sample;
+* outlier population;
+* non-outlier population.
+State
+U
+This is directly usable as historical empirical/model evidence.
+Experiment
+EXP-SFR-A03
+Status
+Reproduction required.
+________________
+
+
+24. CTRL-RF001 — Random Feature Baseline
+Existing Evidence
+model5.py uses randomly selected features.
+State
+U + C
+Experiment
+EXP-CTRL-A01
+Reproduce with locked random seeds and identical evaluation design.
+Purpose
+Determine how much apparent performance can arise from model flexibility alone.
+Status
+Ready for formal control reconstruction.
+________________
+
+
+25. CTRL-A001 — Arithmetic Permutation
+Existing Evidence
+No adequate completed permutation experiment was identified in the audit.
+State
+N
+Experiment
+EXP-CTRL-A02
+Permute arithmetic assignments while preserving:
+* marginal distributions;
+* sample size;
+* missingness where appropriate.
+Status
+Entirely new experiment.
+________________
+
+
+26. CTRL-A002 — Leakage-Controlled Reconstruction
+Existing Evidence
+The audit identified possible leakage in:
+* normalization;
+* redshift binning;
+* (L_{\rm cosmo});
+* cosmo_rank;
+* interaction construction.
+State
+X — diagnostic evidence.
+Experiment
+EXP-CTRL-A03 — Leakage Audit
+Required Procedure
+Rebuild preprocessing within folds.
+Status
+Mandatory before promotion of historical ML results.
+________________
+
+
+27. DATA-M001 — Two-Arcsecond Matching
+Existing Evidence
+merged_sdss_hi.csv was produced through coordinate matching using KDTree and approximately:
+[
+2''
+]
+matching tolerance.
+arcsec_separation was retained.
+State
+U
+Experiment
+EXP-DATA-A01 — Cross-Survey Matching Reproduction
+Test matching sensitivity to:
+[
+1'',2'',3'',5''
+]
+and inspect false-match/duplicate behavior.
+Status
+Reproduction/validation.
+________________
+
+
+28. DATA-M002 — Multi-Survey Infrastructure
+Existing Evidence
+The archive contains substantial:
+* SDSS;
+* MaNGA;
+* Pipe3D;
+* HI;
+* Galaxy Zoo;
+* stellar-mass;
+* environment;
+* 2MASS;
+* UKIDSS;
+* VizieR
+data resources.
+State
+U
+Experiment
+DATA-PROV-001 — Dataset Lineage Audit
+Required Output
+[
+D_{\rm raw}
+\rightarrow
+D_{\rm matched}
+\rightarrow
+D_{\rm analysis}
+\rightarrow
+D_{\rm model}
+\rightarrow
+D_{\rm test}.
+]
+Status
+Ready for formal registry construction.
+________________
+
+
+29. RTCH-M001 — Variational RTCH Construction
+Existing Evidence
+The RTCH manuscript contains:
+* proposed action;
+* fields;
+* matter coupling;
+* field equations;
+* point-particle dynamics;
+* perfect-fluid dynamics;
+* topological sector;
+* observational tests;
+* falsification framework.
+State
+U + D
+The proposed mathematical architecture exists.
+Experiment
+EXP-RTCH-B01 — RTCH Mathematical Consistency Audit
+Verify:
+* variation with respect to (g_{\mu\nu});
+* variation with respect to (\phi);
+* variation with respect to (Y);
+* B-field equations;
+* boundary terms;
+* conservation laws;
+* dimensions;
+* limiting cases.
+Status
+Derivation audit required.
+________________
+
+
+30. RTCH-M002 — Closed Pullback
+Existing Evidence
+RTCH defines:
+[
+F_Q=\Phi^*\omega
+]
+with
+[
+d_{\mathcal T}\omega=0.
+]
+Therefore:
+[
+dF_Q=0.
+]
+State
+U + D
+Experiment
+EXP-RTCH-B01
+Status
+Formal proof/derivation audit.
+This is among the claims closest to mathematical verification because it concerns the stated differential-geometric construction rather than an empirical cosmological assertion.
+________________
+
+
+31. RTCH-H001 — Topological Coupling
+Existing Evidence
+Candidate coupling exists in the RTCH framework.
+State
+U as theoretical construction.
+No observational validation currently established.
+Experiment
+EXP-RTCH-B02 — Fifth-Force/Topological Coupling Constraints
+Status
+New physical experiment/constraint analysis.
+________________
+
+
+32. RTCH-H002 — Radiation Trace
+Existing Evidence
+RTCH derives:
+[
+\bar T=-\epsilon+3p.
+]
+For
+[
+p=\epsilon/3,
+]
+therefore:
+[
+\bar T=0.
+]
+State
+U + D
+Experiment
+EXP-RTCH-B03
+Verify the result from the complete action and examine its physical implications.
+Status
+Derivation audit + physical consistency test.
+________________
+
+
+33. RTCH-H003 — Fifth-Force Acceleration
+Existing RTCH formulation:
+[
+S_p=-mc\int A,ds
+]
+leading to:
+-c^2h^{\mu\nu}\nabla_\nu\ln A.
+]
+State
+U + D
+Experiment
+EXP-RTCH-B02
+Compare predicted deviations with established gravitational/Equivalence Principle constraints.
+Status
+New physical constraint experiment.
+________________
+
+
+34. FIELD-001 — Arithmetic Topography
+Existing Evidence
+RTCH/ACSC architecture proposes:
+f(I_1,\ldots,I_n)
+]
+and
+-\nabla h_{\rm arith}.
+]
+State
+U
+As a mathematical candidate construction.
+Experiment
+EXP-FIELD-B01 — Arithmetic Topography Construction
+First determine whether the field can be defined consistently and reproducibly.
+Status
+Formalization required.
+________________
+
+
+35. FIELD-002 — Arithmetic Field as Gravity
+Existing Evidence
+Conceptual proposals exist.
+State
+N
+No controlled physical evidence identified.
+Experiment
+EXP-FIELD-B02 — Gravitational Field Comparison
+Compare arithmetic field predictions against:
+* density;
+* lensing;
+* dynamics;
+* peculiar velocities.
+Status
+Entirely new physical experiment.
+________________
+
+
+36. FIELD-003 — Arithmetic Tensor
+Existing Evidence
+Historical ACSC material proposes symbolic field equations.
+State
+H
+Experiment
+EXP-FIELD-B03
+Construct a mathematically consistent tensor theory before attempting physical comparison.
+Status
+New theoretical development.
+________________
+
+
+37. ECC-001 — Entropy/Cohomology Architecture
+Existing Evidence
+The_Entropy_Cohomology_Conjecture_(ECC).pdf.
+State
+U + D
+The conceptual and mathematical architecture exists.
+Experiment
+EXP-ECC-B01
+Formal derivation and cohomological consistency audit.
+Status
+Reconstruction/derivation.
+________________
+
+
+38. ECC-002 — Closed Non-Exact Requirement
+Existing Evidence
+The revised ECC framework uses:
+[
+d\omega=0,
+\qquad
+[\omega]\neq0.
+]
+State
+U + D
+Experiment
+EXP-ECC-B01
+Status
+Mathematical verification.
+________________
+
+
+39. ECC-003 — Entropy-Energy Relation
+Existing Evidence
+Conceptual proposals exist.
+State
+H / H
+Experiment
+EXP-ECC-B02
+Required:
+[
+\text{derivation}
+\rightarrow
+\text{dimensional analysis}
+\rightarrow
+\text{known limit}
+\rightarrow
+\text{conservation}
+\rightarrow
+\text{novel prediction}.
+]
+Status
+Entirely new theoretical/experimental program.
+________________
+
+
+40. ENERGY-001 — Generalized Mass-Energy Relation
+Existing Evidence
+Historical theoretical proposals.
+State
+H
+Experiment
+EXP-ENERGY-B01
+Require:
+[
+E_{\rm STAR}
+\longrightarrow
+mc^2
+]
+in the appropriate known limit.
+Status
+New theoretical construction.
+________________
+
+
+41. COSMO-E001 — Redshift Evolution
+Existing Evidence
+The archive contains:
+* redshift-dependent (L_{\rm cosmo});
+* redshift bins;
+* cosmological mapping ideas;
+* persistent-homology framework.
+State
+U + H
+Experiment
+EXP-COSMO-B01 — Redshift-Resolved Arithmetic Topology
+Compare topology across redshift bins.
+Status
+New controlled longitudinal experiment.
+________________
+
+
+42. COSMO-E002 — Hubble–Planck Tension
+Existing Evidence
+Theoretical motivation exists.
+State
+N
+There is no adequate direct evidence connecting the current S.T.A.R. framework to the tension.
+Experiment
+EXP-COSMO-B02
+Only activate after the lower-level arithmetic/topological/dynamical claims have demonstrated sufficient empirical support.
+Status
+Downstream / deferred.
+________________
+
+
+43. Evidence Maturity Matrix
+The audit allows the current R&D to be grouped into four broad categories.
+Category A — Already Usable as R&D Evidence
+These artifacts can immediately populate the evidence registry, provided they are labeled correctly:
+* alternative mapping construction;
+* historical (\Phi) definitions;
+* RTCH mathematical architecture;
+* ECC mathematical architecture;
+* (L_{\rm cosmo}) implementation;
+* SFR model baselines;
+* random-feature model;
+* historical extreme-SFR results;
+* cross-survey matching workflow;
+* existing datasets;
+* historical contradictory (K) results.
+These establish research provenance and candidate constructions, not final scientific conclusions.
+________________
+
+
+44. Category B — Valuable but Requires Reconstruction
+The highest-priority reconstruction targets are:
+B1 — Historical (K)
+Reconstruct:
+[
+K_{\rm theory}
+]
+from the original simulation assumptions.
+B2 — (L_{\rm cosmo})
+Rebuild the feature-generation process fold-by-fold.
+B3 — Historical SFR models
+Reproduce historical RF/GB results with locked datasets and leakage control.
+B4 — Historical topological distances
+Reconstruct the exact point clouds, normalization, filtration, and persistence calculations.
+B5 — Historical (z=200r)
+Reproduce the mapping independently and test sensitivity to (\lambda_r).
+B6 — Historical (\Phi)
+Reconstruct exact arithmetic-to-coordinate transformations.
+B7 — cosmo_rank
+Separate morphology/redshift composite information from true arithmetic rank.
+________________
+
+
+45. Category C — Requires Entirely New Experiments
+The following claims are not adequately tested by the existing R&D:
+1. rank → cosmic environment;
+2. rank → topology;
+3. arithmetic-only SFR prediction;
+4. arithmetic incremental SFR information;
+5. arithmetic permutation null;
+6. Fibonacci/Lucas versus control sequences;
+7. arithmetic field → gravity;
+8. RTCH → fifth-force observations;
+9. entropy/cohomology → energy;
+10. arithmetic topology → cosmic evolution.
+These should not be “validated” by reinterpreting historical results.
+They require registered experiments.
+________________
+
+
+46. Highest-Priority Reconstruction Queue
+The recommended reconstruction order is:
+R-001
+Leakage Audit
+All historical ML results.
+R-002
+SFR Baseline Reconstruction
+Reproduce conventional RF/GB performance.
+R-003
+(L_{\rm cosmo}) Reconstruction
+Rebuild without leakage.
+R-004
+Arithmetic Feature Reconstruction
+Separate genuine arithmetic variables from engineered morphology/redshift variables.
+R-005
+K Reconstruction
+Reproduce mathematical/statistical result.
+R-006
+Mapping Reconstruction
+Reproduce (\Phi), (z=200r), MCJ/PTD/FT.
+R-007
+Topological Reconstruction
+Reproduce historical persistence calculations.
+________________
+
+
+47. Highest-Priority New Experiments
+After the reconstruction queue:
+A-001
+EXP-CTRL-A02 — Arithmetic Permutation Control
+This is essential because it establishes whether apparent arithmetic signal survives destruction of object-level association.
+A-002
+EXP-SFR-A01 — Incremental Arithmetic SFR
+This directly tests the project's SFR objective.
+A-003
+EXP-RANK-A01 — Rank/Environment
+This directly tests the primary arithmetic/cosmic-structure hypothesis.
+A-004
+EXP-RANK-A02 — Rank/Topology
+This moves the test from ordinary statistics into the intended TDA framework.
+A-005
+EXP-MAP-A01 — Mapping Family Comparison
+This tests whether the result depends on a particular hand-selected mapping.
+________________
+
+
+48. Critical Dependency Graph
+The experiments should not be treated as independent.
+The current dependency structure is:
+[
+\boxed{
+\text{Data Provenance}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Leakage / Matching Validation}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Astrophysical Baselines}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Arithmetic Feature Reconstruction}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Permutation / Null Controls}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{SFR + Rank Statistical Tests}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Topological Tests}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Cross-Dataset Replication}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{RTCH / Field / Energy Extensions}
+}
+]
+This ordering prevents higher-level physical theories from being used to justify lower-level empirical claims.
+________________
+
+
+49. Claim Readiness Matrix
+Readiness
+	Claims
+	Ready to document
+	MAP-001, MAP-004, DATA-M001, DATA-M002, RTCH-M002, ECC-002
+	Ready for reconstruction
+	MATH-K001, MATH-K002, COSMO-L001, MAP-002, MAP-003, TOPO-001, SFR-E001, CTRL-RF001
+	Ready for controlled testing
+	SFR-A001, RANK-001, RANK-002, MAP-005, ARITH-001
+	Requires new theory/experiment
+	SFR-A002, FIELD-002, FIELD-003, ECC-003, ENERGY-001, COSMO-E001
+	Deferred/downstream
+	COSMO-E002
+	Historical only unless reconstructed
+	HIST-001 through HIST-008
+	________________
+
+
+50. Evidence Promotion Rules
+An existing R&D artifact may be promoted from historical/exploratory evidence only when:
+Mathematical
+[
+\text{derivation}
+\rightarrow
+\text{independent verification}.
+]
+Computational
+[
+\text{original code}
+\rightarrow
+\text{reproduction}
+\rightarrow
+\text{independent implementation}.
+]
+Statistical
+[
+\text{training result}
+\rightarrow
+\text{locked test}
+\rightarrow
+\text{null comparison}
+\rightarrow
+\text{replication}.
+]
+Physical
+[
+\text{mathematical consistency}
+\rightarrow
+\text{known limits}
+\rightarrow
+\text{existing constraints}
+\rightarrow
+\text{novel prediction}
+\rightarrow
+\text{independent observation}.
+]
+________________
+
+
+51. What the R&D Archive Has Already Achieved
+The archive is considerably more valuable than a simple collection of preliminary experiments.
+It already provides four major components of the S.T.A.R. research infrastructure:
+1. Mathematical Candidate Layer
+[
+E\rightarrow I(E)\rightarrow\Phi(E)
+]
+is substantially developed.
+2. Computational Candidate Layer
+There are working implementations of:
+* mappings;
+* SFR models;
+* (L_{\rm cosmo});
+* feature engineering;
+* SHAP;
+* statistical calculations;
+* data matching.
+3. Astronomical Data Layer
+The project possesses substantial multi-survey data infrastructure.
+4. Theoretical Extension Layer
+RTCH/ECC provide candidate mathematical frameworks for the later physical-theory program.
+What is still missing is the controlled bridge:
+[
+\boxed{
+\text{candidate construction}
+\rightarrow
+\text{null-calibrated independent experiment}
+}
+]
+________________
+
+
+52. Current Evidence Bottleneck
+The most important conclusion from the crosswalk is that the principal bottleneck is not lack of research material.
+The bottleneck is:
+[
+\boxed{
+\text{reconstruction + controls + independent validation}
+}
+]
+The R&D archive contains enough material to populate a substantial Claim/Evidence Registry.
+It does not yet justify promoting the central cosmological claims to established evidence.
+________________
+
+
+53. Recommended S.T.A.R. Evidence Architecture
+The resulting research architecture should now be:
+[
+\boxed{\text{Charter v0.2}}
+]
+↓
+[
+\boxed{\text{Claim/Evidence Registry v0.2}}
+]
+↓
+[
+\boxed{\text{Data Provenance Registry}}
+]
+↓
+[
+\boxed{\text{Parameter Registry}}
+]
+↓
+[
+\boxed{\text{Mapping Registry}}
+]
+↓
+[
+\boxed{\text{Experiment Registry}}
+]
+↓
+[
+\boxed{\text{Results Registry}}
+]
+↓
+[
+\boxed{\text{Replication Registry}}
+]
+with the Claim → Evidence → Experiment relationship represented as:
+[
+\boxed{
+C_i
+\longrightarrow
+E_{ij}
+\longrightarrow
+X_k
+\longrightarrow
+R_k
+\longrightarrow
+V_i
+}
+]
+where:
+* (C_i) = claim;
+* (E_{ij}) = evidence item;
+* (X_k) = registered experiment;
+* (R_k) = experimental result;
+* (V_i) = updated evidence/validation state.
+________________
+
+
+54. Immediate Action Set
+The crosswalk therefore reduces the next phase of S.T.A.R. to five concrete workstreams:
+WORKSTREAM 1 — Reconstruct
+[
+K,\quad L_{\rm cosmo},\quad
+\Phi,\quad
+z=200r,\quad
+\text{historical TDA}.
+]
+WORKSTREAM 2 — Clean
+Establish:
+* dataset lineage;
+* matching parameters;
+* leakage controls;
+* object-level train/test separation;
+* fixed preprocessing.
+WORKSTREAM 3 — Establish Controls
+Implement:
+[
+\text{permutation}
++
+\text{random-feature}
++
+\text{alternative invariant}
++
+\text{alternative mapping}.
+]
+WORKSTREAM 4 — Run Priority-A Tests
+Especially:
+[
+\text{rank/environment}
+]
+[
+\text{rank/topology}
+]
+[
+\text{arithmetic}\rightarrow\text{SFR}
+]
+[
+\text{mapping comparison}.
+]
+WORKSTREAM 5 — Preserve the Negative Record
+All failures, unstable (K) values, poor OOS performance, failed mappings, and null results remain in the registry.
+They are not discarded.
+________________
+
+
+55. Final Crosswalk Principle
+The R&D archive should therefore be treated neither as proof nor as discarded preliminary work.
+Its correct scientific status is:
+\text{Evidence Reservoir}
+}
+]
+from which evidence can be promoted only through:
+[
+\boxed{
+\text{Provenance}
+\rightarrow
+\text{Reconstruction}
+\rightarrow
+\text{Control}
+\rightarrow
+\text{Experiment}
+\rightarrow
+\text{Replication}
+}
+]
+The central objective of v0.2 is consequently not to maximize the number of “supported” claims.
+It is to make every claim answerable to a specific question:
+What evidence supports this claim, where did that evidence come from, what experiment tests it, what null could defeat it, and what remains to be done before the evidence can be considered reproducible?
+That is the controlling relationship for the S.T.A.R. research program.

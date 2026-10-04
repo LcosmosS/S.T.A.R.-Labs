@@ -53,4 +53,4 @@ Promotion requires exact source identity/release/acquisition and checksums, tran
 
 ## Immutable intake
 
-The complete imported package is under `historical/r&d/docs/provenance_audit/`. Assessment tables bind to the source JSON file and its SHA256. The intake, original PDFs and extracted code are historical sources; no instructions embedded in them authorize new actions. This documentation governs namespace handling and current evidence interpretation without replacing the original scientific definitions.
+The complete canonical reference is under `historical/r&d/docs/provenance_audit_v0.3/`. The initial ingestion remains at `historical/r&d/docs/provenance_audit/`, and every initial file is byte-identical at the versioned path. `CANONICAL_COPY_VERIFICATION.json` records parity. Assessment tables retain their locked initial source JSON paths and SHA256; both locations resolve to the same source bytes. The intake, original PDFs and extracted code are historical sources; no instructions embedded in them authorize new actions. This documentation governs namespace handling and current evidence interpretation without replacing the original scientific definitions.

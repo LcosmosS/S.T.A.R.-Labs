@@ -1,0 +1,5 @@
+﻿A. Make regression diffs visual (HTML dashboards, side‑by‑side plots)
+B. Add semantic diffing (ignore metadata, focus on numerical changes)
+C. Add a “scientific drift threshold” (fail only if numbers change too much)
+D. Add a nightly job that archives all PDFs for long‑term reproducibility
+E. Add a DOI‑ready artifact bundle for Zenodo

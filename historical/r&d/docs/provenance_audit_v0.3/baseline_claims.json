@@ -1,0 +1,512 @@
+[
+  {
+    "claim_id": "CORE-001",
+    "baseline_record_text": "CORE-001 — Arithmetic–Cosmic Structural Correspondence Statement Arithmetic invariants may be mapped into geometric or topological structures in a way that produces statistically nontrivial and reproducible correspondence with independent astronomical data. Classification: H / T Category: Foundational / Cosmic Structure Current Status: PROPOSED Evidence Provenance: EXPLORATORY Required Test [ E \\rightarrow I(E) \\rightarrow \\Phi(E) \\rightarrow \\mathcal H_{\\rm arith} \\rightarrow D_{\\rm arith} \\rightarrow D_{\\rm cosmic} ] followed by statistical comparison and independent validation. Required Nulls ● randomized arithmetic assignments; ● permutation controls; ● alternative arithmetic invariant sets; ● alternative mappings; ● survey/random spatial controls. Interpretation This is the canonical S.T.A.R. research question rather than an established physical conclusion.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 8,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RANK-001",
+    "baseline_record_text": "RANK-001 — Rank/Environment Correspondence Statement Elliptic-curve rank may contain information corresponding to cosmic-web environment or structural complexity. Classification: H / T Category: Arithmetic → Cosmic Structure Current Status: PROPOSED Evidence Provenance: EXPLORATORY Required Comparison Rank must be compared against: [ r,\\quad \\operatorname{Reg}(E),\\quad N(E),\\quad |\\Delta(E)|,\\quad T(E) ] and combinations thereof. Required Controls Arithmetic permutation and non-rank invariant controls.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 9,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RANK-002",
+    "baseline_record_text": "RANK-002 — Rank/Topological Complexity Statement Arithmetic rank may be associated with measurable differences in persistent-homology or geometric descriptions of cosmic structure. Classification: H / T Current Status: PROPOSED Required Observables [ \\beta_0,\\quad \\beta_1,\\quad \\beta_2 ] and persistence-diagram/landscape/image distances. Important Constraint (\\beta_1) shall not be interpreted directly as the number of filaments. Filament identification shall rely primarily on geometric, skeleton, or graph methods, with persistent homology used as supporting topological information.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 10,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RANK-003",
+    "baseline_record_text": "RANK-003 — Rank-Stratified Cosmic Structure Statement Rank-stratified arithmetic samples may produce statistically distinguishable cosmic environments. Classification: H / T Status: PROPOSED Experiment: Rank/environment and topology ladder.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 11,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "MAP-001",
+    "baseline_record_text": "MAP-001 — Arithmetic Projection Statement A mapping of the form [ \\Phi(E)= \\left( \\log|\\Delta(E)|, \\log N(E), \\alpha r(E) \\right) ] can serve as a candidate projection from arithmetic invariant space into geometric coordinate space. Classification: M Evidence Status: EXPLORATORY Interpretation The mapping is a model construction, not a demonstrated physical law.",
+    "baseline_classification": "M",
+    "baseline_status_text": "EXPLORATORY",
+    "source_page": 11,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "MAP-002",
+    "baseline_record_text": "MAP-002 — Extended Projection Historical S.T.A.R. work considered (\\phi_E,\\theta_E,z_E,s_E) ] with coordinates derived from discriminant, conductor, rank, and regulator-related quantities. Classification: M Status: HISTORICAL / EXPLORATORY",
+    "baseline_classification": "M",
+    "baseline_status_text": "HISTORICAL / EXPLORATORY",
+    "source_page": 12,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "MAP-003",
+    "baseline_record_text": "MAP-003 — Rank Elevation Historical work used [ z=200r. ] Current Classification: M / H Status: HISTORICAL MODEL Current Interpretation The value [ \\lambda_r=200 ] is a candidate scaling parameter: [ h_r=\\lambda_r r. ] It shall not be treated as a uniquely justified constant. Alternative values and mappings must be tested.",
+    "baseline_classification": "M / H",
+    "baseline_status_text": "HISTORICAL MODEL",
+    "source_page": 12,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "MAP-004",
+    "baseline_record_text": "MAP-004 — Mapping Non-Bijectivity Statement A valid arithmetic-to-cosmic mapping need not be bijective; equivalence classes or many-to-one projections may be mathematically and experimentally permissible. Classification: M / H Status: ACTIVE METHODOLOGICAL PRINCIPLE This is consistent with the alternative-mapping framework.",
+    "baseline_classification": "M / H",
+    "baseline_status_text": "ACTIVE METHODOLOGICAL PRINCIPLE",
+    "source_page": 13,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "MAP-005",
+    "baseline_record_text": "MAP-005 — Alternative Mapping Families Candidate mappings should be compared against alternatives including the MCJ, PTD, FT, and other registered constructions. Classification: M / T Status: PROPOSED EXPERIMENTAL REQUIREMENT No mapping should receive privileged status merely because it was historically developed first.",
+    "baseline_classification": "M / T",
+    "baseline_status_text": "PROPOSED EXPERIMENTAL REQUIREMENT",
+    "source_page": 13,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "ARITH-001",
+    "baseline_record_text": "ARITH-001 Statement Fibonacci and Lucas sequences may provide useful arithmetic generator families for constructing candidate mappings. Classification: M / H Status: EXPLORATORY Required Controls Compare against: ● prime-based constructions; ● randomized recurrence sequences; ● alternative integer sequences; ● parameter-matched controls. The appearance of a correspondence using Fibonacci/Lucas sequences alone shall not establish physical significance.",
+    "baseline_classification": "M / H",
+    "baseline_status_text": "EXPLORATORY",
+    "source_page": 13,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "TOPO-001",
+    "baseline_record_text": "TOPO-001 — Persistent Homology Correspondence Statement Persistent homology may detect statistically meaningful correspondence between arithmetic-derived structures and observed cosmic-web topology. Classification: H / T Status: PROPOSED Required Metrics ● persistence diagrams; ● persistence landscapes/images; ● Wasserstein distance; ● bottleneck distance; ● null distributions. Historical thresholds such as [ W_2<10^{-2} ] shall be treated as model-dependent exploratory thresholds until calibrated against appropriate nulls, resolution, normalization, noise, and alternative mappings.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 14,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "TOPO-002",
+    "baseline_record_text": "TOPO-002 — Void Structure Statement Arithmetic-derived structures may contain information corresponding to cosmic void topology. Classification: H / T Status: PROPOSED Relevant Topology [ \\beta_2 ] and geometric void measurements.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 15,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "TOPO-003",
+    "baseline_record_text": "TOPO-003 — Connected Components Statement Arithmetic-derived structures may correspond to connected cosmic structures. Classification: H / T Relevant Quantity [ \\beta_0. ]",
+    "baseline_classification": "H / T",
+    "baseline_status_text": null,
+    "source_page": 15,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "MATH-K001",
+    "baseline_record_text": "MATH-K001 — Log-Normal Reciprocal Normalization Statement For a sample of masses following the stated log-normal assumptions, the reciprocal normalization \\frac{\\sum_i(M_i/M_0)} {\\sum_i(M_0/M_i)} ] approaches unity under the stated assumptions as sample size increases. Classification: D / H Evidence Provenance: THEORETICAL / SIMULATION Current Status: RECONSTRUCT Required Reconstruction The mathematical result must be separated from the historical interpretation involving BSD or cosmological structure. For [ \\log M_i\\sim N(\\mu,\\sigma^2), \\qquad M_0=e^\\mu, ] the relevant expectation symmetry provides the mathematical basis for the limiting result. Required Controls ● log-normal samples; ● skewed distributions; ● heavy-tailed distributions; ● mixtures; ● empirical galaxy-mass distributions.",
+    "baseline_classification": "D / H",
+    "baseline_status_text": "RECONSTRUCT",
+    "source_page": 15,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "MATH-K002",
+    "baseline_record_text": "MATH-K002 — Empirical (K) Consistency Historical simulations reported values near unity under specified log-normal conditions. Classification: E / SIMULATION Status: HISTORICAL MODEL RESULT Historical values such as [ K\\approx0.998108 ] shall be retained as provenance rather than interpreted as cosmological validation.",
+    "baseline_classification": "E / SIMULATION",
+    "baseline_status_text": "HISTORICAL MODEL RESULT",
+    "source_page": 16,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "MATH-K003",
+    "baseline_record_text": "MATH-K003 — Small-Sample Instability Historical analyses produced substantially different K values under different samples, including small samples. Classification: E Status: NEGATIVE / DIAGNOSTIC This evidence demonstrates that sampling, filtering, distributional assumptions, and dataset definition materially affect (K).",
+    "baseline_classification": "E",
+    "baseline_status_text": "NEGATIVE / DIAGNOSTIC",
+    "source_page": 17,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "COSMO-L001",
+    "baseline_record_text": "COSMO-L001 — Phenomenological (L_{\\rm cosmo}) Statement \\sum_{i=1}^{N} \\left(\\frac{M_0}{M_i}\\right)^s ] is a candidate phenomenological statistic for representing galaxy-population structure as a function of mass and redshift. Classification: M / H Status: EXPLORATORY Evidence Provenance: HISTORICAL MODEL Required Baseline Compare against ordinary: ● stellar mass; ● gas mass; ● redshift; ● morphology; ● metallicity; ● attenuation; ● age. The statistic must demonstrate incremental information beyond these variables before receiving stronger evidentiary status.",
+    "baseline_classification": "M / H",
+    "baseline_status_text": "EXPLORATORY",
+    "source_page": 17,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "COSMO-L002",
+    "baseline_record_text": "COSMO-L002 — (L_{\\rm cosmo}) and SFR Statement (L_{\\rm cosmo}(s)) may contain information relevant to predicting star-formation rate. Classification: H / T Status: PROPOSED Critical Requirement All derived quantities must be constructed inside the appropriate training folds to prevent leakage.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 18,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "COSMO-R001",
+    "baseline_record_text": "COSMO-R001 Historical S.T.A.R. scripts used a quantity called cosmo_rank, constructed from morphology and redshift. Current Interpretation This quantity is not elliptic-curve rank. Classification: M Status: HISTORICAL FEATURE ENGINEERING For future work it should be renamed, for example: [ R_{\\rm cosmo}^{\\rm feat} ] or another unambiguous identifier. It shall not be used as evidence for an elliptic-curve rank relationship.",
+    "baseline_classification": "M",
+    "baseline_status_text": "HISTORICAL FEATURE ENGINEERING",
+    "source_page": 18,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "SFR-A001",
+    "baseline_record_text": "SFR-A001 — Arithmetic Incremental SFR Information Statement Arithmetic-derived features may provide out-of-sample information about SFR beyond conventional astrophysical features. Classification: H / T Priority: A Status: PROPOSED Primary Test Compare: [ Y=f(X_{\\rm astro}) ] against [ Y=f(X_{\\rm astro},X_{\\rm arith}). ] Primary Endpoint R^2_{\\rm OOS,arith+astro} R^2_{\\rm OOS,astro}. ] Secondary metrics: ● RMSE; ● MAE; ● calibration; ● residual structure.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 19,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "SFR-A002",
+    "baseline_record_text": "SFR-A002 — Arithmetic-Only SFR Prediction Statement Arithmetic-derived variables may contain predictive information about SFR independently of conventional astrophysical variables. Classification: H / T Status: PROPOSED Required Comparison [ Y=f(X_{\\rm arith}) ] against: [ Y=f(X_{\\rm null}) ] and [ Y=f(X_{\\rm astro}). ] This experiment is intentionally more demanding than incremental prediction.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 20,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "SFR-E001",
+    "baseline_record_text": "SFR-E001 — Extreme-SFR Model Behavior Historical S.T.A.R. models exhibited substantially different performance in extreme-SFR populations compared with the bulk sample. Classification: E Status: HISTORICAL OBSERVATION Historical values include examples such as: ● full-sample RF (R^2\\approx0.8455); ● full-sample GB (R^2\\approx0.8476); ● non-outlier RF (R^2\\approx0.8729); ● non-outlier GB (R^2\\approx0.8766). These are historical model results and must not be interpreted as evidence for the arithmetic hypothesis.",
+    "baseline_classification": "E",
+    "baseline_status_text": "HISTORICAL OBSERVATION",
+    "source_page": 21,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "SFR-A003",
+    "baseline_record_text": "SFR-A003 — Extreme-SFR Robustness Statement Any proposed arithmetic/SFR relationship should be evaluated separately across predefined SFR strata rather than relying exclusively on aggregate performance. Classification: T Status: PROPOSED METHODOLOGICAL REQUIREMENT",
+    "baseline_classification": "T",
+    "baseline_status_text": "PROPOSED METHODOLOGICAL REQUIREMENT",
+    "source_page": 21,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "CTRL-RF001",
+    "baseline_record_text": "CTRL-RF001 — Random Feature Baseline Statement Randomly selected features can establish a baseline for predictive performance and help distinguish model capacity from theory-specific information. Classification: E / M Status: CONTROL Historical model5.py work provides a starting point.",
+    "baseline_classification": "E / M",
+    "baseline_status_text": "CONTROL",
+    "source_page": 22,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "CTRL-A001",
+    "baseline_record_text": "CTRL-A001 — Arithmetic Permutation Control Statement If arithmetic features contain meaningful information, permutation of their associations with astronomical objects should reduce the corresponding out-of-sample signal while preserving their marginal distributions. Classification: T Status: PROPOSED CONTROL",
+    "baseline_classification": "T",
+    "baseline_status_text": "PROPOSED CONTROL",
+    "source_page": 22,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "CTRL-A002",
+    "baseline_record_text": "CTRL-A002 — Leakage-Controlled Reconstruction All historical arithmetic/SFR models shall be reconstructed with: ● fold-local preprocessing; ● fold-local normalization; ● fold-local feature construction; ● fold-local redshift binning where applicable; ● no target leakage; ● independent test data. Classification: T / M Status: REQUIRED VALIDATION CONTROL",
+    "baseline_classification": "T / M",
+    "baseline_status_text": "REQUIRED VALIDATION CONTROL",
+    "source_page": 22,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "DATA-M001",
+    "baseline_record_text": "DATA-M001 — Coordinate Matching Statement A reproducible cross-survey catalog can be constructed using coordinate matching with a stated angular tolerance. Historical S.T.A.R. matching used: [ \\theta_{\\rm match}\\le2'' ] with an arcsec_separation diagnostic. Classification: M / E Status: INFRASTRUCTURE The matching tolerance is a methodological parameter, not physical evidence.",
+    "baseline_classification": "M / E",
+    "baseline_status_text": "INFRASTRUCTURE",
+    "source_page": 23,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "DATA-M002",
+    "baseline_record_text": "DATA-M002 — Multi-Survey Integration S.T.A.R. has assembled data from: ● SDSS; ● MaNGA; ● Pipe3D; ● HI; ● Galaxy Zoo; ● stellar-mass catalogs; ● environment measurements; ● photometry; ● 2MASS; ● UKIDSS; ● VizieR-derived catalogs. Classification: E Status: DATA INFRASTRUCTURE The existence of these integrated datasets does not establish any theoretical claim.",
+    "baseline_classification": "E",
+    "baseline_status_text": "DATA INFRASTRUCTURE",
+    "source_page": 23,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RTCH-M001",
+    "baseline_record_text": "RTCH-M001 — Variational RTCH Construction Statement The proposed RTCH action generates the stated field equations under the declared assumptions and variational conventions. Classification: D / M Status: DERIVATION AUDIT REQUIRED The action includes candidate components: [ S= S_{\\rm EH} +S_\\phi +S_Y +S_B +S_{\\rm top} +S_m +S_{\\rm GHY}. ] The complete derivation must be checked independently before treating the resulting equations as established.",
+    "baseline_classification": "D / M",
+    "baseline_status_text": "DERIVATION AUDIT REQUIRED",
+    "source_page": 24,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RTCH-M002",
+    "baseline_record_text": "RTCH-M002 — Closed Pullback Two-Form Given [ d_{\\mathcal T}\\omega=0 ] and [ F_Q=\\Phi^*\\omega, ] the pullback satisfies [ dF_Q=0. ] Classification: D Status: DERIVATION The requirement that [ [\\omega]\\neq0 ] distinguishes a closed non-exact topological sector from a trivial exact construction.",
+    "baseline_classification": "D",
+    "baseline_status_text": "DERIVATION",
+    "source_page": 25,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RTCH-H001",
+    "baseline_record_text": "RTCH-H001 — Topological Coupling Statement A nontrivial topological coupling may produce observable deviations from standard gravitational/matter dynamics. Classification: H / T Priority: B Status: PROPOSED",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 25,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RTCH-H002",
+    "baseline_record_text": "RTCH-H002 — Conformal Trace Coupling For the candidate conformal coupling, A^2(\\phi,\\mathcal M,\\mathcal J_Q)g_{\\mu\\nu}, ] the matter coupling may generate an effective fifth force. For a perfect fluid, [ \\bar T=-\\epsilon+3p. ] For radiation, [ p=\\frac{\\epsilon}{3} ] and therefore [ \\bar T=0. ] Classification: D / T Status: DERIVATION + PHYSICAL TEST REQUIRED",
+    "baseline_classification": "D / T",
+    "baseline_status_text": "DERIVATION + PHYSICAL TEST REQUIRED",
+    "source_page": 26,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RTCH-H003",
+    "baseline_record_text": "RTCH-H003 — Fifth-Force Acceleration The point-particle action [ S_p=-mc\\int A,ds ] produces candidate acceleration -c^2h^{\\mu\\nu}\\nabla_\\nu\\ln A. ] Classification: D / T Status: DERIVATION AUDIT / OBSERVATIONAL CONSTRAINT",
+    "baseline_classification": "D / T",
+    "baseline_status_text": "DERIVATION AUDIT / OBSERVATIONAL CONSTRAINT",
+    "source_page": 26,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "RTCH-H004",
+    "baseline_record_text": "RTCH-H004 — Unified Matter Description Point-particle and perfect-fluid matter should be treated as different realizations of the same universal matter coupling rather than as two unrelated physical theories. Classification: M Status: THEORETICAL ARCHITECTURE This does not require a literal action in which both matter descriptions simultaneously appear.",
+    "baseline_classification": "M",
+    "baseline_status_text": "THEORETICAL ARCHITECTURE",
+    "source_page": 27,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "FIELD-001",
+    "baseline_record_text": "FIELD-001 — Arithmetic Topography Statement A scalar arithmetic field may be constructed as f(I_1(E),...,I_n(E)) ] with associated gradient -\\nabla h_{\\rm arith}. ] Classification: M / H Status: CANDIDATE CONSTRUCTION The gradient shall not be identified with gravity without independent physical validation.",
+    "baseline_classification": "M / H",
+    "baseline_status_text": "CANDIDATE CONSTRUCTION",
+    "source_page": 27,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "FIELD-002",
+    "baseline_record_text": "FIELD-002 — Arithmetic Field as Gravity Statement Arithmetic gradients may contribute to gravitational or effective gravitational dynamics. Classification: H / S Status: UNVALIDATED Required tests include comparison with: ● matter density; ● gravitational potential; ● lensing; ● peculiar velocity; ● galaxy dynamics; ● morphology; ● SFR.",
+    "baseline_classification": "H / S",
+    "baseline_status_text": "UNVALIDATED",
+    "source_page": 28,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "FIELD-003",
+    "baseline_record_text": "FIELD-003 — Arithmetic Tensor / Einstein Equation Extension A symbolic arithmetic tensor may provide an additional term in gravitational field equations. Classification: H / S Status: FUTURE THEORY No claim that arithmetic replaces the Einstein tensor shall be treated as established.",
+    "baseline_classification": "H / S",
+    "baseline_status_text": "FUTURE THEORY",
+    "source_page": 28,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "ECC-001",
+    "baseline_record_text": "ECC-001 — Entropy/Cohomology Structure The ECC framework proposes that entropy-related quantities may be represented through a cohomological/topological construction involving closed but non-exact forms. Classification: H / M Status: THEORETICAL CANDIDATE",
+    "baseline_classification": "H / M",
+    "baseline_status_text": "THEORETICAL CANDIDATE",
+    "source_page": 28,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "ECC-002",
+    "baseline_record_text": "ECC-002 — Closed Non-Exact Requirement A nontrivial topological construction requires a form satisfying [ d\\omega=0, \\qquad [\\omega]\\neq0. ] Classification: D / M Status: DERIVATION / MODEL REQUIREMENT Historical formulations relying on expressions equivalent to (d(d\\mathcal M)=0) shall not be treated as sufficient evidence of nontrivial cohomology.",
+    "baseline_classification": "D / M",
+    "baseline_status_text": "DERIVATION / MODEL REQUIREMENT",
+    "source_page": 29,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "ECC-003",
+    "baseline_record_text": "ECC-003 — Entropy–Energy Relation The proposed entropy/cohomology structure may contribute to a generalized mass-energy relation. Classification: H / T Status: FUTURE EXPERIMENTAL/THEORETICAL CLAIM Any candidate relation must satisfy: 1. dimensional consistency; 2. known-limit recovery; 3. conservation; 4. variational origin where claimed; 5. stability; 6. well-posed dynamics; 7. novel testable prediction.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "FUTURE EXPERIMENTAL/THEORETICAL CLAIM",
+    "source_page": 29,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "ENERGY-001",
+    "baseline_record_text": "ENERGY-001 A generalized thermodynamic/cohomological mass-energy relation may contain [ E=mc^2 ] as an appropriate limiting case. Classification: H / T Status: FUTURE THEORY The known relation must be recovered rather than merely numerically approximated.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "FUTURE THEORY",
+    "source_page": 30,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "COSMO-E001",
+    "baseline_record_text": "COSMO-E001 Statement Arithmetic/topological structure may evolve with redshift in a way that corresponds to cosmic evolution. Classification: H / T Status: PROPOSED The experiment should compare: [ \\mathcal R(\\tau) ] against independently derived cosmic evolution quantities: [ D_{\\rm cosmic}(z). ] Persistent homology provides a candidate framework for comparing structure across redshift.",
+    "baseline_classification": "H / T",
+    "baseline_status_text": "PROPOSED",
+    "source_page": 30,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "COSMO-E002",
+    "baseline_record_text": "COSMO-E002 Statement The S.T.A.R. framework may eventually provide a mechanism capable of explaining discrepancies between independent cosmological determinations of expansion parameters. Classification: H / S Status: DOWNSTREAM / FUTURE This is not a design criterion for selecting the model. The project must first establish the underlying arithmetic, topological, and dynamical correspondences.",
+    "baseline_classification": "H / S",
+    "baseline_status_text": "DOWNSTREAM / FUTURE",
+    "source_page": 31,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "HIST-001",
+    "baseline_record_text": "HIST-001 “The universe is an arithmetic projection.” Current Status: S / HISTORICAL",
+    "baseline_classification": null,
+    "baseline_status_text": "S / HISTORICAL",
+    "source_page": 31,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "HIST-002",
+    "baseline_record_text": "HIST-002 “Elliptic-curve rank directly determines cosmic structure.” Current Status: H / HISTORICAL",
+    "baseline_classification": null,
+    "baseline_status_text": "H / HISTORICAL",
+    "source_page": 31,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "HIST-003",
+    "baseline_record_text": "HIST-003 “Rank 0 corresponds to voids.” Current Status: H / T",
+    "baseline_classification": null,
+    "baseline_status_text": "H / T",
+    "source_page": 32,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "HIST-004",
+    "baseline_record_text": "HIST-004 “Rank 1 corresponds to filaments/galaxies.” Current Status: H / T",
+    "baseline_classification": null,
+    "baseline_status_text": "H / T",
+    "source_page": 32,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "HIST-005",
+    "baseline_record_text": "HIST-005 “Rank 2 corresponds to clusters.” Current Status: H / T",
+    "baseline_classification": null,
+    "baseline_status_text": "H / T",
+    "source_page": 32,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "HIST-006",
+    "baseline_record_text": "HIST-006 “Rank 3 corresponds to superclusters.” Current Status: H / T",
+    "baseline_classification": null,
+    "baseline_status_text": "H / T",
+    "source_page": 32,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "HIST-007",
+    "baseline_record_text": "HIST-007 “Historical Wasserstein thresholds establish fidelity.” Current Status: EXPLORATORY / HISTORICAL",
+    "baseline_classification": null,
+    "baseline_status_text": "EXPLORATORY / HISTORICAL",
+    "source_page": 32,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  },
+  {
+    "claim_id": "HIST-008",
+    "baseline_record_text": "HIST-008 “>98% correspondence/fidelity demonstrates the theory.” Current Status: HISTORICAL MODEL RESULT Such numerical results may be re-entered as evidence only after their data generation, normalization, null construction, independence, and statistical methodology have been reconstructed.",
+    "baseline_classification": null,
+    "baseline_status_text": "HISTORICAL MODEL RESULT",
+    "source_page": 32,
+    "source_file": "STAR_Claim_Evidence_Registry_v0-2.pdf",
+    "source_sha256": "27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94",
+    "extraction_note": "PDF text convenience copy; supplied PDF remains authoritative for math glyphs and complete original layout."
+  }
+]

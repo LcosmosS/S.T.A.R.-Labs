@@ -1,0 +1,1076 @@
+﻿S.T.A.R. Research Charter
+Scientific Specification for Arithmetic–Geometric–Topological Investigation of Cosmic Structure
+Project: S.T.A.R. Program
+Status: Research Charter v0.2 — Foundational Specification
+Purpose: Canonical scientific specification for the S.T.A.R. research program
+Primary domains: Arithmetic geometry, topology, topological data analysis, astrophysics, cosmology, statistical inference, mathematical physics, machine learning
+Controlling Scientific Standard for the Arithmetic–Geometric–Topological Investigation of Cosmic Structure
+________________
+
+
+1. Purpose
+The S.T.A.R. program investigates whether mathematical structures arising from arithmetic geometry can be mapped into geometric and topological structures in a manner that produces statistically nontrivial, reproducible, and independently testable correspondence with astronomical observations.
+The central research question is:
+Can arithmetic invariants be mapped into geometric and topological structures in a way that produces statistically nontrivial, reproducible correspondence with independent astronomical data?
+The program is therefore an investigation of a possible correspondence between:
+[
+\text{Arithmetic}
+\rightarrow
+\text{Geometry}
+\rightarrow
+\text{Topology}
+\rightarrow
+\text{Observation}
+\rightarrow
+\text{Dynamics}
+\rightarrow
+\text{Physics}.
+]
+The project does not assume that elliptic curves determine the universe.
+In particular, S.T.A.R. does not adopt any of the following as established facts:
+* that elliptic curves determine cosmic structure;
+* that elliptic-curve rank is equivalent to physical time;
+* that elliptic-curve rank is equivalent to gravity;
+* that arithmetic structure replaces the Einstein field equations;
+* that dark matter is arithmetic curvature;
+* that dark energy is rank growth;
+* that cosmic topology is identical to arithmetic topology;
+* that a unique arithmetic-to-cosmic mapping exists;
+* that a strict bijection between arithmetic objects and astronomical objects exists;
+* that the Birch–Swinnerton-Dyer conjecture is required for the research program;
+* that historical numerical correlations establish a physical law.
+These remain hypotheses, candidate models, conjectures, or speculative interpretations unless and until they satisfy the evidentiary standards defined by this Charter.
+The Charter is the controlling standard for evaluating all subsequent S.T.A.R. claims, experiments, mappings, computational results, theoretical constructions, and proposed physical interpretations.
+________________
+
+
+2. Scientific Scope
+S.T.A.R. consists of several connected but epistemically distinct research layers.
+Layer I — Arithmetic
+The program studies mathematical objects and invariants including elliptic curves, rank, conductor, discriminant, regulator, torsion, periods, Frobenius traces, and related quantities.
+Layer II — Arithmetic Geometry
+Arithmetic invariants are transformed into candidate geometric representations through mappings such as:
+(\phi_E,\theta_E,z_E,s_E).
+]
+A simplified candidate representation is:
+\left(
+\log|\Delta_E|,
+\log N_E,
+\alpha r_E
+\right).
+]
+Layer III — Arithmetic Cartography
+Mapped arithmetic objects are treated as points, fields, densities, graphs, surfaces, or other geometric constructions.
+Layer IV — Topology
+The resulting structures are studied using persistent homology, persistence diagrams, persistence landscapes, persistence images, Wasserstein distances, bottleneck distances, and related topological tools.
+Layer V — Astronomical Comparison
+Arithmetic-derived structures are compared with independent astronomical data, including:
+* galaxy distributions;
+* clusters;
+* filaments;
+* voids;
+* matter density;
+* galaxy morphology;
+* gravitational observables;
+* radiation;
+* redshift;
+* galaxy environment;
+* star formation rate;
+* gas mass;
+* stellar mass;
+* other independently measured astronomical quantities.
+Layer VI — Dynamics
+Where static correspondence is supported, the program investigates whether arithmetic structures can describe or parameterize observed evolution across redshift or other observational variables.
+Layer VII — Physical Theory
+Only after empirical correspondence has been independently established may the program investigate whether an arithmetic structure can be incorporated into a physical theory involving:
+* fields;
+* gravity;
+* thermodynamics;
+* entropy;
+* cohomology;
+* scalar fields;
+* variational principles;
+* conservation laws;
+* effective field theory;
+* cosmological dynamics.
+This ordering is mandatory.
+A speculative physical interpretation must not be used as evidence for the empirical correspondence that motivated it.
+________________
+
+
+3. Epistemic Classification System
+Every substantive S.T.A.R. statement must be assigned an epistemic category.
+The following categories are canonical.
+Code
+	Category
+	Meaning
+	D
+	Derived
+	Follows mathematically from stated assumptions or definitions
+	E
+	Empirical
+	Directly supported by measured or computationally reproducible evidence
+	M
+	Model
+	A mathematical or phenomenological construction introduced for investigation
+	P
+	Postulate
+	An explicitly adopted assumption of a proposed theory
+	H
+	Hypothesis
+	A proposition being experimentally tested
+	C
+	Conjecture
+	A broader mathematical or physical proposition lacking proof
+	T
+	Testable Prediction
+	A quantitative or qualitative consequence that can be tested independently
+	S
+	Speculative Interpretation
+	A possible interpretation not yet supported sufficiently to be treated as a hypothesis or empirical conclusion
+	These classifications are not interchangeable.
+For example:
+“Rank corresponds to cosmic complexity”
+is a H.
+The statement:
+“The model predicts that rank distributions differ between clusters and voids”
+is a T.
+The statement:
+“A measured dataset contains a statistically significant difference”
+may be E, provided the analysis is reproducible and satisfies the statistical requirements of this Charter.
+The statement:
+“Therefore rank is the physical origin of cosmic structure”
+remains S unless substantially stronger evidence and theory are established.
+________________
+
+
+4. Core Mathematical Objects
+4.1 Elliptic Curves
+An elliptic curve over (\mathbb Q) is treated as a mathematical object:
+[
+E/\mathbb Q.
+]
+Relevant invariants may include:
+[
+r_E,
+\qquad
+N_E,
+\qquad
+\Delta_E,
+\qquad
+\operatorname{Reg}(E),
+\qquad
+T_E,
+]
+together with other invariants where mathematically appropriate.
+No individual invariant is assumed a priori to be physically privileged.
+________________
+
+
+4.2 Rank
+The Mordell–Weil rank
+[
+r_E
+]
+is one candidate arithmetic organizing variable.
+S.T.A.R. therefore tests propositions such as:
+[
+P(r_E\mid \text{cluster}),
+\qquad
+P(r_E\mid \text{filament}),
+\qquad
+P(r_E\mid \text{void}).
+]
+Rank is not defined by this Charter to be equivalent to any astronomical quantity.
+________________
+
+
+4.3 Candidate Mapping
+A candidate mapping may take the form
+[
+\Phi:
+\mathcal E
+\rightarrow
+\mathcal X,
+]
+where (\mathcal E) is a set of arithmetic objects and (\mathcal X) is a geometric representation space.
+A historical candidate mapping is:
+(\phi_E,\theta_E,z_E,s_E),
+]
+with quantities derived from arithmetic invariants.
+A simplified historical form is:
+\left(
+\log|\Delta_E|,
+\log N_E,
+\alpha r_E
+\right).
+]
+The mapping is a projection, not necessarily a bijection.
+Different arithmetic objects may therefore map to equivalent or nearby geometric states.
+No requirement of one-to-one correspondence shall be imposed unless an experiment specifically tests that property.
+________________
+
+
+5. Candidate Mapping Families
+S.T.A.R. retains multiple mapping families to prevent dependence on one historically selected construction.
+These include:
+5.1 (\Phi)
+The primary historical arithmetic-invariant mapping family.
+5.2 MCJ
+A mapping involving the (j)-invariant or related modular information.
+5.3 PTD
+A predominantly algebraic mapping that minimizes dependence on analytic constructions.
+5.4 FT
+A Frobenius-trace-based mapping using finite-field information.
+These alternative families are scientifically important because a correspondence that exists only under one specially selected mapping may be consistent with model-selection effects rather than an underlying physical relationship.
+________________
+
+
+6. Birch–Swinnerton-Dyer Independence
+The Birch–Swinnerton-Dyer conjecture may provide historical or conceptual motivation for investigating elliptic-curve rank.
+It is not a foundational assumption of S.T.A.R.
+The research program must remain testable if BSD is removed from the theoretical motivation.
+Consequently:
+[
+\text{BSD motivation}
+\neq
+\text{BSD dependence}.
+]
+A mapping or experiment that requires an unproven consequence of BSD must identify that dependency explicitly.
+Where possible, the program shall use quantities that can be computed or independently estimated without assuming BSD.
+________________
+
+
+7. Arithmetic Topography
+S.T.A.R. may construct an arithmetic scalar field:
+f(I_1(E),\ldots,I_n(E)),
+]
+where the (I_i) are selected arithmetic invariants.
+A corresponding gradient field may be defined:
+-\nabla h_{\rm arith}.
+]
+This construction is a candidate arithmetic topography.
+It must not automatically be identified with gravity.
+The correspondence:
+[
+\mathbf F_{\rm arith}
+\stackrel{?}{\sim}
+\mathbf F_{\rm gravity}
+]
+is an empirical hypothesis requiring independent testing.
+Candidate comparisons include:
+* matter density;
+* gravitational potential;
+* weak lensing;
+* peculiar velocity;
+* radiation fields;
+* galaxy morphology;
+* star formation rate;
+* environmental measurements.
+________________
+
+
+8. Cosmic-Web Representation
+The cosmic web shall be represented using independently defined astronomical data and appropriate geometric and topological methods.
+The principal structural categories are:
+* clusters;
+* filaments;
+* walls/sheets where data support them;
+* voids.
+Persistent homology is a supporting topological framework, not a replacement for physical or geometric classification.
+________________
+
+
+8.1 (\beta_0)
+[
+\beta_0
+]
+represents connected components.
+It may therefore provide a topological description related to connected structures and cluster organization.
+________________
+
+
+8.2 (\beta_1)
+[
+\beta_1
+]
+represents one-dimensional connectivity/loop structure.
+It must not automatically be interpreted as “the number of filaments.”
+Filament identification shall rely primarily on appropriate geometric, skeleton, graph, or equivalent cosmic-web identification methods.
+Persistent homology may then be used as a supporting measure of connectivity, loops, persistence, and structural organization.
+This distinction is mandatory.
+________________
+
+
+8.3 (\beta_2)
+[
+\beta_2
+]
+represents cavity-like topological structure and may therefore support the analysis of cosmic void topology.
+Again, a Betti number is a mathematical descriptor and is not automatically identical to an astronomical physical category.
+________________
+
+
+9. Persistent Homology
+For a point cloud or filtered structure
+[
+P_\Phi=\Phi(\mathcal E),
+]
+S.T.A.R. may construct a filtration:
+[
+K_{\epsilon_1}
+\subseteq
+K_{\epsilon_2}
+\subseteq
+\cdots
+\subseteq
+K_{\epsilon_n}.
+]
+Persistent homology then produces persistence diagrams:
+[
+D_k(P_\Phi).
+]
+Corresponding astronomical structures may produce:
+[
+D_k(P_{\rm cosmic}).
+]
+The comparison may use:
+[
+W_p(D_k^{\rm arith},D_k^{\rm cosmic}),
+]
+or bottleneck distance or another explicitly justified metric.
+The distance measure itself does not establish physical correspondence.
+________________
+
+
+10. Historical Numerical Thresholds
+Historical numerical criteria must not automatically become scientific acceptance thresholds.
+For example, a historical condition such as
+[
+W_2<10^{-2}
+]
+shall be classified as:
+model-dependent / exploratory
+until it has been recalibrated against appropriate null distributions, data resolution, noise, normalization, sample size, mapping alternatives, and parameter-selection effects.
+Similarly, historical claims such as:
+* (>98%) fidelity;
+* (91.9%) correlation;
+* (95.6%) correlation;
+* fixed Wasserstein thresholds;
+* symbolic-regression coefficients;
+must be treated as results requiring validation rather than predetermined standards of success.
+No threshold shall be considered canonical merely because it appeared in an earlier S.T.A.R. document.
+________________
+
+
+11. Rank–Cosmic-Web Hypothesis Family
+The principal rank experiments shall be organized as testable hypotheses.
+H1 — Rank–Cluster Hypothesis
+Cluster environments exhibit statistically distinguishable rank distributions.
+H2 — Rank–Connectivity Hypothesis
+Rank correlates with independently measured cosmic-web connectivity.
+H3 — Rank–Void Hypothesis
+Void environments exhibit a statistically distinguishable arithmetic-invariant distribution.
+H4 — Rank–Web Complexity Hypothesis
+Arithmetic rank or another arithmetic invariant is associated with independently measured measures of cosmic-web complexity.
+H5 — Invariant Competition Hypothesis
+Rank is compared against other arithmetic invariants rather than assumed to be uniquely explanatory.
+Candidate competitors include:
+[
+r_E,
+\quad
+\operatorname{Reg}(E),
+\quad
+N_E,
+\quad
+|\Delta_E|,
+\quad
+T_E.
+]
+A composite vector may be defined as:
+[
+X_E=
+\left(
+r_E,
+\log\operatorname{Reg}_E,
+\log N_E,
+\log|\Delta_E|,
+T_E
+\right).
+]
+The purpose is to determine whether rank contains information not already explained by other arithmetic quantities.
+________________
+
+
+12. Statistical Requirements
+No empirical claim shall be accepted solely because a correlation coefficient, classifier accuracy, visual resemblance, or topological distance appears favorable.
+Every substantive empirical claim must address, where applicable:
+1. independent data;
+2. sample definition;
+3. selection effects;
+4. null models;
+5. randomization;
+6. alternative mappings;
+7. parameter selection;
+8. train/validation/test separation;
+9. out-of-sample performance;
+10. multiple-hypothesis correction;
+11. effect size;
+12. uncertainty;
+13. robustness to preprocessing;
+14. robustness to resolution and scaling;
+15. replication.
+________________
+
+
+13. Null Models
+Null models are mandatory.
+Appropriate nulls may include:
+* randomized arithmetic assignments;
+* randomized spatial assignments;
+* permutation of rank values;
+* shuffled invariant labels;
+* synthetic point clouds;
+* alternative astronomical catalog realizations;
+* simulations without arithmetic information;
+* alternative mapping families;
+* mappings constructed from mathematically unrelated sequences.
+The exact null must be matched to the hypothesis being tested.
+A favorable result against an inappropriate null is not sufficient evidence.
+________________
+
+
+14. Alternative Mapping Controls
+Whenever feasible, a proposed correspondence shall be tested against multiple mapping constructions.
+For example:
+[
+\Phi,
+\qquad
+\Phi_{\rm MCJ},
+\qquad
+\Phi_{\rm PTD},
+\qquad
+\Phi_{\rm FT},
+]
+may be compared under identical evaluation procedures.
+This determines whether an observed result is:
+1. invariant across mapping families;
+2. specific to one mapping;
+3. sensitive to arbitrary parameter choices;
+4. consistent with a broader arithmetic principle;
+5. or potentially an artifact of the selected construction.
+________________
+
+
+15. Parameter Locking
+Parameters used to construct a mapping must be distinguished from parameters discovered during validation.
+Parameters selected after observing the target data are potentially subject to overfitting.
+Accordingly, S.T.A.R. experiments should distinguish:
+[
+\text{pre-registered/fixed parameters}
+]
+from
+[
+\text{fitted/discovered parameters}.
+]
+A mapping that is optimized against the same dataset used to evaluate it cannot be treated as an independent prediction.
+________________
+
+
+16. Machine Learning and Symbolic Regression
+Machine learning may be used for:
+* feature discovery;
+* nonlinear relationship discovery;
+* classification;
+* regression;
+* dimensionality reduction;
+* hypothesis generation.
+Symbolic regression may be used to generate candidate mathematical relationships.
+The canonical sequence is:
+[
+\text{ML discovery}
+\rightarrow
+\text{candidate equation}
+\rightarrow
+\text{independent validation}
+\rightarrow
+\text{analytic derivation}.
+]
+Machine learning does not constitute mathematical proof.
+A symbolic-regression expression is a candidate model until independently validated and, where applicable, mathematically derived.
+________________
+
+
+17. Claim and Evidence Registry
+The Claim/Evidence Registry is subordinate to this Charter and is the primary mechanism for tracking the scientific status of S.T.A.R. propositions.
+Every significant claim should receive a unique Claim ID.
+Each registry entry should contain, where applicable:
+1. Claim ID
+2. Statement
+3. Epistemic Category
+4. Source Document
+5. Mathematical Basis
+6. Underlying Assumptions
+7. Dataset
+8. Population
+9. Prediction
+10. Null Model
+11. Alternative Models
+12. Parameters
+13. Parameter-Locking Status
+14. Statistical Method
+15. Effect Size
+16. Uncertainty
+17. Result
+18. Out-of-Sample Result
+19. Replication Status
+20. Reproducibility Status
+21. Dependencies
+22. Known Limitations
+23. Contradictory Evidence
+24. Current Status
+25. Last Tested
+26. Code/Experiment Reference
+The Registry shall distinguish between:
+claim existence
+and
+claim support.
+The presence of a claim in the Registry does not constitute evidence for the claim.
+________________
+
+
+18. Automatic Reclassification Rules
+Historical claims shall be reclassified when their original evidentiary basis does not satisfy the current Charter.
+In particular:
+18.1 Historical correlations
+A historical correlation is classified as E — preliminary empirical result only if its analysis can be reproduced and satisfies the applicable statistical requirements.
+Otherwise it becomes:
+[
+\text{M/Historical Result}
+]
+or
+[
+\text{Exploratory}.
+]
+18.2 Historical thresholds
+Thresholds such as:
+[
+W_2<10^{-2}
+]
+are automatically classified as:
+model-dependent / exploratory
+until independently recalibrated.
+18.3 Historical symbolic laws
+Expressions discovered through symbolic regression are classified as:
+candidate models
+rather than established laws.
+18.4 Historical axioms
+Statements previously presented as axioms that assert physical properties of the universe shall be reclassified as:
+* hypotheses;
+* postulates of a future theory;
+* conjectures;
+* or speculative interpretations,
+depending upon their actual role.
+________________
+
+
+19. Statistical Significance Versus Predictive Utility
+S.T.A.R. explicitly distinguishes statistical significance from practical predictive power.
+A result may satisfy:
+[
+p < \alpha
+]
+and therefore provide evidence against a specified null hypothesis while still having negligible practical predictive utility.
+Accordingly:
+[
+\text{statistical significance}
+\neq
+\text{predictive usefulness}.
+]
+A useful predictive model must demonstrate meaningful out-of-sample performance relative to appropriate baselines.
+The Registry should therefore record both:
+1. statistical evidence of correspondence; and
+2. practical predictive utility.
+A statistically significant but practically negligible relationship shall not be represented as a successful predictive theory.
+________________
+
+
+20. Cosmic Evolution
+Redshift shall initially be treated as an observational ordering variable:
+[
+z.
+]
+The program may investigate whether an arithmetic evolution parameter
+[
+\tau
+]
+can be related to observations through:
+[
+\tau=f(z).
+]
+The research shall distinguish between:
+Topological evolution
+Changes in cosmic structural topology with redshift.
+Metric expansion
+Changes in physical distances and scale factors.
+Arithmetic evolution
+Changes in an arithmetic representation or arithmetic state parameter.
+These must not be assumed to be equivalent.
+________________
+
+
+21. Arithmetic Evolution
+A candidate arithmetic state may be represented schematically as:
+{r_E(\tau)}.
+]
+Its topology may be represented by:
+[
+D_{\rm arithmetic}(\tau).
+]
+The observed cosmic topology may be represented by:
+[
+D_{\rm cosmic}(z).
+]
+The question is whether there exists a statistically supported correspondence:
+[
+D_{\rm arithmetic}(\tau)
+\sim
+D_{\rm cosmic}(z)
+]
+under an independently justified relation
+[
+\tau=f(z).
+]
+This is a hypothesis, not an assumption.
+________________
+
+
+22. Astrophysical Laboratory
+Star formation rate provides an independent astrophysical laboratory for testing whether arithmetic or topological quantities contain measurable information about galaxy evolution.
+Candidate variables include:
+* star formation rate;
+* stellar mass;
+* gas mass;
+* metallicity;
+* morphology;
+* environment;
+* redshift;
+* photometric properties;
+* structural parameters;
+* cosmic-web environment.
+The SFR program must remain scientifically meaningful even if the broader arithmetic-cosmic hypothesis is falsified.
+Thus:
+[
+\text{SFR correspondence}
+\neq
+\text{proof of ACSC}.
+]
+It is an independent empirical test.
+________________
+
+
+23. Physical Correspondence
+If arithmetic topography demonstrates reproducible astronomical correspondence, S.T.A.R. may investigate whether it corresponds to physical fields.
+Candidate comparisons include:
+[
+h_{\rm arith}
+\leftrightarrow
+\rho_{\rm matter},
+]
+[
+\nabla h_{\rm arith}
+\leftrightarrow
+\nabla\Phi_{\rm grav},
+]
+and comparisons with:
+* weak lensing;
+* peculiar velocity;
+* radiation;
+* galaxy dynamics;
+* SFR;
+* environmental measures.
+No physical identity may be asserted solely from geometric resemblance.
+________________
+
+
+24. Candidate Symbolic Field
+A future arithmetic field theory may attempt to construct a field or tensor:
+[
+\mathcal A_{\mu\nu}
+]
+or related object.
+The first requirement is mathematical consistency.
+Only afterward may one test a correspondence such as:
+[
+\mathcal A_{\mu\nu}
+\stackrel{?}{\sim}
+G_{\mu\nu}.
+]
+The statement that arithmetic “replaces” the Einstein tensor is not part of the current established S.T.A.R. framework.
+It remains a speculative future possibility.
+________________
+
+
+25. Thermodynamic and Mass–Energy Program
+S.T.A.R. may investigate whether entropy, cohomology, geodesics, scalar fields, arithmetic invariants, and phase transitions can participate in a generalized thermodynamic or mass–energy relation.
+Any proposed relation must satisfy at minimum:
+1. dimensional consistency;
+2. a mathematically defined action or governing principle where claimed;
+3. known physical limits;
+4. conservation laws;
+5. stability requirements;
+6. well-posedness;
+7. compatibility with established experimental constraints;
+8. independently testable novel predictions.
+If a generalized expression contains the standard rest-energy relation, the desired limiting behavior is schematically:
+[
+E_{\rm generalized}
+\rightarrow
+mc^2
+]
+under the appropriate limiting assumptions.
+This does not establish that the generalized expression is physically correct.
+________________
+
+
+26. ECC
+The Entropy Cohomology Conjecture is treated as a candidate theoretical layer.
+The corrected mathematical architecture uses a closed, potentially non-exact target-space two-form:
+\frac12
+\omega_{AB}(Y)
+dY^A\wedge dY^B,
+]
+with
+[
+d_{\mathcal T}\omega=0,
+\qquad
+[\omega]\neq0.
+]
+The corresponding pullback is:
+[
+F_Q=\Phi^*\omega.
+]
+This produces:
+[
+dF_Q=0.
+]
+Claims concerning entropy/cohomology dynamics remain hypotheses or model constructions unless formally proved and independently validated.
+Historical references to a “computational theorem” or “observed symbolic law” shall not be treated as established theorems unless the required mathematical proof and validation exist.
+________________
+
+
+27. RTCH
+RTCH is treated as a candidate variational completion rather than a foundational premise.
+The candidate framework may contain:
+S_{\rm EH}
++
+S_\phi
++
+S_Y
++
+S_B
++
+S_{\rm top}
++
+S_m
++
+S_{\rm GHY}.
+]
+The resulting equations may be investigated for:
+* mathematical consistency;
+* conservation;
+* stability;
+* well-posedness;
+* known physical limits;
+* observational constraints;
+* novel predictions.
+The existence of a mathematically consistent action does not establish the physical truth of the theory.
+________________
+
+
+28. Falsification
+A valid S.T.A.R. hypothesis must admit the possibility of failure.
+Examples include:
+Mapping failure
+Alternative mappings consistently outperform the proposed mapping or the proposed mapping fails against null models.
+Rank failure
+Rank contains no reproducible information about cosmic-web structure after controlling for relevant confounders.
+Topological failure
+Arithmetic persistence diagrams do not correspond to astronomical topology beyond null expectations.
+Predictive failure
+A statistically significant relationship has negligible out-of-sample predictive utility.
+Replication failure
+The relationship disappears in independent datasets.
+Physical failure
+A proposed arithmetic field conflicts with established gravitational, cosmological, laboratory, or astrophysical constraints.
+Negative results shall be retained in the research archive.
+A failed hypothesis is a valid scientific result.
+________________
+
+
+29. Success-Level Ladder
+S.T.A.R. uses the following hierarchy.
+Level 0 — Mathematical Construction
+The mathematical object is precisely defined.
+Level 1 — Computational Reproducibility
+Independent execution reproduces the result.
+Level 2 — Statistical Correspondence
+The result demonstrates statistically supported correspondence against appropriate null models.
+Level 3 — Cross-Dataset Replication
+The correspondence survives independent datasets or independently constructed samples.
+Level 4 — Predictive Correspondence
+The construction predicts previously unseen data with meaningful out-of-sample utility.
+Level 5 — Physical Theory
+A mathematically consistent theory produces empirically successful physical predictions while satisfying known constraints.
+Importantly:
+[
+\text{Level 2}
+\not\Rightarrow
+\text{Level 4}.
+]
+Statistical significance alone does not establish practical predictive power.
+Likewise:
+[
+\text{Level 4}
+\not\Rightarrow
+\text{Level 5}.
+]
+Predictive performance does not by itself establish a fundamental physical theory.
+________________
+
+
+30. Required Separation of Discovery and Confirmation
+S.T.A.R. shall distinguish:
+[
+\text{discovery}
+]
+from
+[
+\text{confirmation}.
+]
+A dataset used to discover a mapping, feature, threshold, equation, or parameter should not simultaneously serve as the sole evidence for confirming that discovery.
+The preferred structure is:
+[
+\text{Discovery}
+\rightarrow
+\text{Locked Model}
+\rightarrow
+\text{Blind/Independent Test}
+\rightarrow
+\text{Replication}.
+]
+This applies to:
+* machine learning;
+* symbolic regression;
+* mapping parameters;
+* topological thresholds;
+* classification boundaries;
+* cosmological relationships;
+* SFR models.
+________________
+
+
+31. Reproducibility Standard
+Every major result should ultimately be associated with:
+* source data;
+* data version;
+* preprocessing;
+* code;
+* computational environment;
+* parameter configuration;
+* random seeds where applicable;
+* mapping definition;
+* statistical procedure;
+* null model;
+* result artifact;
+* experiment identifier.
+The goal is that another investigator can reconstruct the result without relying on undocumented choices.
+________________
+
+
+32. Historical Material
+Existing S.T.A.R. documents are not discarded merely because their epistemic status changes.
+Instead, historical claims are preserved and reclassified.
+The principal existing modules are:
+ACSC
+Principal structural hypothesis concerning arithmetic–cosmic correspondence.
+GLMPCT
+Mapping and scale-translation framework.
+ECC
+Candidate entropy/cohomology dynamical layer.
+RTCH
+Candidate variational completion.
+These modules are subordinate to the present Charter.
+Where an older document conflicts with this Charter's epistemic standards, the Charter controls the interpretation of the claim.
+________________
+
+
+33. Research Roadmap
+The canonical development sequence is:
+Phase 0
+Research Charter and Claim/Evidence Registry.
+Phase 1
+Document reconciliation and claim classification.
+Phase 2
+Arithmetic dataset construction.
+Phase 3
+Mapping benchmark and alternative mappings.
+Phase 4
+Arithmetic topography.
+Phase 5
+Cosmic-web experiment.
+Phase 6
+Rank experiment.
+Phase 7
+Cosmic evolution and redshift analysis.
+Phase 8
+Astrophysical laboratory, including SFR.
+Phase 9
+Physical correspondence.
+Phase 10
+Candidate dynamical theory.
+Phase 11
+Cosmological applications, including the Hubble–Planck tension.
+The Hubble–Planck tension is therefore a downstream test rather than a design constraint imposed on the earlier research.
+________________
+
+
+34. Governing Scientific Principle
+The governing principle of S.T.A.R. is:
+Do not ask whether the theory can be made to fit the universe. Ask whether a fixed mathematical construction predicts structure that was not used to construct it. 
+                                             ~ Michael Dine ~
+This principle controls the relationship between theory development and empirical testing.
+A construction that is flexible enough to reproduce an already-used dataset does not thereby establish correspondence.
+The scientific objective is instead:
+[
+\boxed{
+\text{fixed construction}
+\rightarrow
+\text{independent prediction}
+\rightarrow
+\text{independent observation}
+}
+]
+with explicit null models and reproducible analysis.
+________________
+
+
+35. Canonical Research Pipeline
+The canonical S.T.A.R. pipeline is:
+[
+E
+\rightarrow
+I(E)
+\rightarrow
+\Phi(E)
+\rightarrow
+\mathcal H_{\rm arith}
+\rightarrow
+D_{\rm arith}
+\rightarrow
+D_{\rm cosmic}
+\rightarrow
+\text{Statistical Test}
+\rightarrow
+\text{Independent Validation}.
+]
+If correspondence survives:
+[
+\text{Correspondence}
+\rightarrow
+\text{Dynamics}
+\rightarrow
+\text{Physical Correspondence}
+\rightarrow
+\text{Candidate Theory}.
+]
+The complete conceptual architecture is therefore:
+[
+\boxed{
+\text{Arithmetic}
+\rightarrow
+\text{Geometry}
+\rightarrow
+\text{Topography}
+\rightarrow
+\text{Topology}
+\rightarrow
+\text{Observation}
+\rightarrow
+\text{Dynamics}
+\rightarrow
+\text{Physics}
+}
+]
+with every arrow treated as a scientific question rather than an assumed identity.
+________________
+
+
+36. Controlling Standard for the Claim/Evidence Registry
+The Claim/Evidence Registry shall use this Charter as its controlling standard.
+For every claim, the Registry must answer five fundamental questions:
+1. What exactly is being claimed?
+The statement must be sufficiently precise to be tested.
+2. What is the epistemic status?
+The claim must be classified as:
+[
+D,\ E,\ M,\ P,\ H,\ C,\ T,\ \text{or }S.
+]
+3. What evidence supports it?
+Evidence must be distinguished from assumptions, model outputs, historical observations, and interpretations.
+4. What could falsify it?
+A claim without a meaningful failure condition shall not be represented as a fully testable empirical hypothesis.
+5. Has it survived independent validation?
+A result derived from the same data or model used to construct the claim shall not automatically be treated as independent confirmation.
+The Registry therefore functions as the scientific memory of S.T.A.R.
+It shall preserve:
+* positive results;
+* negative results;
+* unresolved claims;
+* competing explanations;
+* historical claims;
+* superseded interpretations;
+* model-dependent thresholds;
+* failed experiments;
+* successful replications;
+* unresolved mathematical questions.
+________________
+
+
+37. Final Standard
+S.T.A.R. shall advance claims through the following progression whenever possible:
+[
+\boxed{
+\text{Idea}
+\rightarrow
+\text{Defined Object}
+\rightarrow
+\text{Hypothesis}
+\rightarrow
+\text{Prediction}
+\rightarrow
+\text{Null Test}
+\rightarrow
+\text{Independent Validation}
+\rightarrow
+\text{Replication}
+\rightarrow
+\text{Theory}
+}
+]
+No step may be silently skipped.
+The purpose of this Charter is not to restrict the scope of S.T.A.R.'s ideas.
+Its purpose is to ensure that increasingly ambitious mathematical and physical interpretations remain distinguishable from the evidence supporting them.
+The project may ultimately discover:
+* a genuine arithmetic–cosmic correspondence;
+* a useful mathematical representation with no fundamental physical interpretation;
+* an astrophysically useful predictive structure;
+* a new mathematical relationship;
+* or that particular proposed correspondences do not survive testing.
+All of these outcomes are scientifically meaningful.
+The controlling objective is therefore not confirmation of ACSC, GLMPCT, ECC, RTCH, rank-based cosmology, or any other predetermined theory.
+The controlling objective is the discovery of whatever reproducible mathematical and physical relationships the evidence supports.
+[
+\boxed{
+\textbf{S.T.A.R. investigates; the evidence decides.}
+}

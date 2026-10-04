@@ -1,0 +1,337 @@
+# Current audit supplement - revision 0.3
+
+Authority: supplied Research Charter v0.2. Audit date: October 3, 2026.
+
+[Certain] Source inventory and static/table diagnostics are not independent scientific replication. This supplement governs current evidence assessment where it differs from the retained v0.2 baseline. Original claim wording, classifications, numerical reports and protocols remain historical and unchanged.
+
+Coverage: 288 readable Drive snapshots; 14,361 local files inventoried. Semantic review prioritizes the linked evidence. Selected source hashes identify as-found bytes; readable Drive snapshot hashes do not establish canonical revision bytes. Large cloud-backed and excluded content is listed separately.
+
+Evidence-state codes: U usable as properly labeled R&D; R reconstruction; N new test; C control; D derivation audit; H historical only; X negative/diagnostic. No record is promoted to independent, controlled, predictive or physical validation by this audit.
+
+# Canonical experiment assessment records (25)
+
+Existing canonical protocols remain in the retained supplied PDF. Status below describes what this source audit established; it is not a substituted experiment execution.
+
+# EXP-CTRL-A03 - Leakage and Contamination Audit
+
+Original protocol: supplied experiment registry page 7; evidence state R.
+
+[Certain] Current status: STATIC AUDIT FINDINGS RECORDED / CONTROLLED COMPARATIVE RERUN NOT PERFORMED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: CORE-001, COSMO-L001, SFR-A001, CTRL-A002. Findings: E-LCL-009, E-LCL-010, E-LCL-012, E-LCL-013, E-LCL-014, E-DRV-002, E-DRV-003.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting. Set Leakage Status POTENTIAL LEAKAGE for rank generalization and CONFIRMED TARGET CONTAMINATION for Faltings-held-out interpretation; rebuild fold-local embeddings and remove target-defining inputs for independent prediction tests. Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion. Classify as historical random-feature stellar-mass baseline/control candidate, preserve absent-target diagnostic, and require exact input/schema plus explicit outcome exclusion and SFR-specific control reconstruction. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update. Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance. Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test.
+
+# EXP-CTRL-A01 - Random-Feature Baseline
+
+Original protocol: supplied experiment registry page 8; evidence state C/R.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: CTRL-RF001. Findings: E-LCL-013, E-LCL-014.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Classify as historical random-feature stellar-mass baseline/control candidate, preserve absent-target diagnostic, and require exact input/schema plus explicit outcome exclusion and SFR-specific control reconstruction. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.
+
+# EXP-CTRL-A02 - Arithmetic Permutation Control
+
+Original protocol: supplied experiment registry page 10; evidence state N.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: ARITH-001, SFR-A001, CTRL-A001. Findings: E-LCL-009, E-LCL-014.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.
+
+# EXP-K001 - Log-Normal Reciprocal-Normalization Test
+
+Original protocol: supplied experiment registry page 11; evidence state R.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: MATH-K001, MATH-K002. Findings: E-DRV-001.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation.
+
+# EXP-L001 - (L_{\rm cosmo}(s)) Model Validation
+
+Original protocol: supplied experiment registry page 13; evidence state R.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: COSMO-L001. Findings: E-LCL-012, E-DRV-003.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion. Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test.
+
+# EXP-SFR-A01 - Arithmetic Incremental SFR Prediction
+
+Original protocol: supplied experiment registry page 15; evidence state N/R.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: COSMO-L002, SFR-A001. Findings: E-LCL-012, E-DRV-002, E-DRV-003.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion. Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance. Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test.
+
+# EXP-SFR-A02 - Arithmetic-Only SFR Prediction
+
+Original protocol: supplied experiment registry page 16; evidence state N.
+
+[Certain] Current status: PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: SFR-A002. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-SFR-A03 - Extreme-SFR Robustness
+
+Original protocol: supplied experiment registry page 17; evidence state R/N.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: SFR-E001, SFR-A003. Findings: E-DRV-002.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance.
+
+# EXP-RANK-A01 - Rank and Cosmic Environment
+
+Original protocol: supplied experiment registry page 18; evidence state N.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: CORE-001, RANK-001, RANK-002, RANK-003, HIST-001, HIST-002, HIST-003, HIST-004, HIST-005, HIST-006. Findings: E-LCL-004, E-LCL-005.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing. Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.
+
+# EXP-RANK-A02 - Rank-Weighted Cosmic Topology
+
+Original protocol: supplied experiment registry page 20; evidence state N/R.
+
+[Certain] Current status: PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: RANK-002, RANK-003, TOPO-001, TOPO-002, HIST-002, HIST-003, HIST-004, HIST-005, HIST-006. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-TOPO-A01 - Null-Calibrated Persistent Homology
+
+Original protocol: supplied experiment registry page 22; evidence state R/N.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: CORE-001, TOPO-001, TOPO-002, TOPO-003, HIST-001, HIST-007, HIST-008. Findings: E-LCL-003, E-LCL-006, E-LCL-007, E-LCL-008.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs. Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion. Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.
+
+# EXP-MAP-A01 - Mapping-Family Comparison
+
+Original protocol: supplied experiment registry page 23; evidence state R/N.
+
+[Certain] Current status: HISTORICAL/DIAGNOSTIC ARTIFACTS LINKED / RECONSTRUCTION REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: MAP-001, MAP-002, MAP-003, MAP-004, MAP-005, HIST-001, HIST-008. Findings: E-LCL-003, E-LCL-004, E-LCL-006, E-LCL-016.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs. Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing. Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion. Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.
+
+# EXP-MAP-A02 - Rank-Scale Sensitivity
+
+Original protocol: supplied experiment registry page 24; evidence state N.
+
+[Certain] Current status: PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: MAP-003. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-MAP-A03 - Arithmetic Generator Controls
+
+Original protocol: supplied experiment registry page 25; evidence state N/R.
+
+[Certain] Current status: PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: ARITH-001. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-DATA-A01 - Cross-Survey Matching Validation
+
+Original protocol: supplied experiment registry page 26; evidence state U/R.
+
+[Certain] Current status: INSPECTED ASSOCIATIONS FAILED / MATCH REBUILD REQUIRED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: CORE-001, DATA-M001. Findings: E-LCL-001, E-LCL-002, E-LCL-015.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Retain failed data-quality evidence; quarantine these tables from controlled analyses until matching is rebuilt from source catalogs with spherical distance, keyed joins, duplicate controls, tolerance sensitivity, and saved data/code hashes. Record code variants separately and reconstruct EXP-DATA-A01 using a registered coordinate system, exact input IDs, spherical matching, and explicit identity crosswalks. Preserve upstream identifiers as observed provenance fields; add exact release/query and processing/code bindings before declaring complete lineage.
+
+# EXP-DATA-A02 - Data-Lineage Reconstruction
+
+Original protocol: supplied experiment registry page 27; evidence state R.
+
+[Certain] Current status: PROVENANCE AUDIT PARTIALLY COMPLETED / LINEAGE GAPS REMAIN. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: CORE-001, DATA-M002, HIST-008. Findings: E-DRV-004, E-LCL-003, E-LCL-004, E-LCL-014, E-LCL-015.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims. Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs. Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update. Preserve upstream identifiers as observed provenance fields; add exact release/query and processing/code bindings before declaring complete lineage.
+
+# EXP-RTCH-B01 - RTCH Mathematical Consistency
+
+Original protocol: supplied experiment registry page 28; evidence state D.
+
+[Certain] Current status: THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: RTCH-M001, RTCH-M002, RTCH-H004. Findings: E-LCL-007.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01.
+
+# EXP-RTCH-B02 - RTCH Fifth-Force Constraint
+
+Original protocol: supplied experiment registry page 30; evidence state N.
+
+[Certain] Current status: PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: RTCH-H001, RTCH-H003. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-RTCH-B03 - Trace-Free Radiation Control
+
+Original protocol: supplied experiment registry page 31; evidence state D/N.
+
+[Certain] Current status: THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: RTCH-H002. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-FIELD-B01 - Arithmetic Field Construction
+
+Original protocol: supplied experiment registry page 32; evidence state N.
+
+[Certain] Current status: THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: FIELD-001. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-FIELD-B02 - Arithmetic Field vs Einstein Tensor
+
+Original protocol: supplied experiment registry page 33; evidence state N.
+
+[Certain] Current status: THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: FIELD-002, FIELD-003. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-ECC-B01 - Entropy/Cohomology Consistency
+
+Original protocol: supplied experiment registry page 34; evidence state D/R.
+
+[Certain] Current status: THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: ECC-001, ECC-002. Findings: E-LCL-007, E-DRV-004.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01. Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims.
+
+# EXP-ENERGY-B01 - Generalized Mass-Energy Relation
+
+Original protocol: supplied experiment registry page 35; evidence state N.
+
+[Certain] Current status: THEORETICAL/PHYSICAL AUDIT OR TEST REQUIRED / NOT VERIFIED COMPLETE. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: ECC-003, ENERGY-001. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-COSMO-B01 - Arithmetic/Topological Evolution
+
+Original protocol: supplied experiment registry page 36; evidence state N.
+
+[Certain] Current status: PLANNED CONTROLLED EXPERIMENT / COMPLETED EXECUTION NOT VERIFIED. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: COSMO-E001. Findings: No complete linked execution independently verified.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Execute the original registered protocol after its data, mathematical and control dependencies are resolved; do not substitute illustrative code or document prose for execution.
+
+# EXP-COSMO-C01 - Hubble–Planck Tension Application
+
+Original protocol: supplied experiment registry page 36; evidence state N.
+
+[Certain] Current status: DEFERRED / PREREQUISITES UNVERIFIED; CALIBRATED DEMO INSUFFICIENT. Canonical protocol completed: no new completed execution verified.
+
+Claims linked: COSMO-E002. Findings: E-LCL-016.
+
+Results level: NOT ASSIGNED: no controlled historical reproduction, new execution or independent replication was performed. Replication: NO NEW INDEPENDENT REPLICATION PERFORMED.
+
+Required action: Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.
+
+# Protocol and namespace conflicts
+
+[Certain] The crosswalk refers to auxiliary experiment IDs absent from the supplied canonical registry. They are retained as unresolved references, not invented controlled protocols. Local RTCH-E1 synthetic generations are separate from EXP-RTCH-B01. Legacy local control IDs conflict with canonical meanings (E-LCL-014).
+
+EXP-CORE-A01: definition absent from supplied canonical registry; candidate none; resolution NO ALIAS ASSIGNED. Claims: CORE-001. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+EXP-RANK-A03: definition absent from supplied canonical registry; candidate none; resolution NO ALIAS ASSIGNED. Claims: RANK-003. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+EXP-TOPO-A02: definition absent from supplied canonical registry; candidate none; resolution NO ALIAS ASSIGNED. Claims: TOPO-002. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+EXP-TOPO-A03: definition absent from supplied canonical registry; candidate none; resolution NO ALIAS ASSIGNED. Claims: TOPO-003. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+EXP-K002: definition absent from supplied canonical registry; candidate none; resolution NO ALIAS ASSIGNED. Claims: MATH-K003. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+CTRL-COSMO-001: definition absent from supplied canonical registry; candidate none; resolution NO ALIAS ASSIGNED. Claims: COSMO-R001. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+DATA-PROV-001: definition absent from supplied canonical registry; candidate EXP-DATA-A02; resolution UNCONFIRMED. Claims: DATA-M002. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+EXP-FIELD-B03: definition absent from supplied canonical registry; candidate none; resolution NO ALIAS ASSIGNED. Claims: FIELD-003. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+EXP-ECC-B02: definition absent from supplied canonical registry; candidate none; resolution NO ALIAS ASSIGNED. Claims: ECC-003. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.
+
+EXP-COSMO-B02: definition absent from supplied canonical registry; candidate EXP-COSMO-C01; resolution UNCONFIRMED. Claims: COSMO-E002. Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias.

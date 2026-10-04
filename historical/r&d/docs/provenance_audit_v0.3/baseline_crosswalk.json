@@ -1,0 +1,432 @@
+[
+  {
+    "claim_id": "CORE-001",
+    "baseline_crosswalk_text": "CORE-001 Multiple mapping/topology/model documents U + R EXP-CORE-A01 Reconstruction + new controlled test ",
+    "baseline_experiment_references": [
+      "EXP-CORE-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RANK-001",
+    "baseline_crosswalk_text": "RANK-001 Rank/mapping theory + historical mapping work U + N EXP-RANK-A01 New experiment ",
+    "baseline_experiment_references": [
+      "EXP-RANK-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RANK-002",
+    "baseline_crosswalk_text": "RANK-002 Persistent-homology methodology + mapping framework U + N EXP-RANK-A02 New experiment ",
+    "baseline_experiment_references": [
+      "EXP-RANK-A02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RANK-003",
+    "baseline_crosswalk_text": "RANK-003 Historical rank/environment hypothesis H EXP-RANK-A03 New experiment ",
+    "baseline_experiment_references": [
+      "EXP-RANK-A03"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "MAP-001",
+    "baseline_crosswalk_text": "MAP-001 Alternative-mapping document U EXP-MAP-A01 Controlled comparison ",
+    "baseline_experiment_references": [
+      "EXP-MAP-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "MAP-002",
+    "baseline_crosswalk_text": "MAP-002 Historical (\\Phi) implementations U + R EXP-MAP-A01 Reconstruction ",
+    "baseline_experiment_references": [
+      "EXP-MAP-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "MAP-003",
+    "baseline_crosswalk_text": "MAP-003 Historical (z=200r) work U + R EXP-MAP-A02 Parameter sweep ",
+    "baseline_experiment_references": [
+      "EXP-MAP-A02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "MAP-004",
+    "baseline_crosswalk_text": "MAP-004 Criteria for Alternative Mappings U EXP-MAP-A01 Formalize test ",
+    "baseline_experiment_references": [
+      "EXP-MAP-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "MAP-005",
+    "baseline_crosswalk_text": "MAP-005 MCJ/PTD/FT alternatives U EXP-MAP-A01 New controlled comparison ",
+    "baseline_experiment_references": [
+      "EXP-MAP-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "ARITH-001",
+    "baseline_crosswalk_text": "ARITH-001 Fibonacci/Lucas implementations U + H EXP-MAP-A03 New control experiment ",
+    "baseline_experiment_references": [
+      "EXP-MAP-A03"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "TOPO-001",
+    "baseline_crosswalk_text": "TOPO-001 TDA code/methodology + historical distance results U + R EXP-TOPO-A01 Reconstruction ",
+    "baseline_experiment_references": [
+      "EXP-TOPO-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "TOPO-002",
+    "baseline_crosswalk_text": "TOPO-002 Void/topology framework H EXP-TOPO-A02 New experiment ",
+    "baseline_experiment_references": [
+      "EXP-TOPO-A02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "TOPO-003",
+    "baseline_crosswalk_text": "TOPO-003 Connected-component methodology U EXP-TOPO-A03 New experiment ",
+    "baseline_experiment_references": [
+      "EXP-TOPO-A03"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "MATH-K001",
+    "baseline_crosswalk_text": "MATH-K001 Validation of BSDCT.pdf + simulations U + R EXP-K001 Mathematical reconstruction ",
+    "baseline_experiment_references": [
+      "EXP-K001"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "MATH-K002",
+    "baseline_crosswalk_text": "MATH-K002 (K\\approx0.998108) simulations U EXP-K001 Reproduce ",
+    "baseline_experiment_references": [
+      "EXP-K001"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "MATH-K003",
+    "baseline_crosswalk_text": "MATH-K003 Conflicting historical K values U + X EXP-K002 Stability study ",
+    "baseline_experiment_references": [
+      "EXP-K002"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "COSMO-L001",
+    "baseline_crosswalk_text": "COSMO-L001 L-cosmo(s).py and related scripts U + R EXP-L001 Leakage-controlled reconstruction ",
+    "baseline_experiment_references": [
+      "EXP-L001"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "COSMO-L002",
+    "baseline_crosswalk_text": "COSMO-L002 Historical SFR/L-cosmo models H + R EXP-SFR-A01 New controlled test ",
+    "baseline_experiment_references": [
+      "EXP-SFR-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "COSMO-R001",
+    "baseline_crosswalk_text": "COSMO-R001 cosmo_rank implementations U + H CTRL-COSMO-001 Rename/reconstruct ",
+    "baseline_experiment_references": [
+      "CTRL-COSMO-001"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "SFR-A001",
+    "baseline_crosswalk_text": "SFR-A001 Historical RF/GB/SHAP models U + R EXP-SFR-A01 New controlled test ",
+    "baseline_experiment_references": [
+      "EXP-SFR-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "SFR-A002",
+    "baseline_crosswalk_text": "SFR-A002 Historical feature/model work H EXP-SFR-A02 New experiment ",
+    "baseline_experiment_references": [
+      "EXP-SFR-A02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "SFR-E001",
+    "baseline_crosswalk_text": "SFR-E001 Historical outlier results U EXP-SFR-A03 Reproduce ",
+    "baseline_experiment_references": [
+      "EXP-SFR-A03"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "SFR-A003",
+    "baseline_crosswalk_text": "SFR-A003 Existing outlier analysis U EXP-SFR-A03 Pre-register ",
+    "baseline_experiment_references": [
+      "EXP-SFR-A03"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "CTRL-RF001",
+    "baseline_crosswalk_text": "CTRL-RF001 model5.py U + C EXP-CTRL-A01 Reproduce ",
+    "baseline_experiment_references": [
+      "EXP-CTRL-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "CTRL-A001",
+    "baseline_crosswalk_text": "CTRL-A001 No adequate completed permutation control identified N EXP-CTRL-A02 New experiment ",
+    "baseline_experiment_references": [
+      "EXP-CTRL-A02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "CTRL-A002",
+    "baseline_crosswalk_text": "CTRL-A002 Leakage concerns identified in scripts X EXP-CTRL-A03 Mandatory reconstruction ",
+    "baseline_experiment_references": [
+      "EXP-CTRL-A03"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "DATA-M001",
+    "baseline_crosswalk_text": "DATA-M001 merged_sdss_hi.csv + KDTree workflow U EXP-DATA-A01 Reproduce matching ",
+    "baseline_experiment_references": [
+      "EXP-DATA-A01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "DATA-M002",
+    "baseline_crosswalk_text": "DATA-M002 Extensive cross-survey datasets U DATA-PROV-001 Formalize provenance ",
+    "baseline_experiment_references": [
+      "DATA-PROV-001"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RTCH-M001",
+    "baseline_crosswalk_text": "RTCH-M001 RTCH manuscript/action U + D EXP-RTCH-B01 Derivation audit ",
+    "baseline_experiment_references": [
+      "EXP-RTCH-B01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RTCH-M002",
+    "baseline_crosswalk_text": "RTCH-M002 Closed-pullback construction U + D EXP-RTCH-B01 Formal proof check ",
+    "baseline_experiment_references": [
+      "EXP-RTCH-B01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RTCH-H001",
+    "baseline_crosswalk_text": "RTCH-H001 Candidate coupling equations U EXP-RTCH-B02 New physical test ",
+    "baseline_experiment_references": [
+      "EXP-RTCH-B02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RTCH-H002",
+    "baseline_crosswalk_text": "RTCH-H002 Trace-coupling derivation U + D EXP-RTCH-B03 Derivation + test ",
+    "baseline_experiment_references": [
+      "EXP-RTCH-B03"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RTCH-H003",
+    "baseline_crosswalk_text": "RTCH-H003 Point-particle action/equation U + D EXP-RTCH-B02 Constraint analysis ",
+    "baseline_experiment_references": [
+      "EXP-RTCH-B02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "RTCH-H004",
+    "baseline_crosswalk_text": "RTCH-H004 Unified-matter construction U EXP-RTCH-B01 Formal consistency test ",
+    "baseline_experiment_references": [
+      "EXP-RTCH-B01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "FIELD-001",
+    "baseline_crosswalk_text": "FIELD-001 Arithmetic-topography formulation U EXP-FIELD-B01 Formalize ",
+    "baseline_experiment_references": [
+      "EXP-FIELD-B01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "FIELD-002",
+    "baseline_crosswalk_text": "FIELD-002 No controlled physical evidence N EXP-FIELD-B02 New experiment ",
+    "baseline_experiment_references": [
+      "EXP-FIELD-B02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "FIELD-003",
+    "baseline_crosswalk_text": "FIELD-003 Symbolic-field proposal H EXP-FIELD-B03 New theoretical construction ",
+    "baseline_experiment_references": [
+      "EXP-FIELD-B03"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "ECC-001",
+    "baseline_crosswalk_text": "ECC-001 ECC manuscript U + D EXP-ECC-B01 Formal derivation ",
+    "baseline_experiment_references": [
+      "EXP-ECC-B01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "ECC-002",
+    "baseline_crosswalk_text": "ECC-002 Closed/non-exact form construction U + D EXP-ECC-B01 Mathematical audit ",
+    "baseline_experiment_references": [
+      "EXP-ECC-B01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "ECC-003",
+    "baseline_crosswalk_text": "ECC-003 Proposed entropy-energy architecture H EXP-ECC-B02 New theory/limit test ",
+    "baseline_experiment_references": [
+      "EXP-ECC-B02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "ENERGY-001",
+    "baseline_crosswalk_text": "ENERGY-001 Conceptual mass-energy proposals H EXP-ENERGY-B01 New derivation ",
+    "baseline_experiment_references": [
+      "EXP-ENERGY-B01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "COSMO-E001",
+    "baseline_crosswalk_text": "COSMO-E001 Redshift/topology framework H EXP-COSMO-B01 New longitudinal experiment ",
+    "baseline_experiment_references": [
+      "EXP-COSMO-B01"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  },
+  {
+    "claim_id": "COSMO-E002",
+    "baseline_crosswalk_text": "COSMO-E002 No direct evidence N EXP-COSMO-B02 Downstream only",
+    "baseline_experiment_references": [
+      "EXP-COSMO-B02"
+    ],
+    "source_file": "STAR_Experiment_Crosswalk.pdf",
+    "source_sha256": "ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f",
+    "source_locator": "Overall Crosswalk, PDF pages 2-5"
+  }
+]

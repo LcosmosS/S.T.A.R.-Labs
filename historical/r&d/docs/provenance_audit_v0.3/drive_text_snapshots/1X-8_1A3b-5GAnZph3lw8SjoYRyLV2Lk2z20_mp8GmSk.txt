@@ -1,0 +1,714 @@
+﻿Using local ecdata at: /home/kepler/ecdata
+Using local lmfdb data at: /home/kepler/lmfdb
+========================================================================================================================
+   UCF LOCAL DB Tool — Full ACSC Projection
+========================================================================================================================
+Starting parallel processing with 6 cores...
+
+
+  > Processing 'Virgo' (a=-1706, b=6320)...  > Processing 'Coma' (a=-10141, b=9980)...  > Processing 'Hercules' (a=-15796, b=8500)...  > Processing 'Perseus' (a=-7456, b=11500)...  > Processing 'Centaurus' (a=-5371, b=7500)...  > Processing 'Fornax' (a=-1959, b=3200)...
+
+
+
+
+
+
+
+
+    Creating Sage model for a=-1706, b=6320...
+    Creating Sage model for a=-15796, b=8500...    Creating Sage model for a=-10141, b=9980...    Creating Sage model for a=-7456, b=11500...    Creating Sage model for a=-1959, b=3200...
+    Creating Sage model for a=-5371, b=7500...
+
+
+
+
+
+
+
+
+     Minimal model: (0, 1, 0, -963825, -364520177)     Minimal model: (0, -1, 0, -18519145, -30668465975)
+    Computing rank with high two_descent limit...
+
+
+    Computing rank with high two_descent limit...
+     Minimal model: (0, -1, 0, -83162705, -291876936975)     Minimal model: (0, -1, 0, -9608380, -11460457100)     Minimal model: (0, -1, 0, -34269980, -77206636000)     Minimal model: (1, -1, 1, -79752, -8648821)
+
+
+
+
+
+
+    Computing rank with high two_descent limit...    Computing rank with high two_descent limit...    Computing rank with high two_descent limit...    Computing rank with high two_descent limit...
+
+
+
+
+
+
+  > Processing 'Shapley' (a=-20535, b=18000)...  > Processing 'Horologium' (a=-22115, b=12000)...
+
+
+    Creating Sage model for a=-20535, b=18000...    Creating Sage model for a=-22115, b=12000...
+
+
+     Minimal model: (1, -1, 1, -8784005, -10018247628)     Minimal model: (1, 0, 1, -10188276, -12517816802)
+
+
+    Computing rank with high two_descent limit...    Computing rank with high two_descent limit...
+
+
+
+
+1 points of order 2:
+[-569:0:1]
+
+
+Using 2-isogenous curve [0,3412,0,2885156,0] (minimal model [0,1,0,-995425,-339372897])
+
+
+1 points of order 2:
+[-2485:0:1]
+
+
+Using 2-isogenous curve [0,14912,0,55545936,0] (minimal model [0,-1,0,-1161040,-475778138])
+
+
+1 points of order 2:
+[-3380:0:1]
+
+
+
+
+1 points of order 2:
+[-1790:0:1]
+
+
+Using 2-isogenous curve [0,20282,0,102799961,0] (minimal model [0,-1,0,-34319880,-76970469280])
+Using 2-isogenous curve [0,10742,0,28817641,0] (minimal model [0,-1,0,-9645880,-11366452100])
+
+
+1 points of order 2:
+[-5265:0:1]
+
+
+Using 2-isogenous curve [0,31592,0,249479616,0] (minimal model [0,-1,0,-5200325,-4554381723])
+
+
+1 points of order 2:
+[-163:81:1]
+
+
+Using 2-isogenous curve [0,3918,0,3824881,0] (minimal model [1,-1,1,-80752,-8420021])
+-------------------------------------------------------
+First step, determining 1st descent Selmer groups
+-------------------------------------------------------
+After first local descent, rank bound = 1
+rk(S^{phi}(E'))=        1
+rk(S^{phi'}(E))=        2
+
+
+-------------------------------------------------------
+Second step, determining 2nd descent Selmer groups
+-------------------------------------------------------
+After second local descent, rank bound = 1
+rk(phi'(S^{2}(E)))=        1
+rk(phi(S^{2}(E')))=        2
+rk(S^{2}(E))=        2
+rk(S^{2}(E'))=        2
+
+
+Third step, determining E(Q)/phi(E'(Q)) and E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+1. E(Q)/phi(E'(Q))
+-------------------------------------------------------
+(c,d)  =(-7456,11500)
+(c',d')=(14912,55545936)
+This component of the rank is 0
+-------------------------------------------------------
+2. E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+First stage (no second descent yet)...
+(-51,0,14912,0,-1089136)-------------------------------------------------------
+First step, determining 1st descent Selmer groups
+-------------------------------------------------------
+After first local descent, rank bound = 0
+rk(S^{phi}(E'))=        1
+rk(S^{phi'}(E))=        1
+
+
+-------------------------------------------------------
+Second step, determining 2nd descent Selmer groups
+-------------------------------------------------------
+...skipping since we already know rank=0
+After second local descent, rank bound = 0
+rk(phi'(S^{2}(E)))=        1
+rk(phi(S^{2}(E')))=        1
+rk(S^{2}(E))=        1
+rk(S^{2}(E'))=        1
+
+
+Third step, determining E(Q)/phi(E'(Q)) and E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+1. E(Q)/phi(E'(Q))
+-------------------------------------------------------
+(c,d)  =(-1959,3200)
+(c',d')=(3918,3824881)
+This component of the rank is 0
+-------------------------------------------------------
+2. E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+This component of the rank is 0
+
+
+-------------------------------------------------------
+Summary of results:
+-------------------------------------------------------
+        rank(E) = 0
+        #E(Q)/2E(Q) = 2
+
+
+Information on III(E/Q):
+        #III(E/Q)[phi']    = 1
+        #III(E/Q)[2]       = 1
+
+
+Information on III(E'/Q):
+        #phi'(III(E/Q)[2]) = 1
+        #III(E'/Q)[phi]    = 1
+        #III(E'/Q)[2]      = 1
+
+
+-------------------------------------------------------
+First step, determining 1st descent Selmer groups
+-------------------------------------------------------
+After first local descent, rank bound = 2
+rk(S^{phi}(E'))=        1
+rk(S^{phi'}(E))=        3
+
+
+-------------------------------------------------------
+Second step, determining 2nd descent Selmer groups
+-------------------------------------------------------
+After second local descent, rank bound = 0
+rk(phi'(S^{2}(E)))=        1
+rk(phi(S^{2}(E')))=        1
+rk(S^{2}(E))=        3
+rk(S^{2}(E'))=        1
+
+
+Third step, determining E(Q)/phi(E'(Q)) and E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+1. E(Q)/phi(E'(Q))
+-------------------------------------------------------
+(c,d)  =(-15796,8500)
+(c',d')=(31592,249479616)
+This component of the rank is 0
+-------------------------------------------------------
+2. E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+This component of the rank is 0
+
+
+-------------------------------------------------------
+Summary of results:
+-------------------------------------------------------
+        rank(E) = 0
+        #E(Q)/2E(Q) = 2
+
+
+Information on III(E/Q):
+        #III(E/Q)[phi']    <= 4
+        #III(E/Q)[2]       = 4
+
+
+Information on III(E'/Q):
+        #phi'(III(E/Q)[2]) = 1
+        #III(E'/Q)[phi]    = 1
+        #III(E'/Q)[2]      = 1
+
+
+-------------------------------------------------------
+First step, determining 1st descent Selmer groups
+-------------------------------------------------------
+After first local descent, rank bound = 2
+rk(S^{phi}(E'))=        2
+rk(S^{phi'}(E))=        2
+
+
+-------------------------------------------------------
+First step, determining 1st descent Selmer groups
+-------------------------------------------------------
+After first local descent, rank bound = 1
+rk(S^{phi}(E'))=        2
+rk(S^{phi'}(E))=        1
+
+
+-------------------------------------------------------
+Second step, determining 2nd descent Selmer groups
+-------------------------------------------------------
+After second local descent, rank bound = 1
+rk(phi'(S^{2}(E)))=        2
+rk(phi(S^{2}(E')))=        1
+rk(S^{2}(E))=        2
+rk(S^{2}(E'))=        2
+
+
+Third step, determining E(Q)/phi(E'(Q)) and E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+1. E(Q)/phi(E'(Q))
+-------------------------------------------------------
+(c,d)  =(-5371,7500)
+(c',d')=(10742,28817641)
+First stage (no second descent yet)...
+(5,0,-5371,0,1500)-------------------------------------------------------
+Second step, determining 2nd descent Selmer groups
+-------------------------------------------------------
+After second local descent, rank bound = 2
+rk(phi'(S^{2}(E)))=        2
+rk(phi(S^{2}(E')))=        2
+rk(S^{2}(E))=        3
+rk(S^{2}(E'))=        3
+
+
+Third step, determining E(Q)/phi(E'(Q)) and E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+1. E(Q)/phi(E'(Q))
+-------------------------------------------------------
+(c,d)  =(-1706,6320)
+(c',d')=(3412,2885156)
+First stage (no second descent yet)...
+(2,0,-1706,0,3160)-------------------------------------------------------
+First step, determining 1st descent Selmer groups
+-------------------------------------------------------
+After first local descent, rank bound = 2
+rk(S^{phi}(E'))=        2
+rk(S^{phi'}(E))=        2
+
+
+-------------------------------------------------------
+Second step, determining 2nd descent Selmer groups
+-------------------------------------------------------
+After second local descent, rank bound = 2
+rk(phi'(S^{2}(E)))=        2
+rk(phi(S^{2}(E')))=        2
+rk(S^{2}(E))=        3
+rk(S^{2}(E'))=        3
+
+
+Third step, determining E(Q)/phi(E'(Q)) and E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+1. E(Q)/phi(E'(Q))
+-------------------------------------------------------
+(c,d)  =(-10141,9980)
+(c',d')=(20282,102799961)
+First stage (no second descent yet)...
+(5,0,-10141,0,1996)Processing points found during 2-descent...done:
+  now regulator = 1
+Processing points found during 2-descent...done:
+  now regulator = 1
+:  (x:y:z) = (2812:1616780:233)
+        Curve E'         Point [-93962968752:-231865653360:12649337], height = 13.96405844
+:  no rational point found (hlim=8)
+(499,0,-10141,0,20):  (x:y:z) = (10:1280:19)
+        Curve E         Point [9500:64000:6859], height = 6.639234854
+After first global descent, this component of the rank = 2
+-------------------------------------------------------
+2. E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+This component of the rank is 0
+
+
+-------------------------------------------------------
+Summary of results:
+-------------------------------------------------------
+        rank(E) = 1
+        #E(Q)/2E(Q) = 4
+
+
+Information on III(E/Q):
+        #III(E/Q)[phi']    = 1
+        #III(E/Q)[2]       = 1
+
+
+Information on III(E'/Q):
+        #phi'(III(E/Q)[2]) = 1
+        #III(E'/Q)[phi]    = 1
+        #III(E'/Q)[2]      = 1
+
+
+  ✓ Completed Hercules
+  ✓ Completed Fornax
+:  (x:y:z) = (51:3016:1)
+        Curve E         Point [5202:307632:1], height = 7.863294224
+After first global descent, this component of the rank = 2
+-------------------------------------------------------
+2. E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+First stage (no second descent yet)...
+(-71,0,3412,0,-40636):  no rational point found (hlim=8)
+After first global descent, this component of the rank
+        has lower bound 0
+        and upper bound 1
+        (difference =   1)
+Second descent will attempt to reduce this
+Second stage (using second descent)...
+d1=5:         Curve E         Point [53520863965793950:534929566532567525:35157964649371192], height = 27.92811688
+After first global descent, this component of the rank = 2
+
+
+-------------------------------------------------------
+Summary of results:
+-------------------------------------------------------
+        rank(E) = 1
+        #E(Q)/2E(Q) = 4
+
+
+Information on III(E/Q):
+        #III(E/Q)[phi']    = 1
+        #III(E/Q)[2]       = 1
+
+
+Information on III(E'/Q):
+        #phi'(III(E/Q)[2]) = 1
+        #III(E'/Q)[phi]    = 1
+        #III(E'/Q)[2]      = 1
+
+
+
+
+1 points of order 2:
+[-1843:921:1]
+
+
+Using 2-isogenous curve [0,44230,0,489025225,0] (minimal model [1,0,1,-10192026,-12508141802])
+
+
+1 points of order 2:
+[-1711:855:1]
+
+
+Using 2-isogenous curve [0,41070,0,421614225,0] (minimal model [1,-1,1,-8789630,-10004770128])
+
+
+Second descent inconclusive for d1=5: ELS descendents exist but no rational point found
+
+
+d1=499: -------------------------------------------------------
+
+
+List of points on E = [0,-1,0,-9608380,-11460457100]:
+
+
+I.  Points on E mod phi(E')
+Point [-12268110:64000:6859], height = 6.639234854
+
+
+II.  Points on phi(E') mod 2E
+--none (modulo torsion).
+
+
+-------------------------------------------------------
+Computing full set of 2 coset representatives for
+2E(Q) in E(Q) (modulo torsion), and sorting into height order....done.
+
+
+
+
+Second descent inconclusive for d1=499: ELS descendents exist but no rational point found
+
+
+After second global descent, this component of the rank
+        has lower bound 0
+        and upper bound 1
+        (difference =   1)
+-------------------------------------------------------
+2. E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+First stage (no second descent yet)...
+(-11,0,20282,0,-9345451):  no rational point found (hlim=8)
+(-9345451,0,20282,0,-11):  (x:y:z) = (5:17:1)
+        Curve E'         Point [-1775:-6035:1], height = 4.490028899
+-------------------------------------------------------
+
+
+List of points on E = [0,-1,0,-18519145,-30668465975]:
+
+
+I.  Points on E mod phi(E')
+--none (modulo torsion).
+
+
+
+
+II. Points on phi(E') mod 2E
+Point [-87314021289721618170:534929566532567525:35157964649371192], height = 27.92811688
+-------------------------------------------------------
+Computing full set of 2 coset representatives for
+2E(Q) in E(Q) (modulo torsion), and sorting into height order....done.
+
+
+:  no rational point found (hlim=8)
+After first global descent, this component of the rank
+        has lower bound 0
+        and upper bound 1
+        (difference =   1)
+Second descent will attempt to reduce this
+Second stage (using second descent)...
+d1=-11: 
+Second descent inconclusive for d1=-11: ELS descendents exist but no rational point found
+
+
+d1=-9345451:         Curve E         Point [2890:-63563:1000], height = 8.980057799
+After first global descent, this component of the rank = 2
+
+
+-------------------------------------------------------
+Summary of results:
+-------------------------------------------------------
+        rank(E) = 2
+        #E(Q)/2E(Q) = 8
+
+
+Information on III(E/Q):
+        #III(E/Q)[phi']    = 1
+        #III(E/Q)[2]       = 1
+
+
+Information on III(E'/Q):
+        #phi'(III(E/Q)[2]) = 1
+        #III(E'/Q)[phi]    = 1
+        #III(E'/Q)[2]      = 1
+
+
+
+
+Second descent inconclusive for d1=-9345451: ELS descendents exist but no rational point found
+
+
+After second global descent, this component of the rank
+        has lower bound 0
+        and upper bound 1
+        (difference =   1)
+
+
+-------------------------------------------------------
+Summary of results:
+-------------------------------------------------------
+        0 <= rank(E) <= 2
+        #E(Q)/2E(Q) >= 2
+
+
+Information on III(E/Q):
+        #III(E/Q)[phi']    <= 2
+        #III(E/Q)[2]       <= 4
+
+
+Information on III(E'/Q):
+        #phi'(III(E/Q)[2]) <= 2
+        #III(E'/Q)[phi]    <= 2
+        #III(E'/Q)[2]      <= 4
+
+
+Searching for points (bound = 8)...done:
+  found points which generate a subgroup of rank 0
+  and regulator 1
+Processing points found during 2-descent...-------------------------------------------------------
+First step, determining 1st descent Selmer groups
+-------------------------------------------------------
+After first local descent, rank bound = 1
+rk(S^{phi}(E'))=        1
+rk(S^{phi'}(E))=        2
+
+
+-------------------------------------------------------
+Second step, determining 2nd descent Selmer groups
+-------------------------------------------------------
+After second local descent, rank bound = 1
+rk(phi'(S^{2}(E)))=        1
+rk(phi(S^{2}(E')))=        2
+rk(S^{2}(E))=        2
+rk(S^{2}(E'))=        2
+
+
+Third step, determining E(Q)/phi(E'(Q)) and E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+1. E(Q)/phi(E'(Q))
+-------------------------------------------------------
+(c,d)  =(-20535,18000)
+(c',d')=(41070,421614225)
+This component of the rank is 0
+-------------------------------------------------------
+2. E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+First stage (no second descent yet)...
+(-919,0,41070,0,-458775)-------------------------------------------------------
+
+
+List of points on E = [0,1,0,-963825,-364520177]:
+
+
+I.  Points on E mod phi(E')
+Point [4633:307632:1], height = 7.863294224
+
+
+II. Points on phi(E') mod 2E
+Point [-566110:-63563:1000], height = 8.980057799
+-------------------------------------------------------
+Computing full set of 4 coset representatives for
+2E(Q) in E(Q) (modulo torsion), and sorting into height order....Searching for points (bound = 8)...-------------------------------------------------------
+First step, determining 1st descent Selmer groups
+-------------------------------------------------------
+After first local descent, rank bound = 1
+rk(S^{phi}(E'))=        2
+rk(S^{phi'}(E))=        1
+
+
+-------------------------------------------------------
+Second step, determining 2nd descent Selmer groups
+-------------------------------------------------------
+After second local descent, rank bound = 1
+rk(phi'(S^{2}(E)))=        2
+rk(phi(S^{2}(E')))=        1
+rk(S^{2}(E))=        2
+rk(S^{2}(E'))=        2
+
+
+Third step, determining E(Q)/phi(E'(Q)) and E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+1. E(Q)/phi(E'(Q))
+-------------------------------------------------------
+(c,d)  =(-22115,12000)
+(c',d')=(44230,489025225)
+First stage (no second descent yet)...
+(3,0,-22115,0,4000)done:
+2-descent increases rank to 1,   now regulator = 6.639234854
+Saturating (with bound = -1)...done:
+  found points which generate a subgroup of rank 0
+  and regulator 1
+Processing points found during 2-descent...done.
+
+
+done:
+2-descent increases rank to 1,   now regulator = 27.92811688
+Saturating (with bound = -1)...done:
+  points were already saturated.
+:  no rational point found (hlim=8)
+(-2039,0,41070,0,-206775):  no rational point found (hlim=8)
+(10,0,-22115,0,1200):  no rational point found (hlim=8)
+After first global descent, this component of the rank
+        has lower bound 0
+        and upper bound 1
+        (difference =   1)
+Second descent will attempt to reduce this
+Second stage (using second descent)...
+d1=3: :  no rational point found (hlim=8)
+After first global descent, this component of the rank
+        has lower bound 0
+        and upper bound 1
+        (difference =   1)
+Second descent will attempt to reduce this
+Second stage (using second descent)...
+d1=-919: 
+Second descent inconclusive for d1=3: ELS descendents exist but no rational point found
+
+
+d1=10: Searching for points (bound = 8)...
+Second descent inconclusive for d1=-919: ELS descendents exist but no rational point found
+
+
+d1=-2039: 
+Second descent inconclusive for d1=10: ELS descendents exist but no rational point found
+
+
+After second global descent, this component of the rank
+        has lower bound 0
+        and upper bound 1
+        (difference =   1)
+-------------------------------------------------------
+2. E'(Q)/phi'(E(Q))
+-------------------------------------------------------
+This component of the rank is 0
+
+
+-------------------------------------------------------
+Summary of results:
+-------------------------------------------------------
+        0 <= rank(E) <= 1
+        #E(Q)/2E(Q) >= 2
+
+
+Information on III(E/Q):
+        #III(E/Q)[phi']    = 1
+        #III(E/Q)[2]       <= 2
+
+
+Information on III(E'/Q):
+        #phi'(III(E/Q)[2]) <= 2
+        #III(E'/Q)[phi]    <= 2
+        #III(E'/Q)[2]      <= 2
+
+
+
+
+Second descent inconclusive for d1=-2039: ELS descendents exist but no rational point found
+
+
+After second global descent, this component of the rank
+        has lower bound 0
+        and upper bound 1
+        (difference =   1)
+
+
+-------------------------------------------------------
+Summary of results:
+-------------------------------------------------------
+        0 <= rank(E) <= 1
+        #E(Q)/2E(Q) >= 2
+
+
+Information on III(E/Q):
+        #III(E/Q)[phi']    <= 2
+        #III(E/Q)[2]       <= 2
+
+
+Information on III(E'/Q):
+        #phi'(III(E/Q)[2]) = 1
+        #III(E'/Q)[phi]    = 1
+        #III(E'/Q)[2]      <= 2
+
+
+done:
+  found points which generate a subgroup of rank 0
+  and regulator 1
+Processing points found during 2-descent...done:
+  points were already saturated.
+  ✓ Completed Centaurus
+  ✓ Completed Perseus
+  ✓ Completed Shapley
+done:
+2-descent increases rank to 2,   now regulator = 56.5675374
+Saturating (with bound = -1)...done:
+  points were already saturated.
+  ✓ Completed Virgo
+    Sage Error: Unable to compute the rank, hence generators, with certainty (lower bound=0, generators found=()).  This could be because Sha(E/Q)[2] is nontrivial.
+Try increasing descent_second_limit then trying this command again.
+  ✓ Completed Horologium
+  ✓ Completed Coma
+
+
+========================================================================================================================
+                 FINAL RESULTS WITH FULL PROJECTION
+========================================================================================================================
+   Cluster r (Mly)   rho Derived a Derived b                         Minimal ainv    Conductor Rank Local Label  projected_omega  h_eff_factor  comoving_volume  scaled_regulator  entropy_proxy  cohomology_class  cosmo_scale                                                                                                                                                                                                                                  note                                                                                                                                                                                                                                Status
+     Virgo      54  6320     -1706      6320       (0, 1, 0, -963825, -364520177) 1.823419e+10    2     Unknown       54000000.0      1.017404     3.235314e+08      12521.758187      35.150627         12.631284 2.241420e+07                                                                                                                                                                                 Full ACSC Φ + ECC projection (local DB, high descent)                                                                                                                                                                                                                               Success
+      Coma     321  9980    -10141      9980  (0, -1, 0, -34269980, -77206636000) 4.103774e+12    0     Unknown       54000000.0      1.025079     5.115630e+07        632.455532      39.637561          2.095399 5.473343e+07                                                                                                                                                                                 Full ACSC Φ + ECC projection (local DB, high descent)                                                                                                                                                                                                                               Success
+   Perseus     236 11500     -7456     11500  (0, -1, 0, -18519145, -30668465975) 2.555113e+10    1     Unknown       54000000.0      1.023747     1.312817e+09       4415.823004      39.305514          4.804402 4.692772e+07                                                                                                                                                                                 Full ACSC Φ + ECC projection (local DB, high descent)                                                                                                                                                                                                                               Success
+ Centaurus     170  7500     -5371      7500   (0, -1, 0, -9608380, -11460457100) 3.458117e+09    1     Unknown       54000000.0      1.022330     2.247995e+08       1049.755203      37.794404          5.384430 3.982784e+07                                                                                                                                                                                 Full ACSC Φ + ECC projection (local DB, high descent)                                                                                                                                                                                                                               Success
+    Fornax      62  3200     -1959      3200         (1, -1, 1, -79752, -8648821) 3.824881e+07    0     Unknown       54000000.0      1.017993     2.467811e+06        632.455532      25.753673          2.902147 1.202151e+07                                                                                                                                                                                 Full ACSC Φ + ECC projection (local DB, high descent)                                                                                                                                                                                                                               Success
+  Hercules     500  8500    -15796      8500 (0, -1, 0, -83162705, -291876936975) 2.120577e+10    0     Unknown       54000000.0      1.026998     7.969048e+07        632.455532      40.203119          1.720974 6.831347e+07                                                                                                                                                                                 Full ACSC Φ + ECC projection (local DB, high descent)                                                                                                                                                                                                                               Success
+   Shapley     650 18000    -20535     18000   (1, -1, 1, -8784005, -10018247628) 4.216142e+08    1     Unknown       54000000.0      1.028136     2.253691e+09      11006.921033      33.910678          2.559770 3.894461e+07                                                                                                                                                                                 Full ACSC Φ + ECC projection (local DB, high descent)                                                                                                                                                                                                                               Success
+Horologium     700 12000    -22115     12000                                  N/A          NaN None         ---              NaN           NaN              NaN               NaN            NaN               NaN          NaN Sage Error: Unable to compute the rank, hence generators, with certainty (lower bound=0, generators found=()).  This could be because Sha(E/Q)[2] is nontrivial.\nTry increasing descent_second_limit then trying this command again. Sage Error: Unable to compute the rank, hence generators, with certainty (lower bound=0, generators found=()).  This could be because Sha(E/Q)[2] is nontrivial.\nTry increasing descent_second_limit then trying this command again.
+
+
+ Results saved to 'ucf_local_high_descent_acsc_projection.csv'
+Execution complete. Ready for STAR.ipynb import.

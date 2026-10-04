@@ -1,0 +1,252 @@
+[
+  {
+    "experiment_id": "EXP-CTRL-A03",
+    "title": "Leakage and Contamination Audit",
+    "baseline_record_text": "EXP-CTRL-A03 — Leakage and Contamination Audit Priority: A Evidence State: R Associated Claims: CORE-001, SFR-A001, COSMO-L001 Objective Determine whether historical S.T.A.R. machine-learning and feature-engineering experiments contain information leakage between training and testing populations. Historical motivation Several historical scripts construct: ● normalized variables; ● redshift bins; ● (L_{\\rm cosmo}(s)); ● cosmo_rank; ● interaction terms; before the train/test split. Therefore historical performance values cannot automatically be interpreted as leakage-free predictive measurements. Procedure Reconstruct the relevant pipelines so that: [ D_{\\rm train} \\rightarrow \\text{fit preprocessing} \\rightarrow D_{\\rm train}^{\\prime}, ] and the fitted transformations are subsequently applied to: [ D_{\\rm test} \\rightarrow D_{\\rm test}^{\\prime}. ] No target-derived or population-derived quantity may be calculated using the complete dataset before partitioning. Required controls Compare: 1. historical pipeline; 2. leakage-controlled pipeline; 3. shuffled-target pipeline. Success Criterion The reconstructed pipeline must reproduce the historical result within a documented tolerance where no leakage is present. Failure Criterion Any material performance degradation attributable to information leakage must be recorded and the historical result reclassified accordingly.",
+    "baseline_evidence_state": "R",
+    "source_page": 7,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-CTRL-A01",
+    "title": "Random-Feature Baseline",
+    "baseline_record_text": "EXP-CTRL-A01 — Random-Feature Baseline Priority: A Evidence State: C/R Associated Claim: CTRL-RF001 Objective Establish a non-theoretical machine-learning baseline. Historical basis model5.py used random feature selection and a fixed random seed for predictive modeling. Design Construct a baseline using randomly selected astrophysical features under a fixed seed. Compare against: ● ordinary astrophysical baseline; ● arithmetic-feature baseline; ● arithmetic-plus-astrophysical model. Primary endpoint Out-of-sample: [ R^2_{\\rm OOS}. ] Secondary: [ {\\rm RMSE},\\quad {\\rm MAE}. ] Purpose Determine whether an apparent improvement from S.T.A.R. features exceeds ordinary feature-selection effects.",
+    "baseline_evidence_state": "C/R",
+    "source_page": 8,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-CTRL-A02",
+    "title": "Arithmetic Permutation Control",
+    "baseline_record_text": "EXP-CTRL-A02 — Arithmetic Permutation Control Priority: A Evidence State: N Associated Claims: SFR-A001, ARITH-001 Objective Determine whether arithmetic-derived features contain information beyond their marginal distributions and accidental correlations. Procedure Preserve the marginal distribution of each arithmetic feature while breaking its association with the astronomical target. Possible permutation procedures include: \\pi(X_{\\rm arith}). ] Where appropriate, permutations should preserve relevant grouping variables. Comparison [ X_{\\rm astro} ] versus [ X_{\\rm astro}+X_{\\rm arith} ] versus [ X_{\\rm astro}+X_{\\rm arith}^{\\rm perm}. ] Primary endpoint [ \\Delta R^2_{\\rm OOS}. ] Success Criterion The unpermuted arithmetic model must outperform the appropriately constructed permutation distribution at a pre-registered significance level.",
+    "baseline_evidence_state": "N",
+    "source_page": 10,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-K001",
+    "title": "Log-Normal Reciprocal-Normalization Test",
+    "baseline_record_text": "EXP-K001 — Log-Normal Reciprocal-Normalization Test Priority: A Evidence State: R Associated Claim: MATH-K001 Historical construction \\sum_{i=1}^{N} \\left(\\frac{M_0}{M_i}\\right)^s ] with normalization \\frac{\\sum_i(M_i/M_0)} {\\sum_i(M_0/M_i)}. ] For a log-normal mass distribution with [ \\log M_i\\sim N(\\mu,\\sigma^2), ] and [ M_0=e^\\mu, ] the historical derivation gives equal limiting expectations for the numerator and denominator, suggesting [ K_{\\rm theory}\\rightarrow1. ] Objective Separate this statistical result from its historical BSD-inspired interpretation. Experimental groups 1. Gaussian-log mass distribution; 2. skewed distribution; 3. heavy-tailed distribution; 4. mixture distribution; 5. empirical galaxy-mass distributions. Variables [ N,\\quad \\mu,\\quad\\sigma,\\quad K. ] Primary analysis Estimate: [ E[K_N],\\quad {\\rm Var}(K_N) ] as a function of (N). Historical observations The R&D archive contains simulations with approximately: [ N=500,\\qquad \\mu=9.7843,\\qquad \\sigma=0.3645, ] and reported mean: [ K\\approx0.998108. ] Historical observational samples also produced materially different values, including small-(N) results. These are treated as reconstruction targets, not established confirmations. Success Criterion The theoretical convergence behavior is reproduced under the stated assumptions and its finite-sample behavior is characterized.",
+    "baseline_evidence_state": "R",
+    "source_page": 11,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-L001",
+    "title": "(L_{\\rm cosmo}(s)) Model Validation",
+    "baseline_record_text": "EXP-L001 — (L_{\\rm cosmo}(s)) Model Validation Priority: A Evidence State: R Associated Claim: COSMO-L001 Hypothesis (L_{\\rm cosmo}(s)) may contain information about galaxy-population structure beyond ordinary mass/redshift variables. Core construction \\sum_i \\left(\\frac{M_0}{M_i}\\right)^s. ] Historical implementations also introduced redshift binning and derived mass-dependent quantities. Critical requirement All population statistics and normalization parameters must be estimated within the training fold. Baselines 1. mass-only; 2. mass + redshift; 3. standard astrophysical feature set; 4. astrophysical + (L_{\\rm cosmo}); 5. shuffled (L_{\\rm cosmo}). Primary endpoint Incremental out-of-sample predictive information: [ \\Delta R^2_{\\rm OOS}. ] Secondary endpoints [ \\Delta {\\rm RMSE}, \\quad \\Delta {\\rm MAE}, \\quad \\text{calibration error}. ] Success (L_{\\rm cosmo}) demonstrates reproducible incremental information on independent data.",
+    "baseline_evidence_state": "R",
+    "source_page": 13,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-SFR-A01",
+    "title": "Arithmetic Incremental SFR Prediction",
+    "baseline_record_text": "EXP-SFR-A01 — Arithmetic Incremental SFR Prediction Priority: A Evidence State: N/R Associated Claim: SFR-A001 Hypothesis Arithmetic-derived variables may provide information about SFR beyond ordinary astrophysical variables. Target [ Y=\\log{\\rm SFR}_{H\\alpha}. ] Baseline [ Y=f(X_{\\rm astro}). ] Extended model [ Y=f(X_{\\rm astro},X_{\\rm arith}). ] where (X_{\\rm arith}) may include: [ r_E,\\quad \\log|\\Delta_E|,\\quad \\log N_E,\\quad \\log\\operatorname{Reg}(E),\\quad T_E, ] and validated mapping-derived variables. Primary endpoint R^2_{\\rm arithmetic+astro} R^2_{\\rm astro}. ] Secondary endpoints ● RMSE; ● MAE; ● residual distributions; ● calibration; ● SHAP stability; ● performance across SFR strata. Critical control Arithmetic permutation control EXP-CTRL-A02. Success Criterion An incremental effect survives: ● leakage-controlled preprocessing; ● held-out testing; ● permutation control; ● multiple random seeds; ● independent dataset validation. A statistically significant effect without practical predictive value is not sufficient for Level 4 predictive correspondence.",
+    "baseline_evidence_state": "N/R",
+    "source_page": 15,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-SFR-A02",
+    "title": "Arithmetic-Only SFR Prediction",
+    "baseline_record_text": "EXP-SFR-A02 — Arithmetic-Only SFR Prediction Priority: A Evidence State: N Associated Claim: SFR-A002 Objective Test whether arithmetic variables alone contain predictive information about SFR. Model [ Y=f(X_{\\rm arith}). ] Compare against: [ Y=f(X_{\\rm astro}) ] and shuffled arithmetic controls. Purpose This experiment distinguishes: 1. genuine arithmetic information; 2. arithmetic features merely acting as proxies for known astrophysical variables; 3. random correlations.",
+    "baseline_evidence_state": "N",
+    "source_page": 16,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-SFR-A03",
+    "title": "Extreme-SFR Robustness",
+    "baseline_record_text": "EXP-SFR-A03 — Extreme-SFR Robustness Priority: A Evidence State: R/N Associated Claim: SFR-E001 Historical motivation Historical models showed substantially different behavior for extreme-SFR populations compared with the bulk population. One historical analysis reported approximately: ● full-sample RF (R^2\\approx0.8455); ● full-sample GB (R^2\\approx0.8476); ● non-outlier RF (R^2\\approx0.8729); ● non-outlier GB (R^2\\approx0.8766); with substantially poorer performance in the extreme/outlier population. These historical values require reconstruction under controlled preprocessing. Design Pre-register SFR strata rather than defining outliers after observing model performance. Evaluate: [ R^2,\\quad {\\rm RMSE},\\quad {\\rm MAE} ] within each stratum. Objective Determine whether arithmetic features retain any incremental information specifically in extreme-SFR populations.",
+    "baseline_evidence_state": "R/N",
+    "source_page": 17,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-RANK-A01",
+    "title": "Rank and Cosmic Environment",
+    "baseline_record_text": "EXP-RANK-A01 — Rank and Cosmic Environment Priority: A Evidence State: N Associated Claims: RANK-001, RANK-002 Hypothesis Elliptic-curve rank may exhibit statistically nontrivial correspondence with cosmic environment. Test variables Rank: [ r_E. ] Environmental variables may include: ● galaxy density; ● local density; ● cluster membership; ● filament membership; ● void membership; ● environmental classification. Primary analysis Estimate: [ P(r_E\\mid{\\rm environment}) ] and compare against appropriate null distributions. Nulls ● random assignment of elliptic curves to galaxies; ● permutation of rank labels; ● matched environmental sampling; ● alternative arithmetic invariants. Important distinction The experiment does not assume: [ r=0\\Rightarrow{\\rm void}, ] or any other one-to-one physical interpretation. Those are hypotheses to be tested.",
+    "baseline_evidence_state": "N",
+    "source_page": 18,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-RANK-A02",
+    "title": "Rank-Weighted Cosmic Topology",
+    "baseline_record_text": "EXP-RANK-A02 — Rank-Weighted Cosmic Topology Priority: A Evidence State: N/R Associated Claims: RANK-003, TOPO-001, TOPO-002 Hypothesis Arithmetic rank may contribute information about cosmic-web topology. Construction Define a rank-weighted filtration: [ K_\\epsilon^{(r)}. ] The exact construction must be fixed before the final comparison. Topological observables Persistent homology: [ \\beta_0,\\quad\\beta_1,\\quad\\beta_2. ] Interpretation: ● (\\beta_0): connected-component structure; ● (\\beta_1): one-dimensional cycles/connectivity; ● (\\beta_2): cavities/void structure. Persistent homology must not be interpreted as a direct filament counter. Filaments Filament identification should primarily use: ● geometric skeleton methods; ● graph methods; ● established cosmic-web classifiers. Persistent homology provides supporting topological information. Comparison [ D_{\\rm arith} \\leftrightarrow D_{\\rm cosmic}. ] Use: ● Wasserstein distance; ● bottleneck distance; ● persistence landscapes/images; ● topology-aware statistics. Null models ● randomized rank assignments; ● randomized arithmetic mappings; ● spatial shuffling; ● density-preserving controls. Historical values such as: [ W_2<10^{-2} ] are exploratory/model-dependent and are not accepted as universal evidence thresholds.",
+    "baseline_evidence_state": "N/R",
+    "source_page": 20,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-TOPO-A01",
+    "title": "Null-Calibrated Persistent Homology",
+    "baseline_record_text": "EXP-TOPO-A01 — Null-Calibrated Persistent Homology Priority: A Evidence State: R/N Associated Claims: TOPO-001, TOPO-002, TOPO-003 Objective Establish whether any observed arithmetic/topological correspondence exceeds what can be produced by the null models. Required analysis For each mapping: [ D_{\\rm observed} ] must be compared against an empirical null distribution: [ D_{\\rm null}^{(1)},\\ldots,D_{\\rm null}^{(N)}. ] Output Report: ● effect size; ● empirical (p)-value; ● confidence interval; ● null distribution; ● multiple-comparison correction where applicable; ● sensitivity to resolution; ● sensitivity to sampling density; ● sensitivity to noise; ● mapping sensitivity. Success Criterion Observed correspondence must survive the pre-registered null ensemble.",
+    "baseline_evidence_state": "R/N",
+    "source_page": 22,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-MAP-A01",
+    "title": "Mapping-Family Comparison",
+    "baseline_record_text": "EXP-MAP-A01 — Mapping-Family Comparison Priority: A Evidence State: R/N Associated Claims: MAP-001, MAP-002, MAP-003, MAP-004 Objective Determine whether correspondence is specific to one arithmetic-to-geometric mapping or can be generated by many flexible mappings. Candidate mappings Historical candidates include: (\\log|\\Delta_E|, \\log N_E, \\alpha r_E), ] and alternatives identified in: Criteria_for_Alternative_Mappings_ Φ. pdf. These include the MCJ, PTD, and FT families. Comparison Every mapping must be subjected to identical: ● data; ● null models; ● topological metrics; ● parameter-search budgets; ● validation splits. Success Criterion A mapping should demonstrate reproducible performance without requiring uncontrolled post hoc parameter tuning.",
+    "baseline_evidence_state": "R/N",
+    "source_page": 23,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-MAP-A02",
+    "title": "Rank-Scale Sensitivity",
+    "baseline_record_text": "EXP-MAP-A02 — Rank-Scale Sensitivity Priority: A Evidence State: N Historical mapping [ z=200r. ] This remains a historical phenomenological mapping: [ h_r=\\lambda_r r, \\qquad \\lambda_r=200. ] Objective Determine whether the observed correspondence depends specifically on 200. Test Compare a pre-defined family: [ \\lambda_r\\in\\Lambda. ] The final range must be fixed before evaluating the test dataset. Null Random or independently generated scaling coefficients. Success Correspondence must remain significant across a meaningful range or exhibit a theoretically justified optimum that survives independent validation.",
+    "baseline_evidence_state": "N",
+    "source_page": 24,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-MAP-A03",
+    "title": "Arithmetic Generator Controls",
+    "baseline_record_text": "EXP-MAP-A03 — Arithmetic Generator Controls Priority: A Evidence State: N/R Historical construction Fibonacci and Lucas sequences have been used to construct arithmetic parameters. Objective Determine whether the observed correspondence depends on those specific sequences. Controls Compare: ● Fibonacci; ● Lucas; ● prime sequences; ● randomized recurrence sequences; ● matched-complexity alternative sequences. Requirement Sequence complexity and parameter count must be controlled as closely as possible. Interpretation A Fibonacci/Lucas result that is reproduced equally well by arbitrary matched-complexity sequences does not establish a special Fibonacci/Lucas correspondence.",
+    "baseline_evidence_state": "N/R",
+    "source_page": 25,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-DATA-A01",
+    "title": "Cross-Survey Matching Validation",
+    "baseline_record_text": "EXP-DATA-A01 — Cross-Survey Matching Validation Priority: A Evidence State: U/R Associated Claim: DATA-M001 Historical procedure SDSS and MaNGA/HI data were joined using coordinate matching with a nominal tolerance of: [ \\theta_{\\rm match}\\le2''. ] The field: arcsec_separation was retained as a diagnostic. Objective Quantify: ● match rate; ● false-match rate; ● separation distribution; ● dependence on source density; ● sensitivity to matching tolerance. Controls Compare: [ 1'',\\quad2'',\\quad3'' ] or another pre-registered tolerance family. Success Matching is reproducible and its uncertainty is characterized.",
+    "baseline_evidence_state": "U/R",
+    "source_page": 26,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-DATA-A02",
+    "title": "Data-Lineage Reconstruction",
+    "baseline_record_text": "EXP-DATA-A02 — Data-Lineage Reconstruction Priority: A Evidence State: R Objective Construct the controlled chain: [ D_{\\rm raw} \\rightarrow D_{\\rm analysis} \\rightarrow D_{\\rm model}. ] Required records For every dataset: ● original source; ● acquisition date/version; ● file identifier; ● row count; ● column count; ● missingness; ● transformations; ● joins; ● matching tolerance; ● exclusions; ● derived columns; ● target definitions; ● code version. Purpose Ensure that every experimental result can be traced back to its source data.",
+    "baseline_evidence_state": "R",
+    "source_page": 27,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-RTCH-B01",
+    "title": "RTCH Mathematical Consistency",
+    "baseline_record_text": "EXP-RTCH-B01 — RTCH Mathematical Consistency Priority: B Evidence State: D Objective Audit the mathematical consistency of the proposed Relativistic Thermodynamic Cohomology framework. Candidate ingredients [ F_Q=\\Phi^*\\omega, \\qquad dF_Q=0, ] with [ [\\omega]\\neq0. ] Candidate scalar: \\frac14F_{Q\\mu\\nu}F_Q^{\\mu\\nu}. ] Candidate action: S_{\\rm EH} + S_\\phi + S_Y + S_B + S_{\\rm top} + S_m + S_{\\rm GHY}. ] Required audit Derive independently: ● metric variation; ● scalar equation; ● (B)-field equation; ● matter equation; ● conservation relation; ● point-particle limit; ● perfect-fluid limit. Success Equations follow consistently from the stated action and assumptions.",
+    "baseline_evidence_state": "D",
+    "source_page": 28,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-RTCH-B02",
+    "title": "RTCH Fifth-Force Constraint",
+    "baseline_record_text": "EXP-RTCH-B02 — RTCH Fifth-Force Constraint Priority: B Evidence State: N Candidate prediction With: A^2(\\phi,\\mathcal M,\\mathcal J_Q)g_{\\mu\\nu}, ] a point particle may experience: -c^2h^{\\mu\\nu} \\nabla_\\nu\\ln A. ] Objective Determine whether the predicted deviation from geodesic motion is compatible with observational constraints. Tests Evaluate candidate effects in: ● Solar System; ● pulsars; ● galaxy dynamics; ● cosmology. This experiment must be parameterized only after the mathematical consistency audit.",
+    "baseline_evidence_state": "N",
+    "source_page": 30,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-RTCH-B03",
+    "title": "Trace-Free Radiation Control",
+    "baseline_record_text": "EXP-RTCH-B03 — Trace-Free Radiation Control Priority: B Evidence State: D/N For a perfect fluid: \\frac{\\epsilon+p}{c^2}u^\\mu u^\\nu + pg^{\\mu\\nu}, ] with: [ \\bar T=-\\epsilon+3p. ] For radiation: [ p=\\frac{\\epsilon}{3}, ] therefore: [ \\bar T=0. ] Objective Determine the consequences of this result for the conformal coupling and associated fifth-force term. Purpose This provides a clean theoretical control case before applying the theory to matter-dominated systems.",
+    "baseline_evidence_state": "D/N",
+    "source_page": 31,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-FIELD-B01",
+    "title": "Arithmetic Field Construction",
+    "baseline_record_text": "EXP-FIELD-B01 — Arithmetic Field Construction Priority: B Evidence State: N Candidate construction f(I_1(E),\\ldots,I_n(E)). ] Candidate gradient: -\\nabla h_{\\rm arith}. ] Objective Determine whether an arithmetic field can be constructed mathematically without assuming in advance that it represents gravity. Physical comparison Compare against: ● matter density; ● gravitational potential; ● lensing; ● peculiar velocities; ● morphology; ● SFR; ● radiation. Null Random arithmetic fields matched in spatial statistics.",
+    "baseline_evidence_state": "N",
+    "source_page": 32,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-FIELD-B02",
+    "title": "Arithmetic Field vs Einstein Tensor",
+    "baseline_record_text": "EXP-FIELD-B02 — Arithmetic Field vs Einstein Tensor Priority: B Evidence State: N Objective Determine whether an arithmetic-derived tensor has a mathematically and empirically meaningful relation to the Einstein tensor. The experiment must not assume that the arithmetic field replaces: [ G_{\\mu\\nu}. ] Instead test candidate relations: [ G_{\\mu\\nu} \\leftrightarrow T_{\\mu\\nu}^{\\rm arith} ] under explicitly defined models. Success A relation must be: 1. mathematically well-defined; 2. dimensionally consistent; 3. independently fitted; 4. independently tested; 5. physically constrained.",
+    "baseline_evidence_state": "N",
+    "source_page": 33,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-ECC-B01",
+    "title": "Entropy/Cohomology Consistency",
+    "baseline_record_text": "EXP-ECC-B01 — Entropy/Cohomology Consistency Priority: B Evidence State: D/R Candidate structure Use a closed, non-exact two-form: [ d_{\\mathcal T}\\omega=0, \\qquad [\\omega]\\neq0. ] Pull back: [ F_Q=\\Phi^*\\omega. ] Then: [ dF_Q=0. ] Objective Verify the mathematical consistency of the entropy/cohomology construction and distinguish: ● exact forms; ● closed forms; ● closed non-exact forms; ● local scalar quantities; ● global cohomological quantities. Important correction The historical statement [ d(d\\mathcal M)=0 ] is not sufficient to establish nontrivial cohomology. Nontrivial topology requires the appropriate cohomology class to be nonzero.",
+    "baseline_evidence_state": "D/R",
+    "source_page": 34,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-ENERGY-B01",
+    "title": "Generalized Mass-Energy Relation",
+    "baseline_record_text": "EXP-ENERGY-B01 — Generalized Mass-Energy Relation Priority: B/C Evidence State: N Objective Investigate whether the thermodynamic/cohomological framework can produce a generalized energy relation containing the known limit: [ E=mc^2. ] Requirements Any proposed relation must satisfy: 1. dimensional consistency; 2. known-limit recovery; 3. variational or mathematical origin; 4. conservation requirements; 5. stability; 6. well-posedness; 7. independent predictions. Prohibition A fitted equation reproducing existing data is not by itself a derivation of (E=mc^2) or a replacement for it.",
+    "baseline_evidence_state": "N",
+    "source_page": 35,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-COSMO-B01",
+    "title": "Arithmetic/Topological Evolution",
+    "baseline_record_text": "EXP-COSMO-B01 — Arithmetic/Topological Evolution Priority: B Evidence State: N Objective Investigate whether arithmetic/topological structure evolves systematically with redshift. Candidate comparison: [ \\mathcal R(\\tau) \\leftrightarrow D_{\\rm cosmic}(z). ] Observables ● persistent Betti numbers; ● persistence landscapes; ● Wasserstein distances; ● rank distributions; ● environmental distributions. Requirement Evolutionary analysis must use independent redshift bins and avoid using future bins to construct earlier mappings.",
+    "baseline_evidence_state": "N",
+    "source_page": 36,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  },
+  {
+    "experiment_id": "EXP-COSMO-C01",
+    "title": "Hubble–Planck Tension Application",
+    "baseline_record_text": "EXP-COSMO-C01 — Hubble–Planck Tension Application Priority: C/B after core validation Evidence State: N Objective Determine whether a validated arithmetic/geometric/thermodynamic mechanism produces a quantitative modification relevant to cosmological expansion. Prerequisite This experiment cannot be used to justify the underlying framework. The required sequence is: [ \\text{mathematical construction} \\rightarrow \\text{independent evidence} \\rightarrow \\text{physical mechanism} \\rightarrow H(z) \\rightarrow \\text{Hubble--Planck comparison}. ] Requirement The model must make a quantitative prediction before comparison with the tension.",
+    "baseline_evidence_state": "N",
+    "source_page": 36,
+    "source_file": "STAR_Experiment_Registry_v0-2.pdf",
+    "source_sha256": "6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992",
+    "extraction_note": "PDF text convenience copy; complete protocol retained in original PDF."
+  }
+]
