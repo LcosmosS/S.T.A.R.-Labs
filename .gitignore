@@ -13,3 +13,17 @@ htmlcov/
 venv/
 
 controlled_runs/
+
+node_modules/
+.env.*
+.vercel/
+.nitro/
+.output/
+dist/
+screenshots/
+*.log
+
+.vercel
+.env*
+!.env.example
+.grok/*.pid
