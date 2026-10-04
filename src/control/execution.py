@@ -964,6 +964,10 @@ def _assert_reproduction_source(
         raise PreflightError(
             "original manifest did not pass post-run integrity validation"
         )
+    if original.get("git", {}).get("sha") != prepared.git.get("sha"):
+        raise PreflightError(
+            "rerun must execute the exact Git SHA recorded by the original manifest"
+        )
 
     expected_binding = _execution_binding(prepared)
     expected_binding_sha = _execution_binding_sha256(prepared)
@@ -1006,10 +1010,6 @@ def _assert_reproduction_source(
                 "match the current locked transaction"
             )
 
-    if original.get("git", {}).get("sha") != prepared.git.get("sha"):
-        raise PreflightError(
-            "rerun must execute the exact Git SHA recorded by the original manifest"
-        )
     if (
         original.get("registry", {}).get("record_sha256")
         != prepared.resolved.record_hashes
