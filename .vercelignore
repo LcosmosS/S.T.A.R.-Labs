@@ -1,0 +1,23 @@
+# Publish only the app and the canonical inputs its read-only registry check needs.
+*
+!web_tool
+!web_tool/**
+!registry
+!registry/**
+!controlled_execution
+!controlled_execution/specs
+!controlled_execution/specs/EXP-MAP-A01.json
+!preregistrations
+!preregistrations/EXP-MAP-A01
+!preregistrations/EXP-MAP-A01/**
+web_tool/attachments
+web_tool/node_modules
+web_tool/.vercel
+web_tool/.nitro
+web_tool/.output
+web_tool/dist
+web_tool/screenshots
+web_tool/.env*
+!web_tool/.env.example
+web_tool/*.log
+web_tool/.grok/*.pid
