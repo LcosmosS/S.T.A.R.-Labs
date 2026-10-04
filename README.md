@@ -61,6 +61,24 @@ The charter establishes the project's scientific posture and repository controls
 
 ---
 
+## Controlled-experiment transaction runner
+
+Controlled execution is a separate transaction from scientific preregistration.
+The runner resolves an `Experiment_ID` through the dataset, provenance,
+parameter, and null registries; verifies eligibility and SHA-256 bindings;
+requires a clean Git revision and a committed execution spec; executes without
+a shell; and emits a write-once content-addressed run manifest.
+
+The intended lifecycle is:
+
+`build/verify runner → lock provenance and preregistration → execution eligibility → primary execution → separate rerun → reviewed support consideration`.
+
+The runner never edits registry eligibility or promotes controlled/physical
+support. See [controlled_execution/README.md](controlled_execution/README.md)
+for the execution-spec schema, manifest fields, and reproduction workflow.
+
+---
+
 ## Research architecture
 
 The S.T.A.R. Labs research program currently spans several related components.

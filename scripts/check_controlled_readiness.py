@@ -2,22 +2,15 @@
 
 A software-green repository may legitimately contain zero execution-ready
 experiments. This script fails only when a registry claims readiness without
-the required provenance and preregistration gates.
+all registry-level execution gates.
 """
 
 from __future__ import annotations
 
 import argparse
-import csv
 from pathlib import Path
 
-
-ALLOWED_READY_EVIDENCE_STATUSES = {"controlled", "derived"}
-
-
-def _rows(path):
-    with path.open(newline="", encoding="utf-8") as stream:
-        return list(csv.DictReader(stream))
+from src.control.registry import RegistrySnapshot, execution_gate_failures
 
 
 def _truth(value):
@@ -25,74 +18,16 @@ def _truth(value):
 
 
 def assess(root: Path):
-    registry = root / "registry"
-    experiments = _rows(registry / "experiment_registry_v0.2.csv")
-    datasets = {
-        row["Dataset_ID"]: row for row in _rows(registry / "dataset_registry_v0.1.csv")
-    }
-    provenance = {
-        row["Dataset_ID"]: row
-        for row in _rows(registry / "data_provenance_registry_v0.1.csv")
-    }
-    parameters = {
-        row["Parameter_Set_ID"]: row
-        for row in _rows(registry / "parameter_registry_v0.1.csv")
-    }
-    nulls = {
-        row["Null_ID"]: row for row in _rows(registry / "null_registry_v0.1.csv")
-    }
-
+    snapshot = RegistrySnapshot.load(root)
     claimed = []
     failures = []
-    for exp in experiments:
-        if not _truth(exp.get("Controlled_Execution_Eligible", "false")):
+
+    for experiment_id, experiment in snapshot.experiments.items():
+        if not _truth(experiment.get("Controlled_Execution_Eligible", "false")):
             continue
-        claimed.append(exp["Experiment_ID"])
-
-        dataset = datasets.get(exp["Dataset_ID"])
-        prov = provenance.get(exp["Dataset_ID"])
-        parameter = parameters.get(exp["Parameter_Set_ID"])
-        null = nulls.get(exp["Null_ID"])
-        missing = [
-            name
-            for name, value in (
-                ("dataset", dataset),
-                ("provenance", prov),
-                ("parameter set", parameter),
-                ("null model", null),
-            )
-            if value is None
-        ]
-        if missing:
-            failures.append(
-                f"{exp['Experiment_ID']}: missing {', '.join(missing)}"
-            )
-            continue
-
-        if not _truth(dataset.get("Controlled_Execution_Eligible", "false")):
-            failures.append(
-                f"{exp['Experiment_ID']}: dataset is not controlled-execution eligible"
-            )
-        if prov.get("Provenance_Status") != "verified":
-            failures.append(
-                f"{exp['Experiment_ID']}: provenance is not verified"
-            )
-
-        evidence_status = prov.get("Evidence_Status")
-        if evidence_status not in ALLOWED_READY_EVIDENCE_STATUSES:
-            failures.append(
-                f"{exp['Experiment_ID']}: provenance evidence status "
-                f"{evidence_status!r} is not accepted for controlled execution"
-            )
-
-        if parameter.get("Preregistration_Status") not in {"preregistered", "locked"}:
-            failures.append(
-                f"{exp['Experiment_ID']}: parameter set is not preregistered"
-            )
-        if null.get("Preregistration_Status") not in {"preregistered", "locked"}:
-            failures.append(
-                f"{exp['Experiment_ID']}: null model is not preregistered"
-            )
+        claimed.append(experiment_id)
+        resolved = snapshot.resolve(experiment_id)
+        failures.extend(execution_gate_failures(resolved))
 
     return claimed, failures
 

@@ -22,6 +22,7 @@ def _registry_root(tmp_path, evidence_status):
         [
             "Experiment_ID",
             "Controlled_Execution_Eligible",
+            "Mode",
             "Dataset_ID",
             "Parameter_Set_ID",
             "Null_ID",
@@ -30,6 +31,7 @@ def _registry_root(tmp_path, evidence_status):
             {
                 "Experiment_ID": "EXP-TEST",
                 "Controlled_Execution_Eligible": "true",
+                "Mode": "controlled",
                 "Dataset_ID": "DATA-TEST",
                 "Parameter_Set_ID": "PARAM-TEST",
                 "Null_ID": "NULL-TEST",
@@ -43,12 +45,13 @@ def _registry_root(tmp_path, evidence_status):
     )
     _write(
         registry / "data_provenance_registry_v0.1.csv",
-        ["Dataset_ID", "Provenance_Status", "Evidence_Status"],
+        ["Dataset_ID", "Provenance_Status", "Evidence_Status", "Integrity_Check"],
         [
             {
                 "Dataset_ID": "DATA-TEST",
                 "Provenance_Status": "verified",
                 "Evidence_Status": evidence_status,
+                "Integrity_Check": "SHA256=" + "a" * 64,
             }
         ],
     )
@@ -83,3 +86,25 @@ def test_readiness_accepts_explicit_ready_evidence_statuses(tmp_path, evidence_s
 
     assert claimed == ["EXP-TEST"]
     assert failures == []
+
+
+def test_readiness_rejects_verified_provenance_without_sha256_integrity(tmp_path):
+    root = _registry_root(tmp_path, "controlled")
+    provenance = root / "registry" / "data_provenance_registry_v0.1.csv"
+    _write(
+        provenance,
+        ["Dataset_ID", "Provenance_Status", "Evidence_Status", "Integrity_Check"],
+        [
+            {
+                "Dataset_ID": "DATA-TEST",
+                "Provenance_Status": "verified",
+                "Evidence_Status": "controlled",
+                "Integrity_Check": "",
+            }
+        ],
+    )
+
+    claimed, failures = assess(root)
+
+    assert claimed == ["EXP-TEST"]
+    assert any("no explicit SHA256" in failure for failure in failures)
