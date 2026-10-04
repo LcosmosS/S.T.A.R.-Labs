@@ -1,0 +1,18 @@
+df['cosmo_rank'] = gz_df['cosmo_rank']
+
+
+# Step 2: L_cosmo(s) Construction
+alpha = -1.3
+M_star = df['log_Mass_gas'].median()
+df['a_n'] = (10 ** df['log_Mass_gas'])**(1 + alpha) * np.exp(-10 ** df['log_Mass_gas'] / (10 ** M_star))
+bins = pd.cut(df['nsa_z'], bins=20, labels=False) + 1
+df['z_bin'] = bins
+s_vals = [0.5, 1.0, 1.5, 2.0]
+for s in s_vals:
+    df[f'L_cosmo_s{s}'] = df.groupby('z_bin')['a_n'].transform('mean') / (df['z_bin'] ** s)
+df['cosmo_rank_L'] = df['cosmo_rank'] * df['L_cosmo_s1.0']
+
+
+# Plot L_cosmo(s) vs s
+s_range = np.linspace(0.5, 2, 50)
+L_vals = [df.groupby('z_bin')['a_n'].mean() / (np.arange(1, 21) ** s) for s in s_range]

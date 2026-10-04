@@ -1,0 +1,8 @@
+   import { useCurrentUserState } from "@/lib/auth/use-current-user";
+   import { UserButton } from "@/lib/auth/gates";
+
+   function AuthSlot() {
+     const { user, isPending } = useCurrentUserState();
+     if (isPending) return <div className="h-8 w-8 animate-pulse rounded-full bg-black/10" />;
+     return user ? <UserButton /> : <a href="/login">Sign in</a>;
+   }

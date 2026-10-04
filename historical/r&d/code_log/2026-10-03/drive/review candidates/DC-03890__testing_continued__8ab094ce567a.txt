@@ -1,0 +1,2 @@
+rf_results = evaluate_model(best_rf, X_test, y_test, outliers_test, ~outliers_test)
+gb_results = evaluate_model(best_gb, X_test, y_test, outliers_test, ~outliers_test)

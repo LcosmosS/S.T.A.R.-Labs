@@ -1,0 +1,3 @@
+fib.append(fib[i-1] + fib[i-2])
+return fib[n]
+# Define the pairs of indices for Fibonacci curves, plus the original

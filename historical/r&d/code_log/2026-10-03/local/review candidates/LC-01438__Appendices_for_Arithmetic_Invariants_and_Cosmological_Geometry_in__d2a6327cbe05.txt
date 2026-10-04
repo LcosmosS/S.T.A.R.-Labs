@@ -1,0 +1,16 @@
+for(i = 1, length(curves),
+    a = curves[i][1];
+    b = curves[i][2];
+    print("--------------------------------------------------");
+    print("Curve: y^2 = x^3 + ", a, "x + ", b);
+
+    \\ Initialize the elliptic curve
+    E = ellinit([0, 0, 0, a, b], 1);
+
+    \\ Check for singularity
+    delta = E.disc;
+    print("Discriminant: ", delta);
+    if(delta == 0,
+        print("Not an elliptic curve (singular). Skipping.");
+        next
+    );

@@ -1,0 +1,5 @@
+h = 0.001;
+deriv_log_L = (compute_log_L_cosmo(1+h) - compute_log_L_cosmo(1-h)) / (2*h);
+L_cosmo_at_1 = exp(compute_log_L_cosmo(1));
+deriv_L = L_cosmo_at_1 * deriv_log_L;
+print("Derivative of L_cosmo at s=1: ", deriv_L);

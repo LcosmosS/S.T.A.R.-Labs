@@ -1,0 +1,2 @@
+scaled_reg = reg * SQRT_KAPPA * (20 if rank == 3 else 13 if rank == 2 else 10 if
+rank == 1 else \n20) \n print(f"Real period (Omega): {omega}") \n print(f"Dynamic

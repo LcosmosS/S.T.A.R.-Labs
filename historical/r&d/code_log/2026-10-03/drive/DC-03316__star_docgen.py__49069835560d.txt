@@ -1,0 +1,14 @@
+    raw = raw.strip()
+
+
+    # Normal JSON
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        pass
+
+
+    # Markdown fenced JSON
+    fenced = re.search(
+        r"```(?:json)?\s*(.*?)\s*```",
+        raw,

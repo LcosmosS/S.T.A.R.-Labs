@@ -1,0 +1,6 @@
+# Create a DataFrame for easier analysis
+df = pd.DataFrame(analysis_results)
+df['x_coord'] = df['generator'].apply(lambda p: p[0])
+df['y_coord'] = df['generator'].apply(lambda p: p[1])
+df['x_num'] = df['x_coord'].apply(lambda x: x.numerator())
+df['x_den'] = df['x_coord'].apply(lambda x: x.denominator())

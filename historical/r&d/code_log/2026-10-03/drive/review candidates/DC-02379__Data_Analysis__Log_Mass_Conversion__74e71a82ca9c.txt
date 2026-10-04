@@ -1,0 +1,4 @@
+  u1 = random(1.);  \\ Random real between 0 and 1, assuming random(1.) works
+  u2 = random(1.);
+  r = sqrt(-2 * log(u1));
+  theta = 2 * Pi * u2;

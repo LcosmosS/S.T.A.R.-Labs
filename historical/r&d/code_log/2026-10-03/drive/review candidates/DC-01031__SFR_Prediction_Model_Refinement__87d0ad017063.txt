@@ -1,0 +1,7 @@
+# Merge via crossmatch table
+cross_df = pd.read_csv('Crossmatch.csv')  # e.g., has CATAID and objID
+
+
+# Merge GAMA with SDSS
+merged_df = gama_df.merge(cross_df[['CATAID', 'objID']], on='CATAID', how='inner')
+merged_df = merged_df.merge(sdss_df, on='objID', how='inner')

@@ -1,0 +1,3 @@
+# Save symbolic expression as polynomial fit plot and print the equation
+x = np.linspace(min(y_test), max(y_test), 500)
+y_expr = symbolic_model.predict(scaler.transform(np.tile(X_test_selected.mean().values,

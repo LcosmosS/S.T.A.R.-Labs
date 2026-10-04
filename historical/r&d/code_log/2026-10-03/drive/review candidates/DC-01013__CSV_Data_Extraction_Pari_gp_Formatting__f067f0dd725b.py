@@ -1,0 +1,1 @@
+from sklearn.preprocessing import PolynomialFeatures poly = PolynomialFeatures(degree=2) X_poly = poly.fit_transform(df[['logmass', 'z']]) model = LinearRegression().fit(X_poly, df['sfr']) df['predicted_sfr_poly'] = model.predict(X_poly) mse_poly = mean_squared_error(df['sfr'], df['predicted_sfr_poly']) print(f"MSE with polynomial terms: {mse_poly:.4f}")

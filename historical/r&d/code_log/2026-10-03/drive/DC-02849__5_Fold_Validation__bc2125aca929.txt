@@ -1,0 +1,2 @@
+if 'log_Mass_gas' in df.columns and 'nsa_mstar' in df.columns:
+df['log_Mass_gas_times_nsa_mstar'] = df['log_Mass_gas'] * df['nsa_mstar']

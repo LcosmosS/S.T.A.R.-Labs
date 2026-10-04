@@ -1,0 +1,6 @@
+def objective_rf(trial):
+    model = build_model({
+        'max_depth': trial.suggest_int(...),
+        ...
+    })
+    ...

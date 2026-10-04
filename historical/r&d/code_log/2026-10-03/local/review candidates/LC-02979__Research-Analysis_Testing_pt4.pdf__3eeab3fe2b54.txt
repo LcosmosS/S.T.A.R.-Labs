@@ -1,0 +1,3 @@
+        # Add to interweb_data
+        if omega is not None and reg is not None:
+            interweb_data.append((a, b, rank, normalized_leading_coeff, omega, reg, tamagawa,

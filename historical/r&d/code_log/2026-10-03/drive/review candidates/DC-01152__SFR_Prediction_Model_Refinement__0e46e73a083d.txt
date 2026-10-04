@@ -1,0 +1,2 @@
+shap.summary_plot(shap_values, X, show=False)
+plt.savefig("shap_summary_plot.png", bbox_inches='tight')

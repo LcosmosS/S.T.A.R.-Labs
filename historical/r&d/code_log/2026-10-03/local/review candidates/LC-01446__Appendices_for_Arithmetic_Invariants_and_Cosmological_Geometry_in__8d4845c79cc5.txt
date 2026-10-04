@@ -1,0 +1,4 @@
+t_H = 1.44e10;                      /* Hubble time in years */
+Omega_cosmo = 5.38e7;               /* Light travel time to Virgo in years */
+Omega_tilde = Omega_cosmo / t_H;    /* Dimensionless Omega */
+Reg_cosmo = 9.3e10 / 5.38e7;        /* Size ratio: observable universe / Virgo

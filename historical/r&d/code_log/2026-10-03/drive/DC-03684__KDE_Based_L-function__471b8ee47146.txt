@@ -1,0 +1,23 @@
+df['cosmo_rank'] = gz_df['cosmo_rank']
+
+
+# Step 2: Define features and target
+target = "log_SFR_Ha"
+base_features = [
+    "log_Mass_gas", "log_Mass", "Av_gas_Re", "Av_ssp_Re", 
+    "OH_O3N2_cen", "OH_T04_cen", "OH_dop_cen", "Age_LW_Re_fit", 
+    "ZH_LW_Re_fit", "Re_kpc", "vel_disp_Ha_cen", "Lambda_Re", 
+    "Sigma_Mass_Re", "EW_Ha_cen", "Ha_Hb_cen"
+]
+
+
+# Derived & interaction features
+df["mass_metallicity"] = df["log_Mass"] * df["OH_O3N2_cen"]
+df["dust_metallicity"] = df["Av_gas_Re"] * df["OH_T04_cen"]
+df["disp_mass_ratio"] = df["vel_disp_Ha_cen"] / (df["Sigma_Mass_Re"] + 1e-5)
+df["age_metallicity"] = df["Age_LW_Re_fit"] * df["ZH_LW_Re_fit"]
+df["sqrt_Re_kpc"] = np.sqrt(df["Re_kpc"] + 1e-5)
+df["log_mass"] = np.log(df["log_Mass_gas"] + 1e-5)
+df["BSD_likelihood"] = (
+    df["log_Mass_gas"] * df["OH_O3N2_cen"] /
+    (df["Av_gas_Re"] + 1e-5 + df["Age_LW_Re_fit"])

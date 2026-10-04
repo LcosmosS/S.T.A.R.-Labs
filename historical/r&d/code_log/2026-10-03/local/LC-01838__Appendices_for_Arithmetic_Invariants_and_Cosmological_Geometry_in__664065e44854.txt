@@ -1,0 +1,7 @@
+n_repeats=10,
+ 
+random_state=42)
+         tf_feature_importance  =  pd.Series(tf_perm_importance.importances_mean,  
+index=X_tf.columns).sort_values(ascending=False)
+         print("\nTully-Fisher  Feature  Importance:\n",  tf_feature_importance)          
+tf_feature_importance.to_csv(f'{OUTPUT_PLOT_PREFIX}_tully_fisher_feature_importance.cs

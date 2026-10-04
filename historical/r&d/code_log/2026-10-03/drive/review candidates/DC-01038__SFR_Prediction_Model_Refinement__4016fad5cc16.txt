@@ -1,0 +1,2 @@
+data_clean['QC_PASS'] = (data_clean['mass_stellar_best_fit'] > 1e8) & (data_clean['tau_V_best_fit'] > 0.05)
+data_clean = data_clean[data_clean['QC_PASS']]

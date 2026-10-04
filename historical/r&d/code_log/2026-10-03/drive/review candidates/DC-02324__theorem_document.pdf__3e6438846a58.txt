@@ -1,0 +1,3 @@
+n_samples=1000): """ Compute bootstrap confidence intervals """
+samples = np.random.choice(data, size=(n_samples, len(data)),
+replace=True) return np.percentile(samples, [2.5, 97.5])

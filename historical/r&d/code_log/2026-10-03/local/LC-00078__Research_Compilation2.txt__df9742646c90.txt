@@ -1,0 +1,3 @@
+To prepare, load the CSV into a pandas DataFrame, filter out rows where logmass = -9999 to ensure valid mass calculations, and handle missing values in other columns as needed (e.g., exclude for specific analyses or impute using median for sfr and metallicity).
+From the analysis, the median logmass was estimated at approximately 10.46541, based on a subset, leading to M_0 = 10^{10.46541} \approx 2.92 \times 10^{10} solar masses, though previous estimates for N=1,000 suggested 4.57e10, indicating potential variation with sample size.
+Calculating the Basics for N=10,000

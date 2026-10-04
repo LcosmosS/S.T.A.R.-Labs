@@ -1,0 +1,17 @@
+with open('load_vectors.gp', 'w') as f:
+    for col in ['mass', 'subpopulation']:
+        values = df[col].values
+        if df[col].dtype == 'object':
+            values = [f'"{val}"' for val in values]
+        else:
+            values = [str(val) for val in values]
+        num_parts = (len(values) + chunk_size - 1) // chunk_size
+        part_names = []
+        for part in range(num_parts):
+            start = part * chunk_size
+            end = min((part + 1) * chunk_size, len(values))
+            part_values = values[start:end]
+            part_name = f"{col}_part{part+1}"
+            part_names.append(part_name)
+            f.write(f"{part_name} = [{', '.join(part_values)}];\n")
+        f.write(f"{col} = concat([{', '.join(part_names)}]);\n")

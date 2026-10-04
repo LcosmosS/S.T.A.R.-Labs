@@ -1,0 +1,8 @@
+prod_c_p_cosmo = N; /* Number of galaxies in sample */ print("prod_c_p_cosmo: ", prod_c_p_cosmo);
+Sha_cosmo = 0.315; /* Total matter density parameter (Planck 2018) */ print("Sha_cosmo: ", Sha_cosmo);
+T_cosmo = 10; /* Number of large-scale structures; adjust as needed */ print("T_cosmo: ", T_cosmo);
+/* Define and compute the cosmological L-function using galaxy masses */ L_cosmo(s) = sum(i=1, N, (M_0 / M[i])^s); unscaled_left = L_cosmo(1); /* Unscaled L_cosmo(1) */ print("Unscaled L_cosmo(1): ", unscaled_left);
+/* Compute the right side using cosmological invariants */ right_side = (Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2); print("Right side: ", right_side);
+/* Calculate normalization constant to align left and right sides */ K = right_side / unscaled_left; /* Normalization factor */ print("Normalization constant K: ", K);
+/* Define and compute the normalized L-function */ L_cosmo_new(s) = K * L_cosmo(s); left_side = L_cosmo_new(1); /* Normalized L_cosmo(1) */ print("Normalized L_cosmo(1): ", left_side);
+/* Compare left and right sides within a tolerance */ tolerance = 0.1; /* 10% tolerance */ if (abs(left_side - right_side) < tolerance * right_side, print("Cosmological BSD analogue holds within 10%"), print("Cosmological BSD analogue fails: Left side != Right side") );

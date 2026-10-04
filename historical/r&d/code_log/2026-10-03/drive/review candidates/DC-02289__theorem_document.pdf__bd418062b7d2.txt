@@ -1,0 +1,5 @@
+results = {}
+# Compute density profile
+r_bins = np.logspace(-2, 2, 50)
+density_profile = compute_density_profile(galaxy_data, r_bins)# Calculate arithmetic contribution
+arithmetic_density = compute_arithmetic_density(

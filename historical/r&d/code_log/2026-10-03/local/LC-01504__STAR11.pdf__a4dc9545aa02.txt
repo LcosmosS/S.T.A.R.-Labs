@@ -1,0 +1,9 @@
+     temp_file  =  f"temp_merge_step_{i+1}.csv"      merged_df.to_csv(temp_file,  index=False)      print(f"Saved  to  {temp_file}")   #  Final  assignment  and  save  after  all  merges  
+=========================================================================================
+=================================
+ df  =  merged_df  df.to_csv("*STAR_preprocess.csv",  index=False)  print(f"Completed  merging.  Final  rows:  {len(df)},  columns:  {len(df.columns)}.  Saved  to  *STAR_preprocess.csv")  print("Preprocessing  completed.  Engineering  features...")   #  Clean  metallicity  and  sfr  columns  by  replacing  -9999  with  NaN  
+=========================================================================================
+==============
+ df[['metallicity',  'sfr']]  =  df[['metallicity',  'sfr']].replace(-9999,  np.nan)  print(f"Replaced  -9999  with  NaN  in  'metallicity'  and  'sfr'  columns.")  print(f"NaN  in  metallicity:  {df['metallicity'].isna().sum()},  NaN  in  sfr:  {df['sfr'].isna().sum()}")   #  Merge  Diagnostics  
+=========================================================================================
+==========================================================

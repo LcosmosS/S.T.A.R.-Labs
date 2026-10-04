@@ -1,0 +1,2 @@
+try:
+    groups = np.load('groups.npy')

@@ -1,0 +1,16 @@
+    reg_scaled = reg * phi;
+    print("Scaled regulator (Reg * phi): ", reg_scaled);
+    tamagawa = prod(p, factor(conductor)[,1], elltamagawa(E, p));
+    print("Product of Tamagawa numbers: ", tamagawa);
+    rhs = (omega_scaled * reg_scaled * 5 * tamagawa) / (tors_order^2);
+    print("Right-hand side of modified strong BSD: ", rhs);
+    modified_leading_coeff = 8;
+    print("Modified leading coefficient (F_6): ", modified_leading_coeff);
+    if(abs(modified_leading_coeff - rhs) < 1e-5,
+        print("Modified strong BSD holds with Fibonacci, pi, and phi substitutions");
+    ,
+        print("Modified strong BSD fails with Fibonacci, pi, and phi substitutions");
+        adjusted_sha = modified_leading_coeff / (reg_scaled * omega_scaled * tamagawa) * (tors_order^2);
+        print("Adjusted |Sha(E)| to match: ", adjusted_sha);
+    );
+    print("");

@@ -1,0 +1,3 @@
+    except Exception as e:
+        logger.warning(f"Curve gen failed for i={i}: {e}")
+        return None

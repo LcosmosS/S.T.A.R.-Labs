@@ -1,0 +1,4 @@
+# Handle missing values
+required_columns = ['logmass', 'z', 'sfr']
+for col in required_columns:
+    df[col] = df[col].fillna(df[col].mean())

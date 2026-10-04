@@ -1,0 +1,13 @@
+results = []
+
+for name, r, rho in clusters:
+    # Predict
+    P_pred = predict_generator(r, rho)
+    a, b = derive_curve(r, rho)
+
+    # Compute actual curve
+    try:
+        E = EllipticCurve(QQ, [a, b])
+        rank = E.rank()
+        gens = E.gens()
+        P_actual = gens[0] if rank > 0 else None

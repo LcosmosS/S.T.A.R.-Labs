@@ -1,0 +1,1 @@
+E  =  ellinit([-1706,  6320]);  [r,  Lr]  =  ellanalyticrank(E);  ●  print(r,  Lr);  ●  This  computes  the  analytic  rank  and  leading  coefficient,  which  we  can  compare  with  

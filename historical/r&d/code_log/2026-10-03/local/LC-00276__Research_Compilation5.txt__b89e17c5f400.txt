@@ -1,0 +1,4 @@
+if df[col].dtype == 'object':
+    values = [f'"{val}"' for val in values]
+else:
+    values = [f"{val:.15g}" if pd.api.types.is_float_dtype(df[col]) else str(val) for val in values]

@@ -1,0 +1,4 @@
+periods = ellperiods(E,1);
+omega = 2 * real(periods[1]); // since Delta < 0
+Then, omega_scaled = pi_val * omega; // but this might not be necessary
+Similarly, reg_scaled = reg * phi; // with reg=1

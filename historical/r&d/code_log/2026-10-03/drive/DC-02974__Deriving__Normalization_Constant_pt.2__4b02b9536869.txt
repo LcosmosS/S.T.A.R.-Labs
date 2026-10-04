@@ -1,0 +1,7 @@
+# For masses.txt
+with open('masses.txt', 'w') as f:
+    f.write('[' + ', '.join(map(str, masses)) + ']')
+# For redshifts.txt
+with open('redshifts.txt', 'w') as f:
+*     f.write('[' + ', '.join(map(str, redshifts)) + ']')
+   * This produces files like [123.456, 789.012, ...], which read() can load as a vector.

@@ -1,0 +1,8 @@
+    D := -19;  // Satisfies Heegner hypothesis for all curves
+    try
+        P_K := HeegnerPoint(E, D, 1);  // Heegner point in E(K) with conductor 1
+        P := Trace(P_K);  // Trace to E(Q)
+        print "Heegner point (traced to Q):", P;
+        // Check if the point has infinite order
+        if Order(P) eq 0 then
+            print "Heegner point has infinite order, suggesting rank >= 1";

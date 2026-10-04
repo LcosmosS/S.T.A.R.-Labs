@@ -1,0 +1,3 @@
+logmass_bin4 = logmass[group1_indices][bin4_mask]
+k_theory_bin4 = compute_K_theory(logmass_bin4)  # Replace with your function
+      * print(f"Group 1, Bin 4 K_theory: {k_theory_bin4:.4f}")

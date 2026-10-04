@@ -1,0 +1,6 @@
+Omega = E.period_lattice().real_period()
+Reg = E.regulator()
+Tamagawa = prod(E.tamagawa_numbers())
+
+
+        The cosmological model suggested |\text{Sha}(E)| \sim 10^9 (comoving volume

@@ -1,0 +1,5 @@
+f.write(f"a={a},b={b},conductor={conductor},reason=too_large\\n") \n return
+False, None, None, None, None, None, None, False, None \n \n rank_success = False
+\n selmer2_success = False \n selmer3_success = False \n rank = None \n
+selmer_rank = None \n selmer3_rank = None \n leading_coeff = None \n omega =
+None \n reg = None \n tamagawa = None \n weak_bsd_holds = False \n \n for

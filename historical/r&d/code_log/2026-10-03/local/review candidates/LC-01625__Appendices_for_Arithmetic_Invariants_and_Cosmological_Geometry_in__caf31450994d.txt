@@ -1,0 +1,5 @@
+    df_clean.replace([np.inf, -np.inf], np.nan, inplace=True)
+    df_clean.dropna(subset=['scaling_constant_K', 'log_abs_virial_energy',
+'log_abs_discriminant'], inplace=True)
+
+    k_low, k_high = df_clean['scaling_constant_K'].quantile(0.01),

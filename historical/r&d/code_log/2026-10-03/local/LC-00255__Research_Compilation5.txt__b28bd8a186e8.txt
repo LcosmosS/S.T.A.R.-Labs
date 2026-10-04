@@ -1,0 +1,18 @@
+# Convert log_mass to actual masses
+df_filtered['mass'] = 10 ** df_filtered['log_mass']
+
+
+# Calculate M_0 and K for each subpopulation
+K_values = []
+for i in range(optimal_n):
+    subpopulation = df_filtered[df_filtered['subpopulation'] == i]
+    masses = subpopulation['mass'].values
+    
+    # Compute median mass M_0
+    M_0 = np.median(masses)
+    
+    # Compute K
+    sum_M_over_M0 = np.sum(masses / M_0)
+    sum_M0_over_M = np.sum(M_0 / masses)
+    K = sum_M_over_M0 / sum_M0_over_M
+    K_values.append(K)

@@ -1,0 +1,5 @@
+filtered_list = []
+for elem in log_mass_list:
+try:
+float(elem.strip())
+filtered_list.append(elem.strip())

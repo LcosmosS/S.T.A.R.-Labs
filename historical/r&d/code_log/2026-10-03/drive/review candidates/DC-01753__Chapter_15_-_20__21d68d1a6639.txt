@@ -1,0 +1,6 @@
+# Replace a common sentinel value with NaN
+df.replace(-9999.0, np.nan, inplace=True)
+
+
+# Impute remaining missing values with the median of each column
+df.fillna(df.median(numeric_only=True), inplace=True)

@@ -1,0 +1,16 @@
+# Filter out rows with -9999 in columns_to_filter
+df = df[(df[columns_to_filter] != -9999).all(axis=1)] print(f"Number of valid rows after filtering: {len(df)}")
+# Generate PARI/GP script with chunking
+chunk_size = 1000 with open('load_vectors.gp', 'w') as f: for col in df.columns: values = df[col].values if df[col].dtype == 'object': # For strings values = [f'"{val}"' for val in values] else: values = [str(val) for val in values]
+   num_parts = (len(values) + chunk_size - 1) // chunk_size
+    part_names = []
+    for part in range(num_parts):
+        start = part * chunk_size
+        end = min((part + 1) * chunk_size, len(values))
+        part_values = values[start:end]
+        part_name = f"{col}_part{part+1}"
+        part_names.append(part_name)
+        f.write(f"{part_name} = [{', '.join(part_values)}];\n")
+    
+    f.write(f"{col} = concat([{', '.join(part_names)}]);\n")
+print("PARI/GP script generated: load_vectors.gp")

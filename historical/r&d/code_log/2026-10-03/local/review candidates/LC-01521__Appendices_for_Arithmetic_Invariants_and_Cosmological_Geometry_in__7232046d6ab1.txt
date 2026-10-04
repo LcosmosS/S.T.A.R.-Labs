@@ -1,0 +1,4 @@
+    # Coefficients from astrophysical studies
+    A, B = 1.4, 0.9
+    # Simplified relation to predict mass
+    log_M_star = A * np.log10(velocity_dispersion) + B * np.log10(effective_radius) +

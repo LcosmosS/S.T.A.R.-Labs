@@ -1,0 +1,6 @@
+    plt.figure(figsize=(12, 8))
+    sns.kdeplot(data=test_results, x='K_actual_clipped', fill=True, label='Actual K',
+alpha=0.7)
+    sns.kdeplot(data=test_results, x='K_predicted_clipped', fill=True,
+label='Predicted K', alpha=0.7)
+    plt.title("Predictive Test: 'Zeroing In' on the Scaling Factor K (Log-Stable

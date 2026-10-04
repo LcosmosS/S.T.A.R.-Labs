@@ -1,0 +1,19 @@
+    N := Conductor(E);
+    print "Conductor:", N;
+
+    // Compute the torsion subgroup
+    tors := TorsionSubgroup(E);
+    tors_order := #tors;
+    print "Torsion subgroup order:", tors_order;
+
+    // Compute the algebraic rank
+    rank := Rank(E);
+    print "Algebraic rank:", rank;
+
+    // Compute the L-function and analytic rank
+    L := LSeries(E);
+    Lval := Evaluate(L, 1);
+    if Abs(Lval) lt 1e-10 then
+        Lderiv := Derivative(L, 1);
+        if Abs(Lderiv) lt 1e-10 then
+            Lderiv2 := Derivative(L, 2);

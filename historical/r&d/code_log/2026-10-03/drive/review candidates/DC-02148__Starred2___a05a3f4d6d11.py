@@ -1,0 +1,2 @@
+from scipy.stats import kstest, norm for i in range(gmm.n_components): group_logmass = logmass[groups == i] mean, std = np.mean(group_logmass), np.std(group_logmass) _, p_value = kstest(group_logmass, 'norm', args=(mean, std)) print(f"Group {i}: p-value for normality = {p_value:.4f}")
+import matplotlib.pyplot as plt for i in range(3): plt.hist(logmass[groups == i], bins=50, density=True, alpha=0.6, label=f"Group {i}") plt.legend() plt.title(f"Logmass Distribution - Group {i}") plt.show()

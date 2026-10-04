@@ -1,0 +1,8 @@
+    if rank == 1 and 0.01 < regulator < 10.0:
+        # "Fine-tuned" zone for stable structure formation
+        return 1.0
+    elif rank == 0:
+        # "Empty" universe, no complexity
+        return 0.1
+    else:
+        # High-rank or high-regulator universes are "unstable" (e.g., too dense,

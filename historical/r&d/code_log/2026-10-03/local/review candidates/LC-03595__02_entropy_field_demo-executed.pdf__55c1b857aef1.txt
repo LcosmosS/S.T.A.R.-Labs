@@ -1,0 +1,8 @@
+           print("Computed entropy, gradients, Hessian traces using src.entropy.")
+
+      except   Exception   as  e:
+           print("src.entropy not available; using local fallback computations.", e)
+
+
+
+                                                        2

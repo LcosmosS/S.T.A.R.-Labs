@@ -1,0 +1,1 @@
+ from .ell_rational_field import EllipticCurve_rational_field --> 480 return EllipticCurve_rational_field(x, **kwds) 481 elif isinstance(R, NumberField): 482 from .ell_number_field import EllipticCurve_number_field

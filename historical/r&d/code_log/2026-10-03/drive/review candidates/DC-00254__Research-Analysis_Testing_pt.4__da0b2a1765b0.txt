@@ -1,0 +1,4 @@
+ success, features, rank, normalized_leading_coeff, omega, reg, tamagawa, weak_bsd_holds, E, selmer3_rank = analyze_curve( 289 a, b, require_3selmer=False, 
+
+
+conductor_limit=RealNumber(str().join(map(chr, [49, 101, 49, 49]))), descent_limit=Integer(20) 290 ) 292 if success and rank is not None: 293 # Add to interweb_data 294 if omega is not None and reg is not None: 

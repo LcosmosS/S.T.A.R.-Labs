@@ -1,0 +1,32 @@
+    reg_scaled = phi * reg; \\ Scale by golden ratio
+    tamagawa = prod(elllocalred(E, prime)[2] | prime <- factor(conductor)[,1]); \\ Product of Tamagawa numbers
+
+
+    \\ Use Fibonacci substitution for |Sha(E)|
+    sha_order = 5; \\ F_5
+
+
+    \\ Compute the right-hand side of the strong BSD formula with our modifications
+    rhs = (omega_scaled * reg_scaled * sha_order * tamagawa) / (tors_order^2);
+    print("Scaled real period (Omega * pi): ", omega_scaled);
+    print("Scaled regulator (Reg * phi): ", reg_scaled);
+    print("Product of Tamagawa numbers: ", tamagawa);
+    print("Right-hand side of modified strong BSD: ", rhs);
+
+
+    \\ Use Fibonacci substitution for leading coefficient
+    modified_leading_coeff = 8; \\ F_6
+    print("Modified leading coefficient (F_6): ", modified_leading_coeff);
+
+
+    \\ Verify modified strong BSD
+    if(abs(modified_leading_coeff - rhs) < 1e-5,
+        print("Modified strong BSD holds with Fibonacci, pi, and phi substitutions");
+    ,
+        print("Modified strong BSD fails with Fibonacci, pi, and phi substitutions");
+        adjusted_sha = (modified_leading_coeff * tors_order^2) / (omega_scaled * reg_scaled * tamagawa);
+        print("Adjusted |Sha(E)| to match: ", adjusted_sha);
+    );
+
+
+    print("");

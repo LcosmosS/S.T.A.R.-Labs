@@ -1,0 +1,4 @@
+Omega_tilde = 0.9583;
+Sha_cosmo = 0.315;
+N = 10000;
+21. T_cosmo = sqrt(Omega_tilde * N * Sha_cosmo);

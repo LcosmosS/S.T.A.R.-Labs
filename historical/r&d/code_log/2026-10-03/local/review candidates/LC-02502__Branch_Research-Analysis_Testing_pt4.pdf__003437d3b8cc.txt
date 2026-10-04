@@ -1,0 +1,7 @@
+    tamagawa := &*[TamagawaNumber(E, p) : p in PrimeDivisors(N)];
+    sha_order := 1;  // Initial hypothesis
+
+    // Compute the right-hand side of the strong BSD formula
+    rhs := (omega * reg * sha_order * tamagawa) / (tors_order^2);
+    print "Real period (Omega):", omega;
+    print "Regulator:", reg;

@@ -1,0 +1,37 @@
+    y_pred_pysr = pysr_model.predict(X_test_scaled).reshape(-1, 1)
+
+    r2_pysr = r2_score(y_test, y_pred_pysr)
+
+    mae_pysr = mean_absolute_error(y_test, y_pred_pysr)
+
+
+
+    xgb_model = XGBRegressor(n_estimators=200, learning_rate=0.03, max_depth=6,
+random_state=42, early_stopping_rounds=20)
+
+    xgb_model.fit(X_train_scaled, y_train, eval_set=[(X_test_scaled, y_test)], verbose=False)
+
+
+
+    y_pred_xgb_train = xgb_model.predict(X_train_scaled).reshape(-1, 1)
+
+    y_pred_xgb = xgb_model.predict(X_test_scaled).reshape(-1, 1)
+
+    r2_xgb = r2_score(y_test, y_pred_xgb)
+
+    mae_xgb = mean_absolute_error(y_test, y_pred_xgb)
+
+
+
+    # Non-linear stacking
+
+    stack_train = np.hstack((X_train_scaled, y_pred_pysr_train, y_pred_xgb_train))
+
+    stack_test = np.hstack((X_test_scaled, y_pred_pysr, y_pred_xgb))
+
+    meta_model = XGBRegressor(n_estimators=100, learning_rate=0.05, max_depth=4,
+random_state=42)
+
+    meta_model.fit(stack_train, y_train)
+
+    y_pred_stack = meta_model.predict(stack_test)

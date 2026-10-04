@@ -1,0 +1,12 @@
+PD_arith = compute_persistence_diagram(E)
+PD_cosmo = compute_persistence_diagram(G)
+metrics['topo_distance'] = wasserstein_distance(PD_arith, PD_cosmo)
+# Compute entropy correlation
+S_arith = compute_symbolic_entropy(E)
+S_cosmo = compute_physical_entropy(G)
+metrics['entropy_corr'] = np.corrcoef(S_arith, S_cosmo)[0,1]
+# Compute rank-curvature correspondence
+rank_E = E.rank()
+rank_G = compute_cosmic_rank(G)
+metrics['rank_error'] = abs(rank_E - rank_G) / rank_E
+return metrics

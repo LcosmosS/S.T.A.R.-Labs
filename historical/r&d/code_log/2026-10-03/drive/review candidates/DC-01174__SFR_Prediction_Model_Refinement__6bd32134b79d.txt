@@ -1,0 +1,5 @@
+q.clean(
+    drop_nan_thresh=0.3,  # Keep columns with <30% NaNs
+    snr_column='Ha_Hb_Re',  # Or some other proxy for S/N
+    snr_min=3
+)

@@ -1,0 +1,3 @@
+for(idx=1, #z_bins - 1, {
+  z_min = z_bins[idx];
+  z_max = z_bins[idx + 1];

@@ -1,0 +1,3 @@
+print("Cosmological BSD analogue holds within 10%"), print("Cosmological BSD analogue
+fails: Left side != Right side") ); And for the stability check: if (abs(K_sub - K) / K < 0.1,
+print("K is stable within 10% between subsample and full sample"), print("K varies >10%;

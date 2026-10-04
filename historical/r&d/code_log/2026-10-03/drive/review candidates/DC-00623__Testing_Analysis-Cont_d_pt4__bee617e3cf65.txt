@@ -1,0 +1,12 @@
+periods = ellperiods(E, 0);  /* Use flag 0 to get real period directly */
+real_period = periods[1];    /* This should be a scalar */
+print("Real period (Omega): ", real_period);
+omega_scaled = pi_val * real_period;
+print("Scaled real period (Omega * pi): ", omega_scaled);
+
+
+/* Compute Tamagawa product */
+tamagawa = 1;
+bad_primes = factor(conductor)[,1];
+for(i = 1, #bad_primes, tamagawa = tamagawa * elltamagawa(E, bad_primes[i]));
+print("Product of Tamagawa numbers: ", tamagawa);

@@ -1,0 +1,14 @@
+/home/pmqr7/miniforge3/evolve_v7.py:27: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  chunk.loc[:, 'log_EBV'] = np.log(chunk['EBV'] + 1e-6)
+/home/pmqr7/miniforge3/evolve_v7.py:30: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  chunk.loc[:, 'pm_mag'] = np.sqrt(chunk['pmRA']**2 + chunk['pmDE']**2)

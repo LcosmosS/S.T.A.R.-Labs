@@ -1,0 +1,5 @@
+    with open("unique_curves.txt", "a") as f:
+        E = EllipticCurve(QQ, [0, 0, 0, a, b])
+        conductor = E.conductor()
+        plot_file = f"curve_{a}_{b}.png"
+        f.write(f"{a},{b},{rank},{omega},{reg},{comoving_volume},{scaled_reg},{leading_coeff *

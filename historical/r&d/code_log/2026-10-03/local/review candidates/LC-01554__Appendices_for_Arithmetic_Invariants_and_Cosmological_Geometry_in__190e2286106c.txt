@@ -1,0 +1,3 @@
+        else:
+            results['evidence']['estimated_3_selmer_bound'] = 'Inconclusive'
+            print("  > Rank indicators are inconsistent; 3-Selmer bound is

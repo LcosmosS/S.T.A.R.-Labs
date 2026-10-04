@@ -1,0 +1,1 @@
+print("Model loaded successfully!") except Exception as e: print("Failed to load model:", e) Last executed at 2025-04-05 05:13:08 in 27ms Failed to load model: You may be trying to read with python 3 a joblib pickle generated with python 2. This feature is not supported by joblib.

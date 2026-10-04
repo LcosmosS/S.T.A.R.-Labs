@@ -1,0 +1,20 @@
+csv_files = [                                                       # Survey Table's
+    "ALLWISE_SDSSDR16.csv",                   #1 ALLWISE + SDSS DR16
+    "TwoMass_SDSSDR16.csv",                   #2 2Mass + SDSS DR16
+    "STARHORSE2021_SDSSDR16.csv",    #3 STARHORSE2021 + SDSS DR16
+    "GALAXGR6+7AIS_SDSSDR16.csv",     #4 GALAX GR6+7 AIS + SDSS DR16
+    "UKIDSSDR9LAS_SDSSDR16.csv",       #5 UKIDDS DR9 LAS + SDSS DR16
+    "GAIADR3AP_SDSSDR16.csv",              #6 GAIA DR3 Astro. Param. + SDSS DR16
+    "PanST2DR1_SDSSDR16.csv",              #7 PanSTARRS-DR1 + SDSS DR16
+    "PanSTDR1_SDSSDR16.csv",                #8 PanSTARRS DR1 + SDSS DR!6
+    "SDSS_MangaSpec_with_fluxes.csv",     #9 SDSS DR16 + SDSS DR16 EmissionLines + MangaSpecAll
+    "merged_galspec_gz2.csv"                       #10 SDSS DR16 GalSpecAll + Galaxy Zoo 2
+]
+
+# Column mappings for each file
+=========================================================================================
+==============================================================================
+column_mappings = {
+    "ALLWISE_SDSSDR16.csv": [
+        'objID', 'RA_ICRS', 'DE_ICRS', 'umag', 'gmag', 'rmag', 'imag', 'zmag', 'e_umag', 'e_gmag',
+        'e_rmag', 'e_imag', 'e_zmag', 'Jmag', 'Hmag', 'Kmag', 'e_Jmag', 'e_Hmag', 'e_Kmag', 'zsp'

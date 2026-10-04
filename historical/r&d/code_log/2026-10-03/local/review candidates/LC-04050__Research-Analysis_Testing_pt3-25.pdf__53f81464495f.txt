@@ -1,0 +1,2 @@
+    if len(valid_fibs) < 2:
+        return random.choice(fib_list), random.choice(fib_list)

@@ -1,0 +1,2 @@
+df, sdss_spec_matched = cross_match(df, sdss_spec, 'objra_y', 'objdec', 'RA', 'Dec')
+ra_col2='RA' and dec_col2='Dec' are the expected column names for right ascension (RA) and declination (Dec) in the sdss_spec DataFrame.

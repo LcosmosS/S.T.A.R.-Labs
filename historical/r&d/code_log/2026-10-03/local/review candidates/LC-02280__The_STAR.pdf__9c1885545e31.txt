@@ -1,0 +1,44 @@
+            try:
+                # If specid is already a number, return it
+                if isinstance(specid, (int, float)) or (isinstance(specid, str) and specid.replace('.',
+'').isdigit()):
+                    return int(float(specid))
+                # Parse plate-MJD-fiber format (e.g., '2689-54149-0290')
+                plate, mjd, fiber = map(int, specid.split('-'))
+                # Use DR16 SpecObjID formula with a default run2d
+                run2d = 26  # Common value for DR16 (e.g., "v5_7_0"); adjust if needed
+                specobjid = (plate * 2**40) + (fiber * 2**24) + ((mjd - 50000) * 2**10) + (run2d * 2**2)
+                return specobjid
+            except (ValueError, AttributeError):
+                return pd.NA
+
+        # Apply conversion to SpecObj column
+        df['SpecObj'] = df['SpecObj'].apply(convert_plate_mjd_fiber)
+        # Convert to nullable Int64 type to allow NA values
+        df['SpecObj'] = df['SpecObj'].astype('Int64')
+        # Log sample SpecObj values
+        if not df['SpecObj'].isna().all():
+            sample_specobj = df['SpecObj'].dropna().head(5).tolist()
+            print(f"Sample SpecObj values in {file}: {sample_specobj}")
+    elif 'ra' in df.columns and 'dec' in df.columns:
+        df = df.rename(columns={"ra": "objra_y", "dec": "objdec"})
+    # Handle SpecObj for SDSS_MangaSpec_with_fluxes.csv
+    if 'SpecObj' in df.columns:
+        # SpecObj is already in scientific notation (e.g., 2.81E+18)
+        df['SpecObj'] = df['SpecObj'].astype('float').astype('Int64')
+        # Log sample SpecObj values
+        if not df['SpecObj'].isna().all():
+            sample_specobj = df['SpecObj'].dropna().head(5).tolist()
+            print(f"Sample SpecObj values in {file}: {sample_specobj}")
+    return df
+
+# Incremental merge
+print("Merging Datasets...")
+merged_df = None
+for i, file in tqdm(enumerate(csv_files), total=len(csv_files), desc="Merging CSV Files"):
+    print(f"Loading {file} ({i+1}/{len(csv_files)})...")
+    try:
+        chunksize = 50000
+        df_chunks = pd.read_csv(file, usecols=column_mappings[file], chunksize=chunksize)
+        df = pd.concat([standardize_columns(chunk, column_mappings[file]) for chunk in
+df_chunks], ignore_index=True)

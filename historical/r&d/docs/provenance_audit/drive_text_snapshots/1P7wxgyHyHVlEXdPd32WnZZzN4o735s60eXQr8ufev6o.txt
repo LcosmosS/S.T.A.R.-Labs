@@ -1,0 +1,285 @@
+﻿# The Symbolic Cosmos
+ * Patrick J McNamara 
+
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LcosmosS/ACSC-GLMPCT/HEAD?urlpath=lab)
+
+
+This repository contains the research, computational scripts, and data for a novel framework in theoretical physics and cosmology, herein named Symbolic Physics.
+
+
+---
+
+
+# Introduction to Symbolic Physics
+Symbolic Physics is a theoretical framework that posits a fundamental, rule-governed correspondence between abstract arithmetic structures and the observable physical universe. It begins with a foundational thought experiment: the challenge of creating a world map that is true to both its local details and its global structure. This challenge is a manifestation of the Global-to-Local Mapping Paradox, which questions how overarching universal principles can arise from local physical rules without information loss or distortion.
+
+
+The proposed solution is the Global-to-Local Mapping Paradox Correction Theory (GLMPCT), which reframes this challenge by suggesting that the universe's structure is a physical projection of a deeper, arithmetic reality.
+
+
+---
+
+
+# The Theoretical Framework
+The theory is built upon a series of interconnected conjectures and theorems that form a cohesive logical structure:
+
+
+ * The Arithmetic-Cosmic Structure Conjecture (ACSC): This is the foundational conjecture, positing that a direct, rule-governed correspondence exists between the arithmetic structures of a family of elliptic curves and the observable topological and geometric properties of cosmic structures (e.g., galaxies, filaments, and voids).
+   
+ * The Cosmic BSD Theorem: This theorem provides the specific blueprint for the ACSC. It creates a direct analogy to the classical Birch and Swinnerton-Dyer (BSD) conjecture, proposing that the arithmetic rank of an elliptic curve corresponds to the topological complexity of a cosmic structure, and that a "cosmological L-function" derived from galaxy data can describe its geometric properties. 
+
+
+ * The Symbolic Entropy Projection Theorem (SEPT): This theorem addresses why the projection from the arithmetic to the cosmic realm takes the form it does. It proposes that the mapping is governed by a principle of entropy minimization. The universe manifests the projection that is the most "informationally efficient" while perfectly preserving the essential topological features of the arithmetic blueprint.
+
+
+ * The Entropy Cohomology Conjecture (ECC): This is the deepest part of the framework, providing the fundamental law that underpins the SEPT. It proposes a conservation law for symbolic information, expressed in the language of cohomology. It states that the flow of symbolic entropy is governed by a precise topological rule (it is "closed but not exact"), which is the mathematical signature of a conserved quantity tied to the global, unchangeable structure of the underlying mathematical space. 
+
+
+ * The Arithmetic-Cosmic Projection Principle (ACPP): This is the unified statement of the entire theory. It asserts that the large-scale structure of the universe is a geometric projection of the arithmetic invariants of our curated family of elliptic curves, and that this projection is governed by the conservation law for symbolic information described in the ECC. 
+
+
+   ** Note: Initially only curves generated from the Fibonacci and Lucas number sequences have been explored, evidence obtained justifies exploration of additional sequences.
+
+
+---
+
+
+# From Theory to Practice: The *S.T.A.R. Program
+To move from a purely theoretical model to an empirically testable one, the *S.T.A.R. (Symbolic-Regressing Hyperparameter-Tuned Astronomical Regression) Program was developed.
+
+
+ * Purpose: The *S.T.A.R. program is a comprehensive machine learning pipeline designed to validate the ACPP. It does this by using the principles of the theory to predict a key astrophysical quantity: the Star Formation Rate (SFR) of galaxies. 
+
+
+ * Methodology: The program's most innovative aspect is its use of theory-driven feature engineering. Instead of relying solely on standard astronomical data, it creates novel features (such as cosmo_rank and L_cosmo_s) that are direct computational implementations of the concepts from our "Cosmic Dictionary."
+
+
+ * Results: The *S.T.A.R. models have successfully predicted star formation rates with exceptionally high accuracy (R² scores > 0.94). Crucially, the theory-driven features consistently rank among the most important predictors, providing strong empirical evidence that the proposed link between the arithmetic and cosmic domains is not merely an analogy, but a quantifiable and predictive reality. 
+
+
+---
+
+
+# Reproducibility
+This project adheres to the principles of open science. The repository contains all code, scripts, and curated datasets required to replicate, verify, and build upon these findings.
+
+
+> **Key Idea**: Arithmetic geometry (e.g., elliptic curves over ({Q}) encodes symbolic patterns which, when projected using computable mappings, replicate the persistent homology of observed cosmic structures.
+
+
+--- 
+
+
+## BSD Disclaimer
+
+
+> **Note**: This work is **inspired by** the conceptual structure of the Birch and Swinnerton-Dyer conjecture (particularly the rank–height–L-function relationship) and builds a full BSD-independent symbolic projection system. **No step in the projection, simulation, or topological analysis depends on BSD being true**.
+
+
+All methods operate on explicitly computable, algebraic invariants.
+
+
+---
+
+
+## Key Features
+
+
+- **Mathematical Rigor:**  
+  - Computes advanced invariants for elliptic curves (analytic/algebraic rank, regulator, Heegner points, BSD checks) using SageMath and PARI/GP.
+
+
+- **Cosmological Mapping:**  
+  - Projects these invariants onto a notional "cosmic web," with area- and shape-preserving mapping strategies inspired by planetary science and cosmology.
+
+
+- **Modern Computation:**  
+  - Utilizes parallelization, dynamic resource management, checkpointing, and logging for robust, large-scale computation.
+  - Symbolic regression and machine learning are used for coordinate discovery and computational efficiency.
+
+
+- **Visualization:**  
+  - Produces high-quality, interpretable 3D plots and statistical summaries of the mapped "cosmic" structure.
+
+
+- **Reproducibility and Modularity:**  
+  - Modular Python code (data generation, invariants, mapping, visualization) with up-to-date documentation and test cases.
+
+
+- **BSD-independent Projection Functions**:
+  - PTD Mapping (Period–Torsion–Discriminant)
+  - MCJ Mapping (Modularity–Conductor–j-invariant)
+  - FT Mapping (Frobenius Trace statistics)
+
+
+- **Topological Data Analysis (TDA)**:
+  - Persistent homology computed using `Ripser` and `GUDHI`
+  - Wasserstein distance and Betti number comparison to SDSS/Millennium simulation data
+
+
+- **Symbolic Regression**:
+  - Discover emergent relationships (e.g., symbolic energy, curvature) using `PySR` or `gplearn`
+
+
+- **Reproducibility Tools**:
+  - Jupyter notebooks, precomputed arithmetic and cosmological datasets
+  - Docker/conda environments for consistent computation
+  - Null model generation for statistical significance testing
+
+
+---
+
+
+## Repository Structure
+
+
+```
+acscglmpct/
+  data_generation.py      # Fibonacci/Lucas sequences and curve pair generation
+  invariants.py           # Mathematical invariants and Heegner point computation
+  mapping.py              # Coordinate projection and distortion-free mapping
+  visualization.py        # Plotting functions for 3D and statistical outputs
+main.py                   # Orchestrates the full workflow using the above modules
+test_pi6.py               # Basic test suite for mathematical and mapping correctness
+USAGE.md                  # User guide for setup and execution
+INTERPRETATION.md         # Mathematical and cosmological explanation
+README.md                 # This file
+(distortion_free_*.csv/png)   # Example output files generated during runs
+```
+
+
+---
+
+
+## Quick Start
+
+
+**Prerequisites:**  
+- [SageMath](https://www.sagemath.org/) ≥ 10.6  
+- Python 3.8+ with numpy, matplotlib, scikit-learn, joblib, sympy, psutil  
+- Linux/macOS recommended (Windows: use WSL2 or a Linux VM)
+
+
+**Installation:**  
+```bash
+git clone https://github.com/LcosmosS/ACSC-GLMPCT.git
+cd ACSC-GLMPCT
+pip install -r requirements.txt
+```
+
+
+**Run the Main Pipeline:**  
+```bash
+sage -python main.py
+```
+*See `USAGE.md` for detailed setup, options, and troubleshooting.*
+
+
+---
+
+
+## Outputs
+
+
+- **CSV Tables:**  
+  - Main outputs with elliptic curve invariants and mapped coordinates.
+- **Plots:**  
+  - 3D cosmic map (`distortion_free_earth_mapping_v15.png`)
+  - Rank distribution histogram (`distortion_free_rank_distribution_v15.png`)
+- **Logs:**  
+  - Detailed logs of every computation step for auditing and debugging.
+
+
+---
+
+
+## Documentation
+
+
+- **[USAGE.md](USAGE.md):** Complete user guide (setup, running, customization)
+- **[INTERPRETATION.md](INTERPRETATION.md):** Mathematical mapping & cosmological interpretation
+- **[test_pi6.py](test_pi6.py):** Basic tests for mathematical correctness
+
+
+---
+
+
+## Example
+
+
+**Sample output from a mapped curve:**
+```python
+{.
+Analyzing curve: y² = x³ + 3x + 1
+
+
+Fibonacci curve: y² = x³ + 3x + 1
+Discriminant: -2160
+Conductor: 540 = 2^2 * 3^3 * 5
+Torsion order: 1 (cyclic nodes in 3-sphere interweb)
+Algebraic rank: 1 (independent nodes in cosmic web)
+2-Selmer rank: 1
+3-Selmer rank (PARI/GP estimate): 1
+Weak BSD holds: True
+Heegner point for D=-71 successfully computed.
+Heegner Point (x, y): (13/9, 50/27)
+Real period (Omega): 1.0339448758238 (3-sphere scale factor)
+Scaled period: 4182698.9 light-years
+Regulator: 9.425987654321 (node interaction strength)
+Scaled regulator (Reg * √κ * 5): 1490.5 (density height)
+Product of Tamagawa numbers: 3 (local edge constraints)
+Strong BSD holds: Leading coefficient matches with |Sha(E)| = 1
+--------------------
+}
+```
+**3D plot and CSV show the arrangement of hundreds of such mappings, visualizing arithmetic structure as a cosmic web.**
+
+
+---
+
+
+## How to Contribute
+
+
+- Open issues for bugs, questions, or feature requests.
+- Submit pull requests for improvements, new modules, or new mathematical analogies.
+- For larger contributions, please open an issue to discuss your idea first.
+- Propose a new mathematical analogy, mapping strategy, or cosmological comparison?  
+Open an issue or pull request—collaborators from all backgrounds are welcome!
+
+
+---
+
+
+## Citation
+
+
+If you use this repository for research, teaching, or derivative work, please cite as:
+
+
+> Patrick J. McNamara. "Symbolic Projection of Elliptic Curves into Cosmological Structure". GitHub, 2025. [https://github.com/LcosmosS/ACSC-GLMPCT](https://github.com/LcosmosS/ACSC-GLMPCT)
+
+
+---
+
+
+## License
+
+
+[MIT License](LICENSE) (see file for details)
+
+
+---
+
+
+## Acknowledgments
+
+
+- SageMath, PARI/GP, and the open-source mathematics and physics communities.
+- The many mathematicians and physicists who inspired this exploration at the interface of geometry and cosmology.
+
+
+---
+> **Current Version:** v1.0.0 ([Releases](https://github.com/LcosmosS/ACSC-GLMPCT/releases))
+*Last updated: May 2025*

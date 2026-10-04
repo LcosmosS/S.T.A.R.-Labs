@@ -1,0 +1,6 @@
+plt.figure(figsize=(6,5))
+plt.scatter(X[:,0], X[:,1], c=entropy, cmap='viridis', s=10)
+plt.colorbar(label='Entropy M(x)')
+plt.title("Entropy Field")
+plt.savefig('figures/entropy_field.png', dpi=200)
+plt.show()

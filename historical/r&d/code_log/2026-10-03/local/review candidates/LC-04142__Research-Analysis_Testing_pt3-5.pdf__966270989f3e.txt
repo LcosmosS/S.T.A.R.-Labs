@@ -1,0 +1,11 @@
+    if len(valid_fibs) < 2:
+        return random.choice(fib_list), random.choice(fib_list)
+
+    if force_failure and large_fibs:
+        pair = random.sample(large_fibs, 2) if len(large_fibs) >= 2 else random.sample(valid_fibs, 2)
+        if seen_pairs.get(tuple(pair), 0) < 1:
+            return pair
+        return random.sample(valid_fibs, 2)
+
+    # Updated rank 3 candidates
+    high_rank_pairs = [(2, 144), (3, 144), (5, 144), (2, 233), (8, 610), (5, 377), (34, 610), (2, 377), (5, 233),

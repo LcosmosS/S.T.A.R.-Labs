@@ -1,0 +1,4 @@
+        with open("unique_curves.txt", "a") as f:
+            conductor = E.conductor() if E else 'N/A'
+            plot_file = f"curve_{-1706}_{6320}.png" if E else 'N/A'
+            f.write(f"{-1706},{6320},{rank},{omega},{reg},{comoving_volume},{scaled_reg},{leading_coeff * 10

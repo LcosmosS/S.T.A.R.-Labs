@@ -1,0 +1,2 @@
+mass_bins = np.linspace(df['logmass'].min(), df['logmass'].max(), num=25)
+z_bins = np.linspace(df['z'].min(), df['z'].max(), num=25)

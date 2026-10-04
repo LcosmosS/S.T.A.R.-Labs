@@ -1,0 +1,2 @@
+print("Mean simulated K_theory: ", mean_K);
+                                                                     * Placement: The print statement for mean_K is moved outside the loop since it’s a summary of simulations, not bin-specific.

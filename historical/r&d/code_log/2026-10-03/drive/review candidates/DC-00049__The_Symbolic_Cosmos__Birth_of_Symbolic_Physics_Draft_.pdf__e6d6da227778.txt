@@ -1,0 +1,3 @@
+if classifier is None or X_data is None or len(X_data) < 10:
+if len(high_rank_fibs) >= 2 and random.random() < 0.5:
+return random.sample(high_rank_fibs, 2)

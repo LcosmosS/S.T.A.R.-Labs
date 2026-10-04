@@ -1,0 +1,19 @@
+    try:
+        response = requests.post(
+            OLLAMA_URL,
+            json={
+                "model": model,
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "temperature": temperature,
+                },
+            },
+            timeout=600,
+        )
+
+
+    except requests.RequestException as exc:
+        raise RuntimeError(
+            f"Could not connect to Ollama at {OLLAMA_URL}: {exc}"
+        ) from exc

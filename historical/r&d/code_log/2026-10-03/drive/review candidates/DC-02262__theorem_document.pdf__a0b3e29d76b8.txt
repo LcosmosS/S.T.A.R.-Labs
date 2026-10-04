@@ -1,0 +1,2 @@
+np.radians(df[ra_col]) \ndf[\'dec_rad\'] =
+np.radians(df[dec_col]) \n return df

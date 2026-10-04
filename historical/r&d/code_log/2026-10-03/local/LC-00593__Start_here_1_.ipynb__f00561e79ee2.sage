@@ -1,0 +1,1 @@
+sorted( ZZ.category().axioms() )

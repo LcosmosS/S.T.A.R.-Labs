@@ -1,0 +1,1 @@
+%run fibo2.py

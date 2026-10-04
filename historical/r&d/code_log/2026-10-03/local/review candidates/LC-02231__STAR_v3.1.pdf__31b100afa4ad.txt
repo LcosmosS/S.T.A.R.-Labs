@@ -1,0 +1,6 @@
+    else:
+        df['entropy_strata'] = 1
+
+    df = add_comprehensive_proxies(df, coords, dists, indices)
+
+    return df

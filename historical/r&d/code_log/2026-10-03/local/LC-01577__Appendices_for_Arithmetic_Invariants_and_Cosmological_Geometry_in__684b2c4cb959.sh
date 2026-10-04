@@ -1,0 +1,1 @@
+sage  #  Suppress  warnings  import  warnings  warnings.filterwarnings("ignore",  category=DeprecationWarning)   from  sage.all  import  EllipticCurve,  QQ,  factor,  RealField,  prod,  pari,  heegner_points,  

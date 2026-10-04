@@ -1,0 +1,2 @@
+shap_values_rf = explainer_rf.shap_values(X_test_scaled)
+shap.summary_plot(shap_values_rf, X_test, feature_names=X.columns, show=False)

@@ -1,0 +1,5 @@
+z_group2 = z[group2_indices]
+sfr_group2 = sfr[group2_indices]
+ra_group2 = ra[group2_indices]
+      * print(f"Group 2: z = {np.mean(z_group2):.4f}, sfr = {np.mean(sfr_group2):.4f}, ra = {np.mean(ra_group2):.4f}")
+      * Compare to other groups (example values, adjust with your data):

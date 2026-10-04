@@ -1,0 +1,14 @@
+df['OH_O3N2_raw'] = 8.533 - 0.214 * df['log_O3N2_raw']
+
+# Add photometric colors
+========================================================================
+========================================================================
+================
+if 'umag' in df.columns and 'gmag' in df.columns:
+    df['color_ug'] = df['umag'] - df['gmag']
+    df['color_gr'] = df['gmag'] - df['rmag']
+    df['color_ri'] = df['rmag'] - df['imag']
+    df['color_iz'] = df['imag'] - df['zmag']
+    df['e_color_ug'] = np.sqrt(df['e_umag']**2 + df['e_gmag']**2)
+    df['e_color_gr'] = np.sqrt(df['e_gmag']**2 + df['e_rmag']**2)
+if 'Jmag' in df.columns and 'Kmag' in df.columns:

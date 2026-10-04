@@ -1,0 +1,24 @@
+            x=X[:,0], y=X[:,1], z=X[:,2],
+            color=entropy,
+            color_continuous_scale="Viridis",
+            title="Entropy Field (Interactive)"
+       )
+       fig.write_html("figures/entropy_interactive.html")
+       fig.show()
+
+[10]:  plt.figure(figsize=(6,5))
+       plt.scatter(X[:,0], X[:,1], c=curvature, cmap='plasma', s=10)
+       plt.colorbar(label='Curvature ￿(x)')
+       plt.title("Entropy Curvature")
+       plt.savefig('figures/entropy_curvature.png', dpi=200)
+       plt.show()
+
+
+
+
+
+
+
+
+
+                                                         5

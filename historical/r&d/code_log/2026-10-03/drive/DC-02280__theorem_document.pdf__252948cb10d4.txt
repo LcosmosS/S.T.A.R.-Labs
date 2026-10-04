@@ -1,0 +1,6 @@
+# Compute MST (Minimum Spanning Tree)
+mst = minimum_spanning_tree(self.positions)
+# Extract filament properties
+filament_lengths = compute_filament_lengths(mst)
+filament_density = compute_density_along_filaments(mst, self.masses)
+return filament_lengths, filament_density

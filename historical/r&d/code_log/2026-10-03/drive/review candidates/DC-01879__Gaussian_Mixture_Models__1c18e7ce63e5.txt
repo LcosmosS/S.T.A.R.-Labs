@@ -1,0 +1,4 @@
+result = compute_L_cosmo(1);
+L = result[1];
+rank = result[2];
+print("L_cosmo(1) = ", L, ", rank = ", rank);

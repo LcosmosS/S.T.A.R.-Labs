@@ -1,0 +1,40 @@
+    xgb_pred_test = y_pred_xgb.reshape(-1, 1)
+
+    stack_train = np.hstack((X_train_scaled, pysr_pred_train, xgb_pred_train))
+
+    stack_test = np.hstack((X_test_scaled, pysr_pred_test, xgb_pred_test))
+
+    meta_model = XGBRegressor(n_estimators=100, learning_rate=0.05, max_depth=4,
+random_state=42)
+
+    meta_model.fit(stack_train, y_train)
+
+    y_pred_stack = meta_model.predict(stack_test)
+
+
+
+    r2_stack = r2_score(y_test, y_pred_stack)
+
+    mae_stack = mean_absolute_error(y_test, y_pred_stack)
+
+
+
+    print(f"{regime} PySR R²: {r2_pysr:.4f}, MAE: {mae_pysr:.4f}")
+
+    print(f"{regime} XGBoost R²: {r2_xgb:.4f}, MAE: {mae_xgb:.4f}")
+
+    print(f"{regime} Stacked R²: {r2_stack:.4f}, MAE: {mae_stack:.4f}")
+
+
+
+    return pysr_model, xgb_model, meta_model, X_test, y_pred_pysr, y_pred_xgb, y_pred_stack
+
+
+
+# Run for regime
+
+for regime, dfr in [('galactic', df_gal), ('cluster', df_clust)]:
+
+    if len(dfr) < 2: continue
+
+    Xr = dfr[X_clf_cols]

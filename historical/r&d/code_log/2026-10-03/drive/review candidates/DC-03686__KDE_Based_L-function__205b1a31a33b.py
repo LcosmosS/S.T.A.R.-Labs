@@ -1,0 +1,5 @@
+    print("\n[DIAGNOSTIC] Checking X_train_scaled and y_train:")
+    print("X_train_scaled sample:\n", pd.DataFrame(X_train_scaled).head())
+    print("X_train_scaled - min:", np.min(X_train_scaled), " max:", np.max(X_train_scaled), " NaNs:", np.isnan(X_train_scaled).any())
+    print("y_train sample:\n", y_train.head())
+    print("y_train - min:", y_train.min(), " max:", y_train.max(), " NaNs:", y_train.isna().any())

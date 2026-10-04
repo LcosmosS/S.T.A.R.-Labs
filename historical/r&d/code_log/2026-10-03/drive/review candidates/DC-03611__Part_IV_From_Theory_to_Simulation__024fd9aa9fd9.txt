@@ -1,0 +1,6 @@
+   for i in range(2, n + 1):
+       fib.append(fib[i-1] + fib[i-2])
+   return fib
+
+# Generate a list of candidate (a, b) pairs from Fibonacci numbers
+fib_numbers = generate_fibonacci(25)

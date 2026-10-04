@@ -1,0 +1,4 @@
+    if not response.ok:
+        raise RuntimeError(
+            "Ollama returned an error:\n"
+            f"HTTP {response.status_code}\n"

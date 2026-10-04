@@ -1,0 +1,3 @@
+str = readstr("C:\\temp\\GMM.txt")[1];
+/* Split into parts based on semicolons */
+parts = strsplit(str, ";");

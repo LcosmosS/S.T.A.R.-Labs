@@ -1,0 +1,11 @@
+        results["tully_fisher_corr"] = float(corr)
+    else:
+        print("  > Testing Tully-Fisher Relation (Spirals)...")
+        print("    - Not enough data points to calculate correlation.")
+        results["tully_fisher_corr"] = None
+
+    # Test 2: Fundamental Plane for Elliptical Galaxies
+    ellipticals = df[df['Galaxy_Type'] == 1]
+    if not ellipticals.empty and len(ellipticals) > 1:
+        print("  > Testing Fundamental Plane (Ellipticals)...")
+        fp_predicted_mass = model_fundamental_plane(ellipticals['Vel_Disp'],

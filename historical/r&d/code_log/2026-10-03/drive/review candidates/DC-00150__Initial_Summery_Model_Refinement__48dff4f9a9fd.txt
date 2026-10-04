@@ -1,0 +1,14 @@
+# Boost BSD features with interactions and scaling
+df["cosmo_rank_mass"] = df["cosmo_rank"] * df["log_Mass"]
+df["L_cosmo_s1_mass"] = df["L_cosmo_s1.0"] * df["log_Mass"]
+df["cosmo_rank_EW"] = df["cosmo_rank"] * df["EW_Ha_cen"]
+df["L_cosmo_s1_EW"] = df["L_cosmo_s1.0"] * df["EW_Ha_cen"]
+df["cosmo_rank_scaled"] = df["cosmo_rank"] * 10
+df["L_cosmo_s1_scaled"] = df["L_cosmo_s1.0"] * 10
+features = base_features + [
+    "mass_metallicity", "dust_metallicity", "disp_mass_ratio", 
+    "age_metallicity", "sqrt_Re_kpc", "log_mass", "BSD_likelihood", 
+    "cosmo_rank", "L_cosmo_s0.5", "L_cosmo_s1.0", "L_cosmo_s1.5", 
+    "L_cosmo_s2.0", "cosmo_rank_L", "cosmo_rank_mass", "L_cosmo_s1_mass",
+    "cosmo_rank_EW", "L_cosmo_s1_EW", "cosmo_rank_scaled", "L_cosmo_s1_scaled"
+]

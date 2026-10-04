@@ -1,0 +1,15 @@
+plt.plot(s_range, L_vals)
+plt.xlabel("s")
+plt.ylabel("L_cosmo(s)")
+plt.title("L_cosmo(s) Behavior")
+plt.savefig("L_cosmo_curve.png")
+plt.close()
+
+
+# Scatter plot of L_cosmo_s_1.0 vs log_SFR_Ha
+plt.scatter(df['L_cosmo_s_1.0'], df['log_SFR_Ha'], alpha=0.5)
+plt.xlabel("L_cosmo_s_1.0")
+plt.ylabel("log_SFR_Ha")
+plt.title("L_cosmo_s_1.0 vs log_SFR_Ha")
+plt.savefig("L_cosmo_s1_vs_SFR.png")
+plt.close()

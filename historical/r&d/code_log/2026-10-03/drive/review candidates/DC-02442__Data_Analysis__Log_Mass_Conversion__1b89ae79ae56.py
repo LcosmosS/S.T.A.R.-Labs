@@ -1,0 +1,36 @@
+if missing_columns:
+    print(f"Error: Missing columns in CSV: {', '.join(missing_columns)}")
+    exit(1)
+
+
+# Replace -9999 with NaN in required columns and drop rows with any NaN
+df[required_columns] = df[required_columns].replace(-9999, float('nan'))
+df = df.dropna(subset=required_columns)
+
+
+# Extract the columns to lists
+objid = df['objid'].tolist()
+ra = df['ra'].tolist()
+dec = df['dec'].tolist()
+z = df['z'].tolist()
+log_mass = df['logmass'].tolist()
+petrorad = df['petrorad'].tolist()
+ellipticity = df['ellipticity'].tolist()
+sfr = df['sfr'].tolist()
+metallicity = df['metallicity'].tolist()
+
+
+# Convert lists to string format
+objid_str = '[' + ','.join(map(str, objid)) + ']'
+ra_str = '[' + ','.join(map(str, ra)) + ']'
+dec_str = '[' + ','.join(map(str, dec)) + ']'
+z_str = '[' + ','.join(map(str, z)) + ']'
+log_mass_str = '[' + ','.join(map(str, log_mass)) + ']'
+petrorad_str = '[' + ','.join(map(str, petrorad)) + ']'
+ellipticity_str = '[' + ','.join(map(str, ellipticity)) + ']'
+sfr_str = '[' + ','.join(map(str, sfr)) + ']'
+metallicity_str = '[' + ','.join(map(str, metallicity)) + ']'
+
+
+# Print in a single line
+print(f'objid={objid_str} ra={ra_str} dec={dec_str} z={z_str} log_mass={log_mass_str} petrorad={petrorad_str} ellipticity={ellipticity_str} sfr={sfr_str} metallicity={metallicity_str}')

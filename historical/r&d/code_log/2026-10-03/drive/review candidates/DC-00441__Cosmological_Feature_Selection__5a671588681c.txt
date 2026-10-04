@@ -1,0 +1,12 @@
+if available_morph_cols:
+    gz_df['morph_sum'] = gz_df[available_morph_cols].sum(axis=1)
+else:
+    gz_df['morph_sum'] = 0  # Fallback if no morph columns are present
+
+
+# Calculate mean magnitude using u, g, r, i, z
+gz_df['mean_magnitude'] = (gz_df['u'] + gz_df['g'] + gz_df['r'] + gz_df['i'] + gz_df['z']) / 5
+
+
+# Normalize morph_sum, mean_magnitude, and redshift
+scaler_rank = MinMaxScaler()

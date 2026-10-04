@@ -1,0 +1,3 @@
+M = read("masses.txt");    /* Vector of masses */
+Z = read("redshifts.txt"); /* Vector of redshifts */
+* Note: The files should be formatted correctly for PARI/GP (e.g., as a list like [123.456, 789.012, ...]). If they aren’t, you may need to edit them beforehand.

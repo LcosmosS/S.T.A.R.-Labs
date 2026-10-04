@@ -1,0 +1,6 @@
+Then, with M_0, I can compute a_i = masses[i] / M_0.
+Wait, actually, since a_i = M_i / M_0, and in the L-function, we have a_i^{-s} = (M_0 / M_i)^s.
+So, for s=1, L_cosmo(1) = sum_{i=1}^N (M_0 / M_i).
+Then, K = N / L_cosmo(1).
+Wait, earlier we had K = Reg_cosmo / L_cosmo(1), and we took Reg_cosmo = N.
+So, yes, K = N / sum_{i=1}^N (M_0 / M_i).

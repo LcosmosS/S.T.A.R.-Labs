@@ -1,0 +1,2 @@
+Reg_cosmo = sum(i=1, N, M[i] / M_0) / N; / Data-driven regulator / (13:45) gp >
+print("Reg_cosmo: ", Reg_cosmo); Reg_cosmo:

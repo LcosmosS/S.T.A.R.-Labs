@@ -1,0 +1,17 @@
+— Thesis Metrics + Per-Galaxy Local Betti_0/1/2 (no leakage)
+Computing per-galaxy local Betti_0/1/2...
+real1 per-galaxy local Betti_0/1/2 computed for all rows
+real2 per-galaxy local Betti_0/1/2 computed for all rows
+synth per-galaxy local Betti_0/1/2 computed for all rows
+Running 5-fold CV...
+Synthetic — 5-Fold CV (Thesis Metrics + Per-Galaxy Local Betti)
+R² = 0.9828 ± 0.0066
+MSE = 0.0168 ± 0.0064
+Real1 JApJ — 5-Fold CV (Thesis Metrics + Per-Galaxy Local Betti)
+R² = 1.0000 ± 0.0000
+MSE = 0.0000 ± 0.0000
+Real2 DESI/SDSS — 5-Fold CV (Thesis Metrics + Per-Galaxy Local Betti)
+R² = 0.1314 ± 0.0063
+MSE = 0.0122 ± 0.0005
+Running PySR on synthetic...
+Detected IPython. Loading juliacall extension. See https://juliapy.github.io/PythonCall.jl/stable/compat/#IPython

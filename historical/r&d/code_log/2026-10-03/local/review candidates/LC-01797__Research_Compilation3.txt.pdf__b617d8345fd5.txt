@@ -1,0 +1,2 @@
+N_sub=5, T_cosmo_sub = 17 * sqrt(5 / 1000) ≈ 17 * 0.2236 ≈ 3.8 But since in the script,
+T_cosmo=17 for N=9, which is not consistent, perhaps it's better to define a scaling factor.

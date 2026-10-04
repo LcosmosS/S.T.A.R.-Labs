@@ -1,0 +1,25 @@
+T_cmb = 2.7255e6;
+read("cl_tt.txt"); /* Planck TT C_l */
+K = 1e7; /* Adjust after unscaled computation */
+L_cosmo(s) = K * sum(n=2, 2508, (C_l[n] / T_cmb^2) / n^s);
+print("L_cosmo defined with Planck TT data");
+
+
+/* Cosmological constants */
+t_H = 1.44e10;
+Omega_cosmo = 1.38e10; /* Universe age */
+Omega_tilde = Omega_cosmo / t_H; /* ≈ 0.958 */
+Reg_cosmo = 9.3e10 / 5.38e7; /* ≈ 1728.62 */
+prod_c_p_cosmo = 1000;
+Sha_cosmo = 0.857;
+T_cosmo = 38; /* Adjusted for calibration */
+
+
+/* Compute and compare */
+left_side = L_cosmo(1);
+right_side = (Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2);
+print("Left side: ", left_side);
+print("Right side: ", right_side);
+if (abs(left_side - right_side) < 0.1 * right_side,
+    print("Analogy holds within 10%"),
+    print("Analogy fails"));

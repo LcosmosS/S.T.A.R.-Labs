@@ -1,0 +1,1 @@
+ P  =  (2,  54):   \text{Reg}(E)  =  \hat{h}(P)   In  SageMath:   python  P  =  E.point([2,  54])  Reg  =  P.height()  print(Reg)  

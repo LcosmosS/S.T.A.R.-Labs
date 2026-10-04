@@ -1,0 +1,5 @@
+plt.title('Projection Attractor Concentration in SFR Phase Space')
+plt.xlabel('L_cosmo(s)')
+plt.ylabel('log SFR')
+plt.grid(True)
+plt.show()

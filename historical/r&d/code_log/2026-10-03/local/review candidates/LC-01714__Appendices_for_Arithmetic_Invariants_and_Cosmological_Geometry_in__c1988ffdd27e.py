@@ -1,0 +1,28 @@
+    if XGBClassifier:
+        classifiers.append(('XGBoost', XGBClassifier(random_state=42)))
+    if LGBMClassifier:
+        classifiers.append(('LightGBM', LGBMClassifier(random_state=42)))
+    if CatBoostClassifier and catboost_params_clf:
+        classifiers.append(('CatBoost', CatBoostClassifier(**catboost_params_clf,
+verbose=0)))
+
+    stacking_clf = StackingClassifier(estimators=classifiers,
+final_estimator=HistGradientBoostingClassifier(random_state=42))
+    stacking_clf.fit(X, y)
+    gen_accuracy = cross_val_score(stacking_clf, X, y, cv=5).mean()
+    print("Stacking Classifier Accuracy:", gen_accuracy)
+    print("Classification Report:\n", classification_report(y,
+stacking_clf.predict(X)))
+
+    # Feature importance
+    log_function("compute_generator_feature_importance")
+    gen_perm_importance = permutation_importance(stacking_clf, X, y, n_repeats=10,
+random_state=42)
+    gen_feature_importance = pd.Series(gen_perm_importance.importances_mean,
+index=X.columns).sort_values(ascending=False)
+    print("\nGenerator Type Feature Importance:\n", gen_feature_importance)
+
+gen_feature_importance.to_csv(f'{OUTPUT_PLOT_PREFIX}_generator_feature_importance.csv'
+)
+
+    plt.figure(figsize=(10, 6))

@@ -1,0 +1,4 @@
+     classifiers  =  [          ('RandomForest',  RandomForestClassifier(random_state=42)),          ('GradientBoosting',  GradientBoostingClassifier(random_state=42))      ]      if  XGBClassifier:          classifiers.append(('XGBoost',  XGBClassifier(random_state=42)))      if  LGBMClassifier:          classifiers.append(('LightGBM',  LGBMClassifier(random_state=42)))      if  CatBoostClassifier  and  catboost_params_clf:          classifiers.append(('CatBoost',  CatBoostClassifier(**catboost_params_clf,  
+verbose=0)))
+      stacking_clf  =  StackingClassifier(estimators=classifiers,  
+final_estimator=HistGradientBoostingClassifier(random_state=42))

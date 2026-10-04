@@ -1,0 +1,39 @@
+            digest = sha256(pdf_path)
+
+
+            document_record = {
+                "document": pdf_path.name,
+                "path": str(pdf_path),
+                "sha256": digest,
+                "pages": 0,
+            }
+
+
+            for page_record in extract_pdf_pages(pdf_path):
+
+
+                text = page_record["text"]
+
+
+                record = {
+                    **page_record,
+                    "features": features(text),
+                    "text_length": len(text),
+                }
+
+
+                evidence_file.write(
+                    json.dumps(
+                        record,
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                )
+
+
+                document_record["pages"] += 1
+                total_pages += 1
+
+
+            manifest["documents"].append(
+                document_record

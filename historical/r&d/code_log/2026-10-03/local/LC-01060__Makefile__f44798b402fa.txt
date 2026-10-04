@@ -1,0 +1,12 @@
+CC = gcc
+
+FTP_DIR = $(HOME)/JohnCremona.github.io/ftp/data
+DIST_DIR = $(HOME)/ecdata/ecdata
+
+ALLCURVES = allcurves/allcurves.?0000-?9999 allcurves/allcurves.??0000-??9999
+APLIST = aplist/aplist.?0000-?9999 aplist/aplist.??0000-??9999
+BIGSHA = allbigsha/allbigsha.?0000-?9999 allbigsha/allbigsha.??0000-??9999
+COUNT = count/count.?0000-?9999 count/count.??0000-??9999
+CURVES = curves/curves.?0000-?9999 curves/curves.??0000-??9999
+DEGPHI = degphi/degphi.?0000-?9999 degphi/degphi.??0000-??9999
+ALLDEGPHI = alldegphi/alldegphi.?0000-?9999 alldegphi/alldegphi.??0000-??9999

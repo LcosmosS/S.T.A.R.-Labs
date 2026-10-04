@@ -1,0 +1,2 @@
+log_delta = math.log(abs(delta)) if delta != 0 else 0
+log_cond = math.log(conductor) if conductor > 0 else 0

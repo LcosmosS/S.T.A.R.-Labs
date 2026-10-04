@@ -1,0 +1,5 @@
+print("sample mean of log_mass = ", mean);
+print("sample sd of log_mass = ", sd);
+print("computed M0 = ", M0);
+   * print("theoretical M0 = ", 10^mu);
+   * Ensure the mean is near 10, standard deviation near 1, and median M_0 near 10^{10}.

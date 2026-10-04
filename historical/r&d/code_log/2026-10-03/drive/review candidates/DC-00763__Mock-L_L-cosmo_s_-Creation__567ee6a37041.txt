@@ -1,0 +1,3 @@
+k_min = 0.001; k_max = 1.0; steps = 1000;
+delta_k = (k_max - k_min) / steps;
+read("delta2.txt");

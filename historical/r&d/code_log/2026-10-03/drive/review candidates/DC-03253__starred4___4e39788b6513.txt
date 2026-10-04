@@ -1,0 +1,11 @@
+# Add after group statistics in the script
+plt.figure(figsize=(10, 6))
+for group in df['group'].unique():
+    plt.hist(df[df['group'] == group][sfr_col], bins=20, alpha=0.5, label=group)
+plt.xlabel('SFR')
+plt.ylabel('Frequency')
+plt.title('SFR Distribution by Group')
+plt.legend()
+plt.savefig('sfr_distribution_by_group.png')
+plt.close()
+* print("Saved SFR distribution plot as 'sfr_distribution_by_group.png'.")

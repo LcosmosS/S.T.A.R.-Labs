@@ -1,0 +1,4 @@
+   a = round(-DATA_DRIVEN_KAPPA * r)
+   rho = model_rho_from_virial_state(
+       physical_params['virial_mass'],
+       physical_params['vel_disp'],

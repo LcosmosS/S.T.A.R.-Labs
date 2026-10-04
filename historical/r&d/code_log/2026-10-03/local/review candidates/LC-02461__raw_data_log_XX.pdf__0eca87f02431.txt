@@ -1,0 +1,4 @@
+results = []
+for name, r, rho in clusters:
+    # Predict
+    P_pred = predict_generator(r, rho)

@@ -1,0 +1,9 @@
+    gc.collect()
+
+# Add the twisted curve (a=-102, b=918)
+result = analyze_curve(-102, 918, conductor_limit=1e14)
+if len(result) == 10:
+    success, features, rank, normalized_leading_coeff, omega, reg, tamagawa, weak_bsd_holds, E,
+selmer3_rank = result
+    if success:
+        results.append((None, (a, b, rank, normalized_leading_coeff, omega, reg, tamagawa,

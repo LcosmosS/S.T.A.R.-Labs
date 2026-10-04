@@ -1,0 +1,62 @@
+{
+  "local": {
+    "unique_artifacts": 4365,
+    "source_occurrences": 20016,
+    "categories": {
+      "document code candidate requiring review": 3135,
+      "raw script": 603,
+      "explicit code fence": 149,
+      "notebook code cell": 478
+    },
+    "languages": {
+      "python": 2325,
+      "unknown": 1075,
+      "pari-gp": 101,
+      "shell": 71,
+      "text": 21,
+      "sage": 434,
+      "batch": 1,
+      "typescript": 58,
+      "javascript": 177,
+      "json": 3,
+      "sql": 3,
+      "html": 3,
+      "tsx": 26,
+      "magma": 67
+    },
+    "output_sha256_verified": 4365,
+    "Python_AST_parses": 931,
+    "source_assets_scanned": 6387,
+    "archive_members_examined": 9813,
+    "excluded_paths": 9373,
+    "issues": 1718
+  },
+  "drive": {
+    "unique_artifacts": 3930,
+    "source_occurrences": 7164,
+    "categories": {
+      "document code candidate requiring review": 3930
+    },
+    "languages": {
+      "python": 2351,
+      "unknown": 1073,
+      "shell": 75,
+      "sql": 3,
+      "pari-gp": 392,
+      "magma": 36
+    },
+    "output_sha256_verified": 3930,
+    "Python_AST_parses": 1153,
+    "Drive_snapshots_scanned": 288,
+    "issues": 0
+  },
+  "cross_root_exact_duplicate_digests": 80,
+  "scope_limits": [
+    "157 unique likely-code source images OCR scanned from314paths; routine generated charts not treated as code; other/archive images recorded for visual review",
+    "PDF extraction candidates may span page boundaries; source review required",
+    "Drive audio/video have no accessible code transcript and were not downloaded",
+    "OneDrive Research-Analysis+Testing_pt.4.zip is a cloud placeholder whose directory read stalled; metadata only; large locally readable archive containers lack whole-container hashes but selected code member bytes are hashed",
+    "Both XLSX datasets and the EPUB were inspected; no unsupported flag remains for those",
+    "Third-party dependencies/runtimes/credentials excluded with explicit path records"
+  ]
+}

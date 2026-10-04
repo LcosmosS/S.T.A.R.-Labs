@@ -1,0 +1,3 @@
+chunk.apply(classify_generator, axis=1, result_type='expand')
+        chunk['generator_coords'] = chunk['log_delta'].apply(lambda x: (x, x*2) if not
+pd.isna(x) else np.nan)

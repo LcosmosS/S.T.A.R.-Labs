@@ -1,0 +1,23 @@
+# Load Galaxy Zoo data
+gz_data = pd.read_csv("PhotoObj_pmqr771.csv")
+
+
+# Cross-match with merged_data.csv
+df, gz_matched = cross_match(df, gz_data, 'objra_y', 'objdec', 'RA', 'DEC')
+print(f"After Galaxy Zoo cross-match: {len(df)} galaxies")
+
+
+# Map Galaxy Zoo fractions to morphological probabilities
+df['P(CD)'] = gz_matched['t01_smooth_or_features_a01_smooth_fraction']
+df['P(E)'] = gz_matched['t01_smooth_or_features_a01_smooth_fraction'] * gz_matched['t07_rounded_a01_completely_round_fraction']
+df['P(S0)'] = gz_matched['t01_smooth_or_features_a01_smooth_fraction'] * (1 - gz_matched['t05_bulge_prominence_a01_no_bulge_fraction'])
+df['P(Sa)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * gz_matched['t10_arms_winding_a01_tight_fraction']
+df['P(Sab)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * (1 - gz_matched['t10_arms_winding_a01_tight_fraction']) * 0.5
+df['P(Sb)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * (1 - gz_matched['t10_arms_winding_a01_tight_fraction']) * 0.3
+df['P(Sbc)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * (1 - gz_matched['t10_arms_winding_a01_tight_fraction']) * 0.2
+df['P(Sc)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * (1 - gz_matched['t10_arms_winding_a01_tight_fraction']) * 0.15
+df['P(Scd)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * (1 - gz_matched['t10_arms_winding_a01_tight_fraction']) * 0.1
+df['P(Sd)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * (1 - gz_matched['t10_arms_winding_a01_tight_fraction']) * 0.05
+df['P(Sdm)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * (1 - gz_matched['t10_arms_winding_a01_tight_fraction']) * 0.03
+df['P(Sm)'] = gz_matched['t04_spiral_a01_spiral_fraction'] * (1 - gz_matched['t10_arms_winding_a01_tight_fraction']) * 0.02
+df['P(Irr)'] = gz_matched['t12_clumpy_a01_yes_fraction'] + gz_matched['t06_odd_a01_yes_fraction']

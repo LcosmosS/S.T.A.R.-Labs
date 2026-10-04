@@ -1,0 +1,4 @@
+        ucf_regulator = ellipticals['Regulator']
+
+        corr, p_val = pearsonr(ucf_regulator, np.log10(fp_predicted_mass))
+        print(f"    - Correlation(UCF Regulator vs. Predicted Mass): {corr:.4f}

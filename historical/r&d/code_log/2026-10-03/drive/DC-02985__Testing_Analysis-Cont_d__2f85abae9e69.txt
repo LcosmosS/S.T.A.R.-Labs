@@ -1,0 +1,12 @@
+E := EllipticCurve([0, 1, 0, 1, 2]); // y^2 = x^3 + x + 2
+p := 5;
+L := pAdicLSeries(E, p);
+L1 := Evaluate(L, 1);
+* print "p-adic L(1):", L1;
+* If L_p(1) = 0, it suggests a higher rank; non-zero suggests rank 0.
+* SageMath Example (from your script):
+* python
+E = EllipticCurve(QQ, [0, 1, 0, 1, 2])
+p = 5
+L_padic = E.padic_lseries(p)
+* print(L_padic(1))  # Evaluate at s=1

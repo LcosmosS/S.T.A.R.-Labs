@@ -1,0 +1,13 @@
+K = right_side / unscaled_left;     /* Normalization factor */
+print("Normalization constant K: ", K);
+
+/* Define and compute normalized L-function with K */
+L_cosmo_new(s) = K * L_cosmo(s);    /* Normalized L-function */
+left_side = L_cosmo_new(1);         /* Normalized L_cosmo(1) */
+print("Normalized L_cosmo(1): ", left_side);
+
+/* Compare left and right sides */
+tolerance = 0.1;                    /* 10% tolerance */
+if (abs(left_side - right_side) < tolerance * right_side,
+    print("Cosmological BSD analogue holds within 10%"),
+    print("Cosmological BSD analogue fails: Left side != Right side")

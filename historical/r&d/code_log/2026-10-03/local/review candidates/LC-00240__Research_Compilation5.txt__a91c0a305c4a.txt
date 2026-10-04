@@ -1,0 +1,12 @@
+else:
+*     values = [str(val) for val in values]
+* to:
+* python
+else:
+*     values = [f"{val:.15g}" if isinstance(val, float) else str(val) for val in values]
+* This ensures floating-point numbers, especially 'mass', are formatted with 15 significant digits, preserving precision for PARI/GP computations, crucial for L-functions.
+* Rank Computation: The script computes K but does not compute the rank, which should be added as suggested above.
+* Handling NaN Values: While the script filters for -9999, it's good to check for NaN values, which might be present. Add after loading:
+* python
+* df = df.dropna()
+* to remove any rows with NaN, ensuring completeness for GMM, though the current filtering likely handles this.

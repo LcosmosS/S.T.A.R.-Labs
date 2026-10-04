@@ -1,0 +1,1 @@
+aladin.add_table(tap_records.to_table())

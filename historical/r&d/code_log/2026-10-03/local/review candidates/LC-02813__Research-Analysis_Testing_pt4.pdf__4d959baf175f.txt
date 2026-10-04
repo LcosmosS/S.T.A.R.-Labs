@@ -1,0 +1,3 @@
+X_data.append(synth_feat) 265 y_data.append(Integer(1)) --> 266
+
+classifier.fit(np.array(X_data), np.array(y_data)) 267 print(f"Classifier trained.

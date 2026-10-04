@@ -1,0 +1,5 @@
+    204 photo_df = None
+    205 if spec_galaxies_df is not None:
+--> 206     photo_df = query_photometry(spec_galaxies_df)
+    208 # Query Galaxy Zoo 2 data
+    209 gz2_df = query_gz2_data()

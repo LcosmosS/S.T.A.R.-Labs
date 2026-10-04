@@ -1,0 +1,5 @@
+            return pair
+        return random.sample(valid_fibs, 2)
+
+    # Updated rank 3 candidates
+    high_rank_pairs = [(2, 144), (3, 144), (5, 144), (2, 233), (8, 610), (5, 377), (34, 610), (2, 377), (5, 233),

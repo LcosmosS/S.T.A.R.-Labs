@@ -1,0 +1,6 @@
+# Step 2: Replace invalid data (-9999) with NaN
+df.replace(-9999, np.nan, inplace=True)
+
+
+# Step 3: Verify all required columns exist
+required_columns = ['z', 'sfr', 'ra', 'dec', 'logmass']

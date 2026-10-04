@@ -1,0 +1,6 @@
+for i in range(3):
+    z_comp = np.array(z)[components == i]
+    sfr_comp = np.array(sfr)[components == i]
+    ra_comp = np.array(ra)[components == i]
+    met_comp = np.array(metallicity)[components == i]
+*     print(f"Component {i}: Mean z = {np.mean(z_comp)}, Mean sfr = {np.mean(sfr_comp)}, Mean ra = {np.mean(ra_comp)}, Mean metallicity = {np.mean(met_comp)}")

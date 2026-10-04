@@ -1,0 +1,3 @@
+periods = ellperiods(E, 1);
+real_period = real(periods[1]);  /* Scalar: ~1.7490966283766727306017206994555184853 */
+omega_scaled = pi_val * real_period;  /* Scalar: ~5.4949491181268317318781824938503237360 */

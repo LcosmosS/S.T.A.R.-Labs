@@ -1,0 +1,13 @@
+ L_grad = ‖∇M_pred − ∇M_true‖²
+
+2. **Curvature Loss**:
+ L_curv = ‖ω_pred − ω_true‖²
+
+3. **Entropy Action**:
+ L_action = ∫ (‖∇M‖² + λ‖Ric_M‖² + μ‖ω‖²) dV
+
+4. **Topological Loss**:
+ L_top = W_∞(Dgm_k(M_pred), Dgm_k(M_true))
+
+**Composite Symbolic Loss**:
+ L_total = α L_grad + β L_curv + γ L_action + δ L_top

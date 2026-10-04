@@ -1,0 +1,12 @@
+    niterations=10,
+    options=options,
+    numprocs=1
+)
+
+
+# Get the best equation
+best_eq = hall_of_fame[end]
+println("Best equation: ", best_eq)
+
+
+# Predict on test set

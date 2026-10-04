@@ -1,0 +1,6 @@
+# 1. Denominator: Pure 3-power (deterministic)
+d_n = 3^(2*n + 2)
+
+
+# 2. Numerator: Seeded by r and ρ, recursive
+num_n = num_{n-1} + floor(ρ / n) + r * k_n

@@ -1,0 +1,228 @@
+﻿# ACSC-GLMPCT: Symbolic Projections from Arithmetic Geometry to Cosmological Structure
+
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LcosmosS/ACSC-GLMPCT/HEAD?urlpath=lab)
+
+
+## Overview
+
+
+This repository supports the formalization, analysis, and validation of the **Arithmetic–Cosmic Structure Conjecture (ACSC)** and the **Global-to-Local Mapping Paradox Correction Theory (GLMPCT)**. The project investigates the hypothesis that large-scale cosmological structure—filaments, voids, and clustering—emerges from the symbolic projection of elliptic curve invariants into 3D topological space.
+
+
+**ACSC-GLMPCT** is an interdisciplinary research project that constructs explicit computational analogies between the world of arithmetic geometry (specifically invariants of elliptic curves) and the large-scale structure of the universe. By mapping mathematical invariants—such as discriminant, conductor, rank, and regulator—onto spatial and statistical coordinates in a cosmologically inspired 3D space, the project explores new ways to visualize, analyze, and interpret the deep connections between number theory and cosmology.
+
+
+
+
+> **Key Idea**: Arithmetic geometry (e.g., elliptic curves over (\mathbb {Q}) encodes symbolic patterns which, when projected using computable mappings, replicate the persistent homology of observed cosmic structures.
+
+
+This work is **inspired by** (but not dependent on) the Birch and Swinnerton-Dyer (BSD) conjecture and builds a full BSD-independent symbolic projection system.
+
+
+## Key Features
+
+
+- **Mathematical Rigor:**  
+  - Computes advanced invariants for elliptic curves (analytic/algebraic rank, regulator, Heegner points, BSD checks) using SageMath and PARI/GP.
+
+
+- **Cosmological Mapping:**  
+  - Projects these invariants onto a notional "cosmic web," with area- and shape-preserving mapping strategies inspired by planetary science and cosmology.
+
+
+- **Modern Computation:**  
+  - Utilizes parallelization, dynamic resource management, checkpointing, and logging for robust, large-scale computation.
+  - Symbolic regression and machine learning are used for coordinate discovery and computational efficiency.
+
+
+- **Visualization:**  
+  - Produces high-quality, interpretable 3D plots and statistical summaries of the mapped "cosmic" structure.
+
+
+- **Reproducibility and Modularity:**  
+  - Modular Python code (data generation, invariants, mapping, visualization) with up-to-date documentation and test cases.
+
+
+- **BSD-independent Projection Functions**:
+  - PTD Mapping (Period–Torsion–Discriminant)
+  - MCJ Mapping (Modularity–Conductor–j-invariant)
+  - FT Mapping (Frobenius Trace statistics)
+
+
+- **Topological Data Analysis (TDA)**:
+  - Persistent homology computed using `Ripser` and `GUDHI`
+  - Wasserstein distance and Betti number comparison to SDSS/Millennium simulation data
+
+
+- **Symbolic Regression**:
+  - Discover emergent relationships (e.g., symbolic energy, curvature) using `PySR` or `gplearn`
+
+
+- **Reproducibility Tools**:
+  - Jupyter notebooks, precomputed arithmetic and cosmological datasets
+  - Docker/conda environments for consistent computation
+  - Null model generation for statistical significance testing
+
+
+---
+
+
+## BSD Disclaimer
+
+
+> **Note**: This work is **inspired by** the conceptual structure of the Birch and Swinnerton-Dyer conjecture, particularly the rank–height–L-function relationship, but **no step in the projection, simulation, or topological analysis depends on BSD being true**.
+
+
+All methods operate on explicitly computable, algebraic invariants.
+
+
+---
+
+
+# ACSC-GLMPCT
+
+
+**Symbolic Projection of Elliptic Curves into Cosmological Structure**
+
+
+---
+
+
+## Repository Structure
+
+
+```
+acscglmpct/
+  data_generation.py      # Fibonacci/Lucas sequences and curve pair generation
+  invariants.py           # Mathematical invariants and Heegner point computation
+  mapping.py              # Coordinate projection and distortion-free mapping
+  visualization.py        # Plotting functions for 3D and statistical outputs
+main.py                   # Orchestrates the full workflow using the above modules
+test_pi6.py               # Basic test suite for mathematical and mapping correctness
+USAGE.md                  # User guide for setup and execution
+INTERPRETATION.md         # Mathematical and cosmological explanation
+README.md                 # This file
+(distortion_free_*.csv/png)   # Example output files generated during runs
+```
+
+
+---
+
+
+## Quick Start
+
+
+**Prerequisites:**  
+- [SageMath](https://www.sagemath.org/) ≥ 10.6  
+- Python 3.8+ with numpy, matplotlib, scikit-learn, joblib, sympy, psutil  
+- Linux/macOS recommended (Windows: use WSL2 or a Linux VM)
+
+
+**Installation:**  
+```bash
+git clone https://github.com/LcosmosS/ACSC-GLMPCT.git
+cd ACSC-GLMPCT
+pip install -r requirements.txt
+```
+
+
+**Run the Main Pipeline:**  
+```bash
+sage -python main.py
+```
+*See `USAGE.md` for detailed setup, options, and troubleshooting.*
+
+
+---
+
+
+## Outputs
+
+
+- **CSV Tables:**  
+  - Main outputs with elliptic curve invariants and mapped coordinates.
+- **Plots:**  
+  - 3D cosmic map (`distortion_free_earth_mapping_v15.png`)
+  - Rank distribution histogram (`distortion_free_rank_distribution_v15.png`)
+- **Logs:**  
+  - Detailed logs of every computation step for auditing and debugging.
+
+
+---
+
+
+## Documentation
+
+
+- **[USAGE.md](USAGE.md):** Complete user guide (setup, running, customization)
+- **[INTERPRETATION.md](INTERPRETATION.md):** Mathematical mapping & cosmological interpretation
+- **[test_pi6.py](test_pi6.py):** Basic tests for mathematical correctness
+
+
+---
+
+
+## Example
+
+
+**Sample output from a mapped curve:**
+```python
+{
+  "longitude": 38.96,
+  "latitude": 89.23,
+  "elevation_m": 400,
+  "node_size": 2.87
+}
+```
+**3D plot and CSV show the arrangement of hundreds of such mappings, visualizing arithmetic structure as a cosmic web.**
+
+
+---
+
+
+## How to Contribute
+
+
+- Open issues for bugs, questions, or feature requests.
+- Submit pull requests for improvements, new modules, or new mathematical analogies.
+- For larger contributions, please open an issue to discuss your idea first.
+- Propose a new mathematical analogy, mapping strategy, or cosmological comparison?  
+Open an issue or pull request—collaborators from all backgrounds are welcome!
+
+
+---
+
+
+## Citation
+
+
+If you use this repository for research, teaching, or derivative work, please cite as:
+
+
+> Patrick J. McNamara. "Symbolic Projection of Elliptic Curves into Cosmological Structure". GitHub, 2025. [https://github.com/LcosmosS/ACSC-GLMPCT](https://github.com/LcosmosS/ACSC-GLMPCT)
+
+
+---
+
+
+## License
+
+
+[MIT License](LICENSE) (see file for details)
+
+
+---
+
+
+## Acknowledgments
+
+
+- SageMath, PARI/GP, and the open-source mathematics and physics communities.
+- The many mathematicians and physicists who inspired this exploration at the interface of geometry and cosmology.
+
+
+---
+> **Current Version:** v1.0.0 ([Releases](https://github.com/LcosmosS/ACSC-GLMPCT/releases))
+*Last updated: May 2025*

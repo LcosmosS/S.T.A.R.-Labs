@@ -1,0 +1,4 @@
+    X_valid = df[feature_cols].dropna()
+    if not X_valid.empty:
+        pca = PCA(n_components=2)
+        X_pca = pca.fit_transform(X_valid)

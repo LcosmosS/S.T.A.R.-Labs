@@ -1,0 +1,55 @@
+        return False, None, None, None, None, None, None, False
+
+
+
+
+
+    rank_success = False
+
+
+    selmer2_success = False
+
+
+    selmer3_success = False
+
+
+    rank = None
+
+
+    selmer_rank = None
+
+
+    selmer3_rank = None
+
+
+    leading_coeff = None
+
+
+    omega = None
+
+
+    reg = None
+
+
+    tamagawa = None
+
+
+    weak_bsd_holds = False
+
+
+
+
+
+    for attempt in range(max_attempts):
+
+
+        try:
+
+
+            selmer_rank = E.selmer_rank()
+
+
+            selmer2_success = True
+
+
+            two_torsion_rank = 1 if tors_order % 2 == 0 else 0

@@ -1,0 +1,15 @@
+# Visual comparison
+model_names = ["Random Forest", "Gradient Boosting", "PySR"]
+r2_scores = [
+    r2_score(y_test, y_pred_rf),
+    r2_score(y_test, y_pred_gb),
+    r2_score(y_test, y_pysr_pred)
+]
+
+
+plt.bar(model_names, r2_scores, color=['skyblue', 'salmon', 'limegreen'])
+plt.ylabel("R² Score")
+plt.title("Model Performance Comparison")
+plt.ylim(0, 1)
+plt.savefig("model_comparison_r2.png")
+plt.close()

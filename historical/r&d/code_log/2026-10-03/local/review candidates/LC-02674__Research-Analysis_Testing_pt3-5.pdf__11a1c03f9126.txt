@@ -1,0 +1,8 @@
+    for i in range(len(filtered_data)):
+        for j in range(i + 1, len(filtered_data)):
+            reg_diff = abs(filtered_data[i][5] - filtered_data[j][5])
+            if reg_diff < 5000:
+                weight = 1 / (1 + reg_diff / 100)
+                ax.plot(
+                    [log_deltas[i], log_deltas[j]],
+                    [log_conds[i], log_conds[j]],

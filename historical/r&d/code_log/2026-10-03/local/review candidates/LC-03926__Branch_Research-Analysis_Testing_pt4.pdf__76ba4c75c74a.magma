@@ -1,0 +1,8 @@
+E := EllipticCurve(coeffs);
+print "Curve:", coeffs;
+
+// Compute the discriminant
+delta := Discriminant(E);
+print "Discriminant:", delta;
+if delta eq 0 then
+    print "Not an elliptic curve (singular). Skipping.";

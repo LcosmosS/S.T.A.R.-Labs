@@ -1,0 +1,11 @@
+// Slide fully out — use when spatial context is important
+// (e.g., a card returning to a list, a drawer closing)
+<motion.div
+  exit={{
+    opacity: 0,
+    x: "-100%",
+    transition: { duration: 0.2, ease: "easeIn" },
+  }}
+>
+  {content}
+</motion.div>

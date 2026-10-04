@@ -1,0 +1,6 @@
+    high_rank_fibs = [2, 144, 610, 377, 5, 34, 3, 1597]
+    seen_pairs = seen_pairs or {}
+
+    if classifier is None or X_data is None or len(X_data) < 10:
+        if random.random() < 0.95 and high_rank_pairs:  # Stronger bias
+            available_pairs = [(a, b) for (a, b) in high_rank_pairs if seen_pairs.get((a, b), 0) < 1]  # Max 1

@@ -1,0 +1,4 @@
+        S2 := TwoSelmerGroup(E);  // 2-Selmer group
+        selmer_rank := Ilog(2, #S2);  // Log base 2 of the order gives the rank
+        print "2-Selmer rank:", selmer_rank;
+        // Selmer rank = rank + rank of E(Q)[2] + rank of Sha(E)[2]

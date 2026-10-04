@@ -1,0 +1,63 @@
+# If additional features are present, impute them too
+additional_features = ['metallicity', 'environment'] for feat in additional_features: if feat in df.columns: df[feat].fillna(df[feat].mean(), inplace=True)
+# Set up k-fold CV
+k = 5 kf = KFold(n_splits=k, shuffle=True, random_state=42)
+mse_list = [] for fold, (train_idx, test_idx) in enumerate(kf.split(df)): print(f"Fold {fold+1}") train_df = df.iloc[train_idx] test_df = df.iloc[test_idx]
+# Calculate thresholds from training data
+high_mass_threshold = train_df['logmass'].quantile(0.75)
+low_mass_threshold = train_df['logmass'].quantile(0.25)
+
+
+# Create features
+train_features = create_features(train_df, high_mass_threshold, low_mass_threshold, additional_features)
+test_features = create_features(test_df, high_mass_threshold, low_mass_threshold, additional_features)
+
+
+# Fit model
+model = LinearRegression()
+model.fit(train_features, train_df['sfr'])
+
+
+# Predict on test set
+test_pred = model.predict(test_features)
+
+
+# Calculate MSE
+mse = mean_squared_error(test_df['sfr'], test_pred)
+mse_list.append(mse)
+print(f"MSE for fold {fold+1}: {mse:.4f}")
+
+
+# Plot observed vs. predicted
+plt.scatter(test_df['sfr'], test_pred)
+plt.xlabel('Observed SFR')
+plt.ylabel('Predicted SFR')
+plt.title(f'Fold {fold+1}: Observed vs. Predicted SFR')
+plt.savefig(f'plots/fold_{fold+1}_observed_vs_predicted.png')
+plt.close()
+
+
+# Plot residuals vs. logmass
+residuals = test_df['sfr'] - test_pred
+plt.scatter(test_df['logmass'], residuals)
+plt.xlabel('Logmass')
+plt.ylabel('Residuals')
+plt.title(f'Fold {fold+1}: Residuals vs. Logmass')
+plt.savefig(f'plots/fold_{fold+1}_residuals_vs_logmass.png')
+plt.close()
+
+
+# Plot residuals vs. z
+plt.scatter(test_df['z'], residuals)
+plt.xlabel('Redshift (z)')
+plt.ylabel('Residuals')
+plt.title(f'Fold {fold+1}: Residuals vs. z')
+plt.savefig(f'plots/fold_{fold+1}_residuals_vs_z.png')
+plt.close()
+# Report average MSE
+average_mse = np.mean(mse_list) print(f"Average MSE across {k} folds: {average_mse:.4f}")
+# Optionally, generate overall histograms
+plt.hist(df['logmass'], bins=30, color='blue', alpha=0.7) plt.xlabel('Logmass') plt.ylabel('Frequency') plt.title('Overall Logmass Distribution') plt.savefig('plots/logmass_distribution.png') plt.close()
+plt.hist(df['sfr'], bins=30, color='green', alpha=0.7) plt.xlabel('SFR') plt.ylabel('Frequency') plt.title('Overall SFR Distribution') plt.savefig('plots/sfr_distribution.png') plt.close()
+print("Script completed.")
+if name == "main": import os if not os.path.exists('plots'): os.makedirs('plots') main() This seems like a good starting point. I can refine it further, but this should accomplish the main goals: implement cross-validation, allow for adjustments via features, and generate relevant plots. I should also consider logging the results or saving them to a file, but for now, printing to console should suffice. Additionally, if the user wants to experiment with different models or feature sets, they can modify the create_features function or the model used. For example, they could use Ridge regression instead of LinearRegression to add regularization, which might help with overfitting. But since the query didn't specify, I'll stick with LinearRegression for now. Also, I assumed that 'sfr' is the target variable; if it's log(sfr) or something else, the user can adjust accordingly. Similarly, if the prediction function needs to be different, they can modify it. But this script provides a framework to test and refine the model as per the query. I think this should work. To make it more complete, I can add comments and docstrings, but since the user asked for a concise script, I'll keep it as is. Wait, actually, adding comments would make it clearer, so I'll include them. Let me also think about whether to include the additional features. In the create_features function, I have: if 'metallicity' in df.columns: features['metallicity'] = df['metallicity'] if 'environment' in df.columns: features['environment'] = df['environment'] But actually, since df is passed to create_features, and features is a new DataFrame, I need to use df[feat] for additional features. Wait, in the code above, it's correct: features['metallicity'] = df['metallicity'] But since df is the subset (train or test), it should be train_df or test_df. Wait, in the main function, I pass train_df or test_df to create_features, so df['metallicity'] would be correct if 'metallicity' is in df.columns. Yes. Alternatively, to make it more flexible, I can pass the list of additional features to create_features. But for simplicity, I'll assume that if 'metallicity' and 'environment' are in the dataset, they are included. If the user wants to include other features, they can modify the script. I think this is sufficient. So, to summarize, the script will: Load the dataset.

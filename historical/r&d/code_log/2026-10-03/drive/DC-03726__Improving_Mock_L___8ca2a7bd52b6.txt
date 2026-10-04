@@ -1,0 +1,30 @@
+T_cmb = 2.7255e6;
+read("cl_tt.txt"); read("cl_te.txt"); read("cl_ee.txt");
+unscaled = sum(n=2, 2508, (C_l[n] / T_cmb^2) / n) + 
+           sum(n=2, 1996, (C_l_TE[n] / T_cmb^2) / n) + 
+           sum(n=2, 1996, (C_l_EE[n] / T_cmb^2) / n);
+K = 1.0 / unscaled;
+L_cosmo(s) = K * (sum(n=2, 2508, (C_l[n] / T_cmb^2) / n^s) + 
+                  sum(n=2, 1996, (C_l_TE[n] / T_cmb^2) / n^s) + 
+                  sum(n=2, 1996, (C_l_EE[n] / T_cmb^2) / n^s));
+print("L_cosmo defined with Planck TT, TE, EE data");
+
+
+/* Constants */
+t_H = 1.44e10;
+Omega_cosmo = 1.38e10;
+Omega_tilde = Omega_cosmo / t_H;
+Reg_cosmo = 1000;
+prod_c_p_cosmo = 1000;
+Sha_cosmo = 0.857;
+T_cosmo = 100;
+
+
+/* Compute */
+left_side = L_cosmo(1);
+right_side = (Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2);
+print("Left side: ", left_side);
+print("Right side: ", right_side);
+if (abs(left_side - right_side) < 0.1 * right_side,
+    print("Holds within 10%"),
+    print("Fails"));

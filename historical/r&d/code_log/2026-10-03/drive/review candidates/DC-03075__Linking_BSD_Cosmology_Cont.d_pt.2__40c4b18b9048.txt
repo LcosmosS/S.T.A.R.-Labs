@@ -1,0 +1,6 @@
+# Assuming 'y_test' is the actual target values and 'y_pred' is the predicted values # Calculate residuals
+residuals = y_test - y_pred
+# Plot residuals vs. predicted values
+plt.figure(figsize=(8, 6)) plt.scatter(y_pred, residuals, alpha=0.5) plt.axhline(y=0, color='r', linestyle='--') plt.xlabel('Predicted SFR') plt.ylabel('Residuals (Actual - Predicted)') plt.title('Residuals vs. Predicted Values') plt.savefig('residuals_vs_predicted.png') plt.show()
+# Optional: Plot a histogram of residuals
+plt.figure(figsize=(8, 6)) plt.hist(residuals, bins=30, edgecolor='black') plt.xlabel('Residuals') plt.ylabel('Frequency') plt.title('Histogram of Residuals') plt.savefig('residuals_histogram.png') plt.show()

@@ -1,0 +1,2 @@
+skewness = sum(i=1, #log_mass_sim, (log_mass_sim[i] - mean(log_mass_sim))^3) / (#log_mass_sim * sigma(log_mass_sim)^3);
+kurtosis = sum(i=1, #log_mass_sim, (log_mass_sim[i] - mean(log_mass_sim))^4) / (#log_mass_sim * sigma(log_mass_sim)^4) - 3;

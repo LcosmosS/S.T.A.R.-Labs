@@ -1,0 +1,6 @@
+    parser.add_argument(
+        "--synthesize-only",
+        action="store_true",
+        help=(
+            "Synthesize a paper from an existing "
+            "evidence index."

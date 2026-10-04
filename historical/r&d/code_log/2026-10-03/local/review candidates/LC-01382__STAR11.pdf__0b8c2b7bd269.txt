@@ -1,0 +1,29 @@
+new_features_dict['cosmo_rank_mass'] = cosmo_rank * logMass
+new_features_dict['L_cosmo_s1_mass'] = L_cosmo_s1 * logMass
+new_features_dict['cosmo_rank_EW'] = cosmo_rank * df['EW_Ha_cen'].values
+new_features_dict['L_cosmo_s1_EW'] = L_cosmo_s1 * df['EW_Ha_cen'].values
+new_features_dict['cosmo_rank_scaled'] = cosmo_rank * 20
+new_features_dict['L_cosmo_s1_scaled'] = L_cosmo_s1 * 20
+new_features_dict['L_cosmo_s1_metallicity'] = L_cosmo_s1 * df['OH_O3N2_raw'].values
+
+# Impute new features one at a time to reduce memory overhead
+=========================================================================================
+================
+new_features = [
+    "mass_metallicity", "dust_metallicity", "disp_mass_ratio", "age_metallicity",
+    "sqrt_Re_kpc", "BSD_likelihood", "cosmo_rank_mass", "L_cosmo_s1_mass",
+    "cosmo_rank_EW", "L_cosmo_s1_EW", "cosmo_rank_scaled", "L_cosmo_s1_scaled",
+    "L_cosmo_s1_metallicity"
+]
+
+for feature in new_features:
+    # Replace inf with NaN and compute median -----------------------------------------------------
+    arr = np.where(np.isfinite(new_features_dict[feature]), new_features_dict[feature], np.nan)
+    median_val = np.nanmedian(arr)
+    # Impute NaN with median ----------------------------------------------------------------------
+    new_features_dict[feature] = np.where(np.isnan(arr), median_val, arr)
+    # Assign to DataFrame -------------------------------------------------------------------------
+    df[feature] = new_features_dict[feature]
+    del new_features_dict[feature]
+
+# Free memory of precomputed arrays ---------------------------------------------------------------

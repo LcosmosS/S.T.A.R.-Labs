@@ -1,0 +1,8 @@
+attempts += 1 \n \nprint(f"\\nAnalyzing original curve") \nsuccess, features, rank,
+leading_coeff, omega, reg, tamagawa, weak_bsd_holds, E = analyze_curve( \n -1706,
+6320, is_original=True, require_3selmer=require_3selmer \n) \nif features: \n
+X_data.append(features) \n y_data.append(success) \n if success and rank is not
+None: \n cosmo_scale = VIRGO_DISTANCE / (omega * SQRT_KAPPA) \n
+comoving_volume = (omega * reg * cosmo_scale**3) / 5e12 # Adjusted for original
+curve \n scaled_reg = reg * SQRT_KAPPA * (20 if rank == 3 else 13 if rank == 2 else
+10 if rank == 1 else 20) \n interweb_data.append((-1706, 6320, rank, leading_coeff,

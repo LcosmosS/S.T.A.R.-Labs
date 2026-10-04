@@ -1,0 +1,29 @@
+    try:
+        E = EllipticCurve(QQ, [a, b])
+       
+        # Use the robust PARI/GP backend for rank computation, as established
+        # in your methodology to overcome computational instability. [1]
+        rank = E.rank(algorithm='pari')
+       
+        # Acknowledge the Magma dependency for 3-Selmer ranks and use the
+        # established proxy. [1, 1]
+        selmer_rank = E.selmer_rank()
+        estimated_3selmer_rank = max(rank, selmer_rank - 1)
+
+
+        regulator = E.regulator() if rank > 0 else 1.0
+        period = E.period_lattice().real_period()
+        conductor = E.conductor()
+        cm = E.has_cm()
+        lmfdb_label = E.lmfdb_label()
+
+
+        return {
+            "success": True, "curve": E, "a": a, "b": b, "rank": rank,
+            "regulator": regulator, "period": period, "conductor": conductor,
+            "has_cm": cm, "lmfdb_label": lmfdb_label,
+            "estimated_3selmer_rank": estimated_3selmer_rank
+        }
+    except (RuntimeError, TypeError, ValueError) as e:
+        # Gracefully handle hard crashes from the underlying C library (PARI/GP),
+        # which signifies entry into the "Zone of Intractability". [1]

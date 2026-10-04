@@ -1,0 +1,7 @@
+for a, b in previous_curves:
+    result = analyze_curve(a, b, conductor_limit=1e14)
+    if len(result) == 10:
+        success, features, rank, normalized_leading_coeff, omega, reg, tamagawa, weak_bsd_holds,
+E, selmer3_rank = result
+        if success:
+            results.append((None, (a, b, rank, normalized_leading_coeff, omega, reg, tamagawa,

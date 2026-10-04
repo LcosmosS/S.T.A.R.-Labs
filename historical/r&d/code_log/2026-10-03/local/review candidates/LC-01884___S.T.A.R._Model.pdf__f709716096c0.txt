@@ -1,0 +1,6 @@
+gz_df = df.copy()
+morph_cols = ['P(CD)', 'P(E)', 'P(S0)', 'P(Sa)', 'P(Sab)', 'P(Sb)', 'P(Sbc)',
+              'P(Sc)', 'P(Scd)', 'P(Sd)', 'P(Sdm)', 'P(Sm)', 'P(Irr)']
+gz_df['morph_sum'] = gz_df[morph_cols].sum(axis=1)
+gz_df['Num_w'] = gz_df['conf_prob']
+scaler_rank = MinMaxScaler()

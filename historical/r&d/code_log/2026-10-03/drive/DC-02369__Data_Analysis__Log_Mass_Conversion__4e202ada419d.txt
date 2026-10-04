@@ -1,0 +1,6 @@
+print("sample mean of log_mass = ", mean);
+print("sample sd of log_mass = ", sd);
+print("computed M0 = ", M0);
+* print("theoretical M0 = ", 10^mu);
+* These will help ensure the mean and standard deviation are close to 10 and 1, respectively, and the median M_0 is close to 10^{10}.
+* Check the outputs: K_{\text{theory}} should be very close to 1, and skewness should be near 0, confirming your method works for ideal data. An unexpected detail is that real galaxy data showed K_{\text{theory}} = 0.0095, far from 1, highlighting why this verification is crucial.

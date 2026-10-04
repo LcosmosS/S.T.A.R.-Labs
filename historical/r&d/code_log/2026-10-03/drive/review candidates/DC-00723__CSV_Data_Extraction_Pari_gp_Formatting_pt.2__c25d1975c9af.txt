@@ -1,0 +1,2 @@
+merged_df = df_mytable.merge(df_gema2, on='mangaid', how='left')
+merged_df = merged_df.merge(df_mangahi, on='mangaid', how='left')

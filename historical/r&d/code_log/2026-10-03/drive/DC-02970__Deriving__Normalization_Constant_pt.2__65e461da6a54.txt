@@ -1,0 +1,2 @@
+with open('masses.txt', 'w') as f:
+    f.write('[' + ', '.join(map(str, masses)) + ']')

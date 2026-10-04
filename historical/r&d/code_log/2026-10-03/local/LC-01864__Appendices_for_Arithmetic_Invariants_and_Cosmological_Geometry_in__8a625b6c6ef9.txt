@@ -1,0 +1,1 @@
+    tr_p2  =  float(factor(int(delta  *  2))[0][0])  if  np.isfinite(delta)  and  delta  >  0  

@@ -1,0 +1,3 @@
+  mean = sum(i=1, n, vec[i]) / n;
+  m4 = sum(i=1, n, (vec[i] - mean)^4) / n;
+  variance = sum(i=1, n, (vec[i] - mean)^2) / n;

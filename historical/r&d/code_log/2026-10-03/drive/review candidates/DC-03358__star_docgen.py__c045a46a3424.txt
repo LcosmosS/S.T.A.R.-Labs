@@ -1,0 +1,12 @@
+    args = parser.parse_args()
+
+
+    # --------------------------------------------------------
+    # Validate modes
+    # --------------------------------------------------------
+
+
+    selected_modes = sum(
+        [
+            args.extract_only,
+            args.synthesize_only,

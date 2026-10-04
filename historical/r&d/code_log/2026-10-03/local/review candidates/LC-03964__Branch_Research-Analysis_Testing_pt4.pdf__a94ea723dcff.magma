@@ -1,0 +1,9 @@
+    P_K := HeegnerPoint(E, D);  // Heegner point in E(K)
+    P := Trace(P_K);  // Trace to E(Q)
+    print "Heegner point (traced to Q):", P;
+    // Check if the point has infinite order
+    if Order(P) eq 0 then
+        print "Heegner point has infinite order, suggesting rank >= 1";
+    else
+        print "Heegner point has order", Order(P), ", suggesting rank 0 or torsion";
+    end if;

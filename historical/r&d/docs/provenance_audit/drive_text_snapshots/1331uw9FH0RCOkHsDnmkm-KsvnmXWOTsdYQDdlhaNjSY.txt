@@ -1,0 +1,559 @@
+﻿**Draft Paper**  
+**Title:** Symbolic-Field Theory as a Consistent Effective Description: Construction, Dynamical Reduction to Einstein Gravity, and Architectural Status
+
+
+**Authors:** [Patrick J. McNamara / S.T.A.R. Program]  
+**Date:** August 2026  
+**Status:** Technical note (working draft)
+
+
+---
+
+
+### Abstract
+
+
+We present a reformulation of Symbolic-Field Theory (SFT) in which the geometric sector is governed by the ordinary Einstein–Hilbert term, the entropy-density scalar \(\phi\) is equipped with a quadratic potential possessing a stable minimum, the arithmetic source is multiplied by a vanishing factor \(\lambda(\phi)\), and the entropy 2-form \(\omega\) is given a positive mass term. Within this framework the constant-\(\phi\), vanishing-\(\omega\), decoupled-arithmetic configuration is a dynamical attractor. We derive the complete flat FLRW background equations, linearize the metric-plus-scalar system about the Einstein–Hilbert + constant-\(\phi\) solution, extract the quadratic action for perturbations, and demonstrate the absence of ghosts and gradient instabilities. The Einstein equations and the standard Friedmann equations are thereby recovered as an attractor of the dynamics.  
+
+
+An architectural note clarifies the status of the construction: the reduction to general relativity is now technically satisfactory, yet the new potentials and couplings remain phenomenological, the continuum limit of the discrete arithmetic source is still schematic, and the first-principles selection of elliptic curves over \(\mathbb{Q}\) is unresolved. The note separates the consistent effective-field-theory layer from the open foundational questions that define the longer-term research program.
+
+
+---
+
+
+### 1. Introduction and Architectural Overview
+
+
+Symbolic-Field Theory (SFT) was originally proposed as a cohomological and arithmetic counterpart to Einstein gravity, in which an entropy-density field and a stress-energy contribution built from the arithmetic invariants of elliptic curves over \(\mathbb{Q}\) source an effective curvature. Earlier formulations mixed a symbolic (entropy-Hessian) definition of curvature with phenomenological potentials and left the recovery of the Einstein–Hilbert limit as an external assumption.
+
+
+The present note implements three controlled adaptations:
+
+
+1. the geometric term in the action is the ordinary Einstein–Hilbert term;
+2. the entropy-density scalar \(\phi\) is given the quadratic potential \(V(\phi)=\frac12 m^2(\phi-\phi_0)^2\);
+3. the arithmetic stress-energy is multiplied by the vanishing factor \(\lambda(\phi)=c(\phi-\phi_0)^2\), and the entropy 2-form \(\omega\) is assigned a positive mass term.
+
+
+These choices render the general-relativistic limit a dynamical attractor and guarantee linear stability about that limit. At the same time they remain effective, not derived from the arithmetic geometry of elliptic curves or from the original entropy-cohomology variational principle.  
+
+
+The paper is therefore organized in two layers:
+
+
+- **Effective-field-theory layer** (Sections 2–5). Construction of the adapted action, derivation of the background and linearized equations, quadratic action for perturbations, and demonstration of a healthy Einstein–Hilbert / FLRW attractor.
+- **Architectural layer** (Section 6). Explicit separation of what has been achieved from the open foundational problems (origin of the new potentials and couplings, continuum limit of the discrete arithmetic source, and the selection principle that privileges elliptic curves over \(\mathbb{Q}\)).
+
+
+This separation is intended to give the program a clearer internal structure: a consistent effective description that can be studied and constrained on its own, while the deeper selection and derivation questions are isolated as the targets of subsequent work.
+
+
+---
+
+
+### 2. Adapted Action and Field Equations
+
+
+We begin from the requirement that the geometric sector of the theory must recover the ordinary Einstein tensor in a controlled limit. Accordingly, the curvature term in the action is taken to be the Einstein–Hilbert term constructed from the Ricci scalar \(R\) of the spacetime metric \(g_{\mu\nu}\). All entropy and arithmetic contributions appear either as additional scalar-field terms or as effective stress-energy sources.
+
+
+The adapted action reads
+
+
+\[
+\begin{align}
+S = \int\mathrm{d}^4x\,\sqrt{-g}\Biggl[
+&\frac{1}{2\kappa}R 
+-\frac12 g^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi 
+-V(\phi)
++\frac{\mu^2}{4}|\omega|^2
++\lambda(\phi)\,\mathcal{L}_{\rm arith}
++\mathcal{L}_{\rm ordinary}
+\Biggr],
+\end{align}
+\]
+
+
+where \(\kappa=8\pi G\) and the individual ingredients are defined as follows.
+
+
+- \(\phi\) is the entropy-density scalar (formerly denoted \(\mathcal{M}\)).
+- The potential is the quadratic form
+  \[
+  V(\phi)=\frac12 m^2\bigl(\phi-\phi_0\bigr)^2,\qquad m^2>0,\quad\phi_0>0.
+  \]
+  It possesses a unique global minimum at \(\phi=\phi_0\) with positive second derivative \(V''(\phi_0)=m^2\).
+- The vanishing factor that multiplies the arithmetic sector is
+  \[
+  \lambda(\phi)=c\bigl(\phi-\phi_0\bigr)^2,\qquad c>0.
+  \]
+  Consequently \(\lambda(\phi_0)=\lambda'(\phi_0)=0\).
+- \(\omega\) is the entropy 2-form. A positive mass term \(\frac{\mu^2}{4}|\omega|^2\) (\(\mu^2>0\)) is included so that \(\omega=0\) is a stable critical point. (At the effective level the closure constraint \(d\omega=0\) may be imposed by a Lagrange multiplier or enforced after variation; the mass term is compatible with either treatment.)
+- \(\mathcal{L}_{\rm arith}\) is the Lagrangian density whose metric variation yields the arithmetic stress-energy tensor \(T_{\mu\nu}^{\rm arith}\) constructed from the ACSC projection of elliptic-curve invariants. Its detailed continuum realization remains schematic and is discussed in Section 6.
+- \(\mathcal{L}_{\rm ordinary}\) collects the standard model and ordinary cosmological matter (dust, radiation, etc.).
+
+
+Variation of \(S\) with respect to the metric produces the field equations
+
+
+\[
+G_{\mu\nu}+\Lambda g_{\mu\nu}
+=
+8\pi G\Bigl(
+T_{\mu\nu}^{(\phi)}
++\lambda(\phi)\,T_{\mu\nu}^{\rm arith}
++T_{\mu\nu}^{(\omega)}
++T_{\mu\nu}^{\rm ordinary}
+\Bigr).
+\]
+
+
+Here \(G_{\mu\nu}=R_{\mu\nu}-\frac12 R g_{\mu\nu}\) is the ordinary Einstein tensor, \(T_{\mu\nu}^{(\phi)}\) is the canonical stress-energy tensor of the minimally coupled scalar \(\phi\),
+
+
+\[
+T_{\mu\nu}^{(\phi)}
+=
+\partial_\mu\phi\,\partial_\nu\phi
+-g_{\mu\nu}\Bigl(\tfrac12(\partial\phi)^2+V(\phi)\Bigr),
+\]
+
+
+and \(T_{\mu\nu}^{(\omega)}\) is the stress-energy contributed by the massive 2-form. Because the geometric left-hand side is built solely from the ordinary Ricci tensor, any reduction in which the extra sources on the right-hand side vanish (or become pure cosmological-constant terms) yields Einstein’s equations exactly.
+
+
+Variation with respect to \(\phi\) yields the Klein–Gordon equation
+
+
+\[
+\square\phi-V'(\phi)-\lambda'(\phi)\,\mathcal{L}_{\rm arith}+\dots=0,
+\]
+
+
+where the ellipsis denotes possible additional contributions arising from the dependence of the arithmetic Lagrangian on \(\phi\) through the projection map. At the minimum \(\phi=\phi_0\) one has both \(V'(\phi_0)=0\) and \(\lambda'(\phi_0)=0\), so the constant configuration \(\phi\equiv\phi_0\) remains an exact solution of the scalar equation whenever \(\omega=0\) and the arithmetic source is absent (or has already been switched off by \(\lambda\)).
+
+
+The mass term for \(\omega\) implies that the configuration \(\omega=0\) is linearly stable. Thus the combined background
+
+
+\[
+\phi=\phi_0,\qquad\omega=0,\qquad\lambda(\phi_0)=0
+\]
+
+
+is a critical point of the full system. In the subsequent sections we demonstrate that this critical point is an attractor on cosmological backgrounds and that the spectrum of linear perturbations about it is free of ghosts and gradient instabilities.
+
+
+---
+
+
+### 3. Background Equations on Flat FLRW
+
+
+We now specialize the field equations of Section 2 to a flat Friedmann–Lemaître–Robertson–Walker (FLRW) background and derive the complete set of ordinary differential equations that govern the scale factor and the entropy-density scalar.
+
+
+The line element is taken to be
+
+
+\[
+\mathrm{d}s^2=-\mathrm{d}t^2+a(t)^2\delta_{ij}\,\mathrm{d}x^i\mathrm{d}x^j,
+\]
+
+
+with Hubble parameter \(H=\dot a/a\). Homogeneity and isotropy require that the entropy-density scalar depend only on cosmic time,
+
+
+\[
+\phi=\phi(t).
+\]
+
+
+In addition we set the entropy 2-form to its vacuum value \(\omega=0\) (justified by the positive mass term, which drives \(\omega\) to zero). Ordinary matter is modelled as a collection of perfect fluids with energy densities \(\rho_m\), \(\rho_r\) and corresponding pressures \(p_m\), \(p_r\). The arithmetic sector, after multiplication by the vanishing factor \(\lambda(\phi)\), contributes an effective energy density \(\lambda(\phi)\rho_{\rm arith}(t)\) and pressure \(\lambda(\phi)p_{\rm arith}(t)\).
+
+
+Under these assumptions the Einstein equations reduce to the two independent Friedmann equations
+
+
+\begin{align}
+3H^2
+&=
+\kappa\Biggl(
+\frac12\dot\phi^2+V(\phi)
++\lambda(\phi)\,\rho_{\rm arith}
++\rho_m+\rho_r
+\Biggr),
+\label{eq:Friedmann1}
+\\[1mm]
+\dot H
+&=
+-\frac\kappa2\Bigl(
+\dot\phi^2
++\lambda(\phi)\,(\rho_{\rm arith}+p_{\rm arith})
++\rho_m+p_m
++\rho_r+p_r
+\Bigr),
+\label{eq:Friedmann2}
+\end{align}
+
+
+where \(\kappa=8\pi G\). The Klein–Gordon equation for the entropy-density scalar becomes
+
+
+\begin{equation}
+\ddot\phi+3H\dot\phi+V'(\phi)+\lambda'(\phi)\,\rho_{\rm arith}=0.
+\label{eq:KG}
+\end{equation}
+
+
+With the concrete choices
+
+
+\[
+V(\phi)=\frac12 m^2(\phi-\phi_0)^2,
+\qquad
+\lambda(\phi)=c(\phi-\phi_0)^2,
+\]
+
+
+the derivatives evaluate to
+
+
+\[
+V'(\phi)=m^2(\phi-\phi_0),
+\qquad
+\lambda'(\phi)=2c(\phi-\phi_0),
+\]
+
+
+and the system takes the explicit form
+
+
+\begin{align}
+3H^2
+&=
+\kappa\Biggl(
+\frac12\dot\phi^2+\frac12 m^2(\phi-\phi_0)^2
++c(\phi-\phi_0)^2\,\rho_{\rm arith}
++\rho_m+\rho_r
+\Biggr),
+\\[1mm]
+\dot H
+&=
+-\frac\kappa2\Bigl(
+\dot\phi^2
++c(\phi-\phi_0)^2\,(\rho_{\rm arith}+p_{\rm arith})
++\rho_m+p_m
++\rho_r+p_r
+\Bigr),
+\\[1mm]
+\ddot\phi+3H\dot\phi+m^2(\phi-\phi_0)+2c(\phi-\phi_0)\,\rho_{\rm arith}&=0.
+\end{align}
+
+
+**Constant solution.**  
+The configuration
+
+
+\[
+\phi(t)\equiv\phi_0
+\qquad\Rightarrow\qquad
+\dot\phi=0,\quad
+\lambda(\phi_0)=0,\quad
+\lambda'(\phi_0)=0
+\]
+
+
+satisfies the Klein–Gordon equation for any expansion history \(a(t)\). Substitution into the Friedmann equations immediately yields
+
+
+\begin{align}
+3H^2&=\kappa(\rho_m+\rho_r+\rho_\Lambda),
+\\
+\dot H&=-\frac\kappa2(\rho_m+p_m+\rho_r+p_r),
+\end{align}
+
+
+where any residual constant vacuum energy has been absorbed into a cosmological term \(\rho_\Lambda\). These are precisely the standard flat FLRW equations of general relativity coupled to ordinary matter and radiation.
+
+
+Thus the constant-\(\phi\) background is an exact solution of the full system. In the next section we demonstrate that it is linearly stable and that the spectrum of perturbations about it contains neither ghosts nor gradient instabilities. Because the quadratic potential drives \(\phi\) toward \(\phi_0\) while Hubble friction damps \(\dot\phi\), the constant solution is in addition an attractor for a wide range of initial conditions on expanding backgrounds. The recovery of the standard Friedmann equations is therefore dynamical rather than imposed by hand.
+
+
+---
+
+
+### 4. Linear Perturbations and Quadratic Action
+
+
+We now linearize the theory about the constant-\(\phi\) background identified in Section 3 and extract the quadratic action for the coupled metric and scalar perturbations. The goal is to establish that the spectrum is free of ghosts and gradient instabilities.
+
+
+#### 4.1. Background configuration
+
+
+The background solution under consideration is
+
+
+\[
+\bar\phi=\phi_0=\text{constant},
+\qquad
+\bar\omega=0,
+\qquad
+\lambda(\bar\phi)=0,
+\]
+
+
+with the background metric \(\bar g_{\mu\nu}\) being any solution of the ordinary Einstein equations sourced by ordinary matter (in particular, flat FLRW or Minkowski). Because \(\lambda(\phi_0)=\lambda'(\phi_0)=0\) and \(V'(\phi_0)=0\), the arithmetic source and the first derivative of the potential drop out of the linearized equations.
+
+
+#### 4.2. Linearized equations
+
+
+We expand
+
+
+\[
+\phi=\phi_0+\delta\phi,
+\qquad
+g_{\mu\nu}=\bar g_{\mu\nu}+h_{\mu\nu},
+\qquad
+\omega=\delta\omega.
+\]
+
+
+On a flat FLRW background the linearized Klein–Gordon equation for the entropy-density perturbation reduces to
+
+
+\begin{equation}
+\ddot{\delta\phi}+3H\dot{\delta\phi}-\frac1{a^2}\nabla^2\delta\phi+m^2\delta\phi=0.
+\label{eq:linKG}
+\end{equation}
+
+
+The linearized Einstein equations are those of general relativity sourced by the first-order stress-energy perturbations of \(\delta\phi\) and of the massive 2-form \(\delta\omega\). Explicitly, the scalar stress-energy perturbation about the constant background begins at quadratic order in \(\delta\phi\) for the potential piece and at first order for the kinetic piece; after gauge fixing it contributes to the standard Bardeen-potential equations in the usual way. The massive 2-form contributes only heavy or decaying modes and does not alter the stability conclusions drawn below.
+
+
+#### 4.3. Quadratic action
+
+
+The second-order action about the chosen background separates into three decoupled sectors (after diagonalization into gauge-invariant variables):
+
+
+1. the standard quadratic Einstein–Hilbert action for the tensor and scalar metric perturbations,
+2. the quadratic action of a minimally coupled massive scalar,
+3. the quadratic action of a massive 2-form.
+
+
+In the scalar sector, after passing to the gauge-invariant curvature perturbation \(\zeta\) and the isocurvature (entropy) mode associated with \(\delta\phi\), the relevant part of the quadratic action takes the form
+
+
+\begin{equation}
+S^{(2)}_{\rm scalar}
+=
+\int\mathrm{d}t\,\mathrm{d}^3x\,a^3\sum_{i=1}^{2}
+\Biggl[
+\frac12\dot Q_i^2
+-\frac{c_i^2}{2a^2}(\nabla Q_i)^2
+-\frac12 M_i^2 Q_i^2
+\Biggr],
+\label{eq:quadact}
+\end{equation}
+
+
+where the sum runs over the two decoupled gauge-invariant scalar degrees of freedom. The kinetic coefficients are positive, the propagation speeds satisfy \(c_i^2=1\) (luminal), and the effective masses are non-negative:
+
+
+\[
+M_1^2=0
+\quad\text{(adiabatic mode in the pure GR limit)},
+\qquad
+M_2^2=m^2>0
+\quad\text{(entropy mode)}.
+\]
+
+
+(The precise numerical value of the entropy-mode mass receives Hubble-scale corrections on FLRW, but the leading term remains \(+m^2\).) An analogous positive-definite quadratic action governs the tensor modes, with the standard GR kinetic term and vanishing mass.
+
+
+#### 4.4. Absence of ghosts and gradient instabilities
+
+
+Inspection of the quadratic action \eqref{eq:quadact} immediately yields the following conclusions:
+
+
+- **No ghosts.** Every kinetic term appears with a positive coefficient. After canonical normalization the residue of each propagator is positive.
+- **No gradient instabilities.** All spatial-gradient terms have the healthy sign, corresponding to a positive sound speed squared \(c_s^2=+1\).
+- **Mass stability.** The entropy mode is massive with \(M^2=m^2>0\). On an expanding FLRW background the mode equation is that of a massive scalar field; for \(m\gtrsim H\) the amplitude decays.
+
+
+The same statements hold when the background is taken to be Minkowski space (the Hubble-friction terms simply disappear). Consequently the constant-\(\phi\), vanishing-\(\omega\), decoupled-arithmetic background is linearly stable and free of ghosts and gradient instabilities.
+
+
+Because the quadratic potential drives \(\phi\) toward \(\phi_0\) while Hubble friction damps any residual kinetic energy, the healthy background is reached dynamically from a wide set of initial conditions. The linear analysis of the present section then guarantees that once the system approaches this background it remains stable against small perturbations.
+
+
+---
+
+
+### 5. Dynamical Reduction to Einstein Gravity
+
+
+We now collect the results of Sections 2–4 and demonstrate that the Einstein equations, together with the standard flat Friedmann equations, arise as a dynamical attractor of the adapted theory.
+
+
+#### 5.1. Attractor mechanism
+
+
+The quadratic potential \(V(\phi)=\frac12 m^2(\phi-\phi_0)^2\) possesses a global minimum at \(\phi=\phi_0\). On any expanding FLRW background the Klein–Gordon equation
+
+
+\[
+\ddot\phi+3H\dot\phi+m^2(\phi-\phi_0)+2c(\phi-\phi_0)\,\rho_{\rm arith}=0
+\]
+
+
+contains the Hubble-friction term \(3H\dot\phi\). For \(H>0\) this term damps the kinetic energy of \(\phi\). Once \(\phi\) enters a neighborhood of \(\phi_0\), the restoring force generated by \(V'(\phi)\) further drives the field toward the minimum. Simultaneously the vanishing factor \(\lambda(\phi)=c(\phi-\phi_0)^2\) tends to zero, thereby switching off the arithmetic source. The positive mass term for the entropy 2-form drives \(\omega\to0\).
+
+
+Thus the combined configuration
+
+
+\[
+\phi(t)\to\phi_0,
+\qquad
+\dot\phi\to0,
+\qquad
+\omega\to0,
+\qquad
+\lambda(\phi)\to0
+\]
+
+
+is approached dynamically. No external tuning of initial conditions beyond the requirement that the universe be expanding is required for a broad set of starting values.
+
+
+#### 5.2. Reduction of the field equations
+
+
+Once the attractor configuration is reached, every extra contribution on the right-hand side of the metric field equation vanishes or reduces to a pure cosmological-constant term:
+
+
+- \(T_{\mu\nu}^{(\phi)}\) reduces to \(-V(\phi_0)g_{\mu\nu}\) (which may be absorbed into \(\Lambda\));
+- \(\lambda(\phi)T_{\mu\nu}^{\rm arith}\to0\);
+- \(T_{\mu\nu}^{(\omega)}\to0\).
+
+
+The metric field equation therefore collapses exactly to
+
+
+\[
+G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi G\,T_{\mu\nu}^{\rm ordinary}.
+\]
+
+
+This is Einstein’s equation sourced only by ordinary matter and radiation.
+
+
+#### 5.3. Reduction of the background equations
+
+
+Substitution of the attractor values into the FLRW system of Section 3 yields
+
+
+\begin{align}
+3H^2&=\kappa(\rho_m+\rho_r+\rho_\Lambda),
+\\
+\dot H&=-\frac\kappa2(\rho_m+p_m+\rho_r+p_r).
+\end{align}
+
+
+These are the standard flat Friedmann equations of general relativity. The scale-dependent corrections that may exist away from the attractor are automatically suppressed once \(\phi\) has settled at \(\phi_0\).
+
+
+#### 5.4. Stability of the reduced theory
+
+
+Section 4 established that the linear spectrum about the attractor contains neither ghosts nor gradient instabilities. Consequently, once the system reaches the Einstein–Hilbert regime it remains there under small perturbations. The reduction is therefore both dynamical and linearly stable.
+
+
+#### 5.5. Summary of the reduction
+
+
+The adapted action of Section 2 possesses the following properties:
+
+
+1. The constant-\(\phi\), vanishing-\(\omega\), decoupled-arithmetic configuration is an exact solution of the full field equations.
+2. This configuration is an attractor on expanding cosmological backgrounds.
+3. About this configuration the quadratic action for perturbations is free of ghosts and gradient instabilities.
+4. On the attractor the field equations and the FLRW background equations reduce exactly to those of Einstein gravity coupled to ordinary matter.
+
+
+In this precise sense the Einstein–Hilbert limit and the standard Friedmann equations are recovered dynamically within the adapted Symbolic-Field Theory.
+
+
+---
+
+
+### 6. Architectural Status and Open Questions
+
+
+The preceding sections establish a technically consistent effective description in which Symbolic-Field Theory possesses a healthy, dynamically accessible Einstein–Hilbert limit. It is essential, however, to distinguish clearly between what has been achieved and what remains open. This separation constitutes the architectural core of the present note.
+
+
+#### 6.1. What has been achieved
+
+
+Within the adapted framework the following statements hold:
+
+
+- The geometric sector is governed by the ordinary Einstein–Hilbert term, so the left-hand side of the metric field equation is exactly the Einstein tensor.
+- The entropy-density scalar \(\phi\) is equipped with a quadratic potential that admits a stable minimum; the arithmetic source is multiplied by a vanishing factor that switches off at the same minimum; the entropy 2-form is given a positive mass term.
+- The constant-\(\phi\), vanishing-\(\omega\), decoupled-arithmetic configuration is an exact solution of the full system and an attractor on expanding FLRW backgrounds.
+- The quadratic action for linear perturbations about this configuration is free of ghosts and gradient instabilities.
+- Consequently the Einstein equations and the standard flat Friedmann equations are recovered dynamically rather than imposed by hand.
+
+
+These results place the effective-field-theory layer of SFT on a firm technical footing with respect to the most stringent items on the consistency checklist (recovery of the Einstein–Hilbert and FLRW limits, absence of ghosts and gradient instabilities, well-posed linear dynamics about the GR background).
+
+
+#### 6.2. Phenomenological status of the new ingredients
+
+
+The quadratic potential \(V(\phi)\), the vanishing factor \(\lambda(\phi)\), and the mass term for \(\omega\) were introduced because they produce the desired reduction and stability properties. They are not derived from the arithmetic geometry of elliptic curves over \(\mathbb{Q}\) nor from the original variational principles of entropy cohomology. In this respect the construction remains partly phenomenological—improved and now consistent phenomenology, but still phenomenology.
+
+
+The new parameters (\(m\), \(\phi_0\), \(c\), \(\mu\), \ldots) likewise lack a first-principles link to arithmetic or cohomological data. Until such a link is established, or until the parameters are shown to be technically natural, their presence constitutes a residual tuning concern.
+
+
+#### 6.3. Schematic character of the arithmetic source
+
+
+The continuum stress-energy tensor \(T_{\mu\nu}^{\rm arith}\) is still defined only schematically as the metric variation of a Lagrangian \(\mathcal{L}_{\rm arith}\) built from the ACSC projection. A fully rigorous treatment requires an explicit continuum limit that converts a discrete set of elliptic-curve invariants into a well-defined, diffeomorphism-covariant effective fluid (or a more general tensor) on spacetime. Until that limit is constructed, the action of the vanishing factor \(\lambda(\phi)\) on the arithmetic sector remains formal.
+
+
+#### 6.4. The unresolved selection problem
+
+
+Nothing in the present construction explains why the arithmetic invariants of elliptic curves over \(\mathbb{Q}\) should source the extra stress-energy in the first place. The same reduction to Einstein gravity would work if the extra source were built from any other collection of scalar quantities. The distinctive claim of the S.T.A.R. program—the privileged role of elliptic curves over \(\mathbb{Q}\)—is therefore not yet protected by a first-principles argument. The Coquereaux correspondence supplies a rigorous link between FLRW solutions and elliptic curves, but it does not by itself select the arithmetic of rational elliptic curves or elevate their ranks, conductors and regulators to the status of gravitational sources.
+
+
+#### 6.5. Open research directions
+
+
+The architectural separation adopted in this note isolates three concrete, high-priority questions for future work:
+
+
+1. Can the potential for \(\phi\), the coupling \(\lambda(\phi)\), and the mass term for \(\omega\) be motivated from arithmetic or cohomological principles (for example, via a relative-entropy or optimal-transport functional between arithmetic and cosmic persistence diagrams) rather than inserted by hand?
+2. Can the discrete-to-continuum map that produces \(T_{\mu\nu}^{\rm arith}\) be given a mathematically precise formulation that is stable under refinement of the set of curves and compatible with diffeomorphism covariance?
+3. Does a first-principles selection mechanism exist that privileges elliptic curves over \(\mathbb{Q}\) as the source of the extra stress-energy, or must the arithmetic content of SFT be reclassified as a phenomenological ansatz inspired by the Coquereaux correspondence?
+
+
+A parallel phenomenological task is to re-derive the effective expansion history \(H_{\rm eff}(z)\) and the topological observables in the presence of the new couplings, in order to determine whether the original targets of the program survive, are modified, or are lost.
+
+
+#### 6.6. Closing remark
+
+
+The adapted theory presented here provides a consistent effective description that recovers Einstein gravity dynamically and without pathologies at the linear level. That achievement clears the most immediate consistency obstacles and allows the program to focus on the deeper foundational questions that ultimately decide whether Symbolic-Field Theory is a genuine extension of general relativity or an interesting but ultimately phenomenological construction. The architectural distinction drawn in this section is intended to keep those two layers clearly visible as the work proceeds.

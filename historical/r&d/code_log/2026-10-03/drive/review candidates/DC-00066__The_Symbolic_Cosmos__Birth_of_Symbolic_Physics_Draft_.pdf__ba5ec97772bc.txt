@@ -1,0 +1,2 @@
+with open("interweb_nodes.txt","a") as f:
+f.write(f"{-1706},{6320},{rank},{leading_coeff},{omega},{reg},{tamagawa},{weak_bsd_hol

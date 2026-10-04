@@ -1,0 +1,5 @@
+range(Integer(5))],
+ 
+duplicates='drop')
+     144      binned_data  =  df.groupby(['redshift_bin',  'density_bin'],  
+observed=False)['K_clipped'].mean().unstack()

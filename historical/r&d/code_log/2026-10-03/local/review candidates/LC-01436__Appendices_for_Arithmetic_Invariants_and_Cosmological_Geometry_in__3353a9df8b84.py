@@ -1,0 +1,5 @@
+else:
+    print(f"Failed to compute rank of twisted curve.")
+
+print(f"\nFinal training data: {training_data}")
+print(f"Final labels: {training_labels}")

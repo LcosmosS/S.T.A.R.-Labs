@@ -1,0 +1,18 @@
+.stagger-item {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(4px);
+  animation: fadeInUp 400ms ease-out forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0ms; }
+.stagger-item:nth-child(2) { animation-delay: 100ms; }
+.stagger-item:nth-child(3) { animation-delay: 200ms; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}

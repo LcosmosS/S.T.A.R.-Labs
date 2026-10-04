@@ -1,0 +1,18 @@
+# Ensure numeric coercion on added Galaxy Zoo columns
+gz_df.columns = gz_df.columns.str.strip()  # Clean whitespace in headers
+gz_df = gz_df.replace([-np.inf, np.inf], np.nan)
+
+
+# Coerce known probability and fraction fields to numeric
+probability_cols = ['pE', 'pEdg', 'pDK', 'pMg', 'pS', 'pE0', 'pS0', 'fS', 'fE', 'fU', 'pEm', 'pSm', 'fM']
+for col in probability_cols:
+    if col in gz_df.columns:
+        gz_df[col] = pd.to_numeric(gz_df[col], errors='coerce')
+
+
+# Drop rows missing critical modeling info
+gz_df.dropna(subset=critical_cols + probability_cols, inplace=True)
+
+
+# Fill remaining numeric NaNs with mean
+gz_df[numeric_cols] = imputer_all.fit_transform(gz_df[numeric_cols])

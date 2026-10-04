@@ -1,0 +1,20 @@
+H0 = 2.3e-18; /* Hubble constant in s^-1 */
+Omega_cosmo = 1 / H0;
+Reg_cosmo = 8.8e26; /* Size of observable universe in meters */
+prod_c_p_cosmo = 1;
+Sha_cosmo = 1;
+T_cosmo = 1;
+
+
+/* Compute left side: L_cosmo(1) is undefined, so let's use L_cosmo(1 + epsilon) */
+epsilon = 1e-5;
+left_side = L_cosmo(1 + epsilon);
+
+
+/* Compute right side */
+right_side = (Omega_cosmo * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2);
+
+
+/* Print results */
+print("Left side (mock L_cosmo(1 + epsilon)): ", left_side);
+print("Right side: ", right_side);

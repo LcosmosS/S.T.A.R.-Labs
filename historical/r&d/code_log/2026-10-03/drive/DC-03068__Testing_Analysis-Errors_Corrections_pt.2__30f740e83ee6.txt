@@ -1,0 +1,4 @@
+if(alg_rank == analytic_rank,
+    print("Weak BSD holds: Algebraic rank = Analytic rank");
+,
+    print("Weak BSD fails: Algebraic rank != Analytic rank");

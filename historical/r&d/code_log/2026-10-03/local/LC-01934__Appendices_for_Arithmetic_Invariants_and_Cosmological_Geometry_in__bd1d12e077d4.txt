@@ -1,0 +1,6 @@
+for  regime,  dfr  in  [('galactic',  df_gal),  ('cluster',  df_clust)]:  
+    if  len(dfr)  <  2:  continue  
+    Xr  =  dfr[X_clf_cols]  
+    yr  =  dfr['z']  
+    pysr_model,  xgb_model,  meta_model,  X_test,  y_pred_pysr,  y_pred_xgb,  y_pred_stack  =  
+run_models(Xr,

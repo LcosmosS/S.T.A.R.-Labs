@@ -1,0 +1,9 @@
+# Check rank preservation
+rank_preserved = (E.rank() == G.topological_rank())
+# Check entropy conservation
+entropy_preserved = np.isclose(
+E.symbolic_entropy() * K,
+G.cosmic_entropy(),
+rtol=1e-5
+)
+return rank_preserved and entropy_preserved

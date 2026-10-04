@@ -1,0 +1,981 @@
+﻿"""
+ACSC Topological Data Analysis (TDA) & Machine Learning Pipeline
+----------------------------------------------------------------
+This script implements the Entropy Cohomology Conjecture (ECC) Stratification
+and the Falsification Protocol for the Arithmetic-Cosmic Structure Conjecture.
+
+
+Core tasks:
+1. Loads raw Cremona arithmetic invariants and Observational point clouds.
+2. Projects arithmetic invariants into 3D pseudo-space (phi mapping).
+3. Applies Non-linear Quantile Alignment to prevent metric scale-drift.
+4. Computes Weighted Alpha Complexes (Arithmetic) and Rips Complexes (Real).
+5. Trains the StableECCStacker to isolate topological signals (Foliation Test).
+"""
+
+
+import pandas as pd
+import numpy as np
+import warnings
+import gudhi
+import optuna
+import xgboost as xgb
+import lightgbm as lgb
+import catboost as cb
+import matplotlib.pyplot as plt
+from sklearn.model_selection import KFold
+from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.neighbors import NearestNeighbors
+from sklearn.svm import SVR
+from sklearn.linear_model import Ridge
+from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestClassifier
+from sklearn.impute import KNNImputer
+from joblib import Parallel, delayed
+from pysr import PySRRegressor
+from scipy.stats import wasserstein_distance
+from sklearn.metrics import mean_absolute_error
+from sklearn.preprocessing import QuantileTransformer, RobustScaler
+
+
+
+
+warnings.filterwarnings('ignore')
+
+
+print(" — v3.5 — Full Upgraded Pipeline with Enhancements")
+print(" — Initiating...")
+
+
+# ====================== 1. LOAD DATA ======================
+def load_data():
+    CHUNK_SIZE = int(20000) 
+    SAMPLE_SIZE = int(50000)
+    SEED = int(42)
+
+
+    # Load synthetic catalog (ensure this file exists in your directory)
+    synth = pd.read_csv("synthetic_cosmic_catalog_calibrated.csv")
+
+
+    # 1. Load Real Catalogs
+    real1 = pd.concat([
+        chunk for chunk in pd.read_csv(
+            "lmfdb_raw_parsed.csv", 
+            chunksize=CHUNK_SIZE, 
+            low_memory=False
+        )
+    ], ignore_index=True)
+
+
+    real2 = pd.concat([
+        chunk for chunk in pd.read_csv(
+            "lmfdb_3selmer_full_pari.csv", 
+            chunksize=CHUNK_SIZE, 
+            low_memory=False
+        )
+    ], ignore_index=True)
+
+
+    # 2. Sampling and cleaning
+    real1 = real1.sample(min(SAMPLE_SIZE, len(real1)), random_state=SEED).reset_index(drop=True)
+    
+    return synth, real1, real2
+
+
+# ====================== 2. FORMAL ACSC + TUNABLE β ======================
+class ProjectionEngine:
+    def __init__(self, beta=16.263, lambda_scale=1.0):
+        self.ALPHA = np.sqrt(1.5)
+        self.BETA = beta
+        self.LAMBDA = lambda_scale
+
+
+    def apply(self, seed, t_cosmo):
+        delta = getattr(seed, 'discriminant', seed.conductor * 10)
+        conductor = seed.conductor
+        pass
+        
+        # Geometry remains consistent
+        theta = np.mod(np.log10(abs(delta) + 1) * 2 * np.pi, 2 * np.pi)
+        phi = np.mod(np.log10(conductor + 1) * np.pi, np.pi)
+        
+        # --- NEW CORE LOGIC (Complexity 14 + Betti Ratio) ---
+        b_ratio = seed.rank / (np.log10(conductor + 1) + 1e-8)
+        
+        # Discovered Equation of State
+        inner_force = ((b_ratio**2 - t_cosmo) + (np.exp(t_cosmo) * 0.4032)) / 0.4610
+        z_projected = self.LAMBDA * (1.0 / (np.exp(inner_force) + 1e-9))
+        # ----------------------------------------------------
+
+
+        x = z_projected * np.sin(phi) * np.cos(theta)
+        y = z_projected * np.sin(phi) * np.sin(theta)
+        z = z_projected * np.cos(phi)
+        return np.array([x, y, z])
+# --- APPLY ACSC PROJECTION ---
+# We generate RA/DE/z proxies for the topology engine
+engine = ProjectionEngine()
+synth, real1, real2 = load_data()
+
+
+# Calculate the projection components
+# theta (RA proxy), phi (Dec proxy), z_projected (Redshift proxy)
+synth['theta'] = np.mod(np.log10(np.abs(synth['discriminant']) + 1) * 2 * np.pi, 2 * np.pi)
+synth['phi_angle'] = np.mod(np.log10(synth['conductor'] + 1) * np.pi, np.pi)
+    
+# Core Equation of State for Redshift
+b_ratio = synth['rank'] / (np.log10(synth['conductor'] + 1) + 1e-8)
+t_cosmo_dummy = 0.5 # Baseline T_cosmo for projection
+inner_force = ((b_ratio**2 - t_cosmo_dummy) + (np.exp(t_cosmo_dummy) * 0.4032)) / 0.4610
+    
+synth['synthetic_z'] = 1.0 / (np.exp(inner_force) + 1e-9)
+synth['synthetic_RA'] = np.rad2deg(synth['theta'])
+synth['synthetic_DE'] = np.rad2deg(np.pi/2 - synth['phi_angle'])
+    
+# Map 'rank' to 'exact_rank' for consistency with later calls
+synth['exact_rank'] = synth['rank']
+    
+# Calculate tda_weight (BSD refinement)
+epsilon = 1e-9 
+synth['tda_weight'] = np.log1p(synth['regulator'] / (synth['torsion_order']**2 + epsilon))
+
+
+# ====================== 3. LEAKAGE-FREE FEATURES + BETTI-0 ======================
+
+
+def add_thesis_features(df, target_col=None):
+    df = df.copy()
+    df['flux_gr'] = df.get('Gmag', 0) / (df.get('Jmag', 1) + 1e-8)
+    df['pm_mag_proxy'] = np.sqrt(df.get('pmRA', 0)**2 + df.get('pmDE', 0)**2)
+    df['mag_ratio'] = df.get('gmag', 0) / (df.get('rmag', 1) + 1e-8)
+    
+    if 'Vcmb' in df.columns:
+        df['Tully_Fisher'] = df.get('gmag', 0) + 5 * np.log10(df['Vcmb'] / 100.0)
+    else:
+        df['Tully_Fisher'] = df.get('gmag', 0)
+    
+    if 'local_density' in df.columns:
+        df['Anthropic'] = np.abs(df['local_density'] - df['local_density'].median())
+    else:
+        df['Anthropic'] = 0.0
+    
+    if target_col != 'zphot' and 'zphot' in df.columns:
+        df['T_cosmo'] = 1.0 / (1.0 + df['zphot'])
+    elif 'Vcmb' in df.columns:
+        df['T_cosmo'] = 1.0 / (1.0 + df['Vcmb'] / 3e5)
+    else:
+        df['T_cosmo'] = 1.0
+    
+    for col in ['flux_gr', 'pm_mag_proxy', 'mag_ratio', 'Tully_Fisher', 'Anthropic', 'T_cosmo']:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(float)
+    return df
+
+
+def add_comprehensive_proxies(df, coords, dists, indices, target_col=None):
+    """
+    Combines intrinsic photometric proxies with extrinsic structural geometry.
+    """
+    df = df.copy()
+    
+    # --- 1. THE INTRINSIC (Thesis Features) ---
+    df['flux_gr'] = df.get('Gmag', 0) / (df.get('Jmag', 1) + 1e-8)
+    df['pm_mag_proxy'] = np.sqrt(df.get('pmRA', 0)**2 + df.get('pmDE', 0)**2)
+    df['mag_ratio'] = df.get('gmag', 0) / (df.get('rmag', 1) + 1e-8)
+    
+    if 'Vcmb' in df.columns:
+        df['Tully_Fisher'] = df.get('gmag', 0) + 5 * np.log10(df['Vcmb'] / 100.0)
+        df['T_cosmo'] = 1.0 / (1.0 + df['Vcmb'] / 3e5)
+    else:
+        df['Tully_Fisher'] = df.get('gmag', 0)
+        df['T_cosmo'] = 1.0 / (1.0 + df.get('zphot', 0))
+    
+    # --- 2. THE EXTRINSIC (Structural Proxies) ---
+    # Betti Connectivity Ratio (The 'Loopiness' Index)
+    if 'local_betti_1' in df.columns and 'local_betti_0' in df.columns:
+        df['betti_ratio'] = df['local_betti_1'] / (df['local_betti_0'] + 1e-8)
+    else:
+        df['betti_ratio'] = 0.0
+
+
+    # Local Anisotropy (Measures the 'stretch' of the filament)
+    df['local_anisotropy'] = np.std(dists, axis=1) / (np.mean(dists, axis=1) + 1e-8)
+    
+    # Density Gradient (Is the galaxy falling into a cluster or a void?)
+    neighbor_densities = df['local_density'].values[indices]
+    df['density_gradient'] = df['local_density'] - np.mean(neighbor_densities, axis=1)
+    
+    # Void Proximity Proxy
+    df['void_gap'] = dists[:, -1]
+    
+    # Final numeric cleaning
+    cols_to_fix = ['flux_gr', 'pm_mag_proxy', 'mag_ratio', 'Tully_Fisher', 
+                   'T_cosmo', 'betti_ratio', 'local_anisotropy', 'density_gradient', 'void_gap']
+    
+    for col in cols_to_fix:
+        df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(float)
+        
+    return df
+# ====================== 4. ROBUST TOPOLOGY + PERSISTENCE ENTROPY ======================
+def persistence_entropy(diag):
+    # Only consider finite lifetimes and ignore floating point noise
+    lifetimes = [d - b for b, d in diag if np.isfinite(d) and d > b + 1e-8]
+    
+    if not lifetimes or np.isclose(sum(lifetimes), 0):
+        return 0.0
+    
+    total = sum(lifetimes)
+    p = np.array(lifetimes) / total
+    return -np.sum(p * np.log(p + 1e-10))
+
+
+def compute_weighted_topology_worker(i, coords, weights, indices, is_arithmetic=False):
+    import gudhi
+    import numpy as np
+
+
+    # 1. Extract local neighborhood
+    local_idx = indices[i]
+    local_points = coords[local_idx]
+    
+    # 2. Complex Construction
+    if is_arithmetic:
+        local_weights = weights[local_idx]
+        # AlphaComplex (Power Complex) for weighted arithmetic seeds
+        complex_type = gudhi.AlphaComplex(points=local_points, weights=local_weights)
+        # FIX: AlphaComplex.create_simplex_tree() takes NO arguments
+        st = complex_type.create_simplex_tree()
+    else:
+        # standard Rips for observational comparison
+        # RipsComplex.create_simplex_tree() DOES take max_dimension
+        complex_type = gudhi.RipsComplex(
+            points=local_points, 
+            max_edge_length=np.std(local_points) * 2.0
+        )
+        st = complex_type.create_simplex_tree(max_dimension=2)
+    
+    # 3. Persistence Computation
+    st.compute_persistence()
+    
+    # 4. Persistence Entropy (H1 'Heat of the Web')
+    def get_entropy(dim):
+        intervals = st.persistence_intervals_in_dimension(dim)
+        # Filter out infinite intervals for entropy calculation
+        lifetimes = [d - b for b, d in intervals if np.isfinite(d) and (d - b) > 0]
+        if not lifetimes: 
+            return 0.0
+        p = np.array(lifetimes) / sum(lifetimes)
+        return -np.sum(p * np.log(p + 1e-12))
+
+
+    # 5. Extract Betti Numbers safely
+    # betti_numbers() returns a list [β0, β1, β2, ...]
+    bn = st.betti_numbers()
+    b0 = bn[0] if len(bn) > 0 else 0
+    b1 = bn[1] if len(bn) > 1 else 0
+    b2 = bn[2] if len(bn) > 2 else 0
+    
+    # Return features for the i-th point
+    return [float(b0), float(b1), float(b2), float(get_entropy(1))]
+
+
+def project_arithmetic_to_spatial(df):
+    # Ensure numeric types
+    df['discriminant'] = pd.to_numeric(df['delta'], errors='coerce') if 'delta' in df.columns else pd.to_numeric(df['discriminant'], errors='coerce')
+    df['conductor'] = pd.to_numeric(df['conductor'], errors='coerce')
+    df['rank'] = pd.to_numeric(df['rank'], errors='coerce').fillna(0)
+    
+    # Clean data
+    df = df.dropna(subset=['discriminant', 'conductor'])
+
+
+    # Project into Synthetic Spatial Coordinates
+    # RA Proxy: Log-scaled discriminant (Circular)
+    df['synthetic_RA'] = np.mod(np.log10(np.abs(df['discriminant']) + 1) * 2 * np.pi, 2 * np.pi)
+    # DE Proxy: Log-scaled conductor (Spherical)
+    df['synthetic_DE'] = np.mod(np.log10(df['conductor'] + 1) * np.pi, np.pi) - (np.pi / 2)
+    # Z Proxy: Rank (Distance/Redshift)
+    df['synthetic_z'] = df['rank']
+    
+    return df
+
+
+def add_optimized_topology(df, name, ra_col, de_col, z_col, k=25):
+    print(f"Computing {name} topology + persistence entropy...")
+    
+    # 1. Coordinate Transformation
+    # Convert redshift to comoving distance (Mpc) for spatial analysis
+    z = (df[z_col].values / 3e5) if z_col == 'Vcmb' else df[z_col].values
+    comoving_dist = z * 4285.7
+    ra_rad = np.deg2rad(df[ra_col].fillna(0).values)
+    de_rad = np.deg2rad(df[de_col].fillna(0).values)
+    
+    coords = np.column_stack((
+        comoving_dist * np.cos(de_rad) * np.cos(ra_rad),
+        comoving_dist * np.cos(de_rad) * np.sin(ra_rad),
+        comoving_dist * np.sin(de_rad)
+    ))
+    
+    # 2. Neighborhood & Scale Calculation (MUST BE BEFORE PARALLEL)
+    # We cast k to native int for Sage compatibility
+    nn = NearestNeighbors(n_neighbors=int(k)).fit(coords)
+    dists, indices = nn.kneighbors(coords)
+    
+    # Adaptive scale helps normalize the persistence threshold across catalogs
+    adaptive_scale = np.percentile(dists[:, -1], 50)
+    print(f"   {name} adaptive scale = {adaptive_scale:.2f} Mpc")
+
+
+    # 3. Arithmetic Weighting Logic
+    # Identify if we are processing the Arithmetic (Synth) dataset
+    is_arithmetic = 'tda_weight' in df.columns
+    weights = df['tda_weight'].values if is_arithmetic else np.ones(len(df))
+    
+    # 4. Parallel Topological Computation
+    # Combined into a single pass for efficiency. 
+    # Ensure compute_weighted_topology_worker handles (i, coords, weights, indices, is_arithmetic)
+    results = Parallel(n_jobs=-1)(
+        delayed(compute_weighted_topology_worker)(i, coords, weights, indices, is_arithmetic)
+        for i in range(len(coords))
+    )
+    
+    # 5. Assignment and Metadata Calculation
+    res_arr = np.array(results)
+    df['local_betti_0'] = res_arr[:, 0]
+    df['local_betti_1'] = res_arr[:, 1]
+    df['local_betti_2'] = res_arr[:, 2]
+    df['persistence_entropy'] = res_arr[:, 3]
+    
+    # Local density is the average distance to neighbors
+    df['local_density'] = dists.mean(axis=1)
+    df['normalized_density'] = df['local_density'] / (adaptive_scale + 1e-9)
+    df['Anthropic'] = np.abs(df['local_density'] - df['local_density'].median())
+    
+    # 6. Stratification for Symbolic Regression (PySR)
+    if df['persistence_entropy'].nunique() > 1:
+        # Create 3 tiers (0, 1, 2) based on entropy for better feature sampling
+        df['entropy_strata'] = (df['persistence_entropy'].rank(pct=True, method='first') * 2.99).astype(int)
+    else:
+        df['entropy_strata'] = 1
+
+
+    # Final feature expansion
+    df = add_comprehensive_proxies(df, coords, dists, indices)
+    
+    return df
+
+
+# ====================== EXECUTION ======================
+# 1. Load data with Projection applied
+synth, real1, real2 = load_and_project_data()
+
+
+# 2. Add features
+synth = add_thesis_features(synth)
+real1 = add_thesis_features(real1)
+real2 = add_thesis_features(real2, target_col='zphot')
+
+
+# 1. Project all datasets into the same Geometric Space
+synth = project_arithmetic_to_spatial(synth)
+real1 = project_arithmetic_to_spatial(real1)
+
+
+# For real2 (3-selmer), merge with its conductor/delta first if necessary
+# Assuming real2 is lmfdb_3selmer_full_pari.csv
+# We use the rank from selmer as our 'z'
+real2 = real2.rename(columns={'pari_2_selmer_rank': 'rank'}) 
+# Note: real2 needs conductor/delta from real1 to project RA/DE
+real2 = pd.merge(real2, real1[['label', 'delta', 'conductor']], on='label', how='inner')
+real2 = project_arithmetic_to_spatial(real2)
+
+
+# 2. Compute Topology using CONSISTENT keys
+# We no longer use 'Vcmb' or 'RAJ2000' because these are Elliptic Curves, not Galaxies
+synth = add_optimized_topology(synth, "synth", "synthetic_RA", "synthetic_DE", "synthetic_z")
+real1 = add_optimized_topology(real1, "real1", "synthetic_RA", "synthetic_DE", "synthetic_z")
+real2 = add_optimized_topology(real2, "real2", "synthetic_RA", "synthetic_DE", "synthetic_z")
+
+
+# ====================== FEATURE DEFINITION ======================
+# These are the columns that must exist in ALL three dataframes (synth, real1, real2)
+common_features = [
+    'local_betti_0', 
+    'local_betti_1', 
+    'local_betti_2', 
+    'persistence_entropy',
+    'local_density',
+    'normalized_density',
+    'Anthropic'
+]
+
+
+# Optional: Verify columns exist before imputing to avoid further KeyErrors
+for name, df in [("synth", synth), ("real1", real1), ("real2", real2)]:
+    missing = [f for f in common_features if f not in df.columns]
+    if missing:
+        print(f"Warning: {name} is missing columns: {missing}")
+        # Initialize missing columns with 0 if they were skipped during topology
+        for m in missing:
+            df[m] = 0.0
+
+
+# ====================== IMPUTATION ======================
+imputer = KNNImputer(n_neighbors=int(10)) 
+for df in [synth, real1, real2]:
+    # We use [common_features] to ensure we only transform the shared TDA space
+    df[common_features] = imputer.fit_transform(df[common_features])
+
+
+print(" --- TDA features imputed and synchronized.")
+    
+# ====================== DOMAIN ALIGNMENT ======================
+print("\n--- Aligning Domains with Quantile Transformer ---")
+# We fit the transformer on the REAL observations (the target domain).
+qt = QuantileTransformer(output_distribution='normal', random_state=42)
+qt.fit(real2[common_features])
+
+
+# Transform all datasets to force their distributions to match the Real2 shape.
+synth[common_features] = qt.transform(synth[common_features])
+real1[common_features] = qt.transform(real1[common_features])
+real2[common_features] = qt.transform(real2[common_features])
+print("   -> Feature distributions normalized and aligned.")
+
+
+# ====================== SYMBOLIC REFINEMENT LOOP ======================
+print("\n Running Symbolic Refinement Loop on Real2 errors...")
+beta = 16.263
+lambda_scale = 1.0
+engine = ProjectionEngine(beta=beta, lambda_scale=lambda_scale)
+print(f"Initial β = {beta:.4f}")
+
+
+# ====================== 1. OPTIMIZED TOPOLOGICAL SIGNATURE PLOT ======================
+def plot_strata_barcodes(df, fitted_stacker, features):
+   
+    print("\n Generating Topological Barcodes (Stratum 0 vs Stratum 2)...")
+    
+    # Generate predictions using the fitted global stacker
+    df = df.copy()
+    df['predicted_entropy'] = fitted_stacker.predict(df[features])
+    
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6), sharey=True)
+    strata_targets = [0, 2]
+    colors = ['#3498db', '#e74c3c'] # Blue (Simple) vs Red (Complex)
+    
+    for i, s in enumerate(strata_targets):
+        ax = axes[i]
+        subset = df[df['entropy_strata'] == s]
+        if subset.empty: continue
+        
+        # Pick a representative "median" sample from the stratum
+        target_idx = subset['predicted_entropy'].idxmax() if s == 2 else subset['predicted_entropy'].idxmin()
+        row = df.loc[target_idx]
+        
+        # Extract Betti numbers (The "seeds" of the barcode)
+        b0 = max(1, int(abs(row['local_betti_0'])))
+        b1 = max(1, int(abs(row['local_betti_1'])))
+        b2 = max(1, int(abs(row.get('local_betti_2', 0))))
+        
+        # Draw Betti-0 Bars (Connected Components/Clusters)
+        # These are usually born at 0 and persist shortly
+        b0_heights = np.linspace(0.1, 0.4, b0)
+        ax.hlines(b0_heights, 0, 0.2, colors='gray', alpha=0.6, linewidth=2, label=f'$\\beta_0$ (Clusters: {b0})')
+        
+        # Draw Betti-1 Bars (Loops/Voids - the signal of Rank)
+        # These represent the 'entropy' your model is predicting
+        b1_heights = np.linspace(0.5, 0.9, b1)
+        ax.hlines(b1_heights, 0.1, 0.7, colors=colors[i], linewidth=4, label=f'$\\beta_1$ (Voids: {b1})')
+        
+        ax.set_title(f"Stratum {s} (Entropy: {row['predicted_entropy']:.3f})")
+        ax.set_xlabel(r"Filtration Persistence ($\epsilon$)")
+        ax.set_yticks([])
+        ax.set_xlim(0, 1.0)
+        if i == 0: ax.set_ylabel("Homology Groups ($H_0, H_1$)")
+        ax.legend(loc='lower right', fontsize='small')
+
+
+    plt.suptitle("Foliation Test: Persistence Barcode Signature (Real2)", fontsize=16)
+    plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+    plt.savefig('topological_barcodes.png')
+    plt.show()
+
+
+# ====================== TARGET PREPARATION ======================
+# For Arithmetic Seeds, our 'y' is usually the exact analytic rank 
+# or the persistence entropy we want to emulate.
+if 'rank' in synth.columns:
+    synth_y = synth['rank']
+elif 'exact_rank' in synth.columns:
+    synth_y = synth['exact_rank']
+else:
+    # Fallback to persistence entropy if this is a purely topological study
+    synth_y = synth['persistence_entropy']
+
+
+print(f" -> Target vector 'synth_y' initialized. Shape: {synth_y.shape}")
+
+
+# ====================== EVALUATION TARGETS ======================
+# For Real2 (The 3-Selmer/LMFDB test set), we need the ground truth rank
+if 'rank' in real2.columns:
+    real2_y = real2['rank']
+elif 'pari_2_selmer_rank' in real2.columns:
+    real2_y = real2['pari_2_selmer_rank']
+elif 'sage_rank' in real2.columns:
+    real2_y = real2['sage_rank']
+else:
+    # If ground truth is missing, we initialize with zeros to allow the code to run,
+    # though R² and MSE scores will not be meaningful.
+    print("Warning: Ground truth rank not found in real2. Initializing real2_y with zeros.")
+    real2_y = np.zeros(len(real2))
+
+
+# Ensure real1_y is also defined if you plan to evaluate on both catalogs
+if 'real1' in locals():
+    real1_y = real1['rank'] if 'rank' in real1.columns else np.zeros(len(real1))
+
+
+print(f" -> Evaluation target 'real2_y' ready. Shape: {real2_y.shape}")
+
+
+# ====================== OPTUNA EXECUTION ======================
+print("\n Running Multi-Objective Optuna (MSE + (1-R²) + W₂)...")
+# Now that synth_y exists, the objective function won't crash
+study = optuna.create_study(direction='minimize')
+study.optimize(objective, n_trials=int(15))
+
+
+# ====================== MULTI-OBJECTIVE OPTUNA WITH WASSERSTEIN ======================
+def objective(trial):
+    param = {
+        'n_estimators': int(trial.suggest_int('n_estimators', 400, 800)),
+        'learning_rate': float(trial.suggest_float('learning_rate', 0.01, 0.05)),
+        'max_depth': int(trial.suggest_int('max_depth', 4, 7)),
+        'subsample': float(trial.suggest_float('subsample', 0.6, 0.95)),
+        'random_state': 42
+    }
+    kf = KFold(n_splits=int(5), shuffle=True, random_state=int(42))
+    mse_scores, r2_scores, w2_scores = [], [], []
+    
+    for tr, val in kf.split(synth):
+        X_train, y_train = synth[common_features].iloc[tr], synth_y.iloc[tr]
+        X_val, y_val = synth[common_features].iloc[val], synth_y.iloc[val]
+        
+        model = xgb.XGBRegressor(**param)
+        model.fit(X_train, y_train)
+        preds = model.predict(X_val)
+        
+        mse_scores.append(mean_squared_error(y_val, preds))
+        r2_scores.append(r2_score(y_val, preds))
+        w2_scores.append(wasserstein_distance(y_val, preds))
+    
+    composite_loss = np.mean(mse_scores) + (1.0 - np.mean(r2_scores)) + (2.0 * np.mean(w2_scores))
+    return composite_loss
+
+
+print("\n Running Multi-Objective Optuna (MSE + (1-R²) + W₂)...")
+study = optuna.create_study(direction='minimize')
+study.optimize(objective, n_trials=int(15))
+best_params = study.best_params
+print(f"Best parameters: {best_params}")
+
+
+# ====================== FULL ECC STRATIFIED STACKING ======================
+class StableECCStacker:
+    def __init__(self, params):
+        from sklearn.linear_model import Lasso, Ridge
+        self.base_models = [
+            ('xgb', xgb.XGBRegressor(**params)),
+            ('lgb', lgb.LGBMRegressor(n_estimators=int(400), verbose=int(-1))),
+            ('cat', cb.CatBoostRegressor(iterations=int(400), verbose=int(0)))
+        ]
+        # High alpha Lasso for Stratum 0 to "kill" numerical noise
+        self.meta_models = {0: Lasso(alpha=1.0), 1: Ridge(alpha=1.0), 2: Ridge(alpha=int(1.0))}
+        self.strata_clf = RandomForestClassifier(n_estimators=int(100), max_depth=int(3), random_state=int(42))
+        self.strata_means = {}
+
+
+    def fit(self, X, y, strata):
+        self.strata_clf.fit(X, strata)
+        # We must stack predictions carefully
+        preds_list = []
+        for name, m in self.base_models:
+            m.fit(X, y)
+            preds_list.append(m.predict(X))
+        base_preds = np.column_stack(preds_list)
+        
+        for s in [0, 1, 2, 3, 4]:
+            mask = (strata == s)
+            if mask.sum() > 10:
+                # Stability Check: If variance is near zero, use the mean
+                if np.std(base_preds[mask]) < 1e-6:
+                    self.meta_models[s] = "mean_fallback"
+                    self.strata_means[s] = y[mask].mean()
+                else:
+                    self.meta_models[s].fit(base_preds[mask], y[mask])
+            else:
+                self.meta_models[s] = "mean_fallback"
+                self.strata_means[s] = y.mean()
+
+
+    def predict(self, X):
+        pred_strata = self.strata_clf.predict(X)
+        base_preds = np.column_stack([m[1].predict(X) for m in self.base_models])
+        final = np.zeros(len(X))
+        for s in [0, 1, 2, 3, 4]:
+            mask = (pred_strata == s)
+            if mask.sum() > 0:
+                if self.meta_models[s] == "mean_fallback":
+                    final[mask] = self.strata_means[s]
+                else:
+                    final[mask] = self.meta_models[s].predict(base_preds[mask])
+        return final
+        
+class RefinedACSCTDA:
+    def __init__(self, df):
+        """
+        df: DataFrame containing 'x', 'y', 'z', 'rank', 'regulator', 'conductor', 'torsion'
+        """
+        self.df = df.copy()
+        
+        # 1. Log-Normalization of Invariants (Critical for KDE stability)
+        # We use log10(N_E) to prevent 'blindness' where one massive conductor 
+        # flattens the density field for everything else.
+        self.df['log_N'] = np.log10(self.df['conductor'])
+        
+        # 2. The BSD-Refined Weighting Scheme
+        # w_E ∝ R_E / T_E^2 (as suggested by the BSD leading term formula)
+        # We use log1p to compress the range for rank 4+ curves while preserving order.
+        self.df['bsd_weight'] = self.df['regulator'] / (self.df['torsion']**2 + 1e-9)
+        self.df['norm_weight'] = np.log1p(self.df['bsd_weight'])
+        
+        # Standardize for the Alpha Complex input
+        scaler = RobustScaler(quantile_range=(5, 95))
+        self.df['final_weight'] = scaler.fit_transform(self.df[['norm_weight']])
+
+
+    def compute_weighted_alpha_complex(self):
+        """
+        Computes the persistence of the 'Arithmetic Web' using the BSD-weighting.
+        The Rank 4 point should appear as a massive 'Topological Anchor'.
+        """
+        points = self.df[['x', 'y', 'z']].values
+        weights = self.df['final_weight'].values
+        
+        # Weighted Alpha Complex (Power Complex)
+        alpha = gudhi.AlphaComplex(points=points, weights=weights)
+        st = alpha.create_simplex_tree()
+        st.compute_persistence()
+        
+        return st
+
+
+    def calculate_persistence_entropy(self, simplex_tree):
+        """
+        Quantifies the 'Heat of Expansion' (Arithmetic Thermodynamics).
+        Returns entropy per homological dimension.
+        """
+        entropy_results = {}
+        for dim in [0, 1, 2, 3, 4]:
+            # Get birth-death pairs for this dimension
+            pairs = simplex_tree.persistence_intervals_in_dimension(dim)
+            if len(pairs) > 0:
+                # Remove infinite bars for entropy calculation
+                finite_pairs = pairs[np.isfinite(pairs[:, 1])]
+                if len(finite_pairs) > 0:
+                    lifetimes = finite_pairs[:, 1] - finite_pairs[:, 0]
+                    l_sum = np.sum(lifetimes)
+                    p_i = lifetimes / l_sum
+                    # Shannon entropy of the lifetimes
+                    entropy = -np.sum(p_i * np.log(p_i + 1e-12))
+                    entropy_results[f'H{dim}_entropy'] = entropy
+                else:
+                    entropy_results[f'H{dim}_entropy'] = 0
+            else:
+                entropy_results[f'H{dim}_entropy'] = 0
+        return entropy_results
+
+
+    def find_topological_anchor(self, simplex_tree):
+        """
+        Identifies if the Rank 4 point is indeed the 'Great Attractor'.
+        We look for the feature with the longest lifetime.
+        """
+        persistence = simplex_tree.persistence()
+        # Find the feature with maximum persistence (Death - Birth)
+        max_p = 0
+        anchor_feature = None
+        
+        for dim, (b, d) in persistence:
+            if d != float('inf'):
+                lifetime = d - b
+                if lifetime > max_p:
+                    max_p = lifetime
+                    anchor_feature = (dim, b, d)
+        
+        return {"max_lifetime": max_p, "feature": anchor_feature}
+    
+# 2. EXPLICIT INSTANTIATION (Fixes NameError)
+print("\n--- Initializing Global Stacker with Robust Meta-Models ---")
+global_stacker = StableECCStacker(best_params)
+
+
+# Define evaluation data
+X_eval = real2[common_features].fillna(0)
+y_eval = real2_y
+strata_eval = real2['entropy_strata']
+
+
+# Fit and Predict
+global_stacker.fit(X_eval, y_eval, strata_eval)
+final_preds = global_stacker.predict(X_eval)
+
+
+# 3. FOLIATION TEST
+print("\n--- Fixed Multi-Strata R² Analysis ---")
+for s in [0, 1, 2, 3, 4]:
+    mask = (strata_eval == s)
+    if mask.sum() > 0:
+        r2 = r2_score(y_eval[mask], final_preds[mask])
+        print(f"   Stratum {s} R² = {r2:.4f}")
+
+
+# 4. CALL VISUALIZATION
+plot_strata_barcodes(real2, global_stacker, common_features)
+
+
+# --- FIT GLOBAL STACKER ---
+# This fixes the NameError: 'stacker' is not defined
+print("\n Fitting Final Global Stacker for multi-strata analysis...")
+global_stacker = StableECCStacker(params=best_params)
+global_stacker.fit(real2[common_features], real2_y, real2['entropy_strata'])
+
+
+# --- MULTI-STRATA R² ANALYSIS ---
+print("\n--- Robust Multi-Strata Analysis (Foliation Test) ---")
+final_preds = global_stacker.predict(real2[common_features]) 
+
+
+for s in [0, 1, 2, 3, 4]:
+    mask = (real2['entropy_strata'] == s)
+    if mask.sum() > 0:
+        y_true = real2_y[mask]
+        y_pred = final_preds[mask]
+        
+        variance = np.var(y_true)
+        mae = mean_absolute_error(y_true, y_pred)
+        
+        # Guard against the Zero-Variance Trap
+        if variance < 1e-8:
+            print(f"   Stratum {s} (Entropy {s}): Variance near zero. R² undefined.")
+            print(f"      -> MAE = {mae:.6f} (Model successfully quenched)")
+        else:
+            r2 = r2_score(y_true, y_pred)
+            print(f"   Stratum {s} (Entropy {s}): R² = {r2:.4f} | MAE = {mae:.4f}")
+
+
+# --- VISUALIZATION ---
+plot_strata_barcodes(real2, global_stacker, common_features)
+
+
+rank_4_subset = final_df[final_df['rank'] == 4]
+if not rank_4_subset.empty:
+    print(f"Rank 4 Anchor Weight: {rank_4_subset['tda_weight'].mean():.4f}")
+    print(f"Average Rank 0-1 Weight: {final_df[final_df['rank'] <= 1]['tda_weight'].mean():.4f}")
+    
+# ====================== S.T.A.R. v3.5 GLOBAL SWEEP ======================
+
+
+# 1. Merge real1 and real2 to maximize training signal
+print("\n--- Merging Catalogs for Global Sweep ---")
+# Ensure we only use columns present in both datasets
+common_cols = list(set(real1.columns).intersection(set(real2.columns)))
+merged_real = pd.concat([real1[common_cols], real2[common_cols]], axis=0).reset_index(drop=True)
+
+
+# 2. Refined Feature Set for Structural Geometry
+# We remove raw photometric proxies to focus the model on the 'Shape'
+sweep_features = [
+    'betti_ratio', 'local_anisotropy', 'density_gradient', 'void_gap',
+    'local_betti_0', 'local_betti_1', 'local_betti_2', 'T_cosmo'
+]
+
+
+def run_global_sweep(df, features):
+    print(f"Initiating Global Sweep on {len(df)} total galaxies...")
+    from sklearn.model_selection import train_test_split
+    
+    # Clean any merge artifacts
+    df = df.dropna(subset=['persistence_entropy', 'entropy_strata'])
+    df[features] = df[features].fillna(0)
+    
+    # Stratified Split (80/20)
+    train_df, test_df = train_test_split(
+        df, test_size=float(0.2), stratify=df['entropy_strata'], random_state=42
+    )
+    
+    # Initialize Stacker with your optimized best_params
+    sweep_stacker = StableECCStacker(best_params)
+    
+    # Train on the combined weight of both catalogs
+    sweep_stacker.fit(
+        train_df[features], 
+        train_df['persistence_entropy'], 
+        train_df['entropy_strata']
+    )
+    
+    # Evaluate 
+    print("\n--- Global Sweep Results (Combined real1 + real2) ---")
+    y_test = test_df['persistence_entropy']
+    preds = sweep_stacker.predict(test_df[features])
+    
+    for s in [0, 1, 2, 3, 4]:
+        mask = (test_df['entropy_strata'] == s)
+        if mask.sum() > 0:
+            s_true, s_pred = y_test[mask], preds[mask]
+            if np.var(s_true) < 1e-8:
+                print(f" Stratum {s} (Voids): MAE = {mean_absolute_error(s_true, s_pred):.6f} [Quenched]")
+            else:
+                print(f" Stratum {s} (Web): R² = {r2_score(s_true, s_pred):.4f}")
+                
+    return sweep_stacker, test_df
+
+
+# RUN THE SWEEP
+global_sweep_model, sweep_test_data = run_global_sweep(merged_real, sweep_features)
+
+
+# ====================== 6. FINAL INFERENCE & MERGING ======================
+print("\n--- Synthesizing Final Inference DataFrame ---")
+
+
+# Use 'global_sweep_model' (returned by your sweep) and 'sweep_test_data' 
+# to ensure we are working with the clean, stratified test set.
+X_eval = sweep_test_data[sweep_features].fillna(0)
+final_predictions = global_sweep_model.predict(X_eval)
+
+
+# Construct final_df from the test data
+final_df = sweep_test_data.copy()
+final_df['predicted_entropy'] = final_predictions
+# If you are targeting rank, ensure 'true_rank' exists; 
+# otherwise use 'persistence_entropy'
+final_df['true_target'] = sweep_test_data['persistence_entropy']
+
+
+# Compute TDA Weight (Topological Heat/Confidence)
+error_term = np.abs(final_df['true_target'] - final_df['predicted_entropy'])
+final_df['tda_weight'] = (1.0 + final_df['persistence_entropy']) / (1.0 + error_term)
+
+
+print(f" -> final_df synthesized. Shape: {final_df.shape}")
+
+
+# ====================== 6. FINAL INFERENCE & SYNTHESIS ======================
+print("\n--- Synthesizing Final Inference DataFrame ---")
+
+
+# We use the results from the RUN THE SWEEP step
+# features = sweep_features, model = global_sweep_model, data = sweep_test_data
+X_eval_final = sweep_test_data[sweep_features].fillna(0)
+final_predictions = global_sweep_model.predict(X_eval_final)
+
+
+# Create the DEFINITIVE final_df
+final_df = sweep_test_data.copy()
+final_df['predicted_entropy'] = final_predictions
+final_df['true_target'] = sweep_test_data['persistence_entropy']
+
+
+# Calculate TDA Weight (Topological Heat)
+error_term = np.abs(final_df['true_target'] - final_df['predicted_entropy'])
+final_df['tda_weight'] = (1.0 + final_df['persistence_entropy']) / (1.0 + error_term)
+
+
+print(f" -> final_df successfully defined. Shape: {final_df.shape}")
+
+
+# ====================== 7. VISUALIZATION & ANCHOR ANALYSIS ======================
+
+
+# 1. Plot Barcodes using the NEW global model and features
+plot_strata_barcodes(sweep_test_data, global_sweep_model, sweep_features)
+
+
+# 2. Rank 4 Anchor Analysis (The "Gold Standard" check)
+# We check if 'rank' exists (likely from the original real2/lmfdb merge)
+if 'rank' in final_df.columns:
+    # Use .astype(int) to handle SageMath Integer types or floats
+    rank_4_subset = final_df[final_df['rank'].astype(int) == 4]
+    if not rank_4_subset.empty:
+        avg_weight = rank_4_subset['tda_weight'].mean()
+        print(f"Rank 4 Anchor Weight: {avg_weight:.4f}")
+    else:
+        print("Rank 4 subset is empty in this test slice.")
+else:
+    print("Column 'rank' not found in final_df. Check your merge logic.")
+import pysr
+from pysr import PySRRegressor
+
+
+print("\n--- Initiating Symbolic Extraction on Stratum 2 (Complex Web) ---")
+
+
+# 1. Isolate the Complex Web
+complex_web = sweep_test_data[sweep_test_data['entropy_strata'] == 2].copy()
+
+
+# 2. Define the analytical feature space
+# We exclude the raw proxies (like flux_gr) and focus on the physical variables
+sym_features = [
+    'normalized_density', 
+    'local_betti_1', 
+    'local_betti_2', 
+    'T_cosmo', 
+    'Anthropic'
+]
+
+
+X_sym = complex_web[sym_features]
+y_sym = complex_web['persistence_entropy']
+
+
+# 3. Configure the PySR Regressor
+# We give it basic operators to see if an Euler-like characteristic emerges naturally
+pysr_model = PySRRegressor(
+    niterations=40,
+    binary_operators=["+", "*", "-", "/"],
+    unary_operators=["exp", "inv(x) = 1/x"],
+    extra_sympy_mappings={"inv": lambda x: 1/x},
+    loss="loss(prediction, target) = (prediction - target)^2",
+    model_selection="best",
+    random_state=42
+)
+
+
+# 4. Fit the model
+pysr_model.fit(X_sym, y_sym)
+
+
+print("\n--- Top Candidate Equations ---")
+print(pysr_model.sympy())
+
+
+# --- REFINED HISTOGRAM ---
+print("\n Histogram of log(discovered constants)...")
+
+
+# Constants from your Complexity 11 Equation (β=16.26, offset=1.35, etc.)
+constants = [16.263, np.sqrt(1.5), 1.2209, 16.183, 1.352]
+plt.figure(figsize=(8, 5))
+plt.hist(np.log(np.abs(constants) + 1e-8), bins=10, color='darkgreen', alpha=0.7)
+plt.title("Log-Spectral Distribution of Discovered Constants")
+plt.xlabel("log(|constant|)")
+plt.ylabel("Frequency")
+plt.grid(axis='y', alpha=0.3)
+plt.show()
+
+
+print("\n S.T.A.R. Pipeline Complete. Visualization and Foliation test saved.")

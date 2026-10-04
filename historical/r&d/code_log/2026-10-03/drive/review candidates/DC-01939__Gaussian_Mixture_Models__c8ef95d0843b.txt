@@ -1,0 +1,3 @@
+mass = [mass_part1, mass_part2, ...];  \\ Concatenated stellar masses (in solar masses)
+sfr = [sfr_part1, sfr_part2, ...];    \\ Concatenated star formation rates (in solar masses per year)
+metallicity = [met_part1, met_part2, ...]; \\ Concatenated metallicity values (logarithmic scale, e.g., 12 + log(O/H))

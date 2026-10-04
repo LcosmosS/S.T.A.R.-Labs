@@ -1,0 +1,9 @@
+k=1;
+start = if(k == 1, 1, end_indices[k-1] + 1);
+end = end_indices[k];
+bin_M = M_sorted[start..end];
+M0_k = vecmedian(bin_M);
+sum_M_over_M0 = sum(i = 1, #bin_M, bin_M[i] / M0_k);
+sum_M0_over_M = sum(i = 1, #bin_M, M0_k / bin_M[i]);
+K = sum_M_over_M0 / sum_M0_over_M;
+print(K);

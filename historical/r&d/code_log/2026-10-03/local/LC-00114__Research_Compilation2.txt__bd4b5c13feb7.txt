@@ -1,0 +1,2 @@
+Now, regarding the hypothesis testing, I should also consider the power of the test. With large datasets, even small deviations from K=1 might be statistically significant, but practically insignificant. So, I need to consider the effect size.
+For instance, if the mean K is 1.01 with a very small standard deviation, the t-test might still reject the null hypothesis if the sample size is large enough, but for practical purposes, K=1.01 might be close enough to 1.

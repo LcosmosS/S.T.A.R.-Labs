@@ -1,0 +1,11 @@
+omega = ellomega(E)[1]; \\ Real period
+omega_scaled = pi_val * omega; \\ Scale by pi
+if(alg_rank == 0,
+    reg = 1.0;
+,
+    gens = ellgenerators(E);
+    if(length(gens) > 0,
+        reg = ellheight(E, gens[1]); \\ Height of the first generator
+    ,
+        reg = 1.0; \\ Fallback if no generators found
+    );

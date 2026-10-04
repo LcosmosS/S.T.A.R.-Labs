@@ -1,0 +1,2 @@
+formatted = "log_mass = [\n" + ",\n".join([f"{val:.18f}" for val in filtered_log_mass]) + "\n];"
+print(formatted)

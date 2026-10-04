@@ -1,0 +1,5 @@
+r2_scores.append(r2_score(y_test, y_pysr_pred)) \n \n if model_names: \n
+plt.bar(model_names, r2_scores, color=[\'skyblue\', \'salmon\', \n\'limegreen\']
+[:len(model_names)]) \n plt.ylabel("R² Score") \n plt.title("Model Performance
+Comparison") \n plt.ylim(0, 1) \n plt.savefig("model_comparison_r2.png") \n
+plt.close() \nexcept Exception as e: \n print(f"Model comparison plot failed: {e}")

@@ -1,0 +1,4 @@
+rf.fit(X_train[:, :len(base_features)], y_train)  # Use only base features
+importances = rf.feature_importances_
+for name, imp in zip(base_features, importances):
+   *     print(f"{name}: {imp:.4f}")

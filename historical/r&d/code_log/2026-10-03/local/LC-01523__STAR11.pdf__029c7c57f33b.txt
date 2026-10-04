@@ -1,0 +1,4 @@
+ plt.figure(figsize=(12,  10))  sns.heatmap(X.corr(),  annot=False,  cmap='coolwarm',  vmin=-1,  vmax=1)  plt.title("Correlation  Heatmap  of  Features")  plt.savefig("feature_correlation_heatmap.png")  plt.close()   #  Filter  to  numeric  columns  only  
+=========================================================================================
+================================================================
+ numeric_features  =  [col  for  col  in  features  if  pd.api.types.is_numeric_dtype(X[col])]  X  =  X[numeric_features]  print(f"Numeric  features  selected:  {numeric_features}")  print("Sample  values:")  print(X.head())  

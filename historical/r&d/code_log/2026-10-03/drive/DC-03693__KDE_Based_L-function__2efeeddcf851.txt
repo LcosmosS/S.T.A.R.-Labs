@@ -1,0 +1,6 @@
+corr_matrix = pd.DataFrame(X_train_scaled, columns=features).corr()
+sns.heatmap(corr_matrix, cmap="coolwarm", center=0)
+plt.title("Feature Correlation Heatmap")
+plt.tight_layout()
+plt.savefig("feature_correlation.png")
+plt.clf()

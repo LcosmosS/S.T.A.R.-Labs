@@ -1,0 +1,20 @@
+# Convert DataFrames to matrices
+X_train_matrix = Matrix(X_train)
+X_test_matrix = Matrix(X_test)
+
+
+# Define options (similar to PySRRegressor settings)
+options = SymbolicRegression.Options(
+    binary_operators=(+, -, *, /),
+    unary_operators=(exp, log, sqrt),
+    maxsize=15,
+    npop=1000,
+    niterations=10,
+    verbosity=1
+)
+
+
+# Run symbolic regression
+hall_of_fame = EquationSearch(
+    X_train_matrix',
+    y_train,

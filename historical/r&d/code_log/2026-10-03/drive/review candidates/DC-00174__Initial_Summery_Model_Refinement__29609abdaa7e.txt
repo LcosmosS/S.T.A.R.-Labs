@@ -1,0 +1,10 @@
+# Log-transform fluxes to reduce scale differences
+df['log_flux_Ha'] = np.log10(df['flux_Ha'] + 1e-10)
+df['log_flux_Hb'] = np.log10(df['flux_Hb'] + 1e-10)
+df['log_flux_OIII_5007'] = np.log10(df['flux_OIII_5007'] + 1e-10)
+df['log_flux_NII_6584'] = np.log10(df['flux_NII_6584'] + 1e-10)
+# Add flux errors as a measure of uncertainty
+df['log_e_flux_Ha'] = np.log10(df['e_flux_Ha'] + 1e-10)
+
+
+# Update features list

@@ -1,0 +1,22 @@
+        coords1 = np.array([df1_cleaned['ra_rad'], df1_cleaned['dec_rad']]).T
+        coords2 = np.array([df2_cleaned['ra_rad'], df2_cleaned['dec_rad']]).T
+
+        # Perform cross-match using cKDTree
+        tree = cKDTree(coords2)
+        max_dist = np.radians(max_dist_arcsec / 3600.0)
+        dist, idx = tree.query(coords1, k=1, distance_upper_bound=max_dist)
+
+        # Filter matches within the maximum distance
+        matched = dist < max_dist
+        df1_matched = df1_cleaned[matched].copy()
+        df2_matched = df2_cleaned.iloc[idx[matched]].copy()
+
+        # Reset indices
+        df1_matched = df1_matched.reset_index(drop=True)
+        df2_matched = df2_matched.reset_index(drop=True)
+
+        # Print sample matches for debugging
+        if len(df1_matched) > 0:
+            print("Sample matches (first 5):")
+            for i in range(min(5, len(df1_matched))):
+                print(f"Match {i+1}: {ra_col1}={df1_matched[ra_col1].iloc[i]:.4f},

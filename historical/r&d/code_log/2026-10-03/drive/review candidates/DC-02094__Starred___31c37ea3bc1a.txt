@@ -1,0 +1,5 @@
+vectors = ["ra", "logmass", "sfr", "z", "petrorad_r", "dec", "ellipticity", "objid"];
+for(i=1, #vectors, {
+  v = vectors[i];
+  if(type(eval(v)) != "t_VEC", print("Vector ", v, " is not defined"); next);
+  print("Length of ", v, ": ", #eval(v));

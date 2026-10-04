@@ -1,0 +1,6 @@
+      print("LMFDB:", os.path.exists(LMFDB))
+
+     Running in CI: True
+     CI labels: False
+     Cremona ecdata: False
+     LMFDB: False

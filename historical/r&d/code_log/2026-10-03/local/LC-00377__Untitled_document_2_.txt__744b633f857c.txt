@@ -1,0 +1,4 @@
+JOIN SpecObj s ON g.objID = s.bestObjID 
+JOIN PhotoObj p ON g.objID = p.objID 
+JOIN GalSpecExtra gse ON s.specObjID = gse.specObjID 
+JOIN GalSpecLine gsl ON s.specObjID = gsl.specObjID 

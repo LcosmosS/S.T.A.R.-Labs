@@ -1,0 +1,4 @@
+              GIT_DIR=$REPO_ROOT/.git git --git-dir=$REPO_ROOT/.git --work-tree=$REPO_ROOT commit -m "ci: update executed notebook ${base} [skip ci]" || true
+              GIT_DIR=$REPO_ROOT/.git git --git-dir=$REPO_ROOT/.git --work-tree=$REPO_ROOT push || echo "Push skipped (may need permissions)"
+              echo "Committed $base"
+            fi

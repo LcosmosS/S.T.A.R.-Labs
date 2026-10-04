@@ -1,0 +1,6 @@
+# Load pipe3d_data2.csv
+pipe3d_data2 = pd.read_csv('pipe3d_data2.csv')
+
+
+# Merge with the already merged data
+final_merged_data = pd.merge(merged_data, pipe3d_data2, on='mangaid', how='inner')

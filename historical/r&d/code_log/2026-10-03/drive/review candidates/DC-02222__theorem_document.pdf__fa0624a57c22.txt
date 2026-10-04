@@ -1,0 +1,3 @@
+node_counts.get(key, 0) + 1 \n filtered_data = [] \n for node in interweb_data: \n key
+= (node[0], node[1], node[2]) \n if node_counts[key] == 1: \n
+filtered_data.append(node) \n node_counts[key] -= 1 \n \n ranks = [x[2] for x in

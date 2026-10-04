@@ -1,0 +1,2 @@
+unscaled = sum(n=2, 2508, (C_l[n] / T_cmb^2) / n);
+print("Unscaled: ", unscaled);

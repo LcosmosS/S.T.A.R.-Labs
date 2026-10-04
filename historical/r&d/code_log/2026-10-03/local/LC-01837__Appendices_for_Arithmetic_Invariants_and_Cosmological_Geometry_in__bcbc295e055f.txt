@@ -1,0 +1,5 @@
+         regressors  =  [              ('RandomForest',  RandomForestRegressor(random_state=42)),              ('HistGradientBoosting',  HistGradientBoostingRegressor(random_state=42))          ]          if  XGBRegressor:              regressors.append(('XGBoost',  XGBRegressor(random_state=42)))          if  LGBMRegressor:              regressors.append(('LightGBM',  LGBMRegressor(random_state=42)))          if  CatBoostRegressor  and  catboost_params_reg:              regressors.append(('CatBoost',  CatBoostRegressor(**catboost_params_reg,  
+verbose=0)))
+          stacking_reg  =  StackingRegressor(estimators=regressors,  
+final_estimator=HistGradientBoostingRegressor(random_state=42))
+         pipeline  =  Pipeline([              ('scaler',  StandardScaler(with_mean=False)),              ('regressor',  stacking_reg)          ])          pipeline.fit(X_tf,  y_tf)          tf_r2  =  cross_val_score(pipeline,  X_tf,  y_tf,  cv=5,  scoring='r2').mean()          print("Tully-Fisher  R²:",  tf_r2)           tf_perm_importance  =  permutation_importance(pipeline.named_steps['regressor'],  

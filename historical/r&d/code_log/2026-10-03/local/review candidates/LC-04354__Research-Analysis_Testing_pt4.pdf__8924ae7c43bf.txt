@@ -1,0 +1,8 @@
+# Main testing loop (Attempts 91–95)
+max_attempts = 95
+attempt = 91
+current_fib_index = 82
+phi_powers = [0, 1, 2]
+
+
+while attempt <= max_attempts:

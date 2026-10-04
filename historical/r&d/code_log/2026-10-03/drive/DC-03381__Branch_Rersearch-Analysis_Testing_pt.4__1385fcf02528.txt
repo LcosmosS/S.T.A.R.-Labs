@@ -1,0 +1,9 @@
+coeffs := [0, 0, 0, 3, 22];  // Curve 1: y^2 = x^3 + 3x + 22
+// coeffs := [0, 0, 0, 22, 7];  // Curve 2: y^2 = x^3 + 22x + 7
+// coeffs := [0, 0, 0, 333, 106];  // Curve 3: y^2 = x^3 + 333x + 106
+// coeffs := [0, 0, 0, 355, 113];  // Curve 4: y^2 = x^3 + 355x + 113
+// coeffs := [0, 0, 0, -1706, 6320];  // Original curve: y^2 = x^3 - 1706x + 6320
+
+
+// Define the elliptic curve
+E := EllipticCurve(coeffs);

@@ -1,0 +1,7 @@
+masses = readvec("masses.txt");
+N = length(masses);
+if (N == 0, error("No valid masses found"));
+sorted_masses = vecsort(masses);
+if (N % 2 == 1,
+    M0 = sorted_masses[(N+1)/2],
+    M0 = (sorted_masses[N/2] + sorted_masses[N/2 + 1]) / 2

@@ -1,0 +1,5 @@
+reg = 1;  /* Default for rank 0 */
+if (alg_rank != 0, gens = ellgenerators(E); if (#gens > 0, reg = ellheight(E, gens[1])));
+reg_scaled = reg * phi;
+         27. print("Scaled regulator (Reg * phi): ", reg_scaled);
+         28. Compute Tamagawa product:

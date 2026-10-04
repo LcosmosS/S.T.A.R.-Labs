@@ -1,0 +1,248 @@
+﻿The Arithmetic–Cosmic Structure Conjecture (ACSC)
+Introduction
+The large‑scale distribution of matter in the universe exhibits a striking topological organization: clusters, filaments, sheets, and voids form a persistent, multi‑scale structure known as the cosmic web. Modern topological data analysis (TDA) provides a rigorous framework for quantifying this structure through persistent homology, enabling direct comparison between observational data and mathematical models of spatial organization.
+In parallel, the arithmetic geometry of elliptic curves over Q encodes deep structural information in a compact set of invariants—discriminant, conductor, Mordell–Weil rank, and regulator. These invariants vary in highly constrained ways across isogeny classes and families of curves, forming a natural high‑dimensional parameter space.
+The Arithmetic–Cosmic Structure Conjecture (ACSC) proposes a formal bridge between these two domains. The conjecture asserts that, after applying a stable, rank-normalized projection Φ:E→R3 and subsequent domain alignment, the resulting point cloud can reproduce the persistent homology of observed cosmic structure with quantitatively bounded error.
+________________
+
+
+1. Categories and Objects
+1.1 Elliptic Curves
+Let E denote the set of isomorphism classes of elliptic curves over Q in minimal Weierstrass form. For each E∈E, we define the arithmetic invariant vector:
+I(E)=(ΔE​,NE​,rE​,RE​,ΩE​,TE​)
+where:
+* ΔE​: minimal discriminant
+* NE​: conductor
+* rE​: Mordell–Weil rank
+* RE​: regulator
+* ΩE​: real period
+* TE​: torsion order ∣E(Q)tors​∣
+1.2 Cosmic Topological Data
+Let Mcosmo​⊂R3 be a finite point cloud representing a volume‑limited sample of observed large‑scale cosmic structure (e.g., galaxy positions in comoving coordinates). We analyze this via:
+* VRϵ​(X): The Vietoris–Rips complex at scale ϵ>0.
+* Dk​(X): The persistence diagram in homological dimension k∈{0,1,2}.
+* W2​(Dk​(X),Dk​(Y)): The 2‑Wasserstein distance between diagrams.
+________________
+
+
+2. Projection Family and Primary Φ
+2.1 Projection Framework
+A projection map Φ:E→R3 must satisfy Projection Stability: there exists CΦ​>0 such that:
+∥Φ(E1​)−Φ(E2​)∥R3​≤CΦ​∥logI(E1​)−logI(E2​)∥Rm​
+2.2 Rank‑Normalized Primary Projection (Φprim​)
+To mitigate scale drift across ranks, we define the rank normalization factor Ψr​(E)=2rE​(rE​+1)​ and the radial (comoving‑volume proxy) coordinate VE​:
+VE​=V0​⋅TE​log(ΩE​/2π)RE1/max(1,rE​)​exp(Ψr​(E))​
+Angular coordinates are defined by:
+θE​=mod(log10​∣ΔE​∣,2π),ϕE​=mod(πlog10​NE​,π)
+The primary projection Φprim​ maps E to Cartesian coordinates (xE​,yE​,zE​) via standard spherical–Cartesian transform.
+________________
+
+
+3. Refined Arithmetic–Cosmic Structure Conjecture
+Statement: Let EB​ be a finite sample of curves and PB​=Φprim​(EB​). Let Q denote the non‑linear quantile transformer fitted on Mcosmo​. Define the aligned arithmetic cloud PB​=Q(PB​). There exists a choice of V0​ and Nmax​ such that:
+1. Persistence Proximity: W2​(Dk​(PB​),Dk​(Mcosmo​))<ϵk​ for pre-registered thresholds ϵk​≈10−2.
+2. Homology Reconstruction: Hk​(VRϵ​(PB​);F)≅Hk​(Mcosmo​;F) for ϵ in a non-trivial interval.
+3. Isogeny Feature Realization: Full isogeny classes map to geometrically coherent subsets of PB​ whose persistence is bounded below by a positive constant.
+4. Functional Rank–Topology Correspondence: In expectation, the local Betti-1 count matches a function of rank: E[β1​(UE​∩PB​)]≈F(rE​).
+________________
+
+
+4. Empirical Verification Protocol
+4.1 Data Preprocessing and Domain Alignment
+   * Arithmetic: Use Cremona/LMFDB restricted to N≤Nmax​, including full isogeny classes.
+   * Cosmic: Volume-limited sample from SDSS/DESI in comoving coordinates.
+   * Quantile Alignment: Apply a coordinate-wise non-linear quantile transformation fitted on Mcosmo​ to PB​ to force marginal distributions to match, focusing the test on structural organization.
+4.2 Topological Pipeline
+   * Complex: Vietoris–Rips using GUDHI or Ripser.
+   * Scale Locking: Designate a Topological Locked Scale $\epsilon_ = 25.0$ Mpc* for primary hypothesis evaluation.
+4.3 Statistical Tests and Decision Rule
+   * Null Models: Compare observed W2​ against:
+   * Null-A: Random spatial distribution.
+   * Null-B: Permuted invariants (shuffling rE​).
+   * Null-C: Alternative projections (PTD, MCJ).
+   * Decision Rule: Reject H0​ (support ACSC) if Wkobs​<ϵk​ and p<0.01 relative to Null-B for k=1.
+4.4 Robustness and Ablation
+The protocol requires ablation studies specifically removing Ψr​ or the Quantile Alignment to demonstrate that these specific v3.1 mathematical corrections are necessary for the conjecture to hold.
+Remarks
+   * Pre‑registration. All choices that affect the test (the form of Φprim, V0, quantile transformer specification, ε ranges, and null models) must be pre‑registered.
+   * Null models. Empirical verification requires comparison to pre‑specified nulls (uniform spatial, permuted invariants, alternative projections) with empirical p-values computed from permutation or bootstrap distributions.
+   * Separation from companion work. The refined conjecture above is stated purely in terms of arithmetic invariants, statistical transforms, and TDA constructs. Interpretive frameworks that invoke entropy, cohomology, or symbolic‑field theory are not part of this formal statement and are developed separately in a companion manuscript.
+Lemma 1: Projection stability 
+There exists a constant C>0 such that for all E1,E2∈E,
+>∥Φ(E1)−Φ(E2)∥R3>  ≤  >C ∥log⁡I(E1)−log⁡I(E2)∥R4,>
+where
+>log⁡I(E):=(log⁡∣ΔE∣, log⁡NE, log⁡(1+rE), log⁡(1+RE)).>
+Proof.  
+By definition, each coordinate of Φ(E) is obtained from log⁡I(E) by composing with smooth functions and multiplying by fixed constants. For instance, in the simple angular–height model,
+φE=c1log⁡∣ΔE∣,θE=c2log⁡NE,zE=c3rE,
+for suitable constants c1,c2,c3>0 (absorbing log⁡Δmax⁡,log⁡Nmax⁡,α into them). Each of these is a linear (or affine) function of the corresponding logarithmic invariant.
+Thus there exists a matrix A∈M3×4(R) and a vector b∈R3 such that
+Φ(E)=A⋅log⁡I(E)+b.
+Then for any E1,E2,
+Φ(E1)−Φ(E2)=A⋅(log⁡I(E1)−log⁡I(E2)).
+Taking norms and using the operator norm ∥A∥op,
+∥Φ(E1)−Φ(E2)∥≤∥A∥op⋅∥log⁡I(E1)−log⁡I(E2)∥.
+Setting C:=∥A∥op yields the desired inequality. □
+(If one uses the spherical embedding with trigonometric functions, the same argument applies on any compact domain of log⁡I(E): the coordinate functions are smooth with bounded derivatives, hence globally Lipschitz on that domain.)
+Lemma 2: Isogeny class closure  
+Fix bounds ∣ΔE∣≤Δmax⁡, NE≤Nmax⁡. Let
+>EB:={E∈E:∣ΔE∣≤Δmax⁡, NE≤Nmax⁡}.>
+Then EB is closed under isogeny: if E∈EB and E′ is isogenous to E over Q, then E′∈EB (up to possibly adjusting the bounds to a slightly larger but finite Δmax⁡′,Nmax⁡′).
+Proof (standard finiteness argument, sketch).  
+Let E/Q be an elliptic curve with conductor NE≤Nmax⁡. By modularity, E corresponds to a weight–2 newform of level NE. The isogeny class of E over Q is finite; more concretely, there are only finitely many Q–isomorphism classes of elliptic curves in the isogeny class of E, and their conductors are all equal to NE.
+Similarly, for a fixed conductor bound Nmax⁡, there are only finitely many isogeny classes with NE≤Nmax⁡. For each such class, the minimal discriminants of its members are bounded in absolute value by some constant depending on the class. Taking the maximum over finitely many classes yields a global bound Δmax⁡′ such that any curve isogenous to a member of EB satisfies ∣ΔE′∣≤Δmax⁡′ and NE′≤Nmax⁡.
+Thus, after possibly enlarging Δmax⁡ to Δmax⁡′, the set EB is stable under isogeny. In particular, for any E∈EB and any E′ isogenous to E, we have E′∈EB. □
+(If one insists on the original Δmax⁡, one can define EB as the union of full isogeny classes whose conductors are ≤Nmax⁡; this is then manifestly closed under isogeny.)
+Lemma 3: Topology consistency
+ 
+Let Mcosmo⊂R3 be a compact 3–dimensional manifold with metric d. Let P⊂R3 be a finite point cloud obtained as P=Φ(EB) for some finite EB⊂Eφ.
+Assume:
+   1. P is δ–dense in Mcosmo, i.e. for every x∈Mcosmo there exists p∈P with d(x,p)≤δ.
+   2. δ>0 is sufficiently small relative to the reach/injectivity radius of Mcosmo.
+Then there exists an interval [εb,εd] with 0<εb<εd such that, for all ε∈[εb,εd],
+>Hk(VRε(P);F)≅Hk(Mcosmo;F),k=0,1,2.>
+Proof (standard TDA consistency, sketch).  
+This is a direct application of known results in topological data analysis relating Vietoris–Rips complexes of dense samples to the homotopy type of the underlying manifold.
+Let Tubρ(Mcosmo) denote the ρ–tubular neighborhood of Mcosmo in R3. For sufficiently small ρ>0, the inclusion Mcosmo↪Tubρ(Mcosmo) is a homotopy equivalence. If P is δ–dense with δ≪ρ, then for ε in an appropriate range (depending on δ,ρ), the union of balls
+Uε(P):=⋃p∈PB(p,ε)
+is homotopy equivalent to Mcosmo. By the Nerve Lemma, the Čech complex of P at scale ε has the same homotopy type as Uε(P), hence as Mcosmo.
+Moreover, for ε in a slightly larger but controlled range, the Vietoris–Rips complex VRε(P) is known to be homotopy equivalent to the Čech complex (up to interleaving bounds). Thus there exists an interval [εb,εd] such that
+VRε(P)≃Mcosmo
+for all ε∈[εb,εd]. Homotopy equivalence implies isomorphism of homology groups in all degrees, in particular for k=0,1,2.
+Theorem schema (ACSC as a conditional theorem)
+Statement
+Let EB⊂E be a finite family of elliptic curves and let Mcosmo⊂R3 be a compact target manifold (or finite point cloud sampled from it). Let
+Φ:E→R3
+be a projection map. Suppose Φ satisfies the hypotheses (X)–(Z) below. Then there exist explicit constants and a nontrivial scale interval [εb,εd] for which the persistent homology of the arithmetic point cloud PB:=Φ(EB) approximates that of Mcosmo with quantitative bounds; moreover, isogeny classes in EB are realized as coherent topological features of PB, and local arithmetic rank correlates with local topological complexity.
+Hypotheses
+   * (X) Log‑Lipschitz stability. There exists CΦ>0 such that for all E1,E2∈EB,
+∥Φ(E1)−Φ(E2)∥R3≤CΦ ∥log⁡I(E1)−log⁡I(E2)∥R4,
+where log⁡I(E)=(log⁡∣ΔE∣,log⁡NE,log⁡(1+rE),log⁡(1+RE)).
+   * (Y) Isogeny coherence. The family EB is a union of full isogeny classes and for every isogeny class C⊂EB the images Φ(C) form a connected subset of R3 whose diameter is bounded by DC.
+   * (Z) Sampling density and geometric regularity. The image PB=Φ(EB) is δ‑dense in Mcosmo (i.e., every point of Mcosmo lies within distance δ of some point of PB), and δ is smaller than a positive geometric scale determined by the reach (or condition radius) of Mcosmo.
+Conclusions (there exist constants depending only on CΦ, δ, and geometric data of Mcosmo)
+   1. Persistence diagram proximity. For each homological degree k∈{0,1,2} there exists a constant Ck>0 and thresholds εk>0 such that
+W2(Dk(PB), Dk(Mcosmo))≤Ck⋅δand in particularW2(Dk(PB), Dk(Mcosmo))<εk
+whenever δ is sufficiently small.
+   2. Homology isomorphism on a scale window. There exists a nontrivial interval [εb,εd] (with εb,εd explicit functions of δ and the reach of Mcosmo) such that for every ε∈[εb,εd],
+Hk(VRε(PB);F)≅Hk(Mcosmo;F),k=0,1,2.
+   3. Isogeny–feature realization. Each isogeny class C⊂EB maps to a connected topological feature of PB (a cluster or a filament) whose persistence (birth–death interval) is bounded below by a positive constant depending on the intra‑class diameter DC and the global sampling density δ.
+   4. Rank–topology correlation (local statement). For any E∈EB and any sufficiently small neighborhood U of Φ(E) in R3, the local Betti number β1(U∩PB) is a nondecreasing function of rE in expectation under mild regularity assumptions on the distribution of curves in EB; more precisely, there exist constants a,b≥0 such that
+E[β1(U∩PB)∣rE]≥a rE−b.
+Proof sketch
+Step 1 — Stability of coordinates (use (X)).  
+By (X) we have a linear (or locally Lipschitz) control of Euclidean displacement in terms of logarithmic changes of arithmetic invariants (Lemma 1). Thus small perturbations in invariants produce small geometric perturbations of the point cloud PB. Concretely, if Δarith:=sup⁡E∈EB∥log⁡I(E)−log⁡I0(E)∥ measures deviation from an idealized arithmetic template I0, then
+sup⁡p∈PBinf⁡x∈P0∥p−x∥≤CΦ Δarith,
+where P0 is the corresponding idealized image.
+Step 2 — Sampling density and manifold reconstruction (use (Z) and Lemma 3).  
+Hypothesis (Z) supplies δ‑density of PB in Mcosmo. Standard results in geometric inference (Nerve Lemma, reach/interleaving bounds) imply the existence of a scale window [εb,εd] for which the Vietoris–Rips (or Čech) complexes of PB recover the homotopy type of Mcosmo. This yields conclusion (2).
+Step 3 — Stability of persistence diagrams.  
+Persistence diagrams are stable under perturbations of the input point cloud: small Hausdorff perturbations of point sets produce small bottleneck/Wasserstein distances between diagrams (interleaving/bottleneck stability theorems). Combining the geometric perturbation bound from Step 1 with the sampling density control from Step 2 yields the quantitative bound in conclusion (1): there exist constants Ck with
+W2(Dk(PB),Dk(Mcosmo))≤Ck⋅δ.
+Step 4 — Isogeny coherence implies feature realization (use (Y)).  
+By (Y) each isogeny class C maps to a connected subset of PB of controlled diameter DC. If DC is small relative to the inter‑feature spacing of PB, the points of Φ(C) form a coherent cluster or filament whose corresponding homological feature (connected component or 1‑cycle) persists across a nontrivial range of scales. The persistence (birth–death length) of that feature is bounded below by a positive function of the intra‑class spacing and the global sampling density; this gives conclusion (3).
+Step 5 — Rank–topology correlation (statistical argument).  
+Under reasonable regularity on how curves of different ranks populate EB (for instance, monotone sampling density in rank or bounded conditional variance), higher rank rE increases the expected local node degree and loop formation probability in the neighborhood of Φ(E). Using probabilistic models for random geometric graphs (e.g., connectivity and cycle formation thresholds), one derives a linear lower bound in expectation of local β1 as a function of rE, yielding conclusion (4). The constants a,b depend on the local sampling intensity and the chosen neighborhood radius.
+Combining Steps 1–5 completes the proof sketch of the theorem schema. □
+Remarks and implementation notes
+   * The constants Ck,εb,εd,a,b are explicit in principle: they can be computed from CΦ, the reach of Mcosmo, the sampling density δ, and standard interleaving constants appearing in stability theorems for persistence diagrams.
+   * The statistical rank–topology statement is an expectation result; a deterministic monotone mapping from rank to Betti numbers would require stronger combinatorial control on Φ(EB) (for example, deterministic packing/separation bounds per rank).
+   * The theorem schema isolates the necessary structural assumptions on Φ (stability, isogeny coherence, sampling density). Verifying these assumptions empirically or proving them for a particular construction of Φ (e.g., PTD, MCJ, FT) is the natural next step toward a rigorous validation program.
+Falsification experiment — protocol and decision rules
+This section gives a self‑contained, preregisterable experiment to test the Arithmetic–Cosmic Structure Conjecture (ACSC). It specifies data, preprocessing, projection variants, topological pipeline, metrics, null models, statistical tests, robustness checks, and a clear decision rule for falsification.
+1. Goals and hypothesis
+Primary goal. Test whether a projection Φ from elliptic‑curve invariants to R3 produces a point cloud whose persistent homology matches that of an observed cosmic volume within pre‑specified tolerances.
+Null hypothesis H0. For the chosen Φ and datasets, the 2‑Wasserstein distances between persistence diagrams of the arithmetic point cloud and the observed cosmic point cloud are not smaller than those produced by appropriate null models (randomized or alternative projections).
+Alternative hypothesis HA. The chosen Φ yields significantly smaller Wasserstein distances (better topological match) than null models and meets pre‑registered thresholds εk for k=0,1,2.
+Pre‑register the experiment (data, Φ, thresholds, tests) before running.
+2. Data preprocessing and domain alignment
+Data sources and selection
+   * Arithmetic catalog. Use Cremona/LMFDB exports or Sage‑generated tables restricted to a conductor bound N≤Nmax⁡. Include full isogeny classes for each conductor. Pre‑register the conductor bound and any selection filters.
+   * Cosmic catalog. Use a volume‑limited sample from SDSS or DESI in comoving coordinates; pre‑register the survey, volume, and selection cuts.
+Non‑linear quantile alignment
+To ensure that metric scale differences and survey selection effects do not dominate topological comparisons, apply a coordinate‑wise non‑linear quantile transformation fitted on the observational point cloud Mcosmo and then applied to the arithmetic point cloud PB=Φprim(EB). Concretely:
+   1. For each coordinate j∈{1,2,3} compute the empirical cumulative distribution function Fjcosmo of the j-th coordinate of Mcosmo.
+   2. For each point p∈PB with coordinate pj, replace pj by (Fjcosmo)−1(FjPB(pj)), where FjPB is the empirical CDF of the j-th coordinate of PB. In practice use a smooth quantile transformer (e.g., monotone spline or rank‑based interpolation) fitted on Mcosmo and applied to PB.
+This domain alignment step is a deterministic, pre‑registered transform that forces marginal distributions to match and thereby focuses subsequent topological comparisons on structural organization rather than trivial scale or boundary mismatches. Document the exact transformer, interpolation method, and any extrapolation rules.
+3. Projection family and primary Φ
+Pre‑register one primary projection and two alternatives (BSD‑independent):
+   * Primary (Φ\_primary): the paper’s canonical map, e.g.
+Φ(E)=(2πlog⁡∣ΔE∣log⁡Δmax⁡, πlog⁡NElog⁡Nmax⁡, α rE),
+with Δmax⁡,Nmax⁡,α fixed before experiments.
+   * Alternative 1 (PTD): (log⁡∣Δ∣, log⁡Ω, log⁡(1+∣E(Q)tors∣)).
+   * Alternative 2 (MCJ): (log⁡N, log⁡j(E), log⁡(1+RE)).
+Fix constants Δmax⁡,Nmax⁡,α and any scaling factors in advance.
+4. Topological pipeline and parameters
+Complex construction and filtration
+   * Complex. Use Vietoris–Rips complexes built from Euclidean distances on the aligned point clouds. Specify the software implementation (GUDHI or Ripser) and version.
+   * Filtration range. Compute persistence diagrams over a pre‑specified range ε∈[εmin⁡,εmax⁡] with a fixed number of steps; pre‑register εmin⁡,εmax⁡, and the step resolution.
+Topological scale locking
+While full barcodes are retained for completeness, designate a Topological Locked Scale ε∗ for primary hypothesis evaluation. Two options are acceptable (pre‑register one):
+   * Fixed scale. Set ε∗=25.0 Mpc (empirically motivated).
+   * Adaptive scale. Compute the median k-nearest‑neighbor distance across the observational point cloud and set ε∗ to that median (or a fixed multiple thereof).
+At ε∗ record summary statistics used in hypothesis tests: counts of long bars in H1 and H2, total persistence in each degree, and local Betti statistics in neighborhoods of projected points.
+Metrics and stability
+   * Primary metric. For each homological degree k∈{0,1,2} compute the 2‑Wasserstein distance W2(Dk(PB),Dk(Mcosmo)) between persistence diagrams.
+   * Secondary metrics. Persistence landscapes, persistence entropy, and summary statistics at ε∗.
+   * Stability. Use standard stability theorems to relate small perturbations in point clouds (after quantile alignment) to small changes in persistence diagrams; record interleaving constants where applicable.
+5. Null models and controls
+Run the following nulls and controls (each with m repeats, m≥50):
+A. Random spatial null (Null‑A).
+   * Randomly sample nE points uniformly in the same bounding box as the cosmic data.
+B. Permuted‑invariants null (Null‑B).
+   * Keep arithmetic invariants but randomly permute one coordinate (e.g., permute rE across curves) before applying Φ.
+C. Alternative projection nulls (Null‑C).
+   * Use the two alternative Φ mappings (PTD, MCJ) as baselines.
+D. Synthetic cosmic null (Null‑D).
+   * Use a Poisson point process with the same density and two‑point correlation function matched to the observed cosmic data (if available).
+For each null, compute the same persistence metrics and build empirical distributions of W2.
+6. Statistical tests and decision rule
+Test statistic. For each k, the observed Wkobs:=W2(Dk(P),Dk(Mcosmo)).
+Reference distribution. For each null model j, obtain empirical distribution {Wk,j(i)}i=1m.
+p‑value (one‑sided).
+pk,j=1+#{i:Wk,j(i)≤Wkobs}m+1.
+(One‑sided because smaller W2 indicates better match.)
+Multiple testing correction. Use Bonferroni or Benjamini–Hochberg across k and null models; pre‑register choice (recommend BH at FDR 0.05).
+Decision rule (falsification).
+   * Reject H0 (support ACSC) if:
+   * For the primary Φ, Wkobs<εk for all k, and
+   * For at least one null model j, pk,j<0.01 (after correction) for k=1 (primary focus on β1), and similar significance for k=0,2.
+   * Fail to reject H0 (falsify ACSC) if:
+   * Wkobs≥εk for any k, or
+   * Wkobs is not significantly smaller than the null distributions (all pk,j above corrected threshold).
+Record effect sizes (difference between observed Wkobs and null means) and confidence intervals via bootstrap.
+7. Robustness and ablation studies
+Run the following secondary checks:
+   * Subsample stability: repeat experiment on 5 independent subsamples of EB and cosmic data (different spatial subvolumes).
+   * Noise injection: add Gaussian jitter to projected coordinates (σ up to 5% of median nearest‑neighbor distance) and recompute W2.
+   * Parameter sweep: vary α,Δmax⁡,Nmax⁡ across a grid and report sensitivity of Wkobs.
+   * Ablation: remove one invariant (e.g., drop RE) from Φ and test performance loss.
+   * Cross‑survey test: train/fit parameters on SDSS subset and test on an independent survey (e.g., DESI) if available.
+All robustness runs must be reported, with pre‑specified acceptance criteria (e.g., performance degrades by no more than 20% under small perturbations).
+8. Reproducibility, code, and data release
+Code.
+   * Provide a single repository with:
+   * data preprocessing scripts,
+   * projection implementations,
+   * TDA pipeline (GUDHI/Ripser calls),
+   * statistical testing code,
+   * notebooks to reproduce figures and tables.
+   * Include exact software versions and environment (e.g., requirements.txt, Dockerfile).
+Data.
+   * Release derived datasets (projected coordinates, persistence diagrams) subject to survey data policies.
+   * Provide random seeds and a manifest of all inputs.
+Pre‑registration.
+   * Publish the full protocol (this section) to a timestamped preprint server or OSF before running the main experiment.
+9. Expected outcomes and interpretation guidance
+   * Strong support: Wkobs≪ null means, p-values significant after correction, and Wkobs<εk for k=0,1,2. Conclude ACSC is not falsified for the chosen Φ and dataset; report effect sizes and robustness.
+   * Weak support / inconclusive: modest improvement over nulls but not meeting εk or inconsistent across subsamples. Report limitations and next steps.
+   * Refutation: Wkobs comparable to or worse than nulls, failing thresholds. Conclude ACSC (for this Φ and dataset) is falsified; analyze failure modes (sampling, projection choice, numeric instability).
+10. Reporting checklist (to include in manuscript)
+   * [ ] Pre‑registered protocol link and timestamp.
+   * [ ] Exact Φ definitions and parameter values.
+   * [ ] Data sources, selection criteria, and sample sizes.
+   * [ ] Software versions and seeds.
+   * [ ] Persistence diagrams and raw W2 values.
+   * [ ] Null model distributions and p‑values (with correction).
+   * [ ] Robustness and ablation results.
+   * [ ] Interpretation and limitations.

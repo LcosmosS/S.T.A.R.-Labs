@@ -1,0 +1,5 @@
+plt.hist(logmass[group2_indices], bins=30, density=True)
+plt.title("Group 2 logmass Distribution")
+plt.xlabel("logmass")
+plt.ylabel("Density")
+                  * plt.show()

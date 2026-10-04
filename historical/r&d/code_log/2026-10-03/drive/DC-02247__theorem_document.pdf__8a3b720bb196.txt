@@ -1,0 +1,4 @@
+# Extracting text from the PDF files
+pdf_texts = extract_text_from_pdfs(pdf_files)
+# Displaying the number of documents processed
+len(pdf_texts)

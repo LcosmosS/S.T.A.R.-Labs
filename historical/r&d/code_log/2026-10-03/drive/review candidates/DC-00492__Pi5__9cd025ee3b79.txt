@@ -1,0 +1,26 @@
+        try:
+            with open(checkpoint_file, 'a', newline='') as chk_f:
+                chk_writer = csv.writer(chk_f)
+                chk_writer.writerow([batch_idx, 1])
+        except IOError as e:
+            log_print(f"Failed to write to checkpoint file {checkpoint_file}: {e}")
+
+
+        log_print(f"Completed batch {batch_idx+1}/{num_batches} ({(batch_idx+1)/num_batches*100:.1f}% done)")
+        gc.collect()
+
+
+    log_print("Processing complete, generating plots...")
+    try:
+        if plot_data['ranks']:
+            plt.figure(figsize=(10, 6))
+            plt.hist(plot_data['ranks'], bins=range(int(min(plot_data['ranks'])), int(max(plot_data['ranks'])) + 2), edgecolor='black')
+            plt.title("Distribution of Elliptic Curve Ranks")
+            plt.xlabel("Rank")
+            plt.ylabel("Frequency")
+            plt.savefig("distortion_free_rank_distribution_v15.png")
+            plt.close()
+            log_print("Rank distribution plot saved as distortion_free_rank_distribution_v15.png")
+
+
+        # Symbolic regression before plotting

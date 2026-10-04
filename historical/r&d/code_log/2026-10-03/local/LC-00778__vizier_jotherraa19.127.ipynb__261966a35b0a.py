@@ -1,0 +1,1 @@
+voresource.access_modes()

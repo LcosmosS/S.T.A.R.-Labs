@@ -1,0 +1,3 @@
+  sum_M_over_M0 = sum(i=1, length(M), M[i] / M0);
+  sum_M0_over_M = sum(i=1, length(M), M0 / M[i]);
+  K_theory = sum_M_over_M0 / sum_M0_over_M;

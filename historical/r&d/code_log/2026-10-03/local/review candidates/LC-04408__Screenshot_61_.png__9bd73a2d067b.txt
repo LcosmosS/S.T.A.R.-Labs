@@ -1,0 +1,2 @@
+loaded_model = joblib. load(' bsd_model. pkl')
+y_new_pred = loaded_model.

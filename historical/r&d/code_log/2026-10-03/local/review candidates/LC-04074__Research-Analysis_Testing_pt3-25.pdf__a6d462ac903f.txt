@@ -1,0 +1,6 @@
+# Plot interweb with enhanced filaments
+if interweb_data:
+    fig = plt.figure(figsize=(12, 10))
+    ax = fig.add_subplot(111, projection='3d')
+    ranks = [x[2] for x in interweb_data]
+    log_deltas = [x[8] for x in interweb_data]

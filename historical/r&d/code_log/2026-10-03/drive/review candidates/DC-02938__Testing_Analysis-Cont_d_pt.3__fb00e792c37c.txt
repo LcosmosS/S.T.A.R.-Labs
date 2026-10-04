@@ -1,0 +1,3 @@
+periods = ellperiods(E, 1);  /* Real periods */
+omega = periods[1];          /* Real period */
+         * Error: *** variable name expected: omega=periods[1];

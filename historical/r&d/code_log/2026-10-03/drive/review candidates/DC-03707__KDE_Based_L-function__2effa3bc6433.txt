@@ -1,0 +1,6 @@
+gz_df['cosmo_rank'] = 0.7 * gz_df['Pth100_norm'] + 0.3 * gz_df['morph_sum_norm']
+gz_df = gz_df[gz_df['dust_corrected_mag'].notna() & (gz_df['dust_corrected_mag'] < 100)]
+gz_df['expected_SFR'] = 1e-4 * (10 ** (0.4 * (22 - gz_df['dust_corrected_mag']))) ** 1.4
+gz_df['expected_SFR'].replace([np.inf, -np.inf], np.nan, inplace=True)
+gz_df.dropna(subset=['expected_SFR'], inplace=True)
+gz_df['expected_SFR'] = np.log1p(gz_df['expected_SFR'])

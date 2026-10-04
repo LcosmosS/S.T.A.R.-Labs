@@ -1,0 +1,7 @@
+plt.plot(s_range, L_vals)
+plt.xlabel("s")
+plt.ylabel("L_cosmo(s)")
+plt.title("L_cosmo(s) Behavior")
+plt.savefig("L_cosmo_curve.png")
+plt.close()
+* Change: Used pd.qcut to create 10 bins with roughly equal numbers of data points, reducing the number of empty bins. The n_bins variable dynamically adjusts to the number of unique bins created.

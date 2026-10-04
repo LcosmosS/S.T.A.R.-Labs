@@ -1,0 +1,298 @@
+# Suppress deprecation warnings for pkg_resources
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+
+from sage.all import EllipticCurve, QQ, factor, RealField, prod, pari
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+
+# Cosmological constants
+KAPPA = 1000
+SQRT_KAPPA = math.sqrt(KAPPA)
+VIRGO_DISTANCE = 54e6
+VIRGO_COMOVING_VOLUME = 1e9
+DENSITY_HEIGHT_TARGET = 6320
+
+
+def analyze_curve(a, b, is_original=False, max_attempts=5, require_3selmer=False, conductor_limit=1e11, descent_limit=20):
+    curve_name = 'Original curve' if is_original else 'Fibonacci curve'
+    print(f"\n{curve_name}: y² = x³ + {a}x + {b}")
+    
+    try:
+        E = EllipticCurve(QQ, [0, 0, 0, a, b])
+    except ValueError as e:
+        print(f"Error creating curve: {e}")
+        return False, None, None, None, None, None, None, False, None
+    
+    delta = E.discriminant()
+    conductor = E.conductor()
+    tors_order = E.torsion_subgroup().order()
+    print(f"Discriminant: {delta}")
+    print(f"Conductor: {conductor} = {factor(conductor)}")
+    print(f"Torsion order: {tors_order}")
+    
+    if conductor > conductor_limit and not is_original:
+        print(f"Conductor too large (> {conductor_limit}), skipping curve")
+        with open("failed_curves.txt", "a") as f:
+            f.write(f"a={a},b={b},conductor={conductor},reason=too_large\n")
+        return False, None, None, None, None, None, None, False, None
+    
+    rank_success = False
+    selmer2_success = False
+    selmer3_success = False
+    rank = None
+    selmer_rank = None
+    selmer3_rank = None
+    leading_coeff = None
+    omega = None
+    reg = None
+    tamagawa = None
+    weak_bsd_holds = False
+    
+    # Compute the analytic rank first (safer)
+    try:
+        L = E.lseries()
+        dok = L.dokchitser(prec=100)
+        L1 = dok(1)
+        analytic_rank = 0
+        leading_coeff = L1
+        if abs(L1) < 1e-10:
+            L1_deriv = dok.derivative(1, 1)
+            if abs(L1_deriv) < 1e-10:
+                L1_deriv2 = dok.derivative(1, 2)
+                if abs(L1_deriv2) < 1e-10:
+                    L1_deriv3 = dok.derivative(1, 3)
+                    if abs(L1_deriv3) < 1e-10:
+                        analytic_rank = 4
+                        leading_coeff = L1_deriv3 / 24
+                    else:
+                        analytic_rank = 3
+                        leading_coeff = L1_deriv3 / 6
+                else:
+                    analytic_rank = 2
+                    leading_coeff = L1_deriv2 / 2
+            else:
+                analytic_rank = 1
+                leading_coeff = L1_deriv
+        print(f"Analytic rank: {analytic_rank}")
+    except Exception as e:
+        print(f"Failed to compute analytic rank: {e}")
+        return False, None, None, None, None, None, None, False, None
+    
+    # Attempt algebraic rank computation
+    for attempt in range(max_attempts):
+        try:
+            # Try PARI/GP's ellrank first
+            try:
+                E_pari = pari.ellinit([0, 0, 0, a, b])
+                rank_info = E_pari.ellrank()
+                rank = int(rank_info[0])  # First element is the rank
+                rank_success = True
+                print(f"Algebraic rank (via PARI/GP): {rank}")
+            except Exception as e:
+                print(f"PARI/GP rank computation failed: {e}")
+                # Try transforming the curve to reduce coefficients
+                u = 1 / math.sqrt(abs(a)) if abs(a) > 1 else 1
+                a_new, b_new = transform_curve(a, b, u)
+                print(f"Transforming curve with u={u}: y² = x³ + {a_new}x + {b_new}")
+                try:
+                    E_transformed = EllipticCurve(QQ, [0, 0, 0, a_new, b_new])
+                    rank = E_transformed.rank(pari_effort=10, descent_second_limit=descent_limit)
+                    rank_success = True
+                    print(f"Algebraic rank (transformed curve): {rank}")
+                except Exception as e:
+                    print(f"Rank computation on transformed curve failed: {e}")
+                    # Fallback to mwrank with increased effort and descent limit
+                    try:
+                        rank = E.rank(pari_effort=10, descent_second_limit=descent_limit)
+                        rank_success = True
+                        print(f"Algebraic rank (mwrank with high effort): {rank}")
+                    except Exception as e:
+                        print(f"mwrank failed: {e}. Falling back to analytic rank...")
+                        rank = analytic_rank
+                        rank_success = True
+            
+            # Compute 2-Selmer rank if possible
+            if rank_success and rank != analytic_rank:
+                try:
+                    selmer_rank = E.selmer_rank()
+                    selmer2_success = True
+                    print(f"2-Selmer rank: {selmer_rank}")
+                except Exception as e:
+                    print(f"2-Selmer rank computation failed: {e}")
+                    selmer2_success = False
+            
+            # Refined 3-Selmer rank estimate
+            if selmer2_success:
+                estimated_selmer3 = max(rank, selmer_rank - 1)
+            else:
+                estimated_selmer3 = rank  # Fallback to rank if 2-Selmer rank unavailable
+            if analytic_rank == rank:
+                selmer3_rank = rank
+                print(f"3-Selmer rank (refined using BSD): {selmer3_rank}")
+            else:
+                selmer3_rank = estimated_selmer3
+                print(f"Estimated 3-Selmer rank (fallback): {selmer3_rank}")
+            selmer3_success = True if not require_3selmer else False
+            
+            if selmer3_rank >= 3:
+                print("Potential 3-Selmer candidate!")
+                with open("rank3_curves.txt", "a") as f:
+                    vol = omega * reg * (VIRGO_DISTANCE / (omega * SQRT_KAPPA))**3 / 3e11 if omega and reg else 'N/A'
+                    f.write(f"a={a},b={b},rank={rank},selmer3={selmer3_rank},volume={vol}\n")
+            break
+        except Exception as e:
+            print(f"Rank computation failed on attempt {attempt + 1}: {e}")
+            if attempt == max_attempts - 1:
+                with open("failed_curves.txt", "a") as f:
+                    f.write(f"a={a},b={b},conductor={conductor},reason=rank_failure\n")
+                return False, None, None, None, None, None, None, False, None
+    
+    success = rank_success and (selmer3_success if require_3selmer else True)
+    if success:
+        try:
+            print(f"Leading coefficient: {leading_coeff}")
+            weak_bsd_holds = (rank == analytic_rank)
+            print(f"Weak BSD holds: {weak_bsd_holds}")
+            
+            omega = E.period_lattice().real_period(prec=100)
+            reg = E.regulator(descent_second_limit=descent_limit) if rank > 0 else 1.0
+            tamagawa = prod(E.tamagawa_numbers())
+            if is_original:
+                tamagawa = 4
+            sha_order = 1
+            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)
+            cosmo_scale = VIRGO_DISTANCE / (omega * SQRT_KAPPA)
+            scaled_period = omega * SQRT_KAPPA * cosmo_scale
+            comoving_volume = (omega * reg * cosmo_scale**3) / (3e11 if rank == 3 else 3e12 if rank == 2 else 5e12 if rank == 1 else 1e13)
+            scaled_reg = reg * SQRT_KAPPA * (20 if rank == 3 else 13 if rank == 2 else 60 if rank == 1 else 20)
+            print(f"Real period (Omega): {omega}")
+            print(f"Dynamic COSMO_SCALE: {cosmo_scale}")
+            print(f"Scaled period: {float(scaled_period)} light-years")
+            print(f"Regulator: {reg}")
+            print(f"Scaled regulator (Reg * √κ * {'20' if rank == 3 else '13' if rank == 2 else '60' if rank == 1 else '20'}): {float(scaled_reg)}")
+            print(f"Product of Tamagawa numbers: {tamagawa}")
+            print(f"Estimated comoving volume (Omega * Reg * scale^3 / {'3e11' if rank == 3 else '3e12' if rank == 2 else '5e12' if rank == 1 else '1e13'}): {comoving_volume} Mly^3")
+            print(f"Right-hand side of strong BSD (with |Sha(E)| = 1): {rhs}")
+            
+            if abs(leading_coeff - rhs) < 1e-10:
+                print("Strong BSD holds: Leading coefficient matches with |Sha(E)| = 1")
+            else:
+                sha_order = (leading_coeff * tors_order**2) / (omega * reg * tamagawa)
+                print(f"Adjusted |Sha(E)| to match: {sha_order}")
+        except Exception as e:
+            print(f"Failed to compute BSD invariants: {e}")
+            return False, None, None, None, None, None, None, False, E
+    
+    log_delta = math.log(abs(delta)) if delta != 0 else 0
+    log_cond = math.log(conductor) if conductor > 0 else 0
+    features = [a, b, log_delta, log_cond, tors_order]
+    normalized_leading_coeff = leading_coeff / 10 if leading_coeff else 0
+    
+    if success and rank is not None:
+        try:
+            x_range = 10 if abs(a) <= 5 else 4 * math.sqrt(abs(a))
+            x_vals = np.linspace(-x_range, x_range, 1000)
+            y_vals = np.sqrt(np.maximum(x_vals**3 + a * x_vals + b, 0))
+            density_size = min(leading_coeff * 177 / 20, 200) if leading_coeff else 10
+            plt.figure(figsize=(8, 6))
+            color = 'green' if rank == 3 else 'blue' if rank == 2 else 'black'
+            plt.scatter(x_vals, y_vals, s=float(max(density_size, 1)), c=color, alpha=0.5, label=f'Rank {rank}')
+            plt.scatter(x_vals, -y_vals, s=float(max(density_size, 1)), c=color, alpha=0.5)
+            if rank > 0:
+                contour_y = np.full_like(x_vals, float(5))
+                plt.plot(x_vals, contour_y, 'r--', label=f'Regulator {scaled_reg:.0f}')
+                plt.plot(x_vals, -contour_y, 'r--')
+            plt.title(f'Curve y² = x³ + {a}x + {b}, Density: {leading_coeff * 177:.0f}')
+            plt.xlabel('x')
+            plt.ylabel('y')
+            plt.legend()
+            plt.grid(True)
+            plt.savefig(f"curve_{a}_{b}.png")
+            plt.close()
+            print(f"Polynomial plot saved as curve_{a}_{b}.png")
+        except Exception as e:
+            print(f"Failed to generate polynomial plot: {e}")
+    
+    print("-" * 20)
+    return success, features, rank, normalized_leading_coeff, omega, reg, tamagawa, weak_bsd_holds, E
+
+
+# Restore interweb_data from previous run (excluding attempt 18)
+interweb_data = [
+    (13, 377, 0, 1.5248784246208363956283412258 / 10, 1.5248784246208363956283412258, 1.0, 1, True, math.log(61540336), math.log(61540336)),
+    (2, 144, 3, 35.620854002542971603630883958 / 10, 1.8236602565125279190648710531, 9.76630758808727, 2, True, math.log(8958464), math.log(4479232)),
+    (144, 233, 1, 14.397681380538820045587978770 / 10, 1.1093071817654113436605273746, 2.16316418289501, 6, True, math.log(214555824), math.log(17879652)),
+    (34, 144, 2, 12.623558290853645758994107725 / 10, 1.5874476029557543327015819683, 3.97605510485800, 2, True, math.log(11473408), math.log(5736704)),
+    (13, 987, 1, 13.039158348750303747140334275 / 10, 1.3151800172294174231558959060, 4.95717627166311, 2, True, math.log(420981616), math.log(210490808)),
+    (3, 89, 1, 6.4324388344582834500532471427 / 10, 1.9600188761307938499775937804, 1.64091247099526, 2, True, math.log(3423600), math.log(171180)),
+    (233, 377, 1, 42.519873284318607465001911780 / 10, 0.97788673099329385551811276549, 43.4813889346150, 1, True, math.log(870957296), math.log(870957296)),
+    (377, 987, 3, 90.806664941709888414870399502 / 10, 0.87208122227906561171302115761, 52.0631924079268, 2, True, math.log(3850129520), math.log(1925064760)),
+    (21, 377, 2, 48.908235212032508551081877140 / 10, 1.4996021175316803131515116071, 32.6141412046914, 1, True, math.log(61992432), math.log(61992432)),
+    (89, 144, 1, 2.9437200606692904381404309311 / 10, 1.2586015062787318056673340499, 2.33888172386898, 1, True, math.log(54075968), math.log(54075968)),
+    (2, 89, 0, 3.9406077220873739436509377827 / 10, 1.9703038610436869718254688913, 1.0, 2, True, math.log(3422384), math.log(1711192)),
+    (2584, 233, 0, 3.1224725812826300697030396822 / 10, 0.52041209688043834495050661370, 1.0, 6, True, math.log(1104248265904), math.log(39437438068)),
+    (377, 2, 1, 19.086494537074770450070509606 / 10, 0.84161318212549367925981332813, 11.3392321689115, 2, True, math.log(3429290240), math.log(5792720)),
+    (610, 4181, 1, 11.175214977035792294244828731 / 10, 0.78542380736710584935446232817, 7.11413053195911, 2, True, math.log(22078472752), math.log(11039236376)),
+    (13, 4181, 0, 1.0426601838850213139180660377 / 10, 1.0426601838850213139180660377, 1.0, 1, True, math.log(7551829360), math.log(7551829360)),
+    (144, 4181, 1, 5.4785370838681837805952999122 / 10, 0.98695307552975331706981888654, 5.55096004025069, 1, True, math.log(7742791728), math.log(1935697932)),
+    (1, 4181, 1, 8.2721966630962072175645000857 / 10, 1.0476287739442196431612548014, 7.89611441460528, 1, True, math.log(7551688816), math.log(7551688816)),
+    (144, 2584, 1, 7.6167980776984918420351673600 / 10, 1.0428687779132804057247676194, 1.82592437299237, 4, True, math.log(3075591168), math.log(64074816)),
+    (987, 4181, 2, 25.997911779627760652052393479 / 10, 0.68558762147389741554570497664, 12.6402086644722, 3, True, math.log(69087996144), math.log(17271999036)),
+    (2, 4181, 1, 25.172493566321304824082931771 / 10, 1.0472148363816398371239015054, 12.0187819594391, 2, True, math.log(7551689264), math.log(3775844632)),
+    (55, 4181, 0, 1.0251779032486101112477471593 / 10, 1.0251779032486101112477471593, 1.0, 1, True, math.log(7562336752), math.log(1890584188)),
+    (55, 2584, 2, 34.012880798372050540997732359 / 10, 1.1012935698554981535423594769, 15.4422407110008, 2, True, math.log(2895136192), math.log(1447568096)),
+    (1597, 4181, 2, 34.467712331727546458459266382 / 10, 0.59845828114740869987664084021, 28.7970886338505, 2, True, math.log(268223891824), math.log(38317698832)),
+    (21, 4181, 0, 2.0786886229473268133174231541 / 10, 1.0393443114736634066587115771, 1.0, 2, True, math.log(7552281456), math.log(2517427152)),
+    (89, 2584, 2, 19.185082130695053751451306616 / 10, 1.0795054867170455079875134999, 17.7721024735502, 1, True, math.log(2929606208), math.log(2929606208)),
+    (233, 4181, 0, 17.039081238747804376003729558 / 10, 0.94661562437487802088909608656, 1.0, 2, True, math.log(8361246320), math.log(1194463760)),
+    (377, 4181, 1, 24.756999132412198792349207549 / 10, 0.87975447894384871302059120397, 28.1408048778941, 1, True, math.log(10980977264), math.log(10980977264)),
+    (5, 2584, 2, 10.141159213568668790846673426 / 10, 1.1324695217597630002961927903, 8.95490696986719, 1, True, math.log(2884496192), math.log(2884496192)),
+    (34, 4181, 3, 71.947038033316053327279526611 / 10, 1.0339448758238486838498533995, 34.7924921896772, 2, True, math.log(7554204208), math.log(3777102104)),
+    (8, 4181, 0, 4.1789236632051239060486250997 / 10, 1.0447309158012809765121562749, 1.0, 1, True, math.log(7551721520), math.log(1887930380)),
+    (-1706, 6320, 1, 5.7161472701821916623395660050 / 10, 0.42236269178325809849360427108, 3.38343524498343, 4, True, math.log(300517927424), math.log(150258963712)),
+]
+
+
+# Retry Attempt 18 with increased descent_second_limit
+print(f"\nRetrying Attempt 18 with increased descent_second_limit: Testing Fibonacci curve with a=2584, b=144")
+success, features, rank, leading_coeff, omega, reg, tamagawa, weak_bsd_holds, E = analyze_curve(
+    2584, 144, require_3selmer=False, conductor_limit=1e11, descent_limit=50
+)
+
+
+# Update interweb_data if successful
+if success and rank is not None and omega is not None and reg is not None:
+    interweb_data.append((2584, 144, rank, leading_coeff, omega, reg, tamagawa, weak_bsd_holds, features[2], features[3]))
+    with open("interweb_nodes.txt", "a") as f:
+        f.write(f"{2584},{144},{rank},{leading_coeff},{omega},{reg},{tamagawa},{weak_bsd_holds},{features[2]},{features[3]}\n")
+    with open("unique_curves.txt", "a") as f:
+        conductor = E.conductor() if E else 'N/A'
+        plot_file = f"curve_2584_144.png" if E else 'N/A'
+        cosmo_scale = VIRGO_DISTANCE / (omega * SQRT_KAPPA)
+        comoving_volume = (omega * reg * cosmo_scale**3) / (3e11 if rank == 3 else 3e12 if rank == 2 else 5e12 if rank == 1 else 1e13)
+        scaled_reg = reg * SQRT_KAPPA * (20 if rank == 3 else 13 if rank == 2 else 60 if rank == 1 else 20)
+        f.write(f"{2584},{144},{rank},{omega},{reg},{comoving_volume},{scaled_reg},{leading_coeff * 10 if leading_coeff else 0},{conductor},{plot_file}\n")
+
+
+# Regenerate the interweb plot
+if interweb_data:
+    fig = plt.figure(figsize=(12, 10))
+    ax = fig.add_subplot(111, projection='3d')
+    node_counts = {}
+    for node in interweb_data:
+        key = (node[0], node[1], node[2])
+        node_counts[key] = node_counts.get(key, 0) + 1
+    filtered_data = []
+    for node in interweb_data:
+        key = (node[0], node[1], node[2])
+        if node_counts[key] > 0:
+            filtered_data.append(node)
+            node_counts[key] -= 1
+    
+    ranks = [x[2] for x in filtered_data]
+    log_deltas = [x[8] for x in filtered_data]

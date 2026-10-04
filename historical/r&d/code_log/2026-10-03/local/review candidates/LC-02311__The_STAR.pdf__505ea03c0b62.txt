@@ -1,0 +1,8 @@
+    median_val = np.nanmedian(arr)
+    # Impute NaN with median ----------------------------------------------------------------------
+    new_features_dict[feature] = np.where(np.isnan(arr), median_val, arr)
+    # Assign to DataFrame -------------------------------------------------------------------------
+    df[feature] = new_features_dict[feature]
+    del new_features_dict[feature]
+
+# Free memory of precomputed arrays ---------------------------------------------------------------

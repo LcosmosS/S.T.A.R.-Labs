@@ -1,0 +1,11 @@
+     df_clean['K_clipped']  =  df_clean['scaling_constant_K'].clip(k_low,  k_high)      return  df_clean   def  run_exploratory_analysis(df):      print("   -  Generating  Bayesian  Binning  plot  on  full  dataset...")      df['redshift_bin']  =  pd.qcut(df['z'],  q=5,  labels=[f"Q{i+1}"  for  i  in  range(5)],  
+duplicates='drop')
+     df['density_bin']  =  pd.qcut(df['density_kg_m3'],  q=5,  labels=[f"Q{i+1}"  for  i  in  
+range(5)],
+ 
+duplicates='drop')
+     binned_data  =  df.groupby(['redshift_bin',  'density_bin'],  
+observed=False)['K_clipped'].mean().unstack()
+     plt.figure(figsize=(12,  8));  sns.heatmap(binned_data,  annot=True,  fmt=".2e",  
+cmap="viridis")
+     plt.title("Bayesian  Binning:  Mean  K  by  Redshift  and  Density  Quantiles  (Full  

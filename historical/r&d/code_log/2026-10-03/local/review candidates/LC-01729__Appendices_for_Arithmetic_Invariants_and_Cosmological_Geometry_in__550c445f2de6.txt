@@ -1,0 +1,25 @@
+    df_cosmo = load_and_impute_large_csv(INPUT_FILE)
+    logger.info(f"Loaded and imputed {len(df_cosmo)} rows.")
+
+    # Generate curves
+    df_curves = generate_elliptic_curves(SAMPLE_CURVES)
+    logger.info(f"Generated {len(df_curves)} curves with deciphered ranks.")
+
+    # Print rank classes
+    print_rank_classes(df_curves)
+
+    # Bin by generator
+    bin_by_generator(df_curves)
+
+    # Compute projection
+    df_proj = compute_projection(df_curves)
+
+    # Align with cosmic data
+    df_aligned = align_projections(df_cosmo, df_proj)
+
+    # Visualize HD 3D manifold MP4
+    visualize_hd_manifold(df_aligned, duration=45)
+
+    logger.info(f"Test complete. Time: {time.time() - start_time:.2f}s")
+    with open('ucf_analysis.txt', 'a') as f:
+        f.write(f"Test complete. Time: {time.time() - start_time:.2f}s\n")

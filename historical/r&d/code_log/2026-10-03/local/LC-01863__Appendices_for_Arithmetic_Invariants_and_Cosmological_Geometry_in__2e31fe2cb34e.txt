@@ -1,0 +1,4 @@
+     delta  =  row['logmass']  *  1e6  if  np.isfinite(row['logmass'])  else  np.nan      omega  =  row['petrorad_r']  *  1e3  if  np.isfinite(row['petrorad_r'])  else  np.nan      conductor  =  delta**2  if  np.isfinite(delta)  else  np.nan      j_invariant  =  row['metallicity']  *  1e4  if  np.isfinite(row['metallicity'])  else  
+np.nan
+     tr_p1  =  float(factor(int(delta))[0][0])  if  np.isfinite(delta)  and  delta  >  0  else  
+np.nan

@@ -1,0 +1,15 @@
+log_mass_str = "10.09385,11.2518,层,10.92948"  # Example with "层"
+log_mass_list = log_mass_str.split(',')
+filtered_list = []
+
+
+for elem in log_mass_list:
+    try:
+        float(elem.strip())  # Try converting to float; strip removes any whitespace
+        filtered_list.append(elem.strip())
+    except ValueError:
+        pass  # Skip non-numeric values like "层"
+
+
+corrected_log_mass = ','.join(filtered_list)
+print(corrected_log_mass)  # Outputs: 10.09385,11.2518,10.92948

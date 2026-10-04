@@ -1,0 +1,5 @@
+L_cosmo_1 = sum(i=1, N, M0 / masses[i]);
+\\ Compute K = N / L_cosmo(1)
+K = N / L_cosmo_1;
+\\ Print result
+print("Normalization constant K = ", K);

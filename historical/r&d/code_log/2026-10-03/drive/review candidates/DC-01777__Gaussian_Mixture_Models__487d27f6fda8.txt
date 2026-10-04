@@ -1,0 +1,2 @@
+subpopulations = best_gmm.predict(logmass)
+df['subpopulation'] = subpopulations

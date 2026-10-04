@@ -1,0 +1,2 @@
+	np.savetxt("filtered_log_mass.txt", ..., header=...)
+	np.savetxt("/mnt/c/temp/filtered_log_mass.txt", ..., fmt='%.18f')

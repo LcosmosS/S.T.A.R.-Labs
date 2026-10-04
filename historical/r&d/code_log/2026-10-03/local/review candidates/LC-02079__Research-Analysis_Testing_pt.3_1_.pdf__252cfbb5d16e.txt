@@ -1,0 +1,2 @@
+        S2 := SelmerGroup(E, 2);  // 2-Selmer group
+        selmer_rank := #S2 - 1;  // Adjust for the trivial element

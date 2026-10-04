@@ -1,0 +1,4 @@
+if M0 > 0:
+    # Compute K
+else:
+   *     print(f"Subpopulation {subpop}: M0 = {M0:.2e}, K = nan (skipped)")

@@ -1,0 +1,2 @@
+NCL2=`awk '$3==2' data/allcurves.${N}0000-${N}9999 | wc -l`
+let 'NCL1 = NCL-NCL2'

@@ -1,0 +1,4 @@
+for p in [2, 3, 5]:
+    E.two_descent(verbose=False)
+    selmer_rank = E.selmer_rank(p)
+   *     print(f"{p}-Selmer rank:", selmer_rank)

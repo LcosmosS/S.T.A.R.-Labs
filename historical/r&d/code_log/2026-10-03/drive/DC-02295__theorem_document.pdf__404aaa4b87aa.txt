@@ -1,0 +1,13 @@
+# Compute reduced density matrix
+rho_reduced = compute_reduced_density_matrix(quantum_state)
+# Calculate entanglement entropy
+S_E = -np.trace(rho_reduced @ np.log2(rho_reduced))
+# Compute arithmetic contribution
+S_arith = compute_arithmetic_entropy(arithmetic_data)
+# Calculate quantum correction
+Gamma = S_E - S_arith
+return {
+'entanglement_entropy': S_E,
+'arithmetic_entropy': S_arith,
+'quantum_correction': Gamma
+}

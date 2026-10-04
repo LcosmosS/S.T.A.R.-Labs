@@ -1,0 +1,2 @@
+t_H = 1.44e10; /* Hubble time in years */
+Omega_tilde = Omega_cosmo / t_H; /* Dimensionless */

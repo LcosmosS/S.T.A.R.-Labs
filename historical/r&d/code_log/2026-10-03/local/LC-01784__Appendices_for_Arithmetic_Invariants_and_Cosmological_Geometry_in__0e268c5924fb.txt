@@ -1,0 +1,2 @@
+axis=1)
+                  distance_mly  =  chunk['distance_mpc']  *  3.26156          chunk['density_kg_m3']  =  chunk.apply(lambda  row:  (row['mass_sm']  *  1.989e30)  /  

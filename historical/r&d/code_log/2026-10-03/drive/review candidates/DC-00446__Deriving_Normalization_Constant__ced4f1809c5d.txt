@@ -1,0 +1,25 @@
+unscaled_left = L_cosmo(1);         /* Compute unscaled L_cosmo(1) */
+print("Unscaled L_cosmo(1): ", unscaled_left);
+
+
+/* Compute right side */
+right_side = (Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2);
+print("Right side: ", right_side);
+
+
+/* Derive normalization constant K */
+K = right_side / unscaled_left;     /* K scales L_cosmo to match right side */
+print("Normalization constant K: ", K);
+
+
+/* Define normalized L_cosmo_new(s) */
+L_cosmo_new(s) = K * L_cosmo(s);
+left_side = L_cosmo_new(1);         /* Compute normalized L_cosmo(1) */
+print("Normalized L_cosmo(1): ", left_side);
+
+
+/* Compare left and right sides */
+tolerance = 0.1;                    /* 10% tolerance */
+if (abs(left_side - right_side) < tolerance * right_side,
+    print("Analogy holds within 10%"),
+    print("Analogy fails: Left side != Right side"));

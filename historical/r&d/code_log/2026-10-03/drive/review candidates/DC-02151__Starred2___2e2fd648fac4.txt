@@ -1,0 +1,7 @@
+group2_indices = groups == 2
+logmass_group2 = logmass[group2_indices]
+k_theory_values = []
+for _ in range(1000):  # 1000 resamples
+    resample = np.random.choice(logmass_group2, size=len(logmass_group2), replace=True)
+    k_theory_values.append(compute_K_theory(resample))
+      * print(f"Group 2: K_theory mean = {np.mean(k_theory_values):.4f}, std = {np.std(k_theory_values):.4f}")

@@ -1,0 +1,12 @@
+rank_data = ellrank(E);
+alg_rank = rank_data[1];
+print("Algebraic rank: ", alg_rank);
+L = elllseries(E, 1);
+print("L-series at s=1: ", L);
+analytic_rank = 0;
+L_val = L;
+if (abs(L) < 1e-10, L_deriv = elllseries(E, 1, 1); L_val = L_deriv; analytic_rank = 1);
+if (analytic_rank == 1 && abs(L_deriv) < 1e-10, L_deriv2 = elllseries(E, 1, 2); L_val = L_deriv2; analytic_rank = 2);
+print("Analytic rank: ", analytic_rank);
+         12. print("Leading coefficient L^(r)(E, 1): ", L_val);
+         13. Check weak BSD:

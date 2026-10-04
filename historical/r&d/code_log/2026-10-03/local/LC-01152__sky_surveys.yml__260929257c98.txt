@@ -1,0 +1,6 @@
+        ROOT=$(find "$GITHUB_WORKSPACE" -maxdepth 3 -type d -name src -printf '%h\n' | head -n 1)
+        echo "ROOT=$ROOT" >> $GITHUB_OUTPUT
+        echo "Detected project root: $ROOT"
+
+    - name: Install dependencies
+      run: |

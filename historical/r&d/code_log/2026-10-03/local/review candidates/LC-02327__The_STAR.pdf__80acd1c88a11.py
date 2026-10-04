@@ -1,0 +1,36 @@
+explainer_hgb = shap.Explainer(hgb, X_train_scaled)
+shap_values_hgb = explainer_hgb(X_test_scaled_sample)
+shap.summary_plot(shap_values_hgb, X_test.iloc[sample_idx], feature_names=X.columns,
+plot_type="bar")
+plt.title("SHAP Summary - HistGradientBoosting")
+plt.tight_layout()
+plt.savefig("shap_hgb_summary.png", dpi=150)
+plt.close()
+
+explainer_lgb = shap.Explainer(lgb_model, X_train_scaled)
+shap_values_lgb = explainer_lgb(X_test_scaled_sample)
+shap.summary_plot(shap_values_lgb, X_test.iloc[sample_idx], feature_names=X.columns,
+plot_type="bar")
+plt.title("SHAP Summary - LightGBM")
+plt.tight_layout()
+plt.savefig("shap_lgb_summary.png", dpi=150)
+plt.close()
+
+explainer_xgb = shap.Explainer(xgb_model, X_train_scaled)
+shap_values_xgb = explainer_xgb(X_test_scaled_sample)
+shap.summary_plot(shap_values_xgb, X_test.iloc[sample_idx], feature_names=X.columns,
+plot_type="bar")
+plt.title("SHAP Summary - XGBoost")
+plt.tight_layout()
+plt.savefig("shap_xgb_summary.png", dpi=150)
+plt.close()
+
+explainer_cat = shap.Explainer(cat_model, X_train_scaled)
+shap_values_cat = explainer_cat(X_test_scaled_sample)
+shap.summary_plot(shap_values_cat, X_test.iloc[sample_idx], feature_names=X.columns,
+plot_type="bar")
+plt.title("SHAP Summary - CatBoost")
+plt.tight_layout()
+plt.savefig("shap_cat_summary.png", dpi=150)
+plt.close()
+print("*S.T.A.R. training and analysis complete. All outputs saved.")

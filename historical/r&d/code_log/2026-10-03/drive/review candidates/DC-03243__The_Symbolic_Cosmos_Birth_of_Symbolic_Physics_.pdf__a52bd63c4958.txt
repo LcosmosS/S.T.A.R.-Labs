@@ -1,0 +1,3 @@
+if len(small_fibs) >= 2:
+return random.sample(small_fibs, 2)
+return random.sample(valid_fibs, 2)

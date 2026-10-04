@@ -1,0 +1,2 @@
+try:
+    df['objid'] = df['objid'].astype(float).astype(int)

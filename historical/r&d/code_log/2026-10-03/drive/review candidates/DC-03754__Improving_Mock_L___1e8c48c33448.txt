@@ -1,0 +1,3 @@
+unscaled = sum(n=2, 2508, (C_l[n] / T_cmb^2) / n);
+print("Unscaled L_cosmo(1): ", unscaled);
+K = 1.0 / unscaled; /* Target ~1 */

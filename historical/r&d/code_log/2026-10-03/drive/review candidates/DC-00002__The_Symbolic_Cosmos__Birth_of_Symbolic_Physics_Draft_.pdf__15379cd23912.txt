@@ -1,0 +1,3 @@
+L = E.lseries() # Initializes the L-function for analytic rank verification
+print(L(1)) # Evaluates L at s=1; a zero here suggests rank >0 per BSD
+print(L.dokchitser().derivative(1, 1)) # First derivative at s=1; non-zero confirms

@@ -1,0 +1,3 @@
+expected_N = 10000;
+t_H=1.44e10; Omega_cosmo=1.38e10; Omega_tilde=Omega_cosmo/t_H; print("Omega_tilde: ", Omega_tilde);
+read("C:\\temp\\data_extract.txt");

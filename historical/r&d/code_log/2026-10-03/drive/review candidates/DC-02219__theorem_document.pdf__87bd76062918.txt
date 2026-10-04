@@ -1,0 +1,3 @@
+b={b}, skipping") \n with open("failed_curves.txt", "a") as f: \n
+f.write(f"a={a},b={b},conductor=N/A,reason=duplicate\\n") \n attempts += 1 \n
+continue \n\n seen_pairs[(a, b)] = seen_pairs.get((a, b), 0) + 1 \n print(f"\\nAttempt

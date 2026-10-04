@@ -1,0 +1,6 @@
+    try:
+        data = response.json()
+    except ValueError as exc:
+        raise RuntimeError(
+            f"Ollama returned invalid JSON:\n{response.text[:1000]}"
+        ) from exc

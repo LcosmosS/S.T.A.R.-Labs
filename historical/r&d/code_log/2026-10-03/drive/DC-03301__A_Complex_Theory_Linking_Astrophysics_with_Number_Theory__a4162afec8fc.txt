@@ -1,0 +1,6 @@
+# Define the elliptic curve
+E = EllipticCurve(QQ, [-1706, 6320])
+
+
+# Perform a 2-descent
+E.two_descent(verbose=True)

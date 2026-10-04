@@ -1,0 +1,4 @@
+    if test_results.empty:
+        print("  - Could not generate K prediction comparison plot."); return
+
+    k_low, k_high = test_results['K_actual'].quantile(0.01),

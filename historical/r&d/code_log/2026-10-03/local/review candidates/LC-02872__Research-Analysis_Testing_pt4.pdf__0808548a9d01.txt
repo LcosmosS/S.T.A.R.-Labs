@@ -1,0 +1,14 @@
+    f.write("a,b,rank,selmer3,volume\n")
+with open("unique_curves.txt", "w") as f:
+    f.write("a,b,rank,omega,reg,volume,scaled_reg,leading_coeff,conductor,plot_file\n")
+
+# Rewrite the existing results to the output files
+for data in interweb_data:
+    a, b, rank, leading_coeff, omega, reg, tamagawa, weak_bsd_holds, log_delta, log_cond = data
+    cosmo_scale = VIRGO_DISTANCE / (omega * SQRT_KAPPA)
+    comoving_volume = (omega * reg * cosmo_scale**3) / (3e11 if rank == 3 else 3e12 if rank == 2 else
+5e12 if rank == 1 else 1e13)
+    scaled_reg = reg * SQRT_KAPPA * (20 if rank == 3 else 13 if rank == 2 else 60 if rank == 1 else 20)
+    with open("interweb_nodes.txt", "a") as f:
+
+f.write(f"{a},{b},{rank},{leading_coeff},{omega},{reg},{tamagawa},{weak_bsd_holds},{log_delta},{log_cond}\

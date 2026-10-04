@@ -1,0 +1,4 @@
+median = np.median(log_mass)
+mad = np.median(np.abs(log_mass - median))
+filtered_log_mass = log_mass[(log_mass >= median - 3*mad) & (log_mass <= median + 3*mad)]
+* np.savetxt("filtered_log_mass.txt", filtered_log_mass, fmt='%.18f', header="log_mass = [", footer="];", comments='')

@@ -1,0 +1,47 @@
+    if rank eq analytic_rank then
+        print "Weak BSD holds: Algebraic rank = Analytic rank";
+    else
+        print "Weak BSD fails: Algebraic rank != Analytic rank";
+    end if;
+
+    // Use Heegner points to construct rational points (Euler system approach)
+    // Choose a discriminant D for the quadratic imaginary field K = Q(sqrt(D))
+    D := -67;  // Satisfies Heegner hypothesis for all curves
+    try
+        P_K := HeegnerPoint(E, D, 1);  // Heegner point in E(K) with conductor 1
+        P := Trace(P_K);  // Trace to E(Q)
+        print "Heegner point (traced to Q):", P;
+        // Check if the point has infinite order
+        if Order(P) eq 0 then
+            print "Heegner point has infinite order, suggesting rank >= 1";
+        else
+            print "Heegner point has order", Order(P), ", suggesting rank 0 or torsion";
+        end if;
+    catch e
+        print "Failed to compute Heegner point:", e;
+    end try;
+
+    // Compute the 2-Selmer group to bound the rank and Sha(E)
+    try
+        S2 := SelmerGroup(E, 2);  // 2-Selmer group
+        selmer_rank := #S2 - 1;  // Adjust for the trivial element
+        print "2-Selmer rank:", selmer_rank;
+        // Selmer rank = rank + rank of E(Q)[2] + rank of Sha(E)[2]
+        two_torsion_rank := (tors_order mod 2 eq 0) select 1 else 0;
+        sha_two_rank := selmer_rank - rank - two_torsion_rank;
+        print "Rank of Sha(E)[2]:", sha_two_rank;
+        if sha_two_rank eq 0 then
+            print "Sha(E)[2] = 0, suggesting |Sha(E)| is odd or 1";
+        else
+            print "|Sha(E)[2]| =", 2^sha_two_rank;
+        end if;
+    catch e
+        print "Failed to compute 2-Selmer group:", e;
+    end try;
+
+    // Compute BSD invariants for strong BSD
+    omega := RealPeriod(E);
+    if rank eq 0 then
+        reg := 1.0;
+    else
+        reg := Regulator(E);

@@ -1,0 +1,6 @@
+    parser.add_argument(
+        "--extract-only",
+        action="store_true",
+        help=(
+            "Extract and index evidence without "
+            "using Ollama."

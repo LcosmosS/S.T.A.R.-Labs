@@ -1,0 +1,2 @@
+    col_name  =  f'L_cosmo_s_{s:.1f}'      if  col_name  in  df.columns:          mask  =  df[col_name].notna()  &  df['log_SFR_Ha_raw'].notna()  &  np.isfinite(df[col_name])  &  
+np.isfinite(df['log_SFR_Ha_raw'])

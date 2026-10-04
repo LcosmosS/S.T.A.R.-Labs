@@ -1,0 +1,1 @@
+     isogeny_count  =  1      min_isogeny_deg  =  1      torsion_type  =  1      entropy  =  estimate_entropy(row)      betti_1  =  row.get('betti_1',  np.nan)      entropy_gradient  =  row.get('entropy_gradient',  np.nan)      selmer_rank,  selmer_status,  torsion,  j_inv,  disc  =  compute_3selmer_rank(delta,  

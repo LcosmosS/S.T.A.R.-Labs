@@ -1,0 +1,13 @@
+    fig = plt.figure(figsize=(14, 12))
+    ax = fig.add_subplot(111, projection='3d')
+    ranks = [x[2] for x in interweb_data]
+    log_deltas = [x[8] for x in interweb_data]
+
+    log_conds = [x[9] for x in interweb_data]
+    volumes = [x[10] for x in interweb_data]
+    sizes = [float(max(x[3] * 100, 1e-6)) for x in interweb_data]
+    scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=volumes, cmap='magma',
+alpha=0.7)
+
+    plt.colorbar(scatter, label='Comoving Volume (Mly^3)')
+    texts = []

@@ -1,0 +1,6 @@
+y_data = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]  # Updated with synthetic failures and new attempts
+
+
+seen_pairs = {
+    (13, 377): 1,
+    (2, 144): 1,

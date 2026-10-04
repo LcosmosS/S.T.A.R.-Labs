@@ -1,0 +1,39 @@
+        chunk['coeff_mean'] = chunk[coeff_cols].mean(axis=1)
+
+
+
+    chunk['flux_gr'] = chunk['Fg'] / chunk['Fr']
+
+    chunk['flux_rz'] = chunk['Fr'] / chunk['Fz']
+
+    chunk['log_EBV'] = np.log(chunk['EBV'] + 1e-6)
+
+    chunk['pm_mag'] = np.sqrt(chunk['pmRA']**2 + chunk['pmDE']**2)
+
+    chunk['log_chi2'] = np.log(chunk['Chi2'] + 1e-6)
+
+    chunk['chi_ratio'] = chunk['Chi2'] / (chunk['delChi2'] + 1e-6)
+
+    chunk['tsnr_ratio_elg_lrg'] = chunk['TSNR2_ELG'] / (chunk['TSNR2_LRG'] + 1e-6)
+
+
+
+    chunk['morph_int'] = chunk['Morph'].apply(lambda x: 0 if 'GALAXY' in str(x) else 1)
+
+    chunk['otype_int'] = chunk['OType'].apply(lambda x: 0 if 'GALAXY' in str(x) else 1)
+
+
+
+    # Clip
+
+    for col in chunk.select_dtypes(include=[np.number]).columns:
+
+        chunk[col] = np.clip(chunk[col], -1e10, 1e10)
+
+
+
+    return chunk
+
+
+
+# Load chunks

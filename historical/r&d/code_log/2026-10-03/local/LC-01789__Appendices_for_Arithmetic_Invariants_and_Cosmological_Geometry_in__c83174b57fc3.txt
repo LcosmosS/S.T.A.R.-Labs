@@ -1,0 +1,7 @@
+             try:                  E  =  EllipticCurve(QQ,  [0,  0,  0,  row['coeff_a'],  row['coeff_b']])                  discriminant  =  E.discriminant()                  return  (discriminant,  estimate_rank_category(E),  
+get_prime_factor_exponents(discriminant))
+             except:  return  (np.nan,  'Invalid  Curve',  {})                   results  =  chunk.apply(process_curve_properties,  axis=1)          chunk[['discriminant_sage',  'rank',  'prime_exponents']]  =  
+pd.DataFrame(results.tolist(),
+ 
+index=chunk.index)
+                  processed_chunks.append(chunk)          if  ROW_LIMIT  and  (i  +  1)  *  CHUNKSIZE  >=  ROW_LIMIT:  print(f"   -  Reached  row  

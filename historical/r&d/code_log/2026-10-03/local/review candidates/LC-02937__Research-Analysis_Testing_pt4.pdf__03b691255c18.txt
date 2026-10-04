@@ -1,0 +1,2 @@
+with open("unique_curves.txt", "a") as f:
+    f.write(f"{a},{b},{rank},{omega},{reg},{comoving_volume},{scaled_reg},{normalized_leading_coeff *

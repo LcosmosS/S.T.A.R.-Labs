@@ -1,0 +1,6 @@
+ print(f"Memory  usage  before  feature  engineering:  {df.memory_usage().sum()  /  1024**2:.2f}  MB")   #  Precompute  constants  and  reusable  series  to  avoid  redundant  calculations  
+=========================================================================================
+===
+ logMass  =  df['logMass'].values   #  Convert  to  NumPy  array  for  efficiency  cosmo_rank  =  df['cosmo_rank'].values  L_cosmo_s1  =  df['L_cosmo_s_1.0'].values   #  Dictionary  to  store  new  features  as  NumPy  arrays  
+=========================================================================================
+===========================

@@ -1,0 +1,3 @@
+EllipticCurve_rational_field.gens(self, proof, **kwds) 2356 if proven or not proof: 2357 return
+list(gens) # Return a copy -> 2359 gens, proved = self._compute_gens(proof, **kwds) 2360
+self.__gens = (gens, proved) 2361 self.__rank = (Integer(len(gens)), proved)

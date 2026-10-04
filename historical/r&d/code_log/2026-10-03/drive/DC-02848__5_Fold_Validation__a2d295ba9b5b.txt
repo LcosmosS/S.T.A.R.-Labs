@@ -1,0 +1,4 @@
+required_features = ['log_Mass_gas', 'nsa_mstar', 'log_Mass', 'OH_Mar13_N2_Re_fit', 'Av_gas_Re']
+missing_required = [feat for feat in required_features if feat not in df.columns]
+if missing_required:
+raise ValueError(f"Required features missing: {missing_required}")

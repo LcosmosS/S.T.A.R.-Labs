@@ -1,0 +1,3 @@
+                print("Cosmological BSD analogue holds within 10%"),
+                print("Cosmological BSD analogue fails: Left side != Right side"))
+                should compare sides.

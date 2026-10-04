@@ -1,0 +1,107 @@
+{
+  "schema_version": "STAR-quarantine-v0.3",
+  "audit_date": "2026-10-03",
+  "status": "QUARANTINED",
+  "controlled_support_eligible": false,
+  "physical_support_eligible": false,
+  "originals_preserved": true,
+  "scope": "sdss_hi_match",
+  "reason": "Both files contain 1,495 rows associated with one MANGAID, 1-48157. Every recomputed spherical separation exceeds the claimed 2 arcsec tolerance. The with_arcsec revision stores inf in every separation row. These files are negative data-quality evidence. This finding restricts these artifacts; it does not falsify the general possibility of cross-survey matching.",
+  "files": [
+    {
+      "binding_id": "QASSET-0001",
+      "qualified_namespace": "AUDIT-QUARANTINE-v0.3",
+      "qualified_dataset_id": "AUDIT-QUARANTINE-v0.3:QDATA-SDSS-HI-001",
+      "source_path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\merged_sdss_hi.csv",
+      "source_kind": "external_local_audited_file",
+      "source_git_commit": "",
+      "source_git_blob_sha": "",
+      "checkout_sha256": "5a9606b75bc55de5e7833a04e5c56318df9f21a31560df180db2707374a22d50",
+      "checkout_size_bytes": 793059,
+      "checkout_eol_status": "IDENTICAL_TO_CANONICAL_SOURCE",
+      "audit_reference_path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\merged_sdss_hi.csv",
+      "quarantine_path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi.csv",
+      "generation_id": "failed_match_1495",
+      "artifact_role": "merged_sdss_hi.csv",
+      "expected_sha256": "5a9606b75bc55de5e7833a04e5c56318df9f21a31560df180db2707374a22d50",
+      "actual_source_sha256": "5a9606b75bc55de5e7833a04e5c56318df9f21a31560df180db2707374a22d50",
+      "quarantine_sha256": "5a9606b75bc55de5e7833a04e5c56318df9f21a31560df180db2707374a22d50",
+      "size_bytes": 793059,
+      "hash_status": "EXACT_AUDIT_HASH_MATCH",
+      "expected_hash_basis": "imported local_inventory.csv or local_findings.json; original bytes",
+      "status": "QUARANTINED",
+      "evidence_provenance": "NEGATIVE / NULL",
+      "evidence_eligibility": "HISTORICAL_DIAGNOSTIC_ONLY",
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false,
+      "finding_ids": [
+        "E-LCL-001"
+      ],
+      "qualified_claim_ids": [
+        "STAR-PDF-v0.2:DATA-M001",
+        "STAR-PDF-v0.2:DATA-M002"
+      ],
+      "qualified_experiment_ids": [
+        "STAR-PDF-v0.2:DATA-PROV-001",
+        "STAR-PDF-v0.2:EXP-DATA-A01"
+      ],
+      "reason": "Failed <=2 arcsec crossmatch; 1495 rows share one MANGAID, and every recomputed spherical separation exceeds tolerance. Retained as negative data-quality evidence.",
+      "quarantine_manifest": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/manifest.json",
+      "group": "sdss_hi_match",
+      "copied_at_utc": "2026-10-04T01:59:18.111688+00:00",
+      "originals_preserved": true,
+      "copy_byte_identical_to_source": true
+    },
+    {
+      "binding_id": "QASSET-0002",
+      "qualified_namespace": "AUDIT-QUARANTINE-v0.3",
+      "qualified_dataset_id": "AUDIT-QUARANTINE-v0.3:QDATA-SDSS-HI-002",
+      "source_path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\merged_sdss_hi_with_arcsec.csv",
+      "source_kind": "external_local_audited_file",
+      "source_git_commit": "",
+      "source_git_blob_sha": "",
+      "checkout_sha256": "e6e2e749d0ec45b5713311dfe3b3cc958fddb13166f770ce2c47a30dbd5f8dad",
+      "checkout_size_bytes": 771646,
+      "checkout_eol_status": "IDENTICAL_TO_CANONICAL_SOURCE",
+      "audit_reference_path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\merged_sdss_hi_with_arcsec.csv",
+      "quarantine_path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi_with_arcsec.csv",
+      "generation_id": "failed_match_1495",
+      "artifact_role": "merged_sdss_hi_with_arcsec.csv",
+      "expected_sha256": "e6e2e749d0ec45b5713311dfe3b3cc958fddb13166f770ce2c47a30dbd5f8dad",
+      "actual_source_sha256": "e6e2e749d0ec45b5713311dfe3b3cc958fddb13166f770ce2c47a30dbd5f8dad",
+      "quarantine_sha256": "e6e2e749d0ec45b5713311dfe3b3cc958fddb13166f770ce2c47a30dbd5f8dad",
+      "size_bytes": 771646,
+      "hash_status": "EXACT_AUDIT_HASH_MATCH",
+      "expected_hash_basis": "imported local_inventory.csv or local_findings.json; original bytes",
+      "status": "QUARANTINED",
+      "evidence_provenance": "NEGATIVE / NULL",
+      "evidence_eligibility": "HISTORICAL_DIAGNOSTIC_ONLY",
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false,
+      "finding_ids": [
+        "E-LCL-001"
+      ],
+      "qualified_claim_ids": [
+        "STAR-PDF-v0.2:DATA-M001",
+        "STAR-PDF-v0.2:DATA-M002"
+      ],
+      "qualified_experiment_ids": [
+        "STAR-PDF-v0.2:DATA-PROV-001",
+        "STAR-PDF-v0.2:EXP-DATA-A01"
+      ],
+      "reason": "Failed <=2 arcsec crossmatch; 1495 rows share one MANGAID, and every recomputed spherical separation exceeds tolerance. Retained as negative data-quality evidence.",
+      "quarantine_manifest": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/manifest.json",
+      "group": "sdss_hi_match",
+      "copied_at_utc": "2026-10-04T01:59:18.111688+00:00",
+      "originals_preserved": true,
+      "copy_byte_identical_to_source": true
+    }
+  ],
+  "missing": [],
+  "limitations": [
+    "Canonical Git blob bytes are copied, while checkout CRLF transformations are recorded separately.",
+    "Missing prior digests are labeled observed new SHA256; no historical digest is fabricated.",
+    "Hash identity proves copy integrity, not execution provenance or scientific validity."
+  ],
+  "status_label": "QUARANTINED – not eligible for controlled empirical claims until rebuilt"
+}

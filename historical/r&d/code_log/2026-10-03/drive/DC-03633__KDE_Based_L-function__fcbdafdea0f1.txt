@@ -1,0 +1,6 @@
+shap_values_df_rf = pd.DataFrame(shap_values_rf.values, columns=X.columns)
+shap_values_df_rf.to_csv("shap_values_rf.csv", index=False)
+
+
+shap_values_df_gb = pd.DataFrame(shap_values_gb.values, columns=X.columns)
+shap_values_df_gb.to_csv("shap_values_gb.csv", index=False)

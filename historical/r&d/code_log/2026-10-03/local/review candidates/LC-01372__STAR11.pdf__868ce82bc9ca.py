@@ -1,0 +1,49 @@
+df['objra_y'] = pd.to_numeric(df['objra_y'], errors='coerce')
+df['objdec'] = pd.to_numeric(df['objdec'], errors='coerce')
+print(f"Initial df: objra_y dtype: {df['objra_y'].dtype}, objdec dtype: {df['objdec'].dtype}")
+print(f"NaN in objra_y: {df['objra_y'].isna().sum()}, NaN in objdec: {df['objdec'].isna().sum()}")
+df['objra_y'] = df['objra_y'].replace([np.inf, -np.inf], np.nan).fillna(df['objra_y'].median(skipna=True))
+df['objdec'] = df['objdec'].replace([np.inf, -np.inf], np.nan).fillna(df['objdec'].median(skipna=True))
+print(f"Rows after RA/Dec imputation: {len(df)}")
+
+# Impute NaN/infinities for all numeric columns
+=========================================================================================
+==============================
+numeric_cols = df.select_dtypes(include=[np.number]).columns
+for col in numeric_cols:
+    df[col] = df[col].replace([np.inf, -np.inf], np.nan).fillna(df[col].median(skipna=True))
+
+# Recompute log_SFR_Ha and metallicity
+=========================================================================================
+=======================================
+flux_cols = ['flux_Ha', 'flux_Hb', 'flux_OIII_5007', 'flux_NII_6584', 'e_flux_Ha']
+for col in flux_cols:
+    print(f"NaN count in {col} after imputation: {df[col].isna().sum()}")
+df['Ha_Hb_observed'] = df['flux_Ha'] / df['flux_Hb']
+Ha_Hb_intrinsic = 2.86
+k_Ha = 2.468
+k_Hb = 3.634
+df['A_Ha'] = 2.5 * np.log10(df['Ha_Hb_observed'] / Ha_Hb_intrinsic) * (k_Ha / (k_Hb - k_Ha))
+df['flux_Ha_corr'] = df['flux_Ha'] * 10**(0.4 * df['A_Ha'])
+
+# Define cosmology
+=========================================================================================
+===========================================================
+cosmo = FlatLambdaCDM(H0=70, Om0=0.3)
+sfr_conversion = 7.9e-42 * u.Msun / u.yr / u.erg * u.s  # Kennicutt 1998, Salpeter IMF
+
+# Cluster galaxies using RA/Dec and redshift (optimized with parallelization)
+=========================================================================================
+print("initiating galaxy clustering...")
+start_time = time.time()
+
+# Convert coordinates to Cartesian for clustering
+=========================================================================================
+============================
+coords = SkyCoord(ra=df['objra_y']*u.deg, dec=df['objdec']*u.deg, distance=df['zsp']*cosmo.hubble_distance,
+frame='icrs')
+xyz = coords.cartesian.xyz.value.T  # Shape: (n_rows, 3)
+
+# Build the cKDTree
+=========================================================================================
+==========================================================

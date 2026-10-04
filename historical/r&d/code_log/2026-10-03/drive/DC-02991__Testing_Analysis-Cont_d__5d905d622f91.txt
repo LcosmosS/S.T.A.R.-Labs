@@ -1,0 +1,6 @@
+curves = [[1, 2]]; print("Curves defined: ", curves);
+for(i=1, #curves, print("Processing curve ", i); a = curves[i][1]; b = curves[i][2]; print("Curve: y^2 = x^3 + ", a, "x + ", b));
+   * print("Script completed.");
+   * Run:
+   * \r C:/Temp/bsd_test.gp
+   * Expected output:

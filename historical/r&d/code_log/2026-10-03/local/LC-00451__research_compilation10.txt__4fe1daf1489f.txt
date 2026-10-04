@@ -1,0 +1,11 @@
+# Merge GEMA_2 with mangaHIall
+merged_data = pd.merge(GEMA_2, mangaHIall, left_on='mangaid', right_on='MANGAID', how='inner')
+
+
+# Drop the redundant 'MANGAID' column (optional, since 'mangaid' is already there)
+merged_data = merged_data.drop(columns=['MANGAID'])
+
+
+# Merge with pipe3d_data2 (which uses 'mangaid')
+final_merged_data = pd.merge(merged_data, pipe3d_data2, on='mangaid', how='inner')
+* Why drop 'MANGAID'?: The merge creates both "mangaid" and "MANGAID" columns in the result. Since they represent the same identifier, keeping both is redundant, so you can drop one.

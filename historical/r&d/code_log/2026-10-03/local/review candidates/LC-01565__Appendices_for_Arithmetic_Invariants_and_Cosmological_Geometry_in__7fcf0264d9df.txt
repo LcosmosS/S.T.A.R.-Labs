@@ -1,0 +1,23 @@
+        # 3e. Store results
+        results.append({
+            "System Name": name,
+            "Generator Type": b_data["type"],
+            "Virial Imbalance |2T + U|": f'{virial_imbalance:.2e}',
+            "Derived a": a,
+            "Derived b (rho)": b,
+            "Discriminant |Δ|": f'{discriminant_abs:.2e}',
+            "Calculated Equivalence Constant (Λ)": f'{lambda_constant:.2e}'
+        })
+
+    # 4. Print the results in a formatted table
+    df = pd.DataFrame(results)
+    col_widths = {
+        "System Name": 16,
+        "Generator Type": 16,
+        "Virial Imbalance |2T + U|": 28,
+        "Derived a": 12,
+        "Derived b (rho)": 18,
+        "Discriminant |Δ|": 20,
+        "Calculated Equivalence Constant (Λ)": 35
+    }
+    header = "".join([f"{col:<{width}}" for col, width in col_widths.items()])

@@ -1,0 +1,40 @@
+        parallelism='serial',
+
+        constraints={'^': (-1, 1)}
+
+    )
+
+    pysr_model.fit(X_train_scaled, y_train)
+
+
+
+    y_pred_pysr = pysr_model.predict(X_test_scaled)
+
+    r2_pysr = r2_score(y_test, y_pred_pysr)
+
+    mae_pysr = mean_absolute_error(y_test, y_pred_pysr)
+
+
+
+    xgb_model = XGBRegressor(n_estimators=200, learning_rate=0.03, max_depth=6,
+random_state=42, early_stopping_rounds=20)
+
+    xgb_model.fit(X_train_scaled, y_train, eval_set=[(X_test_scaled, y_test)], verbose=False)
+
+
+
+    y_pred_xgb = xgb_model.predict(X_test_scaled)
+
+    r2_xgb = r2_score(y_test, y_pred_xgb)
+
+    mae_xgb = mean_absolute_error(y_test, y_pred_xgb)
+
+
+
+    # Non-linear stacking with XGB meta
+
+    pysr_pred_train = y_pred_pysr.reshape(-1, 1)  # Incorrect: using test preds on train data
+
+    xgb_pred_train = xgb_model.predict(X_train_scaled).reshape(-1, 1)
+
+    pysr_pred_test = pysr_model.predict(X_test_scaled).reshape(-1, 1)

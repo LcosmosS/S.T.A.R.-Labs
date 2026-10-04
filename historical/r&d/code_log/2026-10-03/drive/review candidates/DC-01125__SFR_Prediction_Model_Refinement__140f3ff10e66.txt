@@ -1,0 +1,2 @@
+gb_loaded = joblib.load('gradient_boosting_model.pkl')
+rf_loaded = joblib.load('random_forest_model.pkl')

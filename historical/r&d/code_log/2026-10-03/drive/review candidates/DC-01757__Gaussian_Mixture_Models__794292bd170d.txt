@@ -1,0 +1,14 @@
+# Predict the subpopulation for each galaxy
+labels = best_gmm.predict(X)
+df_filtered['subpopulation'] = labels
+
+
+# Visualize the subpopulations
+plt.hist(log_mass_filtered, bins=50, alpha=0.5, label='All Data')
+for i in range(optimal_n):
+    plt.hist(log_mass_filtered[labels == i], bins=50, alpha=0.5, label=f'Subpopulation {i}')
+plt.xlabel('log_mass')
+plt.ylabel('Frequency')
+plt.title('Galaxy Subpopulations Based on Stellar Mass')
+plt.legend()
+10. plt.show()

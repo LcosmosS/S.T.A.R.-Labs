@@ -1,0 +1,3 @@
+X_train = CSV.read("X_train.csv", DataFrame)
+y_train = CSV.read("y_train.csv", DataFrame)[:, 1]
+X_test = CSV.read("X_test.csv", DataFrame)

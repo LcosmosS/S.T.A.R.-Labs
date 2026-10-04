@@ -1,0 +1,60 @@
+﻿cd ~/Arithmetic-Cosmic-Structure-Conjecture-ACSC-
+mv Dockerfile Dockerfile.old
+git pull
+docker build --no-cache -t acsc:sage-full-db .
+
+
+
+
+
+
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+*.pkl
+*.npz
+
+
+
+
+.env
+.vscode/
+.idea/
+.DS_Store
+
+
+generate:
+* a comparison corner plot (2015 vs 2018)
+
+
+* a ΔH(z) comparison figure
+
+
+* a table of parameter shifts
+
+
+* a full test suite for this dataset
+
+
+* add schema validation for all embedded likelihood data
+
+
+* optimize the MCMC sampler for speed
+
+
+* add a progress‑bar‑safe nbconvert executor for CI
+
+
+* patch DESIBAO to accept dicts
+
+
+* patch CosmicChronometers to accept dicts
+
+
+* patch JointLikelihood to detect dicts
+
+
+* update the entire pipeline to be fully file‑free

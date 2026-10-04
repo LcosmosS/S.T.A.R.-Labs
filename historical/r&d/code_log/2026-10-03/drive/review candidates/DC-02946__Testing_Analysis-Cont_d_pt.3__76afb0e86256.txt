@@ -1,0 +1,5 @@
+tamagawa = 1;
+bad_primes = factor(conductor)[,1];
+for(i = 1, #bad_primes, tamagawa *= elltamagawa(E, bad_primes[i]));
+         6. print("Product of Tamagawa numbers: ", tamagawa);
+         * Retype the loop manually to avoid parsing errors.

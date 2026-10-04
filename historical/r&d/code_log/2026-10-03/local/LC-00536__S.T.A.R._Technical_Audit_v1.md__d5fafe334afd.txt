@@ -1,0 +1,14 @@
+src/star/
+  arithmetic/
+  projection/
+  entropy/
+  topology/
+  cosmology/
+  inference/
+  validation/
+experiments/
+  v4_0_baseline/
+configs/
+  v4_0_baseline.yaml
+results/
+  <git-sha>/<experiment-id>/

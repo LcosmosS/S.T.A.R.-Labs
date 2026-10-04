@@ -1,0 +1,10 @@
+rank = Integer(C.rank()) 2176 proven = C.certain() 2177 
+
+
+self.__rank = (rank, proven) File /ext/sage/10.4/src/sage/libs/eclib/interface.py:415, in mwrank_EllipticCurve.rank(self) 389 def rank(self): 390 """ 391 
+
+
+Returns the rank of this curve, computed using :meth:two_descent(). 392 (...) 413 414 """ --> 415 return self.__two_descent_data().getrank() 
+
+
+File /ext/sage/10.4/src/sage/libs/eclib/mwrank.pyx:1096, in sage.libs.eclib.mwrank._two_descent.getrank() 1094 """ 1095 cdef int r -> 1096 sig_on() 1097 r = two_descent_get_rank(self.x) 1098 sig_off() 

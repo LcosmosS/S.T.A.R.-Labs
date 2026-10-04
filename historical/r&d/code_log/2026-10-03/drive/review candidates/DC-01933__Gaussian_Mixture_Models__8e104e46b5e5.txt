@@ -1,0 +1,7 @@
+  for(k = 1, B,
+    start = if(k == 1, 1, end_indices[k-1] + 1);
+    end = end_indices[k];
+    bin_M = mass_sorted[start..end];
+    M0_k = vecmedian(bin_M);
+    L_k = sum(i=1, #bin_M, (M0_k / bin_M[i])^s);
+    L_cosmo = L_cosmo * L_k;

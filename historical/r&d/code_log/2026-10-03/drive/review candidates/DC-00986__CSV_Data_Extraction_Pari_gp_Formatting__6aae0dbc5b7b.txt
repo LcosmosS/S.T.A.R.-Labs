@@ -1,0 +1,3 @@
+plt.figure(figsize=(10, 5)) plt.subplot(1, 2, 1) plt.scatter(df['logmass'], df['sfr'], alpha=0.5) plt.xlabel('logmass') plt.ylabel('sfr') plt.title('logmass vs. SFR')
+plt.subplot(1, 2, 2) plt.scatter(df['z'], df['sfr'], alpha=0.5) plt.xlabel('z') plt.ylabel('sfr') plt.title('z vs. SFR')
+plt.tight_layout() plt.show()

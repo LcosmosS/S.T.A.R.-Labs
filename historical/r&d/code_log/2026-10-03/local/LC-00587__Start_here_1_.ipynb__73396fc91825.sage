@@ -1,0 +1,1 @@
+plot3d(sin(pi*sqrt(x^2 + y^2)) / sqrt(x^2 + y^2), (x, -5, 5), (y, -5, 5))

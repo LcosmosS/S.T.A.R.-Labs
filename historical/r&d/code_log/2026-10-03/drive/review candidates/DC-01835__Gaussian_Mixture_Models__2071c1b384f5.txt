@@ -1,0 +1,4 @@
+gmm = GaussianMixture(n_components=5, covariance_type='diag', random_state=42)
+gmm.fit(X)
+df['subpopulation'] = gmm.predict(X)
+* print(df['subpopulation'].value_counts())

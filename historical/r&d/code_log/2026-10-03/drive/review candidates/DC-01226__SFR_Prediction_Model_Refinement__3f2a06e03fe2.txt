@@ -1,0 +1,7 @@
+# SHAP dependence plot (for a specific feature, e.g., 'log_Mass')
+shap.dependence_plot('log_Mass', shap_values, X_test)
+
+
+# SHAP force plot (for a single prediction)
+shap.initjs()
+shap.force_plot(explainer.expected_value[0], shap_values[0], X_test.iloc[0])

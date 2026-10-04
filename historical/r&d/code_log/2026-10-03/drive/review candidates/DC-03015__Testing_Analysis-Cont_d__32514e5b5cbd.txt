@@ -1,0 +1,5 @@
+E := EllipticCurve([0, 1, 0, 1, 2]); // y^2 = x^3 + x + 2
+p := 5;
+L := pAdicLSeries(E, p);
+L1 := Evaluate(L, 1);
+* print "p-adic L(1):", L1;

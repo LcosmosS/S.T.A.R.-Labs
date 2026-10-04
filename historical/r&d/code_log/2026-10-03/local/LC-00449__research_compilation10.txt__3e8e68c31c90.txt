@@ -1,0 +1,15 @@
+# Load GEMA_2.csv
+GEMA_2 = pd.read_csv('GEMA_2.csv')
+
+
+# Load pipe3d_data2.csv
+pipe3d_data2 = pd.read_csv('pipe3d_data2.csv')
+
+
+# Merge GEMA_2 with mangaHIall
+merged_data = pd.merge(GEMA_2, mangaHIall, on='mangaid', how='inner')
+
+
+# Merge the result with pipe3d_data2
+final_merged_data = pd.merge(merged_data, pipe3d_data2, on='mangaid', how='inner')
+* Note on how='inner': This performs an inner join, keeping only rows where "mangaid" exists in both datasets. If you want to keep all rows from one dataset (even if there’s no match in the other), use how='left', how='right', or how='outer' depending on your needs.

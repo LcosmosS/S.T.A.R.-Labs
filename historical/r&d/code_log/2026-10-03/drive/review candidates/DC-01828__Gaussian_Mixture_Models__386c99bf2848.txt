@@ -1,0 +1,3 @@
+X = df['logmass'].values.reshape(-1, 1)
+gmm = GaussianMixture(n_components=5, random_state=42)
+gmm.fit(X)

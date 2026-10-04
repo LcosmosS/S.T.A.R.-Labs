@@ -1,0 +1,2 @@
+   1467     bound = new_sig.bind(ax, *args, **kwargs)
+   1468     auto_label = (bound.arguments.get(label_namer)

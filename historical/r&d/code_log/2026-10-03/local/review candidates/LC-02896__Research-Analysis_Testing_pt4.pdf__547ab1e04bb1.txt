@@ -1,0 +1,5 @@
+            if reg_diff < 10000:
+                weight = 1 / (1 + reg_diff / 100)
+                ax.plot(
+                    [log_deltas[i], log_deltas[j]],
+                    [log_conds[i], log_conds[j]],

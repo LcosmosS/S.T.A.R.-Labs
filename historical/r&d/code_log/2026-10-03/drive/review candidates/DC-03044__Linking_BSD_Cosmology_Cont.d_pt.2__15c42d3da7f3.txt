@@ -1,0 +1,4 @@
+# Initialize the refined Random Forest model with best hyperparameters
+refined_rf_model = RandomForestRegressor(**best_params, random_state=42)
+# Train the refined model
+refined_rf_model.fit(X_train, y_train)

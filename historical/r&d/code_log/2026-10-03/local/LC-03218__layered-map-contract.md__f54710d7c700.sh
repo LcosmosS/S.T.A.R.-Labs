@@ -1,0 +1,16 @@
+python /path/to/generate2dsprite.py process \
+  --input <raw.png> \
+  --target asset \
+  --mode single \
+  --rows 1 \
+  --cols 1 \
+  --cell-size 256 \
+  --output-dir assets/props/<prop> \
+  --fit-scale 0.9 \
+  --align feet \
+  --component-mode largest \
+  --component-padding 8 \
+  --min-component-area 200 \
+  --threshold 100 \
+  --edge-threshold 150 \
+  --edge-clean-depth 2

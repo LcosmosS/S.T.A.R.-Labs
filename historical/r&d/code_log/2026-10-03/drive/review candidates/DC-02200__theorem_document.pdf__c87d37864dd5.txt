@@ -1,0 +1,8 @@
+pd.DataFrame(shap_values_rf.values,
+columns=X.columns).to_csv("shap_values_rf.csv", \nindex=False) \n \n if best_gb is
+not None: \n explainer_gb = shap.Explainer(best_gb, X_train_scaled) \n
+shap_values_gb = explainer_gb(X_test_scaled) \n
+shap.plots.beeswarm(shap_values_gb, show=False) \n plt.title("SHAP Summary -
+Gradient Boosting") \n plt.savefig("shap_summary_gb.png") \n plt.close() \n
+pd.DataFrame(shap_values_gb.values,
+\ncolumns=X.columns).to_csv("shap_values_gb.csv", index=False) \nexcept

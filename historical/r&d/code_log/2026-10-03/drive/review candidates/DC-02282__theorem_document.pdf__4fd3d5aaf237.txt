@@ -1,0 +1,12 @@
+kf = KFold(n_splits=k, shuffle=True)
+scores = []
+for train_idx, test_idx in kf.split(data):
+# Train model
+train_data = data.iloc[train_idx]
+test_data = data.iloc[test_idx]
+# Make predictions
+predictions = predict_cosmic_properties(train_data, test_data)
+# Compute score
+score = compute_validation_score(predictions, test_data)
+scores.append(score)
+return np.mean(scores), np.std(scores)4.6 Results and Analysis

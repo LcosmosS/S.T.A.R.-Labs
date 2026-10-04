@@ -1,0 +1,9 @@
+    analytic_rank := 0;
+    leading_coeff := Lval;
+end if;
+print "Analytic rank:", analytic_rank;
+print "Leading coefficient L^(r)(E, 1):", leading_coeff;
+
+// Verify weak BSD
+if rank eq analytic_rank then
+    print "Weak BSD holds: Algebraic rank = Analytic rank";

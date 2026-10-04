@@ -1,0 +1,4 @@
+s_vals = np.linspace(0.5, 2, 50)
+L_vals = [sum(df['a_n'] / (df['n'] ** s)) for s in s_vals]
+plt.plot(s_vals, L_vals)
+   * plt.savefig("L_cosmo_curve.png")

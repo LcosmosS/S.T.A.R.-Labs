@@ -1,0 +1,6 @@
+        color='generator_type:N',
+        size='entropy_gradient:Q',
+        tooltip=['objid', 'logmass', 'petrorad_r', 'selmer_rank', 'selmer_status',
+'entropy', 'betti_1', 'entropy_gradient', 'kde_selmer_rank_var_ap']
+    ).interactive().properties(
+        width=800, height=400, title='Rank vs. Cohomology (Betti_1) by Generator Type

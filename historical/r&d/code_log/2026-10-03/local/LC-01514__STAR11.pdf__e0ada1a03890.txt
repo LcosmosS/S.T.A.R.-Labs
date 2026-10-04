@@ -1,0 +1,4 @@
+new_features_dict  =  {}   #  Compute  new  features  using  NumPy  for  efficiency  
+=========================================================================================
+============================
+ new_features_dict['mass_metallicity']  =  logMass  *  df['OH_O3N2_raw'].values  new_features_dict['dust_metallicity']  =  df['Av_gas_Re'].values  *  df.get('OH_T04_cen',  0).values  new_features_dict['disp_mass_ratio']  =  df['vel_disp_Ha_cen'].values  /  (df['Sigma_Mass_Re'].values  +  1e-5)  new_features_dict['age_metallicity']  =  df['Age_LW_Re_fit'].values  *  df['ZH_LW_Re_fit'].values  new_features_dict['sqrt_Re_kpc']  =  np.sqrt(df['Re_kpc'].values  +  1e-5)  new_features_dict['BSD_likelihood']  =  logMass  *  df['OH_O3N2_raw'].values  /  (df['Av_gas_Re'].values  +  

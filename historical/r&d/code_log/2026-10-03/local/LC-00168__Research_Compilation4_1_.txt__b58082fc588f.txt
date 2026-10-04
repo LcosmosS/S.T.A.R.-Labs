@@ -1,0 +1,2 @@
+ pair = box_muller();
+ v[2i-1] = mu + sigma * pair[1];

@@ -1,0 +1,2 @@
+high_mass_threshold = train_df['logmass'].quantile(0.75)
+low_mass_threshold = train_df['logmass'].quantile(0.25)

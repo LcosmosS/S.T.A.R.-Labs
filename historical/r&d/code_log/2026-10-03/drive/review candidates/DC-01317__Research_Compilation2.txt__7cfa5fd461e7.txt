@@ -1,0 +1,2 @@
+with open('/home/user/cosmology/data.gp', 'w') as f:
+    f.write(f"masses = {masses};\n")

@@ -1,0 +1,16 @@
+    delta = E.discriminant()
+    conductor = E.conductor()
+    tors_order = E.torsion_subgroup().order()
+    log_delta = math.log(abs(delta)) if delta != 0 else 0
+    log_cond = math.log(float(conductor)) if conductor > 0 else 0
+
+
+    features = np.array([[log_delta, log_cond, tors_order, abs(a_scaled), abs(b_scaled)]])
+    if scaler and model:
+        features_scaled = scaler.transform(features)
+        skip_pred = model.predict(features_scaled)[0]
+        if skip_pred == 1:
+            log_print(f"ML model predicts to skip curve due to complexity (conductor={conductor})")
+            return (success, features, rank, leading_coeff, omega, reg, tamagawa, weak_bsd_holds,
+                    selmer3_rank, log_delta, log_cond, longitude, latitude, elevation, size,
+                    heegner_x, heegner_y, z, phi_adjusted, lambda_adjusted)

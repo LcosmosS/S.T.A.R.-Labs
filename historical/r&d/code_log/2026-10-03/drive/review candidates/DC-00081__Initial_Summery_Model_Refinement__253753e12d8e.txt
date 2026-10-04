@@ -1,0 +1,3 @@
+bins = pd.cut(df['nsa_z'], bins=20)
+df['z_bin'] = bins.cat.codes + 1  # 1 to 20
+df['a_n'] = (10 ** df['log_Mass_gas'])**(1 + alpha) * np.exp(-10 ** df['log_Mass_gas'] / (10 ** M_star))

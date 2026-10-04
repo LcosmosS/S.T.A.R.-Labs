@@ -1,0 +1,5 @@
+bins = np.percentile(z_group1, [0, 20, 40, 60, 80, 100])  # 5 bins
+for i in range(len(bins) - 1):
+    bin_mask = (z_group1 >= bins[i]) & (z_group1 < bins[i + 1])
+    K = compute_K_theory(logmass[group1_indices][bin_mask])
+   *     print(f"Group 1, z bin {i}: K_theory = {K:.4f}")

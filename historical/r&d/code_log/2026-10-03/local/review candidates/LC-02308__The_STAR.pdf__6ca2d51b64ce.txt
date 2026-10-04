@@ -1,0 +1,15 @@
+logMass = df['logMass'].values  # Convert to NumPy array for efficiency
+cosmo_rank = df['cosmo_rank'].values
+L_cosmo_s1 = df['L_cosmo_s_1.0'].values
+
+# Dictionary to store new features as NumPy arrays
+========================================================================
+============================================
+new_features_dict = {}
+
+# Compute new features using NumPy for efficiency
+========================================================================
+=============================================
+new_features_dict['mass_metallicity'] = logMass * df['OH_O3N2_raw'].values
+new_features_dict['dust_metallicity'] = df['Av_gas_Re'].values * df.get('OH_T04_cen', 0).values
+new_features_dict['disp_mass_ratio'] = df['vel_disp_Ha_cen'].values /

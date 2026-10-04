@@ -1,0 +1,4 @@
+E = EllipticCurve(QQ, [0, 1, 0, 1, 2])
+p = 5
+L_padic = E.padic_lseries(p)
+* print(L_padic(1))  # Evaluate at s=1

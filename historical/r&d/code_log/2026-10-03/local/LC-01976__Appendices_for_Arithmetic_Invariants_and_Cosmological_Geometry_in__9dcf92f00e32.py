@@ -1,0 +1,1 @@
+from  sage.all  import  EllipticCurve,  QQ,  pari  

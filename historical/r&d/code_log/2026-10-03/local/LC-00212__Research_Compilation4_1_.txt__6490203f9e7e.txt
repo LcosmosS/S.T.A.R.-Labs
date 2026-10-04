@@ -1,0 +1,8 @@
+To verify if the subgroups with K_theory close to 1 have distributions consistent with the theory, simulate log_mass data using parameters from these subgroups, such as mean and standard deviation, and compute K_theory. For example, for the subgroup z=0.05 to 0.1, low SFR, with mean=9.7843, sd=0.3645, simulate using PARI/GP's randomnormal() function, which generates random numbers from N(0,1). Define:
+simulate_log_mass(N, mu, sigma) = {
+  vector(N, i, mu + sigma * randomnormal())
+}
+Then, for N=500 (adjust based on subgroup size), mu=9.7843, sigma=0.3645:
+log_mass_sim = simulate_log_mass(500, 9.7843, 0.3645);
+K_sim = compute_K_theory(log_mass_sim);
+print("Simulated K_theory: ", K_sim);

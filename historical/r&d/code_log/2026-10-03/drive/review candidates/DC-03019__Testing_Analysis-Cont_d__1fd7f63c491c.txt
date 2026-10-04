@@ -1,0 +1,2 @@
+F_n = \frac{(\pi \cdot \Omega) \cdot (\phi \cdot \text{Reg}(E)) \cdot 5 \cdot \prod_p c_p}{|E(\mathbb{Q})_{\text{tors}}|^2}
+Here, F_6 = 8 didn’t match the right-hand side (35.478...), so the adjusted |\text{Sha}(E)| was computed as 0.225..., far from an integer, suggesting the substitution needs refinement.

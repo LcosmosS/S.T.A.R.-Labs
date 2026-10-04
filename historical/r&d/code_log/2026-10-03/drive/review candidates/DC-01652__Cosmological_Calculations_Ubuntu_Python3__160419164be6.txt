@@ -1,0 +1,4 @@
+n = length(M);
+if (n % 2 == 1,
+    M0 = M_sorted[(n+1)\2],
+    M0 = (M_sorted[n\2] + M_sorted[n\2 + 1]) / 2

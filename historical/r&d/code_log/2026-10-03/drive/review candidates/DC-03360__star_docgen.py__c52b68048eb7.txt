@@ -1,0 +1,4 @@
+    if selected_modes > 1:
+        parser.error(
+            "Only one operating mode may be selected "
+            "at a time."

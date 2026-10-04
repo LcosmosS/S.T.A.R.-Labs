@@ -1,0 +1,4 @@
+return
+ 
+np.nan
+     angle_rad  =  (angular_size_arcsec  *  u.arcsec).to(u.rad).value      radius_mpc  =  distance_mpc  *  angle_rad      return  (radius_mpc  *  u.Mpc).to(u.lyr).value   def  calculate_virial_energy(mass_sm,  radius_ly):  

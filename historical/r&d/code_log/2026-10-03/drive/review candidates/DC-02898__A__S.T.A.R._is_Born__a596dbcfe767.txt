@@ -1,0 +1,139 @@
+            if len(chunk_filtered) == 0:
+                continue
+            # Perform cross-match on the filtered chunk
+            _, matched_df2 = cross_match(df1, chunk_filtered, ra_col1, dec_col1, ra_col2, dec_col2, max_dist_arcsec)
+            if len(matched_df2) > 0:
+                matched_df2_list.append(matched_df2[columns_to_keep])
+        
+        if len(matched_df2_list) == 0:
+            print("No matches found in any chunk.")
+            return df1, pd.DataFrame()
+        
+        # Concatenate all matched_df2
+        matched_df2 = pd.concat(matched_df2_list, ignore_index=True)
+        matched_df1 = df1.copy()
+        
+        return matched_df1, matched_df2
+    except Exception as e:
+        print(f"Error in cross_match_in_chunks: {e}")
+        raise
+
+
+# Store the original DataFrame before cross-matching
+df_original = df.copy()
+
+
+# Cross-match with VizieR catalogues
+# SDSS merged dataset (V/147 + V/154, uses RA_ICRS, DE_ICRS)
+df, sdss_matched = cross_match(df, sdss_merged, 'objra_y', 'objdec', 'RA_ICRS', 'DE_ICRS', max_dist_arcsec=10.0)
+print(f"After SDSS cross-match: {len(df)} galaxies")
+
+
+# Check if cross-match succeeded; if not, fall back to original DataFrame
+if len(df) == 0:
+    print("No matches found with SDSS merged data (V/147 + V/154). Falling back to original data and using nsa_z for redshift.")
+    df = df_original.copy()
+    df['zsp'] = df['nsa_z']
+else:
+    # Add zsp, umag, gmag, etc. from the merged SDSS dataset
+    df = pd.concat([df, sdss_matched[['zsp', 'umag', 'gmag', 'rmag', 'imag', 'zmag', 'e_umag', 'e_gmag', 'e_rmag', 'e_imag', 'e_zmag']]], axis=1)
+
+
+# II/246: 2MASS Extended Source Catalogue (uses RAJ2000, DEJ2000)
+df, twomass_matched = cross_match_in_chunks(
+    df, "2Mass.csv",
+    'objra_y', 'objdec', 'RAJ2000', 'DEJ2000',
+    ['Jmag', 'Hmag', 'Kmag', 'e_Jmag', 'e_Hmag', 'e_Kmag'],
+    max_dist_arcsec=10.0, chunksize=100000
+)
+print(f"After II/246 cross-match: {len(df)} galaxies")
+if len(df) > 0:
+    df = pd.concat([df, twomass_matched[['Jmag', 'Hmag', 'Kmag', 'e_Jmag', 'e_Hmag', 'e_Kmag']]], axis=1)
+
+
+# II/356: GAMA DR3 (uses RAJ2000, DEJ2000)
+df, gama_matched = cross_match_in_chunks(
+    df, "II356xmmom41s.csv",
+    'objra_y', 'objdec', 'RAJ2000', 'DEJ2000',
+    ['UmAB', 'BmAB', 'VmAB'],
+    max_dist_arcsec=10.0, chunksize=100000
+)
+print(f"After II/356 cross-match: {len(df)} galaxies")
+if len(df) > 0:
+    df = pd.concat([df, gama_matched[['UmAB', 'BmAB', 'VmAB']]], axis=1)
+
+
+# Print columns after cross-matching for debugging
+print("Columns in df after cross-matching:", df.columns.tolist())
+
+
+# Recompute log_SFR_Ha and metallicity using fluxes from merged_data.csv
+df['flux_Ha'] = df['F_Ha_cen']  # Use F_Ha_cen as flux_Ha
+df['e_flux_Ha'] = df['e_F_Ha_cen']
+df['flux_Hb'] = df['flux_Hbeta4861.36_Re_fit']
+df['flux_OIII_5007'] = df['flux_[OIII]5006.84_Re_fit']
+df['flux_NII_6584'] = df['flux_[NII]6583.45_Re_fit']
+
+
+# Check for NaN in flux columns and handle them
+flux_cols = ['flux_Ha', 'flux_Hb', 'flux_OIII_5007', 'flux_NII_6584', 'e_flux_Ha']
+for col in flux_cols:
+    nan_count = df[col].isna().sum()
+    print(f"NaN count in {col}: {nan_count}")
+    # Replace NaN with median for flux columns
+    if nan_count > 0:
+        df[col] = df[col].fillna(df[col].median())
+
+
+df['Ha_Hb_observed'] = df['flux_Ha'] / df['flux_Hb']
+Ha_Hb_intrinsic = 2.86
+k_Ha = 2.468
+k_Hb = 3.634
+df['A_Ha'] = 2.5 * np.log10(df['Ha_Hb_observed'] / Ha_Hb_intrinsic) * (k_Ha / (k_Hb - k_Ha))
+df['flux_Ha_corr'] = df['flux_Ha'] * 10**(0.4 * df['A_Ha'])
+H0 = 70  # km/s/Mpc
+c = 3e5  # km/s
+df['DL'] = (c * df['zsp'] / H0) * 3.0856e24  # cm, using zsp
+df['L_Ha'] = df['flux_Ha_corr'] * 4 * np.pi * df['DL']**2  # erg/s
+df['log_SFR_Ha_raw'] = np.log10(df['L_Ha'] * 7.9e-42)  # M_sun/yr
+df['log_O3N2_raw'] = np.log10((df['flux_OIII_5007'] / df['flux_Hb']) / (df['flux_NII_6584'] / df['flux_Ha']))
+df['OH_O3N2_raw'] = 8.533 - 0.214 * df['log_O3N2_raw']
+
+
+# Add raw fluxes as features
+df['log_flux_Ha'] = np.log10(df['flux_Ha'] + 1e-10)
+df['log_flux_Hb'] = np.log10(df['flux_Hb'] + 1e-10)
+df['log_flux_OIII_5007'] = np.log10(df['flux_OIII_5007'] + 1e-10)
+df['log_flux_NII_6584'] = np.log10(df['flux_NII_6584'] + 1e-10)
+df['log_e_flux_Ha'] = np.log10(df['e_flux_Ha'] + 1e-10)
+
+
+# Add photometric colors (if available)
+if 'umag' in df.columns:
+    df['color_ug'] = df['umag'] - df['gmag']
+    df['color_gr'] = df['gmag'] - df['rmag']
+    df['color_ri'] = df['rmag'] - df['imag']
+    df['color_iz'] = df['imag'] - df['zmag']
+    df['e_color_ug'] = np.sqrt(df['e_umag']**2 + df['e_gmag']**2)
+    df['e_color_gr'] = np.sqrt(df['e_gmag']**2 + df['e_rmag']**2)
+
+
+# Add 2MASS colors (if available)
+if 'Jmag' in df.columns:
+    df['color_JK'] = df['Jmag'] - df['Kmag']
+    df['e_color_JK'] = np.sqrt(df['e_Jmag']**2 + df['e_Kmag']**2)
+
+
+# Drop rows with missing target or excessive NaNs
+df = df.dropna(subset=["log_SFR_Ha"])
+df = df.dropna(axis=0, thresh=int(0.8 * df.shape[1]))
+df.fillna(df.median(numeric_only=True), inplace=True)
+
+
+# Step 1: Cosmo-Rank Construction
+gz_df = df.copy()
+morph_cols = ['P(CD)', 'P(E)', 'P(S0)', 'P(Sa)', 'P(Sab)', 'P(Sb)', 'P(Sbc)', 
+              'P(Sc)', 'P(Scd)', 'P(Sd)', 'P(Sdm)', 'P(Sm)', 'P(Irr)']
+gz_df['morph_sum'] = gz_df[morph_cols].sum(axis=1)
+gz_df['Num_w'] = gz_df['conf_prob']
+scaler_rank = MinMaxScaler()

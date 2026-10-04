@@ -1,0 +1,1 @@
+E  =  ellinit([-1706,  6320]);  [r,  Lr]  =  ellanalyticrank(E);  3.  print(r,  Lr);  4.  Use  LMFDB  to  verify  |\text{Sha}(E)| by  inputting  the  curve  into  the  elliptic  curve  

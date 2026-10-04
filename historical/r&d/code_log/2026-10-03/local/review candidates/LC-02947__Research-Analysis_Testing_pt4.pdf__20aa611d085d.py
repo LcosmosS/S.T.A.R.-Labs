@@ -1,0 +1,5 @@
+ax.set_xlabel('Log(Discriminant)') ax.set_ylabel('Log(Conductor)') ax.set_zlabel('Rank')
+ax.set_title('Cosmic Interweb: Nodes and Weighted Filaments')
+plt.savefig("interweb_plot_updated_3.png")
+plt.close()
+print("Updated interweb plot saved to interweb_plot_updated_3.png")

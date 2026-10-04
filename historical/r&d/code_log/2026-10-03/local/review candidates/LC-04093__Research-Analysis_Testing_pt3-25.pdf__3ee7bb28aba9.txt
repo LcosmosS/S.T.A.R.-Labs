@@ -1,0 +1,21 @@
+        with open("unique_curves.txt", "a") as f:
+            f.write(f"{-1706},{6320},{rank},{omega},{reg},{comoving_volume}\n")
+
+# Plot interweb with wider filament threshold
+if interweb_data:
+    fig = plt.figure(figsize=(12, 10))
+    ax = fig.add_subplot(111, projection='3d')
+    # Aggregate nodes to limit repetition
+    node_counts = {}
+    for node in interweb_data:
+        key = (node[0], node[1], node[2])
+        node_counts[key] = node_counts.get(key, 0) + 1
+    filtered_data = []
+    for node in interweb_data:
+        key = (node[0], node[1], node[2])
+        if node_counts[key] <= 1 or node[2] >= 3:  # Allow all rank 3, limit others to 1
+            filtered_data.append(node)
+        node_counts[key] -= 1
+
+    ranks = [x[2] for x in filtered_data]
+    log_deltas = [x[8] for x in filtered_data]

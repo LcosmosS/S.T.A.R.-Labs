@@ -1,0 +1,3 @@
+        sizes = [float(max(x[3] * 100, 1e-6)) for x in filtered_data]
+        colors = [x[7] for x in filtered_data]
+        scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=colors, cmap='viridis', alpha=0.7)

@@ -1,0 +1,7 @@
+log_mass = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]: These are the base-10 logarithms of masses.
+
+
+M_sorted = vecsort(log_mass): Since log_mass is already sorted, M_sorted is also [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]. However, note that these are logarithmic values, not the actual masses (we’ll address this later).
+
+
+end_indices = [2, 4, 6, 8, 10]: These define the endpoints of five bins: [1..2], [3..4], [5..6], [7..8], [9..10].

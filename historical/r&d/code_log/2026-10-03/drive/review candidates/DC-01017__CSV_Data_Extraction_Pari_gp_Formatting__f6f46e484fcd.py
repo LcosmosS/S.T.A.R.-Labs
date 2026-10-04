@@ -1,0 +1,5 @@
+rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+rf_model.fit(df[[logmass_col, z_col]], df[sfr_col])
+df['predicted_sfr_rf'] = rf_model.predict(df[[logmass_col, z_col]])
+mse_rf = mean_squared_error(df[sfr_col], df['predicted_sfr_rf'])
+print(f"MSE with Random Forest: {mse_rf:.4f}")

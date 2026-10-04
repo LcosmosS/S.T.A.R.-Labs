@@ -1,0 +1,2 @@
+    if force_failure and large_fibs:
+        return random.sample(large_fibs, 2) if len(large_fibs) >= 2 else random.sample(valid_fibs, 2)

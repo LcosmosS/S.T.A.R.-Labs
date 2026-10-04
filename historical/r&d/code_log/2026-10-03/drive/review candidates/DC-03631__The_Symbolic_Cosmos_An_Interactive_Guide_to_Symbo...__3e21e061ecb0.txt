@@ -1,0 +1,7 @@
+   target = 'sfr'
+   
+   X = df[features]
+   y = df[target]
+   
+   # Train models and print results
+   model_results = train_and_evaluate(X, y)

@@ -1,0 +1,2 @@
+rho = state * state.dag()
+return -np.trace(rho * np.log2(rho))

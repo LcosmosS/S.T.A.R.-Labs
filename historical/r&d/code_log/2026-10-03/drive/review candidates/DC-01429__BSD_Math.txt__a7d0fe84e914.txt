@@ -1,0 +1,4 @@
+ u1 = random(1.0);
+u2 = random(1.0);
+r = sqrt(-2 * log(u1));
+theta = 2 * Pi * u2;

@@ -1,0 +1,6 @@
+s = 1;
+unique_subpops = Set(subpopulation);
+unique_subpops_vec = Vec(unique_subpops);
+L_cosmo_s = 1.0;
+for(k=1, #unique_subpops_vec, {
+  ***   sorry, embedded braces (in parser) is not yet implemented.

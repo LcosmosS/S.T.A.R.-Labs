@@ -1,0 +1,2 @@
+python extract_data.py
+You should see the column names printed as before, but now the script will continue past the column check and produce the formatted output without errors, assuming the data in those columns can be processed as expected. Additional Notes Data Consistency: Ensure that the values in 'logmass', 'ra', 'sfr', and 'z' are numeric or can be coerced to numeric values. If there are non-numeric values that cannot be handled (e.g., text strings), the pd.to_numeric step will convert them to NaN, and dropna will remove those rows.

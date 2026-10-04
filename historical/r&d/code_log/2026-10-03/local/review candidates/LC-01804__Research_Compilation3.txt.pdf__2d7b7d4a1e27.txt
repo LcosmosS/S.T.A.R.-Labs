@@ -1,0 +1,2 @@
+right_side = (Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2);
+print("Right side: ", right_side); K = right_side / unscaled_left; print("Normalization constant

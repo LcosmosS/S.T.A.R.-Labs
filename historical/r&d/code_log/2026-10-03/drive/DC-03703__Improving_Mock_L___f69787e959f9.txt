@@ -1,0 +1,7 @@
+k_min = 0.001; k_max = 1.0; steps = 1000;
+delta_k = (k_max - k_min) / steps;
+P_k(n) = 1e4 * ((n * delta_k)^0.96); /* Simplified model */
+* L_cosmo(s) = sum(n=1, steps, (P_k(n) / (n * delta_k)^s)) * delta_k;
+   * Normalize with \Delta^2(k) = k^3 P(k) / (2\pi^2), which is dimensionless:
+   * L_cosmo(s) = sum(n=1, steps, (k^3 * P_k(n) / (2 * Pi^2)) / (n * delta_k)^s) * delta_k;
+* Benefit: Ties the L-function to structure formation, potentially aligning better with T_{\text{cosmo}} and \prod c_{p,\text{cosmo}}.

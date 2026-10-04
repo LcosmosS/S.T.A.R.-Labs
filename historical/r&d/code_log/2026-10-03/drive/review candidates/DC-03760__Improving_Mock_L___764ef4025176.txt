@@ -1,0 +1,6 @@
+left_side = L_cosmo(1);
+print("Left side: ", left_side);
+print("Right side: ", right_side);
+if (abs(left_side - right_side) < 0.1 * right_side,
+    print("Holds within 10%"),
+    print("Fails"));

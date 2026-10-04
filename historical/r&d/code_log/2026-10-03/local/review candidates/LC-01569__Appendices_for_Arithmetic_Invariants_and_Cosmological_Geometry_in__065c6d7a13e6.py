@@ -1,0 +1,19 @@
+        return np.nan
+    mass_kg = mass_sm * 1.989e30
+    radius_m = radius_ly * 9.461e15
+    potential_energy = -1 * G.value * (mass_kg ** 2) / radius_m
+    return potential_energy / 2.0
+
+# --- 4. SageMath Core Hypothesis Functions ---
+
+def map_physics_to_curve_coeffs(distance_mly, density_kg_m3):
+    """Maps physical properties to elliptic curve coefficients 'a' and 'b'."""
+    if not np.isfinite(distance_mly) or not np.isfinite(density_kg_m3):
+        return np.nan, np.nan
+    a = QQ(-distance_mly)
+    b = QQ(density_kg_m3)
+    return a, b
+
+def calculate_sagemath_discriminant(a, b):
+    """Calculates the discriminant using SageMath's native functionality."""
+    if not isinstance(a, (int, float, complex)) or not isinstance(b, (int, float,

@@ -1,0 +1,4 @@
+df_main.columns = df_main.columns.str.lower()
+df_class.columns = df_class.columns.str.lower()
+df_mass.columns = df_mass.columns.str.lower()
+df_hi.columns = df_hi.columns.str.lower()

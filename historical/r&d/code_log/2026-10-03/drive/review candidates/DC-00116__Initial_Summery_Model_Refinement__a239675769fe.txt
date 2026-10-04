@@ -1,0 +1,3 @@
+alpha = -1.3
+M_star = df['log_Mass_gas'].median()
+   * df['a_n'] = (10 ** df['log_Mass_gas'])**(1 + alpha) * np.exp(-10 ** df['log_Mass_gas'] / (10 ** M_star))

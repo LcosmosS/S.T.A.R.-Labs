@@ -1,0 +1,5 @@
+t_H=1.44e10; Omega_cosmo=1.38e10; Omega_tilde=Omega_cosmo/t_H; print("Omega_tilde: ", Omega_tilde);
+read("C:\\temp\\data_extract.txt");
+\\ Filter invalid log_mass entries, e.g., log_mass <= -9999
+valid_log_mass = select(x -> x > -9999, log_mass);
+N = #valid_log_mass;

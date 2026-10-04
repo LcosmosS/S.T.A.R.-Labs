@@ -1,0 +1,3 @@
+ for  bsd_feature  in  bsd_features:      if  bsd_feature  not  in  top_features:          top_features.append(bsd_feature)  X_selected  =  df[top_features]  X_train_selected,  X_test_selected,  _,  _  =  train_test_split(X_selected,  y,  test_size=0.2,  
+random_state=42)
+ X_train_selected_scaled  =  scaler.fit_transform(X_train_selected)  X_test_selected_scaled  =  scaler.transform(X_test_selected)   #  Symbolic  Regression  with  gplearn  symbolic_model  =  SymbolicRegressor(      population_size=3000,      generations=150,      stopping_criteria=0.01,      p_crossover=0.7,  

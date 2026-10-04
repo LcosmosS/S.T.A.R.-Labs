@@ -1,0 +1,2 @@
+explainer = shap.Explainer(gb, X_test)
+shap_values = explainer(X_test)

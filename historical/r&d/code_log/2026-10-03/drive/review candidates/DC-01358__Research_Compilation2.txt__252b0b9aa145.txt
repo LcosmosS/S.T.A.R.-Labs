@@ -1,0 +1,4 @@
+# Write masses to masses.txt, one per line
+with open('masses.txt', 'w') as f:
+    for m in masses:
+        f.write(str(m) + '\n')

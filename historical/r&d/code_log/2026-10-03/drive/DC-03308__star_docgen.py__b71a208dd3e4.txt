@@ -1,0 +1,5 @@
+    return {
+        "code_like": bool(
+            re.search(
+                r"\b("
+                r"import\s+"

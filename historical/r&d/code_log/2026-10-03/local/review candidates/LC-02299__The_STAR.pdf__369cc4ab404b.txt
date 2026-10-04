@@ -1,0 +1,15 @@
+    df['color_JK'] = df['Jmag'] - df['Kmag']
+    df['e_color_JK'] = np.sqrt(df['e_Jmag']**2 + df['e_Kmag']**2)
+
+# Step 1: Cosmo-Rank Construction (flux or morphological features)
+========================================================================
+================================================
+flux_cols = ['flux_Ha', 'flux_Hb', 'flux_OIII_5007', 'flux_NII_6584', 'e_flux_Ha']
+if 'ellipticity' in df.columns and ('zsp' in df.columns or 'z' in df.columns):
+    gz_df = df[['ellipticity']].copy()
+    gz_df['redshift'] = df['zsp'] if 'zsp' in df.columns else df['z']
+    gz_df['morph_proxy'] = gz_df['ellipticity']
+    gz_df['Num_w'] = 1.0
+    scaler_rank = MinMaxScaler()
+    gz_df[['morph_norm', 'Num_w_norm', 'redshift_norm']] = scaler_rank.fit_transform(
+        gz_df[['morph_proxy', 'Num_w', 'redshift']]

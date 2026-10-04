@@ -1,0 +1,9 @@
+# Check if 'K' and 'L' exist, and add them if necessary
+required_columns = ['ra', 'dec', 'redshift', 'SFR', 'K', 'L']
+for col in required_columns:
+    if col not in df1.columns:
+        df1[col] = np.nan  # Assign NaN to missing columns (if they should be present)
+
+
+# Impute missing values for all numerical columns
+imputer = SimpleImputer(strategy='mean')  # You can change to 'median' if desired

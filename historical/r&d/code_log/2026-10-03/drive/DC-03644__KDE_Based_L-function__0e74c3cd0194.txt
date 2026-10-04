@@ -1,0 +1,2 @@
+assert np.isfinite(X_train_scaled).all().all()
+assert np.isfinite(y_train).all()

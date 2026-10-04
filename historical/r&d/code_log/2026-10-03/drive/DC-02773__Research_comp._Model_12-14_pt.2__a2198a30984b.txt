@@ -1,0 +1,15 @@
+# Define a normalization constant A based on literature or calibration
+A = 1e-4  # This is an example value; you'll need to calibrate this based on your data
+
+
+# Compute the expected SFR using the Kennicutt-Schmidt law
+df['expected_SFR'] = A * (df['gas_density'] ** 1.4)
+
+
+# Create a residual feature, comparing observed SFR (if available) to expected SFR
+df['residual_SFR'] = df['observed_SFR'] - df['expected_SFR']
+
+
+# Now include these new features in your feature set for the model
+X = df[['ra', 'dec', 'redshift', 'expected_SFR', 'residual_SFR']]
+y = df['observed_SFR']  # or whichever target SFR measurement you're using

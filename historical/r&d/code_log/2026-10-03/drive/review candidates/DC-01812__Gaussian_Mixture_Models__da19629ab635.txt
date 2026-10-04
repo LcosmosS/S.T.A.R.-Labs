@@ -1,0 +1,76 @@
+# Filter out rows with -9999 in columns_to_filter
+df = df[(df[columns_to_filter] != -9999).all(axis=1)]
+print(f"Number of valid rows after filtering: {len(df)}")
+
+
+# Extract logmass for GMM
+logmass = df['logmass'].values.reshape(-1, 1)
+
+
+# Test 1 to 10 components using BIC
+n_components_range = range(1, 11)
+bic_scores = []
+for n in n_components_range:
+    gmm = GaussianMixture(n_components=n, random_state=42)
+    gmm.fit(logmass)
+    bic_scores.append(gmm.bic(logmass))
+
+
+# Choose the best model
+optimal_n = n_components_range[np.argmin(bic_scores)]
+print(f"Optimal number of components: {optimal_n}")
+
+
+# Fit the best model and assign subpopulations
+best_gmm = GaussianMixture(n_components=optimal_n, random_state=42)
+best_gmm.fit(logmass)
+df['subpopulation'] = best_gmm.predict(logmass)
+
+
+# Compute mass for PARI/GP
+df['mass'] = 10 ** df['logmass']
+
+
+# Define output columns for PARI/GP
+output_columns = ['mass', 'subpopulation', 'objid', 'ra', 'dec', 'z', 'logmass', 'petrorad_r', 'ellipticity', 'sfr', 'metallicity']
+
+
+# Generate PARI/GP script with chunking
+chunk_size = 1000
+with open('load_vectors.gp', 'w') as f:
+    for col in output_columns:
+        values = df[col].values
+        if df[col].dtype == 'object':
+            values = [f'"{val}"' for val in values]
+        else:
+            values = [f"{val:.15g}" if isinstance(val, float) else str(val) for val in values]
+        
+        num_parts = (len(values) + chunk_size - 1) // chunk_size
+        part_names = []
+        for part in range(num_parts):
+            start = part * chunk_size
+            end = min((part + 1) * chunk_size, len(values))
+            part_values = values[start:end]
+            part_name = f"{col}_part{part+1}"
+            part_names.append(part_name)
+            f.write(f"{part_name} = [{', '.join(part_values)}];\n")
+        
+        f.write(f"{col} = concat([{', '.join(part_names)}]);\n")
+
+
+print("PARI/GP script generated: load_vectors.gp")
+
+
+grouped = df.groupby('subpopulation')
+K_values = {}
+for subpop, group in grouped:
+    masses = group['mass'].values
+    M0 = np.median(masses)
+    sum_M_over_M0 = np.sum(masses / M0)
+    sum_M0_over_M = np.sum(M0 / masses)
+    K = sum_M_over_M0 / sum_M0_over_M
+    K_values[subpop] = K
+    print(f"Subpopulation {subpop}: M0 = {M0:.2e}, K = {K:.4f}")
+
+
+# Compute rank

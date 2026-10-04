@@ -1,0 +1,6 @@
+E := EllipticCurve([0, 0, 0, -1706, 6320]);
+for p in [2, 3, 5] do
+    S := TwoSelmerGroup(E);
+    print "p-Selmer rank for p =", p, ":", Ilog(p, #S);
+    ●   end for;
+    ●   Generalizing this to all curves and primes requires theoretical methods.

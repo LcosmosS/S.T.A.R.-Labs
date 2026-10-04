@@ -1,0 +1,6 @@
+explainer = shap.Explainer(model)
+shap_values = explainer(X)
+
+
+# SHAP summary plot
+shap.summary_plot(shap_values, X)

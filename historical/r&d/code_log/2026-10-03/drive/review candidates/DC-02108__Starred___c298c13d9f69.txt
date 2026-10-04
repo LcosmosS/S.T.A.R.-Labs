@@ -1,0 +1,5 @@
+  if (n == 0, return(0));
+  my(M0);
+  if (n % 2 == 1,
+    M0 = sorted_M[(n+1)/2],
+    M0 = (sorted_M[n/2] + sorted_M[n/2 + 1]) / 2

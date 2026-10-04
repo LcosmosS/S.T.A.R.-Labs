@@ -1,0 +1,47 @@
+{
+  "final_manifest_artifacts": 8295,
+  "final_source_occurrences": 27180,
+  "final_artifact_status_counts": {
+    "not_identified": 7938,
+    "superseded": 108,
+    "pending_review": 249
+  },
+  "final_model_mismatch_count": 7,
+  "physical_files": 12633,
+  "physical_bytes": 92754194,
+  "physical_role_counts": {
+    "earlier_extraction_copy": 4331,
+    "collection_support_file": 7,
+    "final_manifest_artifact": 8295
+  },
+  "physical_trace_counts": {
+    "linked_to_complete_final_manifest": 2536,
+    "recovered_from_readable_snapshot": 333,
+    "collection_metadata": 7,
+    "complete_final_manifest": 8295,
+    "recovered_from_firstpass_manifest": 1462
+  },
+  "physical_old_arithmetic_scan_count": 12633,
+  "physical_benchmark_status_counts": {
+    "not_identified": 12065,
+    "pending_review": 386,
+    "superseded": 182
+  },
+  "earlier_copy_benchmark_status_counts": {
+    "not_identified": 4120,
+    "pending_review": 137,
+    "superseded": 74
+  },
+  "correction_reference_files_preserved_separately": 2,
+  "correction_reference_bytes": 84684,
+  "existing_repo_files_triaged": 91,
+  "existing_repo_status_counts": {
+    "pending_review": 3,
+    "mixed_scoped_dispositions": 1,
+    "superseded": 87
+  },
+  "existing_repo_notebook_cells_triaged": 6,
+  "research_code_execution_performed": false,
+  "draft_only": false,
+  "repository_ingestion_status": "authorized Phase 4 ingestion"
+}

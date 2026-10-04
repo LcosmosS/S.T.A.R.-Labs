@@ -1,0 +1,1 @@
+  python  E  =  EllipticCurve([-1706,  6320])  Omega  =  E.period_lattice().real_period()  Tamagawa  =  prod(E.tamagawa_numbers())  Sha_estimate  =  5.71614727018219  /  (Omega  *  3.38343524498343  *  Tamagawa)  print(Omega,  Tamagawa,  Sha_estimate)  

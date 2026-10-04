@@ -1,0 +1,31 @@
+function IconButton({ isActive, ActiveIcon, InactiveIcon }) {
+  return (
+    <button>
+      <div className="relative">
+        <div
+          className={cn(
+            "absolute inset-0 flex items-center justify-center",
+            "transition-[opacity,filter,scale] duration-300",
+            "ease-[cubic-bezier(0.2,0,0,1)]",
+            isActive
+              ? "scale-100 opacity-100 blur-none"
+              : "scale-[0.25] opacity-0 blur-[4px]"
+          )}
+        >
+          <ActiveIcon />
+        </div>
+        <div
+          className={cn(
+            "transition-[opacity,filter,scale] duration-300",
+            "ease-[cubic-bezier(0.2,0,0,1)]",
+            isActive
+              ? "scale-[0.25] opacity-0 blur-[4px]"
+              : "scale-100 opacity-100 blur-none"
+          )}
+        >
+          <InactiveIcon />
+        </div>
+      </div>
+    </button>
+  );
+}

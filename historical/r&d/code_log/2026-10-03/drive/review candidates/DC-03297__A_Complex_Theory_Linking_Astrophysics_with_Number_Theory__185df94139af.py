@@ -1,0 +1,7 @@
+E = EllipticCurve([-1706, 6320])
+Omega = E.period_lattice().real_period()
+Tamagawa = prod(E.tamagawa_numbers())
+P = E.point([2, 54])
+Reg = P.height()
+Sha_estimate = 5.71614727018219 / (Omega * Reg * Tamagawa)
+print(Omega, Reg, Tamagawa, Sha_estimate)

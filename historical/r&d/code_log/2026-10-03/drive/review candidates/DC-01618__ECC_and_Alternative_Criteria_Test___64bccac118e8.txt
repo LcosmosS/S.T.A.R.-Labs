@@ -1,0 +1,80 @@
+    if XGBClassifier:
+        classifiers.append(('XGBoost', XGBClassifier(random_state=42, n_jobs=-1)))
+    if LGBMClassifier:
+        classifiers.append(('LightGBM', LGBMClassifier(random_state=42, n_jobs=-1)))
+    if CatBoostClassifier and catboost_params_clf:
+        classifiers.append(('CatBoost', CatBoostClassifier(**catboost_params_clf, verbose=0)))
+
+
+    stacking_clf = StackingClassifier(estimators=classifiers, final_estimator=HistGradientBoostingClassifier(random_state=42), n_jobs=-1)
+    stacking_clf.fit(X, y)
+    gen_accuracy = cross_val_score(stacking_clf, X, y, cv=5, n_jobs=-1).mean()
+    class_report = classification_report(y, stacking_clf.predict(X), output_dict=True)
+    analysis_logger.info("Stacking Classifier Accuracy:" + str(gen_accuracy))
+    analysis_logger.info("Classification Report:\n" + str(class_report))
+    summary = {'Accuracy': gen_accuracy}
+    print_step(16, "Train Stacking Classifier", summary)
+
+
+    print_step(16, "Compute Generator Feature Importance")
+    gen_perm_importance = permutation_importance(stacking_clf, X, y, n_repeats=10, random_state=42, n_jobs=-1)
+    gen_feature_importance = pd.Series(gen_perm_importance.importances_mean, index=X.columns).sort_values(ascending=False)
+    analysis_logger.info("\nGenerator Type Feature Importance:\n" + str(gen_feature_importance))
+    gen_feature_importance.to_csv(f'{OUTPUT_PLOT_PREFIX}_generator_feature_importance.csv')
+    summary = {'Top Features': gen_feature_importance.head(5).to_dict()}
+    print_step(16, "Compute Generator Feature Importance", summary)
+
+
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x=gen_feature_importance.values, y=gen_feature_importance.index)
+    plt.title('Generator Type Feature Importance')
+    plt.savefig(f'{OUTPUT_PLOT_PREFIX}_generator_feature_importance.png')
+    plt.close()
+
+
+    print_step(17, "Symbolic Regression for Generator")
+    for method in ['pysr', 'gplearn']:
+        sym_reg_gen = run_symbolic_regression(X, y.map({'Simple': 0, 'Recursive': 1, 'unknown': 2}), feature_cols, method)
+        if sym_reg_gen:
+            getattr(sym_reg_gen, 'equations_', pd.DataFrame()).to_csv(f'{OUTPUT_PLOT_PREFIX}_symbolic_regression_generator_{method}.csv')
+    summary = {'Methods Run': ['pysr', 'gplearn']}
+    print_step(17, "Symbolic Regression for Generator", summary)
+
+
+    print_step(15, "Perform Clustering")
+    X_struct = df[df['generator_type'] == 'Recursive'][['logmass', 'metallicity', 'petrorad_r', 'log_delta', 'log_omega', 'entropy', 'betti_1', 'entropy_gradient'] + 
+                                                      (['kde_selmer_rank_var_ap'] if 'kde_selmer_rank_var_ap' in df.columns else [])]
+    summary = {'Recursive Rows': len(X_struct)}
+    if not X_struct.empty:
+        X_struct = preprocess_clustering_features(X_struct, X_struct.columns)
+        dbscan = DBSCAN(eps=0.5, min_samples=5, metric='nan_euclidean')
+        cluster_labels = dbscan.fit_predict(X_struct)
+        df.loc[df['generator_type'] == 'Recursive', 'structure_cluster'] = cluster_labels
+        kmeans = KMeans(n_clusters=5, random_state=42, n_jobs=-1)
+        kmeans_labels = kmeans.fit_predict(X_struct)
+        df.loc[df['generator_type'] == 'Recursive', 'kmeans_cluster'] = kmeans_labels
+        summary['DBSCAN Clusters'] = df[df['generator_type'] == 'Recursive']['structure_cluster'].value_counts().to_dict()
+        summary['KMeans Clusters'] = df[df['generator_type'] == 'Recursive']['kmeans_cluster'].value_counts().to_dict()
+        analysis_logger.info("Structure Clusters:" + str(summary['DBSCAN Clusters']))
+        analysis_logger.info("KMeans Clusters:" + str(summary['KMeans Clusters']))
+    print_step(15, "Perform Clustering", summary)
+
+
+    print_step(19, "Analyze Noise Points")
+    summary = analyze_noise_points(df, feature_cols)
+    print_step(19, "Analyze Noise Points", summary)
+
+
+    print_step(22, "Tully-Fisher Test")
+    X_tf = df[available_cols]
+    y_tf = df['petrorad_r']
+    valid_idx = y_tf.notna()
+    X_tf = X_tf[valid_idx]
+    y_tf = y_tf[valid_idx]
+    analysis_logger.info(f"Tully-Fisher: Dropped {len(df) - len(X_tf)} rows due to NaN in petrorad_r")
+    summary = {'Rows Dropped': len(df) - len(X_tf)}
+    if not X_tf.empty:
+        catboost_params_reg = optimize_catboost_regressor(X_tf, y_tf) if CatBoostRegressor and create_study else None
+        regressors = [
+            ('RandomForest', RandomForestRegressor(random_state=42, n_jobs=-1)),
+            ('HistGradientBoosting', HistGradientBoostingRegressor(random_state=42))

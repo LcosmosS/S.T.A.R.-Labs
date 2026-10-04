@@ -1,0 +1,9 @@
+X = df.drop("log_SFR", axis=1)
+y = df["log_SFR"]
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                         * Use case: Mimics your SFR model structure
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                         * Advantage: You control the true relationships
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                         * Great for SHAP testing: you’ll know what should be important

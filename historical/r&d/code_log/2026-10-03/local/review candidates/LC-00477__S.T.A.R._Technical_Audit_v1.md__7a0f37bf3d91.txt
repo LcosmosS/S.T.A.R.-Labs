@@ -1,0 +1,3 @@
+A = omega * rank
+C = tanh(entropy_curvature)
+H_eff = H0 * A * (1 + alpha*C)

@@ -1,0 +1,10 @@
+# Mass-to-dust ratio
+data_clean['mass_to_dust'] = data_clean['mass_stellar_best_fit'] / data_clean['mass_dust_best_fit']
+
+
+# Color gradient index
+data_clean['color_gradient'] = data_clean['uminusr'] - data_clean['gminusi']
+
+
+# Dust attenuation × metallicity interaction
+data_clean['atten_metal'] = data_clean['tau_V_best_fit'] * data_clean['metalicity_Z_Zo_percentile50']

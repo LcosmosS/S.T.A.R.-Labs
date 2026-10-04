@@ -1,0 +1,1 @@
+polytopes.truncated_icosidodecahedron().plot()

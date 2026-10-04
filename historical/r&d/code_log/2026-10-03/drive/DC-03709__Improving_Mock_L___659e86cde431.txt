@@ -1,0 +1,5 @@
+t_H = 1.44e10; /* Hubble time in years */
+Omega_tilde = Omega_cosmo / t_H; /* Dimensionless */
+* right_side = (Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2);
+   * \Omega_{\text{tilde}} = \frac{5.38 \times 10^7}{1.44 \times 10^{10}} \approx 0.00374.
+   * New right side: \frac{0.00374 \cdot 1728.62 \cdot 10 \cdot 0.27}{25} \approx 0.698, dimensionless.

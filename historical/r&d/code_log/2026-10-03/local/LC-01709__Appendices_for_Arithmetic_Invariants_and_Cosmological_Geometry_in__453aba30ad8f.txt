@@ -1,0 +1,1 @@
+     df_clean  =  df_clean[np.isfinite(df_clean['discriminant'])  &  

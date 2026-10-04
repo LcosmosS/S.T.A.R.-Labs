@@ -1,0 +1,7 @@
+            return {"found": False, "lmfdb_label": None, "status": "Not Found in DB"}
+        else:
+            # Search for the canonical LMFDB label in the page's HTML
+            match = re.search(r'href="/EllipticCurve/Q/([^"]+)"', response.text)
+            if match:
+                lmfdb_label = match.group(1).split('?')[0] # Clean up the label
+                return {"found": True, "lmfdb_label": lmfdb_label, "status":

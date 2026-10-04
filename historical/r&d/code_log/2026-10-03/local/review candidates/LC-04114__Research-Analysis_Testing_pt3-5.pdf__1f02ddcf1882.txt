@@ -1,0 +1,18 @@
+# Plot interweb
+if interweb_data:
+    fig = plt.figure(figsize=(12, 10))
+    ax = fig.add_subplot(111, projection='3d')
+    # Strictly limit non-rank 3 duplicates
+    node_counts = {}
+    for node in interweb_data:
+        key = (node[0], node[1], node[2])
+        node_counts[key] = node_counts.get(key, 0) + 1
+    filtered_data = []
+    for node in interweb_data:
+        key = (node[0], node[1], node[2])
+        if node_counts[key] == 1 or node[2] >= 3:  # One instance unless rank 3
+            filtered_data.append(node)
+            node_counts[key] -= 1
+
+    ranks = [x[2] for x in filtered_data]
+    log_deltas = [x[8] for x in filtered_data]

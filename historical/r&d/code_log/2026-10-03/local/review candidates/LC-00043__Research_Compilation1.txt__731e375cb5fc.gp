@@ -1,0 +1,19 @@
+log_mass_filtered = select(x->x>=8 && x<=12, log_mass);
+N_filtered = #log_mass_filtered;
+print("Number of filtered log_mass (8 to 12): ", N_filtered);
+if (N_filtered > 0, {
+  M_filtered = vector(N_filtered, i, 10^log_mass_filtered[i]);
+  M_0_filtered = mymedian(M_filtered);
+  print("Filtered reference mass M_0: ", M_0_filtered);
+  unscaled_L_cosmo_1_filtered = sum(i=1,N_filtered,(M_0_filtered/M_filtered[i]))/N_filtered;
+  print("Filtered unscaled L_cosmo(1): ", unscaled_L_cosmo_1_filtered);
+  right_side_filtered = (Omega_tilde * Reg_cosmo * N_filtered * Sha_cosmo)/(T_cosmo^2);
+  print("Filtered right side: ", right_side_filtered);
+  K_filtered = right_side_filtered / unscaled_L_cosmo_1_filtered;
+  print("Filtered normalization constant K: ", K_filtered);
+  print("Filtered cosmological BSD analogue holds within 10%: ", abs(1 - K_filtered) < 0.1);
+  // Compute theoretical K for filtered data
+  sum_Mi_over_M0_filtered = sum(i=1, N_filtered, M_filtered[i] / M_0_filtered);
+  sum_M0_over_Mi_filtered = sum(i=1, N_filtered, M_0_filtered / M_filtered[i]);
+  K_theory_filtered = sum_Mi_over_M0_filtered / sum_M0_over_Mi_filtered;
+  print("Theoretical K for filtered sample: ", K_theory_filtered);

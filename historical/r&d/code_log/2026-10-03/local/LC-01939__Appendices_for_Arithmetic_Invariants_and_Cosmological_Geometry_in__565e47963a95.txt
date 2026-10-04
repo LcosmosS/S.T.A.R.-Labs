@@ -1,0 +1,4 @@
+     65  y_clf  =  df['regime_label']  
+     66  clf  =  RandomForestClassifier(random_state=42)  
+--->  67  cv_scores  =  cross_val_score(clf,  X_clf,  y_clf,  cv=5)  
+...  

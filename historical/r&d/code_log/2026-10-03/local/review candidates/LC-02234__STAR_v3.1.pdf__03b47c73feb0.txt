@@ -1,0 +1,11 @@
+        row = df.loc[target_idx]
+
+        # Extract Betti numbers (The "seeds" of the barcode)
+        b0 = max(1, int(abs(row['local_betti_0'])))
+        b1 = max(1, int(abs(row['local_betti_1'])))
+        b2 = max(1, int(abs(row.get('local_betti_2', 0))))
+
+        # Draw Betti-0 Bars (Connected Components/Clusters)
+        # These are usually born at 0 and persist shortly
+        b0_heights = np.linspace(0.1, 0.4, b0)
+        ax.hlines(b0_heights, 0, 0.2, colors='gray', alpha=0.6, linewidth=2, label=f'$\\beta_0$

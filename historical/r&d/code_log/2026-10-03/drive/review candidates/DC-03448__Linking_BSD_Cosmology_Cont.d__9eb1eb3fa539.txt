@@ -1,0 +1,5 @@
+# Explore Trends: Plot logmass vs. SFR and z vs. SFR
+plt.figure(figsize=(10, 5)) plt.subplot(1, 2, 1) plt.scatter(df[logmass_col], df[sfr_col], alpha=0.5) plt.xlabel('logmass') plt.ylabel('sfr') plt.title('logmass vs. SFR')
+plt.subplot(1, 2, 2) plt.scatter(df[z_col], df[sfr_col], alpha=0.5) plt.xlabel('z') plt.ylabel('sfr') plt.title('z vs. SFR')
+plt.tight_layout() plt.show()
+# Group Analysis: If 'group' column exists, analyze group properties

@@ -1,0 +1,1 @@
+%run random3.py

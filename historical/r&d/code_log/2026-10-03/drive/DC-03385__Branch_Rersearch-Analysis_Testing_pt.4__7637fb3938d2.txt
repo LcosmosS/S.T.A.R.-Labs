@@ -1,0 +1,2 @@
+L := LSeries(E : Precision := 20);  // Increase precision
+Lval := Evaluate(L, 1 : Derivative := 0);  // Evaluate L(1)

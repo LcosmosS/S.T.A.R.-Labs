@@ -1,0 +1,9 @@
+    X_struct = df[df['generator_type'] == 'Recursive'][['logmass', 'metallicity',
+'petrorad_r', 'log_delta', 'log_omega', 'entropy', 'kde_selmer_rank_var_ap']]
+    cluster_labels = None
+    if not X_struct.empty:
+        X_struct = preprocess_clustering_features(X_struct, ['logmass', 'metallicity',
+'petrorad_r', 'log_delta', 'log_omega', 'entropy', 'kde_selmer_rank_var_ap'])
+        dbscan = DBSCAN(eps=0.5, min_samples=5, metric='nan_euclidean')
+        cluster_labels = dbscan.fit_predict(X_struct)
+        df.loc[df['generator_type'] == 'Recursive', 'structure_cluster'] =

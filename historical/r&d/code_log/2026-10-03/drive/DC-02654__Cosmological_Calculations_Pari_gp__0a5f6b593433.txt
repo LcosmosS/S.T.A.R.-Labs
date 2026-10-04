@@ -1,0 +1,5 @@
+sum_Mi_over_M0 = sum(i=1, N, M[i] / M_0);
+sum_M0_over_Mi = sum(i=1, N, M_0 / M[i]);
+K_theory = sum_Mi_over_M0 / sum_M0_over_Mi;
+* print("Theoretical K: ", K_theory);
+* Check if K_theory is close to 1; if not, consider using a larger sample or verifying the log-normal distribution of masses.

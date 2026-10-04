@@ -1,0 +1,22 @@
+if missing_columns:
+    print(f"Error: Missing columns in the CSV file: {missing_columns}")
+    exit(1)
+
+
+# Step 3: Filter out invalid data (NaN or -9999.0) in key columns
+valid_df = df[df[key_columns].notna().all(axis=1) & (df[key_columns] != -9999.0).all(axis=1)]
+print(f"Filtered data: {len(valid_df)} valid rows out of {len(df)} total rows.")
+
+
+# Step 4: Write valid data to PARI/GP file
+try:
+    with open(pari_gp_file, 'w') as f:
+        for col in key_columns:
+            # Convert column values to float and then to string for PARI/GP compatibility
+            values = ','.join(valid_df[col].astype(float).astype(str))
+            f.write(f"{col}=[{values}];\n")
+        # Include 'objid' if it exists (optional)
+        if 'objid' in df.columns:
+            objid_values = ','.join(valid_df['objid'].astype(str))
+            f.write(f"objid=[{objid_values}];\n")
+    print(f"Successfully wrote valid data to '{pari_gp_file}'.")

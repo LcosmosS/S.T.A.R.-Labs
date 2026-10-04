@@ -1,0 +1,9 @@
+Z = 0
+for curve in self.curves:
+# Compute action
+S_E = self._compute_action(curve, temperature, coupling)
+# Compute L-factors
+L_factors = self._compute_L_factors(curve)
+# Add to partition function
+Z += np.exp(-S_E) * np.prod(L_factors)
+return Z

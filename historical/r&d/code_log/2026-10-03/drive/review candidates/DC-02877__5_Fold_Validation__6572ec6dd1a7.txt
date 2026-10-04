@@ -1,0 +1,2 @@
+if missing_required:
+raise ValueError(f"Required features missing: {missing_required}")

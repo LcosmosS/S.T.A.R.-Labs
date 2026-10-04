@@ -1,0 +1,7 @@
+    print "Weak BSD fails: Algebraic rank != Analytic rank";
+end if;
+
+
+// Use Heegner points to construct rational points (Euler system approach)
+// Choose a discriminant D for the quadratic imaginary field K = Q(sqrt(D))
+D := -67;  // Satisfies Heegner hypothesis for this curve

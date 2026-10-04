@@ -1,0 +1,57 @@
+﻿# Arithmetic–Cosmic Structure Conjecture (ACSC)
+
+
+**A metric-preserving bijection between arithmetic invariants of elliptic curves over ℚ and topological invariants of the cosmic web.**
+
+
+### Formal Statement
+
+
+**Arithmetic–Cosmic Structure Conjecture (ACSC):**  
+There exists a metric-preserving bijection  
+\[
+\phi: \mathcal{A} \to \mathcal{T}
+\]  
+between the arithmetic class of an elliptic curve \(E/\mathbb{Q}\) (rank \(r\), regulator \(R\), real period \(\Omega\), discriminant \(\Delta\), conductor \(N\)) and the topological class of cosmic structures (Betti numbers \(\beta_k\), curvature scalars, persistence entropy strata), such that the map preserves the natural metrics on both sides and is dynamically stabilized by the **Complexity-14 Symbolic Action Principle**.
+
+
+### Core Components
+
+
+- **Arithmetic side**: Rank, regulator, real period, discriminant, conductor (Cremona + LMFDB)
+- **Cosmic side**: Betti numbers, persistence entropy, topological invariants of the cosmic web
+- **Symbolic Action Principle**: Complexity-14 equation (derived via PySR) + SFT potential enforcing Arithmetic Scarcity and rank–Betti correspondence
+- **Validation**: Full 3-Selmer evidence (Sage + PARI), Complexity-14 filtering, scarcity analysis
+
+
+### Current Empirical Results (as of April 2026)
+
+
+- **Total curves analyzed**: 102,673 (38,042 Cremona + 64,631 LMFDB)
+- **Complexity-14 pass rate**: **74.28%** (76,270 curves dynamically stable)
+- **Sage/PARI rank consistency**: **99.8%**
+- **Arithmetic Scarcity trend**: Higher algebraic rank correlates with systematically smaller average \(\log_{10}|\Delta|\)
+
+
+### Repository Structure
+
+
+- `data/raw/` – Cremona and LMFDB raw exports
+- `data/processed/` – 3-Selmer estimates with full PARI data
+- `scripts/` – Batch processing pipelines (memory-safe, resumable)
+- `notebooks/` – Exploratory analysis and Complexity-14 fitting
+- `acsc/` – Core Python package for the conjecture
+
+
+### How to Reproduce
+
+
+```bash
+# 1. Clone and install
+git clone https://github.com/LcosmosS/Arithmetic-Cosmic-Structure-Conjecture-ACSC.git
+cd Arithmetic-Cosmic-Structure-Conjecture-ACSC
+pip install -r requirements.txt
+
+
+# 2. Run the full ACSC validation (batching + incremental save)
+python scripts/acsc_validation_full_batch.py

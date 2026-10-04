@@ -1,0 +1,10 @@
+p = 5;
+try = {
+    L_padic = ellpadiclseries(E, p, 10); \\ Compute p-adic L-series up to 10 terms
+    L_padic_val = subst(L_padic, 'x, 1); \\ Evaluate at s=1 (x = t^(s-1), so s=1 means x=1)
+    print("p-adic L-function at s=1 (p=", p, "): ", L_padic_val);
+    if(abs(L_padic_val) < 1e-10,
+        print("p-adic L-function suggests higher rank");
+    ,
+        print("p-adic L-function suggests rank 0");
+    );

@@ -1,0 +1,13 @@
+    X := ModularCurve("X0", N);
+    H := HeegnerPoints(X, D);
+    P_K := H[1];  // Take the first Heegner point
+    // Map the Heegner point to the elliptic curve E
+    phi := ModularParametrization(E);
+    P := phi(P_K);
+    print "Heegner point (traced to Q):", P;
+    // Check if the point has infinite order
+    if Order(P) eq 0 then
+        print "Heegner point has infinite order, suggesting rank >= 1";
+    else
+        print "Heegner point has order", Order(P), ", suggesting rank 0 or torsion";
+    end if;

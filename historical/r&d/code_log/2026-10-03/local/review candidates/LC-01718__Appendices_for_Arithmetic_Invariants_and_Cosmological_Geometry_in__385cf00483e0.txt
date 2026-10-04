@@ -1,0 +1,5 @@
+        catboost_params_reg = optimize_catboost_regressor(X_tf, y_tf) if
+CatBoostRegressor and create_study else None
+        regressors = [
+            ('RandomForest', RandomForestRegressor(random_state=42)),
+            ('HistGradientBoosting', HistGradientBoostingRegressor(random_state=42))

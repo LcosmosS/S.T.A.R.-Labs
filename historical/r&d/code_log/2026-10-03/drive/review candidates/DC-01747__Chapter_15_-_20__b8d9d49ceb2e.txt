@@ -1,0 +1,9 @@
+   # 1. Create cosmo_rank feature
+   # Using proxies for morphology, confidence, and redshift
+   weights = {'morph': 0.3, 'conf': 0.5, 'z': 0.2}
+   scaler = MinMaxScaler()
+   
+   # Use available columns as proxies
+   morph_proxy = df.get('ellipticity', pd.Series(0.5, index=df.index))
+   conf_proxy = df.get('petrorad_r', pd.Series(0.5, index=df.index))
+   redshift = df.get('z', pd.Series(df['z'].median(), index=df.index))

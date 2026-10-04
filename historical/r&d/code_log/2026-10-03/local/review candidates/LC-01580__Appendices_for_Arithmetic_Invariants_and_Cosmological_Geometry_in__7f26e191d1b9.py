@@ -1,0 +1,24 @@
+def process_data():
+    processed_chunks = []
+    total_rows_processed = 0
+    try:
+        chunk_iter = pd.read_csv(INPUT_FILE, usecols=REQUIRED_COLUMNS,
+chunksize=CHUNKSIZE, on_bad_lines='skip', low_memory=True)
+    except (FileNotFoundError, ValueError) as e:
+        print(f"Error reading input file: {e}", file=sys.stderr); return None
+
+    for i, chunk in enumerate(chunk_iter):
+        print(f"  - Processing chunk {i+1}...")
+        chunk.replace(-9999, np.nan, inplace=True)
+        chunk.dropna(subset=REQUIRED_COLUMNS, inplace=True)
+        chunk = chunk[chunk['z'] > 0].copy()
+        if chunk.empty: continue
+
+        chunk['distance_mpc'] = chunk['z'].apply(calculate_distance_mpc)
+        chunk['mass_sm'] = chunk['logmass'].apply(convert_logmass_to_sm)
+        chunk['radius_ly'] = chunk.apply(lambda row:
+estimate_radius_ly(row['petrorad_r'], row['distance_mpc']), axis=1)
+        chunk['virial_energy_j'] = chunk.apply(lambda row:
+calculate_virial_energy(row['mass_sm'], row['radius_ly']), axis=1)
+
+        valid_data = chunk['radius_ly'].notna() & (chunk['radius_ly'] > 0) &

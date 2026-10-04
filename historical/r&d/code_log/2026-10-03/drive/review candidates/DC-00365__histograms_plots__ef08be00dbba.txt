@@ -1,0 +1,2 @@
+petrorad_bins = np.linspace(df['petrorad_r'].min(), df['petrorad_r'].max(), num=25)
+df['petrorad_bin'] = pd.cut(df['petrorad_r'], bins=petrorad_bins, labels=False)

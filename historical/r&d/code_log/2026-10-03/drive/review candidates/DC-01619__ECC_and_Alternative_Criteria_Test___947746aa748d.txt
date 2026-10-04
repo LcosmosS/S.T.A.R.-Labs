@@ -1,0 +1,69 @@
+        if XGBRegressor:
+            regressors.append(('XGBoost', XGBRegressor(random_state=42, n_jobs=-1)))
+        if LGBMRegressor:
+            regressors.append(('LightGBM', LGBMRegressor(random_state=42, n_jobs=-1)))
+        if CatBoostRegressor and catboost_params_reg:
+            regressors.append(('CatBoost', CatBoostRegressor(**catboost_params_reg, verbose=0)))
+
+
+        stacking_reg = StackingRegressor(estimators=regressors, final_estimator=HistGradientBoostingRegressor(random_state=42), n_jobs=-1)
+        pipeline = Pipeline([
+            ('scaler', StandardScaler(with_mean=False)),
+            ('regressor', stacking_reg)
+        ])
+        pipeline.fit(X_tf, y_tf)
+        tf_r2 = cross_val_score(pipeline, X_tf, y_tf, cv=5, scoring='r2', n_jobs=-1).mean()
+        tf_perm_importance = permutation_importance(pipeline.named_steps['regressor'], X_tf, y_tf, n_repeats=10, random_state=42, n_jobs=-1)
+        tf_feature_importance = pd.Series(tf_perm_importance.importances_mean, index=X_tf.columns).sort_values(ascending=False)
+        analysis_logger.info("Tully-Fisher R²:" + str(tf_r2))
+        analysis_logger.info("\nTully-Fisher Feature Importance:\n" + str(tf_feature_importance))
+        tf_feature_importance.to_csv(f'{OUTPUT_PLOT_PREFIX}_tully_fisher_feature_importance.csv')
+        summary['R²'] = tf_r2
+        summary['Top Features'] = tf_feature_importance.head(5).to_dict()
+
+
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x=tf_feature_importance.values, y=tf_feature_importance.index)
+        plt.title('Tully-Fisher Feature Importance')
+        plt.savefig(f'{OUTPUT_PLOT_PREFIX}_tully_fisher_feature_importance.png')
+        plt.close()
+
+
+        for method in ['pysr', 'gplearn']:
+            sym_reg_tf = run_symbolic_regression(X_tf, y_tf, available_cols, method)
+            if sym_reg_tf:
+                getattr(sym_reg_tf, 'equations_', pd.DataFrame()).to_csv(f'{OUTPUT_PLOT_PREFIX}_symbolic_regression_tully_fisher_{method}.csv')
+    print_step(22, "Tully-Fisher Test", summary)
+
+
+    print_step(22, "Dimensionality Reduction")
+    X_valid = df[available_cols].dropna()
+    summary = {'Valid Rows': len(X_valid)}
+    if not X_valid.empty:
+        pca = PCA(n_components=2)
+        X_pca = pca.fit_transform(X_valid)
+        df_pca = pd.DataFrame(X_pca, columns=['PC1', 'PC2'], index=X_valid.index)
+        df_pca['generator_type'] = df.loc[X_valid.index, 'generator_type']
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(data=df_pca, x='PC1', y='PC2', hue='generator_type')
+        plt.title('PCA of Galaxy Features with Cohomology and Entropy Gradient')
+        plt.savefig(f'{OUTPUT_PLOT_PREFIX}_pca_scatter_cohomology.png')
+        plt.close()
+        summary['PCA Variance Ratio'] = pca.explained_variance_ratio_.tolist()
+    print_step(22, "Dimensionality Reduction", summary)
+
+
+    print_step(18, "Interactive Visualization")
+    summary = interactive_visualization(df, feature_cols)
+    print_step(18, "Interactive Visualization", summary)
+
+
+    print_step(22, "Save Results")
+    df.to_csv(f'{OUTPUT_PLOT_PREFIX}_processed.csv', index=False)
+    summary = {'Output File': f'{OUTPUT_PLOT_PREFIX}_processed.csv', 'Total Rows': len(df)}
+    print_step(22, "Save Results", summary)
+    gc.collect()
+
+
+if __name__ == "__main__":
+    main()

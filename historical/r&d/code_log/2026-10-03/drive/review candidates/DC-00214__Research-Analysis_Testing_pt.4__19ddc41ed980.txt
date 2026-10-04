@@ -1,0 +1,6 @@
+y_data = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]  # All successful so far
+
+
+seen_pairs = {
+    (13, 377): 1,
+    (2, 144): 1,

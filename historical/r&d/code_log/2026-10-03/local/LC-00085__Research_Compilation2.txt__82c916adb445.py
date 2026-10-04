@@ -1,0 +1,7 @@
+import pandas as pd
+df = pd.read_csv('Stellar_Mass2_Table.csv')
+df = df[df['logmass'] != -9999]  # Filter invalid masses
+masses = [10**x for x in df['logmass']]
+with open('data.gp', 'w') as f:
+    f.write(f"masses = {masses};\n")
+    # Similarly for other properties

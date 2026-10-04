@@ -1,0 +1,35 @@
+    plt.close(fig)
+
+
+
+    # HTML 3D (Stacked)
+
+    fig = go.Figure(data=go.Scatter3d(
+
+        x=X_test_df['flux_gr'], y=X_test_df['flux_rz'], z=y_pred_stack,
+
+        mode='markers', marker=dict(size=5, color=y_pred_stack, colorscale='Viridis',
+showscale=True)
+
+    ))
+
+    fig.update_layout(title=f'{regime.capitalize()} Stacked Manifold')
+
+    fig.write_html(f"visualizations/{regime}_stack_manifold_3d.html")
+
+
+
+    # Type Binned 3D
+
+    fig = go.Figure(data=go.Scatter3d(
+
+        x=X_test_df['flux_gr'], y=X_test_df['flux_rz'], z=y_pred_stack,
+
+        mode='markers', marker=dict(size=5, color=X_test_df['predicted_type'], colorscale='Viridis',
+showscale=True, colorbar_title='Generator Type')
+
+    ))
+
+    fig.update_layout(title=f'{regime.capitalize()} Stacked Manifold Binned by Type')
+
+    fig.write_html(f"visualizations/{regime}_type_binned_3d.html")

@@ -1,0 +1,26 @@
+        return
+
+    total_rows_processed = 0
+    header_written = False
+
+    print(f"Starting SageMath pipeline for '{INPUT_FILE}'...")
+    for i, chunk in enumerate(chunk_iter):
+        print(f"Processing chunk {i+1}...")
+
+        chunk.replace(-9999, np.nan, inplace=True)
+        required_cols = ['z', 'logmass', 'petrorad_r']
+        chunk.dropna(subset=required_cols, inplace=True)
+        chunk = chunk[chunk['z'] > 0]
+
+        if not chunk.empty:
+            # Derive physical parameters
+            chunk['distance_mpc'] = chunk['z'].apply(calculate_distance_mpc)
+            chunk['mass_sm'] = chunk['logmass'].apply(convert_logmass_to_sm)
+            chunk['radius_ly'] = chunk.apply(lambda row:
+estimate_radius_ly(row['petrorad_r'], row['distance_mpc']), axis=1)
+
+            # Calculate Virial Energy and Density
+            chunk['virial_energy_j'] = chunk.apply(lambda row:
+calculate_virial_energy(row['mass_sm'], row['radius_ly']), axis=1)
+
+            valid_data = chunk['radius_ly'].notna() & (chunk['radius_ly'] > 0) &

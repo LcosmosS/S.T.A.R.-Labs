@@ -1,0 +1,19 @@
+       H_LCDM   =  70*np.sqrt(0.3*(1+z)**3       + 0.7)
+       H_eff   = H_LCDM   +  0.5*np.exp(-z)
+
+       plt.figure(figsize=(6,5))
+       plt.plot(z, H_LCDM, label='ΛCDM')
+       plt.plot(z, H_eff, label='S.T.A.R.')
+       plt.legend()
+       plt.title("Effective Hubble Parameter")
+       plt.savefig('figures/hubble_effective.png', dpi=200)
+       plt.show()
+
+
+
+
+
+
+
+
+                                                        10

@@ -1,0 +1,9 @@
+print("Applying  galactic  extinction  correction...")  start_time  =  time.time()   #  Define  cache  file  for  ebv  values  
+=========================================================================================
+===========================================
+ ebv_cache_file  =  "ebv_cache.pkl"   #  Check  if  cached  ebv  values  exist  
+=========================================================================================
+===========================================
+ if  os.path.exists(ebv_cache_file):      print(f"Loading  cached  EBV  values  from  {ebv_cache_file}...")      with  open(ebv_cache_file,  'rb')  as  f:          ebv  =  pickle.load(f)  else:  #  =  Initialize  SFDQuery  
+=========================================================================================
+======================================================

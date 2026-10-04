@@ -1,0 +1,7 @@
+K_values = []
+for subpop in range(5):
+    masses = 10 ** df[df['subpopulation'] == subpop]['logmass']
+    M0 = np.median(masses)
+    if M0 > 0:
+        K = np.sum(masses / M0) / np.sum(M0 / masses)
+        K_values.append(K)

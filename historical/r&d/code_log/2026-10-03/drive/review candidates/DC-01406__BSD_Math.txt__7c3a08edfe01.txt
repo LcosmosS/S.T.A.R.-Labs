@@ -1,0 +1,9 @@
+  n = #log_mass;
+  if (n < 3, return("n too small"));
+  mean = vecsum(log_mass) / n;
+  variance = sum(i=1, n, (log_mass[i] - mean)^2) / (n - 1);
+  sd = sqrt(variance);
+  mu3 = sum(i=1, n, (log_mass[i] - mean)^3) / n;
+  skewness = (n / ((n-1)*(n-2))) * mu3 / sd^3;
+  return skewness;
+}

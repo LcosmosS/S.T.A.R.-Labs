@@ -1,0 +1,6 @@
+# Make the conda env the default for subsequent RUN steps
+ENV CONDA_DEFAULT_ENV=${CONDA_ENV}
+ENV CONDA_PREFIX=/opt/conda/envs/${CONDA_ENV}
+ENV PATH=${CONDA_PREFIX}/bin:${PATH}
+
+# Create non-root user only if missing (robust)

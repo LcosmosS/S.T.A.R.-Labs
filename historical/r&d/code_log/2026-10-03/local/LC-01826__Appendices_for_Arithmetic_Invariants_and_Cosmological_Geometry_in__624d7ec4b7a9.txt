@@ -1,0 +1,9 @@
+chunk.apply(
+                    lambda  x:  compute_mappings(x,  pari),  axis=1)          chunk[['generator_type',  'is_simple_generator']]  =  
+chunk.apply(classify_generator,
+ 
+axis=1,
+ 
+result_type='expand')
+         chunk['generator_coords']  =  chunk['log_delta'].apply(lambda  x:  (x,  x*2)  if  not  
+pd.isna(x)

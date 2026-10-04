@@ -1,0 +1,3 @@
+s_vals = [0.5, 1.0, 1.5, 2.0]
+for s in s_vals:
+*     df[f'L_cosmo_s{s}'] = df.groupby('z_bin')['a_n'].transform('mean') / (df['z_bin'] ** s)

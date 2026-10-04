@@ -1,0 +1,17 @@
+   // src/routes/__root.tsx (excerpt)
+   import { createServerFn } from "@tanstack/react-start";
+   import { createRootRoute } from "@tanstack/react-router";
+
+   const fetchSessionUser = createServerFn({ method: "GET" }).handler(async () => {
+     // Cookie path only — works when deployed / on top-level loads.
+     const { getSessionUser } = await import("@/lib/auth/verify.server");
+     const u = await getSessionUser();
+     return u ? { id: u.id, email: u.email } : null;
+   });
+
+   export const Route = createRootRoute({
+     beforeLoad: async () => ({ sessionUser: await fetchSessionUser() }),
+     // Merge into the existing root — keep the existing head().
+     // component: prefer `sessionUser` for the FIRST paint when deployed, then
+     // `useCurrentUserState()` for live in-page updates.
+   });

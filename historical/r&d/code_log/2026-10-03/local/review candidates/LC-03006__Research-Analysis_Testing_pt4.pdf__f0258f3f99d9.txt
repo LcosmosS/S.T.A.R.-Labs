@@ -1,0 +1,3 @@
+self.__generalized_congruence_number = {} 185 self._isoclass = {} --> 187
+EllipticCurve_number_field.__init__(self, Q, ainvs) 189 if 'conductor' in kwds: 190
+self._set_conductor(kwds['conductor'])

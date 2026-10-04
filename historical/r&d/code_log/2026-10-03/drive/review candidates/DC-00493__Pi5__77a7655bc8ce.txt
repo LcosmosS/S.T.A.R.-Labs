@@ -1,0 +1,29 @@
+        if valid_ranks:
+            lat_expr, lon_expr, z_expr = symbolic_regression(valid_ranks, valid_lats, valid_lons, valid_zs)
+            log_print(f"Symbolic regression results: Latitude = {lat_expr}, Longitude = {lon_expr}, Z = {z_expr}")
+        else:
+            log_print("No valid data for symbolic regression")
+
+
+        # 3D scatter plot for Earth mapping
+        if valid_lats and valid_lons and valid_zs:
+            fig = plt.figure(figsize=(12, 8))
+            ax = fig.add_subplot(111, projection='3d')
+            ax.scatter(valid_lons, valid_lats, valid_zs, c=[plot_data['elevation'][i] for i in valid_indices], cmap='viridis')
+            ax.set_xlabel('Longitude (UE units)')
+            ax.set_ylabel('Latitude (UE units)')
+            ax.set_zlabel('Z (UE units)')
+            ax.set_title('Distortion-Free Earth Mapping with BSD-Inspired 3rd Dimension')
+            plt.savefig("distortion_free_earth_mapping_v15.png")
+            plt.close()
+            log_print("3D mapping plot saved as distortion_free_earth_mapping_v15.png")
+        else:
+            log_print("No valid data points for 3D plot")
+
+
+    except Exception as e:
+        log_print(f"Failed to generate plots: {e}")
+
+
+if __name__ == '__main__':
+    main()

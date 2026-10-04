@@ -1,0 +1,4 @@
+# Force plot for a single prediction
+shap.initjs()
+i = 0  # Choose an index of interest
+shap.force_plot(explainer.expected_value, shap_values[i], X_test.iloc[i])

@@ -1,0 +1,16 @@
+        plt.figure(figsize=(8, 6))
+        plt.hist(df[col].dropna(), bins=50, range=(df[col].quantile(0.01), df[col].quantile(0.99)),
+                 density=True, alpha=0.7)
+        plt.xlabel(col)
+        plt.ylabel("Density")
+        plt.title(f"Distribution of {col}")
+        plt.savefig(f"dist_{col}.png", dpi=150)
+        plt.close()
+    else:
+        print(f"{col}: Missing from dataset")
+
+# Define s_range and plot L_cosmo_s vs log_SFR_Ha_raw
+=========================================================================================
+===========================================
+s_vals = [0.5, 1.0, 1.5, 2.0]
+for s in s_vals:

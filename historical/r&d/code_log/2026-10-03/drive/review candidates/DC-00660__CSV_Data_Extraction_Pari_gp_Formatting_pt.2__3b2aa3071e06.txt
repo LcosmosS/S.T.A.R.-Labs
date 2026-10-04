@@ -1,0 +1,2 @@
+for feat in ['metallicity', 'environment']:
+    if feat in df.columns:

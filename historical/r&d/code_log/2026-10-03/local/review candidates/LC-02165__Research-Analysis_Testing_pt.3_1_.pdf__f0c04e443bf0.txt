@@ -1,0 +1,2 @@
+zs.copy() -> 2384 patches = super().scatter(xs, ys, s=s, c=c, *args, **kwargs) 2385
+art3d.patch_collection_2d_to_3d(patches, zs=zs, zdir=zdir, 2386 depthshade=depthshade)

@@ -1,0 +1,8 @@
+lines = readstr("Stellar_Mass2_Table.csv");
+
+
+/* Initialize an empty vector to store stellar masses */
+masses = [];
+
+
+/* Loop over lines, starting from index 2 to skip the header */

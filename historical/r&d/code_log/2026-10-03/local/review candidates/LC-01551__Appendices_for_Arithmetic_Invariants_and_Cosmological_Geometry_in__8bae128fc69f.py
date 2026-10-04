@@ -1,0 +1,7 @@
+    except Exception as e:
+        print(f"[Step 4] Torsion analysis failed: {e}")
+        results['evidence']['has_rational_3_torsion'] = 'Error'
+
+    # --- 5. The 3-Selmer Proxy: Simulated Advanced Descent (The Workaround) ---
+    # This step simulates calling a specialized, open-source script that performs
+    # a 3-isogeny descent, a known (but complex) method for bounding the 3-Selmer

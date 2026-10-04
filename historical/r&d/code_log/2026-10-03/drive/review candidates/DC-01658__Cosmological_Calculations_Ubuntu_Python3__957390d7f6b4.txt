@@ -1,0 +1,6 @@
+with open('filtered_log_mass_10pct.txt', 'w') as f:
+    f.write('log_mass = [')
+    for i, val in enumerate(filtered_log_mass):
+        if i > 0:
+            f.write(', ')
+        f.write(f'{val:.18f}')

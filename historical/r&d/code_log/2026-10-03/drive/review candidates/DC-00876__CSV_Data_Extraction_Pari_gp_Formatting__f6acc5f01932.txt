@@ -1,0 +1,4 @@
+for s in [0.5, 1.5, 2]:
+    for i in range(3):
+        L = compute_L_cosmo(logmass[groups == i], s)
+   *         print(f"Group {i}: L_cosmo(s={s}) = {L:.4f}")

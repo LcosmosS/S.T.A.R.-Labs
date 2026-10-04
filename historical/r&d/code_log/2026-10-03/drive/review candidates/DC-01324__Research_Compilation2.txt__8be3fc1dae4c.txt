@@ -1,0 +1,2 @@
+K_sub = subsample_K(masses, M0, 5000);
+print("K_sub (5000) = ", K_sub);

@@ -1,0 +1,3 @@
+if (abs(left_side - right_side) < tolerance * right_side, /* Check if within tolerance */
+    print("Cosmological BSD analogue holds within 10%"), /* Success message */
+    print("Cosmological BSD analogue fails: Left side != Right side")); /* Failure message */

@@ -1,0 +1,9 @@
+  L_cosmo = 1;
+  rank = 0;
+  for(k = 1, 5,
+    print("Processing bin ", k);
+    start = if(k == 1, 1, end_indices[k-1] + 1);
+    end = end_indices[k];
+    bin_M = M_sorted[start..end];
+    M0_k = vecmedian(bin_M);
+    print("M0_k = ", M0_k);

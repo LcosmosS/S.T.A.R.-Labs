@@ -1,0 +1,6 @@
+for (z_start = 0.0, 0.9, step = 0.05,
+  z_min = z_start; z_max = z_start + 0.05;
+  log_mass_low_sfr = [log_mass[i] | i <- [1..#log_mass], z[i] >= z_min && z[i] < z_max && sfr[i] < sfr_threshold];
+  if (z_min == 0.05 && z_max == 0.1, 
+    write("subgroup_z_0.05_0.1_low_sfr.txt", log_mass_low_sfr);
+    print("Data written for z=0.05 to 0.1, low SFR"));

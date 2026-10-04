@@ -1,0 +1,3 @@
+tors := TorsionSubgroup(E);
+tors_order := #tors;
+print "Torsion subgroup order:", tors_order;

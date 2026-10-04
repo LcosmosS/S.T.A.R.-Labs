@@ -1,0 +1,13 @@
+symbolic_model = SymbolicRegressor(
+    population_size=1000,
+    generations=50,
+    stopping_criteria=0.01,
+    p_crossover=0.7,
+    p_subtree_mutation=0.1,
+    p_hoist_mutation=0.05,
+    p_point_mutation=0.1,
+    max_samples=0.9,
+    verbose=1,
+    parsimony_coefficient=0.001,
+    random_state=42,
+    n_jobs=-1

@@ -1,0 +1,14 @@
+tors := TorsionSubgroup(E);
+tors_order := #tors;
+print "Torsion subgroup order:", tors_order;
+
+// Compute the algebraic rank
+rank := Rank(E);
+print "Algebraic rank:", rank;
+
+// Compute the L-function and analytic rank
+L := LSeries(E : Precision := 20);  // Increase precision
+Lval := Evaluate(L, 1 : Derivative := 0);  // Evaluate L(1)
+if Abs(Lval) lt 1e-10 then
+    Lderiv := Evaluate(L, 1 : Derivative := 1);  // Compute L'(1)
+    if Abs(Lderiv) lt 1e-10 then

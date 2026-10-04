@@ -1,0 +1,5 @@
+for(i=1, #curves, {
+    print("Processing curve ", i);
+    a = curves[i][1]; b = curves[i][2];
+    ...
+})

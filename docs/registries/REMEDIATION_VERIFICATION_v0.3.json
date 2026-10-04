@@ -1,0 +1,191 @@
+{
+  "audit_date": "2026-10-03",
+  "remediation_status": "completed_and_verified",
+  "base_commit": "fb3b79c5e1dbae7868ee0248bae956297898cd37",
+  "intake_and_quarantine": {
+    "passed": true,
+    "checked_at_utc": "2026-10-04T02:27:57.011595+00:00",
+    "checks": {
+      "intake_manifest_declared_members": 329,
+      "intake_manifest_actual_members": 329,
+      "intake_members_verified": {
+        "initial": 329,
+        "versioned": 329
+      },
+      "entire_initial_tree_files": 331,
+      "entire_initial_tree_byte_parity_verified": 331,
+      "source_archive_sha256": "85b5935c1292a321c74bab1fdc68aa50743b746f68c8edfb0ea84692c290148e",
+      "quarantine_assets": 37,
+      "quarantine_verification_counts": {
+        "copy_hash_verified": 37,
+        "prior_hash_verified": 29,
+        "observed_new_hash_verified": 8,
+        "original_checkout_or_external_bytes_verified": 37,
+        "canonical_git_blob_bytes_verified": 35,
+        "original_git_blob_sha_preserved": 35
+      },
+      "quarantine_group_counts": {
+        "sdss_hi_match": 2,
+        "projection_packages": 7,
+        "rtch_e1_synthetic": 28
+      },
+      "original_scientific_code_git_entries_checked": 276,
+      "additional_original_scientific_data_code_and_parameter_null_git_entries_checked": 328,
+      "legacy_registry_definition_preservation": {
+        "registry/claim_evidence_v0.2.csv": {
+          "original_rows": 6,
+          "definitions_and_ids_preserved": 6,
+          "compared_fields": [
+            "Claim_ID",
+            "Claim_Type",
+            "Statement",
+            "Evidence_Requirement"
+          ],
+          "status_or_eligibility_updates_allowed": true
+        },
+        "registry/experiment_registry_v0.2.csv": {
+          "original_rows": 18,
+          "definitions_and_ids_preserved": 18,
+          "compared_fields": [
+            "Experiment_ID",
+            "Priority",
+            "Claim_IDs",
+            "Dataset_ID",
+            "Parameter_Set_ID",
+            "Null_ID",
+            "Historical_RandD"
+          ],
+          "status_or_eligibility_updates_allowed": true
+        },
+        "registry/claim_experiment_crosswalk_v0.2.csv": {
+          "original_rows": 18,
+          "definitions_and_ids_preserved": 18,
+          "compared_fields": [
+            "Claim_ID",
+            "Experiment_ID",
+            "Role",
+            "Required_Control"
+          ],
+          "status_or_eligibility_updates_allowed": true
+        }
+      },
+      "data_provenance_schema_columns": 21,
+      "original_planned_provenance_rows_checked": 8,
+      "added_provenance_rows_checked": 37,
+      "quarantine_eligibility_table_rows": 37,
+      "claim_evidence_audit_v0.3.csv_rows": 51,
+      "experiment_audit_v0.3.csv_rows": 25,
+      "required_quarantine_notes_checked": 3
+    },
+    "issues": [],
+    "scope_limitations": [
+      "Verification establishes file integrity, eligibility bindings and preservation; it does not reproduce historical research results or prove scientific validity.",
+      "Current audit interpretation fields may be enriched in later authorized phases; original intake member bytes are checked independently.",
+      "Remote Git LFS payload availability is not tested; original repository pointer blobs are checked for preservation."
+    ]
+  },
+  "code_log": {
+    "passed": true,
+    "physical_files_verified": 12633,
+    "physical_bytes": 92754194,
+    "canonical_fragments_verified": 8295,
+    "all_origin_and_review_statuses_recorded": true,
+    "physical_benchmark_dispositions": {
+      "not_identified": 12065,
+      "pending_review": 386,
+      "superseded": 182
+    },
+    "canonical_benchmark_dispositions": {
+      "not_identified": 7938,
+      "superseded": 108,
+      "pending_review": 249
+    },
+    "byte_identical_correction_sources": [
+      {
+        "path": "historical/r&d/code_log_triage/2026-10-03/correction_sources/Virgo.ipynb",
+        "sha256": "1f7cf8679cd1913a72940f6c785abb28cbad6e95cf09da8aecf4efd6f37174b4",
+        "bytes": 59552
+      },
+      {
+        "path": "historical/r&d/code_log_triage/2026-10-03/correction_sources/bsd_period_normalization_test.py",
+        "sha256": "41c1586e0749acac5647f16be1a69a242c201fd03ce50d8f27f661dc53b49ef8",
+        "bytes": 25132
+      }
+    ],
+    "research_code_executed": false,
+    "certification_and_model_distinctions_preserved": true
+  },
+  "registry_validation": {
+    "qualified_claim_assessments": 51,
+    "qualified_experiment_assessments": 25,
+    "qualified_crosswalk_records": 51,
+    "source_fields_and_complete_crosswalk_snapshots_match_authoritative_updates": true,
+    "live_dataset_records": 45,
+    "live_provenance_records": 45,
+    "original_planned_scopes_with_unknown_provenance": 8,
+    "explicit_quarantined_artifact_records": 37,
+    "data_provenance_schema_columns": 21,
+    "confirmed_cross_namespace_aliases": 0,
+    "controlled_or_physical_support_promoted": false,
+    "audit_validator": "scripts/validate_audit_registries.py",
+    "audit_validator_passed": true,
+    "exact_embedded_ci_registry_validation_passed": true,
+    "focused_tests": [
+      "tests/test_registry_validation.py",
+      "tests/test_audit_registry_validation.py"
+    ],
+    "focused_tests_passed": 14
+  },
+  "documentation": {
+    "README_audit_summary_bullets": 7,
+    "canonical_audit_path": "historical/r&d/docs/provenance_audit_v0.3/",
+    "initial_intake_path_preserved": "historical/r&d/docs/provenance_audit/",
+    "reconstruction_candidates": [
+      "experiments/reconstruction_candidates/2026-10-03/EXP-DATA-A01_rebuild.md",
+      "experiments/reconstruction_candidates/2026-10-03/RTCH-E1_or_successor.md",
+      "experiments/reconstruction_candidates/2026-10-03/SFR_vs_stellar_mass_baselines.md"
+    ]
+  },
+  "missing_named_sources": [
+    {
+      "source": "code log.zip",
+      "status": "not_found_in_checked_audit_inventory_snapshots",
+      "coverage_and_limits": "historical/r&d/code_log_triage/2026-10-03/MISSING.md",
+      "required_code_folder_intake_complete": true
+    }
+  ],
+  "preservation": {
+    "scientific_data_or_code_deleted": false,
+    "scientific_data_or_code_moved": false,
+    "original_scientific_sources_preserved": true,
+    "historical_research_execution_performed": false,
+    "independent_scientific_replication_performed": false,
+    "BSD_integer_certification": "unresolved; saved numerical inference and user-expected Sha=1 retained with limitation"
+  },
+  "whitespace_check_scope": {
+    "edited_control_documents_and_new_generated_records_checked": true,
+    "immutable_historical_source_bytes_reformatted": false,
+    "preserved_source_whitespace_excluded_from_lint": [
+      "historical/r&d/docs/provenance_audit/**",
+      "historical/r&d/docs/provenance_audit_v0.3/**",
+      "historical/r&d/code_log/**",
+      "historical/r&d/code_log_triage/2026-10-03/correction_sources/**",
+      "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/**",
+      "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/*/data/**",
+      "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/*/results/**",
+      "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/*.csv"
+    ]
+  },
+  "published_artifact_bytes": {
+    "passed": true,
+    "hash_basis": "canonical_Git_index_blob",
+    "exact_locked_artifact_hashes": {
+      "code_log_files": 12633,
+      "quarantine_files": 37,
+      "audit_package_files": 658,
+      "correction_sources": 2
+    },
+    "total_artifact_paths_checked": 13330,
+    "ignored_or_line_ending_transformed_artifacts": 0
+  }
+}

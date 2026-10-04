@@ -1,0 +1,27 @@
+﻿python star_docgen_v0-2.py \
+  --corpus /home/kepler/star_docgen/corpus \
+  --output /home/kepler/star_docgen/output \
+  --model llama3:latest \
+  --docs \
+    Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography_.pdf \
+    Appendices_for_Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography.pdf \
+    Origins.pdf \
+  --analyze \
+  --max-pages 300 \
+  --chunk-pages 4 \
+  --overlap-pages 1
+
+
+
+
+
+
+ Branch_Research-Analysis+Testing_pt4.pdf
+  Origins.pdf
+  Research-Analysis+Testing.pdf
+  Research-Analysis+Testing_pt.4.pdf
+  Research-Analysis+Testing_pt2.pdf
+  Research-Analysis+Testing_pt3-25.pdf
+  Research-Analysis+Testing_pt3-5.pdf
+  Research-Analysis+Testing_pt3-75.pdf
+  Research-Analysis+Testing_pt3.pdf

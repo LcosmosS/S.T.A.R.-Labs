@@ -1,0 +1,3 @@
+desired_features = base_features + additional_features
+missing_features = [feat for feat in desired_features if feat not in df.columns]
+if missing_features:

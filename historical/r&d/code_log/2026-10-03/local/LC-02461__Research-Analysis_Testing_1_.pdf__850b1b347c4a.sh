@@ -1,0 +1,1 @@
+  python  E  =  EllipticCurve([-1706,  6320])  P  =  E([2,  54])   #  Create  the  point  P  =  (2,  54)  on  E  Reg  =  P.height(prec=100)   #  Compute  the  canonical  height  with  100  bits  of  precision  print(Reg)  

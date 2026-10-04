@@ -1,0 +1,3 @@
+rank, leading_coeff, omega, reg, tamagawa, weak_bsd_holds, E = analyze_curve( \n
+a, b, require_3selmer=require_3selmer \n ) \n if features: \n X_data.append(features)
+\n y_data.append(success) \n if success and rank is not None: \n cosmo_scale =

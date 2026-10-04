@@ -1,0 +1,2 @@
+from mpl_toolkits.mplot3d import Axes3D fig = plt.figure() ax = fig.add_subplot(111, projection='3d') scatter = ax.scatter(x, y, z_coords, c=sfr_pred, cmap='viridis') plt.colorbar(scatter, label='Predicted SFR') ax.set_xlabel('X (Mpc)') ax.set_ylabel('Y (Mpc)') ax.set_zlabel('Z (Mpc)') plt.savefig('3d_universe_map.png')
+   * Output: A 3D scatter plot where each point represents a galaxy, with SFR predictions as colors, saved as '3d_universe_map.png'.

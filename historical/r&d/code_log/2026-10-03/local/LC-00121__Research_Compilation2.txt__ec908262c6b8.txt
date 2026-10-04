@@ -1,0 +1,2 @@
+First, in Python, read the CSV, extract the 'logmass' column, compute M_i = 10^logmass_i, then write a file, say "masses.gp", with the line:
+masses = [M1, M2, ..., MN];

@@ -1,0 +1,4 @@
+if survey_type == "SDSS":
+# Load SDSS data
+data = pd.read_csv("sdss_galaxy_data.csv")
+# Calculate derived quantities

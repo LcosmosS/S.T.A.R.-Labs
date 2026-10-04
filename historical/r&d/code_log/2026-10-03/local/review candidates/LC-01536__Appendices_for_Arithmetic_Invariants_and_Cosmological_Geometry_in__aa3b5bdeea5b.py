@@ -1,0 +1,1 @@
+    print(f"  > Average stability score for 'Un-physical' curves (Rank 0, >1):

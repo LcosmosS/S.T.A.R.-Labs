@@ -1,0 +1,3 @@
+ if (N % 2 == 1,
+ pair = box_muller();
+ v[N] = mu + sigma * pair[1];

@@ -1,0 +1,8 @@
+            if available_pairs:
+                return random.choice(available_pairs)
+        if len(high_rank_fibs) >= 2:
+            pair = random.sample(high_rank_fibs, 2)
+            if seen_pairs.get(tuple(pair), 0) < 1:
+                return pair
+        pair = random.sample(valid_fibs, 2)
+        if seen_pairs.get(tuple(pair), 0) < 1:

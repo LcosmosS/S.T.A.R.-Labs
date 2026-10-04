@@ -1,0 +1,3 @@
+missing_cols = [col for col in columns_to_keep if col not in df.columns]
+if missing_cols:
+raise ValueError(f"Missing columns: {missing_cols}")

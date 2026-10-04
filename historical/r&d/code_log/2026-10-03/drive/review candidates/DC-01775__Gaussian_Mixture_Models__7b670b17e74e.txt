@@ -1,0 +1,4 @@
+if df[col].dtype == 'object':
+    values_str = [f'"{val}"' for val in values]
+else:
+    values_str = [f"{val:.15g}" if isinstance(val, float) else str(val) for val in values]

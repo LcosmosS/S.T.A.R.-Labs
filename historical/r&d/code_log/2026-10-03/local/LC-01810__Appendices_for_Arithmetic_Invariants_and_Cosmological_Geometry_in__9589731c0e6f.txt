@@ -1,0 +1,1 @@
+     tr_p3  =  float(factor(int(delta  *  3))[0][0])  if  np.isfinite(delta)  and  delta  >  0  

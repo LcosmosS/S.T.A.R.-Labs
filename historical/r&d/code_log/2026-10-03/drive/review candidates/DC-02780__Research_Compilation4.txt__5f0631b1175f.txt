@@ -1,0 +1,2 @@
+print("Mean simulated K_theory: ", mean_K);if (z_min == 0.05 && <5 && z_max == 0.1, write("subgroup_z_0.05_0.1_low_sfr.txt", log_mass_low_sfr));
+This shows a syntax error with && <5 &&, which is incomplete. It should likely be if (z_min == 0.05 && z_max == 0.1, write("subgroup_z_0.05_0.1_low_sfr.txt", log_mass_low_sfr));, but as written, it's invalid.

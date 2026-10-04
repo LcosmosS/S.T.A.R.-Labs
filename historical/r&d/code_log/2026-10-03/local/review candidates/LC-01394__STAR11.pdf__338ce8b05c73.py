@@ -1,0 +1,49 @@
+        print(f"LightGBM 5-Fold CV R²: Mean = {cv_scores_lgb.mean():.4f}, Std = {cv_scores_lgb.std():.4f}")
+        print(f"R^2 Score (LightGBM, Test): {r2_lgb:.4f}")
+    elif model_name == 'XGBoost':
+        study_xgb.optimize(objective_xgb, n_trials=20)
+        print(f"Best XGBoost Parameters: {study_xgb.best_params}")
+        print(f"Best XGBoost CV R²: {study_xgb.best_value:.4f}")
+        xgb_model.set_params(**study_xgb.best_params)
+        xgb_model.fit(X_train_scaled, y_train)
+        y_pred_xgb = xgb_model.predict(X_test_scaled)
+        r2_xgb = r2_score(y_test, y_pred_xgb)
+        cv_scores_xgb = cross_val_score(xgb_model, X_train_scaled, y_train, cv=5, scoring='r2')
+        print(f"XGBoost 5-Fold CV R²: Mean = {cv_scores_xgb.mean():.4f}, Std = {cv_scores_xgb.std():.4f}")
+        print(f"R^2 Score (XGBoost, Test): {r2_xgb:.4f}")
+    elif model_name == 'CatBoost':
+        study_cat.optimize(objective_cat, n_trials=20)
+        print(f"Best CatBoost Parameters: {study_cat.best_params}")
+        print(f"Best CatBoost CV R²: {study_cat.best_value:.4f}")
+        cat_model.set_params(**study_cat.best_params)
+        cat_model.fit(X_train_scaled, y_train)
+        y_pred_cat = cat_model.predict(X_test_scaled)
+        r2_cat = r2_score(y_test, y_pred_cat)
+        cv_scores_cat = cross_val_score(cat_model, X_train_scaled, y_train, cv=5, scoring='r2')
+        print(f"CatBoost 5-Fold CV R²: Mean = {cv_scores_cat.mean():.4f}, Std = {cv_scores_cat.std():.4f}")
+        print(f"R^2 Score (CatBoost, Test): {r2_cat:.4f}")
+
+# Blend symbolic regression with HistGradientBoosting
+=========================================================================================
+===========================================
+y_pred_blend = (y_pred_hgb + y_pred_symbolic) / 2
+r2_blend = r2_score(y_test, y_pred_blend)
+print(f"R^2 Score (Blended HGB + Symbolic, Test): {r2_blend:.4f}")
+y_pred_all = (hgb.predict(X_train_scaled) + symbolic_reg.predict(X_train_scaled)) / 2
+percentiles = np.percentile(y_pred_all - y_train, [5, 95])
+print(f"Blended Model 90% Prediction Interval: [{percentiles[0]:.4f}, {percentiles[1]:.4f}]")
+
+# Plot blended predictions vs actual
+=========================================================================================
+============================================================
+plt.scatter(y_test, y_pred_blend, alpha=0.5)
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2)
+plt.xlabel("Actual log_SFR_Ha_raw")
+plt.ylabel("Predicted log_SFR_Ha_raw (Blended HGB + Symbolic)")
+plt.title("Blended Model: Actual vs Predicted")
+plt.savefig("blended_actual_vs_pred.png", dpi=150)
+plt.close()
+
+# SHAP Analysis
+=========================================================================================
+=================================================================================

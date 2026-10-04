@@ -1,0 +1,21 @@
+# Path to the filtered_log_mass.txt file
+# Adjust this path according to where your file is located
+file_path = "/mnt/c/temp/filtered_log_mass.txt"  # For WSL, mapping to C:\temp\
+# If the file is in the current directory, you can use "./filtered_log_mass.txt"
+
+
+try:
+    with open(file_path, "r") as f:
+        values = f.read().splitlines()
+    
+    # Format the string with each value on a new line, separated by commas, enclosed in brackets
+    formatted = "log_mass = [\n" + ",\n".join(values) + "\n];"
+    
+    # Print the formatted string for copying into PARI/GP
+    print(formatted)
+    
+    # Optionally, save to a file for direct reading in PARI/GP
+    output_path = "/mnt/c/temp/formatted_log_mass.gp"
+    with open(output_path, "w") as f:
+        f.write(formatted)
+    print(f"Formatted log_mass list also saved to {output_path} for direct PARI/GP use with read(\"C:/temp/formatted_log_mass.gp\")")

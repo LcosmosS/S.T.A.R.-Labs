@@ -1,0 +1,17 @@
+expected_N = 9214;
+t_H=1.44e10; Omega_cosmo=1.38e10; Omega_tilde=Omega_cosmo/t_H; print("Omega_tilde: ", Omega_tilde);
+print("Attempting to read file...");
+read("C:/temp/data_extract.txt");
+print("File read successfully (if no error above)");
+if (type(log_mass) != "t_VEC", error("log_mass is not a vector: ", type(log_mass)));
+print("log_mass type: ", type(log_mass));
+print("Number of elements in log_mass: ", #log_mass);
+if (#log_mass != expected_N, error("log_mass does not have ", expected_N, " entries"));
+N = #log_mass;
+print("Min log_mass: ", vecmin(log_mass));
+print("Max log_mass: ", vecmax(log_mass));
+mean_log_mass = sum(i=1,N,log_mass[i])/N;
+var_log_mass = sum(i=1,N,(log_mass[i] - mean_log_mass)^2)/(N-1);
+sigma_log_mass = sqrt(var_log_mass);
+print("Mean log_mass: ", mean_log_mass);
+print("Sigma log_mass: ", sigma_log_mass);

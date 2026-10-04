@@ -1,0 +1,1 @@
+idx[i] = round(i * (total - 1) / (want - 1))  for i in 0..want-1

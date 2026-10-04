@@ -1,0 +1,3 @@
+    seen_pairs = seen_pairs or {}
+
+    if force_failure and large_fibs:

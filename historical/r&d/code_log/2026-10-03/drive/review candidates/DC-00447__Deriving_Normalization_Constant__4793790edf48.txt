@@ -1,0 +1,6 @@
+prod_c_p_cosmo = 10; /* Number of major galaxy clusters */ print("Product of cosmological Tamagawa numbers: ", prod_c_p_cosmo);
+Sha_cosmo = 0.27; /* Dark matter density parameter */ print("Sha_cosmo (dark matter density): ", Sha_cosmo);
+T_cosmo = 5; /* Number of superclusters */ print("T_cosmo (supercluster count): ", T_cosmo);
+/* Compute the left side: L_cosmo_new(1) */ left_side = L_cosmo(1); print("Left side (normalized L_cosmo(1)): ", left_side);
+/* Compute the right side using normalized constants */ right_side = (Omega_tilde * Reg_cosmo * prod_c_p_cosmo * Sha_cosmo) / (T_cosmo^2); print("Right side (dimensionless): ", right_side);
+/* Compare left and right sides within a tolerance / tolerance = 1e-5; / Relative tolerance of 0.00001 */ if (abs(left_side - right_side) < tolerance * right_side, print("Cosmological BSD analogue holds within tolerance"), print("Cosmological BSD analogue fails: Left side != Right side"));

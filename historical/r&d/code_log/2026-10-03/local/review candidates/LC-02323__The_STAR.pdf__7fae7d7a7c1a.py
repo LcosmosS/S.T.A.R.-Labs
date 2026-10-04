@@ -1,0 +1,17 @@
+        print(f"R^2 Score (HistGradientBoosting, Test): {r2_hgb:.4f}")
+    elif model_name == 'Symbolic':
+        symbolic_reg.fit(X_train_scaled, y_train)
+        y_pred_symbolic = symbolic_reg.predict(X_test_scaled)
+        r2_symbolic = r2_score(y_test, y_pred_symbolic)
+        print(f"R^2 Score (Symbolic Regression, Test): {r2_symbolic:.4f}")
+        print(f"Symbolic Expression: {symbolic_reg._program}")
+    elif model_name == 'LightGBM':
+        study_lgb.optimize(objective_lgb, n_trials=20)
+        print(f"Best LightGBM Parameters: {study_lgb.best_params}")
+        print(f"Best LightGBM CV R²: {study_lgb.best_value:.4f}")
+        lgb_model.set_params(**study_lgb.best_params)
+        lgb_model.fit(X_train_scaled, y_train)
+        y_pred_lgb = lgb_model.predict(X_test_scaled)
+        r2_lgb = r2_score(y_test, y_pred_lgb)
+        cv_scores_lgb = cross_val_score(lgb_model, X_train_scaled, y_train, cv=5, scoring='r2')
+        print(f"LightGBM 5-Fold CV R²: Mean = {cv_scores_lgb.mean():.4f}, Std =

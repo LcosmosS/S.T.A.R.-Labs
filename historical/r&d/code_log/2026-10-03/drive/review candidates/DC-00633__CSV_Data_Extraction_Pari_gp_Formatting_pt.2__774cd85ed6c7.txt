@@ -1,0 +1,4 @@
+# Define columns
+logmass_col, z_col, sfr_col = 'logmass', 'z', 'sfr'
+required_columns = [logmass_col, z_col, sfr_col]
+if not all(col in df.columns for col in required_columns):

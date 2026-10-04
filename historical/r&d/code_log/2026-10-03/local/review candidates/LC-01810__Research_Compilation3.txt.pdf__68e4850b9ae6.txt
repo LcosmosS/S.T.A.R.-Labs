@@ -1,0 +1,4 @@
+M_i = 10^(log_mass_i) */
+/* Define a custom median function since PARI/GP lacks a built-in / my_median(v) = {
+my(sorted = vecsort(v)); / Sort the vector / my(len = length(sorted)); / Length of the vector /
+if(len % 2 == 0, / If even number of elements / (sorted[len/2] + sorted[len/2 + 1]) / 2, /

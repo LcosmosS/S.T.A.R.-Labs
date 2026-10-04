@@ -1,0 +1,4 @@
+bin_M = M_sorted[start..end];
+M0_k = vecmedian(bin_M);  /* Median mass in the bin */
+/* Compute K for rank */
+sum_M_over_M0 = sum(i = 1, #bin_M, bin_M[i] / M0_k);

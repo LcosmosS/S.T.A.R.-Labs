@@ -1,0 +1,5 @@
+# Plot L_cosmo(s) vs s
+s_range = np.linspace(0.5, 2, 50)
+# Compute grouped means and reindex to ensure all bins 1-20 are present
+grouped_means = df.groupby('z_bin')['a_n'].mean().reindex(range(1, 21), fill_value=0)
+L_vals = [grouped_means / (np.arange(1, 21) ** s) for s in s_range]

@@ -1,0 +1,3 @@
+merged_data = pd.merge(GEMA_2, mangaHIall, left_on='mangaid', right_on='MANGAID', how='inner')
+merged_data = merged_data.drop(columns=['MANGAID'])  # Drop redundant column
+final_merged_data = pd.merge(merged_data, pipe3d_data2, on='mangaid', how='inner')

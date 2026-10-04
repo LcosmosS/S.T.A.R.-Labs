@@ -1,0 +1,17 @@
+plt.plot(np.linspace(0.5, 2, 50), L_vals)
+plt.xlabel("s")
+plt.ylabel("L_cosmo(s)")
+plt.title("L_cosmo(s) Behavior")
+plt.savefig("L_cosmo_curve.png")
+plt.close()
+
+
+# Step 5: Define features and target
+target = "t01_smooth_or_features_a01_smooth_fraction"
+
+
+# Use only available PhotoObjAll columns as base features (adjust if Galaxy Zoo columns are present)
+base_features = [
+    'ra', 'dec', 'u', 'g', 'r', 'i', 'z', 'petroR50_r', 'extinction_r', 
+    'psfMag_r', 'fiberMag_r', 'petroMag_r', 'fiberFlux_r', 'petroMag_u', 'petroMag_g', 
+    'petroMag_i', 'petroMag_z'

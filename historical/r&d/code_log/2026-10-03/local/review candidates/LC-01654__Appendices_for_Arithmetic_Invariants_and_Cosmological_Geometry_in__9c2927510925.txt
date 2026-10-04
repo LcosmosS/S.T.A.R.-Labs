@@ -1,0 +1,8 @@
+        plt.xlabel("Predicted Algebraic Rank Category", fontsize=12)
+        plt.ylabel("log10(|Virial Energy|)", fontsize=12)
+        plt.savefig(f"{OUTPUT_PLOT_PREFIX}_hierarchical_rank_distribution.png");
+plt.close()
+        print("    - Hierarchical validation plot saved.")
+
+if __name__ == "__main__":
+    main()

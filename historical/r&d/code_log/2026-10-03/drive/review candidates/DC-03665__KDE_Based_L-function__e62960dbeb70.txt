@@ -1,0 +1,16 @@
+# -------------------------------
+# Step 9: SHAP Analysis (Fixed)
+explainer_rf = shap.TreeExplainer(best_rf)
+shap_values_rf = explainer_rf.shap_values(X_test_scaled)
+shap.summary_plot(shap_values_rf, X_test, feature_names=X.columns, show=False)
+plt.title("SHAP Summary - Random Forest")
+plt.savefig("shap_summary_rf.png")
+plt.close()
+
+
+explainer_gb = shap.TreeExplainer(best_gb)
+shap_values_gb = explainer_gb.shap_values(X_test_scaled)
+shap.summary_plot(shap_values_gb, X_test, feature_names=X.columns, show=False)
+plt.title("SHAP Summary - Gradient Boosting")
+plt.savefig("shap_summary_gb.png")
+plt.close()

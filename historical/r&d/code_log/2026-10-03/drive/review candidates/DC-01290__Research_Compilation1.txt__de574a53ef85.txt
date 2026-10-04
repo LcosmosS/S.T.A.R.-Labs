@@ -1,0 +1,2 @@
+print(type(log_mass));  // Should show t_VEC
+print(#log_mass);      // Should show number of entries, likely around 8807 or less after KDE filtering

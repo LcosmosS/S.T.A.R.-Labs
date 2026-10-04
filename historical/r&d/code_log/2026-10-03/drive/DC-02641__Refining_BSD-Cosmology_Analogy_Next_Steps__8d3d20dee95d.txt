@@ -1,0 +1,4 @@
+M_0 = 1e12; /* Reference mass: 10^12 M_sun */
+N = 1000;   /* Number of galaxies */
+read("masses.txt"); /* Real SDSS DR17 masses */
+* L_cosmo(s) = sum(i=1, N, (M_0 / M[i])^s);

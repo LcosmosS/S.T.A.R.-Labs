@@ -1,0 +1,1 @@
+def compute_projection(df_curves): df = df_curves.copy() df['phi'] = np.log(np.abs(df['discriminant']) + 1e-10) / np.log(DELTA_MAX) * 360 df['theta'] = np.log(np.abs(df['conductor']) + 1e-10) / np.log(N_MAX) * 180 df['z'] = PHI * df['rank'] return df

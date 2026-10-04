@@ -1,0 +1,18 @@
+if best_rf is not None:
+    model_names.append("Random Forest")
+    r2_scores.append(r2_score(y_test, y_pred_rf))
+if best_gb is not None:
+    model_names.append("Gradient Boosting")
+    r2_scores.append(r2_score(y_test, y_pred_gb))
+if 'y_pysr_pred' in locals():
+    model_names.append("PySR")
+    r2_scores.append(r2_score(y_test, y_pysr_pred))
+
+
+if model_names:
+    plt.bar(model_names, r2_scores, color=['skyblue', 'salmon', 'limegreen'][:len(model_names)])
+    plt.ylabel("R² Score")
+    plt.title("Model Performance Comparison")
+    plt.ylim(0, 1)
+    plt.savefig("model_comparison_r2.png")
+    plt.close()

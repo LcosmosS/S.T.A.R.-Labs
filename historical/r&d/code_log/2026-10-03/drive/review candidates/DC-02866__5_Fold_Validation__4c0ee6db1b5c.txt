@@ -1,0 +1,2 @@
+plt.figure(figsize=(10, 6)) plt.barh(feature_importance_df_gb['Feature'], feature_importance_df_gb['Importance'], color='lightgreen') plt.xlabel('Importance') plt.ylabel('Feature') plt.title('Feature Importances from Gradient Boosting') plt.gca().invert_yaxis() plt.savefig('feature_importances_gb.png') # Save plot as PNG
+plt.show() removed to avoid warnings in non-interactive environment

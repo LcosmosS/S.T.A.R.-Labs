@@ -1,0 +1,8 @@
+                   color='gray', alpha=0.4)
+
+ax.set_xlabel('Log(|Discriminant|)')
+ax.set_ylabel('Log(|Conductor|)')
+ax.set_zlabel('Algebraic Rank')
+ax.set_title('Cosmic Interweb of Elliptic Curves')
+plt.legend()
+plt.show()

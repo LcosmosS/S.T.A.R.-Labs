@@ -1,0 +1,4 @@
+            rhs = (omega * reg * sha_order * tamagawa) / (tors_order**2)
+            cosmo_scale = VIRGO_DISTANCE / (omega * SQRT_KAPPA)
+            scaled_period = omega * SQRT_KAPPA * cosmo_scale
+            comoving_volume = (omega * reg * cosmo_scale**3) / (2e13 if rank == 3 else 2e14 if rank == 2

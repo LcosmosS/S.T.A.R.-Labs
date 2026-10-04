@@ -1,0 +1,16 @@
+# Apply extinction correction using Ha/Hb ratio (assuming Cardelli extinction law)
+df['Ha_Hb_observed'] = df['flux_Ha'] / df['flux_Hb']
+# Theoretical Ha/Hb for Case B recombination at T=10,000K
+Ha_Hb_intrinsic = 2.86
+k_Ha = 2.468  # Extinction coefficient at Hα (Cardelli law, R_V=3.1)
+k_Hb = 3.634  # Extinction coefficient at Hβ
+df['A_Ha'] = 2.5 * np.log10(df['Ha_Hb_observed'] / Ha_Hb_intrinsic) * (k_Ha / (k_Hb - k_Ha))
+# Correct Hα flux for extinction
+df['flux_Ha_corr'] = df['flux_Ha'] * 10**(0.4 * df['A_Ha'])
+# Convert Hα flux to luminosity (assuming distance from redshift)
+H0 = 70  # km/s/Mpc
+c = 3e5  # km/s
+df['DL'] = (c * df['specz'] / H0) * 3.0856e24  # Luminosity distance in cm
+df['L_Ha'] = df['flux_Ha_corr'] * 4 * np.pi * df['DL']**2  # erg/s
+# Convert to SFR using Kennicutt (1998) calibration
+* df['log_SFR_Ha_raw'] = np.log10(df['L_Ha'] * 7.9e-42)  # M_sun/yr

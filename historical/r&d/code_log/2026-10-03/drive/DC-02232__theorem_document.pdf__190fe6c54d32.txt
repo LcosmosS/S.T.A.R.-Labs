@@ -1,0 +1,2 @@
+np.isfinite(df[ra_col]) &
+np.isfinite(df[dec_col]) # Not inf \n )

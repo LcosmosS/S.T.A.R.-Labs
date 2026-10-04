@@ -1,0 +1,5 @@
+plt.figure(figsize=(6,5))
+plt.hist(entropy, bins=40, color='C0')
+plt.title("Entropy Shell Distribution")
+plt.savefig('figures/entropy_shells.png', dpi=200)
+plt.show()

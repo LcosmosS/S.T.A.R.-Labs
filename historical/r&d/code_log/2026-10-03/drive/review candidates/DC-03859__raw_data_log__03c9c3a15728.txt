@@ -1,0 +1,4 @@
+st.compute_persistence()
+betti = st.betti_numbers()          # This returns [B0, B1, B2, ...]
+df[name + '_betti_1'] = betti[1] if len(betti) > 1 else 0
+      * Betti_0 (number of connected components) → computed but discarded.

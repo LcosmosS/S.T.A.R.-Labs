@@ -1,0 +1,7 @@
+    260 sizes = [x[3]*100 for x in interweb_data]
+    261 colors = [x[7] for x in interweb_data]
+--> 262 scatter = ax.scatter(log_deltas, log_conds, ranks, s=sizes, c=colors, cmap='viridis')
+    263 plt.colorbar(scatter, label='Weak BSD Holds')
+    264 ax.set_xlabel('Log(Discriminant)')
+
+File /sage/local/var/lib/sage/venv-python3.12.5/lib/python3.12/site-packages/matplotlib/__init__.py:1465, in _preprocess_data.<locals>.inner(ax, data, *args, **kwargs)

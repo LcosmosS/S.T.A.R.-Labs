@@ -1,0 +1,1489 @@
+{
+  "audit_date": "2026-10-03",
+  "records": [
+    {
+      "claim_id": "CORE-001",
+      "title": "Arithmetic-Cosmic Structural Correspondence",
+      "baseline_crosswalk_text": "CORE-001 Multiple mapping/topology/model documents U + R EXP-CORE-A01 Reconstruction + new controlled test ",
+      "original_experiment_references": [
+        "EXP-CORE-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-CTRL-A03",
+        "EXP-DATA-A01",
+        "EXP-DATA-A02",
+        "EXP-RANK-A01",
+        "EXP-TOPO-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "EXP-CORE-A01",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": null,
+          "alias_resolution": "NO ALIAS ASSIGNED",
+          "referencing_claims": [
+            "CORE-001"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [
+        "E-LCL-005",
+        "E-LCL-006",
+        "E-LCL-014",
+        "E-LCL-016",
+        "E-DRV-004"
+      ],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.",
+        "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.",
+        "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.",
+        "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.",
+        "Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RANK-001",
+      "title": "Rank/Environment Correspondence",
+      "baseline_crosswalk_text": "RANK-001 Rank/mapping theory + historical mapping work U + N EXP-RANK-A01 New experiment ",
+      "original_experiment_references": [
+        "EXP-RANK-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-RANK-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-004",
+        "E-LCL-005"
+      ],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing.",
+        "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RANK-002",
+      "title": "Rank/Topological Complexity",
+      "baseline_crosswalk_text": "RANK-002 Persistent-homology methodology + mapping framework U + N EXP-RANK-A02 New experiment ",
+      "original_experiment_references": [
+        "EXP-RANK-A02"
+      ],
+      "registered_experiment_links": [
+        "EXP-RANK-A02",
+        "EXP-RANK-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-007",
+        "E-LCL-008",
+        "E-LCL-009",
+        "E-LCL-010"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.",
+        "Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting.",
+        "Set Leakage Status POTENTIAL LEAKAGE for rank generalization and CONFIRMED TARGET CONTAMINATION for Faltings-held-out interpretation; rebuild fold-local embeddings and remove target-defining inputs for independent prediction tests."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RANK-003",
+      "title": "Rank-Stratified Cosmic Structure",
+      "baseline_crosswalk_text": "RANK-003 Historical rank/environment hypothesis H EXP-RANK-A03 New experiment ",
+      "original_experiment_references": [
+        "EXP-RANK-A03"
+      ],
+      "registered_experiment_links": [
+        "EXP-RANK-A02",
+        "EXP-RANK-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "EXP-RANK-A03",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": null,
+          "alias_resolution": "NO ALIAS ASSIGNED",
+          "referencing_claims": [
+            "RANK-003"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [
+        "E-LCL-005"
+      ],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "MAP-001",
+      "title": "Arithmetic Projection",
+      "baseline_crosswalk_text": "MAP-001 Alternative-mapping document U EXP-MAP-A01 Controlled comparison ",
+      "original_experiment_references": [
+        "EXP-MAP-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-MAP-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-003",
+        "E-LCL-016"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs.",
+        "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "MAP-002",
+      "title": "Extended Projection",
+      "baseline_crosswalk_text": "MAP-002 Historical (\\Phi) implementations U + R EXP-MAP-A01 Reconstruction ",
+      "original_experiment_references": [
+        "EXP-MAP-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-MAP-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-003",
+        "E-LCL-004",
+        "E-LCL-016"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs.",
+        "Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing.",
+        "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "MAP-003",
+      "title": "Rank Elevation",
+      "baseline_crosswalk_text": "MAP-003 Historical (z=200r) work U + R EXP-MAP-A02 Parameter sweep ",
+      "original_experiment_references": [
+        "EXP-MAP-A02"
+      ],
+      "registered_experiment_links": [
+        "EXP-MAP-A02",
+        "EXP-MAP-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-003"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "MAP-004",
+      "title": "Mapping Non-Bijectivity",
+      "baseline_crosswalk_text": "MAP-004 Criteria for Alternative Mappings U EXP-MAP-A01 Formalize test ",
+      "original_experiment_references": [
+        "EXP-MAP-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-MAP-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "U + N",
+      "current_assessment": "MODEL/METHODOLOGICAL REQUIREMENT RETAINED",
+      "provenance": "THEORETICAL / EXPLORATORY",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "MAP-005",
+      "title": "Alternative Mapping Families",
+      "baseline_crosswalk_text": "MAP-005 MCJ/PTD/FT alternatives U EXP-MAP-A01 New controlled comparison ",
+      "original_experiment_references": [
+        "EXP-MAP-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-MAP-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-006"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "ARITH-001",
+      "title": "Fibonacci/Lucas Generators",
+      "baseline_crosswalk_text": "ARITH-001 Fibonacci/Lucas implementations U + H EXP-MAP-A03 New control experiment ",
+      "original_experiment_references": [
+        "EXP-MAP-A03"
+      ],
+      "registered_experiment_links": [
+        "EXP-MAP-A03",
+        "EXP-CTRL-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "TOPO-001",
+      "title": "Persistent Homology Correspondence",
+      "baseline_crosswalk_text": "TOPO-001 TDA code/methodology + historical distance results U + R EXP-TOPO-A01 Reconstruction ",
+      "original_experiment_references": [
+        "EXP-TOPO-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-TOPO-A01",
+        "EXP-RANK-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-003",
+        "E-LCL-006",
+        "E-LCL-007",
+        "E-LCL-008",
+        "E-LCL-009",
+        "E-LCL-011"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs.",
+        "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.",
+        "Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.",
+        "Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting.",
+        "Record CSV stability output separately from empty JSON summary and require genuine perturbation/subsampling before claiming robustness."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "TOPO-002",
+      "title": "Void Structure",
+      "baseline_crosswalk_text": "TOPO-002 Void/topology framework H EXP-TOPO-A02 New experiment ",
+      "original_experiment_references": [
+        "EXP-TOPO-A02"
+      ],
+      "registered_experiment_links": [
+        "EXP-RANK-A02",
+        "EXP-TOPO-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "EXP-TOPO-A02",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": null,
+          "alias_resolution": "NO ALIAS ASSIGNED",
+          "referencing_claims": [
+            "TOPO-002"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [
+        "E-LCL-006"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "TOPO-003",
+      "title": "Connected Components",
+      "baseline_crosswalk_text": "TOPO-003 Connected-component methodology U EXP-TOPO-A03 New experiment ",
+      "original_experiment_references": [
+        "EXP-TOPO-A03"
+      ],
+      "registered_experiment_links": [
+        "EXP-TOPO-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "EXP-TOPO-A03",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": null,
+          "alias_resolution": "NO ALIAS ASSIGNED",
+          "referencing_claims": [
+            "TOPO-003"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "MATH-K001",
+      "title": "Log-Normal Reciprocal Normalization",
+      "baseline_crosswalk_text": "MATH-K001 Validation of BSDCT.pdf + simulations U + R EXP-K001 Mathematical reconstruction ",
+      "original_experiment_references": [
+        "EXP-K001"
+      ],
+      "registered_experiment_links": [
+        "EXP-K001"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-DRV-001"
+      ],
+      "evidence_state": "U + D + R",
+      "current_assessment": "THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED",
+      "provenance": "THEORETICAL",
+      "next_actions": [
+        "Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "MATH-K002",
+      "title": "Historical K Simulation",
+      "baseline_crosswalk_text": "MATH-K002 (K\\approx0.998108) simulations U EXP-K001 Reproduce ",
+      "original_experiment_references": [
+        "EXP-K001"
+      ],
+      "registered_experiment_links": [
+        "EXP-K001"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-DRV-001"
+      ],
+      "evidence_state": "U + R",
+      "current_assessment": "UNVERIFIED HISTORICAL RESULT / RECONSTRUCTION REQUIRED",
+      "provenance": "SIMULATION / HISTORICAL MODEL",
+      "next_actions": [
+        "Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "MATH-K003",
+      "title": "Small-Sample K Instability",
+      "baseline_crosswalk_text": "MATH-K003 Conflicting historical K values U + X EXP-K002 Stability study ",
+      "original_experiment_references": [
+        "EXP-K002"
+      ],
+      "registered_experiment_links": [],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "EXP-K002",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": null,
+          "alias_resolution": "NO ALIAS ASSIGNED",
+          "referencing_claims": [
+            "MATH-K003"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [
+        "E-DRV-001"
+      ],
+      "evidence_state": "U + X + R",
+      "current_assessment": "NEGATIVE HISTORICAL REPORT RETAINED / NOT RERUN",
+      "provenance": "HISTORICAL MODEL / NEGATIVE/NULL",
+      "next_actions": [
+        "Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "COSMO-L001",
+      "title": "Phenomenological L-cosmo",
+      "baseline_crosswalk_text": "COSMO-L001 L-cosmo(s).py and related scripts U + R EXP-L001 Leakage-controlled reconstruction ",
+      "original_experiment_references": [
+        "EXP-L001"
+      ],
+      "registered_experiment_links": [
+        "EXP-L001",
+        "EXP-CTRL-A03"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-012",
+        "E-DRV-001",
+        "E-DRV-003"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion.",
+        "Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation.",
+        "Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "COSMO-L002",
+      "title": "L-cosmo and SFR",
+      "baseline_crosswalk_text": "COSMO-L002 Historical SFR/L-cosmo models H + R EXP-SFR-A01 New controlled test ",
+      "original_experiment_references": [
+        "EXP-SFR-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-SFR-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-012",
+        "E-DRV-002",
+        "E-DRV-003"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion.",
+        "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance.",
+        "Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "COSMO-R001",
+      "title": "Morphology/Redshift Composite Feature",
+      "baseline_crosswalk_text": "COSMO-R001 cosmo_rank implementations U + H CTRL-COSMO-001 Rename/reconstruct ",
+      "original_experiment_references": [
+        "CTRL-COSMO-001"
+      ],
+      "registered_experiment_links": [],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "CTRL-COSMO-001",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": null,
+          "alias_resolution": "NO ALIAS ASSIGNED",
+          "referencing_claims": [
+            "COSMO-R001"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [
+        "E-LCL-012"
+      ],
+      "evidence_state": "U + H",
+      "current_assessment": "CONFIRMED ENGINEERED FEATURE IN INSPECTED SCRIPT",
+      "provenance": "HISTORICAL MODEL",
+      "next_actions": [
+        "Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "SFR-A001",
+      "title": "Arithmetic Incremental SFR Information",
+      "baseline_crosswalk_text": "SFR-A001 Historical RF/GB/SHAP models U + R EXP-SFR-A01 New controlled test ",
+      "original_experiment_references": [
+        "EXP-SFR-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-SFR-A01",
+        "EXP-CTRL-A03",
+        "EXP-CTRL-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-012",
+        "E-LCL-013",
+        "E-DRV-002",
+        "E-DRV-003"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion.",
+        "Classify as historical random-feature stellar-mass baseline/control candidate, preserve absent-target diagnostic, and require exact input/schema plus explicit outcome exclusion and SFR-specific control reconstruction.",
+        "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance.",
+        "Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "SFR-A002",
+      "title": "Arithmetic-Only SFR Prediction",
+      "baseline_crosswalk_text": "SFR-A002 Historical feature/model work H EXP-SFR-A02 New experiment ",
+      "original_experiment_references": [
+        "EXP-SFR-A02"
+      ],
+      "registered_experiment_links": [
+        "EXP-SFR-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "SFR-E001",
+      "title": "Extreme-SFR Model Behavior",
+      "baseline_crosswalk_text": "SFR-E001 Historical outlier results U EXP-SFR-A03 Reproduce ",
+      "original_experiment_references": [
+        "EXP-SFR-A03"
+      ],
+      "registered_experiment_links": [
+        "EXP-SFR-A03"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-DRV-002"
+      ],
+      "evidence_state": "U + R",
+      "current_assessment": "UNVERIFIED HISTORICAL RESULT / RECONSTRUCTION REQUIRED",
+      "provenance": "HISTORICAL MODEL",
+      "next_actions": [
+        "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "SFR-A003",
+      "title": "Extreme-SFR Robustness",
+      "baseline_crosswalk_text": "SFR-A003 Existing outlier analysis U EXP-SFR-A03 Pre-register ",
+      "original_experiment_references": [
+        "EXP-SFR-A03"
+      ],
+      "registered_experiment_links": [
+        "EXP-SFR-A03"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-DRV-002"
+      ],
+      "evidence_state": "U + N",
+      "current_assessment": "MODEL/METHODOLOGICAL REQUIREMENT RETAINED",
+      "provenance": "THEORETICAL / EXPLORATORY",
+      "next_actions": [
+        "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "CTRL-RF001",
+      "title": "Random Feature Baseline",
+      "baseline_crosswalk_text": "CTRL-RF001 model5.py U + C EXP-CTRL-A01 Reproduce ",
+      "original_experiment_references": [
+        "EXP-CTRL-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-CTRL-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-013",
+        "E-LCL-014"
+      ],
+      "evidence_state": "U + C + X + R",
+      "current_assessment": "HISTORICAL CONTROL CANDIDATE / INPUT SCHEMA MISMATCH",
+      "provenance": "HISTORICAL MODEL",
+      "next_actions": [
+        "Classify as historical random-feature stellar-mass baseline/control candidate, preserve absent-target diagnostic, and require exact input/schema plus explicit outcome exclusion and SFR-specific control reconstruction.",
+        "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "CTRL-A001",
+      "title": "Arithmetic Permutation Control",
+      "baseline_crosswalk_text": "CTRL-A001 No adequate completed permutation control identified N EXP-CTRL-A02 New experiment ",
+      "original_experiment_references": [
+        "EXP-CTRL-A02"
+      ],
+      "registered_experiment_links": [
+        "EXP-CTRL-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-009",
+        "E-LCL-014"
+      ],
+      "evidence_state": "N + X",
+      "current_assessment": "CONTROL REQUIRED / INVALID LOCAL SIGNIFICANCE RETAINED",
+      "provenance": "NEGATIVE/NULL / EXPLORATORY",
+      "next_actions": [
+        "Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting.",
+        "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "CTRL-A002",
+      "title": "Leakage-Controlled Reconstruction",
+      "baseline_crosswalk_text": "CTRL-A002 Leakage concerns identified in scripts X EXP-CTRL-A03 Mandatory reconstruction ",
+      "original_experiment_references": [
+        "EXP-CTRL-A03"
+      ],
+      "registered_experiment_links": [
+        "EXP-CTRL-A03"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-012",
+        "E-LCL-014",
+        "E-DRV-002",
+        "E-DRV-003"
+      ],
+      "evidence_state": "X + R",
+      "current_assessment": "STATIC LEAKAGE ROUTES DIAGNOSED / CLEAN RERUN REQUIRED",
+      "provenance": "HISTORICAL MODEL / NEGATIVE/NULL",
+      "next_actions": [
+        "Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion.",
+        "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.",
+        "Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance.",
+        "Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "DATA-M001",
+      "title": "Coordinate Matching",
+      "baseline_crosswalk_text": "DATA-M001 merged_sdss_hi.csv + KDTree workflow U EXP-DATA-A01 Reproduce matching ",
+      "original_experiment_references": [
+        "EXP-DATA-A01"
+      ],
+      "registered_experiment_links": [
+        "EXP-DATA-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-001",
+        "E-LCL-002"
+      ],
+      "evidence_state": "X + R",
+      "current_assessment": "FAILED AS-FOUND ASSOCIATIONS / RECONSTRUCTION REQUIRED",
+      "provenance": "HISTORICAL MODEL / NEGATIVE/NULL",
+      "next_actions": [
+        "Retain failed data-quality evidence; quarantine these tables from controlled analyses until matching is rebuilt from source catalogs with spherical distance, keyed joins, duplicate controls, tolerance sensitivity, and saved data/code hashes.",
+        "Record code variants separately and reconstruct EXP-DATA-A01 using a registered coordinate system, exact input IDs, spherical matching, and explicit identity crosswalks."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "DATA-M002",
+      "title": "Multi-Survey Integration",
+      "baseline_crosswalk_text": "DATA-M002 Extensive cross-survey datasets U DATA-PROV-001 Formalize provenance ",
+      "original_experiment_references": [
+        "DATA-PROV-001"
+      ],
+      "registered_experiment_links": [
+        "EXP-DATA-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "DATA-PROV-001",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": "EXP-DATA-A02",
+          "alias_resolution": "UNCONFIRMED",
+          "referencing_claims": [
+            "DATA-M002"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [
+        "E-LCL-001",
+        "E-LCL-002",
+        "E-LCL-003",
+        "E-LCL-004",
+        "E-LCL-014",
+        "E-LCL-015",
+        "E-DRV-004"
+      ],
+      "evidence_state": "U + X + R",
+      "current_assessment": "PARTIAL LINEAGE / ARTIFACT CONFLICTS",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Retain failed data-quality evidence; quarantine these tables from controlled analyses until matching is rebuilt from source catalogs with spherical distance, keyed joins, duplicate controls, tolerance sensitivity, and saved data/code hashes.",
+        "Record code variants separately and reconstruct EXP-DATA-A01 using a registered coordinate system, exact input IDs, spherical matching, and explicit identity crosswalks.",
+        "Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs.",
+        "Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing.",
+        "Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.",
+        "Preserve upstream identifiers as observed provenance fields; add exact release/query and processing/code bindings before declaring complete lineage.",
+        "Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RTCH-M001",
+      "title": "Variational RTCH Construction",
+      "baseline_crosswalk_text": "RTCH-M001 RTCH manuscript/action U + D EXP-RTCH-B01 Derivation audit ",
+      "original_experiment_references": [
+        "EXP-RTCH-B01"
+      ],
+      "registered_experiment_links": [
+        "EXP-RTCH-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-007",
+        "E-LCL-008",
+        "E-LCL-010",
+        "E-LCL-011"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.",
+        "Set Leakage Status POTENTIAL LEAKAGE for rank generalization and CONFIRMED TARGET CONTAMINATION for Faltings-held-out interpretation; rebuild fold-local embeddings and remove target-defining inputs for independent prediction tests.",
+        "Record CSV stability output separately from empty JSON summary and require genuine perturbation/subsampling before claiming robustness."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RTCH-M002",
+      "title": "Closed Pullback Two-Form",
+      "baseline_crosswalk_text": "RTCH-M002 Closed-pullback construction U + D EXP-RTCH-B01 Formal proof check ",
+      "original_experiment_references": [
+        "EXP-RTCH-B01"
+      ],
+      "registered_experiment_links": [
+        "EXP-RTCH-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "U + D + R",
+      "current_assessment": "THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED",
+      "provenance": "THEORETICAL",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RTCH-H001",
+      "title": "Topological Coupling",
+      "baseline_crosswalk_text": "RTCH-H001 Candidate coupling equations U EXP-RTCH-B02 New physical test ",
+      "original_experiment_references": [
+        "EXP-RTCH-B02"
+      ],
+      "registered_experiment_links": [
+        "EXP-RTCH-B02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RTCH-H002",
+      "title": "Conformal Trace Coupling",
+      "baseline_crosswalk_text": "RTCH-H002 Trace-coupling derivation U + D EXP-RTCH-B03 Derivation + test ",
+      "original_experiment_references": [
+        "EXP-RTCH-B03"
+      ],
+      "registered_experiment_links": [
+        "EXP-RTCH-B03"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "U + D + R",
+      "current_assessment": "THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED",
+      "provenance": "THEORETICAL",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RTCH-H003",
+      "title": "Fifth-Force Acceleration",
+      "baseline_crosswalk_text": "RTCH-H003 Point-particle action/equation U + D EXP-RTCH-B02 Constraint analysis ",
+      "original_experiment_references": [
+        "EXP-RTCH-B02"
+      ],
+      "registered_experiment_links": [
+        "EXP-RTCH-B02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "U + D + R",
+      "current_assessment": "THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED",
+      "provenance": "THEORETICAL",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "RTCH-H004",
+      "title": "Unified Matter Description",
+      "baseline_crosswalk_text": "RTCH-H004 Unified-matter construction U EXP-RTCH-B01 Formal consistency test ",
+      "original_experiment_references": [
+        "EXP-RTCH-B01"
+      ],
+      "registered_experiment_links": [
+        "EXP-RTCH-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "U + N",
+      "current_assessment": "MODEL/METHODOLOGICAL REQUIREMENT RETAINED",
+      "provenance": "THEORETICAL / EXPLORATORY",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "FIELD-001",
+      "title": "Arithmetic Topography",
+      "baseline_crosswalk_text": "FIELD-001 Arithmetic-topography formulation U EXP-FIELD-B01 Formalize ",
+      "original_experiment_references": [
+        "EXP-FIELD-B01"
+      ],
+      "registered_experiment_links": [
+        "EXP-FIELD-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "U + N",
+      "current_assessment": "MODEL/METHODOLOGICAL REQUIREMENT RETAINED",
+      "provenance": "THEORETICAL / EXPLORATORY",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "FIELD-002",
+      "title": "Arithmetic Field as Gravity",
+      "baseline_crosswalk_text": "FIELD-002 No controlled physical evidence N EXP-FIELD-B02 New experiment ",
+      "original_experiment_references": [
+        "EXP-FIELD-B02"
+      ],
+      "registered_experiment_links": [
+        "EXP-FIELD-B02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "FIELD-003",
+      "title": "Arithmetic Tensor / Einstein Equation Extension",
+      "baseline_crosswalk_text": "FIELD-003 Symbolic-field proposal H EXP-FIELD-B03 New theoretical construction ",
+      "original_experiment_references": [
+        "EXP-FIELD-B03"
+      ],
+      "registered_experiment_links": [
+        "EXP-FIELD-B02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "EXP-FIELD-B03",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": null,
+          "alias_resolution": "NO ALIAS ASSIGNED",
+          "referencing_claims": [
+            "FIELD-003"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "ECC-001",
+      "title": "Entropy/Cohomology Structure",
+      "baseline_crosswalk_text": "ECC-001 ECC manuscript U + D EXP-ECC-B01 Formal derivation ",
+      "original_experiment_references": [
+        "EXP-ECC-B01"
+      ],
+      "registered_experiment_links": [
+        "EXP-ECC-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-007",
+        "E-LCL-008",
+        "E-LCL-010",
+        "E-LCL-011",
+        "E-DRV-004"
+      ],
+      "evidence_state": "U + R + N",
+      "current_assessment": "CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.",
+        "Set Leakage Status POTENTIAL LEAKAGE for rank generalization and CONFIRMED TARGET CONTAMINATION for Faltings-held-out interpretation; rebuild fold-local embeddings and remove target-defining inputs for independent prediction tests.",
+        "Record CSV stability output separately from empty JSON summary and require genuine perturbation/subsampling before claiming robustness.",
+        "Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "ECC-002",
+      "title": "Closed Non-Exact Requirement",
+      "baseline_crosswalk_text": "ECC-002 Closed/non-exact form construction U + D EXP-ECC-B01 Mathematical audit ",
+      "original_experiment_references": [
+        "EXP-ECC-B01"
+      ],
+      "registered_experiment_links": [
+        "EXP-ECC-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-007"
+      ],
+      "evidence_state": "U + D + R",
+      "current_assessment": "THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED",
+      "provenance": "THEORETICAL",
+      "next_actions": [
+        "Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "ECC-003",
+      "title": "Entropy-Energy Relation",
+      "baseline_crosswalk_text": "ECC-003 Proposed entropy-energy architecture H EXP-ECC-B02 New theory/limit test ",
+      "original_experiment_references": [
+        "EXP-ECC-B02"
+      ],
+      "registered_experiment_links": [
+        "EXP-ENERGY-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "EXP-ECC-B02",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": null,
+          "alias_resolution": "NO ALIAS ASSIGNED",
+          "referencing_claims": [
+            "ECC-003"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "ENERGY-001",
+      "title": "Generalized Mass-Energy Relation",
+      "baseline_crosswalk_text": "ENERGY-001 Conceptual mass-energy proposals H EXP-ENERGY-B01 New derivation ",
+      "original_experiment_references": [
+        "EXP-ENERGY-B01"
+      ],
+      "registered_experiment_links": [
+        "EXP-ENERGY-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "COSMO-E001",
+      "title": "Arithmetic/Topological Redshift Evolution",
+      "baseline_crosswalk_text": "COSMO-E001 Redshift/topology framework H EXP-COSMO-B01 New longitudinal experiment ",
+      "original_experiment_references": [
+        "EXP-COSMO-B01"
+      ],
+      "registered_experiment_links": [
+        "EXP-COSMO-B01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [],
+      "evidence_state": "N",
+      "current_assessment": "PROPOSED / CONTROLLED TEST NOT VERIFIED",
+      "provenance": "EXPLORATORY / UNVERIFIED",
+      "next_actions": [
+        "Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "COSMO-E002",
+      "title": "Hubble-Planck Tension Application",
+      "baseline_crosswalk_text": "COSMO-E002 No direct evidence N EXP-COSMO-B02 Downstream only",
+      "original_experiment_references": [
+        "EXP-COSMO-B02"
+      ],
+      "registered_experiment_links": [
+        "EXP-COSMO-C01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [
+        {
+          "historical_reference": "EXP-COSMO-B02",
+          "canonical_definition_present": false,
+          "resolution_status": "PENDING / DO NOT MERGE BY ID",
+          "candidate_canonical_id": "EXP-COSMO-C01",
+          "alias_resolution": "UNCONFIRMED",
+          "referencing_claims": [
+            "COSMO-E002"
+          ],
+          "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+        }
+      ],
+      "finding_ids": [
+        "E-LCL-016"
+      ],
+      "evidence_state": "N + H",
+      "current_assessment": "DOWNSTREAM / UNVALIDATED; ILLUSTRATION IS CALIBRATED",
+      "provenance": "EXPLORATORY / HISTORICAL MODEL",
+      "next_actions": [
+        "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "HIST-001",
+      "title": "Retained historical assertion 001",
+      "baseline_crosswalk_text": null,
+      "original_experiment_references": [],
+      "registered_experiment_links": [
+        "EXP-RANK-A01",
+        "EXP-TOPO-A01",
+        "EXP-MAP-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-006",
+        "E-LCL-008",
+        "E-LCL-016"
+      ],
+      "evidence_state": "H + R",
+      "current_assessment": "HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED",
+      "provenance": "HISTORICAL MODEL / UNVERIFIED",
+      "next_actions": [
+        "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.",
+        "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "HIST-002",
+      "title": "Retained historical assertion 002",
+      "baseline_crosswalk_text": null,
+      "original_experiment_references": [],
+      "registered_experiment_links": [
+        "EXP-RANK-A01",
+        "EXP-RANK-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-005",
+        "E-LCL-008"
+      ],
+      "evidence_state": "H + R",
+      "current_assessment": "HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED",
+      "provenance": "HISTORICAL MODEL / UNVERIFIED",
+      "next_actions": [
+        "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "HIST-003",
+      "title": "Retained historical assertion 003",
+      "baseline_crosswalk_text": null,
+      "original_experiment_references": [],
+      "registered_experiment_links": [
+        "EXP-RANK-A01",
+        "EXP-RANK-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-005",
+        "E-LCL-008"
+      ],
+      "evidence_state": "H + R",
+      "current_assessment": "HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED",
+      "provenance": "HISTORICAL MODEL / UNVERIFIED",
+      "next_actions": [
+        "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "HIST-004",
+      "title": "Retained historical assertion 004",
+      "baseline_crosswalk_text": null,
+      "original_experiment_references": [],
+      "registered_experiment_links": [
+        "EXP-RANK-A01",
+        "EXP-RANK-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-005",
+        "E-LCL-008"
+      ],
+      "evidence_state": "H + R",
+      "current_assessment": "HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED",
+      "provenance": "HISTORICAL MODEL / UNVERIFIED",
+      "next_actions": [
+        "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "HIST-005",
+      "title": "Retained historical assertion 005",
+      "baseline_crosswalk_text": null,
+      "original_experiment_references": [],
+      "registered_experiment_links": [
+        "EXP-RANK-A01",
+        "EXP-RANK-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-005",
+        "E-LCL-008"
+      ],
+      "evidence_state": "H + R",
+      "current_assessment": "HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED",
+      "provenance": "HISTORICAL MODEL / UNVERIFIED",
+      "next_actions": [
+        "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "HIST-006",
+      "title": "Retained historical assertion 006",
+      "baseline_crosswalk_text": null,
+      "original_experiment_references": [],
+      "registered_experiment_links": [
+        "EXP-RANK-A01",
+        "EXP-RANK-A02"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-005",
+        "E-LCL-008"
+      ],
+      "evidence_state": "H + R",
+      "current_assessment": "HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED",
+      "provenance": "HISTORICAL MODEL / UNVERIFIED",
+      "next_actions": [
+        "Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "HIST-007",
+      "title": "Retained historical assertion 007",
+      "baseline_crosswalk_text": null,
+      "original_experiment_references": [],
+      "registered_experiment_links": [
+        "EXP-TOPO-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-006",
+        "E-LCL-008",
+        "E-LCL-016"
+      ],
+      "evidence_state": "H + R",
+      "current_assessment": "HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED",
+      "provenance": "HISTORICAL MODEL / UNVERIFIED",
+      "next_actions": [
+        "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.",
+        "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    },
+    {
+      "claim_id": "HIST-008",
+      "title": "Retained historical assertion 008",
+      "baseline_crosswalk_text": null,
+      "original_experiment_references": [],
+      "registered_experiment_links": [
+        "EXP-DATA-A02",
+        "EXP-TOPO-A01",
+        "EXP-MAP-A01"
+      ],
+      "link_semantics": "Audit links to relevant registered protocols; original crosswalk references retained separately. New links are proposed relevance links, not alias confirmation or execution evidence.",
+      "unresolved_references": [],
+      "finding_ids": [
+        "E-LCL-006",
+        "E-LCL-008",
+        "E-LCL-016"
+      ],
+      "evidence_state": "H + R",
+      "current_assessment": "HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED",
+      "provenance": "HISTORICAL MODEL / UNVERIFIED",
+      "next_actions": [
+        "Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.",
+        "Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.",
+        "Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation."
+      ],
+      "replication_status": "NO NEW INDEPENDENT REPLICATION PERFORMED"
+    }
+  ],
+  "unresolved_experiment_references": [
+    {
+      "historical_reference": "EXP-CORE-A01",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "CORE-001"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-RANK-A03",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "RANK-003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-TOPO-A02",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "TOPO-002"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-TOPO-A03",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "TOPO-003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-K002",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "MATH-K003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "CTRL-COSMO-001",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "COSMO-R001"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "DATA-PROV-001",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": "EXP-DATA-A02",
+      "alias_resolution": "UNCONFIRMED",
+      "referencing_claims": [
+        "DATA-M002"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-FIELD-B03",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "FIELD-003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-ECC-B02",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": null,
+      "alias_resolution": "NO ALIAS ASSIGNED",
+      "referencing_claims": [
+        "ECC-003"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    },
+    {
+      "historical_reference": "EXP-COSMO-B02",
+      "canonical_definition_present": false,
+      "resolution_status": "PENDING / DO NOT MERGE BY ID",
+      "candidate_canonical_id": "EXP-COSMO-C01",
+      "alias_resolution": "UNCONFIRMED",
+      "referencing_claims": [
+        "COSMO-E002"
+      ],
+      "required_action": "Preserve original reference and reconcile/register its complete protocol explicitly. A related canonical experiment is not a confirmed alias."
+    }
+  ],
+  "local_namespace_conflicts": "See E-LCL-014. Local RTCH-E1 is a separate noncanonical synthetic demonstration; EXP-CTRL-A01/A02 meanings conflict in legacy CSVs. Originals were not rewritten."
+}

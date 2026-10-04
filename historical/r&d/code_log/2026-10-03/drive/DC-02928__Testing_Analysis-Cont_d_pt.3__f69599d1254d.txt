@@ -1,0 +1,5 @@
+periods = ellperiods(E, 1);  /* Returns [w1, w2] with w1 real */
+omega = periods[1];  /* Real period */
+print("Real period (Omega): ", omega);
+omega_scaled = pi_val * omega;
+print("Scaled real period (Omega * pi): ", omega_scaled);

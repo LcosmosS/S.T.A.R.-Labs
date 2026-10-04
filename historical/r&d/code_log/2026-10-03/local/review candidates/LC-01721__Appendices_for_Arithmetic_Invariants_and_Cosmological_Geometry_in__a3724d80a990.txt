@@ -1,0 +1,17 @@
+        df_pca = pd.DataFrame(X_pca, columns=['PC1', 'PC2'], index=X_valid.index)
+        df_pca['generator_type'] = df.loc[X_valid.index, 'generator_type']
+        plt.figure(figsize=(10, 6))
+        sns.scatterplot(data=df_pca, x='PC1', y='PC2', hue='generator_type')
+        plt.title('PCA of Galaxy Features with Cohomology and Entropy Gradient')
+        plt.savefig(f'{OUTPUT_PLOT_PREFIX}_pca_scatter_cohomology.png')
+        plt.close()
+
+    # Interactive visualization
+    interactive_visualization(df, feature_cols)
+
+    # Save results
+    log_function("save_results")
+    df.to_csv(f'{OUTPUT_PLOT_PREFIX}_processed.csv', index=False)
+
+if __name__ == "__main__":
+    main()

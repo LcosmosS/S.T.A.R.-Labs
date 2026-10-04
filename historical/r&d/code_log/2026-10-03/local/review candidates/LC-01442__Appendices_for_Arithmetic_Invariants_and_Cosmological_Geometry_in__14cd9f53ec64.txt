@@ -1,0 +1,17 @@
+        print("Failed to compute p-adic L-function: ", err)
+    );
+
+    \\ --- Strong BSD Components ---
+    omega = ellomega(E)[1];
+    omega_scaled = pi_val * omega;
+
+    \\ Regulator Calculation
+    if(alg_rank > 0,
+        reg = ellreg(E),
+        reg = 1.0  \\ Regulator is 1 by convention if rank is 0
+    );
+    reg_scaled = phi * reg;
+
+    \\ Product of Tamagawa Numbers
+    local_primes = factor(conductor)[,1];
+    tamagawa = prod(k=1, #local_primes, elllocalred(E, local_primes[k])[2]);

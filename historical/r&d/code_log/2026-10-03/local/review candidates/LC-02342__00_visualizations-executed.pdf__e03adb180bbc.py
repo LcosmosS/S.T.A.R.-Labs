@@ -1,0 +1,30 @@
+           from  src.physics.entropy_field        import   EntropyField
+           EF  = EntropyField()
+           entropy   =  np.array([EF.M(p)     for  p  in  X])
+           curvature    = np.array([EF.curvature(p)        for  p  in X])
+      except:
+           entropy   =  np.sum(X, axis=1)
+           curvature    = np.random.normal(scale=0.1, size=len(X))
+
+[8]:  plt.figure(figsize=(6,5))
+      plt.scatter(X[:,0], X[:,1], c=entropy, cmap='viridis', s=10)
+      plt.colorbar(label='Entropy M(x)')
+      plt.title("Entropy Field")
+      plt.savefig('figures/entropy_field.png', dpi=200)
+      plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                        4

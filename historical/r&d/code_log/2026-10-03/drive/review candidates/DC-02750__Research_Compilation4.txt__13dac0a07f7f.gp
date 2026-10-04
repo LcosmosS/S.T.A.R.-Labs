@@ -1,0 +1,4 @@
+ log_mass_sim = simulate_log_mass(500, 9.7843, 0.3645);
+ K = compute_K_theory(log_mass_sim);
+ print("Simulation ", j, ": K_theory = ", K);
+ K_sum += K;

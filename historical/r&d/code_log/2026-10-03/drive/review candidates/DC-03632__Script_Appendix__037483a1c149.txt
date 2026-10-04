@@ -1,0 +1,18 @@
+E = EllipticCurve([-1706, 6320])
+
+
+# Computes the torsion subgroup (output: Trivial group)
+E.torsion_subgroup()
+
+
+# Computes the algebraic rank (output: 1)
+E.rank()
+
+
+# Computes the L-function value at s=1 (output: 0.000...)
+L = E.lseries()
+L(1)
+
+
+# Computes the first derivative of the L-function at s=1 (output: 5.716...)
+L.dokchitser().derivative(1, 1)

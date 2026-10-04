@@ -1,0 +1,115 @@
+    N := Conductor(E);
+    print "Conductor:", N;
+
+
+    // Compute the torsion subgroup
+    tors := TorsionSubgroup(E);
+    tors_order := #tors;
+    print "Torsion subgroup order:", tors_order;
+
+
+    // Compute the algebraic rank
+    rank := Rank(E);
+    print "Algebraic rank:", rank;
+
+
+    // Compute the L-function and analytic rank
+    L := LSeries(E);
+    Lval := Evaluate(L, 1);
+    if Abs(Lval) lt 1e-10 then
+        Lderiv := Derivative(L, 1);
+        if Abs(Lderiv) lt 1e-10 then
+            Lderiv2 := Derivative(L, 2);
+            if Abs(Lderiv2) lt 1e-10 then
+                analytic_rank := 3;
+                leading_coeff := Lderiv2 / 2;
+            else
+                analytic_rank := 2;
+                leading_coeff := Lderiv2 / 2;
+            end if;
+        else
+            analytic_rank := 1;
+            leading_coeff := Lderiv;
+        end if;
+    else
+        analytic_rank := 0;
+        leading_coeff := Lval;
+    end if;
+    print "Analytic rank:", analytic_rank;
+    print "Leading coefficient L^(r)(E, 1):", leading_coeff;
+
+
+    // Verify weak BSD
+    if rank eq analytic_rank then
+        print "Weak BSD holds: Algebraic rank = Analytic rank";
+    else
+        print "Weak BSD fails: Algebraic rank != Analytic rank";
+    end if;
+
+
+    // Use Heegner points to construct rational points (Euler system approach)
+    // Choose a discriminant D for the quadratic imaginary field K = Q(sqrt(D))
+    D := -67;  // Satisfies Heegner hypothesis for this curve
+    try
+        // Compute a Heegner point directly on the elliptic curve
+        P_K := HeegnerPoint(E, D);  // Heegner point in E(K)
+        P := Trace(P_K);  // Trace to E(Q)
+        print "Heegner point (traced to Q):", P;
+        // Check if the point has infinite order
+        if Order(P) eq 0 then
+            print "Heegner point has infinite order, suggesting rank >= 1";
+        else
+            print "Heegner point has order", Order(P), ", suggesting rank 0 or torsion";
+        end if;
+    catch e
+        print "Failed to compute Heegner point:", e;
+    end try;
+
+
+    // Compute the 2-Selmer group to bound the rank and Sha(E)
+    try
+        S2 := TwoSelmerGroup(E);  // 2-Selmer group
+        selmer_rank := Ilog(2, #S2);  // Log base 2 of the order gives the rank
+        print "2-Selmer rank:", selmer_rank;
+        // Selmer rank = rank + rank of E(Q)[2] + rank of Sha(E)[2]
+        two_torsion_rank := (tors_order mod 2 eq 0) select 1 else 0;
+        sha_two_rank := selmer_rank - rank - two_torsion_rank;
+        print "Rank of Sha(E)[2]:", sha_two_rank;
+        if sha_two_rank eq 0 then
+            print "Sha(E)[2] = 0, suggesting |Sha(E)| is odd or 1";
+        else
+            print "|Sha(E)[2]| =", 2^sha_two_rank;
+        end if;
+    catch e
+        print "Failed to compute 2-Selmer group:", e;
+    end try;
+
+
+    // Compute BSD invariants for strong BSD
+    omega := RealPeriod(E);
+    if rank eq 0 then
+        reg := 1.0;
+    else
+        reg := Regulator(E);
+    end if;
+    tamagawa := &*[TamagawaNumber(E, p) : p in PrimeDivisors(N)];
+    sha_order := 1;  // Initial hypothesis
+
+
+    // Compute the right-hand side of the strong BSD formula
+    rhs := (omega * reg * sha_order * tamagawa) / (tors_order^2);
+    print "Real period (Omega):", omega;
+    print "Regulator:", reg;
+    print "Product of Tamagawa numbers:", tamagawa;
+    print "Right-hand side of strong BSD (with |Sha(E)| = 1):", rhs;
+
+
+    // Verify strong BSD
+    if Abs(leading_coeff - rhs) lt 1e-10 then
+        print "Strong BSD holds: Leading coefficient matches with |Sha(E)| = 1";
+    else
+        print "Strong BSD fails: Leading coefficient does not match with |Sha(E)| = 1";
+        sha_order := (leading_coeff * tors_order^2) / (omega * reg * tamagawa);
+        print "Adjusted |Sha(E)| to match:", sha_order;
+    end if;
+end if;

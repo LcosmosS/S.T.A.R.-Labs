@@ -1,0 +1,2 @@
+df = df[df['logmass'] != -9999]  # Remove missing mass values
+N = len(df)  # Should be close to 10,000

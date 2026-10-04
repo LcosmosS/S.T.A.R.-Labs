@@ -1,0 +1,2 @@
+print("log_mass = [", ", ".join(map(str, logmass)), "];")
+print("z = [", ", ".join(map(str, z)), "];")

@@ -1,0 +1,1 @@
+             except:  return  np.nan                   chunk['discriminant']  =  chunk.apply(process_curve,  axis=1)                   #  ---  ROBUSTNESS  FIX:  Explicit  Type  Conversion  ---          #  Convert  SageMath  number  objects  to  standard  Python  floats  that  NumPy  

@@ -1,0 +1,2 @@
+str = readstr("C:\\temp\\GMM.txt")[1];
+parts = strsplit(str, ";");

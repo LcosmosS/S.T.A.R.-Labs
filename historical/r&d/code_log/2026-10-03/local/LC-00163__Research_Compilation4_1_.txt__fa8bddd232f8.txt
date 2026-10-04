@@ -1,0 +1,4 @@
+The GP code includes two simulations, each running 100 simulations with N=500, using a mean logmass (mu) of 9.7843 and standard deviation (sigma) of 0.3645, likely derived from the entire sample as per the PDF. The results show:
+* First simulation: Mean K_theory ≈ 0.99917533369494247334404802163426385070
+* Second simulation: Mean K_theory ≈ 0.99810816361051381322635792470875448438
+Both values are approximately 1, consistent with theoretical expectations for a log-normal distribution, where K_theory = [sum(M_i / M_0)] / [sum(M_0 / M_i)] should be 1, with M_0 as the median mass. The simulation uses the function simulate_log_mass(N, mu, sigma), which generates log masses via the Box-Muller transform, and compute_K_theory to calculate K_theory, aligning with the hypothesis that for ideal log-normal distributions, K_theory is 1.

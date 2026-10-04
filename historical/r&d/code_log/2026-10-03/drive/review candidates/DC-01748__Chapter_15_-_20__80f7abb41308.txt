@@ -1,0 +1,5 @@
+       pd.concat([morph_proxy, conf_proxy, redshift], axis=1)
+   )
+   df['cosmo_rank'] = (weights['morph'] * df['morph_norm'] +
+                       weights['conf'] * df['conf_norm'] +
+                       weights['z'] * df['z_norm'])

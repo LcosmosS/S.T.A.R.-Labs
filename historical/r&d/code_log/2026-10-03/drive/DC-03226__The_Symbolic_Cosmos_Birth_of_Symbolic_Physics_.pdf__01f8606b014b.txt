@@ -1,0 +1,4 @@
+# Plot interweb with filaments
+if interweb_data:
+fig = plt.figure(figsize=(10, 8))
+ax = fig.add_subplot(111, projection='3d')

@@ -1,0 +1,4 @@
+            if not coords.is_finite().all():
+                raise ValueError("Invalid coordinates detected in SkyCoord object.")
+            ebv = sfd(coords)
+            ebv = np.array(ebv, dtype=np.float32)

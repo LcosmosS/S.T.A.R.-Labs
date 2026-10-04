@@ -1,0 +1,2 @@
+Delta_Cl = data[:, 1] - best_fit_Cl  # Best-fit from Planck model
+with open("delta_cl.txt", "w") as f:

@@ -1,0 +1,4 @@
+return
+ 
+np.nan
+     mass_kg  =  mass_sm  *  1.989e30;  radius_m  =  radius_ly  *  9.461e15      potential_energy  =  -1  *  G.value  *  (mass_kg  **  2)  /  radius_m      return  potential_energy  /  2.0   #  ---  4.  SageMath  Core  Hypothesis  Functions  (unchanged)  ---  def  map_physics_to_curve_coeffs(distance_mly,  density_kg_m3):  

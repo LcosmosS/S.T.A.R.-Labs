@@ -1,0 +1,860 @@
+﻿Detected IPython. Loading juliacall extension. See https://juliapy.github.io/PythonCall.jl/stable/compat/#IPython
+ — *S.T.A.R. + SMAT v3.1 — Full Upgraded Pipeline with Enhancements
+ — Initiating...
+Computing synth topology + persistence entropy...
+   synth adaptive scale = 1260.69 Mpc
+Computing real1 topology + persistence entropy...
+   real1 adaptive scale = 5.94 Mpc
+Computing real2 topology + persistence entropy...
+   real2 adaptive scale = 56.53 Mpc
+
+
+--- Aligning Domains with Quantile Transformer ---
+
+
+[I 2026-04-13 23:25:09,686] A new study created in memory with name: no-name-3855baa6-9aa3-4a9e-928c-59afc61fc454
+
+
+  -> Feature distributions normalized and aligned.
+
+
+ Running Symbolic Refinement Loop on Real2 errors...
+Initial β = 16.2630
+
+
+ Running Multi-Objective Optuna (MSE + (1-R²) + W₂)...
+
+
+[I 2026-04-13 23:25:11,026] Trial 0 finished with value: 2.2218516490568123 and parameters: {'n_estimators': 425, 'learning_rate': 0.01720350980977384, 'max_depth': 6, 'subsample': 0.6484983779006525}. Best is trial 0 with value: 2.2218516490568123.
+[I 2026-04-13 23:25:12,046] Trial 1 finished with value: 2.2318245831038537 and parameters: {'n_estimators': 619, 'learning_rate': 0.020098276101681835, 'max_depth': 4, 'subsample': 0.8725869970627256}. Best is trial 0 with value: 2.2218516490568123.
+[I 2026-04-13 23:25:13,761] Trial 2 finished with value: 2.203852837428748 and parameters: {'n_estimators': 561, 'learning_rate': 0.04543484142730081, 'max_depth': 7, 'subsample': 0.756246268621769}. Best is trial 2 with value: 2.203852837428748.
+[I 2026-04-13 23:25:15,556] Trial 3 finished with value: 2.2010809875111974 and parameters: {'n_estimators': 733, 'learning_rate': 0.030983976958770976, 'max_depth': 6, 'subsample': 0.781762572768463}. Best is trial 3 with value: 2.2010809875111974.
+[I 2026-04-13 23:25:17,084] Trial 4 finished with value: 2.1997369285067943 and parameters: {'n_estimators': 609, 'learning_rate': 0.04237994095387517, 'max_depth': 6, 'subsample': 0.7233498400891375}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:19,455] Trial 5 finished with value: 2.2068546815602867 and parameters: {'n_estimators': 781, 'learning_rate': 0.011190701527286438, 'max_depth': 7, 'subsample': 0.7444530028783675}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:20,759] Trial 6 finished with value: 2.2007851211603553 and parameters: {'n_estimators': 444, 'learning_rate': 0.0365850544365902, 'max_depth': 7, 'subsample': 0.8848527718189523}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:21,994] Trial 7 finished with value: 2.246433868303768 and parameters: {'n_estimators': 578, 'learning_rate': 0.01007085395761258, 'max_depth': 5, 'subsample': 0.6832782837383534}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:23,336] Trial 8 finished with value: 2.2005462647333447 and parameters: {'n_estimators': 540, 'learning_rate': 0.037750817918725185, 'max_depth': 6, 'subsample': 0.7557065304172697}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:25,242] Trial 9 finished with value: 2.203871019744975 and parameters: {'n_estimators': 786, 'learning_rate': 0.018307564325506506, 'max_depth': 6, 'subsample': 0.7598703833013711}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:27,157] Trial 10 finished with value: 2.204754361637637 and parameters: {'n_estimators': 671, 'learning_rate': 0.04933127422984017, 'max_depth': 4, 'subsample': 0.6086860663552406}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:28,183] Trial 11 finished with value: 2.205367262181733 and parameters: {'n_estimators': 506, 'learning_rate': 0.040771942115589, 'max_depth': 5, 'subsample': 0.8222211672745529}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:29,501] Trial 12 finished with value: 2.20173129772189 and parameters: {'n_estimators': 521, 'learning_rate': 0.03438403411471198, 'max_depth': 6, 'subsample': 0.6978321644724403}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:30,702] Trial 13 finished with value: 2.20414582570309 and parameters: {'n_estimators': 632, 'learning_rate': 0.041470179152752376, 'max_depth': 5, 'subsample': 0.9384155282187184}. Best is trial 4 with value: 2.1997369285067943.
+[I 2026-04-13 23:25:32,400] Trial 14 finished with value: 2.2014255454694784 and parameters: {'n_estimators': 682, 'learning_rate': 0.027610096614992904, 'max_depth': 6, 'subsample': 0.7027736490718187}. Best is trial 4 with value: 2.1997369285067943.
+
+
+Best parameters: {'n_estimators': 609, 'learning_rate': 0.04237994095387517, 'max_depth': 6, 'subsample': 0.7233498400891375}
+
+
+--- Initializing Global Stacker with Robust Meta-Models ---
+
+
+--- Fixed Multi-Strata R² Analysis ---
+   Stratum 0 R² = -15604083646046797824.0000
+   Stratum 1 R² = 0.0000
+   Stratum 2 R² = 0.1476
+
+
+ Generating Topological Barcodes (Stratum 0 vs Stratum 2)...
+
+
+
+
+  
+
+
+
+Fitting Final Global Stacker for multi-strata analysis...
+
+
+--- Robust Multi-Strata Analysis (Foliation Test) ---
+   Stratum 0 (Entropy 0): Variance near zero. R² undefined.
+      -> MAE = 0.072197 (Model successfully quenched)
+   Stratum 1 (Entropy 1): Variance near zero. R² undefined.
+      -> MAE = 0.019414 (Model successfully quenched)
+   Stratum 2 (Entropy 2): R² = 0.1476 | MAE = 0.1915
+
+
+ Generating Topological Barcodes (Stratum 0 vs Stratum 2)...
+
+
+
+
+  
+
+
+
+--- Merging Catalogs for Global Sweep ---
+Initiating Global Sweep on 500000 total galaxies...
+
+
+--- Global Sweep Results (Combined real1 + real2) ---
+ Stratum 0 (Voids): MAE = 0.024896 [Quenched]
+ Stratum 1 (Voids): MAE = 0.005169 [Quenched]
+ Stratum 2 (Web): R² = 0.1824
+
+
+ Generating Topological Barcodes (Stratum 0 vs Stratum 2)...
+
+
+  
+
+
+
+--- Initiating Symbolic Extraction on Stratum 2 (Complex Web) ---
+
+
+Compiling Julia backend...
+[ Info: Note: you are running with more than 10,000 datapoints. You should consider turning on batching (`options.batching`), and also if you need that many datapoints. Unless you have a large amount of noise (in which case you should smooth your dataset first), generally < 10,000 datapoints is enough to find a functional form.
+[ Info: Started!
+
+
+Expressions evaluated per second: 4.990e+03
+Progress: 28 / 1240 total iterations (2.258%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+5           9.436e-02  2.477e-03  y = exp(inv(local_betti_1)) * 0.18517
+7           9.249e-02  1.003e-02  y = (local_betti_2 + (T_cosmo / 0.93598)) * -0.035779
+8           8.707e-02  6.035e-02  y = inv((T_cosmo / (0.40969 / T_cosmo)) - local_betti_2)
+10          8.390e-02  1.855e-02  y = inv(((T_cosmo / (0.40969 / T_cosmo)) - local_betti_2) ...
+                                      / 1.3267)
+12          8.332e-02  3.428e-03  y = inv(((T_cosmo / (0.40969 / T_cosmo)) - (local_betti_2 ...
+                                      + 1.1184)) / 1.3267)
+13          8.325e-02  9.040e-04  y = inv(((T_cosmo / (0.40969 / T_cosmo)) - (inv(1.1184) + ...
+                                      local_betti_2)) / 1.3267)
+14          6.766e-02  2.074e-01  y = inv((T_cosmo / (0.20542 / T_cosmo)) - (local_betti_2 +...
+                                       (T_cosmo / 0.13714))) / 0.78668
+27          6.626e-02  1.610e-03  y = inv(((Anthropic * 0.13597) + (((local_betti_1 / (exp(l...
+                                      ocal_betti_1) + ((local_betti_1 + 1.8463) / inv(local_bett...
+                                      i_1)))) / local_betti_1) - (T_cosmo - -0.041028))) + (exp(...
+                                      T_cosmo) + 0.23044))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 5.850e+03
+Progress: 78 / 1240 total iterations (6.290%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+5           9.436e-02  2.477e-03  y = exp(inv(local_betti_1)) * 0.18517
+6           8.498e-02  1.047e-01  y = (exp(T_cosmo) * -0.016989) - -0.25747
+10          8.390e-02  3.211e-03  y = inv(((T_cosmo / (0.40969 / T_cosmo)) - local_betti_2) ...
+                                      / 1.3267)
+12          8.332e-02  3.428e-03  y = inv(((T_cosmo / (0.40969 / T_cosmo)) - (local_betti_2 ...
+                                      + 1.1184)) / 1.3267)
+13          8.325e-02  9.040e-04  y = inv(((T_cosmo / (0.40969 / T_cosmo)) - (inv(1.1184) + ...
+                                      local_betti_2)) / 1.3267)
+14          6.766e-02  2.074e-01  y = inv((T_cosmo / (0.20542 / T_cosmo)) - (local_betti_2 +...
+                                       (T_cosmo / 0.13714))) / 0.78668
+16          6.682e-02  6.236e-03  y = (inv((T_cosmo / (0.20542 / T_cosmo)) - (local_betti_2 ...
+                                      + (T_cosmo / 0.13714))) / 0.78668) - 0.01705
+24          6.095e-02  1.149e-02  y = inv(((T_cosmo / (0.27135 / T_cosmo)) - (local_betti_2 ...
+                                      + ((((normalized_density + (T_cosmo / 0.13711)) / 0.13022)...
+                                       - (local_betti_2 - 0.10219)) / 9.2663))) - 0.58842)
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 6.800e+03
+Progress: 126 / 1240 total iterations (10.161%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+5           9.436e-02  2.477e-03  y = exp(inv(local_betti_1)) * 0.18517
+6           8.498e-02  1.047e-01  y = (exp(T_cosmo) * -0.016989) - -0.25747
+9           8.025e-02  1.912e-02  y = inv((Anthropic * 0.13341) + exp(T_cosmo + 0.0028742))
+11          7.988e-02  2.267e-03  y = inv(((-0.44723 + T_cosmo) / (0.20542 / T_cosmo)) - inv...
+                                      (-0.30208))
+12          6.913e-02  1.446e-01  y = inv((T_cosmo / (0.20542 / T_cosmo)) - (local_betti_2 +...
+                                       (T_cosmo / 0.13714)))
+14          6.701e-02  1.552e-02  y = inv((T_cosmo / (0.21549 / T_cosmo)) - (((T_cosmo / 0.3...
+                                      0791) / 0.41246) + local_betti_2))
+16          6.673e-02  2.112e-03  y = inv(0.78668 * ((T_cosmo / (0.20542 / T_cosmo)) - ((T_c...
+                                      osmo / 0.13714) + local_betti_2))) + -0.046072
+23          6.671e-02  4.894e-05  y = inv(((exp((local_betti_1 * (-0.51504 / inv(T_cosmo))) ...
+                                      / 5.4324) - T_cosmo) - T_cosmo) + ((Anthropic * 0.13341) +...
+                                       exp(T_cosmo + 0.0028742)))
+24          6.095e-02  9.026e-02  y = inv(((T_cosmo / (0.27135 / T_cosmo)) - (local_betti_2 ...
+                                      + ((((normalized_density + (T_cosmo / 0.13711)) / 0.13022)...
+                                       - (local_betti_2 - 0.10219)) / 9.2663))) - 0.58842)
+30          5.951e-02  3.984e-03  y = inv((((((local_betti_1 * -0.68434) / local_betti_1) + ...
+                                      (exp((local_betti_1 * (-0.58536 / inv(T_cosmo))) / inv(nor...
+                                      malized_density)) - T_cosmo)) - T_cosmo) + (Anthropic * 0....
+                                      1298)) + exp(T_cosmo + 0.14509))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 8.130e+03
+Progress: 196 / 1240 total iterations (15.806%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.465e-02  2.293e-03  y = inv(T_cosmo - -6.2975)
+5           9.436e-02  3.027e-03  y = exp(inv(local_betti_1)) * 0.18517
+6           8.498e-02  1.047e-01  y = (exp(T_cosmo) * -0.016989) - -0.25747
+8           7.252e-02  7.932e-02  y = exp(-0.89146 - (T_cosmo * (T_cosmo - 1.402)))
+12          6.913e-02  1.197e-02  y = inv((T_cosmo / (0.20542 / T_cosmo)) - (local_betti_2 +...
+                                       (T_cosmo / 0.13714)))
+13          6.731e-02  2.663e-02  y = inv(((0.10932 * Anthropic) + (0.099638 - T_cosmo)) + e...
+                                      xp(T_cosmo + 0.099638))
+14          6.701e-02  4.422e-03  y = inv((T_cosmo / (0.21549 / T_cosmo)) - (((T_cosmo / 0.3...
+                                      0791) / 0.41246) + local_betti_2))
+15          6.223e-02  7.409e-02  y = inv((Anthropic * 0.10932) + (((0.45266 - T_cosmo) - T_...
+                                      cosmo) + exp(T_cosmo + 0.099638)))
+16          6.222e-02  3.451e-05  y = inv(((0.10932 * Anthropic) + ((exp(-0.88418) - T_cosmo...
+                                      ) - T_cosmo)) + exp(T_cosmo + 0.099638))
+21          6.160e-02  2.008e-03  y = inv(((Anthropic * 0.10932) + ((exp((-0.88418 / exp(0.1...
+                                      0932)) - T_cosmo) - T_cosmo) - T_cosmo)) + exp(T_cosmo + 0...
+                                      .099638))
+22          6.095e-02  1.069e-02  y = inv(((T_cosmo / (0.27135 / T_cosmo)) - (local_betti_2 ...
+                                      + ((((normalized_density + (T_cosmo / 0.13711)) / 0.13022)...
+                                       - local_betti_2) / 9.2663))) - 0.58842)
+24          6.054e-02  3.373e-03  y = inv((((Anthropic * 0.10932) + (exp((exp(-0.88418 / exp...
+                                      (0.10932)) - T_cosmo) - T_cosmo) - T_cosmo)) - T_cosmo) + ...
+                                      exp(T_cosmo + 0.099638))
+30          5.951e-02  2.855e-03  y = inv((((((local_betti_1 * -0.68434) / local_betti_1) + ...
+                                      (exp((local_betti_1 * (-0.58536 / inv(T_cosmo))) / inv(nor...
+                                      malized_density)) - T_cosmo)) - T_cosmo) + (Anthropic * 0....
+                                      1298)) + exp(T_cosmo + 0.14509))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 9.020e+03
+Progress: 255 / 1240 total iterations (20.565%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.465e-02  2.293e-03  y = inv(T_cosmo - -6.2975)
+5           8.907e-02  6.069e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.498e-02  4.700e-02  y = (exp(T_cosmo) * -0.016989) - -0.25747
+7           8.361e-02  1.629e-02  y = inv(exp(T_cosmo) + (0.10932 * Anthropic))
+8           7.252e-02  1.423e-01  y = exp(-0.89146 - (T_cosmo * (T_cosmo - 1.402)))
+11          6.626e-02  3.008e-02  y = inv(((exp(T_cosmo) + 0.24344) - T_cosmo) + (Anthropic ...
+                                      * 0.1378))
+13          6.614e-02  8.933e-04  y = inv(((0.35267 - T_cosmo) + (Anthropic * 0.13347)) + ex...
+                                      p(T_cosmo + -0.080264))
+14          6.326e-02  4.456e-02  y = inv(((exp(-0.28507) + ((0.10932 * Anthropic) - T_cosmo...
+                                      )) - T_cosmo) + exp(T_cosmo))
+15          6.199e-02  2.023e-02  y = inv((((0.13609 - T_cosmo) - T_cosmo) + (Anthropic * 0....
+                                      12708)) + exp(T_cosmo + 0.2011))
+17          6.101e-02  7.980e-03  y = inv(((exp(T_cosmo + 0.029654) - T_cosmo) - T_cosmo) + ...
+                                      ((Anthropic + T_cosmo) * 0.10337)) + -0.067437
+19          5.530e-02  4.917e-02  y = (inv((((exp(T_cosmo) + 0.27693) - T_cosmo) - T_cosmo) ...
+                                      + ((Anthropic + T_cosmo) * 0.060226)) + -0.12182) * 0.9110...
+                                      8
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 1.020e+04
+Progress: 307 / 1240 total iterations (24.758%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.465e-02  2.293e-03  y = inv(T_cosmo - -6.2975)
+5           8.907e-02  6.069e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.714e-02  3.126e-02  y = inv((exp(T_cosmo) - T_cosmo) + (Anthropic * 0.1378))
+11          6.626e-02  6.617e-03  y = inv(((exp(T_cosmo) + 0.24344) - T_cosmo) + (Anthropic ...
+                                      * 0.1378))
+12          6.175e-02  7.045e-02  y = inv((Anthropic * 0.10932) + exp((exp(T_cosmo) - T_cosm...
+                                      o) - T_cosmo))
+14          6.121e-02  4.440e-03  y = inv((Anthropic * 0.10932) + exp((exp(T_cosmo) - T_cosm...
+                                      o) + (-0.027121 - T_cosmo)))
+16          5.344e-02  6.787e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - ((T_c...
+                                      osmo - 0.26433) + T_cosmo)) - T_cosmo))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 9.810e+03
+Progress: 342 / 1240 total iterations (27.581%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.465e-02  2.293e-03  y = inv(T_cosmo - -6.2975)
+5           8.907e-02  6.069e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+11          6.626e-02  4.975e-03  y = inv(((exp(T_cosmo) + 0.24344) - T_cosmo) + (Anthropic ...
+                                      * 0.1378))
+12          6.175e-02  7.045e-02  y = inv((Anthropic * 0.10932) + exp((exp(T_cosmo) - T_cosm...
+                                      o) - T_cosmo))
+14          6.121e-02  4.440e-03  y = inv((Anthropic * 0.10932) + exp((exp(T_cosmo) - T_cosm...
+                                      o) + (-0.027121 - T_cosmo)))
+16          5.344e-02  6.787e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - ((T_c...
+                                      osmo - 0.26433) + T_cosmo)) - T_cosmo))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 9.470e+03
+Progress: 374 / 1240 total iterations (30.161%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.465e-02  2.293e-03  y = inv(T_cosmo - -6.2975)
+5           8.907e-02  6.069e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+11          6.626e-02  4.975e-03  y = inv(((exp(T_cosmo) + 0.24344) - T_cosmo) + (Anthropic ...
+                                      * 0.1378))
+12          6.175e-02  7.045e-02  y = inv((Anthropic * 0.10932) + exp((exp(T_cosmo) - T_cosm...
+                                      o) - T_cosmo))
+14          6.121e-02  4.440e-03  y = inv((Anthropic * 0.10932) + exp((exp(T_cosmo) - T_cosm...
+                                      o) + (-0.027121 - T_cosmo)))
+16          5.344e-02  6.787e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - ((T_c...
+                                      osmo - 0.26433) + T_cosmo)) - T_cosmo))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 9.080e+03
+Progress: 420 / 1240 total iterations (33.871%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.465e-02  2.293e-03  y = inv(T_cosmo - -6.2975)
+5           8.907e-02  6.069e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+11          6.626e-02  4.975e-03  y = inv(((exp(T_cosmo) + 0.24344) - T_cosmo) + (Anthropic ...
+                                      * 0.1378))
+12          6.175e-02  7.045e-02  y = inv((Anthropic * 0.10932) + exp((exp(T_cosmo) - T_cosm...
+                                      o) - T_cosmo))
+14          6.121e-02  4.440e-03  y = inv((Anthropic * 0.10932) + exp((exp(T_cosmo) - T_cosm...
+                                      o) + (-0.027121 - T_cosmo)))
+16          5.344e-02  6.787e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - ((T_c...
+                                      osmo - 0.26433) + T_cosmo)) - T_cosmo))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 1.040e+04
+Progress: 513 / 1240 total iterations (41.371%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+11          6.446e-02  1.871e-02  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          6.102e-02  5.490e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - T_cos...
+                                      mo) - T_cosmo))
+14          5.632e-02  4.005e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - T_cosmo...
+                                      ) + (Anthropic * 0.087197))
+16          5.344e-02  2.630e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - ((T_c...
+                                      osmo - 0.26433) + T_cosmo)) - T_cosmo))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 1.000e+04
+Progress: 564 / 1240 total iterations (45.484%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.451e-02  3.669e-02  y = inv(exp(exp(T_cosmo - 1.4132)) + (Anthropic * 0.14119)...
+                                      )
+11          6.446e-02  7.227e-04  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          6.102e-02  5.490e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - T_cos...
+                                      mo) - T_cosmo))
+14          5.632e-02  4.005e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - T_cosmo...
+                                      ) + (Anthropic * 0.087197))
+15          5.571e-02  1.103e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - exp(-0....
+                                      83131)) + (0.087197 * Anthropic))
+16          5.284e-02  5.281e-02  y = inv(exp(((exp(T_cosmo + 0.12437) - T_cosmo) - T_cosmo)...
+                                       - T_cosmo) + (Anthropic * 0.087197))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 1.010e+04
+Progress: 611 / 1240 total iterations (49.274%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.451e-02  3.669e-02  y = inv(exp(exp(T_cosmo - 1.4132)) + (Anthropic * 0.14119)...
+                                      )
+11          6.446e-02  7.227e-04  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          6.102e-02  5.490e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - T_cos...
+                                      mo) - T_cosmo))
+14          5.632e-02  4.005e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - T_cosmo...
+                                      ) + (Anthropic * 0.087197))
+15          5.571e-02  1.103e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - exp(-0....
+                                      83131)) + (0.087197 * Anthropic))
+16          5.284e-02  5.281e-02  y = inv(exp(((exp(T_cosmo + 0.12437) - T_cosmo) - T_cosmo)...
+                                       - T_cosmo) + (Anthropic * 0.087197))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 9.880e+03
+Progress: 645 / 1240 total iterations (52.016%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.451e-02  3.669e-02  y = inv(exp(exp(T_cosmo - 1.4132)) + (Anthropic * 0.14119)...
+                                      )
+11          6.446e-02  7.227e-04  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          6.102e-02  5.490e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - T_cos...
+                                      mo) - T_cosmo))
+13          5.863e-02  3.994e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.632e-02  4.016e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - T_cosmo...
+                                      ) + (Anthropic * 0.087197))
+15          5.571e-02  1.103e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - exp(-0....
+                                      83131)) + (0.087197 * Anthropic))
+16          5.284e-02  5.281e-02  y = inv(exp(((exp(T_cosmo + 0.12437) - T_cosmo) - T_cosmo)...
+                                       - T_cosmo) + (Anthropic * 0.087197))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 1.000e+04
+Progress: 689 / 1240 total iterations (55.565%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.451e-02  3.669e-02  y = inv(exp(exp(T_cosmo - 1.4132)) + (Anthropic * 0.14119)...
+                                      )
+11          6.446e-02  7.227e-04  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          6.102e-02  5.490e-02  y = inv((Anthropic * 0.087197) + exp((exp(T_cosmo) - T_cos...
+                                      mo) - T_cosmo))
+13          5.863e-02  3.994e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.632e-02  4.016e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - T_cosmo...
+                                      ) + (Anthropic * 0.087197))
+15          5.571e-02  1.103e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - exp(-0....
+                                      83131)) + (0.087197 * Anthropic))
+16          5.284e-02  5.281e-02  y = inv(exp(((exp(T_cosmo + 0.12437) - T_cosmo) - T_cosmo)...
+                                       - T_cosmo) + (Anthropic * 0.087197))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 8.940e+03
+Progress: 751 / 1240 total iterations (60.565%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.451e-02  3.669e-02  y = inv(exp(exp(T_cosmo - 1.4132)) + (Anthropic * 0.14119)...
+                                      )
+11          6.446e-02  7.227e-04  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          5.958e-02  7.884e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.632e-02  4.016e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - T_cosmo...
+                                      ) + (Anthropic * 0.087197))
+15          5.571e-02  1.103e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - exp(-0....
+                                      83131)) + (0.087197 * Anthropic))
+16          5.284e-02  5.281e-02  y = inv(exp(((exp(T_cosmo + 0.12437) - T_cosmo) - T_cosmo)...
+                                       - T_cosmo) + (Anthropic * 0.087197))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 8.910e+03
+Progress: 807 / 1240 total iterations (65.081%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.451e-02  3.669e-02  y = inv(exp(exp(T_cosmo - 1.4132)) + (Anthropic * 0.14119)...
+                                      )
+11          6.446e-02  7.227e-04  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          5.958e-02  7.884e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.632e-02  4.016e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - T_cosmo...
+                                      ) + (Anthropic * 0.087197))
+15          5.571e-02  1.103e-02  y = inv(exp(((exp(T_cosmo) - T_cosmo) - T_cosmo) - exp(-0....
+                                      83131)) + (0.087197 * Anthropic))
+16          5.284e-02  5.281e-02  y = inv(exp(((exp(T_cosmo + 0.12437) - T_cosmo) - T_cosmo)...
+                                       - T_cosmo) + (Anthropic * 0.087197))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 9.070e+03
+Progress: 847 / 1240 total iterations (68.306%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.451e-02  3.669e-02  y = inv(exp(exp(T_cosmo - 1.4132)) + (Anthropic * 0.14119)...
+                                      )
+11          6.446e-02  7.227e-04  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          5.958e-02  7.884e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.506e-02  6.282e-02  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo) + ((0.0871...
+                                      97 * Anthropic) - T_cosmo))
+16          5.284e-02  2.059e-02  y = inv(exp(((exp(T_cosmo + 0.12437) - T_cosmo) - T_cosmo)...
+                                       - T_cosmo) + (Anthropic * 0.087197))
+17          5.242e-02  7.903e-03  y = inv(exp(exp(T_cosmo - exp(local_betti_2)) - 4.952) + (...
+                                      ((Anthropic * 0.1023) - T_cosmo) + 1.9921))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 1.020e+04
+Progress: 927 / 1240 total iterations (74.758%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.451e-02  3.669e-02  y = inv(exp(exp(T_cosmo - 1.4132)) + (Anthropic * 0.14119)...
+                                      )
+11          6.446e-02  7.227e-04  y = inv(exp(T_cosmo) + ((Anthropic * 0.10932) - T_cosmo)) ...
+                                      + -0.090042
+12          5.958e-02  7.884e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.506e-02  6.282e-02  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo) + ((0.0871...
+                                      97 * Anthropic) - T_cosmo))
+16          5.284e-02  2.059e-02  y = inv(exp(((exp(T_cosmo + 0.12437) - T_cosmo) - T_cosmo)...
+                                       - T_cosmo) + (Anthropic * 0.087197))
+17          5.242e-02  7.903e-03  y = inv(exp(exp(T_cosmo - exp(local_betti_2)) - 4.952) + (...
+                                      ((Anthropic * 0.1023) - T_cosmo) + 1.9921))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 1.050e+04
+Progress: 991 / 1240 total iterations (79.919%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.280e-02  6.350e-02  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo) - normaliz...
+                                      ed_density)
+12          5.958e-02  2.637e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.246e-02  1.113e-01  y = inv(exp(exp(T_cosmo) - 4.952) + (((Anthropic * 0.1023)...
+                                       - T_cosmo) + 1.9921))
+17          5.242e-02  1.932e-04  y = inv(exp(exp(T_cosmo - exp(local_betti_2)) - 4.952) + (...
+                                      ((Anthropic * 0.1023) - T_cosmo) + 1.9921))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 9.940e+03
+Progress: 1039 / 1240 total iterations (83.790%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.280e-02  6.350e-02  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo) - normaliz...
+                                      ed_density)
+12          5.958e-02  2.637e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.246e-02  1.113e-01  y = inv(exp(exp(T_cosmo) - 4.952) + (((Anthropic * 0.1023)...
+                                       - T_cosmo) + 1.9921))
+16          5.222e-02  2.282e-03  y = inv((exp(exp(T_cosmo) - 5.082) + (Anthropic * 0.11245)...
+                                      ) + ((1.8758 - T_cosmo) * 1.0052))
+19          5.221e-02  2.949e-05  y = inv((exp(local_betti_2) + exp(exp(T_cosmo) - 5.082)) +...
+                                       ((Anthropic * 0.11245) + ((1.8758 - T_cosmo) * 1.0052)))
+21          5.178e-02  4.159e-03  y = inv(((exp(-0.17627 - Anthropic) + exp(exp(T_cosmo) - 5...
+                                      .082)) + ((1.8758 - T_cosmo) * 1.0052)) + (Anthropic * 0.1...
+                                      1245))
+29          4.995e-02  4.507e-03  y = inv(((((exp(T_cosmo - 161.1) + 1.0492) + (Anthropic * ...
+                                      0.059005)) + exp(local_betti_2)) * (exp(exp(T_cosmo) - 5.0...
+                                      909) + (1.9243 - T_cosmo))) + (exp(local_betti_2) - normal...
+                                      ized_density))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 1.030e+04
+Progress: 1091 / 1240 total iterations (87.984%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.704e-02  9.192e-02  y = inv(exp(T_cosmo) + (Anthropic * 0.25444))
+8           6.927e-02  1.063e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.280e-02  6.350e-02  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo) - normaliz...
+                                      ed_density)
+12          5.958e-02  2.637e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.223e-02  1.157e-01  y = inv((exp(exp(T_cosmo) - 5.082) + (1.8758 - T_cosmo)) +...
+                                       (Anthropic * 0.11245))
+16          5.204e-02  1.768e-03  y = inv(exp(exp(T_cosmo) - 5.082) + (((0.11245 * Anthropic...
+                                      ) + 1.0052) * (1.8758 - T_cosmo)))
+18          5.160e-02  4.321e-03  y = inv(((Anthropic * 0.11245) + exp(exp(T_cosmo) - 5.082)...
+                                      ) + ((1.8758 - (T_cosmo + normalized_density)) * 1.0052))
+29          4.995e-02  2.954e-03  y = inv(((((exp(T_cosmo - 161.1) + 1.0492) + (Anthropic * ...
+                                      0.059005)) + exp(local_betti_2)) * (exp(exp(T_cosmo) - 5.0...
+                                      909) + (1.9243 - T_cosmo))) + (exp(local_betti_2) - normal...
+                                      ized_density))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 9.840e+03
+Progress: 1150 / 1240 total iterations (92.742%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.701e-02  9.236e-02  y = inv((Anthropic * 0.24972) + exp(T_cosmo))
+8           6.927e-02  1.058e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.280e-02  6.350e-02  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo) - normaliz...
+                                      ed_density)
+12          5.958e-02  2.637e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.220e-02  1.162e-01  y = inv((Anthropic * 0.10752) + ((exp(exp(T_cosmo) - 5.115...
+                                      ) + 1.9172) - T_cosmo))
+16          5.204e-02  1.484e-03  y = inv(exp(exp(T_cosmo) - 5.082) + (((0.11245 * Anthropic...
+                                      ) + 1.0052) * (1.8758 - T_cosmo)))
+18          5.160e-02  4.321e-03  y = inv(((Anthropic * 0.11245) + exp(exp(T_cosmo) - 5.082)...
+                                      ) + ((1.8758 - (T_cosmo + normalized_density)) * 1.0052))
+21          5.135e-02  1.568e-03  y = inv(((1.6678 - T_cosmo) + (exp(local_betti_2) + exp(ex...
+                                      p(T_cosmo) - 5.1349))) * (((Anthropic * 0.063351) + 1.5813...
+                                      ) - normalized_density))
+24          5.109e-02  1.700e-03  y = inv((1.0492 + ((0.059005 * Anthropic) + exp(local_bett...
+                                      i_2))) * ((exp(exp(T_cosmo) - 5.0909) + (1.9243 - T_cosmo)...
+                                      ) + exp(local_betti_2 - normalized_density)))
+25          5.017e-02  1.815e-02  y = exp(local_betti_2) + inv(exp(exp(local_betti_2) - norm...
+                                      alized_density) + (exp(exp(T_cosmo) - 5.153) + ((1.5482 - ...
+                                      T_cosmo) * ((Anthropic * 0.065861) + 0.80938))))
+27          5.013e-02  4.169e-04  y = inv(exp(exp(local_betti_2 - Anthropic) - normalized_de...
+                                      nsity) + (exp(exp(T_cosmo) - 5.153) + ((1.5482 - T_cosmo) ...
+                                      * ((Anthropic * 0.065861) + 0.80938)))) + exp(local_betti_...
+                                      2)
+29          4.942e-02  7.153e-03  y = (exp(local_betti_2) + inv(exp(exp(local_betti_2 - norm...
+                                      alized_density) - normalized_density) + (exp(exp(T_cosmo) ...
+                                      - 5.153) + ((1.5482 - T_cosmo) * ((Anthropic * 0.065861) +...
+                                       0.80938))))) / 0.83554
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+
+
+Expressions evaluated per second: 8.830e+03
+Progress: 1189 / 1240 total iterations (95.887%)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.701e-02  9.236e-02  y = inv((Anthropic * 0.24972) + exp(T_cosmo))
+8           6.927e-02  1.058e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.280e-02  6.350e-02  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo) - normaliz...
+                                      ed_density)
+12          5.958e-02  2.637e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.220e-02  1.162e-01  y = inv((Anthropic * 0.10752) + ((exp(exp(T_cosmo) - 5.115...
+                                      ) + 1.9172) - T_cosmo))
+16          5.204e-02  1.484e-03  y = inv(exp(exp(T_cosmo) - 5.082) + (((0.11245 * Anthropic...
+                                      ) + 1.0052) * (1.8758 - T_cosmo)))
+18          5.160e-02  4.321e-03  y = inv(((Anthropic * 0.11245) + exp(exp(T_cosmo) - 5.082)...
+                                      ) + ((1.8758 - (T_cosmo + normalized_density)) * 1.0052))
+20          4.941e-02  2.164e-02  y = inv((exp((T_cosmo + exp(T_cosmo)) - 6.607) + ((2.0932 ...
+                                      - T_cosmo) * ((Anthropic * 0.060392) + 0.93443))) - normal...
+                                      ized_density)
+29          4.910e-02  6.906e-04  y = inv(exp(local_betti_2) + (exp(exp(local_betti_2 - norm...
+                                      alized_density) - normalized_density) + (exp(exp(T_cosmo) ...
+                                      - 5.153) + ((1.5482 - T_cosmo) * ((Anthropic * 0.065861) +...
+                                       0.80938))))) / 0.83554
+───────────────────────────────────────────────────────────────────────────────────────────────────
+════════════════════════════════════════════════════════════════════════════════════════════════════
+Press 'q' and then <enter> to stop execution early.
+───────────────────────────────────────────────────────────────────────────────────────────────────
+Complexity  Loss       Score      Equation
+1           9.530e-02  0.000e+00  y = 0.13595
+4           9.457e-02  2.550e-03  y = inv(T_cosmo + 6.6707)
+5           8.907e-02  5.992e-02  y = inv(exp(T_cosmo) + Anthropic)
+6           8.446e-02  5.319e-02  y = inv((T_cosmo * T_cosmo) + 3.5669)
+7           7.701e-02  9.236e-02  y = inv((Anthropic * 0.24972) + exp(T_cosmo))
+8           6.927e-02  1.058e-01  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo))
+9           6.692e-02  3.455e-02  y = inv((Anthropic * 0.15882) + (exp(T_cosmo) - T_cosmo))
+10          6.280e-02  6.350e-02  y = inv(exp((exp(T_cosmo) - T_cosmo) - T_cosmo) - normaliz...
+                                      ed_density)
+12          5.958e-02  2.637e-02  y = inv((Anthropic * 0.087197) + exp(exp(T_cosmo + -0.505)...
+                                       - T_cosmo))
+13          5.863e-02  1.600e-02  y = inv((Anthropic * 0.10932) + ((exp(T_cosmo) - (T_cosmo ...
+                                      + T_cosmo)) / 0.59068))
+14          5.220e-02  1.162e-01  y = inv((Anthropic * 0.10752) + ((exp(exp(T_cosmo) - 5.115...
+                                      ) + 1.9172) - T_cosmo))
+16          5.204e-02  1.484e-03  y = inv(exp(exp(T_cosmo) - 5.082) + (((0.11245 * Anthropic...
+                                      ) + 1.0052) * (1.8758 - T_cosmo)))
+18          5.160e-02  4.321e-03  y = inv(((Anthropic * 0.11245) + exp(exp(T_cosmo) - 5.082)...
+                                      ) + ((1.8758 - (T_cosmo + normalized_density)) * 1.0052))
+20          4.941e-02  2.164e-02  y = inv((exp((T_cosmo + exp(T_cosmo)) - 6.607) + ((2.0932 ...
+                                      - T_cosmo) * ((Anthropic * 0.060392) + 0.93443))) - normal...
+                                      ized_density)
+24          4.940e-02  7.677e-05  y = inv((((0.69674 + (Anthropic * 0.088435)) * (1.486 - T_...
+                                      cosmo)) + exp(exp(T_cosmo) - 5.164)) + exp(exp(local_betti...
+                                      _2 - normalized_density) - normalized_density))
+25          4.839e-02  2.061e-02  y = inv(((0.69674 + (Anthropic * 0.088435)) * (1.486 - T_c...
+                                      osmo)) + ((inv(local_betti_2) + exp(exp(T_cosmo) - 5.164))...
+                                       + exp(exp(local_betti_2) - normalized_density)))
+27          4.832e-02  6.600e-04  y = inv(exp(exp(T_cosmo) - 5.164) + (((((Anthropic * 0.088...
+                                      435) + 0.69674) * (1.486 - T_cosmo)) + (inv(local_betti_2)...
+                                       / 0.81654)) + exp(exp(local_betti_2) - normalized_density...
+                                      )))
+29          4.831e-02  1.233e-04  y = inv(((((Anthropic * 0.088435) + 0.69674) * (1.486 - T_...
+                                      cosmo)) + (inv(local_betti_2) / 0.81654)) + (exp(exp(local...
+                                      _betti_2 - normalized_density) - normalized_density) + exp...
+                                      (exp(T_cosmo) - 5.164)))
+30          4.816e-02  3.185e-03  y = inv((exp(exp(T_cosmo) - 5.0878) + exp((local_betti_2 +...
+                                       ((exp(local_betti_2) - normalized_density) * 5.1065)) + 1...
+                                      .0732)) + ((2.0825 - T_cosmo) * (((Anthropic + T_cosmo) * ...
+                                      0.056117) + 0.89791)))
+───────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+--- Top Candidate Equations ---
+1/(0.107517240000000*Anthropic - T_cosmo + e^(e^T_cosmo - 5.11496200000000) + 1.91723880000000)
+
+
+ Histogram of log(discovered constants)...
+
+
+[ Info: Final population:
+[ Info: Results saved to:

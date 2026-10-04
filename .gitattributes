@@ -5,3 +5,10 @@ data/raw/*SDSS*.csv filter=lfs diff=lfs merge=lfs -text
 data/raw/*DESI*.csv filter=lfs diff=lfs merge=lfs -text
 data/raw/*SIMBAD*.csv filter=lfs diff=lfs merge=lfs -text
 data/raw/ci_subset.csv !filter !diff !merge text
+
+# Preserve complete provenance intake and later quarantined/extracted bytes.
+historical/r&d/docs/provenance_audit/** -filter -text
+historical/r&d/docs/provenance_audit_v0.3/** -filter -text
+historical/r&d/quarantine/** -filter -text
+historical/r&d/code_log/** -filter -text
+historical/r&d/code_log_triage/2026-10-03/correction_sources/** -filter -text

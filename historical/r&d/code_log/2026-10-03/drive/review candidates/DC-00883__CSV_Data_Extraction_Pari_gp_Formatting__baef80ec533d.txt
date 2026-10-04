@@ -1,0 +1,3 @@
+bin4_mask = (z_group1 >= bins[4]) & (z_group1 < bins[5])
+z_bin4 = z_group1[bin4_mask]
+         * print(f"Group 1, Bin 4: z range = {np.min(z_bin4):.4f} to {np.max(z_bin4):.4f}")

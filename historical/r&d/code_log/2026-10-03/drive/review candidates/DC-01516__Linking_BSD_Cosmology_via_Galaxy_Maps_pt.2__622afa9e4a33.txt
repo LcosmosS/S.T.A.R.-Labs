@@ -1,0 +1,3 @@
+log_mass = readvec("log_mass.txt");  
+z = readvec("z.txt");  
+print("Vectors loaded: log_mass has ", #log_mass, " entries, z has ", #z, " entries"); 

@@ -1,0 +1,7 @@
+rf.fit(X_train[:, :len(base_features)], y_train)  # Use only base features
+importances = rf.feature_importances_
+for name, imp in zip(base_features, importances):
+   *     print(f"{name}: {imp:.4f}")
+   * Drop or adjust features with low importance.
+* Simplify:
+   * Try removing the polynomial features or interaction terms to see if they’re adding noise.

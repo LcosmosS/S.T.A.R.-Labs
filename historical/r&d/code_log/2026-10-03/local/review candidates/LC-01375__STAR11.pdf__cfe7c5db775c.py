@@ -1,0 +1,49 @@
+            ebv = None
+    else:
+        ebv = None
+# Fallback if ebv computation failed -----------------------------------------------------------------------------------
+if ebv is None:
+    print("Warning: Using median-based fallback for galactic extinction correction.")
+# = Estimate a reasonable A_Ha_mw based on typical EBV values (e.g., 0.05 as a median for low-latitude regions)
+=======================================================
+    typical_ebv = 0.05
+    A_Ha_mw = k_Ha * typical_ebv * 3.1  # Rv = 3.1
+    A_Ha_mw = np.full(len(df), A_Ha_mw, dtype=np.float32)
+else:
+    A_Ha_mw = k_Ha * ebv * 3.1  # Rv = 3.1
+# Diagnostics for A_Ha_mw ------------------------------------------------------------------------------------------------
+print(f"A_Ha_mw: mean={np.mean(A_Ha_mw):.4f}, std={np.std(A_Ha_mw):.4f}, "
+      f"min={np.min(A_Ha_mw):.4f}, max={np.max(A_Ha_mw):.4f}")
+if ebv is not None:
+    print(f"EBV: mean={np.mean(ebv):.4f}, std={np.std(ebv):.4f}, "
+          f"min={np.min(ebv):.4f}, max={np.max(ebv):.4f}")
+
+# Update flux_Ha_corr with extinction correction
+=========================================================================================
+=============================
+df['flux_Ha_corr'] = df['flux_Ha'] * 10**(0.4 * (df['A_Ha'] + A_Ha_mw))
+
+# Diagnostics for flux_Ha_corr
+=========================================================================================
+===============================================
+print(f"flux_Ha_corr: mean={df['flux_Ha_corr'].mean():.4f}, std={df['flux_Ha_corr'].std():.4f}, "
+      f"NaN={df['flux_Ha_corr'].isna().sum()}, Inf={np.isinf(df['flux_Ha_corr']).sum()}")
+
+end_time = time.time()
+print(f"Galactic extinction correction completed in {end_time - start_time:.2f} seconds.")
+
+# Compute luminosity distance and SFR
+=========================================================================================
+========================================
+df['DL'] = cosmo.luminosity_distance(df['zsp']).to(u.cm).value
+df['L_Ha'] = (df['flux_Ha_corr'] * 4 * np.pi * df['DL']**2 * u.erg / u.s).to(u.L_sun).value
+df['log_SFR_Ha_raw'] = np.log10((df['L_Ha'] * sfr_conversion).value)
+print(f"NaN in L_Ha: {df['L_Ha'].isna().sum()}")
+print(f"NaN in log_SFR_Ha_raw: {df['log_SFR_Ha_raw'].isna().sum()}")
+
+# Add raw fluxes/morpholohicals as features
+=========================================================================================
+==================================
+df['log_flux_Ha'] = np.log10(df['flux_Ha'] + 1e-10)
+df['log_flux_Hb'] = np.log10(df['flux_Hb'] + 1e-10)
+df['log_flux_OIII_5007'] = np.log10(df['flux_OIII_5007'] + 1e-10)

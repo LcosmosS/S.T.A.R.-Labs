@@ -1,0 +1,5 @@
+# For masses.txt
+with open('masses.txt', 'w') as f:
+    f.write('[' + ', '.join(map(str, masses)) + ']')
+# For redshifts.txt
+with open('redshifts.txt', 'w') as f:

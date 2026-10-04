@@ -1,0 +1,13 @@
+    print "Regulator:", reg;
+    print "Product of Tamagawa numbers:", tamagawa;
+    print "Right-hand side of strong BSD (with |Sha(E)| = 1):", rhs;
+
+    // Verify strong BSD
+    if Abs(leading_coeff - rhs) lt 1e-10 then
+        print "Strong BSD holds: Leading coefficient matches with |Sha(E)| = 1";
+    else
+        print "Strong BSD fails: Leading coefficient does not match with |Sha(E)| = 1";
+        sha_order := (leading_coeff * tors_order^2) / (omega * reg * tamagawa);
+        print "Adjusted |Sha(E)| to match:", sha_order;
+    end if;
+end if;

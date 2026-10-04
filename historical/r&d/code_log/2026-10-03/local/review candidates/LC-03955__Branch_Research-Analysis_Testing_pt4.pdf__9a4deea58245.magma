@@ -1,0 +1,48 @@
+    N := Conductor(E);
+    print "Conductor:", N;
+
+    // Compute the torsion subgroup
+    tors := TorsionSubgroup(E);
+    tors_order := #tors;
+    print "Torsion subgroup order:", tors_order;
+
+    // Compute the algebraic rank
+    rank := Rank(E);
+    print "Algebraic rank:", rank;
+
+    // Compute the L-function and analytic rank
+    L := LSeries(E);
+    Lval := Evaluate(L, 1);
+    if Abs(Lval) lt 1e-10 then
+        Lderiv := Derivative(L, 1);
+        if Abs(Lderiv) lt 1e-10 then
+            Lderiv2 := Derivative(L, 2);
+            if Abs(Lderiv2) lt 1e-10 then
+                analytic_rank := 3;
+                leading_coeff := Lderiv2 / 2;
+            else
+                analytic_rank := 2;
+                leading_coeff := Lderiv2 / 2;
+            end if;
+        else
+            analytic_rank := 1;
+            leading_coeff := Lderiv;
+        end if;
+    else
+        analytic_rank := 0;
+        leading_coeff := Lval;
+    end if;
+    print "Analytic rank:", analytic_rank;
+    print "Leading coefficient L^(r)(E, 1):", leading_coeff;
+
+    // Verify weak BSD
+    if rank eq analytic_rank then
+        print "Weak BSD holds: Algebraic rank = Analytic rank";
+    else
+        print "Weak BSD fails: Algebraic rank != Analytic rank";
+    end if;
+
+    // Use Heegner points to construct rational points (Euler system approach)
+    // Choose a discriminant D for the quadratic imaginary field K = Q(sqrt(D))
+    D := -67;  // Satisfies Heegner hypothesis for this curve
+    try

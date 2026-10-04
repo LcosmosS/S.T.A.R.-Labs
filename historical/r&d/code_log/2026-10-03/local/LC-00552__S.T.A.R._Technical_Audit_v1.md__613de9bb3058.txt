@@ -1,0 +1,3 @@
+w_E(z; θ)
+Ω_eff(z; θ) = Σ_E w_E(z; θ) Ω_E / Σ_E w_E(z; θ)
+H_STAR(z; θ) = H_base(z; θ_base) × F(Ω_eff, entropy, topology; θ)

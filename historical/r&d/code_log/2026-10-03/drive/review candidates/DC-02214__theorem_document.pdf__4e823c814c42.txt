@@ -1,0 +1,6 @@
+f.write(f"a={a},b={b},rank={rank},selmer3={selmer3_rank},volume={vol}\\n") \n
+break \n except Exception as e: \n\n print(f"Rank computation failed on attempt
+{attempt + 1}: {e}") \n if attempt == max_attempts - 1: \n with
+open("failed_curves.txt", "a") as f: \n
+f.write(f"a={a},b={b},conductor={conductor},reason=rank_failure\\n") \n return
+False, None, None, None, None, None, None, False, None \n \n success =

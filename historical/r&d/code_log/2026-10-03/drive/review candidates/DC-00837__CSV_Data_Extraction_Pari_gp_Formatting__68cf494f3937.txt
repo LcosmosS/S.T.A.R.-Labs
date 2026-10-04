@@ -1,0 +1,6 @@
+with open('C:\\temp\\STM_Extract_Valid.gp', 'w') as f:
+    for col in key_columns:
+        values = ','.join(valid_df[col].astype(float).astype(str))
+        f.write(f"{col}=[{values}];\n")
+    objid_values = ','.join(valid_df['objid'].astype(str))
+    f.write(f"objid=[{objid_values}];\n")

@@ -1,0 +1,3 @@
+        ax.set_title(f"Stratum {s} (Entropy: {row['predicted_entropy']:.3f})")
+        ax.set_xlabel(r"Filtration Persistence ($\epsilon$)")
+        ax.set_yticks([])

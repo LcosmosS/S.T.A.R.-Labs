@@ -1,0 +1,2 @@
+plt.plot(x_range, y_range, label='Polynomial Fit', color='red')
+plt.scatter(X_test_scaled[:, 0], densities, label='KDE Density', color='blue', alpha=0.5)

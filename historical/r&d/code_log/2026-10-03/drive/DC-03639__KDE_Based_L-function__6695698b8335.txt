@@ -1,0 +1,10 @@
+symbolic_model = PySRRegressor(
+    niterations=500,
+    population_size=2000,
+    binary_operators=["+", "-", "*", "/"],
+    unary_operators=["sqrt", "log", "exp", "sin", "cos"],
+    loss="loss(x, y) = (x - y)^2",
+    maxsize=30,
+    verbosity=1,
+    random_state=42
+)

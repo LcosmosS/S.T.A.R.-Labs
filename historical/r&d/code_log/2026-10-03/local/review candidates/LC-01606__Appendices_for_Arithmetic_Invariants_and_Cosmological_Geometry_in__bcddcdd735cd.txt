@@ -1,0 +1,5 @@
+labels=[f"Q{i+Integer(1)}" for i in range(Integer(5))], duplicates='drop')
+    143     df['density_bin'] = pd.qcut(df['density_kg_m3'], q=Integer(5),
+labels=[f"Q{i+Integer(1)}" for i in range(Integer(5))], duplicates='drop')
+    144     binned_data = df.groupby(['redshift_bin', 'density_bin'],
+observed=False)['K_clipped'].mean().unstack()

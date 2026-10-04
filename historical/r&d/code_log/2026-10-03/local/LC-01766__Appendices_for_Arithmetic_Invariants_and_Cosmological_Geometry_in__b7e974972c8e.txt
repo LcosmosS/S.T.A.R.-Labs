@@ -1,0 +1,2 @@
+        chunk['radius_ly']  =  chunk.apply(lambda  row:  
+estimate_radius_ly(row['petrorad_r'],

@@ -1,0 +1,52 @@
+    try:
+        mem_usage = process.memory_info().rss / 1024**2
+        prec = 24 if mem_usage > 6000 else 32
+        Dmax = 40 if mem_usage > 6000 else 45
+        M = int(20 * (1 - mem_usage / 8000))
+        M = max(M, 10)
+        nmax = int(50000 * (1 - mem_usage / 8000))
+        nmax = max(nmax, 10000)
+        log_print(f"Adjusted L-function params: prec={prec}, Dmax={Dmax}, M={M}, nmax={nmax}")
+    except:
+        prec = 32
+        Dmax = 45
+        M = 20
+        nmax = 50000
+
+
+    if conductor > dynamic_limit * 2:
+        log_print(f"Conductor {conductor} too high for L-series, approximating rank")
+        analytic_rank = 1
+        leading_coeff = 0
+        weak_bsd_holds = False
+    else:
+        try:
+            L = E.lseries()
+            dok = L.dokchitser(prec=prec)
+            L1 = dok(1)
+            analytic_rank = 0
+            leading_coeff = L1
+            if abs(L1) < 1e-5:
+                for n in range(1, 5):
+                    L_deriv = dok.derivative(1, n)
+                    if abs(L_deriv) < 1e-5:
+                        continue
+                    analytic_rank = n
+                    leading_coeff = L_deriv / math.factorial(n)
+                    break
+                else:
+                    analytic_rank = 0
+                    leading_coeff = L1
+            log_print(f"Analytic rank: {analytic_rank}")
+        except Exception as e:
+            log_print(f"Failed to compute analytic rank: {e}")
+            try:
+                analytic_rank = E.rank()
+                log_print(f"Fallback analytic rank from E.rank(): {analytic_rank}")
+                leading_coeff = 0
+                weak_bsd_holds = False
+            except Exception as e:
+                log_print(f"Fallback rank computation failed: {e}")
+                return (success, features, rank, leading_coeff, omega, reg, tamagawa, weak_bsd_holds,
+                        selmer3_rank, log_delta, log_cond, longitude, latitude, elevation, size,
+                        heegner_x, heegner_y, z, phi_adjusted, lambda_adjusted)

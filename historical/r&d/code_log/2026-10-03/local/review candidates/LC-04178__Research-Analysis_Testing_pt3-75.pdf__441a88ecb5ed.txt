@@ -1,0 +1,9 @@
+    high_rank_fibs = [2, 144, 233, 377, 89, 34, 21, 5, 3, 13]
+
+    if classifier is None or X_data is None or len(X_data) < 10:
+        if random.random() < 0.999 and high_rank_pairs:
+            available_pairs = [(a, b) for (a, b) in high_rank_pairs if seen_pairs.get((a, b), 0) < 1]
+            if available_pairs:
+                return random.choice(available_pairs)
+        if len(high_rank_fibs) >= 2:
+            pair = random.sample(high_rank_fibs, 2)

@@ -1,0 +1,5 @@
+result = analyze_curve(a, b, require_3selmer=False,
+
+conductor_limit=RealNumber(str().join(map(chr, [49, 101, 49, 52]))),
+descent_limit=Integer(20)) 308 # Handle the return value safely 309 if len(result) ==
+Integer(10):
