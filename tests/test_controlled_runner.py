@@ -19,7 +19,8 @@ from src.control.execution import (
     rerun_controlled_experiment,
     verify_reproduction_manifests,
 )
-from src.control.registry import RegistrySnapshot, file_sha256
+from src.control.registry import RegistryError, RegistrySnapshot, file_sha256
+from src.cli import star_controlled_experiment as controlled_cli
 
 
 def _write_csv(path, fieldnames, rows):
@@ -261,8 +262,10 @@ def test_execution_emits_content_addressed_manifest(tmp_path):
     root, spec, dataset_sha = _fixture_root(tmp_path)
     runs_root = tmp_path / "runs"
 
+    assert not runs_root.exists()
     manifest_path, manifest, code = _execute(root, spec, runs_root)
 
+    assert runs_root.is_dir()
     assert code == 0
     assert manifest["transaction_status"] == "completed"
     assert manifest["exit_status"] == 0
@@ -381,3 +384,123 @@ def test_rerun_rejects_git_sha_drift(tmp_path):
             git_state_provider=other_git,
             tracked_path_checker=_allow_tracked,
         )
+
+
+def test_post_run_registry_mutation_fails_transaction_and_is_manifested(tmp_path):
+    root, spec_path, _ = _fixture_root(tmp_path)
+    spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    spec["command"] = [
+        sys.executable,
+        "-c",
+        (
+            "from pathlib import Path; "
+            "out=Path(r'{run_dir}/result.txt'); "
+            "out.write_text('result\\n', encoding='utf-8'); "
+            "p=Path(r'{repo_root}/registry/parameter_registry_v0.1.csv'); "
+            "p.write_text(p.read_text(encoding='utf-8') + '\\n', encoding='utf-8')"
+        ),
+    ]
+    spec_path.write_text(
+        json.dumps(spec, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    manifest_path, manifest, code = _execute(
+        root,
+        spec_path,
+        tmp_path / "mutation-runs",
+    )
+
+    assert manifest_path.is_file()
+    assert code == 7
+    assert manifest["transaction_status"] == "post_run_integrity_failed"
+    assert manifest["post_run_integrity"]["passed"] is False
+    assert any(
+        "parameter_registry_v0.1.csv" in failure
+        for failure in manifest["post_run_integrity"]["failures"]
+    )
+
+
+def test_rerun_rejects_internally_stale_original_execution_binding(tmp_path):
+    root, spec, _ = _fixture_root(tmp_path)
+    original_path, _, code = _execute(
+        root,
+        spec,
+        tmp_path / "runs",
+    )
+    assert code == 0
+
+    original_path.chmod(stat.S_IRUSR | stat.S_IWUSR)
+    sidecar = original_path.with_name("manifest.sha256")
+    sidecar.chmod(stat.S_IRUSR | stat.S_IWUSR)
+    manifest = json.loads(original_path.read_text(encoding="utf-8"))
+    manifest["execution"]["command_template"] = [sys.executable, "-c", "print('stale')"]
+    original_path.write_text(
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    sidecar.write_text(
+        f"{file_sha256(original_path)}  manifest.json\n",
+        encoding="ascii",
+    )
+
+    with pytest.raises(PreflightError, match="command_template"):
+        rerun_controlled_experiment(
+            root,
+            spec,
+            original_path,
+            runs_root=tmp_path / "reruns",
+            executor_id="executor-B",
+            independence_note="separate execution",
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+
+def test_reproduction_verification_requires_different_executor_identity(tmp_path):
+    root, spec, _ = _fixture_root(tmp_path)
+    runs_root = tmp_path / "runs"
+    original_path, _, code = _execute(
+        root,
+        spec,
+        runs_root,
+        executor="executor-A",
+    )
+    assert code == 0
+
+    rerun_path, rerun, rerun_code = rerun_controlled_experiment(
+        root,
+        spec,
+        original_path,
+        runs_root=runs_root,
+        executor_id="executor-A",
+        independence_note="separate process, same declared executor",
+        git_state_provider=_fake_git,
+        tracked_path_checker=_allow_tracked,
+    )
+    assert rerun_code == 0
+    assert rerun["reproduction"]["different_executor"] is False
+
+    report = verify_reproduction_manifests(original_path, rerun_path)
+    assert report["checks"]["different_executor"] is False
+    assert report["necessary_reproduction_conditions_met"] is False
+    assert report["environment_match_required"] is False
+
+
+def test_cli_reports_registry_errors_as_controlled_rejections(monkeypatch, capsys):
+    def fail_preflight(*args, **kwargs):
+        raise RegistryError("unknown controlled Experiment_ID: EXP-MISSING")
+
+    monkeypatch.setattr(
+        controlled_cli,
+        "preflight_controlled_experiment",
+        fail_preflight,
+    )
+    code = controlled_cli.main(
+        ["preflight", "--spec", "controlled_execution/specs/missing.json"]
+    )
+
+    captured = capsys.readouterr()
+    assert code == 2
+    assert "controlled execution rejected" in captured.err
+    assert "EXP-MISSING" in captured.err

@@ -126,9 +126,18 @@ A successful or failed post-preflight execution writes `manifest.json` and
 - all output hashes and sizes;
 - experiment and runner exit status.
 
-A rerun additionally records the original manifest SHA-256, output-hash
-comparison, exit-status comparison, environment comparison, executor comparison,
-and the supplied independence note.
+A rerun additionally records the original manifest SHA-256, the complete
+execution-binding hash, output-hash comparison, exit-status comparison,
+environment comparison, executor comparison, and the supplied independence
+note. Verification requires a different declared executor identity. Environment
+equality is recorded but deliberately not required: a separately provisioned
+environment may reproduce the same locked Git/spec/data transaction, and that
+difference must remain visible in the manifest.
 
-Passing `verify-reproduction` is necessary reproduction evidence. It is not,
-by itself, proof of scientific validity or authorization to promote a claim.
+After the command exits, the runner rechecks Git state plus every registry,
+execution-spec, dataset, code, and config hash. Any mutation during execution
+fails the transaction even when the experiment command itself returned zero.
+
+Passing `verify-reproduction` is necessary transaction-reproduction evidence.
+It is not, by itself, proof of scientific validity or authorization to promote
+a claim.

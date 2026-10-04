@@ -14,6 +14,7 @@ from src.control.execution import (
     rerun_controlled_experiment,
     verify_reproduction_manifests,
 )
+from src.control.registry import RegistryError
 
 
 def _print_json(value):
@@ -150,7 +151,7 @@ def main(argv=None):
             return 0 if report["necessary_reproduction_conditions_met"] else 6
 
         raise AssertionError(f"unhandled command: {args.command_name}")
-    except ControlledExecutionError as exc:
+    except (ControlledExecutionError, RegistryError) as exc:
         print(f"controlled execution rejected: {exc}", file=sys.stderr)
         return 2
 

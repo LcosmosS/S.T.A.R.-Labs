@@ -134,16 +134,32 @@ def _git_output(root: Path, *args: str) -> str:
     return result.stdout.strip()
 
 
-def _git_state(root: Path) -> dict:
+def _git_state_unchecked(root: Path) -> dict:
     sha = _git_output(root, "rev-parse", "HEAD")
     branch = _git_output(root, "rev-parse", "--abbrev-ref", "HEAD")
-    dirty = _git_output(root, "status", "--porcelain", "--untracked-files=all")
-    if dirty:
+    status = _git_output(
+        root, "status", "--porcelain", "--untracked-files=all"
+    )
+    return {
+        "sha": sha,
+        "branch": branch,
+        "dirty": bool(status),
+        "status_porcelain": status,
+    }
+
+
+def _git_state(root: Path) -> dict:
+    state = _git_state_unchecked(root)
+    if state["dirty"]:
         raise PreflightError(
             "controlled execution requires a clean Git working tree; "
             "commit, remove, or ignore local changes first"
         )
-    return {"sha": sha, "branch": branch, "dirty": False}
+    return {
+        "sha": state["sha"],
+        "branch": state["branch"],
+        "dirty": False,
+    }
 
 
 def _assert_tracked_code_path(root: Path, path: Path) -> None:
@@ -440,6 +456,105 @@ def preflight_controlled_experiment(
     )
 
 
+def _portable_hashed_inputs(items: list[dict]) -> list[dict]:
+    return [
+        {
+            "path": item["declared_path"],
+            "sha256": item["sha256"],
+            "size_bytes": item["size_bytes"],
+        }
+        for item in items
+    ]
+
+
+def _execution_binding(prepared: PreparedExecution) -> dict:
+    binding = {
+        "experiment_id": prepared.spec["experiment_id"],
+        "git_sha": prepared.git["sha"],
+        "spec_sha256": prepared.spec_sha256,
+        "registry_record_sha256": prepared.resolved.record_hashes,
+        "registry_file_sha256": prepared.registry.file_hashes,
+        "dataset_inputs": _portable_hashed_inputs(prepared.dataset_inputs),
+        "code_inputs": _portable_hashed_inputs(prepared.code_inputs),
+        "config": prepared.spec["config"],
+        "config_files": _portable_hashed_inputs(prepared.config_files),
+        "command_template": prepared.spec["command"],
+        "rng_seeds": prepared.spec["rng_seeds"],
+        "output_paths": [
+            _safe_relative_path(value, "output_paths").as_posix()
+            for value in prepared.spec["output_paths"]
+        ],
+        "timeout_seconds": prepared.spec["timeout_seconds"],
+        "container_image_digest": prepared.container_image_digest,
+    }
+    return binding
+
+
+def _execution_binding_sha256(prepared: PreparedExecution) -> str:
+    return hashlib.sha256(
+        canonical_json_bytes(_execution_binding(prepared))
+    ).hexdigest()
+
+
+def _post_run_integrity(
+    prepared: PreparedExecution,
+    git_state_provider: Callable[[Path], dict],
+) -> dict:
+    failures = []
+    git_after = None
+    try:
+        git_after = git_state_provider(prepared.root)
+    except (ControlledExecutionError, OSError, subprocess.SubprocessError) as exc:
+        failures.append(f"Git state changed or became unverifiable: {exc}")
+    else:
+        if git_after.get("dirty"):
+            failures.append("Git working tree became dirty during execution")
+        if git_after.get("sha") != prepared.git.get("sha"):
+            failures.append("Git HEAD changed during execution")
+
+    def check_file(path: Path, expected: str, label: str):
+        if not path.is_file():
+            failures.append(f"{label} disappeared during execution: {path}")
+            return
+        actual = file_sha256(path)
+        if actual != expected:
+            failures.append(
+                f"{label} changed during execution: {path}; "
+                f"expected {expected}, got {actual}"
+            )
+
+    check_file(
+        prepared.spec_path,
+        prepared.spec_sha256,
+        "execution spec",
+    )
+
+    for filename, expected in prepared.registry.file_hashes.items():
+        check_file(
+            prepared.registry.registry_dir / filename,
+            expected,
+            f"registry file {filename}",
+        )
+
+    for label, items in (
+        ("dataset input", prepared.dataset_inputs),
+        ("code input", prepared.code_inputs),
+        ("config file", prepared.config_files),
+    ):
+        for item in items:
+            check_file(
+                Path(item["resolved_path"]),
+                item["sha256"],
+                label,
+            )
+
+    return {
+        "passed": not failures,
+        "failures": failures,
+        "git_after": git_after,
+    }
+
+
 def _environment_snapshot() -> dict:
     packages = []
     for distribution in importlib.metadata.distributions():
@@ -570,6 +685,7 @@ def _execute_prepared(
     runs_root: Path,
     executor_id: str,
     mode: str,
+    git_state_provider: Callable[[Path], dict],
     reproduction_source: tuple[dict, str] | None = None,
     independence_note: str | None = None,
 ) -> tuple[Path, dict, int]:
@@ -619,9 +735,13 @@ def _execute_prepared(
 
     with stdout_path.open("xb") as stdout_stream, stderr_path.open("xb") as stderr_stream:
         try:
+            # SECURITY: command is a committed, SHA-bound argv list and
+            # is executed with shell=False. Shell escaping is therefore neither
+            # required nor used; the reviewed execution spec is the authority.
             completed = subprocess.run(
                 command,
                 cwd=prepared.root,
+                shell=False,
                 env=env,
                 stdin=subprocess.DEVNULL,
                 stdout=stdout_stream,
@@ -642,6 +762,10 @@ def _execute_prepared(
     end = _utc_now()
     duration = time.monotonic() - monotonic_start
 
+    post_run_integrity = _post_run_integrity(
+        prepared,
+        git_state_provider,
+    )
     artifacts = _all_output_artifacts(run_dir)
     artifact_by_path = {item["path"]: item for item in artifacts}
     expected_outputs = [
@@ -685,7 +809,10 @@ def _execute_prepared(
             "reproduction_match": reproduction_match,
         }
 
-    if experiment_exit_status != 0:
+    if not post_run_integrity["passed"]:
+        transaction_status = "post_run_integrity_failed"
+        runner_exit_status = 7
+    elif experiment_exit_status != 0:
         transaction_status = "experiment_failed"
         runner_exit_status = 3
     elif missing_outputs:
@@ -740,6 +867,8 @@ def _execute_prepared(
         "execution": {
             "spec_path": str(prepared.spec_path),
             "spec_sha256": prepared.spec_sha256,
+            "binding": _execution_binding(prepared),
+            "binding_sha256": _execution_binding_sha256(prepared),
             "command_template": prepared.spec["command"],
             "resolved_command": command,
             "config": prepared.spec["config"],
@@ -766,6 +895,7 @@ def _execute_prepared(
             "stdout": _hash_log(stdout_path),
             "stderr": _hash_log(stderr_path),
         },
+        "post_run_integrity": post_run_integrity,
         "reproduction": reproduction,
         "support_promotion": {
             "automatic": False,
@@ -811,6 +941,7 @@ def execute_controlled_experiment(
         runs_root=run_root,
         executor_id=executor_id,
         mode="primary",
+        git_state_provider=git_state_provider,
     )
 
 
@@ -829,16 +960,55 @@ def _assert_reproduction_source(
         )
     if original.get("experiment_id") != prepared.spec["experiment_id"]:
         raise PreflightError("rerun Experiment_ID does not match original manifest")
+    if not original.get("post_run_integrity", {}).get("passed"):
+        raise PreflightError(
+            "original manifest did not pass post-run integrity validation"
+        )
+
+    expected_binding = _execution_binding(prepared)
+    expected_binding_sha = _execution_binding_sha256(prepared)
+    execution = original.get("execution", {})
+    if execution.get("binding_sha256") != expected_binding_sha:
+        raise PreflightError(
+            "rerun execution binding hash does not match original manifest"
+        )
+    if execution.get("binding") != expected_binding:
+        raise PreflightError(
+            "rerun complete execution binding does not match original manifest"
+        )
+
+    expected_fields = {
+        "spec_sha256": prepared.spec_sha256,
+        "command_template": prepared.spec["command"],
+        "config": prepared.spec["config"],
+        "rng_seeds": prepared.spec["rng_seeds"],
+        "timeout_seconds": prepared.spec["timeout_seconds"],
+        "container_image_digest": prepared.container_image_digest,
+    }
+    for field, expected in expected_fields.items():
+        if execution.get(field) != expected:
+            raise PreflightError(
+                f"rerun original manifest execution.{field} does not "
+                "match the current locked transaction"
+            )
+
+    for field, current_items in (
+        ("code_inputs", prepared.code_inputs),
+        ("config_files", prepared.config_files),
+    ):
+        original_items = execution.get(field, [])
+        if (
+            _portable_hashed_inputs(original_items)
+            != _portable_hashed_inputs(current_items)
+        ):
+            raise PreflightError(
+                f"rerun original manifest execution.{field} does not "
+                "match the current locked transaction"
+            )
+
     if original.get("git", {}).get("sha") != prepared.git.get("sha"):
         raise PreflightError(
             "rerun must execute the exact Git SHA recorded by the original manifest"
-        )
-    if (
-        original.get("execution", {}).get("spec_sha256")
-        != prepared.spec_sha256
-    ):
-        raise PreflightError(
-            "rerun execution spec hash does not match original manifest"
         )
     if (
         original.get("registry", {}).get("record_sha256")
@@ -847,17 +1017,31 @@ def _assert_reproduction_source(
         raise PreflightError(
             "rerun registry record hashes do not match original manifest"
         )
-
-    original_inputs = {
-        item["sha256"]
-        for item in original.get("dataset", {}).get("inputs", [])
-    }
-    current_inputs = {item["sha256"] for item in prepared.dataset_inputs}
-    if original_inputs != current_inputs:
+    if (
+        original.get("registry", {}).get("registry_file_sha256")
+        != prepared.registry.file_hashes
+    ):
         raise PreflightError(
-            "rerun dataset input hashes do not match original manifest"
+            "rerun registry file hashes do not match original manifest"
         )
 
+    original_inputs = _portable_hashed_inputs(
+        original.get("dataset", {}).get("inputs", [])
+    )
+    current_inputs = _portable_hashed_inputs(prepared.dataset_inputs)
+    if original_inputs != current_inputs:
+        raise PreflightError(
+            "rerun dataset input bindings do not match original manifest"
+        )
+
+    original_expected_outputs = (
+        original.get("outputs", {}).get("expected_paths")
+    )
+    current_expected_outputs = expected_binding["output_paths"]
+    if original_expected_outputs != current_expected_outputs:
+        raise PreflightError(
+            "rerun output contract does not match original manifest"
+        )
 
 def rerun_controlled_experiment(
     root: Path | str,
@@ -893,6 +1077,7 @@ def rerun_controlled_experiment(
         runs_root=run_root,
         executor_id=executor_id,
         mode="rerun",
+        git_state_provider=git_state_provider,
         reproduction_source=original,
         independence_note=independence_note,
     )
@@ -926,6 +1111,10 @@ def verify_reproduction_manifests(
             original.get("execution", {}).get("spec_sha256")
             == rerun.get("execution", {}).get("spec_sha256")
         ),
+        "same_execution_binding": (
+            original.get("execution", {}).get("binding_sha256")
+            == rerun.get("execution", {}).get("binding_sha256")
+        ),
         "same_registry_bindings": (
             original.get("registry", {}).get("record_sha256")
             == rerun.get("registry", {}).get("record_sha256")
@@ -945,6 +1134,9 @@ def verify_reproduction_manifests(
                 rerun.get("reproduction", {}).get("independence_note") or ""
             ).strip()
         ),
+        "different_executor": bool(
+            rerun.get("reproduction", {}).get("different_executor")
+        ),
     }
     return {
         "schema_version": "1.0",
@@ -958,9 +1150,14 @@ def verify_reproduction_manifests(
         "environment_match": rerun.get("reproduction", {}).get(
             "environment_match"
         ),
+        "environment_match_required": False,
         "support_promotion_automatic": False,
         "statement": (
-            "Passing this verification is necessary execution/reproduction "
-            "evidence, not automatic controlled-support or physical-support promotion."
+            "Passing this verification establishes the runner's transaction "
+            "reproduction conditions, including a different executor identity. "
+            "Environment equality is recorded but intentionally not required so "
+            "a separately provisioned environment can reproduce the same locked "
+            "Git/spec/data transaction. This is not automatic controlled-support "
+            "or physical-support promotion."
         ),
     }
