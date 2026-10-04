@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "assets_checked": 37,
+  "prior_audit_hashes_matched": 29,
+  "new_observed_hashes_verified": 8,
+  "originals_unchanged": true,
+  "canonical_git_blob_copies_verified": 35,
+  "exact_external_copies_verified": 2,
+  "synthetic_manifest_input_hashes_verified": 2,
+  "claims_original_fields_preserved": 51,
+  "experiments_original_fields_preserved": 25,
+  "all_controlled_and_physical_eligibility_false": true,
+  "required_notes_and_hash_tables_verified": 3,
+  "missing_required_sources": 0,
+  "git_tracked_source_changes": 0,
+  "scope_status": [
+    "?? historical/r&d/quarantine/",
+    "?? registry/audit_quarantine_dataset_status_v0.3.csv",
+    "?? registry/claim_evidence_audit_v0.3.csv",
+    "?? registry/experiment_audit_v0.3.csv"
+  ]
+}

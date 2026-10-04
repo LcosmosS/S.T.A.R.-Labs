@@ -1,0 +1,53 @@
+{
+  "phase": "step1_quarantine",
+  "created_at_utc": "2026-10-04T01:59:18.111688+00:00",
+  "base_intake_commit": "2109cd0",
+  "originals_preserved": true,
+  "source_code_executed": false,
+  "new_replication_performed": false,
+  "controlled_support_promoted": false,
+  "physical_support_promoted": false,
+  "assets_copied": 37,
+  "bytes_copied": 2471385,
+  "group_counts": {
+    "sdss_hi_match": 2,
+    "projection_packages": 7,
+    "rtch_e1_synthetic": 28
+  },
+  "hash_status_counts": {
+    "EXACT_AUDIT_HASH_MATCH": 29,
+    "OBSERVED_NEW_SHA256_NO_PRIOR_AUDIT_DIGEST": 8
+  },
+  "missing_required_sources": [],
+  "copy_and_original_hash_checks_passed": true,
+  "registry_outputs": {
+    "claim_evidence_audit_v0.3.csv": {
+      "rows": 51,
+      "rows_linked_to_quarantine": 19,
+      "original_columns_preserved": true,
+      "qualified_namespace": "STAR-PDF-v0.2"
+    },
+    "experiment_audit_v0.3.csv": {
+      "rows": 25,
+      "rows_linked_to_quarantine": 8,
+      "original_columns_preserved": true,
+      "qualified_namespace": "STAR-PDF-v0.2"
+    }
+  },
+  "review_paths": [
+    "historical/r&d/quarantine/2026-10-03_audit/QUARANTINE.md",
+    "historical/r&d/quarantine/2026-10-03_audit/manifest.json",
+    "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/QUARANTINE.md",
+    "historical/r&d/quarantine/2026-10-03_audit/projection_packages/QUARANTINE.md",
+    "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/QUARANTINE.md",
+    "registry/audit_quarantine_dataset_status_v0.3.csv",
+    "registry/claim_evidence_audit_v0.3.csv",
+    "registry/experiment_audit_v0.3.csv"
+  ],
+  "limitations": [
+    "Artifact-status links do not reclassify broad hypotheses as false.",
+    "Historical manifest code revisions are absent and were not fabricated.",
+    "Previously unhashed artifacts receive observed new SHA256 only.",
+    "Blank packaged projection results are separate from nonblank cleaned/working revisions."
+  ]
+}
