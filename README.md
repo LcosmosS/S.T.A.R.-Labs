@@ -254,6 +254,7 @@ S.T.A.R.-Labs/
 ├── pyproject.toml
 └── requirements.txt
 ```
+[![Architecture diagram of lcosmoss/s.t.a.r.-labs](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs/diagram.png)](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs?utm_source=readme&utm_medium=picture)
 
 The repository also contains manuscript-level documents, legacy material, survey integrations, RTCH experimental files, and other research artifacts that are intentionally not represented as controlled evidence merely because they are versioned.
 
