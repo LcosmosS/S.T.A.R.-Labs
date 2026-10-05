@@ -1,0 +1,1427 @@
+﻿S.T.A.R. Experiment Registry
+Version 0.1 — Priority A Experimental Baseline
+Controlled by S.T.A.R. Research Charter v0.2
+Derived from Claim/Evidence Registry v0.1
+________________
+
+
+1. Purpose
+The S.T.A.R. Experiment Registry converts claims in the Claim/Evidence Registry into executable, falsifiable experiments.
+The Registry answers:
+Exactly what experiment will test each claim, using what data, what mathematical construction, what controls, what null model, and what constitutes success or failure?
+The Registry is deliberately stricter than the historical ACSC experimental descriptions.
+Historical experiments remain preserved, but a new experiment must distinguish:
+[
+\text{historical demonstration}
+]
+from
+[
+\text{preregistered validation experiment}.
+]
+________________
+
+
+2. Governing Experimental Principle
+Every experiment must follow:
+[
+\boxed{
+\text{Claim}
+\rightarrow
+\text{Prediction}
+\rightarrow
+\text{Dataset}
+\rightarrow
+\text{Locked Construction}
+\rightarrow
+\text{Null}
+\rightarrow
+\text{Test}
+\rightarrow
+\text{Independent Evaluation}
+}
+]
+The experiment may not be modified after inspection of the primary test results unless the modification is recorded as a new exploratory experiment.
+________________
+
+
+3. Experiment Status Vocabulary
+Status
+	Meaning
+	PROPOSED
+	Experiment specified but not yet locked
+	PREREGISTERED
+	Protocol locked before execution
+	ACTIVE
+	Execution underway
+	COMPLETED
+	Execution finished
+	REPLICATING
+	Independent replication underway
+	SUPPORTED
+	Primary endpoint passed preregistered criteria
+	NOT SUPPORTED
+	Primary endpoint failed
+	INCONCLUSIVE
+	Data/protocol insufficient
+	FALSIFIED
+	Specific claim contradicted
+	EXPLORATORY
+	Result generated outside preregistered protocol
+	________________
+
+
+4. Standard Experiment Record
+Every experiment shall contain:
+Field
+	Required
+	Experiment ID
+	Yes
+	Claim ID
+	Yes
+	Experiment Name
+	Yes
+	Scientific Question
+	Yes
+	Primary Hypothesis
+	Yes
+	Alternative Hypothesis
+	Yes
+	Dataset
+	Yes
+	Population
+	Yes
+	Inclusion Criteria
+	Yes
+	Exclusion Criteria
+	Yes
+	Arithmetic Dataset
+	If applicable
+	Astronomical Dataset
+	If applicable
+	Mapping
+	Yes
+	Mapping Version
+	Yes
+	Locked Parameters
+	Yes
+	Derived Parameters
+	Yes
+	Null Model
+	Yes
+	Alternative Controls
+	Yes
+	Data Split
+	Yes
+	Primary Endpoint
+	Yes
+	Secondary Endpoints
+	Preferred
+	Statistical Test
+	Yes
+	Effect Size
+	Yes
+	Significance Criterion
+	Yes
+	Multiple-Test Correction
+	If applicable
+	Success Condition
+	Yes
+	Failure Condition
+	Yes
+	Falsification Condition
+	Yes
+	Reproducibility Requirement
+	Yes
+	Code Version
+	Required at execution
+	Random Seed
+	Required where applicable
+	Computational Environment
+	Required
+	Blind/Unblind Status
+	Yes
+	Result
+	After execution
+	Interpretation
+	After execution
+	Registry Status
+	After execution
+	________________
+
+
+5. Global Experimental Standards
+5.1 No post-hoc threshold selection
+A threshold discovered after seeing the result cannot be presented as the primary criterion.
+________________
+
+
+5.2 Historical thresholds are controls, not acceptance standards
+The historical:
+[
+W_2<0.01
+]
+criterion is retained because it is part of the ACSC record.
+It is not automatically accepted as the scientific decision threshold.
+The primary modern evaluation shall use a null distribution and effect-size comparison.
+________________
+
+
+5.3 Alternative mappings are mandatory
+Whenever (\Phi) is tested, at least one non-(\Phi) mapping must be tested under comparable conditions.
+The principal alternative family is:
+* MCJ;
+* PTD;
+* FT.
+These are explicitly identified in the alternative-mapping document as BSD-independent alternatives.
+________________
+
+
+5.4 Rank cannot be evaluated in isolation
+For rank-based experiments, the minimum arithmetic comparison set is:
+[
+r,\quad
+\log\operatorname{Reg},
+\quad
+\log N,
+\quad
+\log|\Delta|,
+\quad
+T.
+]
+Where data availability permits, the composite feature vector is:
+[
+X_E=
+(r_E,
+\log\operatorname{Reg}_E,
+\log N_E,
+\log|\Delta_E|,
+T_E).
+]
+________________
+
+
+5.5 Significance is not predictive utility
+Every predictive experiment records both:
+[
+\text{statistical significance}
+]
+and
+[
+\text{out-of-sample predictive utility}.
+]
+A statistically significant but practically negligible effect is recorded as such.
+________________
+
+
+6. Priority A Experiment Map
+Experiment
+	Primary Claim
+	EXP-A01
+	CROSS-001 — Rank ↔ cosmic-web morphology
+	EXP-A02
+	CROSS-002 — Rank vs. other arithmetic invariants
+	EXP-A03
+	ACSC-002 — Arithmetic ↔ cosmic topology
+	EXP-A04
+	MAP-006 — Alternative mapping controls
+	EXP-A05
+	CROSS-005 — Arithmetic structure ↔ SFR
+	EXP-A06
+	ACSC-008 — Rank ↔ proposed structural dimensionality
+	EXP-A07
+	ACSC-002/005 — Scaling/convergence robustness
+	The experiments are deliberately separated so that a positive result in one does not automatically count as evidence for every other claim.
+________________
+
+
+7. EXP-A01 — Rank–Cosmic-Web Morphology
+Experiment ID
+[
+\boxed{\text{EXP-A01}}
+]
+Claim
+CROSS-001
+Arithmetic rank may be related to cosmic-web morphology.
+________________
+
+
+Scientific Question
+Does elliptic-curve rank contain statistically reproducible information about whether an astronomical environment is classified as cluster, filament, or void?
+________________
+
+
+Primary Hypothesis
+[
+H_1:
+P(r\mid C,F,V)
+]
+differs systematically from the appropriate null distribution.
+________________
+
+
+Null Hypothesis
+[
+H_0:
+r
+\perp
+\text{cosmic-web environment}
+]
+after controlling for relevant observational and sampling covariates.
+________________
+
+
+Astronomical Dataset
+Primary candidate:
+SDSS galaxy catalog / volume-limited sample.
+The ACSC source specifically proposes SDSS galaxy coordinates and a volume-limited sample.
+Dataset version
+TBD — exact SDSS release/catalog must be frozen before preregistration.
+Population
+A predefined volume-limited galaxy sample.
+Required fields
+At minimum:
+* RA;
+* Dec;
+* redshift;
+* galaxy identifier.
+Additional fields should be retained for covariate control.
+________________
+
+
+Cosmic-Web Classification
+The classification pipeline must be frozen before rank analysis.
+Cluster
+Use an independently defined cluster/group catalog or cluster-density classification.
+Filament
+Use primarily:
+* geometric skeleton;
+* graph;
+* filament-finder methodology.
+Persistent homology may provide supporting topological characterization but shall not itself define “filament = (\beta_1).”
+Void
+Use an independently defined void catalog or void-finding algorithm.
+________________
+
+
+Arithmetic Dataset
+Candidate source:
+* LMFDB;
+* Cremona database;
+* independently generated elliptic curves where required.
+The ACSC monograph specifically identifies LMFDB and Cremona as arithmetic sources.
+________________
+
+
+Arithmetic Variables
+Primary:
+[
+r_E.
+]
+Secondary:
+[
+\log\operatorname{Reg}(E),
+\quad
+\log N_E,
+\quad
+\log|\Delta_E|,
+\quad
+T_E.
+]
+________________
+
+
+Mapping
+For the rank-specific experiment:
+[
+z_E=200r_E
+]
+may be retained as the historical mapping, but it is not itself treated as physical.
+________________
+
+
+Critical Matching Problem
+The experiment must define how astronomical objects are assigned arithmetic objects.
+This cannot be chosen after observing the results.
+Matching protocol
+TBD — must be preregistered.
+Possible choices include:
+1. rank distribution comparison without one-to-one object matching;
+2. fixed stochastic assignment;
+3. deterministic binning;
+4. projection-space density comparison.
+A direct galaxy-to-curve identity should not be assumed.
+________________
+
+
+Null Model
+Primary:
+[
+H_0^{\rm perm}
+]
+randomly permute rank labels across astronomical environments while preserving the observed rank distribution.
+Secondary nulls:
+* spatial permutation;
+* redshift-stratified permutation;
+* density-matched permutation.
+________________
+
+
+Locked Parameters
+Before execution:
+* sample definition;
+* redshift limits;
+* environment classifier;
+* rank computation/version;
+* arithmetic sample;
+* matching rule;
+* spatial smoothing scale;
+* binning;
+* random seed;
+* statistical test.
+________________
+
+
+Train/Test Design
+This experiment is primarily inferential.
+Use:
+* discovery/training partition for any model selection;
+* held-out test partition for final association.
+No environment classifier may be tuned using rank.
+________________
+
+
+Primary Endpoint
+Effect of rank on environment classification after covariate adjustment.
+Candidate primary statistic:
+\text{performance}_{\rm rank}
+\text{performance}_{\rm null}.
+]
+Exact metric:
+TBD — preregister before execution.
+________________
+
+
+Success Condition
+A successful result requires:
+1. statistically significant deviation from the primary null;
+2. non-negligible effect size;
+3. persistence across reasonable observational controls;
+4. replication on held-out data;
+5. no equivalent or stronger explanation from obvious covariates.
+________________
+
+
+Failure Condition
+Failure occurs if:
+* rank does not outperform null;
+* the effect disappears after controls;
+* effect is confined to training data;
+* effect is attributable to survey geometry or selection;
+* alternative randomization reproduces the effect.
+________________
+
+
+Reproducibility
+Must include:
+* raw-data identifiers;
+* preprocessing script;
+* exact rank source/version;
+* random seed;
+* classifier version;
+* environment-definition file;
+* immutable result table.
+________________
+
+
+8. EXP-A02 — Rank Versus Other Arithmetic Invariants
+Experiment ID
+[
+\boxed{\text{EXP-A02}}
+]
+Claim
+CROSS-002
+Rank is more informative than other arithmetic invariants.
+This is a comparative hypothesis, not an assumption.
+________________
+
+
+Primary Question
+Does rank provide information about cosmic structure that cannot be explained equally well by:
+[
+\log N,
+\quad
+\log|\Delta|,
+\quad
+\log\operatorname{Reg},
+\quad
+T?
+]
+________________
+
+
+Null
+[
+H_0:
+\text{rank provides no incremental predictive information}.
+]
+________________
+
+
+Models
+Model A
+[
+Y=f(r).
+]
+Model B
+[
+Y=f(\log N,\log|\Delta|,\log\operatorname{Reg},T).
+]
+Model C
+[
+Y=f(r,\log N,\log|\Delta|,
+\log\operatorname{Reg},T).
+]
+________________
+
+
+Primary Test
+Compare out-of-sample predictive performance.
+The critical quantity is:
+{\rm Score}(C)
+{\rm Score}(B).
+]
+________________
+
+
+Null Model
+Permutation of rank conditional on the other arithmetic invariants.
+________________
+
+
+Train/Test
+Recommended:
+[
+60%/20%/20%
+]
+train/validation/test.
+However, the exact split must be frozen before execution.
+For grouped astronomical data, splits must prevent spatial leakage.
+________________
+
+
+Success
+Rank demonstrates reproducible incremental predictive information on the untouched test set.
+Statistical significance alone is insufficient.
+________________
+
+
+Failure
+Rank adds no meaningful out-of-sample information.
+________________
+
+
+9. EXP-A03 — Arithmetic/Cosmic Persistent-Homology Correspondence
+Experiment ID
+[
+\boxed{\text{EXP-A03}}
+]
+Claim
+ACSC-002
+Arithmetic projection produces a topological signature that corresponds to cosmic structure.
+________________
+
+
+Historical Construction
+\left(
+\log_{10}|\Delta|,
+\log_{10}N,
+200r
+\right).
+]
+This is explicitly the projection used in the ACSC monograph.
+________________
+
+
+Astronomical Dataset
+Primary:
+SDSS volume-limited 3D galaxy sample.
+Secondary:
+* cosmological simulation;
+* independent survey.
+The ACSC source proposes SDSS, 2dF, Euclid, and Millennium Simulation as possible observational/simulation sources.
+________________
+
+
+Arithmetic Dataset
+Primary:
+LMFDB/Cremona elliptic curves with required invariants.
+________________
+
+
+Primary Topological Objects
+[
+D_k^{\rm arith},
+\qquad
+D_k^{\rm cosmic},
+\qquad
+k=0,1,2.
+]
+________________
+
+
+Primary Comparison
+Wasserstein distance:
+[
+W_p(D_k^{\rm arith},D_k^{\rm cosmic}).
+]
+________________
+
+
+Historical Criterion
+The source specifies:
+[
+W_2<0.01
+]
+as a historical threshold.
+This is retained as:
+[
+\boxed{\text{Historical Criterion H-W2}}
+]
+but is not the primary modern acceptance threshold.
+________________
+
+
+Primary Null
+Generate randomized arithmetic projections preserving:
+* number of points;
+* coordinate marginal distributions;
+* relevant scaling;
+* sample size.
+The cosmic dataset should similarly be subjected to spatial nulls where appropriate.
+________________
+
+
+Alternative Nulls
+N1 — Coordinate permutation
+Shuffle arithmetic invariant associations.
+N2 — Rank permutation
+Preserve (\log N) and (\log|\Delta|), randomize rank.
+N3 — Random projection
+Generate an equivalent-dimensional random mapping.
+N4 — Alternative arithmetic mapping
+Use MCJ/PTD/FT.
+________________
+
+
+Critical Normalization Rule
+Wasserstein distances are sensitive to scale.
+Therefore:
+Arithmetic and astronomical point clouds must be normalized using a procedure frozen before comparison.
+No normalization may be selected because it minimizes (W_2).
+________________
+
+
+Primary Endpoint
+The primary endpoint is not simply:
+[
+W_2<0.01.
+]
+It is:
+\frac{
+W_{\rm null}-W_{\rm observed}
+}{
+\sigma_{\rm null}
+}
+]
+or an equivalent preregistered null-relative statistic.
+________________
+
+
+Success
+Observed correspondence must outperform the null distribution with:
+* statistically significant separation;
+* meaningful effect size;
+* robustness to normalization;
+* persistence across reasonable sample sizes;
+* independent replication.
+________________
+
+
+Failure
+ACSC correspondence is not supported if the observed topology is statistically indistinguishable from null mappings or if the correspondence disappears under reasonable normalization choices.
+________________
+
+
+Important Filament Rule
+[
+\boxed{
+\beta_1\neq\text{“number of filaments” by definition}.
+}
+]
+Filament correspondence must additionally be evaluated through geometric/graph/skeleton structure.
+________________
+
+
+10. EXP-A04 — Alternative Mapping Control Experiment
+Experiment ID
+[
+\boxed{\text{EXP-A04}}
+]
+Claim
+MAP-006
+MCJ, PTD, and FT provide meaningful BSD-independent controls for (\Phi).
+________________
+
+
+Purpose
+Determine whether apparent success is specific to the proposed arithmetic structure or is produced generically by low-dimensional projections.
+________________
+
+
+Mapping Families
+Primary
+[
+\Phi:
+(\log|\Delta|,
+\log N,
+\alpha r).
+]
+MCJ
+(j)-invariant-based mapping.
+PTD
+Purely arithmetic mapping.
+FT
+Frobenius-trace-based mapping.
+The alternative-mapping document explicitly proposes these families as alternatives to the primary (\Phi) construction.
+________________
+
+
+Locked Principle
+All mappings must receive:
+* identical sample size;
+* identical observational target;
+* identical topology algorithm;
+* identical distance metric;
+* identical normalization procedure;
+* identical null-generation procedure.
+________________
+
+
+Null
+Random mapping preserving coordinate distributions.
+________________
+
+
+Primary Endpoint
+Relative null-adjusted topological correspondence:
+\text{performance}(m)
+E[\text{performance(null)}].
+]
+________________
+
+
+Success
+The result supports mapping specificity only if:
+[
+S_\Phi
+]
+is reproducibly distinguishable from both null mappings and alternative arithmetic mappings.
+________________
+
+
+Failure
+If all mappings perform similarly, the evidence supports a generic projection/topology effect rather than specificity of (\Phi).
+This is not necessarily a failure of topology itself; it is a failure of the claim that the particular arithmetic construction is responsible.
+________________
+
+
+11. EXP-A05 — Arithmetic Structure and Star Formation Rate
+Experiment ID
+[
+\boxed{\text{EXP-A05}}
+]
+Claim
+CROSS-005
+Arithmetic/topological structure may contain information about star formation rate.
+________________
+
+
+Scientific Role
+This experiment is the primary astrophysical laboratory for S.T.A.R.
+It is deliberately treated as an independent empirical test, not as proof of ACSC.
+________________
+
+
+Candidate Astronomical Dataset
+The existing S.T.A.R. data pipeline includes:
+* SDSS;
+* MaNGA HI;
+* Pipe3D;
+* GEMA;
+* MagPhys;
+* StellarMasses;
+* EnvironmentMeasures;
+* Galaxy classifications;
+* Galaxy Zoo;
+* photometric data.
+The exact final dataset must be frozen before execution.
+________________
+
+
+Target
+Primary:
+[
+Y=\log{\rm SFR}
+]
+where a directly measured SFR is available.
+If a proxy is used:
+[
+Y_{\rm proxy}
+]
+must be explicitly labeled as such.
+A proxy may not be presented as a measured SFR.
+________________
+
+
+Candidate Features
+Arithmetic:
+[
+r,\quad
+\log N,\quad
+\log|\Delta|,
+\quad
+\log\operatorname{Reg},
+\quad
+T.
+]
+Astronomical controls may include:
+* stellar mass;
+* gas mass;
+* metallicity;
+* redshift;
+* morphology;
+* environment;
+* photometric variables.
+________________
+
+
+Critical Data Rule
+No SFR-derived quantity may appear among the input features.
+No variable that directly encodes the target may leak into the training set.
+________________
+
+
+Models
+Baseline
+Standard astrophysical predictors.
+Arithmetic-only
+[
+Y=f(X_{\rm arith}).
+]
+Combined
+[
+Y=f(X_{\rm astro},X_{\rm arith}).
+]
+________________
+
+
+Primary Test
+Does adding arithmetic features improve out-of-sample prediction beyond the astrophysical baseline?
+R^2_{\rm combined}
+R^2_{\rm baseline}.
+]
+Other metrics:
+* MAE;
+* RMSE;
+* calibration;
+* rank correlation.
+Exact primary metric must be locked before execution.
+________________
+
+
+Null Model
+Permute arithmetic features across galaxies while preserving their marginal distributions.
+Secondary:
+* redshift-stratified permutation;
+* mass-stratified permutation;
+* spatial permutation.
+________________
+
+
+Train/Test Design
+Spatial/grouped split preferred.
+A galaxy from the same structural group should not appear simultaneously in training and test when that could create leakage.
+Recommended starting design:
+[
+60/20/20
+]
+train/validation/test.
+Exact split frozen before model training.
+________________
+
+
+Model Discovery
+The existing S.T.A.R. methodology may use:
+* Random Forest;
+* Gradient Boosting;
+* symbolic regression;
+* SHAP.
+But:
+[
+\boxed{
+\text{ML discovery}\neq\text{physical proof}.
+}
+]
+Symbolic regression outputs become candidate equations requiring independent validation.
+________________
+
+
+Success
+Arithmetic features produce a reproducible improvement in held-out prediction after:
+* astrophysical controls;
+* null comparison;
+* leakage testing;
+* independent validation.
+________________
+
+
+Failure
+No improvement over the baseline or improvement disappears under null/control tests.
+________________
+
+
+Stronger Success
+An arithmetic feature set remains useful across:
+* different galaxy populations;
+* independent survey subsets;
+* independent model families.
+________________
+
+
+12. EXP-A06 — Rank and Structural Dimensionality
+Experiment ID
+[
+\boxed{\text{EXP-A06}}
+]
+Claim
+ACSC-008
+Rank may correspond to different classes of cosmic structure.
+________________
+
+
+Historical Hypothesis
+[
+r=0 \rightarrow \text{void-like},
+]
+[
+r=1 \rightarrow \text{filament-like},
+]
+[
+r=2 \rightarrow \text{cluster/surface-like},
+]
+[
+r=3 \rightarrow \text{higher-order structure}.
+]
+These are treated as hypotheses, not definitions.
+________________
+
+
+Primary Test
+Estimate:
+[
+P(C\mid r),
+\quad
+P(F\mid r),
+\quad
+P(V\mid r).
+]
+________________
+
+
+Null
+Rank labels randomly assigned conditional on the observed rank distribution.
+________________
+
+
+Controls
+At minimum:
+* redshift;
+* galaxy density;
+* stellar mass;
+* survey selection.
+________________
+
+
+Primary Endpoint
+Pre-registered association statistic between rank and independently classified environment.
+Possible choices:
+* mutual information;
+* multinomial likelihood ratio;
+* permutation statistic.
+Exact primary statistic must be frozen before analysis.
+________________
+
+
+Success
+A reproducible rank/environment relationship survives:
+1. permutation null;
+2. observational controls;
+3. independent sample.
+________________
+
+
+Failure
+No association beyond null expectation.
+________________
+
+
+Strong Falsification
+If rank-specific predictions consistently point in the opposite direction from the proposed mapping, the specific rank-dimensionality formulation should be marked:
+[
+\boxed{\text{FALSIFIED}}
+]
+even if some other arithmetic/cosmic relationship survives.
+________________
+
+
+13. EXP-A07 — Scaling and Convergence
+Experiment ID
+[
+\boxed{\text{EXP-A07}}
+]
+Claims
+ACSC-002
+and
+ACSC-005
+________________
+
+
+Question
+Does arithmetic/cosmic correspondence become more stable as the arithmetic sample grows?
+________________
+
+
+Historical Prediction
+[
+W_2
+\left(
+D_k^{\rm arith}(n),
+D_k^{\rm cosmic}
+\right)
+\rightarrow
+\text{smaller values}
+]
+as:
+[
+n\rightarrow\infty.
+]
+________________
+
+
+Experimental Design
+Construct arithmetic samples of increasing size:
+[
+n_1<n_2<n_3<\cdots<n_m.
+]
+The sample-selection algorithm must be fixed.
+________________
+
+
+Critical Control
+Sample density itself can produce apparent topological convergence.
+Therefore compare against:
+* random point clouds;
+* density-matched random clouds;
+* alternative arithmetic mappings.
+________________
+
+
+Primary Endpoint
+Slope of the learning/convergence curve:
+[
+\frac{dW_2}{d\log n}.
+]
+________________
+
+
+Success
+A statistically reproducible improvement with increasing (n) survives density-matched nulls.
+________________
+
+
+Failure
+Improvement disappears when point density is controlled.
+________________
+
+
+14. Experiment-Level Multiple-Hypothesis Control
+The Priority A experiments contain related hypotheses.
+The Registry therefore distinguishes:
+Primary confirmatory endpoints
+One per experiment.
+Secondary endpoints
+Additional measurements.
+Exploratory endpoints
+Anything discovered after seeing the data.
+Exploratory findings may be scientifically valuable but cannot be promoted to confirmatory findings retroactively.
+________________
+
+
+15. Parameter Lock Registry
+Every experiment must have a corresponding parameter-lock record.
+Minimum fields:
+Parameter
+	Required
+	Dataset version
+	Yes
+	Arithmetic database version
+	Yes
+	Curve inclusion range
+	Yes
+	Conductor limit
+	Yes
+	Rank computation method
+	Yes
+	Mapping formula
+	Yes
+	Scaling constants
+	Yes
+	Coordinate normalization
+	Yes
+	TDA algorithm
+	Yes
+	Filtration type
+	Yes
+	Homology dimensions
+	Yes
+	Distance metric
+	Yes
+	Null-generation method
+	Yes
+	Random seed
+	Yes
+	Train/test split
+	Yes
+	Model hyperparameters
+	Yes
+	Statistical test
+	Yes
+	Primary threshold
+	Yes
+	________________
+
+
+16. Blind Analysis Standard
+Where feasible:
+Stage 1
+Freeze:
+* data;
+* preprocessing;
+* mappings;
+* nulls;
+* primary endpoint.
+Stage 2
+Generate analysis outputs without interpreting them.
+Stage 3
+Unblind the primary endpoint.
+Stage 4
+Run secondary analyses.
+Stage 5
+Run exploratory analyses.
+________________
+
+
+17. Reproducibility Standard
+A completed experiment must be reproducible from:
+[
+\boxed{
+\text{Data Identifier}
++
+\text{Code Version}
++
+\text{Parameters}
++
+\text{Environment}
++
+\text{Seed}
+}
+]
+The minimum reproducibility package contains:
+1. dataset identifiers;
+2. preprocessing code;
+3. arithmetic-generation code;
+4. mapping implementation;
+5. TDA implementation;
+6. statistical analysis;
+7. configuration file;
+8. random seeds;
+9. software versions;
+10. output tables;
+11. experiment log.
+________________
+
+
+18. Experiment Result Classification
+A completed experiment receives one of the following outcomes.
+PASS — Statistical Correspondence
+The predicted relationship is statistically distinguishable from the null.
+This does not imply physical causation.
+________________
+
+
+PASS — Predictive Utility
+The relationship improves independent out-of-sample prediction by a practically meaningful amount.
+________________
+
+
+FAIL — Null Consistent
+The observed relationship is consistent with the null.
+________________
+
+
+FAIL — Alternative Explanation
+The relationship disappears after controls or is equally explained by an alternative mapping.
+________________
+
+
+FAIL — Specific Prediction
+The particular prediction is contradicted.
+________________
+
+
+INCONCLUSIVE
+Data quality, computational limitations, or insufficient sample size prevent a valid conclusion.
+________________
+
+
+19. Important Separation of Outcomes
+The following statements are not equivalent:
+[
+\text{Rank correlates with structure}
+]
+[
+\neq
+]
+[
+\text{Rank predicts structure}
+]
+[
+\neq
+]
+[
+\text{Rank causes structure}
+]
+[
+\neq
+]
+[
+\text{Rank is gravity}.
+]
+Likewise:
+[
+\text{Arithmetic topology resembles cosmic topology}
+]
+does not establish:
+[
+\text{the universe is generated by arithmetic}.
+]
+________________
+
+
+20. Priority A Execution Order
+The experiments should proceed in this order:
+Phase A — Controls
+[
+\boxed{\text{EXP-A04}}
+]
+Alternative mappings.
+Phase B — Rank
+[
+\boxed{\text{EXP-A01}}
+]
+[
+\boxed{\text{EXP-A06}}
+]
+Rank/environment relationships.
+Phase C — Comparative invariants
+[
+\boxed{\text{EXP-A02}}
+]
+Rank versus other arithmetic variables.
+Phase D — Topological correspondence
+[
+\boxed{\text{EXP-A03}}
+]
+Arithmetic versus cosmic persistence structure.
+Phase E — Convergence
+[
+\boxed{\text{EXP-A07}}
+]
+Sample-size/scaling behavior.
+Phase F — Astrophysical laboratory
+[
+\boxed{\text{EXP-A05}}
+]
+Arithmetic/SFR prediction.
+This ordering prevents the topological experiment from becoming the sole test of the theory and provides independent astrophysical evidence streams.
+________________
+
+
+21. Minimum Evidence Required Before Physical Interpretation
+No Priority A result should be promoted into the Physical Correspondence Registry unless it satisfies at least:
+[
+\boxed{
+\text{S3 — reproducible statistical correspondence}
+}
+]
+and preferably:
+[
+\boxed{
+\text{S4 — independent replication}
+}
+]
+For claims involving predictive astrophysics:
+[
+\boxed{
+\text{S5 — demonstrated out-of-sample predictive utility}
+}
+]
+is required before strong predictive language is used.
+________________
+
+
+22. Current Experiment Status
+ID
+	Claim
+	Current Status
+	Primary Role
+	EXP-A01
+	Rank ↔ cosmic-web morphology
+	PROPOSED
+	Primary empirical test
+	EXP-A02
+	Rank vs. other invariants
+	PROPOSED
+	Feature specificity
+	EXP-A03
+	Arithmetic ↔ cosmic topology
+	PROPOSED
+	Core ACSC test
+	EXP-A04
+	Alternative mappings
+	PROPOSED
+	Critical control
+	EXP-A05
+	Arithmetic ↔ SFR
+	PROPOSED
+	Astrophysical laboratory
+	EXP-A06
+	Rank ↔ structural dimensionality
+	PROPOSED
+	Direct rank hypothesis
+	EXP-A07
+	Scaling/convergence
+	PROPOSED
+	Robustness/convergence
+	No experiment should yet be labeled PREREGISTERED, because several source-dependent details—including exact dataset versions, matching procedures, and some primary statistical metrics—still need to be frozen.
+________________
+
+
+23. Required Next Registry
+The next controlled registry should be the:
+[
+\boxed{
+\textbf{Parameter Registry}
+}
+]
+It should freeze the numerical and computational choices that the Experiment Registry intentionally leaves open.
+In particular, it must establish:
+1. exact arithmetic dataset/version;
+2. exact SDSS/astronomical dataset;
+3. curve-selection rules;
+4. rank computation method;
+5. mapping normalization;
+6. TDA implementation;
+7. cosmic-web classifier;
+8. SFR target definition;
+9. train/validation/test partition;
+10. null-generation algorithms;
+11. primary statistical metrics;
+12. effect-size thresholds;
+13. multiple-testing procedure;
+14. random seeds;
+15. software versions.
+Only after those fields are locked should the experiments transition:
+[
+\boxed{
+\text{PROPOSED}
+\rightarrow
+\text{PREREGISTERED}.
+}
+]
+________________
+
+
+24. Controlling Experimental Principle
+The S.T.A.R. Experiment Registry adopts the following permanent rule:
+A result cannot become evidence for a stronger claim merely because the analysis that produced it was successful.
+Each result supports only the proposition actually tested.
+Therefore:
+[
+\boxed{
+\text{Experiment}
+\rightarrow
+\text{Claim}
+}
+]
+is always explicit.
+And:
+[
+\boxed{
+\text{Claim}
+\not\Rightarrow
+\text{Theory}
+}
+]
+unless the intervening mathematical and empirical evidence has independently been established.
+________________
+
+
+25. Registry Closing Statement
+The Priority A program now has a controlled experimental architecture capable of distinguishing three very different outcomes:
+[
+\boxed{\text{interesting numerical correspondence}}
+]
+[
+\boxed{\text{reproducible statistical relationship}}
+]
+[
+\boxed{\text{independent predictive evidence}}.
+]
+Only the latter stages justify progressively stronger scientific interpretation.
+The immediate goal is therefore not to demonstrate ACSC.
+The immediate goal is to determine, under fixed and independently testable conditions:
+[
+\boxed{
+\textbf{whether any arithmetic signal survives appropriate null models and independent astronomical validation.}
+}
+]
+That result—positive, negative, or inconclusive—is the scientific output of the Priority A program.
+________________
+
+
+Experiment Registry Initialization Record
+Registry: S.T.A.R. Experiment Registry
+Version: 0.1
+Controlling Charter: Research Charter v0.2
+Controlling Claim Registry: Claim/Evidence Registry v0.1
+Priority: A
+Status: PROPOSED
+Experiments: EXP-A01 through EXP-A07
+Next required controlled artifact:
+[
+\boxed{
+\text{S.T.A.R. Parameter Registry v0.1}
+}
+]
+This registry will convert the remaining TBD — preregister before execution fields into fixed, auditable experimental parameters.

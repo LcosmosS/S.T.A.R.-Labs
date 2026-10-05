@@ -1,0 +1,495 @@
+﻿---
+
+
+Key definitions and normalized coordinates
+- Arithmetic input. For \(E/\mathbb{Q}: y^2=x^3+ax+b\) use the invariants \(\DeltaE\), \(NE\), \(rE\), \(\operatorname{Reg}(E)\), \(\OmegaE\).  
+
+
+- Bounded normalizations. Define
+  \[
+\deltaE=\frac{\log|\DeltaE|}{1+\log(1+|\Delta_E|)},\quad
+  \nuE=\frac{\log NE}{1+\log(1+N_E)},
+  \]
+  \[
+  \rhoE=\frac{2}{\pi}\arctan(rE),\quad
+  \lambda_E=\frac{\log(1+\operatorname{Reg}(E))}{1+\log(1+\operatorname{Reg}(E))}.
+  \]
+
+
+- Projection map. The canonical projection is
+  \[
+  \Phi(E)=\big(\sin\phiE\cos\thetaE,\;\sin\phiE\sin\thetaE,\;\cos\phiE,\;\rhoE,\;\lambda_E\big),
+  \]
+  with \(\thetaE=2\pi\deltaE,\ \phiE=\pi\nuE\). Optional correction operators \(\mathcal{S}{\alpha,k}\) (sinusoidal), \(\mathcal{F}f\) (oblate flattening), and \(\mathcal{R}_\gamma\) (force‑directed repulsion) act on the spatial coordinates to reduce polar clustering and local density singularities.
+
+
+---
+
+
+Main mathematical claim and precise hypothesis
+
+
+- Claim (metric control). On families with bounded conductor and regulator (e.g., \(\{E: N_E\le M,\ \operatorname{Reg}(E)\le R\}\)) the map \(\Phi\) is continuous and Lipschitz; there exists \(C(M,R)\) such that for any \(E,F\) in the family
+  \[
+  d{\mathrm{embed}}(\Phi(E),\Phi(F))\le C(M,R)\,d{\mathrm{arith}}(E,F),
+  \]
+  where \(d_{\mathrm{arith}}\) controls variations in \(\log|\Delta|\), \(\log N\), \(r\), and \(\log\operatorname{Reg}\). Distortion‑correction operators preserve this bound provided their parameters are uniformly bounded.
+
+
+- Cosmodynamical hypothesis. Define a redshift‑dependent effective Hubble parameter
+  \[
+  H{\rm eff}(z)=H0\cdot\langle\OmegaE\ranglez,\qquad
+  \langle\OmegaE\ranglez=\frac{\sumE wE(z)\,\OmegaE}{\sumE w_E(z)},
+  \]
+  where \(wE(z)\) encodes sampling bias, distortion penalties, and isogeny weighting. The hypothesis is that scale‑dependent differences in \(\langle\OmegaE\rangle_z\) can produce measurable shifts in \(\dot a/a\) consistent with the observed local versus CMB Hubble values when a physically motivated coupling is specified.
+
+
+---
+
+
+Testable predictions and falsifiability
+
+
+- Topological signature test. Compute the projected point cloud \(\mathcal{P}=\{\Phi(E)\}\) from Cremona/LMFDB samples (100k–3M curves), apply distortion corrections, and compute persistent homology \(D(\mathcal{P})\). Map the projected spatial density to the sphere and compute spherical harmonic coefficients; the hypothesis predicts statistically significant correlations between features of \(D(\mathcal{P})\) (e.g., persistence entropy, \(H_1\) bar lengths) and observed CMB anomalies at low multipoles (\(\ell\lesssim 40\)).  
+
+
+- Hubble scaling test. Fit a low‑dimensional parametric family for \(wE(z)\) (selection bias, distortion penalty, isogeny weight) and require that the inferred \(H{\rm eff}(z)\) reproduces the local and CMB \(H(z)\) values without overfitting (strict cross‑validation and null tests). Failure at either stage falsifies the cosmological interpretation.
+
+
+- Physical coupling requirement. A minimal effective model must be provided that couples the projected density field \(\rho\Phi(\hat n)\) to metric perturbations (e.g., linear perturbation sourcing) and yields a computable transfer \(F\ell\) from \(D(\mathcal{P})\) to \(C_\ell^{\rm CMB}\). Absence of a plausible coupling invalidates the cosmological claim.
+
+
+---
+
+
+Assumptions, limitations, and required work
+- Assumptions. Uniform bounds on conductor/regulator or explicit growth control; bounded parameters for correction operators; a physically motivated, low‑parameter form for \(w_E(z)\).  
+
+
+- Limitations. The cosmological mapping is speculative until a physical coupling is given and statistical overfitting is excluded. Using symbolic regression to learn \(w_E(z)\) requires strict regularization and out‑of‑sample validation.  
+
+
+- Immediate mathematical tasks. (i) Prove the Lipschitz/continuity lemma for \(\Phi\) on bounded families; (ii) quantify how each correction operator modifies Lipschitz constants; (iii) derive stability bounds for persistence diagrams under the correction operators.
+
+
+---
+
+
+Lemma 1 (Projection Stability)
+The projection map Φ is Lipschitz continuous with respect to the logarithmic metric on arithmetic invariants.
+Let
+I(E)=(ΔE NE,rE, RE)
+denote the invariant vector of an elliptic curve. Then there exists a constant C>0 such that for all E1,E2∈ Ɛφ,
+∥Φ(E1)−Φ(E2)∥  ≤  C⋅∥log⁡I(E1)−log⁡I(E2)∥.
+Proof Sketch.  
+Each coordinate of Φ is defined via normalized logarithmic transforms of the invariants.
+
+
+Logarithmic scaling converts multiplicative variation into additive variation, ensuring that perturbations in the invariants propagate proportionally in the Euclidean metric of  ℝ3.
+
+
+\Phi is a map between the metric space of arithmetic invariants (\mathcal{I}, d_{\text{log}}) and the Euclidean manifold (\mathbb{R}^n, \|\cdot\|_2). This prevents the "discrete jumping” of ranks by treating the invariants as the continuous input.
+Thus Φ is Lipschitz with respect to the induced ℓ2-norm on  ℝ4.
+
+
+Lemma 2 (Isogeny Class Closure)
+​Statement: Let \mathcal{E}_B \subset \mathcal{E}_\varphi denote the set of elliptic curves with a bounded conductor N \le N_{max}. Then \mathcal{E}_B is closed under isogeny equivalence.
+
+
+​Proof Sketch: By the Modularity Theorem, an isogeny class of elliptic curves over \mathbb{Q} corresponds to a specific modular form of level N. Since the conductor is an isogeny invariant, all curves in a class share the same N, fixing their latitude \phi_E. While the discriminant \Delta and regulator R vary across the class, they are bounded by factors proportional to the isogeny degree (Shafarevich’s Theorem). Thus, the projection \Phi maps an entire isogeny class into a compact, bounded neighborhood on the manifold M_{cosmo}, ensuring topological stability
+
+
+Lemma 3 (Topology Consistency)
+Let P=Φ(S) be the projection of a finite set S ⊂ Ɛφ.
+If the projected point cloud  P ⊂ ℝ3 satisfies a Nyquist‑style sampling density condition, then the Vietoris–Rips complex
+VRε(P)
+of dimension ≤2 preserves the Betti numbers of the underlying manifold:
+βk(VRε(P))=βk(Mcosmo), k=0,1,2.
+
+
+Proof Sketch.  
+Persistent homology stability theorems imply that sufficiently dense samples of a manifold recover its homology up to a controlled error.
+If Φ distributes curves densely enough across the target manifold, then the Rips filtration reconstructs the correct Betti numbers.
+The sampling density \delta Nyquist condition must be significantly smaller than the reach (\delta < \tau/2) to guarantee that the Betti numbers \beta_k are preserved
+
+
+
+
+
+
+Physical Coupling Section
+
+
+Overview
+This section defines a minimal, physically grounded coupling that promotes the arithmetic projected density \(\rho{\rm arith}(\mathbf{x})\) (constructed from the point cloud \(\mathcal{P}=\{\Phi(E)\}\)) to a perturbative source in linear cosmology. The construction gives a Lagrangian, derives the modified linearized Einstein and Poisson equations, specifies the Sachs–Wolfe transfer to CMB temperature anisotropy, and states the observable \(C\ell\) in terms of the arithmetic power spectrum. Assumptions and dimensional conventions are stated explicitly.
+
+
+---
+
+
+Lagrangian and field definition
+Definition of the arithmetic energy density field  
+Define a smoothed scalar field \(\rho_{\rm arith}(\mathbf{x})\) on comoving coordinates by kernel smoothing of the weighted point cloud:
+\[
+\rho{\rm arith}(\mathbf{x}) \;=\; \sum{E\in\mathcal{P}} \lambdaE\,W\sigma\big(\mathbf{x}-\mathbf{x}_E\big),
+\]
+where \(\mathbf{x}E\) is the comoving embedding of \(\Phi(E)\), \(\lambdaE\) is the regulator weight, and \(W_\sigma\) is a normalized smoothing kernel of width \(\sigma\). Define the dimensionful arithmetic energy density
+\[
+\varepsilon{\rm arith}(\mathbf{x}) \;=\; \mathcal{E}0\,\rho_{\rm arith}(\mathbf{x}),
+\]
+where \(\mathcal{E}_0\) is a conversion constant with units energy/volume that maps dimensionless arithmetic weights to physical energy density (see Dimensional Analysis below). Define the arithmetic overdensity
+\[
+\delta{\rm arith}(\mathbf{x}) \;=\; \frac{\varepsilon{\rm arith}(\mathbf{x})-\bar\varepsilon{\rm arith}}{\bar\varepsilon{\rm arith}}.
+\]
+
+
+Minimal action  
+Introduce a canonical scalar field \(\varphi\) that mediates coupling between arithmetic structure and gravity. The effective action is
+\[
+S \;=\; \int d^4x\sqrt{-g}\left[\frac{M{\rm Pl}^2}{2}R - \frac{1}{2}(\nabla\varphi)^2 - V(\varphi) - \alpha\,\varphi\,\varepsilon{\rm arith}(\mathbf{x}) + \mathcal{L}_{\rm m}\right],
+\]
+where \(M{\rm Pl}^{-2}=8\pi G\), \(\alpha\) is a dimensionful coupling constant, and \(\mathcal{L}{\rm m}\) is the standard matter Lagrangian. This choice yields a linear, perturbative coupling and is the minimal physically interpretable model: \(\varphi\) sources metric perturbations and is sourced by the arithmetic energy density.
+
+
+---
+
+
+Linearized field equations and modified Poisson equation
+Work in conformal Newtonian gauge with metric
+\[
+ds^2 = a^2(\eta)\big[-(1+2\Psi)d\eta^2 + (1-2\Psi)d\mathbf{x}^2\big],
+\]
+assuming negligible anisotropic stress so \(\Phi_{\rm grav}=\Psi\). Linearizing Einstein’s equations and eliminating \(\varphi\) to leading order (treating \(\alpha\) small) gives a modified Poisson equation in Fourier space:
+\[
+-k^2\Psi(\mathbf{k},\eta) \;=\; 4\pi G a^2(\eta)\Big[\bar\rhom(\eta)\,\deltam(\mathbf{k},\eta) \;+\; \kappa{\rm arith}(k,\eta)\,\varepsilon{\rm arith}(\mathbf{k})\Big],
+\]
+where effective arithmetic coupling
+\[
+\kappa{\rm arith}(k,\eta) \;=\; \alpha\,\frac{1}{k^2 + a^2 m\varphi^2}\,,
+\]
+with \(m\varphi^2=V''(\bar\varphi)\) the scalar mass. In the quasi‑static limit \(k\gg a m\varphi\) the coupling scales as \(\kappa{\rm arith}\simeq \alpha/k^2\); in the long‑wavelength limit \(k\ll a m\varphi\) it approaches \(\kappa{\rm arith}\simeq \alpha/(a^2 m\varphi^2)\). The standard Newtonian source is recovered when \(\alpha\to 0\).
+
+
+Interpretation  
+\(\kappa{\rm arith}\) encapsulates scale and time dependence of the arithmetic sourcing. It is the physical realization of the earlier phenomenological \(\kappa{\rm arith}\) and is derivable from the action.
+
+
+---
+
+
+Sachs–Wolfe transfer to CMB anisotropy
+On large angular scales (\(\ell\lesssim 40\)) the primary contribution to temperature anisotropy from metric perturbations is the (ordinary) Sachs–Wolfe effect:
+\[
+\frac{\Delta T}{T}(\hat{n}) \simeq \frac{1}{3}\Psi\big(\mathbf{x}{\rm lss}(\hat n),\eta{\rm rec}\big),
+\]
+where \(\mathbf{x}{\rm lss}(\hat n)\) is the comoving position on the last scattering surface in direction \(\hat n\). Using the modified Poisson equation, the harmonic coefficients \(a{\ell m}\) sourced by arithmetic structure are
+\[
+a{\ell m}^{\rm arith} \;=\; 4\pi i^\ell \int \frac{d^3k}{(2\pi)^3}\,\Psi{\rm arith}(\mathbf{k},\eta{\rm rec})\,Y{\ell m}^*(\hat k)\,j\ell(k\chi{\rm rec}),
+\]
+with \(\Psi{\rm arith}(\mathbf{k},\eta{\rm rec})\) given by the arithmetic term in the Poisson equation and \(\chi_{\rm rec}\) the comoving distance to recombination.
+
+
+---
+
+
+Arithmetic power spectrum and predicted \(C_\ell\)
+Define the arithmetic power spectrum
+\[
+\langle \delta{\rm arith}(\mathbf{k})\,\delta{\rm arith}^*(\mathbf{k}')\rangle \;=\; (2\pi)^3\delta^{(3)}(\mathbf{k}-\mathbf{k}')\,P_{\rm arith}(k).
+\]
+The arithmetic contribution to the angular power spectrum is
+\[
+C\ell^{\rm arith} \;=\; 4\pi \int \frac{dk}{k}\; \mathcal{T}\ell^2(k)\;P_{\rm arith}(k),
+\]
+where the transfer function \(\mathcal{T}_\ell(k)\) for arithmetic sourcing is
+\[
+\mathcal{T}\ell(k) \;=\; \frac{1}{3}\, \frac{4\pi G a^2(\eta{\rm rec})\,\kappa{\rm arith}(k,\eta{\rm rec})\,\bar\varepsilon{\rm arith}}{k^2}\; j\ell(k\chi_{\rm rec}).
+\]
+Total predicted spectrum is \(C\ell = C\ell^{\Lambda{\rm CDM}} + C\ell^{\rm arith} + 2\,C\ell^{\rm cross}\) where cross terms arise if arithmetic and matter perturbations correlate.
+
+
+---
+
+
+Dimensional analysis and parameter definitions
+
+
+- Conversion constant \(\mathcal{E}0\) sets the energy density scale: choose \(\mathcal{E}0\) so that \(\bar\varepsilon{\rm arith}\) is a small fraction \(\epsilon\ll 1\) of the critical density at recombination, i.e. \(\bar\varepsilon{\rm arith}(\eta{\rm rec})=\epsilon\,\rho{\rm crit}(\eta_{\rm rec})\).  
+
+
+- Coupling parameters: \(\alpha\) (from the action) and \(m\varphi\) determine \(\kappa{\rm arith}(k,\eta)\). Practical parameterization for inference: \(\{\epsilon,\alpha,m_\varphi,\sigma\}\).  
+
+
+- Units: \(\rho{\rm arith}\) is dimensionless; \(\varepsilon{\rm arith}\) has units energy/volume. \(\alpha\) has units length\(^2\) (or inverse mass\(^2\)) so that \(\alpha\,\varphi\,\varepsilon_{\rm arith}\) is dimensionally consistent.
+
+
+---
+
+
+Statistical protocol and falsifiability
+Pipeline  
+1. Compute \(\rho_{\rm arith}(\mathbf{x})\) from LMFDB/Cremona samples with chosen \(\sigma\).  
+
+
+2. Estimate \(P_{\rm arith}(k)\) via FFT of the smoothed field in a comoving box or via spherical harmonic decomposition on the sphere.  
+
+
+3. Choose priors for \(\{\epsilon,\alpha,m_\varphi,\sigma\}\) motivated by physical plausibility and dimensional scaling.  
+
+
+4. Compute \(C_\ell^{\rm arith}\) and cross terms; compare to Planck low‑\(\ell\) data using likelihood analysis with null simulations (Gaussian CMB realizations and scrambled arithmetic fields).  
+
+
+5. Require that any fit improves likelihood without overfitting (Bayesian evidence, cross‑validation, and pre‑registered null tests).
+
+
+Falsifiability  
+- If no parameter set within physically plausible priors yields a statistically significant, out‑of‑sample improvement in fit to low‑\(\ell\) anomalies, the arithmetic coupling hypothesis is falsified.  
+
+
+- If a fit requires \(\epsilon\) or \(\alpha\) so large that other cosmological observables (e.g., matter power spectrum, BBN) are violated, the model is excluded.
+
+
+---
+
+
+Limitations and caveats
+- The model is perturbative; non‑linear backreaction is neglected.  
+
+
+- Persistent homology suggests non‑Gaussianity; the above Gaussian \(P_{\rm arith}(k)\) approximation may be insufficient—higher‑order statistics should be considered.  
+
+
+- Mapping \(\Phi(E)\) to comoving coordinates requires a justified embedding choice; results depend on that choice and on smoothing scale \(\sigma\).
+
+
+---
+
+
+Summary
+The minimal, testable physical coupling promotes the arithmetic projected density to a perturbative energy density that sources metric perturbations via a scalar mediator \(\varphi\). The resulting modified Poisson equation yields a calculable Sachs–Wolfe contribution to the CMB and a predicted \(C\ell^{\rm arith}\) determined by the arithmetic power spectrum and a small set of physical parameters \(\{\epsilon,\alpha,m\varphi,\sigma\}\). This construction makes the cosmological claims falsifiable through a reproducible pipeline combining arithmetic data, TDA diagnostics, and standard CMB likelihood analysis.
+
+
+---
+
+
+Goal and overview
+
+
+Goal: discover a compact, physically interpretable symbolic model (parameters and action principle) that links the projected arithmetic density \(\rho_{\rm arith}\) to cosmological observables and test whether that model can reduce the Hubble tension between local and Planck inferences.  
+
+
+Approach: a reproducible, physics‑aware symbolic‑regression pipeline that alternates discovery, analytic interpretation, and forward physical validation (Boltzmann propagation → \(C_\ell\), \(H(z)\)) with strict statistical controls and null tests.
+
+
+---
+
+
+1. Data, targets, and feature engineering
+Data sources and primary inputs
+- Arithmetic database: LMFDB / Cremona curves (selectable conductor range).  
+
+
+- Cosmological data: Planck low‑\(\ell\) maps and likelihoods; local \(H_0\) measurements (distance ladder).  
+
+
+- Auxiliary: simulated Gaussian CMB realizations, large‑scale structure mocks for null tests.
+
+
+Primary features
+- Raw invariants: \(\log|\DeltaE|,\ \log NE,\ rE,\ \log\operatorname{Reg}(E),\ \OmegaE\).  
+
+
+- Normalized coordinates used in \(\Phi\): \(\deltaE,\ \nuE,\ \rhoE,\ \lambdaE\).  
+
+
+- Local geometric/TDA features: local density, persistence entropy, Betti counts in radial bins.  
+
+
+- Isogeny descriptors: degree \(m\), class size, connectivity metrics.  
+
+
+- Aggregates by redshift proxy \(z{\rm proxy}\) (e.g., bins in \(\nuE\) or \(\delta_E\)): means, variances, weighted moments.
+
+
+Targets
+- Primary target 1: difference \(\Delta H \equiv H{\rm local} - H{\rm CMB}\) or the pair \((H{\rm eff}^{\rm local}, H{\rm eff}^{\rm CMB})\).  
+
+
+- Primary target 2: low‑\(\ell\) residuals in \(C_\ell\) (vector of multipole deviations) or a low‑dimensional summary (e.g., quadrupole amplitude, hemispherical asymmetry statistic).
+
+
+---
+
+
+2. Symbolic regression model design and constraints
+Model family
+- Use sparse symbolic regression (genetic programming / PySR / Eureqa style) that returns closed‑form expressions built from algebraic operators, elementary functions, and physically motivated primitives (e.g., \(\log,\ \exp,\ \tan^{-1},\ \nabla^2\) proxies).  
+
+
+- Allow compositional expressions that can represent candidate action terms (e.g., \(\alpha\,\OmegaE\), \(\beta\,\lambdaE^2\), \(\gamma\,\OmegaE\log NE\)).
+
+
+Physics‑informed constraints
+- Dimensional consistency: enforce that discovered expressions are dimensionless or accompanied by explicit scale factors (conversion constant \(\mathcal{E}_0\)).  
+
+
+- Sparsity / complexity penalty: penalize expression length and number of distinct primitives to favor interpretable laws.  
+
+
+- Symmetry priors: prefer rotationally invariant aggregates on the sphere; enforce invariance under relabeling of curves.  
+
+
+- Monotonicity or sign constraints where physically required (e.g., energy density nonnegative).
+
+
+Loss and objective
+- Primary loss: predictive error on target (e.g., MSE for \(\Delta H\), weighted likelihood for \(C_\ell\) residuals).  
+
+
+- Regularization term: \(\lambda_{\rm comp}\cdot\text{Complexity}(\text{expr})\).  
+
+
+- Physics penalty: additional penalty for violating dimensional rules or producing unphysical parameter ranges.  
+
+
+- Multi‑objective optimization: trade predictive accuracy vs interpretability; maintain Pareto frontier.
+
+
+---
+
+
+3. From symbolic expression to action principle
+Mapping discovered expressions to action terms
+
+
+- If symbolic regression returns a candidate functional \(F(\{\text{features}\})\) that predicts \(\Delta H\) or sources \(\Psi\), interpret \(F\) as a candidate effective source density or coupling term.  
+
+
+- Construct candidate action by promoting \(F\) to a coupling in the Lagrangian, e.g.
+  \[
+  S \supset -\int d^4x\sqrt{-g}\;\alpha\,\varphi\,\mathcal{E}_0\,F(\text{arith}),
+  \]
+  or, if \(F\) is itself a scalar field candidate \(\chi\), propose kinetic and potential terms \( \frac12(\partial\chi)^2 - V(\chi)\) consistent with \(F\).  
+
+
+- Derive Euler–Lagrange equations symbolically to obtain \(\kappa_{\rm arith}(k,\eta)\) and the modified Poisson equation. Use symbolic algebra (SymPy) to automate derivations.
+
+
+Consistency checks
+- Check energy conditions, stability (no tachyons if \(m^2>0\)), and small‑coupling perturbativity.  
+
+
+- Ensure the derived \(\kappa_{\rm arith}(k,\eta)\) yields scale/time dependence consistent with the symbolic form discovered.
+
+
+—
+
+
+4. Forward physical validation and inference
+Boltzmann propagation
+
+
+- Implement the arithmetic source in a linear Boltzmann solver (CLASS or CAMB) as an external source term: add \(\kappa{\rm arith}(k,\eta)\,\varepsilon{\rm arith}(k)\) to the Poisson source.  
+
+
+- Compute predicted \(C_\ell\) and \(H(z)\) for each candidate model.
+
+
+Parameter inference
+- For each symbolic candidate, run MCMC (emcee or dynesty) over physical parameters \(\{\mathcal{E}0,\alpha,m\varphi,\sigma\}\) plus any model coefficients discovered by regression.  
+
+
+- Use Planck likelihood for \(C\ell\) and local \(H0\) likelihoods; compute Bayesian evidence for model comparison.
+
+
+Model selection and robustness
+- Compare models by Bayes factor, AIC/BIC, and out‑of‑sample predictive performance.  
+
+
+- Perform null tests: scramble arithmetic labels, randomize \(\Phi(E)\) positions, and run the pipeline to estimate false‑positive rates.  
+
+
+- Cross‑validate across conductor ranges and independent curve subsets.
+
+
+---
+
+
+5. Statistical safeguards, interpretability, and reproducibility
+
+
+Avoiding overfitting
+- Pre‑register the model search space (allowed primitives, max complexity).  
+
+
+- Use nested cross‑validation and holdout cosmological splits.  
+
+
+- Penalize complexity strongly; require that any improvement in fit survives strict null simulations.
+
+
+Interpretability
+- Favor expressions that map to simple action terms (linear couplings, quadratic potentials).  
+
+
+- Provide symbolic‑to‑Lagrangian translation and physical interpretation for each candidate.
+
+
+Reproducibility
+- Versioned data snapshots (LMFDB subset), seed control, and containerized environments.  
+
+
+- Publish code, pre‑registered analysis plan, and null test results alongside any claimed detection.
+
+
+---
+
+
+Practical implementation plan and deliverables
+
+
+Prototype stage 
+- Build data ingestion and feature pipeline for a pilot LMFDB subset.  
+
+
+- Implement PySR (or equivalent) symbolic regression with physics constraints.  
+
+
+- Produce 10–20 candidate symbolic expressions and rank by Pareto frontier.
+
+
+Validation stage 
+- Translate top candidates to action terms; derive \(\kappa_{\rm arith}\).  
+
+
+- Integrate into CLASS/CAMB; compute \(C_\ell^{\rm arith}\) and \(H(z)\).  
+
+
+- Run MCMC and null simulations; produce significance estimates.
+
+
+Deliverables
+- Reproducible code repository (data, regression, symbolic derivations, Boltzmann integration).  
+
+
+- Ranked list of candidate symbolic laws with physical interpretations and posterior parameter constraints.  
+
+
+- Statistical report: likelihood improvements, Bayes factors, null‑test p‑values, and robustness diagnostics.
+
+
+---
+
+
+Practical notes and resource estimates
+- Software stack: Python, PySR (or Eureqa), SymPy, NumPy/SciPy, CLASS/CAMB, emcee/dynesty, Gudhi (TDA).  
+
+
+- Compute: modest pilot runs on a laptop; full search and MCMC require multi‑core servers or cloud instances (tens to hundreds of CPU‑hours depending on search breadth).  
+
+
+- Risk: symbolic regression can produce spurious but compact formulas; strict null tests and physical priors are essential.
+
+
+---

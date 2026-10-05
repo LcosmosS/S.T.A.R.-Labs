@@ -1,0 +1,2787 @@
+﻿Current provenance audit - revision 0.3
+Audit reviewed: Oct 3, 2026
+The current assessment is in the audit supplement at the end of this document. The retained v0.2 sections remain the historical baseline; the supplement governs audited evidence status where it differs. This source audit performed no independent model replication or physical validation.
+
+
+S.T.A.R.
+Claim → Evidence → Experiment Crosswalk
+Purpose
+This crosswalk connects the v0.2 Claim/Evidence Registry to the existing S.T.A.R. research and development archive.
+It answers four questions for every active claim:
+1. What existing R&D evidence can be used now?
+2. What evidence requires reconstruction or validation before use?
+3. What experiment formally tests the claim?
+4. Is the next step reconstruction, controlled re-analysis, or an entirely new experiment?
+The crosswalk deliberately distinguishes:
+[
+\boxed{\text{Existing Evidence}}
+\neq
+\boxed{\text{Validated Evidence}}
+]
+Existing R&D can therefore be scientifically useful while remaining exploratory, historical, or reconstruction-required.
+________________
+
+
+1. Evidence-State Legend
+Code
+	Evidence state
+	Meaning
+	U
+	Usable R&D Evidence
+	Existing artifact can enter the evidence chain as historical, theoretical, computational, or pilot evidence
+	R
+	Reconstruction Required
+	Existing result is potentially valuable but methodology/data/code must be reconstructed before controlled use
+	N
+	New Experiment Required
+	Existing R&D does not adequately test the claim
+	C
+	Control
+	Existing material can provide a baseline/null/control
+	D
+	Derivation Audit
+	Mathematical derivation exists but requires formal verification
+	H
+	Historical Only
+	Preserved for provenance; not evidence for current claim
+	X
+	Negative/Diagnostic
+	Existing result identifies instability, limitation, or contradictory behavior
+	These states may coexist.
+For example:
+[
+\boxed{U+R}
+]
+means useful historical evidence exists, but reconstruction is required before promotion to controlled evidence.
+________________
+
+
+2. Overall Crosswalk
+Claim
+	Existing R&D Evidence
+	State
+	Formal Experiment
+	Next Action
+	CORE-001
+	Multiple mapping/topology/model documents
+	U + R
+	EXP-CORE-A01
+	Reconstruction + new controlled test
+	RANK-001
+	Rank/mapping theory + historical mapping work
+	U + N
+	EXP-RANK-A01
+	New experiment
+	RANK-002
+	Persistent-homology methodology + mapping framework
+	U + N
+	EXP-RANK-A02
+	New experiment
+	RANK-003
+	Historical rank/environment hypothesis
+	H
+	EXP-RANK-A03
+	New experiment
+	MAP-001
+	Alternative-mapping document
+	U
+	EXP-MAP-A01
+	Controlled comparison
+	MAP-002
+	Historical (\Phi) implementations
+	U + R
+	EXP-MAP-A01
+	Reconstruction
+	MAP-003
+	Historical (z=200r) work
+	U + R
+	EXP-MAP-A02
+	Parameter sweep
+	MAP-004
+	Criteria for Alternative Mappings
+	U
+	EXP-MAP-A01
+	Formalize test
+	MAP-005
+	MCJ/PTD/FT alternatives
+	U
+	EXP-MAP-A01
+	New controlled comparison
+	ARITH-001
+	Fibonacci/Lucas implementations
+	U + H
+	EXP-MAP-A03
+	New control experiment
+	TOPO-001
+	TDA code/methodology + historical distance results
+	U + R
+	EXP-TOPO-A01
+	Reconstruction
+	TOPO-002
+	Void/topology framework
+	H
+	EXP-TOPO-A02
+	New experiment
+	TOPO-003
+	Connected-component methodology
+	U
+	EXP-TOPO-A03
+	New experiment
+	MATH-K001
+	Validation of BSDCT.pdf + simulations
+	U + R
+	EXP-K001
+	Mathematical reconstruction
+	MATH-K002
+	(K\approx0.998108) simulations
+	U
+	EXP-K001
+	Reproduce
+	MATH-K003
+	Conflicting historical K values
+	U + X
+	EXP-K002
+	Stability study
+	COSMO-L001
+	L-cosmo(s).py and related scripts
+	U + R
+	EXP-L001
+	Leakage-controlled reconstruction
+	COSMO-L002
+	Historical SFR/L-cosmo models
+	H + R
+	EXP-SFR-A01
+	New controlled test
+	COSMO-R001
+	cosmo_rank implementations
+	U + H
+	CTRL-COSMO-001
+	Rename/reconstruct
+	SFR-A001
+	Historical RF/GB/SHAP models
+	U + R
+	EXP-SFR-A01
+	New controlled test
+	SFR-A002
+	Historical feature/model work
+	H
+	EXP-SFR-A02
+	New experiment
+	SFR-E001
+	Historical outlier results
+	U
+	EXP-SFR-A03
+	Reproduce
+	SFR-A003
+	Existing outlier analysis
+	U
+	EXP-SFR-A03
+	Pre-register
+	CTRL-RF001
+	model5.py
+	U + C
+	EXP-CTRL-A01
+	Reproduce
+	CTRL-A001
+	No adequate completed permutation control identified
+	N
+	EXP-CTRL-A02
+	New experiment
+	CTRL-A002
+	Leakage concerns identified in scripts
+	X
+	EXP-CTRL-A03
+	Mandatory reconstruction
+	DATA-M001
+	merged_sdss_hi.csv + KDTree workflow
+	U
+	EXP-DATA-A01
+	Reproduce matching
+	DATA-M002
+	Extensive cross-survey datasets
+	U
+	DATA-PROV-001
+	Formalize provenance
+	RTCH-M001
+	RTCH manuscript/action
+	U + D
+	EXP-RTCH-B01
+	Derivation audit
+	RTCH-M002
+	Closed-pullback construction
+	U + D
+	EXP-RTCH-B01
+	Formal proof check
+	RTCH-H001
+	Candidate coupling equations
+	U
+	EXP-RTCH-B02
+	New physical test
+	RTCH-H002
+	Trace-coupling derivation
+	U + D
+	EXP-RTCH-B03
+	Derivation + test
+	RTCH-H003
+	Point-particle action/equation
+	U + D
+	EXP-RTCH-B02
+	Constraint analysis
+	RTCH-H004
+	Unified-matter construction
+	U
+	EXP-RTCH-B01
+	Formal consistency test
+	FIELD-001
+	Arithmetic-topography formulation
+	U
+	EXP-FIELD-B01
+	Formalize
+	FIELD-002
+	No controlled physical evidence
+	N
+	EXP-FIELD-B02
+	New experiment
+	FIELD-003
+	Symbolic-field proposal
+	H
+	EXP-FIELD-B03
+	New theoretical construction
+	ECC-001
+	ECC manuscript
+	U + D
+	EXP-ECC-B01
+	Formal derivation
+	ECC-002
+	Closed/non-exact form construction
+	U + D
+	EXP-ECC-B01
+	Mathematical audit
+	ECC-003
+	Proposed entropy-energy architecture
+	H
+	EXP-ECC-B02
+	New theory/limit test
+	ENERGY-001
+	Conceptual mass-energy proposals
+	H
+	EXP-ENERGY-B01
+	New derivation
+	COSMO-E001
+	Redshift/topology framework
+	H
+	EXP-COSMO-B01
+	New longitudinal experiment
+	COSMO-E002
+	No direct evidence
+	N
+	EXP-COSMO-B02
+	Downstream only
+	________________
+
+
+3. CORE-001 — Arithmetic–Cosmic Structural Correspondence
+Claim
+Arithmetic invariants may map into geometric/topological structures producing statistically nontrivial correspondence with independent astronomical data.
+Existing Evidence
+The archive contains:
+* Criteria_for_Alternative_Mappings_Φ.pdf
+* The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf
+* _Arithmetic_Invariants_and_Cosmological_Geometry_in_Cartography_.pdf
+* historical mapping scripts;
+* TDA/persistent-homology development;
+* astronomical datasets;
+* historical correspondence calculations.
+Evidence State
+U + R
+The existence of the mathematical construction and historical computational work is usable as provenance.
+The historical numerical correspondence results require reconstruction.
+Experiment
+EXP-CORE-A01 — Arithmetic/Cosmic Independent Correspondence
+Pipeline:
+[
+E
+\rightarrow I(E)
+\rightarrow \Phi(E)
+\rightarrow \mathcal H_{\rm arith}
+\rightarrow D_{\rm arith}
+\rightarrow D_{\rm cosmic}.
+]
+Required Controls
+* arithmetic permutation;
+* alternative invariant;
+* alternative mapping;
+* spatial randomization;
+* astrophysical baseline.
+Decision
+Reconstruction + genuinely new controlled experiment.
+________________
+
+
+4. RANK-001 — Rank/Environment Correspondence
+Existing Evidence
+Historical S.T.A.R. documents explicitly propose rank/environment relationships.
+Historical mapping work provides candidate rank-based coordinates.
+Evidence State
+U as hypothesis provenance.
+There is not yet sufficient controlled evidence establishing the relationship.
+Experiment
+EXP-RANK-A01 — Rank/Environment Association
+Test:
+[
+P(r_E\mid\text{environment})
+]
+against invariant and permutation controls.
+Primary Variables
+* elliptic-curve rank;
+* environment class;
+* density;
+* morphology;
+* cluster/filament/void classification.
+Status
+N — New experiment required.
+________________
+
+
+5. RANK-002 — Rank/Topological Complexity
+Existing Evidence
+The archive contains:
+* persistent-homology methodology;
+* arithmetic mapping constructions;
+* cosmic-structure topology discussions;
+* TDA computational development.
+Evidence State
+U + N
+The methodological foundation is usable, but the core rank/topology experiment is not established by the existing archive.
+Experiment
+EXP-RANK-A02 — Rank-Weighted Persistent Homology
+Compare:
+[
+D_{\rm arith}^{(r)}
+]
+against observed cosmic topology.
+Use:
+[
+\beta_0,\beta_1,\beta_2
+]
+plus persistence distances.
+Status
+New controlled experiment required.
+________________
+
+
+6. RANK-003 — Rank-Stratified Cosmic Structure
+Historical rank classes such as:
+[
+r=0,1,2,3
+]
+were associated with increasingly complex cosmic environments.
+Evidence State
+H — historical hypothesis.
+Experiment
+EXP-RANK-A03 — Rank-Stratified Environment Test
+Pre-register rank strata before examining cosmic outcomes.
+Status
+New experiment.
+________________
+
+
+7. MAP-001 — Arithmetic Projection
+Existing Evidence
+Strongest current documentary support is:
+Criteria_for_Alternative_Mappings_Φ.pdf.
+It defines:
+[
+\Phi(E)=
+(\log|\Delta|,\log N,\alpha r).
+]
+Evidence State
+U
+The mapping itself is an existing mathematical/model construction.
+Experiment
+EXP-MAP-A01 — Mapping Family Comparison
+Test (\Phi) against alternative mappings.
+Status
+Existing construction usable; controlled comparison required.
+________________
+
+
+8. MAP-002 — Extended Projection
+Historical work uses:
+(\phi_E,\theta_E,z_E,s_E).
+]
+Evidence
+Existing scripts and theoretical documents.
+State
+U + R
+Experiment
+EXP-MAP-A01
+Reconstruct the exact historical transformation and then test it against alternatives.
+Status
+Reconstruction required.
+________________
+
+
+9. MAP-003 — (z=200r)
+Historical formulation:
+[
+z=200r.
+]
+Existing Evidence
+Multiple historical mapping documents/scripts.
+State
+U + R
+The existence of the mapping is established.
+Its physical justification is not.
+Experiment
+EXP-MAP-A02 — Rank Scaling Sensitivity
+Test:
+[
+z=\lambda_r r
+]
+over a pre-registered range of (\lambda_r).
+Compare (200) against alternative values without selecting the value based on test-set performance.
+Status
+New controlled parameter experiment.
+________________
+
+
+10. MAP-004 / MAP-005 — Alternative Mappings
+Existing Evidence
+Criteria_for_Alternative_Mappings_Φ.pdf explicitly supports:
+* no strict bijection requirement;
+* equivalence classes;
+* MCJ;
+* PTD;
+* FT;
+* alternative mapping families.
+State
+U
+This is one of the strongest areas of existing documentary support.
+Experiment
+EXP-MAP-A01
+Required Outcome
+Determine whether correspondence is:
+1. mapping-specific;
+2. invariant-specific;
+3. generic to flexible transformations.
+Status
+Ready for formal experimentalization.
+________________
+
+
+11. ARITH-001 — Fibonacci/Lucas Generator Family
+Existing Evidence
+Historical mapping implementations use Fibonacci/Lucas structures.
+State
+U + H
+The computational construction exists.
+Physical significance is unestablished.
+Experiment
+EXP-MAP-A03 — Arithmetic Generator Control
+Compare:
+[
+\text{Fibonacci/Lucas}
+]
+against:
+[
+\text{primes},
+\quad
+\text{random recurrences},
+\quad
+\text{matched integer sequences}.
+]
+Status
+New experiment required.
+________________
+
+
+12. TOPO-001 — Persistent-Homology Correspondence
+Existing Evidence
+R&D includes TDA methodology and historical Wasserstein-distance claims.
+Historical threshold:
+[
+W_2<10^{-2}.
+]
+State
+U + R
+The methodology is usable.
+The historical threshold is not accepted as a universal criterion.
+Experiment
+EXP-TOPO-A01 — Null-Calibrated Topological Correspondence
+Build the empirical null distribution of Wasserstein/bottleneck distances.
+Status
+Reconstruction + controlled experiment.
+________________
+
+
+13. TOPO-002 — Void Structure
+Existing Evidence
+Theoretical framework connects topology to void structure.
+State
+H / H
+There is insufficient controlled empirical evidence.
+Experiment
+EXP-TOPO-A02 — Arithmetic/Voids Test
+Compare arithmetic-derived (\beta_2) structure with independently identified voids.
+Status
+New experiment.
+________________
+
+
+14. TOPO-003 — Connected Components
+Existing Evidence
+Persistent homology provides (\beta_0).
+State
+U methodological evidence.
+Experiment
+EXP-TOPO-A03 — Connected-Component Test
+Compare:
+[
+\beta_0^{\rm arith}
+]
+with observed component/cluster structure.
+Status
+New controlled experiment.
+________________
+
+
+15. MATH-K001 — (K_{\rm theory}\to1)
+Existing Evidence
+Validation of BSDCT.pdf contains:
+\frac{\sum_i(M_i/M_0)}
+{\sum_i(M_0/M_i)}
+]
+and the log-normal argument.
+Simulations used:
+[
+N=500,\qquad
+\mu=9.7843,\qquad
+\sigma=0.3645.
+]
+State
+U + R
+The mathematical idea is usable.
+The exact proof and simulation pipeline should be reconstructed.
+Experiment
+EXP-K001 — Log-Normal Reciprocal-Normalization Test
+Status
+Reconstruct and independently reproduce.
+________________
+
+
+16. MATH-K002 — Simulation (K\approx0.998108)
+Existing Evidence
+Historical simulations report:
+[
+K\approx0.998108.
+]
+State
+U as historical simulation evidence.
+Experiment
+EXP-K001
+Required Test
+Reproduce the simulation independently.
+Status
+Reproduction required.
+________________
+
+
+17. MATH-K003 — K Instability
+Historical R&D also reports:
+[
+K\approx0.01176
+]
+for one analysis and approximately:
+[
+K\approx0.00322
+]
+for a subsample.
+State
+U + X
+This is important negative/diagnostic evidence.
+Experiment
+EXP-K002 — K Sensitivity and Stability
+Investigate:
+* sample size;
+* distribution;
+* filtering;
+* redshift;
+* mass definition;
+* normalization;
+* outliers.
+Status
+High-value reconstruction experiment.
+________________
+
+
+18. COSMO-L001 — (L_{\rm cosmo}(s))
+Existing Evidence
+L-cosmo(s).py and related scripts implement:
+\sum_i
+\left(\frac{M_0}{M_i}\right)^s.
+]
+They also construct:
+* mass-dependent quantities;
+* redshift bins;
+* morphology-derived variables;
+* SFR targets;
+* RF/GB models;
+* SHAP analyses.
+State
+U + R
+This is a substantial existing development line.
+Critical Problem
+Some derived quantities appear to be constructed before train/test splitting.
+Therefore historical model performance cannot automatically be promoted to controlled evidence.
+Experiment
+EXP-L001 — Leakage-Controlled (L_{\rm cosmo}) Validation
+Status
+Reconstruct first.
+________________
+
+
+19. COSMO-L002 — (L_{\rm cosmo}) and SFR
+Existing Evidence
+Historical SFR scripts use (L_{\rm cosmo})-related variables.
+State
+H + R
+Experiment
+EXP-SFR-A01
+Comparison
+[
+X_{\rm astro}
+]
+versus
+[
+X_{\rm astro}+X_{L_{\rm cosmo}}.
+]
+Status
+New controlled experiment after reconstruction.
+________________
+
+
+20. COSMO-R001 — cosmo_rank
+Historical scripts construct cosmo_rank from morphology/redshift variables.
+Evidence State
+U + H
+Important Registry Action
+Rename this quantity so that it cannot be confused with elliptic-curve rank.
+Recommended:
+[
+R_{\rm cosmo}^{\rm feat}.
+]
+Experiment
+CTRL-COSMO-001 — Composite-Feature Ablation
+Test whether the composite feature adds information beyond its constituent variables.
+Status
+Reconstruction/control.
+________________
+
+
+21. SFR-A001 — Arithmetic Incremental Prediction
+Existing Evidence
+Substantial SFR ML development exists:
+* RF;
+* GB;
+* SHAP;
+* Optuna;
+* cross-validation;
+* feature interactions;
+* Pipe3D/MaNGA/SDSS datasets.
+Historical performance includes approximately:
+[
+R^2_{\rm RF}=0.8455
+]
+and
+[
+R^2_{\rm GB}=0.8476.
+]
+State
+U + R
+These establish an astrophysical ML development baseline.
+They do not establish arithmetic predictive power.
+Experiment
+EXP-SFR-A01
+Compare:
+[
+X_{\rm astro}
+]
+against:
+[
+X_{\rm astro}+X_{\rm arith}.
+]
+Primary Endpoint
+[
+\Delta R^2_{\rm OOS}.
+]
+Status
+New controlled experiment required.
+________________
+
+
+22. SFR-A002 — Arithmetic-Only SFR
+Existing Evidence
+No adequate controlled arithmetic-only result has been identified.
+State
+N
+Experiment
+EXP-SFR-A02
+[
+Y=f(X_{\rm arith}).
+]
+Compare against null and astrophysical baseline.
+Status
+Entirely new experiment.
+________________
+
+
+23. SFR-E001 — Extreme-SFR Behavior
+Historical results distinguish:
+* full sample;
+* outlier population;
+* non-outlier population.
+State
+U
+This is directly usable as historical empirical/model evidence.
+Experiment
+EXP-SFR-A03
+Status
+Reproduction required.
+________________
+
+
+24. CTRL-RF001 — Random Feature Baseline
+Existing Evidence
+model5.py uses randomly selected features.
+State
+U + C
+Experiment
+EXP-CTRL-A01
+Reproduce with locked random seeds and identical evaluation design.
+Purpose
+Determine how much apparent performance can arise from model flexibility alone.
+Status
+Ready for formal control reconstruction.
+________________
+
+
+25. CTRL-A001 — Arithmetic Permutation
+Existing Evidence
+No adequate completed permutation experiment was identified in the audit.
+State
+N
+Experiment
+EXP-CTRL-A02
+Permute arithmetic assignments while preserving:
+* marginal distributions;
+* sample size;
+* missingness where appropriate.
+Status
+Entirely new experiment.
+________________
+
+
+26. CTRL-A002 — Leakage-Controlled Reconstruction
+Existing Evidence
+The audit identified possible leakage in:
+* normalization;
+* redshift binning;
+* (L_{\rm cosmo});
+* cosmo_rank;
+* interaction construction.
+State
+X — diagnostic evidence.
+Experiment
+EXP-CTRL-A03 — Leakage Audit
+Required Procedure
+Rebuild preprocessing within folds.
+Status
+Mandatory before promotion of historical ML results.
+________________
+
+
+27. DATA-M001 — Two-Arcsecond Matching
+Existing Evidence
+merged_sdss_hi.csv was produced through coordinate matching using KDTree and approximately:
+[
+2''
+]
+matching tolerance.
+arcsec_separation was retained.
+State
+U
+Experiment
+EXP-DATA-A01 — Cross-Survey Matching Reproduction
+Test matching sensitivity to:
+[
+1'',2'',3'',5''
+]
+and inspect false-match/duplicate behavior.
+Status
+Reproduction/validation.
+________________
+
+
+28. DATA-M002 — Multi-Survey Infrastructure
+Existing Evidence
+The archive contains substantial:
+* SDSS;
+* MaNGA;
+* Pipe3D;
+* HI;
+* Galaxy Zoo;
+* stellar-mass;
+* environment;
+* 2MASS;
+* UKIDSS;
+* VizieR
+data resources.
+State
+U
+Experiment
+DATA-PROV-001 — Dataset Lineage Audit
+Required Output
+[
+D_{\rm raw}
+\rightarrow
+D_{\rm matched}
+\rightarrow
+D_{\rm analysis}
+\rightarrow
+D_{\rm model}
+\rightarrow
+D_{\rm test}.
+]
+Status
+Ready for formal registry construction.
+________________
+
+
+29. RTCH-M001 — Variational RTCH Construction
+Existing Evidence
+The RTCH manuscript contains:
+* proposed action;
+* fields;
+* matter coupling;
+* field equations;
+* point-particle dynamics;
+* perfect-fluid dynamics;
+* topological sector;
+* observational tests;
+* falsification framework.
+State
+U + D
+The proposed mathematical architecture exists.
+Experiment
+EXP-RTCH-B01 — RTCH Mathematical Consistency Audit
+Verify:
+* variation with respect to (g_{\mu\nu});
+* variation with respect to (\phi);
+* variation with respect to (Y);
+* B-field equations;
+* boundary terms;
+* conservation laws;
+* dimensions;
+* limiting cases.
+Status
+Derivation audit required.
+________________
+
+
+30. RTCH-M002 — Closed Pullback
+Existing Evidence
+RTCH defines:
+[
+F_Q=\Phi^*\omega
+]
+with
+[
+d_{\mathcal T}\omega=0.
+]
+Therefore:
+[
+dF_Q=0.
+]
+State
+U + D
+Experiment
+EXP-RTCH-B01
+Status
+Formal proof/derivation audit.
+This is among the claims closest to mathematical verification because it concerns the stated differential-geometric construction rather than an empirical cosmological assertion.
+________________
+
+
+31. RTCH-H001 — Topological Coupling
+Existing Evidence
+Candidate coupling exists in the RTCH framework.
+State
+U as theoretical construction.
+No observational validation currently established.
+Experiment
+EXP-RTCH-B02 — Fifth-Force/Topological Coupling Constraints
+Status
+New physical experiment/constraint analysis.
+________________
+
+
+32. RTCH-H002 — Radiation Trace
+Existing Evidence
+RTCH derives:
+[
+\bar T=-\epsilon+3p.
+]
+For
+[
+p=\epsilon/3,
+]
+therefore:
+[
+\bar T=0.
+]
+State
+U + D
+Experiment
+EXP-RTCH-B03
+Verify the result from the complete action and examine its physical implications.
+Status
+Derivation audit + physical consistency test.
+________________
+
+
+33. RTCH-H003 — Fifth-Force Acceleration
+Existing RTCH formulation:
+[
+S_p=-mc\int A,ds
+]
+leading to:
+-c^2h^{\mu\nu}\nabla_\nu\ln A.
+]
+State
+U + D
+Experiment
+EXP-RTCH-B02
+Compare predicted deviations with established gravitational/Equivalence Principle constraints.
+Status
+New physical constraint experiment.
+________________
+
+
+34. FIELD-001 — Arithmetic Topography
+Existing Evidence
+RTCH/ACSC architecture proposes:
+f(I_1,\ldots,I_n)
+]
+and
+-\nabla h_{\rm arith}.
+]
+State
+U
+As a mathematical candidate construction.
+Experiment
+EXP-FIELD-B01 — Arithmetic Topography Construction
+First determine whether the field can be defined consistently and reproducibly.
+Status
+Formalization required.
+________________
+
+
+35. FIELD-002 — Arithmetic Field as Gravity
+Existing Evidence
+Conceptual proposals exist.
+State
+N
+No controlled physical evidence identified.
+Experiment
+EXP-FIELD-B02 — Gravitational Field Comparison
+Compare arithmetic field predictions against:
+* density;
+* lensing;
+* dynamics;
+* peculiar velocities.
+Status
+Entirely new physical experiment.
+________________
+
+
+36. FIELD-003 — Arithmetic Tensor
+Existing Evidence
+Historical ACSC material proposes symbolic field equations.
+State
+H
+Experiment
+EXP-FIELD-B03
+Construct a mathematically consistent tensor theory before attempting physical comparison.
+Status
+New theoretical development.
+________________
+
+
+37. ECC-001 — Entropy/Cohomology Architecture
+Existing Evidence
+The_Entropy_Cohomology_Conjecture_(ECC).pdf.
+State
+U + D
+The conceptual and mathematical architecture exists.
+Experiment
+EXP-ECC-B01
+Formal derivation and cohomological consistency audit.
+Status
+Reconstruction/derivation.
+________________
+
+
+38. ECC-002 — Closed Non-Exact Requirement
+Existing Evidence
+The revised ECC framework uses:
+[
+d\omega=0,
+\qquad
+[\omega]\neq0.
+]
+State
+U + D
+Experiment
+EXP-ECC-B01
+Status
+Mathematical verification.
+________________
+
+
+39. ECC-003 — Entropy-Energy Relation
+Existing Evidence
+Conceptual proposals exist.
+State
+H / H
+Experiment
+EXP-ECC-B02
+Required:
+[
+\text{derivation}
+\rightarrow
+\text{dimensional analysis}
+\rightarrow
+\text{known limit}
+\rightarrow
+\text{conservation}
+\rightarrow
+\text{novel prediction}.
+]
+Status
+Entirely new theoretical/experimental program.
+________________
+
+
+40. ENERGY-001 — Generalized Mass-Energy Relation
+Existing Evidence
+Historical theoretical proposals.
+State
+H
+Experiment
+EXP-ENERGY-B01
+Require:
+[
+E_{\rm STAR}
+\longrightarrow
+mc^2
+]
+in the appropriate known limit.
+Status
+New theoretical construction.
+________________
+
+
+41. COSMO-E001 — Redshift Evolution
+Existing Evidence
+The archive contains:
+* redshift-dependent (L_{\rm cosmo});
+* redshift bins;
+* cosmological mapping ideas;
+* persistent-homology framework.
+State
+U + H
+Experiment
+EXP-COSMO-B01 — Redshift-Resolved Arithmetic Topology
+Compare topology across redshift bins.
+Status
+New controlled longitudinal experiment.
+________________
+
+
+42. COSMO-E002 — Hubble–Planck Tension
+Existing Evidence
+Theoretical motivation exists.
+State
+N
+There is no adequate direct evidence connecting the current S.T.A.R. framework to the tension.
+Experiment
+EXP-COSMO-B02
+Only activate after the lower-level arithmetic/topological/dynamical claims have demonstrated sufficient empirical support.
+Status
+Downstream / deferred.
+________________
+
+
+43. Evidence Maturity Matrix
+The audit allows the current R&D to be grouped into four broad categories.
+Category A — Already Usable as R&D Evidence
+These artifacts can immediately populate the evidence registry, provided they are labeled correctly:
+* alternative mapping construction;
+* historical (\Phi) definitions;
+* RTCH mathematical architecture;
+* ECC mathematical architecture;
+* (L_{\rm cosmo}) implementation;
+* SFR model baselines;
+* random-feature model;
+* historical extreme-SFR results;
+* cross-survey matching workflow;
+* existing datasets;
+* historical contradictory (K) results.
+These establish research provenance and candidate constructions, not final scientific conclusions.
+________________
+
+
+44. Category B — Valuable but Requires Reconstruction
+The highest-priority reconstruction targets are:
+B1 — Historical (K)
+Reconstruct:
+[
+K_{\rm theory}
+]
+from the original simulation assumptions.
+B2 — (L_{\rm cosmo})
+Rebuild the feature-generation process fold-by-fold.
+B3 — Historical SFR models
+Reproduce historical RF/GB results with locked datasets and leakage control.
+B4 — Historical topological distances
+Reconstruct the exact point clouds, normalization, filtration, and persistence calculations.
+B5 — Historical (z=200r)
+Reproduce the mapping independently and test sensitivity to (\lambda_r).
+B6 — Historical (\Phi)
+Reconstruct exact arithmetic-to-coordinate transformations.
+B7 — cosmo_rank
+Separate morphology/redshift composite information from true arithmetic rank.
+________________
+
+
+45. Category C — Requires Entirely New Experiments
+The following claims are not adequately tested by the existing R&D:
+1. rank → cosmic environment;
+2. rank → topology;
+3. arithmetic-only SFR prediction;
+4. arithmetic incremental SFR information;
+5. arithmetic permutation null;
+6. Fibonacci/Lucas versus control sequences;
+7. arithmetic field → gravity;
+8. RTCH → fifth-force observations;
+9. entropy/cohomology → energy;
+10. arithmetic topology → cosmic evolution.
+These should not be “validated” by reinterpreting historical results.
+They require registered experiments.
+________________
+
+
+46. Highest-Priority Reconstruction Queue
+The recommended reconstruction order is:
+R-001
+Leakage Audit
+All historical ML results.
+R-002
+SFR Baseline Reconstruction
+Reproduce conventional RF/GB performance.
+R-003
+(L_{\rm cosmo}) Reconstruction
+Rebuild without leakage.
+R-004
+Arithmetic Feature Reconstruction
+Separate genuine arithmetic variables from engineered morphology/redshift variables.
+R-005
+K Reconstruction
+Reproduce mathematical/statistical result.
+R-006
+Mapping Reconstruction
+Reproduce (\Phi), (z=200r), MCJ/PTD/FT.
+R-007
+Topological Reconstruction
+Reproduce historical persistence calculations.
+________________
+
+
+47. Highest-Priority New Experiments
+After the reconstruction queue:
+A-001
+EXP-CTRL-A02 — Arithmetic Permutation Control
+This is essential because it establishes whether apparent arithmetic signal survives destruction of object-level association.
+A-002
+EXP-SFR-A01 — Incremental Arithmetic SFR
+This directly tests the project's SFR objective.
+A-003
+EXP-RANK-A01 — Rank/Environment
+This directly tests the primary arithmetic/cosmic-structure hypothesis.
+A-004
+EXP-RANK-A02 — Rank/Topology
+This moves the test from ordinary statistics into the intended TDA framework.
+A-005
+EXP-MAP-A01 — Mapping Family Comparison
+This tests whether the result depends on a particular hand-selected mapping.
+________________
+
+
+48. Critical Dependency Graph
+The experiments should not be treated as independent.
+The current dependency structure is:
+[
+\boxed{
+\text{Data Provenance}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Leakage / Matching Validation}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Astrophysical Baselines}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Arithmetic Feature Reconstruction}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Permutation / Null Controls}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{SFR + Rank Statistical Tests}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Topological Tests}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{Cross-Dataset Replication}
+}
+]
+[
+\downarrow
+]
+[
+\boxed{
+\text{RTCH / Field / Energy Extensions}
+}
+]
+This ordering prevents higher-level physical theories from being used to justify lower-level empirical claims.
+________________
+
+
+49. Claim Readiness Matrix
+Readiness
+	Claims
+	Ready to document
+	MAP-001, MAP-004, DATA-M001, DATA-M002, RTCH-M002, ECC-002
+	Ready for reconstruction
+	MATH-K001, MATH-K002, COSMO-L001, MAP-002, MAP-003, TOPO-001, SFR-E001, CTRL-RF001
+	Ready for controlled testing
+	SFR-A001, RANK-001, RANK-002, MAP-005, ARITH-001
+	Requires new theory/experiment
+	SFR-A002, FIELD-002, FIELD-003, ECC-003, ENERGY-001, COSMO-E001
+	Deferred/downstream
+	COSMO-E002
+	Historical only unless reconstructed
+	HIST-001 through HIST-008
+	________________
+
+
+50. Evidence Promotion Rules
+An existing R&D artifact may be promoted from historical/exploratory evidence only when:
+Mathematical
+[
+\text{derivation}
+\rightarrow
+\text{independent verification}.
+]
+Computational
+[
+\text{original code}
+\rightarrow
+\text{reproduction}
+\rightarrow
+\text{independent implementation}.
+]
+Statistical
+[
+\text{training result}
+\rightarrow
+\text{locked test}
+\rightarrow
+\text{null comparison}
+\rightarrow
+\text{replication}.
+]
+Physical
+[
+\text{mathematical consistency}
+\rightarrow
+\text{known limits}
+\rightarrow
+\text{existing constraints}
+\rightarrow
+\text{novel prediction}
+\rightarrow
+\text{independent observation}.
+]
+________________
+
+
+51. What the R&D Archive Has Already Achieved
+The archive is considerably more valuable than a simple collection of preliminary experiments.
+It already provides four major components of the S.T.A.R. research infrastructure:
+1. Mathematical Candidate Layer
+[
+E\rightarrow I(E)\rightarrow\Phi(E)
+]
+is substantially developed.
+2. Computational Candidate Layer
+There are working implementations of:
+* mappings;
+* SFR models;
+* (L_{\rm cosmo});
+* feature engineering;
+* SHAP;
+* statistical calculations;
+* data matching.
+3. Astronomical Data Layer
+The project possesses substantial multi-survey data infrastructure.
+4. Theoretical Extension Layer
+RTCH/ECC provide candidate mathematical frameworks for the later physical-theory program.
+What is still missing is the controlled bridge:
+[
+\boxed{
+\text{candidate construction}
+\rightarrow
+\text{null-calibrated independent experiment}
+}
+]
+________________
+
+
+52. Current Evidence Bottleneck
+The most important conclusion from the crosswalk is that the principal bottleneck is not lack of research material.
+The bottleneck is:
+[
+\boxed{
+\text{reconstruction + controls + independent validation}
+}
+]
+The R&D archive contains enough material to populate a substantial Claim/Evidence Registry.
+It does not yet justify promoting the central cosmological claims to established evidence.
+________________
+
+
+53. Recommended S.T.A.R. Evidence Architecture
+The resulting research architecture should now be:
+[
+\boxed{\text{Charter v0.2}}
+]
+↓
+[
+\boxed{\text{Claim/Evidence Registry v0.2}}
+]
+↓
+[
+\boxed{\text{Data Provenance Registry}}
+]
+↓
+[
+\boxed{\text{Parameter Registry}}
+]
+↓
+[
+\boxed{\text{Mapping Registry}}
+]
+↓
+[
+\boxed{\text{Experiment Registry}}
+]
+↓
+[
+\boxed{\text{Results Registry}}
+]
+↓
+[
+\boxed{\text{Replication Registry}}
+]
+with the Claim → Evidence → Experiment relationship represented as:
+[
+\boxed{
+C_i
+\longrightarrow
+E_{ij}
+\longrightarrow
+X_k
+\longrightarrow
+R_k
+\longrightarrow
+V_i
+}
+]
+where:
+* (C_i) = claim;
+* (E_{ij}) = evidence item;
+* (X_k) = registered experiment;
+* (R_k) = experimental result;
+* (V_i) = updated evidence/validation state.
+________________
+
+
+54. Immediate Action Set
+The crosswalk therefore reduces the next phase of S.T.A.R. to five concrete workstreams:
+WORKSTREAM 1 — Reconstruct
+[
+K,\quad L_{\rm cosmo},\quad
+\Phi,\quad
+z=200r,\quad
+\text{historical TDA}.
+]
+WORKSTREAM 2 — Clean
+Establish:
+* dataset lineage;
+* matching parameters;
+* leakage controls;
+* object-level train/test separation;
+* fixed preprocessing.
+WORKSTREAM 3 — Establish Controls
+Implement:
+[
+\text{permutation}
++
+\text{random-feature}
++
+\text{alternative invariant}
++
+\text{alternative mapping}.
+]
+WORKSTREAM 4 — Run Priority-A Tests
+Especially:
+[
+\text{rank/environment}
+]
+[
+\text{rank/topology}
+]
+[
+\text{arithmetic}\rightarrow\text{SFR}
+]
+[
+\text{mapping comparison}.
+]
+WORKSTREAM 5 — Preserve the Negative Record
+All failures, unstable (K) values, poor OOS performance, failed mappings, and null results remain in the registry.
+They are not discarded.
+________________
+
+
+55. Final Crosswalk Principle
+The R&D archive should therefore be treated neither as proof nor as discarded preliminary work.
+Its correct scientific status is:
+\text{Evidence Reservoir}
+}
+]
+from which evidence can be promoted only through:
+[
+\boxed{
+\text{Provenance}
+\rightarrow
+\text{Reconstruction}
+\rightarrow
+\text{Control}
+\rightarrow
+\text{Experiment}
+\rightarrow
+\text{Replication}
+}
+]
+The central objective of v0.2 is consequently not to maximize the number of “supported” claims.
+It is to make every claim answerable to a specific question:
+What evidence supports this claim, where did that evidence come from, what experiment tests it, what null could defeat it, and what remains to be done before the evidence can be considered reproducible?
+That is the controlling relationship for the S.T.A.R. research program.
+
+
+Current audit supplement - revision 0.3
+
+
+Authority: supplied Research Charter v0.2. Audit date: October 3, 2026.
+
+
+[Certain] Source inventory and static/table diagnostics are not independent scientific replication. This supplement governs current evidence assessment where it differs from the retained v0.2 baseline. Original claim wording, classifications, numerical reports and protocols remain historical and unchanged.
+
+
+Coverage: 288 readable Drive snapshots; 14,361 local files inventoried. Semantic review prioritizes the linked evidence. Selected source hashes identify as-found bytes; readable Drive snapshot hashes do not establish canonical revision bytes. Large cloud-backed and excluded content is listed separately.
+
+
+Evidence-state codes: U usable as properly labeled R&D; R reconstruction; N new test; C control; D derivation audit; H historical only; X negative/diagnostic. No record is promoted to independent, controlled, predictive or physical validation by this audit.
+
+
+Current claim-to-evidence-to-experiment crosswalk (51)
+
+
+All 43 original overall rows and eight historical assertions are explicitly accounted for. Original references are retained; audit relevance links do not confirm aliases or completed executions.
+
+
+CORE-001 - Arithmetic-Cosmic Structural Correspondence
+
+
+Original crosswalk references: EXP-CORE-A01.
+
+
+Current registered protocol links: EXP-CTRL-A03, EXP-DATA-A01, EXP-DATA-A02, EXP-RANK-A01, EXP-TOPO-A01. Findings: E-LCL-005, E-LCL-006, E-LCL-014, E-LCL-016, E-DRV-004.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: EXP-CORE-A01 (candidate none; NO ALIAS ASSIGNED)
+
+
+Next step: Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results. Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update. Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation. Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims.
+
+
+RANK-001 - Rank/Environment Correspondence
+
+
+Original crosswalk references: EXP-RANK-A01.
+
+
+Current registered protocol links: EXP-RANK-A01. Findings: E-LCL-004, E-LCL-005.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing. Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.
+
+
+RANK-002 - Rank/Topological Complexity
+
+
+Original crosswalk references: EXP-RANK-A02.
+
+
+Current registered protocol links: EXP-RANK-A02, EXP-RANK-A01. Findings: E-LCL-007, E-LCL-008, E-LCL-009, E-LCL-010.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion. Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting. Set Leakage Status POTENTIAL LEAKAGE for rank generalization and CONFIRMED TARGET CONTAMINATION for Faltings-held-out interpretation; rebuild fold-local embeddings and remove target-defining inputs for independent prediction tests.
+
+
+RANK-003 - Rank-Stratified Cosmic Structure
+
+
+Original crosswalk references: EXP-RANK-A03.
+
+
+Current registered protocol links: EXP-RANK-A02, EXP-RANK-A01. Findings: E-LCL-005.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: EXP-RANK-A03 (candidate none; NO ALIAS ASSIGNED)
+
+
+Next step: Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results.
+
+
+MAP-001 - Arithmetic Projection
+
+
+Original crosswalk references: EXP-MAP-A01.
+
+
+Current registered protocol links: EXP-MAP-A01. Findings: E-LCL-003, E-LCL-016.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs. Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.
+
+
+MAP-002 - Extended Projection
+
+
+Original crosswalk references: EXP-MAP-A01.
+
+
+Current registered protocol links: EXP-MAP-A01. Findings: E-LCL-003, E-LCL-004, E-LCL-016.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs. Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing. Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.
+
+
+MAP-003 - Rank Elevation
+
+
+Original crosswalk references: EXP-MAP-A02.
+
+
+Current registered protocol links: EXP-MAP-A02, EXP-MAP-A01. Findings: E-LCL-003.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs.
+
+
+MAP-004 - Mapping Non-Bijectivity
+
+
+Original crosswalk references: EXP-MAP-A01.
+
+
+Current registered protocol links: EXP-MAP-A01. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state U + N; MODEL/METHODOLOGICAL REQUIREMENT RETAINED. Provenance: THEORETICAL / EXPLORATORY.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+MAP-005 - Alternative Mapping Families
+
+
+Original crosswalk references: EXP-MAP-A01.
+
+
+Current registered protocol links: EXP-MAP-A01. Findings: E-LCL-006.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.
+
+
+ARITH-001 - Fibonacci/Lucas Generators
+
+
+Original crosswalk references: EXP-MAP-A03.
+
+
+Current registered protocol links: EXP-MAP-A03, EXP-CTRL-A02. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+TOPO-001 - Persistent Homology Correspondence
+
+
+Original crosswalk references: EXP-TOPO-A01.
+
+
+Current registered protocol links: EXP-TOPO-A01, EXP-RANK-A02. Findings: E-LCL-003, E-LCL-006, E-LCL-007, E-LCL-008, E-LCL-009, E-LCL-011.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs. Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion. Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion. Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting. Record CSV stability output separately from empty JSON summary and require genuine perturbation/subsampling before claiming robustness.
+
+
+TOPO-002 - Void Structure
+
+
+Original crosswalk references: EXP-TOPO-A02.
+
+
+Current registered protocol links: EXP-RANK-A02, EXP-TOPO-A01. Findings: E-LCL-006.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: EXP-TOPO-A02 (candidate none; NO ALIAS ASSIGNED)
+
+
+Next step: Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion.
+
+
+TOPO-003 - Connected Components
+
+
+Original crosswalk references: EXP-TOPO-A03.
+
+
+Current registered protocol links: EXP-TOPO-A01. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: EXP-TOPO-A03 (candidate none; NO ALIAS ASSIGNED)
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+MATH-K001 - Log-Normal Reciprocal Normalization
+
+
+Original crosswalk references: EXP-K001.
+
+
+Current registered protocol links: EXP-K001. Findings: E-DRV-001.
+
+
+[Certain] Evidence state U + D + R; THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED. Provenance: THEORETICAL.
+
+
+Unresolved links: none
+
+
+Next step: Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation.
+
+
+MATH-K002 - Historical K Simulation
+
+
+Original crosswalk references: EXP-K001.
+
+
+Current registered protocol links: EXP-K001. Findings: E-DRV-001.
+
+
+[Certain] Evidence state U + R; UNVERIFIED HISTORICAL RESULT / RECONSTRUCTION REQUIRED. Provenance: SIMULATION / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation.
+
+
+MATH-K003 - Small-Sample K Instability
+
+
+Original crosswalk references: EXP-K002.
+
+
+Current registered protocol links: No canonical link substituted. Findings: E-DRV-001.
+
+
+[Certain] Evidence state U + X + R; NEGATIVE HISTORICAL REPORT RETAINED / NOT RERUN. Provenance: HISTORICAL MODEL / NEGATIVE/NULL.
+
+
+Unresolved links: EXP-K002 (candidate none; NO ALIAS ASSIGNED)
+
+
+Next step: Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation.
+
+
+COSMO-L001 - Phenomenological L-cosmo
+
+
+Original crosswalk references: EXP-L001.
+
+
+Current registered protocol links: EXP-L001, EXP-CTRL-A03. Findings: E-LCL-012, E-DRV-001, E-DRV-003.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion. Reconstruct assumptions, exact masses/units, median definition, seeds and sample selection. Retain unstable results and separate the expectation argument from physical interpretation. Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test.
+
+
+COSMO-L002 - L-cosmo and SFR
+
+
+Original crosswalk references: EXP-SFR-A01.
+
+
+Current registered protocol links: EXP-SFR-A01. Findings: E-LCL-012, E-DRV-002, E-DRV-003.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion. Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance. Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test.
+
+
+COSMO-R001 - Morphology/Redshift Composite Feature
+
+
+Original crosswalk references: CTRL-COSMO-001.
+
+
+Current registered protocol links: No canonical link substituted. Findings: E-LCL-012.
+
+
+[Certain] Evidence state U + H; CONFIRMED ENGINEERED FEATURE IN INSPECTED SCRIPT. Provenance: HISTORICAL MODEL.
+
+
+Unresolved links: CTRL-COSMO-001 (candidate none; NO ALIAS ASSIGNED)
+
+
+Next step: Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion.
+
+
+SFR-A001 - Arithmetic Incremental SFR Information
+
+
+Original crosswalk references: EXP-SFR-A01.
+
+
+Current registered protocol links: EXP-SFR-A01, EXP-CTRL-A03, EXP-CTRL-A02. Findings: E-LCL-012, E-LCL-013, E-DRV-002, E-DRV-003.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion. Classify as historical random-feature stellar-mass baseline/control candidate, preserve absent-target diagnostic, and require exact input/schema plus explicit outcome exclusion and SFR-specific control reconstruction. Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance. Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test.
+
+
+SFR-A002 - Arithmetic-Only SFR Prediction
+
+
+Original crosswalk references: EXP-SFR-A02.
+
+
+Current registered protocol links: EXP-SFR-A02. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+SFR-E001 - Extreme-SFR Model Behavior
+
+
+Original crosswalk references: EXP-SFR-A03.
+
+
+Current registered protocol links: EXP-SFR-A03. Findings: E-DRV-002.
+
+
+[Certain] Evidence state U + R; UNVERIFIED HISTORICAL RESULT / RECONSTRUCTION REQUIRED. Provenance: HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance.
+
+
+SFR-A003 - Extreme-SFR Robustness
+
+
+Original crosswalk references: EXP-SFR-A03.
+
+
+Current registered protocol links: EXP-SFR-A03. Findings: E-DRV-002.
+
+
+[Certain] Evidence state U + N; MODEL/METHODOLOGICAL REQUIREMENT RETAINED. Provenance: THEORETICAL / EXPLORATORY.
+
+
+Unresolved links: none
+
+
+Next step: Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance.
+
+
+CTRL-RF001 - Random Feature Baseline
+
+
+Original crosswalk references: EXP-CTRL-A01.
+
+
+Current registered protocol links: EXP-CTRL-A01. Findings: E-LCL-013, E-LCL-014.
+
+
+[Certain] Evidence state U + C + X + R; HISTORICAL CONTROL CANDIDATE / INPUT SCHEMA MISMATCH. Provenance: HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Classify as historical random-feature stellar-mass baseline/control candidate, preserve absent-target diagnostic, and require exact input/schema plus explicit outcome exclusion and SFR-specific control reconstruction. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.
+
+
+CTRL-A001 - Arithmetic Permutation Control
+
+
+Original crosswalk references: EXP-CTRL-A02.
+
+
+Current registered protocol links: EXP-CTRL-A02. Findings: E-LCL-009, E-LCL-014.
+
+
+[Certain] Evidence state N + X; CONTROL REQUIRED / INVALID LOCAL SIGNIFICANCE RETAINED. Provenance: NEGATIVE/NULL / EXPLORATORY.
+
+
+Unresolved links: none
+
+
+Next step: Exclude undefined-correlation p-values from support, preserve them as diagnostic failures, and require finite/constant-input checks before permutation reporting. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update.
+
+
+CTRL-A002 - Leakage-Controlled Reconstruction
+
+
+Original crosswalk references: EXP-CTRL-A03.
+
+
+Current registered protocol links: EXP-CTRL-A03. Findings: E-LCL-012, E-LCL-014, E-DRV-002, E-DRV-003.
+
+
+[Certain] Evidence state X + R; STATIC LEAKAGE ROUTES DIAGNOSED / CLEAN RERUN REQUIRED. Provenance: HISTORICAL MODEL / NEGATIVE/NULL.
+
+
+Unresolved links: none
+
+
+Next step: Retain M/H categories and R evidence state; set preprocessing leakage concern, rename/cross-reference cosmo_rank semantically, bind the actual input revision, and conduct fold-local incremental models before promotion. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update. Bind a precise executed code/data revision and reconstruct fold-local preprocessing before crediting reported predictive performance. Retain proposal/code provenance; validate an exact runnable variant, training-fold derived quantities, outcome definition and locked independent test.
+
+
+DATA-M001 - Coordinate Matching
+
+
+Original crosswalk references: EXP-DATA-A01.
+
+
+Current registered protocol links: EXP-DATA-A01. Findings: E-LCL-001, E-LCL-002.
+
+
+[Certain] Evidence state X + R; FAILED AS-FOUND ASSOCIATIONS / RECONSTRUCTION REQUIRED. Provenance: HISTORICAL MODEL / NEGATIVE/NULL.
+
+
+Unresolved links: none
+
+
+Next step: Retain failed data-quality evidence; quarantine these tables from controlled analyses until matching is rebuilt from source catalogs with spherical distance, keyed joins, duplicate controls, tolerance sensitivity, and saved data/code hashes. Record code variants separately and reconstruct EXP-DATA-A01 using a registered coordinate system, exact input IDs, spherical matching, and explicit identity crosswalks.
+
+
+DATA-M002 - Multi-Survey Integration
+
+
+Original crosswalk references: DATA-PROV-001.
+
+
+Current registered protocol links: EXP-DATA-A02. Findings: E-LCL-001, E-LCL-002, E-LCL-003, E-LCL-004, E-LCL-014, E-LCL-015, E-DRV-004.
+
+
+[Certain] Evidence state U + X + R; PARTIAL LINEAGE / ARTIFACT CONFLICTS. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: DATA-PROV-001 (candidate EXP-DATA-A02; UNCONFIRMED)
+
+
+Next step: Retain failed data-quality evidence; quarantine these tables from controlled analyses until matching is rebuilt from source catalogs with spherical distance, keyed joins, duplicate controls, tolerance sensitivity, and saved data/code hashes. Record code variants separately and reconstruct EXP-DATA-A01 using a registered coordinate system, exact input IDs, spherical matching, and explicit identity crosswalks. Preserve exact-path/hash revisions, flag copied manifests as inconsistent, and do not attribute working full-sample results to packaged subsets or blank outputs. Retain partial lineage and missing-invariant diagnostics; bind exact upstream snapshot and preprocessing code to a registered dataset version before controlled testing. Keep repository CSV namespace as legacy, preserve original files, and document explicit semantic crosswalk/conflicts before migrating IDs into the canonical update. Preserve upstream identifiers as observed provenance fields; add exact release/query and processing/code bindings before declaring complete lineage. Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims.
+
+
+RTCH-M001 - Variational RTCH Construction
+
+
+Original crosswalk references: EXP-RTCH-B01.
+
+
+Current registered protocol links: EXP-RTCH-B01. Findings: E-LCL-007, E-LCL-008, E-LCL-010, E-LCL-011.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion. Set Leakage Status POTENTIAL LEAKAGE for rank generalization and CONFIRMED TARGET CONTAMINATION for Faltings-held-out interpretation; rebuild fold-local embeddings and remove target-defining inputs for independent prediction tests. Record CSV stability output separately from empty JSON summary and require genuine perturbation/subsampling before claiming robustness.
+
+
+RTCH-M002 - Closed Pullback Two-Form
+
+
+Original crosswalk references: EXP-RTCH-B01.
+
+
+Current registered protocol links: EXP-RTCH-B01. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state U + D + R; THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED. Provenance: THEORETICAL.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+RTCH-H001 - Topological Coupling
+
+
+Original crosswalk references: EXP-RTCH-B02.
+
+
+Current registered protocol links: EXP-RTCH-B02. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+RTCH-H002 - Conformal Trace Coupling
+
+
+Original crosswalk references: EXP-RTCH-B03.
+
+
+Current registered protocol links: EXP-RTCH-B03. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state U + D + R; THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED. Provenance: THEORETICAL.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+RTCH-H003 - Fifth-Force Acceleration
+
+
+Original crosswalk references: EXP-RTCH-B02.
+
+
+Current registered protocol links: EXP-RTCH-B02. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state U + D + R; THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED. Provenance: THEORETICAL.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+RTCH-H004 - Unified Matter Description
+
+
+Original crosswalk references: EXP-RTCH-B01.
+
+
+Current registered protocol links: EXP-RTCH-B01. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state U + N; MODEL/METHODOLOGICAL REQUIREMENT RETAINED. Provenance: THEORETICAL / EXPLORATORY.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+FIELD-001 - Arithmetic Topography
+
+
+Original crosswalk references: EXP-FIELD-B01.
+
+
+Current registered protocol links: EXP-FIELD-B01. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state U + N; MODEL/METHODOLOGICAL REQUIREMENT RETAINED. Provenance: THEORETICAL / EXPLORATORY.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+FIELD-002 - Arithmetic Field as Gravity
+
+
+Original crosswalk references: EXP-FIELD-B02.
+
+
+Current registered protocol links: EXP-FIELD-B02. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+FIELD-003 - Arithmetic Tensor / Einstein Equation Extension
+
+
+Original crosswalk references: EXP-FIELD-B03.
+
+
+Current registered protocol links: EXP-FIELD-B02. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: EXP-FIELD-B03 (candidate none; NO ALIAS ASSIGNED)
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+ECC-001 - Entropy/Cohomology Structure
+
+
+Original crosswalk references: EXP-ECC-B01.
+
+
+Current registered protocol links: EXP-ECC-B01. Findings: E-LCL-007, E-LCL-008, E-LCL-010, E-LCL-011, E-DRV-004.
+
+
+[Certain] Evidence state U + R + N; CANDIDATE/HISTORICAL EVIDENCE / RECONSTRUCTION REQUIRED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: none
+
+
+Next step: Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion. Set Leakage Status POTENTIAL LEAKAGE for rank generalization and CONFIRMED TARGET CONTAMINATION for Faltings-held-out interpretation; rebuild fold-local embeddings and remove target-defining inputs for independent prediction tests. Record CSV stability output separately from empty JSON summary and require genuine perturbation/subsampling before claiming robustness. Keep proposal, observed output and interpretation separate; require machine run manifests for execution claims.
+
+
+ECC-002 - Closed Non-Exact Requirement
+
+
+Original crosswalk references: EXP-ECC-B01.
+
+
+Current registered protocol links: EXP-ECC-B01. Findings: E-LCL-007.
+
+
+[Certain] Evidence state U + D + R; THEORETICAL STATEMENT / INDEPENDENT DERIVATION AUDIT REQUIRED. Provenance: THEORETICAL.
+
+
+Unresolved links: none
+
+
+Next step: Keep both generation IDs and exact input hashes; register RTCH-E1 as a separate local simulation/control if desired, without silently substituting it for canonical EXP-RTCH-B01.
+
+
+ECC-003 - Entropy-Energy Relation
+
+
+Original crosswalk references: EXP-ECC-B02.
+
+
+Current registered protocol links: EXP-ENERGY-B01. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: EXP-ECC-B02 (candidate none; NO ALIAS ASSIGNED)
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+ENERGY-001 - Generalized Mass-Energy Relation
+
+
+Original crosswalk references: EXP-ENERGY-B01.
+
+
+Current registered protocol links: EXP-ENERGY-B01. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+COSMO-E001 - Arithmetic/Topological Redshift Evolution
+
+
+Original crosswalk references: EXP-COSMO-B01.
+
+
+Current registered protocol links: EXP-COSMO-B01. Findings: Original conceptual/methodological provenance only.
+
+
+[Certain] Evidence state N; PROPOSED / CONTROLLED TEST NOT VERIFIED. Provenance: EXPLORATORY / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Follow the original registered test/derivation and charter controls; bind source releases, exact code, parameters, seeds, nulls and held-out results before promotion.
+
+
+COSMO-E002 - Hubble-Planck Tension Application
+
+
+Original crosswalk references: EXP-COSMO-B02.
+
+
+Current registered protocol links: EXP-COSMO-C01. Findings: E-LCL-016.
+
+
+[Certain] Evidence state N + H; DOWNSTREAM / UNVALIDATED; ILLUSTRATION IS CALIBRATED. Provenance: EXPLORATORY / HISTORICAL MODEL.
+
+
+Unresolved links: EXP-COSMO-B02 (candidate EXP-COSMO-C01; UNCONFIRMED)
+
+
+Next step: Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.
+
+
+HIST-001 - Retained historical assertion 001
+
+
+Original crosswalk references: No individual row in original Overall Crosswalk; retained historical assertion.
+
+
+Current registered protocol links: EXP-RANK-A01, EXP-TOPO-A01, EXP-MAP-A01. Findings: E-LCL-006, E-LCL-008, E-LCL-016.
+
+
+[Certain] Evidence state H + R; HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED. Provenance: HISTORICAL MODEL / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion. Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.
+
+
+HIST-002 - Retained historical assertion 002
+
+
+Original crosswalk references: No individual row in original Overall Crosswalk; retained historical assertion.
+
+
+Current registered protocol links: EXP-RANK-A01, EXP-RANK-A02. Findings: E-LCL-005, E-LCL-008.
+
+
+[Certain] Evidence state H + R; HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED. Provenance: HISTORICAL MODEL / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.
+
+
+HIST-003 - Retained historical assertion 003
+
+
+Original crosswalk references: No individual row in original Overall Crosswalk; retained historical assertion.
+
+
+Current registered protocol links: EXP-RANK-A01, EXP-RANK-A02. Findings: E-LCL-005, E-LCL-008.
+
+
+[Certain] Evidence state H + R; HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED. Provenance: HISTORICAL MODEL / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.
+
+
+HIST-004 - Retained historical assertion 004
+
+
+Original crosswalk references: No individual row in original Overall Crosswalk; retained historical assertion.
+
+
+Current registered protocol links: EXP-RANK-A01, EXP-RANK-A02. Findings: E-LCL-005, E-LCL-008.
+
+
+[Certain] Evidence state H + R; HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED. Provenance: HISTORICAL MODEL / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.
+
+
+HIST-005 - Retained historical assertion 005
+
+
+Original crosswalk references: No individual row in original Overall Crosswalk; retained historical assertion.
+
+
+Current registered protocol links: EXP-RANK-A01, EXP-RANK-A02. Findings: E-LCL-005, E-LCL-008.
+
+
+[Certain] Evidence state H + R; HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED. Provenance: HISTORICAL MODEL / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.
+
+
+HIST-006 - Retained historical assertion 006
+
+
+Original crosswalk references: No individual row in original Overall Crosswalk; retained historical assertion.
+
+
+Current registered protocol links: EXP-RANK-A01, EXP-RANK-A02. Findings: E-LCL-005, E-LCL-008.
+
+
+[Certain] Evidence state H + R; HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED. Provenance: HISTORICAL MODEL / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Record estimated/proxy status explicitly; prevent3-Selmer exactness or cosmic-evidence promotion from these filenames/results. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion.
+
+
+HIST-007 - Retained historical assertion 007
+
+
+Original crosswalk references: No individual row in original Overall Crosswalk; retained historical assertion.
+
+
+Current registered protocol links: EXP-TOPO-A01. Findings: E-LCL-006, E-LCL-008, E-LCL-016.
+
+
+[Certain] Evidence state H + R; HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED. Provenance: HISTORICAL MODEL / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion. Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.
+
+
+HIST-008 - Retained historical assertion 008
+
+
+Original crosswalk references: No individual row in original Overall Crosswalk; retained historical assertion.
+
+
+Current registered protocol links: EXP-DATA-A02, EXP-TOPO-A01, EXP-MAP-A01. Findings: E-LCL-006, E-LCL-008, E-LCL-016.
+
+
+[Certain] Evidence state H + R; HISTORICAL ONLY / RECONSTRUCTION AND NEW CONTROLLED TEST REQUIRED. Provenance: HISTORICAL MODEL / UNVERIFIED.
+
+
+Unresolved links: none
+
+
+Next step: Retain completed-run reports as historical computational evidence only; reconstruct identical mapping, filtration and survey/null comparisons before TOPO-001 promotion. Retain both null/diagnostic generations. Rebuild adequate null counts, effect sizes, intervals, multiple-comparison controls, code binding and independent arithmetic/astronomical inputs before empirical promotion. Bind website displays to a synthetic/model provenance label; preserve model formulas and coefficients as construction choices. Keep COSMO-E002 downstream; displayed agreement with calibration anchors is not independent confirmation.
+
+
+Source locators for new findings
+
+
+Exact source file paths, SHA256 digests, line/table locators and interpretation limits are in local_findings.json and drive_findings.json. Evidence presence is distinct from validation.
+
+
+E-LCL-001 - Coordinate-match artifacts fail their claimed tolerance
+
+
+[Certain] Both integrated SDSS/HI tables contain 1,495 rows linked to the same MANGAID 1-48157. Every recomputed great-circle separation exceeds 2 arcsec (minimum 741.9258354463, maximum 445141.8800654686). The with_arcsec table stores inf in all 1,495 separation rows; the other table stores only values above 2 arcsec. These artifacts do not substantiate a valid <=2 arcsec match.
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\merged_sdss_hi.csv", "sha256": "5a9606b75bc55de5e7833a04e5c56318df9f21a31560df180db2707374a22d50", "locator": "CSV lines 1\u20131496; line 2 is an explicit counterexample", "observation": "1495 rows; 1494 duplicate MANGAID excess; first actual spherical separation276891.4500653436arcsec"}
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\merged_sdss_hi_with_arcsec.csv", "sha256": "e6e2e749d0ec45b5713311dfe3b3cc958fddb13166f770ce2c47a30dbd5f8dad", "locator": "CSV lines 1\u20131496; arcsec_separation column", "observation": "1495 nonfinite stored separations"}
+
+
+{"path": "C:\\Users\\pmqr7\\.codex\\.chatgpt-projects\\g-p-6aa87346c5e88191979368ee9ee5ce5b\\audit_work\\local_match_checks.json", "sha256": "c1dc53be08a6580e88ebdc0ebf884d5184f4fb8318763f38ebd1077ffde2c987", "locator": "complete independent table diagnostic", "observation": ""}
+
+
+E-LCL-002 - Matched-catalog code lacks fully controlled spherical/keyed lineage
+
+
+[Certain] A 2 arcsec matching candidate exists, but uses Euclidean distance on (RA_rad,Dec_rad), rather than great-circle angular distance. A later integration script relabels MagPhys CATAID as objid without an explicit identifier crosswalk. Other STAR script generations use 10 or30 arcsec, so there is no single demonstrated locked match protocol.
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\pip.py", "sha256": "912eca01f5bee760f5075560460d4928bc842446cddec0281a8e713bfe7e8a91", "locator": "lines16\u201321 and24\u201335", "observation": "two-dimensional radian KDTree, cutoff2arcsec, finite-filtered matches, output merged_sdssdr18_mangaHI_kdtree.csv"}
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\singularity.py", "sha256": "0ed13876725511c846b3c94fdc21db8636298297163cb6c1ceaae76e9b0b3283", "locator": "lines20\u201324 and35\u201343", "observation": "CATAID relabeled as objid then joined"}
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STAR.py", "sha256": "df10464ffb6bee489d78d52e75a515ecfe179e2a27c60dca679e74cd6b966ef3", "locator": "lines95,110\u2013115,183\u2013195,214,222,230", "observation": "10arcsec default and matched_df1=df1.copy after collecting chunk matches"}
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\STAR5.py", "sha256": "d44de89fa69032b5ca8711a2a1c143656a423a2cebb9a41fb1e57a6768329f2b", "locator": "lines42,52\u201354,97,103,107", "observation": "30arcsec variant with index merges"}
+
+
+E-LCL-003 - Packaged projection manifest disagrees with adjacent artifact
+
+
+[Certain] S.T.A.R.-Program/data/derived/acsc_projected_cremona_final.csv is2bytes with no data/header, but its adjacent manifest reports38,042 output rows. Both packaged raw arithmetic datasets contain1,500 rows. The working kepler/derived/acsc_projected_cremona_final.csv contains38,042 rows. Repeated filenames refer to materially different revisions.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\data\\derived\\acsc_projected_cremona_final.csv", "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6", "locator": "entire2byte file", "observation": "no data/header"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\data\\derived\\acsc_projected_cremona_final.csv.manifest.json", "sha256": "5980d29db9705eba87643f749f443da1d4f779430cfd5ff4e61bb4b0655ba171", "locator": "JSON rows_output", "observation": "38042"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\data\\raw\\cremona_raw_parsed.csv", "sha256": "960a96877035b51d8dd22bee229a00ef512442782d07f7f0529c92c33f00cbc0", "locator": "CSV1500data rows", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\data\\raw\\lmfdb_raw_parsed.csv", "sha256": "8f9ba5410bdbcc980dce7c915af5ca35b4c1dfce0c08229688b5b38308d1f607", "locator": "CSV1500data rows", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\derived\\acsc_projected_cremona_final.csv", "sha256": "ca37c71b32151ee069b427a1cddc2f446bbe6395c813ddac27a02d815ff77bc2", "locator": "CSV38042data rows", "observation": ""}
+
+
+E-LCL-004 - Arithmetic validation manifests omit several required invariants
+
+
+[Certain] Root Cremona and LMFDB validation manifests name raw inputs and output tables and declare38,042/3,064,705rows. Both declare regulator, real_period and torsion_order absent for every row. They do not record input/output SHA256, exact upstream release, code revision, environment, or experiment ID.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\acsc_validation_cremona.manifest.json", "sha256": "ab40c566b08a12339887ab06f91b7969bea812da06abcb3f96646d8d1e1ecebe", "locator": "JSON input_file,output_file,rows_input,rows_output,diagnostics.null_counts", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\acsc_validation_lmfdb.manifest.json", "sha256": "9103710b256c42bf182c2e4e0f6ddd1c8cc1e14b206f22263b3c51c1a3de1a3a", "locator": "JSON input_file,output_file,rows_input,rows_output,diagnostics.null_counts", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\cremona_raw_parsed.csv", "sha256": "135f01c3e07390b3fba0784cf91b8c0e1799562e77ad670923c05683e8563e11", "locator": "CSVheader and full checked table", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\lmfdb_raw_parsed.csv", "sha256": "bdb6bd1bd5b9fac8d7210623dbd2017962b3a75963c6581cda2f431b6f2d41b0", "locator": "CSVheader and full checked table", "observation": ""}
+
+
+E-LCL-005 - Estimated3-Selmer quantities are explicitly proxies
+
+
+[Certain] Arithmetic enrichment artifacts label the relevant field estimated_3_selmer_bound, alongside sage_rank, pari_2_selmer_rank and pari_analytic_rank. The name and schema distinguish an estimate from a computed3-Selmer group; no astronomical correspondence follows from this arithmetic calculation.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\acsc_final_combined.csv", "sha256": "b2248d76c9c274d0fea23f3c84b7cb54519c9b33cd48c4d857bed53e30d50bb4", "locator": "CSVheader and initial rows; estimated_3_selmer_bound column", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\acsc_final_cremona.csv", "sha256": "4a865af2577e5f98491de35d82c398a7e5cad6bf8ecaad5f7ce1fe56401471df", "locator": "CSVheader", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\acsc_final_lmfdb.csv", "sha256": "98b9f1b3c1e9e2eb3c36729c3e5599385f3d32e1f49f3301743a9c170f38c97c", "locator": "CSVheader", "observation": ""}
+
+
+E-LCL-006 - PTD batch completion is computational lineage without cosmic/null validation
+
+
+[Certain] The root PTD aggregate manifest reports127 chunks,127 completed,0failed, chunk300, maxdim1 and a numerical filtration threshold. It names arithmetic coordinates and pickle outputs, but not independent cosmic input, null ensemble, effect uncertainty, mapped Claim ID or canonical experiment ID. maxdim1 cannot supply H2 void topology.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\derived\\tda_ptd_batches\\aggregate_manifest.json", "sha256": "21114fe5cbbd7fd58bc3baeb512fab1161289f89f2c162ff0f1bad41c255f004", "locator": "JSON n_chunks,completed,failed,params and result_files", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\derived\\tda_ptd_batches\\summary_per_chunk.json", "sha256": "55322e632b7c6198adb38676df693b7c08b2dee353825eb29692985cb90fe298", "locator": "per-chunk result metadata", "observation": ""}
+
+
+E-LCL-007 - Two RTCH-E1 generations are synthetic controls with matching input hashes
+
+
+[Certain] Outer results are a900-point demo recorded2026-09-18T20:42:17Z; nested results are a350-point demo recorded2026-09-18T21:48:45Z. Both declared input SHA256 values match the corresponding as-found demo_torus.csv. The scripts differ: root old implementation sends sparse kNN adjacency to ripser(distance_matrix=False); current program version describes/uses complete Euclidean VR and limits demo350. Neither manifest binds a code revision/hash or full package versions.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\results\\run_manifest.json", "sha256": "331fc7e3c749ff1f0c12632e1d77ba73096ffe6f55e6e40bc3a0e5fe10978925", "locator": "JSON input_sha256,n_analysis,config,software", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\data\\demo_torus.csv", "sha256": "2790c3bdebb665ffa9a5df3ec6b8093dc678c743303b56732be751678bdcfce7", "locator": "entire CSV;900data rows", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\RTCH_E1\\results\\run_manifest.json", "sha256": "bd3c605cdcf76c7ba0d348b3266024165c9133e19f4b3b81fb82d81a8b2a5901", "locator": "JSON input_sha256,demo_mode,n_analysis,topology_method", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\RTCH_E1\\data\\demo_torus.csv", "sha256": "ce3e2d8dd919c83362de1fcbe099f8074abe8a693d1dc2664da6956240021e69", "locator": "entire CSV;350data rows", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\rtch_e1.py", "sha256": "37b0763b7e2677ea080ef390588fa65b1486bb5438d0e8e72658641401e888f4", "locator": "lines334,862\u2013885", "observation": "old sparse-adjacency method; n=900 synthetic generator"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\rtch_e1.py", "sha256": "4fe93acda593d564ab204efac217cdfe9aa76c256db57d057aa17ef29dc75a1f", "locator": "lines371\u2013407,985\u20131011", "observation": "corrected completeVR; n=350 synthetic generator"}
+
+
+E-LCL-008 - RTCH demo results do not pass declared null criterion
+
+
+[Certain] The900-point result reports all topology-null empirical p-values1.0 and no H1/H2/H3 summary. The350-point result has H1max persistence0.7075445652 and H2max0.3834588528, but null p-values1/3 with only2nulls at alpha0.01; minimum attainable plus-one p is1/3, so the declared significance gate cannot be met. The nested graph-eccentricity rank cvR2=0.17245548 is a synthetic-demo metric, not controlled astronomical prediction.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\results\\result.json", "sha256": "09136ef0b8d380f09f49f968d9f749673a2470bb8557353e4d31566dddf94460", "locator": "JSON topology and nulls", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\RTCH_E1\\results\\result.json", "sha256": "d294a3426d69f565d33b07b641768479d04bc12b586cb2b2f17e9f9d9b64cef4", "locator": "JSON topology.intrinsic,H1/H2 nulls", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\RTCH_E1\\results\\prediction_tests.csv", "sha256": "30b91aed6a6a687b2fe73cdebed209552e6f41f1af1127e1110e9bc7ca26f3e6", "locator": "CSVline5 rank/graph_eccentricity", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\RTCH_E1\\results\\run_manifest.json", "sha256": "bd3c605cdcf76c7ba0d348b3266024165c9133e19f4b3b81fb82d81a8b2a5901", "locator": "JSON n_nulls=2,alpha=.01", "observation": ""}
+
+
+E-LCL-009 - RTCH permutation formula can yield false significance from NaN
+
+
+[Certain] Outer rank_label_nulls rows pc2/pc3 have blank observed/null Spearman diagnostics yet permutation p=0.009900990099009901. Both outer scalar columns are constant0 across all900 rows (min=max=0). Static code does not check finite observed/null correlations before (1+sum(vals>=observed))/(1+len(vals)). If observed isNaN, all comparisons areFalse and the formula returns1/101; that number cannot support significance.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\results\\rank_label_nulls.csv", "sha256": "d8b357e6a10b52279605f26a5b6f233f2eb2e954edc9f6d744185523fbf3ad32", "locator": "CSVlines3\u20134", "observation": "blank correlation diagnostics with p=1/101"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\results\\scalar_embeddings.csv", "sha256": "2fa37333da3cf2b876ace8db20561f2695a807cbaf952a3785956f97d3142887", "locator": "CSVlines2\u2013901; pc2/pc3 columns", "observation": "min=max0 for both columns over900rows"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\rtch_e1.py", "sha256": "4fe93acda593d564ab204efac217cdfe9aa76c256db57d057aa17ef29dc75a1f", "locator": "lines664\u2013692", "observation": "no constant/NaN guard in Spearman permutation function"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\rtch_e1.py", "sha256": "37b0763b7e2677ea080ef390588fa65b1486bb5438d0e8e72658641401e888f4", "locator": "lines589\u2013606", "observation": "same old formula"}
+
+
+E-LCL-010 - RTCH scalar CV does not validate held-out representation construction
+
+
+[Certain] RTCH builds median imputation/scaling, PCA, kNN geodesics and diffusion coordinates on the complete analysis sample, then performs5fold Ridge prediction on precomputed scalars. Faltings_height is also part of intrinsic features and later used as a prediction target. Its reported cvR2~0.99997(old) or0.98505(new) is not independent prediction of an excluded invariant.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\rtch_e1.py", "sha256": "4fe93acda593d564ab204efac217cdfe9aa76c256db57d057aa17ef29dc75a1f", "locator": "lines70\u201380,313\u2013324,569\u2013603,617\u2013649,835,891\u2013902", "observation": "global representation then downstream5fold CV"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\results\\prediction_tests.csv", "sha256": "6a2c0490e6d8e82a554037067719f620ffd3210f12c2da356d53fc70a53e06fb", "locator": "CSVline7 faltings_height/pc1", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\RTCH_E1\\results\\prediction_tests.csv", "sha256": "30b91aed6a6a687b2fe73cdebed209552e6f41f1af1127e1110e9bc7ca26f3e6", "locator": "CSVline7 faltings_height/pc1", "observation": ""}
+
+
+E-LCL-011 - RTCH stability rows repeat the whole demo sample
+
+
+[Certain] Nested stability CSV contains2identical whole-sample rows, while result.json stability isempty. Current choose_topology_sample returns a copy when len(df)<=max_points; demo350 with max_points350 therefore repeats the same entire sample, rather than independent subsampling.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\RTCH_E1\\results\\stability_summary.csv", "sha256": "4af317de92879957316bd3bbeb4cd4c1755b4b4adf15f437aa2ae37e2d0fb265", "locator": "CSVlines2\u20133", "observation": "identical H0/H1/H2 maxima"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\RTCH_E1\\rtch_e1.py", "sha256": "4fe93acda593d564ab204efac217cdfe9aa76c256db57d057aa17ef29dc75a1f", "locator": "lines301\u2013310,859\u2013875,939\u2013967", "observation": "whole-sample copy at<=limit; no stability population of result.json"}
+
+
+E-LCL-012 - Historical L-cosmo SFR script uses global preprocessing and engineered nonarithmetic rank
+
+
+[Certain] L-cosmo(s).py performs global median imputation, MinMax fit, massmedian, redshiftbinning and groupmeans before train/test splitting. cosmo_rank is a weighted morphology/confidence/redshift feature, not elliptic-curve rank. L_cosmo_s* columns are constructed/plotted but omitted from the model feature list; this script therefore cannot establish incremental predictive value for L_cosmo. Its groupmean Schechter form differs from the canonical mass-ratio sum.
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\L-cosmo(s).py", "sha256": "408dca936a416be0f25d1dcc705e302c58a72cfbfb5661441c6297872d5df297", "locator": "lines22,35\u201344,50\u201361,97\u2013105", "observation": "global transformations and no L_cosmo_s* in modelfeatures"}
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\L-cosmos.py", "sha256": "50dfe4ad9b1d04bb8065625460b3e8ca27f08cf824cb2dfd21cf70e843ff02e4", "locator": "lines35\u201346,69\u201378", "observation": "engineered cosmo_rank before split"}
+
+
+E-LCL-013 - Random-feature baseline targets stellar mass and named input lacks target
+
+
+[Certain] model5.py targets logmstar, not SFR. The discovered SDSSDR18_200000.csv has18columns and lacks logmstar, so the named input cannot run the provided target expression as-is. The source samples5features from all columns without excluding the target. Reconstructing the declared seed42 feature sampling on the as-found header gives objid,ra,run,r,u; target inclusion is not confirmed for this exact input.
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\model5.py", "sha256": "7d1d9e3d57e26e37ec4e1a9f9578b9ff5d4291f9e68a66eb327a50f638095d44", "locator": "lines12,16\u201322,26,32,37", "observation": "target logmstar; no target exclusion"}
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\SDSSDR18_200000.csv", "sha256": "9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2", "locator": "CSVheader line1", "observation": "18columns, no logmstar"}
+
+
+E-LCL-014 - Local CSV registries reuse canonical IDs with conflicting meanings
+
+
+[Certain] Repository registry CSVs use CLAIM-ACSC-001 etc rather than PDF CORE-001 etc. More seriously, experiment CSV maps EXP-CTRL-A01 to provenance control, EXP-CTRL-A02 to leakage control, contrary to attached PDF random-feature/permutation definitions. Dataset entries remain planned with deferred provenance. These namespaces cannot be silently merged by experiment-string identity.
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\registry\\claim_evidence_v0.2.csv", "sha256": "ef50ff75fe995633934e7a12a635f76d16333ed7d260ddd1ffee7930bb9d433f", "locator": "CSVheader andlines2\u20137", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\registry\\experiment_registry_v0.2.csv", "sha256": "b2a8c69710fedfa708d763eebf150cf8b35fe49da8ef8392e9ee0a4625161399", "locator": "CSVlines4\u20136", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\registry\\claim_experiment_crosswalk_v0.2.csv", "sha256": "d8b5bc55187b1ba0f2e6d1e2f0d2a1571c2e92a8e93570de25191892290e34ec", "locator": "CSVlines4\u20136", "observation": ""}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\S.T.A.R.-Program\\registry\\dataset_registry_v0.1.csv", "sha256": "b11f2cf25b903ff1ad32c7d35a6353b3f327d31133f8c816363f26865f78150b", "locator": "CSVlines2\u20139", "observation": ""}
+
+
+E-LCL-015 - Partial upstream download metadata survives for observational sources
+
+
+[Certain] Download-zone sidecars identify MaNGA HI DR17 v2_0_1 FITS and a SkyServer/CasJobs SDSS CSV export. They provide partial upstream attribution; they do not include the full SDSS SQL, release/query selection, acquisition hash, or complete raw-to-model lineage. The ecdata README identifies the Cremona database and a Zenodo release DOI, but the selected derived arithmetic manifests do not bind to a specific commit/release.
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\mangaHIall.fits\uf03aZone.Identifier", "sha256": "de193697f18a34335d7a0c99b8d4fbb3ab730cd3ca76e83a667e2aa3aeb8dfc0", "locator": "ZoneTransfer ReferrerUrl and HostUrl", "observation": "https://data.sdss.org/sas/dr17/manga/HI/v2_0_1/mangaHIall.fits"}
+
+
+{"path": "C:\\Users\\pmqr7\\OneDrive\\Documents\\STAR\\SDSSDR18_200000.csv\uf03aZone.Identifier", "sha256": "91ff0b446804f8dfe2aa0e2066df08629b2a4ac12a7f9f6b28825679af038b84", "locator": "ZoneTransfer HostUrl", "observation": "https://skyservice.pha.jhu.edu/CasJobsOutput/CSV/MyTable_pmqr771_0.csv"}
+
+
+{"path": "\\\\wsl.localhost\\Ubuntu\\home\\kepler\\ecdata\\README.md", "sha256": "619466f9a1542c3bfeaa68b592feb903edd205c652cac59d7f21d70444203bb5", "locator": "lines4\u201312", "observation": "Cremona Database; DOI10.5281/zenodo.161341"}
+
+
+E-LCL-016 - STAR map visualization uses illustrative synthetic data and preselected Hubble calibration
+
+
+[Certain] Recovered S.T.A.R.M.A.P. catalog explicitly labels its data illustrative, combines12 hardcoded example curves with148 synthetically generated rows, and seeds generation with0x53544152. The H_eff implementation states calibration so high-z recovers Planck and low-z approachesSH0ES, with hardcoded correction coefficients. Geometry angles are hash-derived from curve labels; cluster summaries are hardcoded. These visualizations do not supply independent observational or arithmetic validation.
+
+
+{"path": "/home/kepler/S.T.A.R.M.A.P./src/lib/star/catalog.ts", "readable_audit_copy": "C:/Users/pmqr7/.codex/.chatgpt-projects/g-p-6aa87346c5e88191979368ee9ee5ce5b/audit_work/recovered_sources/recovered_00088.ts", "sha256": "f585130c982be4789c4bc701119b1a1a5fdcb72bd475700b01d48c8c921fbb29", "locator": "lines27\u201340,43\u201387,91\u201399", "observation": "Recovered by native WSL read; original source preserved"}
+
+
+{"path": "/home/kepler/S.T.A.R.M.A.P./src/lib/star/physics.ts", "readable_audit_copy": "C:/Users/pmqr7/.codex/.chatgpt-projects/g-p-6aa87346c5e88191979368ee9ee5ce5b/audit_work/recovered_sources/recovered_00085.ts", "sha256": "a9125fddf3570012c8f1a3467562fecf31132fecf301fd3decdf300e59bfe234", "locator": "lines27\u201342,117\u2013126", "observation": "Recovered by native WSL read; original source preserved"}
+
+
+{"path": "/home/kepler/S.T.A.R.M.A.P./src/routes/hubble.tsx", "readable_audit_copy": "C:/Users/pmqr7/.codex/.chatgpt-projects/g-p-6aa87346c5e88191979368ee9ee5ce5b/audit_work/recovered_sources/recovered_00063.tsx", "sha256": "0ac7b166116e1d3ae57fcc57a1e9435a4e5c7b3d26d70dc34349601c8b24b24d", "locator": "lines13\u201343,125\u2013149", "observation": "Recovered by native WSL read; original source preserved"}
+
+
+{"path": "/home/kepler/S.T.A.R.M.A.P./README.md", "readable_audit_copy": "C:/Users/pmqr7/.codex/.chatgpt-projects/g-p-6aa87346c5e88191979368ee9ee5ce5b/audit_work/recovered_sources/recovered_00005.md", "sha256": "e51bbff49db1e33900f05f5082985a576f18a0de8580e733a78e75680dacc7e3", "locator": "Vision and Implementation Status sections", "observation": "Recovered by native WSL read; original source preserved"}
+
+
+E-DRV-001 - K convergence and unstable small-sample values are historical theoretical/simulation reports
+
+
+[Certain] The Cosmological L-function source describes a log-normal expectation argument and reports K=0.01176 for N=9 and Ksub=0.00322 for N=5. These are retained as theoretical/historical and negative/diagnostic provenance; this audit did not rerun the simulations or establish a BSD/cosmological physical correspondence.
+
+
+{"drive_id": "1lzJvyyl_WSAGDe--IdU8LhOupC3fU8qLG6fzcFbSJSY", "title": "Cosmological_L-function+Galaxy_Mass_Distribution", "url": "native citation for Drive ID 1lzJvyyl_WSAGDe--IdU8LhOupC3fU8qLG6fzcFbSJSY", "locator": "lines 86-91, 116-122", "snapshot_text_sha256": "e056655477defaaf2eaa4cec28f4a3d564ec408fd6f333bb1cae353d995383f3", "digest_type": "SHA256 of connector-readable UTF-8 text snapshot, not canonical provider binary or revision digest", "snapshot_file": "1lzJvyyl_WSAGDe--IdU8LhOupC3fU8qLG6fzcFbSJSY.txt"}
+
+
+E-DRV-002 - Drive SFR source contains preprocessing before the split in inspected script variants
+
+
+[Certain] The SFR Prediction Model Refinement snapshot contains an imputer fit_transform at line 140 before train_test_split at line 161, and other whole-data feature construction variants. This is a static validation-design concern for those variants; execution of that exact variant and the magnitude of any performance effect were not established.
+
+
+{"drive_id": "1bzrY4bg5_Vi3RucO7NIIkPtYpI8GptmqIRtP_WF_qaw", "title": "SFR_Prediction_Model_Refinement", "url": "native citation for Drive ID 1bzrY4bg5_Vi3RucO7NIIkPtYpI8GptmqIRtP_WF_qaw", "locator": "lines 117-166, 413-424", "snapshot_text_sha256": "d2d83ffc304678df0813d76491dc8442789f0c831f47f6d120029cdcf41ac2a3", "digest_type": "SHA256 of connector-readable UTF-8 text snapshot, not canonical provider binary or revision digest", "snapshot_file": "1bzrY4bg5_Vi3RucO7NIIkPtYpI8GptmqIRtP_WF_qaw.txt"}
+
+
+E-DRV-003 - Five-fold validation document does not itself establish independent validation
+
+
+[Certain] The 5 Fold Validation document contains preprocessing/derived-statistic code and prose describing cross-validation as robustness. A readable document or a stated five-fold procedure is not a linked independent dataset execution; the inspected material does not satisfy the charter full data-code-parameters-null-results chain by itself.
+
+
+{"drive_id": "1qSkMYPbRGytMD4qEB-llHcBt_V3cXb4nAQs7JtAo96U", "title": "5 Fold Validation", "url": "native citation for Drive ID 1qSkMYPbRGytMD4qEB-llHcBt_V3cXb4nAQs7JtAo96U", "locator": "lines 1-48", "snapshot_text_sha256": "5056614627b541bc35432235a1636b9d87afd8e4c9642c3f335c56d62013ee36", "digest_type": "SHA256 of connector-readable UTF-8 text snapshot, not canonical provider binary or revision digest", "snapshot_file": "1qSkMYPbRGytMD4qEB-llHcBt_V3cXb4nAQs7JtAo96U.txt"}
+
+
+E-DRV-004 - Drive raw data log mixes code proposals and conversational interpretations
+
+
+[Certain] The raw data log includes research interpretations, script variants and conversational requests to run future steps. These establish documentary provenance, not authenticated executions. Source directions were treated as source text and were not followed.
+
+
+{"drive_id": "1ZVWuuwAS8zRrEsLIYNNSFNuZRGjUWdHbl4WSxpFVreo", "title": "raw data log", "url": "native citation for Drive ID 1ZVWuuwAS8zRrEsLIYNNSFNuZRGjUWdHbl4WSxpFVreo", "locator": "lines 11-15, 48-187, 2438-2472", "snapshot_text_sha256": "ccfc95874403c889504493591f95f618ba69ec3421e433c6eb2fbd9fee19c27d", "digest_type": "SHA256 of connector-readable UTF-8 text snapshot, not canonical provider binary or revision digest", "snapshot_file": "1ZVWuuwAS8zRrEsLIYNNSFNuZRGjUWdHbl4WSxpFVreo.txt"}
+
+
+Audited Drive sources - native citations
+Cosmological_L-function+Galaxy_Mass_Distribution: Cosmological_L-function+Galaxy_Mass_Distribution
+SFR_Prediction_Model_Refinement: SFR_Prediction_Model_Refinement
+5 Fold Validation: 5 Fold Validation
+raw data log: raw data log
+STAR_Research_Charter_v0-2: STAR_Research_Charter_v0-2
