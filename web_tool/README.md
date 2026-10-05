@@ -38,6 +38,13 @@ host; on Windows run `npm run preview` directly.
 1. Link this repository to the chosen Vercel account with root directory
    `web_tool`, Node 24, install command `npm ci`, and build command `npm run build`.
    Deploy the verified prototype branch before considering a merge.
+   Automatic Git deployments are limited to `main` and `prototype/starmap` by
+   `vercel.json`. Set the project's Ignored Build Step to
+   `case "$VERCEL_GIT_COMMIT_REF" in main|prototype/starmap) exit 1 ;; *) exit 0 ;; esac`
+   as well: scientific branches that predate this configuration must also be
+   excluded. Add any future deployment branch deliberately to both rules.
+   Vercel skips are deployment
+   routing decisions; preregistration validity is established by S.T.A.R. CI.
 2. In the existing Neon project, create a dedicated STARMAP prototype branch.
    Use its pooled connection for server-only `DATABASE_URL` and its direct
    connection for local-only `DATABASE_URL_UNPOOLED`. Keep credentials out of Git and logs.
