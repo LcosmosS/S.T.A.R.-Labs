@@ -1,0 +1,255 @@
+﻿The goal of using raw, unfiltered data to improve robustness of the analysis in the context of the *S.T.A.R. Program, the following appropriate VizieR catalogues align with the focus on galaxy properties, star formation rates, and BSD-inspired features. 
+
+
+The program works with galaxy-wide measurements (e.g., log_SFR_Ha, log_Mass_gas, Re_kpc, OH_O3N2_cen) and aims to model star formation rates while incorporating cosmological influences through features like cosmo_rank and L_cosmo_s*. 
+
+
+Using raw data to preserve observational variability and reduce biases from preprocessing, prioritizing catalogues with minimally processed measurements (e.g., fluxes, magnitudes) relevant to galaxies. 
+
+
+
+
+With direct links to these catalogues on VizieR, ensuring they can be accessed for analysis.
+
+
+The program is designed to:
+Model log_SFR_Ha (star formation rate derived from Hα emission) for galaxies.
+
+
+Use features like log_Mass_gas, Re_kpc (effective radius), and metallicity indicators (OH_O3N2_cen).
+
+
+Incorporate BSD features (cosmo_rank, L_cosmo_s*) that depend on galaxy properties like mass and size.
+
+
+Improve robustness by using raw data, meaning to preserve observational noise (e.g., measurement errors, systematic effects) rather than relying on preprocessed or derived quantities.
+
+
+Raw Data in Astronomy: In this context, "raw unfiltered data" refers to measurements closer to direct observations—such as fluxes, magnitudes, or spectral line intensities—before they are heavily processed into derived quantities like SFRs or metallicities. 
+
+
+While no catalogue provides truly raw telescope data (e.g., photon counts), some VizieR catalogues offer minimally processed data (calibrated but not aggregated or cleaned), which aligns with the goal.
+
+
+Requirements for Catalogues:
+
+
+Object Type: Must focus on galaxies, not stellar systems like cataclysmic variables (e.g., III/286 was unsuitable).
+
+
+Data Type: Should provide raw or minimally processed measurements (e.g., emission line fluxes, photometry) relevant to star formation, mass, or metallicity.
+
+
+Cross-Matching: Must include coordinates (RA, Dec) to merge with your dataset (objra_y, objdec).
+
+
+Robustness: Should preserve observational variability (e.g., include errors, avoid heavy outlier removal).
+
+
+VizieR catalogues that meet the criteria, with explanations of their relevance, the type of raw data they provide, and direct links to access them. 
+
+
+Focusing on SDSS-based catalogues (and complementary surveys like 2MASS and GAMA) which provide raw measurements for galaxies.
+
+
+1. SDSS DR16 Spectroscopic Data (V/154)
+
+
+Why It’s Suitable:
+
+
+Contains spectroscopic measurements for galaxies, including raw emission line fluxes (e.g., Hα, Hβ, [OIII], [NII]), which are directly relevant to your target (log_SFR_Ha) and features (e.g., OH_O3N2_cen).
+
+
+Provides minimally processed data: fluxes are calibrated (e.g., corrected for instrumental effects) but not aggregated or heavily cleaned, preserving observational noise.
+
+
+Includes measurement errors (e.g., e_flux_6563), which can enhance robustness by exposing the model to uncertainty.
+
+
+Matches the SDSS origin dataset, increasing the likelihood of successful cross-matching.
+
+
+Key Columns:
+
+
+RA, Dec (for cross-matching with objra_y, objdec).
+
+
+specz (spectroscopic redshift, useful for distance calculations).
+
+
+flux_6563 (Hα flux, can be used to recompute log_SFR_Ha).
+
+
+flux_4861 (Hβ flux, for extinction correction via Hα/Hβ ratio).
+
+
+flux_5007 ([OIII] 5007 flux, for metallicity via O3N2).
+
+
+flux_6584 ([NII] 6584 flux, for metallicity).
+
+
+e_flux_6563 (error in Hα flux, captures observational uncertainty).
+
+
+How It Improves Robustness:
+
+
+Raw fluxes include measurement errors and systematic effects (e.g., extinction, aperture corrections), making the model more resilient to real-world data imperfections.
+
+
+Recomputing log_SFR_Ha and metallicity from fluxes introduces variability not present in preprocessed values.
+
+
+Link to Catalogue:
+
+
+Access V/154 on VizieR: http://vizier.cds.unistra.fr/viz-bin/VizieR?-source=V/154
+
+
+Query by coordinates to match the dataset or download the full table (full table chosen)
+
+
+2. SDSS DR12 Photometric Catalogue (V/147)
+Why It’s Suitable:
+
+
+Provides photometric measurements (magnitudes in u, g, r, i, z bands) for millions of galaxies from SDSS DR12.
+
+
+Raw Data: Offers PSF, Petrosian, and model magnitudes directly from observations, along with errors, without heavy processing beyond calibration.
+
+
+Complements spectroscopic data by adding optical photometry, which can be used to derive galaxy colors (e.g., g-r, u-g) as proxies for stellar population age and star formation history.
+
+
+Key Columns:
+
+
+RA, Dec.
+
+
+petroMag_u, petroMag_g, petroMag_r, petroMag_i, petroMag_z (Petrosian magnitudes in SDSS bands).
+
+
+petroMagErr_u, petroMagErr_g, etc. (magnitude errors).
+
+
+z (photometric redshift, if spectroscopic redshift is unavailable).
+
+
+How It Improves Robustness:
+
+
+Raw magnitudes introduce variability due to dust, observational conditions, and measurement errors, reducing overfitting to cleaned data.
+
+
+Galaxy colors can capture additional variance in star formation activity, complementing log_SFR_Ha.
+
+
+Link to Catalogue:
+
+
+Access V/147 on VizieR: http://vizier.cds.unistra.fr/viz-bin/VizieR?-source=V/147
+
+
+Query by position or download subsets (PhotoObjAll table chosen) 
+
+
+3. 2MASS Extended Source Catalogue (II/246)
+
+
+Why It’s Suitable:
+
+
+Provides near-infrared photometry (J, H, Ks bands) for extended sources (mostly galaxies) from the Two Micron All Sky Survey (2MASS).
+
+
+Raw Data: Includes magnitudes and fluxes with errors, minimally processed beyond calibration.
+
+
+Near-infrared data is less affected by dust extinction, providing a complementary view of stellar mass (correlates with log_Mass in the dataset).
+
+
+Key Columns:
+RA, Dec.
+
+
+Jmag, Hmag, Kmag (extrapolated magnitudes in J, H, Ks bands).
+
+
+e_Jmag, e_Hmag, e_Kmag (magnitude errors).
+
+
+r_ext (extrapolated radius, a proxy for galaxy size).
+
+
+How It Improves Robustness:
+
+
+Adds a different wavelength regime (near-infrared), exposing the model to galaxies with varying dust content.
+
+
+Magnitude errors capture observational uncertainty, enhancing generalizability.
+
+
+Link to Catalogue:
+
+
+Access II/246 on VizieR: http://vizier.cds.unistra.fr/viz-bin/VizieR?-source=II/246
+
+
+Focusing on the main table (xsc) for extended sources.
+
+
+4. GAMA DR3 Spectroscopic and Photometric Data (II/356)
+
+
+Why It’s Suitable:
+
+
+The Galaxy And Mass Assembly (GAMA) survey provides both spectroscopic and multi-wavelength photometric data for galaxies, overlapping with SDSS but extending to deeper magnitudes.
+
+
+Raw Data: Includes emission line fluxes (e.g., Hα, [NII]) and photometry across 20 bands (UV to far-IR), minimally processed.
+
+
+Particularly useful for recomputing log_SFR_Ha and adding multi-wavelength features.
+
+
+Key Columns:
+
+
+RA, Dec.
+
+
+Flux_Ha (Hα flux from spectroscopy).
+
+
+Flux_NII_6584 ([NII] 6584 flux).
+
+
+u_mag, g_mag, r_mag, etc. (photometry from SDSS and other surveys).
+
+
+e_Flux_Ha (error in Hα flux).
+
+
+How It Improves Robustness:
+
+
+Combines spectroscopy and photometry, providing a comprehensive view of galaxy properties with observational noise intact.
+
+
+Multi-wavelength data helps capture diverse physical processes (e.g., star formation, dust), improving model generalizability.
+
+
+Link to Catalogue:
+
+
+Access II/356 on VizieR: http://vizier.cds.unistra.fr/viz-bin/VizieR?-source=II/356
+
+
+GamaSpec (spectroscopy) and GamaPhoto (photometry)

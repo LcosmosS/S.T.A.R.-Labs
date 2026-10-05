@@ -1,0 +1,23 @@
+﻿Can we use machine learning programs (RandomForestRegressor, GradientBoostingRegressor) to predict Star Formation Rate (SFR) using Birch Swinnerton-Dyer Conjecture as inspiration?
+
+
+Outline. 
+
+
+1. Model Building: using both Random Forest Regression and Gradient Boosting Regression
+
+
+2. Kernel Density Estimation based L-function: using Gaussian kernel density estimation for smooth galaxy distribution modeling using KDE in place of simple counting 
+with k= Nearest Neighbor Distance (e.g. distance to 5th nearest neighbor) for environmental density.
+
+
+3. L-function Calculation: Implement L-function (L1) directly into the models, formalizing L-cosmo(s) convergence as N=infinity, leveraging statistical properties of the Schecter function or log-mass.
+
+
+4. Use Dirichlet series to extend L-cosmo(s) into the complex plane
+
+
+5. Robust Rank Estimation: Use Polynomial Curve to estimate s=1 (replacing arbitrary derivative thresholds with a statistically robust  method to determine the order of zero) 
+
+
+6. Use Bayesian optimization (Optuna) and RandomSearchCV for Hyperparameter tuning

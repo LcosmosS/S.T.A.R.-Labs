@@ -1,0 +1,760 @@
+﻿The *S.T.A.R. Program
+(Symbolic-Regressing Hyperparamater-Tuned Astronomical Regression)
+
+
+A Comprehensive Study: BSD Cosmology &
+Star Formation Rate Prediction
+
+
+
+
+Abstract
+
+
+   This study introduces a novel theoretical framework that bridges number theory and astrophysics. 
+
+
+ The *S.T.A.R. Program for a
+Symbolic-Regressing, Hyperparamater-Tuned Astronomical Regression machine learning model.
+
+
+   Inspired by the Birch and Swinnerton-Dyer (BSD) conjecture, to construct a cosmological L-function to model and predict the *Star Formation Rate (SFR) in galaxies. 
+
+
+   The underlying hypothesis is that the mathematical properties of this L-function, particularly its behavior near s = 1, reflect fundamental drivers of SFR.
+
+
+   The model is developed and tested using galaxy data from the Sloan Digital Sky Survey (SDSS), demonstrating promising results and setting the stage for future research.
+
+
+
+
+1. Introduction
+
+
+1.1 Background
+
+
+   The BSD conjecture, a central unsolved problem in number theory, posits a deep connection between elliptic curves and L-functions. 
+
+
+   It states that the rank of an elliptic curve (the number of independent rational points) is equal to the order of the zero of its associated L-function at s = 1.
+
+
+  This conjecture has inspired applications far beyond pure mathematics.
+
+
+   In astrophysics, the star formation rate (SFR) is a crucial parameter for understanding galaxy evolution. 
+
+
+   SFR is influenced by factors such as stellar mass, redshift, gas density, metallicity, and environmental effects. 
+
+
+   Traditional SFR models range from empirical relations (e.g., the Kennicutt-Schmidt law) to complex simulations (e.g., IllustrisTNG), each with limitations in scope and predictive power.
+
+
+
+
+   1.2 Motivation and Objectives
+
+
+   This study aims to develop a mathematically grounded model for SFR prediction based on the BSD conjecture. Our main objectives are:
+
+
+  • To establish a theoretical analogy between
+   elliptic curves and galaxy distributions.
+
+
+  • To construct a cosmological L-function relevant
+   to SFR dynamics.
+
+
+  • To integrate this L-function into a predictive
+   model and assess its performance using
+   observational data.
+
+
+
+
+   1.3 Research Questions and Hypotheses
+
+
+Addressing the following questions:
+
+
+  • Can a cosmological L-function be constructed
+   such that its mathematical properties reflect
+   SFR drivers?
+
+
+  • Does incorporating this L-function improve
+   SFR
+   prediction accuracy compared to traditional
+   models?
+
+
+   Our central hypothesis is that the BSD conjecture provides a viable mathematical framework for understanding and modeling SFR.
+
+
+
+
+2. Theoretical Framework
+
+
+   2.1 The Birch and Swinnerton-Dyer Conjecture:
+         A Brief Overview
+
+
+   Consider an elliptic curve E defined over the rational numbers (Q). 
+
+
+   The BSD conjecture relates the arithmetic of E to the analytic behavior of its L-function, L(E, s). 
+
+
+Specifically, the BSD conjecture states:
+
+
+  • The rank of E, denoted rank(E), equals the
+   order of the zero of L(E, s) at s = 1.
+
+
+  • The leading coefficient of the Taylor expansion
+   of L(E, s) around s = 1 encodes additional
+   arithmetic data, providing deeper insights into
+   the curve's properties.
+
+
+   This conjecture suggests that complex distributions of rational points can be analyzed via analytic functions, a concept I extend to cosmology.
+
+
+
+
+
+
+   2.2 Analogy to Galaxy Distributions
+
+
+   In “BSD Cosmology”, galaxies are treated as points in a multidimensional parameter space, with coordinates such as logarithmic stellar mass (logmass), redshift (z), declination (dec), and Petrosian radius (petrorad_r). 
+
+
+   Just as the rank of an elliptic curve reflects the number of independent generators of its rational points, the proposition is that the "rank" of a galaxy distribution reflects the number of independent physical processes driving SFR.
+(e.g., gas accretion, stellar feedback).
+
+
+
+
+   2.3 Defining the Cosmological L-Function
+
+
+   To operationalize this analogy define a cosmological L-function:
+
+
+   Lcosmo(s) = ∑ a_n n^(-s),
+
+
+where:
+
+
+  • n indexes bins in the galaxy parameter space
+   (e.g., discretized by mass and redshift).
+
+
+  • a_n is the number of galaxies in bin n,
+   optionally weighted by physical properties like
+   SFR or density.
+
+
+  The behavior of Lcosmo(s) at s = 1 is hypothesized to indicate the number of independent SFR drivers, mirroring the BSD conjecture.
+
+
+
+
+
+
+3. Model Development
+
+
+   3.1 Constructing the L-Function
+
+
+To operationalize Lcosmo(s):
+
+
+  • Binning: Discretize galaxy properties into a
+   grid. For example, logmass in 0.1 dex intervals
+   and z in 0.01 intervals.
+
+
+  • Coefficients: Set a_n as the galaxy count per
+   bin, weighted by observed SFR to emphasize
+   star-forming regions.
+
+
+  • Analytic Continuation: Approximate Lcosmo(s)
+   numerically, focusing on its value and
+   derivatives at s = 1.
+
+
+   For simplicity, initially assume a rank-1
+scenario (one dominant driver), adjusting the model as data suggests higher complexity.
+
+
+
+
+
+
+   3.2 SFR Prediction Formula
+
+
+The SFR is modeled as:
+
+
+   SFR = a * logmass + b * z + c * Lcosmo(1) + d *
+   environment + e * petrorad_r,
+
+
+where:
+
+
+  • logmass and z are primary predictors from
+   cosmological literature.
+
+
+  • Lcosmo(1) introduces the BSD-inspired term.
+
+
+  • environment (derived from spatial coordinates)
+   and petrorad_r account for additional physics.
+
+
+  • Coefficients a, b, c, d, and e are optimized via
+   regression.
+
+
+
+
+
+
+   3.3 Implementation Details
+
+
+Using datasets of galaxy properties to: 
+(e.g., from the SDSS, MangaHIall etc.)
+
+
+  • Preprocess data: Handle missing values,
+   normalize features.
+
+
+  • Compute Lcosmo(s) over binned data.
+
+
+  • Fit the model using:
+        • a Random Forest Regressor
+        • a Gradient Boosting Regressor
+        • a GPLearn Symbolic Regressor 
+ • an Optuna Optimization Tuner
+
+
+   Chosen for their abilities to capture non-linear
+   interactions, zero in on patterns, and verify
+   results using multiple verification methods.
+
+
+Further testing will include raw unfiltered data.
+
+
+
+
+4. Implementation and Testing
+
+
+   4.1 Data Sources
+
+
+   
+
+
+The goal of using raw, unfiltered data to improve robustness of the analysis in the context of the *S.T.A.R. Program, the following appropriate VizieR catalogues align with the focus on galaxy properties, star formation rates, and BSD-inspired features. 
+
+
+The program works with galaxy-wide measurements (e.g., log_SFR_Ha, log_Mass_gas, Re_kpc, OH_O3N2_cen) and aims to model star formation rates while incorporating cosmological influences through features like cosmo_rank and L_cosmo_s*. 
+
+
+Using raw data to preserve observational variability and reduce biases from preprocessing, prioritizing catalogues with minimally processed measurements (e.g., fluxes, magnitudes) relevant to galaxies. 
+
+
+
+
+With direct links to these catalogues on VizieR, ensuring they can be accessed for analysis.
+
+
+The program is designed to:
+Model log_SFR_Ha (star formation rate derived from Hα emission) for galaxies.
+
+
+Use features like log_Mass_gas, Re_kpc (effective radius), and metallicity indicators (OH_O3N2_cen).
+
+
+Incorporate BSD features (cosmo_rank, L_cosmo_s*) that depend on galaxy properties like mass and size.
+
+
+Improve robustness by using raw data, meaning to preserve observational noise (e.g., measurement errors, systematic effects) rather than relying on preprocessed or derived quantities.
+
+
+Raw Data in Astronomy: In this context, "raw unfiltered data" refers to measurements closer to direct observations—such as fluxes, magnitudes, or spectral line intensities—before they are heavily processed into derived quantities like SFRs or metallicities. 
+
+
+While no catalogue provides truly raw telescope data (e.g., photon counts), some VizieR catalogues offer minimally processed data (calibrated but not aggregated or cleaned), which aligns with the goal.
+
+
+Requirements for Catalogues:
+
+
+Using data from these coordinates:
+134.6125 + 57.2325
+150 arcmin around 
+Rad. 5° arcsec
+
+
+Object Type: Must focus on galaxies, not stellar systems like cataclysmic variables (e.g., III/286 was unsuitable).
+
+
+Data Type: Should provide raw or minimally processed measurements (e.g., emission line fluxes, photometry) relevant to star formation, mass, or metallicity.
+
+
+Cross-Matching: Must include coordinates (RA, Dec) to merge with the dataset (objra_y, objdec).
+
+
+Robustness: Should preserve observational variability (e.g., include errors, avoid heavy outlier removal).
+
+
+VizieR catalogues that meet the criteria, with explanations of their relevance, the type of raw data they provide, and direct links to access them. 
+
+
+Focusing on SDSS-based catalogues (and complementary surveys like 2MASS and GAMA) which provide raw measurements for galaxies.
+
+
+1. SDSS DR16 Spectroscopic Data (V/154)
+
+
+Why It’s Suitable:
+
+
+Contains spectroscopic measurements for galaxies, including raw emission line fluxes (e.g., Hα, Hβ, [OIII], [NII]), which are directly relevant to the target (log_SFR_Ha) and features (e.g., OH_O3N2_cen).
+
+
+Provides minimally processed data: fluxes are calibrated (e.g., corrected for instrumental effects) but not aggregated or heavily cleaned, preserving observational noise.
+
+
+Includes measurement errors (e.g., e_flux_6563), which can enhance robustness by exposing the model to uncertainty.
+
+
+Matches the SDSS origin dataset, increasing the likelihood of successful cross-matching.
+
+
+Key Columns:
+
+
+RA, Dec (for cross-matching with objra_y, objdec).
+
+
+specz (spectroscopic redshift, useful for distance calculations).
+
+
+flux_6563 (Hα flux, can be used to recompute log_SFR_Ha).
+
+
+flux_4861 (Hβ flux, for extinction correction via Hα/Hβ ratio).
+
+
+flux_5007 ([OIII] 5007 flux, for metallicity via O3N2).
+
+
+flux_6584 ([NII] 6584 flux, for metallicity).
+
+
+e_flux_6563 (error in Hα flux, captures observational uncertainty).
+
+
+How It Improves Robustness:
+
+
+Raw fluxes include measurement errors and systematic effects (e.g., extinction, aperture corrections), making the model more resilient to real-world data imperfections.
+
+
+Recomputing log_SFR_Ha and metallicity from fluxes introduces variability not present in preprocessed values.
+
+
+Link to Catalogue:
+
+
+Access V/154 on VizieR: http://vizier.cds.unistra.fr/viz-bin/VizieR?-source=V/154
+
+
+Query by coordinates to match the dataset or download the full table (full table chosen)
+
+
+2. SDSS DR12 Photometric Catalogue (V/147)
+Why It’s Suitable:
+
+
+Provides photometric measurements (magnitudes in u, g, r, i, z bands) for millions of galaxies from SDSS DR12.
+
+
+Raw Data: Offers PSF, Petrosian, and model magnitudes directly from observations, along with errors, without heavy processing beyond calibration.
+
+
+Complements spectroscopic data by adding optical photometry, which can be used to derive galaxy colors (e.g., g-r, u-g) as proxies for stellar population age and star formation history.
+
+
+Key Columns:
+
+
+RA, Dec.
+
+
+petroMag_u, petroMag_g, petroMag_r, petroMag_i, petroMag_z (Petrosian magnitudes in SDSS bands).
+
+
+petroMagErr_u, petroMagErr_g, etc. (magnitude errors).
+
+
+z (photometric redshift, if spectroscopic redshift is unavailable).
+
+
+How It Improves Robustness:
+
+
+Raw magnitudes introduce variability due to dust, observational conditions, and measurement errors, reducing overfitting to cleaned data.
+
+
+Galaxy colors can capture additional variance in star formation activity, complementing log_SFR_Ha.
+
+
+Link to Catalogue:
+
+
+Access V/147 on VizieR: http://vizier.cds.unistra.fr/viz-bin/VizieR?-source=V/147
+
+
+Query by position or download subsets (PhotoObjAll table chosen) 
+
+
+3. 2MASS Extended Source Catalogue (II/246)
+
+
+Why It’s Suitable:
+
+
+Provides near-infrared photometry (J, H, Ks bands) for extended sources (mostly galaxies) from the Two Micron All Sky Survey (2MASS).
+
+
+Raw Data: Includes magnitudes and fluxes with errors, minimally processed beyond calibration.
+
+
+Near-infrared data is less affected by dust extinction, providing a complementary view of stellar mass (correlates with log_Mass in the dataset).
+
+
+Key Columns:
+RA, Dec.
+
+
+Jmag, Hmag, Kmag (extrapolated magnitudes in J, H, Ks bands).
+
+
+e_Jmag, e_Hmag, e_Kmag (magnitude errors).
+
+
+r_ext (extrapolated radius, a proxy for galaxy size).
+
+
+How It Improves Robustness:
+
+
+Adds a different wavelength regime (near-infrared), exposing the model to galaxies with varying dust content.
+
+
+Magnitude errors capture observational uncertainty, enhancing generalizability.
+
+
+Link to Catalogue:
+
+
+Access II/246 on VizieR: http://vizier.cds.unistra.fr/viz-bin/VizieR?-source=II/246
+
+
+Focusing on the main table (xsc) for extended sources.
+
+
+4. GAMA DR3 Spectroscopic and Photometric Data (II/356)
+
+
+Why It’s Suitable:
+
+
+The Galaxy And Mass Assembly (GAMA) survey provides both spectroscopic and multi-wavelength photometric data for galaxies, overlapping with SDSS but extending to deeper magnitudes.
+
+
+Raw Data: Includes emission line fluxes (e.g., Hα, [NII]) and photometry across 20 bands (UV to far-IR), minimally processed.
+
+
+Particularly useful for recomputing log_SFR_Ha and adding multi-wavelength features.
+
+
+Key Columns:
+
+
+RA, Dec.
+
+
+Flux_Ha (Hα flux from spectroscopy).
+
+
+Flux_NII_6584 ([NII] 6584 flux).
+
+
+u_mag, g_mag, r_mag, etc. (photometry from SDSS and other surveys).
+
+
+e_Flux_Ha (error in Hα flux).
+
+
+How It Improves Robustness:
+
+
+Combines spectroscopy and photometry, providing a comprehensive view of galaxy properties with observational noise intact.
+
+
+Multi-wavelength data helps capture diverse physical processes (e.g., star formation, dust), improving model generalizability.
+
+
+Link to Catalogue:
+
+
+Access II/356 on VizieR: http://vizier.cds.unistra.fr/viz-bin/VizieR?-source=II/356
+
+
+GamaSpec (spectroscopy) and GamaPhoto (photometry)
+
+
+
+
+
+
+
+
+
+
+   4.2 Data Preprocessing
+
+
+The data preprocessing steps are:
+
+
+  • Cleaning: Impute missing values with the
+   median for each column.
+
+
+  • Feature Engineering: Create an environmental
+   density proxy from the spatial clustering of dec
+   and right ascension.
+
+
+  • Normalization: Normalize all input features to a
+   range between 0 and 1 to ensure stable
+   regression performance.
+
+
+
+
+
+
+   4.3 Model Training and Validation
+
+
+The model is trained and validated using:
+
+
+  • 5-fold cross-validation.
+
+
+  • Mean Squared Error (MSE) between predicted
+   and observed SFR as the evaluation metric.
+
+
+   •Tuning of Random Forest hyperparameters
+   (e.g., tree depth, number of estimators) to
+   optimize performance.
+
+
+
+
+
+
+5. Results and Analysis
+
+
+   5.1 Numerical Evaluation of Lcosmo(s)
+
+
+   Numerical evaluation suggests Lcosmo(s) has a first-order zero at s = 1 (rank 1), implying one dominant SFR driver (e.g., stellar mass), with secondary factors refining the prediction. 
+This aligns with cosmological intuition that mass is a primary driver.
+
+
+
+
+
+
+   5.2 Model Performance
+
+
+The BSD Cosmology model demonstrates the following performance:
+
+
+  • Average MSE: 0.4266
+ (logarithmic units, normalized).
+
+
+  • Standard Deviation: 0.0185 across folds,
+   indicating consistency.
+
+
+  • Comparison: An earlier model without 
+   Lcosmo(1) or environmental terms yielded 
+   MSE = 0.6715, demonstrating improvement
+   with the inclusion of the BSD-inspired term.
+
+
+
+
+
+
+   5.3 Interpretation
+
+
+The results suggest:
+
+
+  • The BSD-inspired Lcosmo(1) term reduces
+   reliance on empirical coefficients, grounding the
+   model in a mathematical framework.
+
+
+  • The model accurately captures key SFR
+   drivers, as evidenced by the low MSE and
+   stable cross-validation performance.
+
+
+
+
+
+
+6. Conclusion and Implications
+
+
+   6.1 Conclusion
+
+
+   This study introduces "BSD Cosmology," a novel theory merging the BSD conjecture with SFR prediction.
+
+
+    By constructing a cosmological L-function and integrating it into a predictive model, achieving promising results, outperforming baseline approaches.
+
+
+
+
+
+
+   6.2 Implications for Science and Mathematical
+         Logic
+
+
+This work has implications for both science and mathematical logic:
+
+
+  • Mathematical Logic: Demonstrates how
+   number-theoretic tools (L-functions, rank) can
+   model physical phenomena, potentially bridging
+   pure mathematics and applied sciences. 
+   It also suggests a new class of L-functions for
+   astrophysical distributions.
+
+
+  • Scientific Impact: Enhances SFR prediction
+   accuracy, aiding galaxy evolution studies. It also
+   offers a mathematically rigorous alternative to
+   empirical models, testable with observational
+   data (e.g., SDSS, JWST).
+
+
+
+
+
+
+7. Future Directions
+
+
+The model can be refined in several ways:
+
+
+  • L-Function Enhancement: Incorporate
+   metallicity or gas mass into a_n.
+
+
+  • Feature Expansion: Add star formation history
+   or supernovae feedback.
+
+
+  • Model Optimization: Test Gradient Boosting or
+   neural networks.
+
+
+  • Validation: Apply to external datasets
+   (e.g.,GAMA survey) for generalizability.
+
+
+
+
+
+
+8. Summary
+
+
+   The BSD Cosmology theory reimagines SFR prediction through a number-theoretic lens, using a cosmological L-function inspired by the BSD conjecture. 
+
+
+   The model, tested on galaxy data, achieves strong performance, resolving errors through careful preprocessing and debugging. 
+
+
+   Its implications span mathematics and cosmology, offering a framework that could deepen our understanding of the universe while showcasing the power of interdisciplinary approaches. 
+
+
+   Future refinements promise even greater
+   precision and insight.
+
+
+   Further studies to follow.
+
+
+With 
+PanSTARRS DR1, 
+SDSS DR12, 
+SDSS DR16 
+
+
+Coordinates 
+134.6125 + 57.2375
+150 arcmin around 
+Rad. 60° arcsec
+
+
+
+
+9. References
+
+
+Brinchmann, J., Charlot, S., White, S. D. M., et al. 2004, MNRAS, 351, 1151
+
+
+Speagle, J. S., Steinhardt, C. L., Capak, P. L., & Silverman, J. D. 2014, ApJS, 214, 15
