@@ -19,7 +19,12 @@ from src.control.execution import (
     rerun_controlled_experiment,
     verify_reproduction_manifests,
 )
-from src.control.registry import RegistryError, RegistrySnapshot, file_sha256
+from src.control.registry import (
+    RegistryError,
+    RegistrySnapshot,
+    execution_gate_failures,
+    file_sha256,
+)
 from src.cli import star_controlled_experiment as controlled_cli
 
 
@@ -43,7 +48,15 @@ def _allow_tracked(_root, _path):
     return None
 
 
-def _fixture_root(tmp_path, *, experiment_eligible=True, provenance_hash=None):
+def _fixture_root(
+    tmp_path,
+    *,
+    experiment_eligible=True,
+    provenance_hash=None,
+    claim_ids="CLAIM-TEST",
+    registered_claims=("CLAIM-TEST",),
+    crosswalk_claims=("CLAIM-TEST",),
+):
     root = tmp_path / "repo"
     registry = root / "registry"
     data_dir = root / "data"
@@ -58,7 +71,7 @@ def _fixture_root(tmp_path, *, experiment_eligible=True, provenance_hash=None):
         "from pathlib import Path\n"
         "import sys\n"
         "source = Path('data/input.txt').read_text(encoding='utf-8')\n"
-        "Path(sys.argv[1]).write_text(source.upper(), encoding='utf-8')\n",
+        "Path(sys.argv[1]).write_bytes(source.upper().encode('utf-8'))\n",
         encoding="utf-8",
     )
     script_sha = file_sha256(experiment_script)
@@ -84,12 +97,32 @@ def _fixture_root(tmp_path, *, experiment_eligible=True, provenance_hash=None):
                 "Parameter_Set_ID": "PAR-TEST",
                 "Null_ID": "NULL-TEST",
                 "Mode": "controlled",
-                "Claim_IDs": "CLAIM-TEST",
+                "Claim_IDs": claim_ids,
                 "Namespace_Resolution": "explicit_non_alias",
                 "Controlled_Execution_Eligible": (
                     "true" if experiment_eligible else "false"
                 ),
             }
+        ],
+    )
+    _write_csv(
+        registry / "claim_evidence_v0.2.csv",
+        ["Claim_ID", "Controlled_Support_Eligible", "Physical_Support_Eligible"],
+        [
+            {
+                "Claim_ID": claim_id,
+                "Controlled_Support_Eligible": "false",
+                "Physical_Support_Eligible": "false",
+            }
+            for claim_id in registered_claims
+        ],
+    )
+    _write_csv(
+        registry / "claim_experiment_crosswalk_v0.2.csv",
+        ["Claim_ID", "Experiment_ID"],
+        [
+            {"Claim_ID": claim_id, "Experiment_ID": "EXP-TEST"}
+            for claim_id in crosswalk_claims
         ],
     )
     _write_csv(
@@ -206,6 +239,217 @@ def test_preflight_resolves_and_binds_exact_registry_records(tmp_path):
     assert prepared.resolved.null["Null_ID"] == "NULL-TEST"
     assert prepared.dataset_inputs[0]["sha256"] == dataset_sha
     assert prepared.git["sha"] == "a" * 40
+    assert set(prepared.resolved.record_hashes) == {
+        "experiment",
+        "dataset",
+        "provenance",
+        "parameter",
+        "null",
+    }
+    for filename in (
+        "claim_evidence_v0.2.csv",
+        "claim_experiment_crosswalk_v0.2.csv",
+    ):
+        assert prepared.registry.file_hashes[filename] == file_sha256(
+            root / "registry" / filename
+        )
+
+
+@pytest.mark.parametrize(
+    "claim_ids",
+    ["CLAIM-UNKNOWN", "CLAIM-TEST;CLAIM-UNKNOWN", "OTHER:CLAIM-TEST"],
+)
+def test_preflight_rejects_unknown_claims_even_with_matching_spec(tmp_path, claim_ids):
+    root, spec, _ = _fixture_root(tmp_path, claim_ids=claim_ids)
+
+    with pytest.raises(PreflightError, match="unknown Claim_ID"):
+        preflight_controlled_experiment(
+            root,
+            spec,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+
+@pytest.mark.parametrize(
+    "claim_ids,reason",
+    [
+        ("CLAIM-TEST;", "Claim_IDs contains an empty Claim_ID"),
+        ("CLAIM-TEST;;CLAIM-OTHER", "Claim_IDs contains an empty Claim_ID"),
+        ("CLAIM-TEST;CLAIM-TEST", "duplicate Claim_ID 'CLAIM-TEST'"),
+    ],
+)
+def test_preflight_rejects_malformed_claim_list_as_sole_gate_failure(
+    tmp_path, claim_ids, reason
+):
+    root, spec, _ = _fixture_root(
+        tmp_path,
+        claim_ids=claim_ids,
+        registered_claims=("CLAIM-TEST", "CLAIM-OTHER"),
+        crosswalk_claims=("CLAIM-TEST", "CLAIM-OTHER"),
+    )
+    resolved = RegistrySnapshot.load(root).resolve("EXP-TEST")
+    assert json.loads(spec.read_text(encoding="utf-8"))["registry_bindings"] == (
+        resolved.record_hashes
+    )
+    assert execution_gate_failures(resolved) == [f"EXP-TEST: {reason}"]
+
+    with pytest.raises(PreflightError, match=reason):
+        preflight_controlled_experiment(
+            root,
+            spec,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+
+@pytest.mark.parametrize("claim_ids", ["CLAIM-OTHER", "CLAIM-TEST;CLAIM-OTHER"])
+def test_preflight_rejects_known_claim_without_exact_crosswalk(tmp_path, claim_ids):
+    root, spec, _ = _fixture_root(
+        tmp_path,
+        claim_ids=claim_ids,
+        registered_claims=("CLAIM-TEST", "CLAIM-OTHER"),
+    )
+
+    with pytest.raises(PreflightError, match="missing claim/experiment crosswalk pair"):
+        preflight_controlled_experiment(
+            root,
+            spec,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+
+def test_preflight_accepts_multiple_registered_claim_pairs(tmp_path):
+    root, spec, _ = _fixture_root(
+        tmp_path,
+        claim_ids="CLAIM-TEST; CLAIM-OTHER",
+        registered_claims=("CLAIM-TEST", "CLAIM-OTHER"),
+        crosswalk_claims=("CLAIM-TEST", "CLAIM-OTHER"),
+    )
+
+    prepared = preflight_controlled_experiment(
+        root,
+        spec,
+        git_state_provider=_fake_git,
+        tracked_path_checker=_allow_tracked,
+    )
+
+    assert prepared.resolved.claim_experiments == {
+        ("CLAIM-TEST", "EXP-TEST"),
+        ("CLAIM-OTHER", "EXP-TEST"),
+    }
+
+
+def test_preflight_rejects_crosswalk_pair_for_another_experiment(tmp_path):
+    root, spec, _ = _fixture_root(tmp_path)
+    experiment_path = root / "registry" / "experiment_registry_v0.2.csv"
+    with experiment_path.open(newline="", encoding="utf-8") as stream:
+        experiments = list(csv.DictReader(stream))
+    other = dict(experiments[0], Experiment_ID="EXP-OTHER")
+    _write_csv(experiment_path, list(experiments[0]), [*experiments, other])
+    _write_csv(
+        root / "registry" / "claim_experiment_crosswalk_v0.2.csv",
+        ["Claim_ID", "Experiment_ID"],
+        [{"Claim_ID": "CLAIM-TEST", "Experiment_ID": "EXP-OTHER"}],
+    )
+
+    with pytest.raises(PreflightError, match="missing claim/experiment crosswalk pair"):
+        preflight_controlled_experiment(
+            root,
+            spec,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+
+@pytest.mark.parametrize(
+    "filename", ["claim_evidence_v0.2.csv", "claim_experiment_crosswalk_v0.2.csv"]
+)
+def test_preflight_rejects_missing_claim_registry(tmp_path, filename):
+    root, spec, _ = _fixture_root(tmp_path)
+    (root / "registry" / filename).unlink()
+
+    with pytest.raises(RegistryError, match="missing controlled registry file"):
+        preflight_controlled_experiment(
+            root,
+            spec,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+
+@pytest.mark.parametrize(
+    "filename,content,message",
+    [
+        ("claim_evidence_v0.2.csv", b"Other\nCLAIM-TEST\n", "invalid registry headers"),
+        (
+            "claim_evidence_v0.2.csv",
+            b"Claim_ID,Claim_ID\nCLAIM-TEST,CLAIM-TEST\n",
+            "invalid registry headers",
+        ),
+        (
+            "claim_evidence_v0.2.csv",
+            b"Claim_ID\nCLAIM-TEST\nCLAIM-TEST\n",
+            "duplicate Claim_ID",
+        ),
+        ("claim_evidence_v0.2.csv", b"Claim_ID,Status\nCLAIM-TEST\n", "malformed row"),
+        ("claim_evidence_v0.2.csv", b"Claim_ID\nCLAIM-TEST,extra\n", "malformed row"),
+        (
+            "claim_evidence_v0.2.csv",
+            b'Claim_ID\n"CLAIM-TEST\n',
+            "cannot read controlled registry",
+        ),
+        (
+            "claim_evidence_v0.2.csv",
+            b"Claim_ID\n\xff\n",
+            "cannot read controlled registry",
+        ),
+        (
+            "claim_experiment_crosswalk_v0.2.csv",
+            b"Claim_ID\nCLAIM-TEST\n",
+            "invalid registry headers",
+        ),
+        (
+            "claim_experiment_crosswalk_v0.2.csv",
+            b"Claim_ID,Experiment_ID\nCLAIM-TEST\n",
+            "malformed row",
+        ),
+        (
+            "claim_experiment_crosswalk_v0.2.csv",
+            b"Claim_ID,Experiment_ID\n,EXP-TEST\n",
+            "empty Claim_ID/Experiment_ID",
+        ),
+        (
+            "claim_experiment_crosswalk_v0.2.csv",
+            b"Claim_ID,Experiment_ID\nCLAIM-UNKNOWN,EXP-TEST\n",
+            "unknown Claim_ID",
+        ),
+        (
+            "claim_experiment_crosswalk_v0.2.csv",
+            b"Claim_ID,Experiment_ID\nCLAIM-TEST,EXP-UNKNOWN\n",
+            "unknown Experiment_ID",
+        ),
+        (
+            "claim_experiment_crosswalk_v0.2.csv",
+            b"Claim_ID,Experiment_ID\nCLAIM-TEST,EXP-TEST\nCLAIM-TEST,EXP-TEST\n",
+            "duplicate claim/experiment pair",
+        ),
+    ],
+)
+def test_preflight_rejects_malformed_claim_registry(
+    tmp_path, filename, content, message
+):
+    root, spec, _ = _fixture_root(tmp_path)
+    (root / "registry" / filename).write_bytes(content)
+
+    with pytest.raises(RegistryError, match=message):
+        preflight_controlled_experiment(
+            root,
+            spec,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
 
 
 def test_preflight_rejects_ineligible_experiment_before_execution(tmp_path):
@@ -399,7 +643,17 @@ def test_rerun_rejects_git_sha_drift(tmp_path):
         )
 
 
-def test_post_run_registry_mutation_fails_transaction_and_is_manifested(tmp_path):
+@pytest.mark.parametrize(
+    "filename",
+    [
+        "parameter_registry_v0.1.csv",
+        "claim_evidence_v0.2.csv",
+        "claim_experiment_crosswalk_v0.2.csv",
+    ],
+)
+def test_post_run_registry_mutation_fails_transaction_and_is_manifested(
+    tmp_path, filename
+):
     root, spec_path, _ = _fixture_root(tmp_path)
     spec = json.loads(spec_path.read_text(encoding="utf-8"))
     spec["command"] = [
@@ -408,9 +662,9 @@ def test_post_run_registry_mutation_fails_transaction_and_is_manifested(tmp_path
         (
             "from pathlib import Path; "
             "out=Path(r'{run_dir}/result.txt'); "
-            "out.write_text('result\\n', encoding='utf-8'); "
-            "p=Path(r'{repo_root}/registry/parameter_registry_v0.1.csv'); "
-            "p.write_text(p.read_text(encoding='utf-8') + '\\n', encoding='utf-8')"
+            "out.write_bytes(b'result\\n'); "
+            f"p=Path(r'{{repo_root}}/registry/{filename}'); "
+            "p.write_bytes(p.read_bytes() + b'\\n')"
         ),
     ]
     spec_path.write_text(
@@ -429,7 +683,7 @@ def test_post_run_registry_mutation_fails_transaction_and_is_manifested(tmp_path
     assert manifest["transaction_status"] == "post_run_integrity_failed"
     assert manifest["post_run_integrity"]["passed"] is False
     assert any(
-        "parameter_registry_v0.1.csv" in failure
+        filename in failure
         for failure in manifest["post_run_integrity"]["failures"]
     )
 
@@ -517,3 +771,43 @@ def test_cli_reports_registry_errors_as_controlled_rejections(monkeypatch, capsy
     assert code == 2
     assert "controlled execution rejected" in captured.err
     assert "EXP-MISSING" in captured.err
+
+
+@pytest.mark.parametrize(
+    "claim_ids,message",
+    [
+        ("CLAIM-UNKNOWN", "unknown Claim_ID"),
+        ("CLAIM-OTHER", "missing claim/experiment crosswalk pair"),
+    ],
+)
+def test_cli_run_rejects_invalid_claim_admission_before_execution(
+    tmp_path, monkeypatch, capsys, claim_ids, message
+):
+    root, spec, _ = _fixture_root(
+        tmp_path,
+        claim_ids=claim_ids,
+        registered_claims=("CLAIM-TEST", "CLAIM-OTHER"),
+    )
+    runs_root = tmp_path / "rejected-runs"
+
+    def execute_with_fixture_git(*args, **kwargs):
+        return execute_controlled_experiment(
+            *args,
+            **kwargs,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+    monkeypatch.setattr(
+        controlled_cli, "execute_controlled_experiment", execute_with_fixture_git
+    )
+    code = controlled_cli.main(
+        [
+            "--root", str(root), "run", "--spec", str(spec),
+            "--executor-id", "fixture-review", "--runs-root", str(runs_root),
+        ]
+    )
+
+    assert code == 2
+    assert message in capsys.readouterr().err
+    assert not runs_root.exists()

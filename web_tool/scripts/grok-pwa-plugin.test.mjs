@@ -6,9 +6,9 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 import {
   appNameFromHost,
-  createHeadInjector,
+  createHeadInjector as makeHeadInjector,
   grokXCreatorHeadTags,
-  injectGrokPwaHead,
+  injectGrokPwaHead as injectPwaHead,
   isDocumentPath,
   isInstallQuery,
   publicAppHost,
@@ -20,6 +20,25 @@ import {
 import { renderInstallPage } from "./grok-pwa-plugin.mjs";
 
 const TEMPLATE_ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+// Generic fallback tests must not inherit STARMAP's real title and custom
+// card from the caller's cwd. Fixtures that test files supply their own cwd.
+const EMPTY_ROOT = mkdtempSync(join(tmpdir(), "grok-pwa-isolated-"));
+const injectGrokPwaHead = (html, options = {}) => injectPwaHead(html, { cwd: EMPTY_ROOT, ...options });
+const createHeadInjector = (options = {}) => makeHeadInjector({ cwd: EMPTY_ROOT, ...options });
+
+test("the repository's STARMAP identity wins over generic document and host names", () => {
+  const { site } = snapshotOgIdentity(TEMPLATE_ROOT);
+  assert.equal(site.title, "STARMAP");
+  assert.equal(site.card, "custom");
+  assert.equal(site.image, "/og.jpg");
+  const out = injectGrokPwaHead("<html><head><title>Generic</title></head></html>", {
+    cwd: TEMPLATE_ROOT,
+    host: "starmap.example.com",
+  });
+  assert.match(out, /property="og:title" content="STARMAP"/);
+  assert.match(out, /property="og:image" content="https:\/\/starmap\.example\.com\/og\.jpg"/);
+  assert.match(out, /apple-mobile-web-app-title" content="STARMAP"/);
+});
 
 test("injects before </head>", () => {
   const out = injectGrokPwaHead("<html><head><title>x</title></head><body></body></html>");

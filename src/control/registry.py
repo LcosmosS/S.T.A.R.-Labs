@@ -48,9 +48,32 @@ def _truth(value) -> bool:
     return str(value).strip().lower() == "true"
 
 
-def _rows(path: Path) -> list[dict[str, str]]:
-    with path.open(newline="", encoding="utf-8-sig") as stream:
-        return list(csv.DictReader(stream))
+def _rows(
+    path: Path, required_fields: tuple[str, ...] = ()
+) -> list[dict[str, str]]:
+    try:
+        with path.open(newline="", encoding="utf-8-sig") as stream:
+            reader = csv.DictReader(stream, strict=True)
+            fields = reader.fieldnames
+            if (
+                not fields
+                or any(not field.strip() for field in fields)
+                or len(fields) != len(set(fields))
+                or not set(required_fields).issubset(fields)
+            ):
+                raise RegistryError(f"{path.name} has invalid registry headers")
+            rows = []
+            for row in reader:
+                if None in row or any(value is None for value in row.values()):
+                    raise RegistryError(
+                        f"{path.name} has a malformed row at line {reader.line_num}"
+                    )
+                rows.append(row)
+            return rows
+    except (OSError, UnicodeError, csv.Error) as exc:
+        raise RegistryError(
+            f"cannot read controlled registry {path.name}: {exc}"
+        ) from exc
 
 
 def _index_unique(
@@ -69,6 +92,36 @@ def _index_unique(
     return result
 
 
+def _crosswalk_pairs(
+    rows: list[dict[str, str]],
+    source_name: str,
+    claims: dict[str, dict[str, str]],
+    experiments: dict[str, dict[str, str]],
+) -> frozenset[tuple[str, str]]:
+    pairs = set()
+    for row in rows:
+        claim_id = row["Claim_ID"].strip()
+        experiment_id = row["Experiment_ID"].strip()
+        if not claim_id or not experiment_id:
+            raise RegistryError(
+                f"{source_name} contains an empty Claim_ID/Experiment_ID"
+            )
+        if claim_id not in claims:
+            raise RegistryError(f"{source_name} contains unknown Claim_ID: {claim_id}")
+        if experiment_id not in experiments:
+            raise RegistryError(
+                f"{source_name} contains unknown Experiment_ID: {experiment_id}"
+            )
+        pair = (claim_id, experiment_id)
+        if pair in pairs:
+            raise RegistryError(
+                f"{source_name} contains duplicate claim/experiment pair: "
+                f"{claim_id}/{experiment_id}"
+            )
+        pairs.add(pair)
+    return frozenset(pairs)
+
+
 @dataclass(frozen=True)
 class ResolvedExperiment:
     experiment: dict[str, str]
@@ -76,9 +129,12 @@ class ResolvedExperiment:
     provenance: dict[str, str]
     parameter: dict[str, str]
     null: dict[str, str]
+    claims: dict[str, dict[str, str]]
+    claim_experiments: frozenset[tuple[str, str]]
 
     @property
     def records(self) -> dict[str, dict[str, str]]:
+        # Claim registries are bound by snapshot file hashes outside this schema.
         return {
             "experiment": self.experiment,
             "dataset": self.dataset,
@@ -104,6 +160,8 @@ class RegistrySnapshot:
     provenance: dict[str, dict[str, str]]
     parameters: dict[str, dict[str, str]]
     nulls: dict[str, dict[str, str]]
+    claims: dict[str, dict[str, str]]
+    claim_experiments: frozenset[tuple[str, str]]
     file_hashes: dict[str, str]
 
     FILES = {
@@ -112,6 +170,8 @@ class RegistrySnapshot:
         "provenance": "data_provenance_registry_v0.1.csv",
         "parameters": "parameter_registry_v0.1.csv",
         "nulls": "null_registry_v0.1.csv",
+        "claims": "claim_evidence_v0.2.csv",
+        "claim_experiments": "claim_experiment_crosswalk_v0.2.csv",
     }
 
     @classmethod
@@ -133,15 +193,19 @@ class RegistrySnapshot:
         provenance_rows = _rows(paths["provenance"])
         parameter_rows = _rows(paths["parameters"])
         null_rows = _rows(paths["nulls"])
+        claim_rows = _rows(paths["claims"], ("Claim_ID",))
+        crosswalk_rows = _rows(
+            paths["claim_experiments"], ("Claim_ID", "Experiment_ID")
+        )
+        experiments = _index_unique(
+            experiment_rows, "Experiment_ID", cls.FILES["experiments"]
+        )
+        claims = _index_unique(claim_rows, "Claim_ID", cls.FILES["claims"])
 
         return cls(
             root=root,
             registry_dir=registry_dir,
-            experiments=_index_unique(
-                experiment_rows,
-                "Experiment_ID",
-                cls.FILES["experiments"],
-            ),
+            experiments=experiments,
             datasets=_index_unique(
                 dataset_rows,
                 "Dataset_ID",
@@ -161,6 +225,13 @@ class RegistrySnapshot:
                 null_rows,
                 "Null_ID",
                 cls.FILES["nulls"],
+            ),
+            claims=claims,
+            claim_experiments=_crosswalk_pairs(
+                crosswalk_rows,
+                cls.FILES["claim_experiments"],
+                claims,
+                experiments,
             ),
             file_hashes={
                 cls.FILES[name]: file_sha256(path)
@@ -211,6 +282,8 @@ class RegistrySnapshot:
             provenance=provenance,
             parameter=parameter,
             null=null,
+            claims=self.claims,
+            claim_experiments=self.claim_experiments,
         )
 
 
@@ -228,6 +301,24 @@ def execution_gate_failures(resolved: ResolvedExperiment) -> list[str]:
         failures.append(f"{experiment_id}: Mode must be controlled")
     if not experiment.get("Claim_IDs", "").strip():
         failures.append(f"{experiment_id}: Claim_IDs must be explicitly bound")
+    else:
+        seen_claims = set()
+        for value in experiment["Claim_IDs"].split(";"):
+            claim_id = value.strip()
+            if not claim_id:
+                failures.append(
+                    f"{experiment_id}: Claim_IDs contains an empty Claim_ID"
+                )
+            elif claim_id in seen_claims:
+                failures.append(f"{experiment_id}: duplicate Claim_ID {claim_id!r}")
+            elif claim_id not in resolved.claims:
+                failures.append(f"{experiment_id}: unknown Claim_ID {claim_id!r}")
+            elif (claim_id, experiment_id) not in resolved.claim_experiments:
+                failures.append(
+                    f"{experiment_id}: missing claim/experiment crosswalk pair "
+                    f"{claim_id}/{experiment_id}"
+                )
+            seen_claims.add(claim_id)
     namespace_resolution = experiment.get("Namespace_Resolution", "").strip()
     if not namespace_resolution or "pending" in namespace_resolution.lower():
         failures.append(f"{experiment_id}: namespace resolution is not closed")

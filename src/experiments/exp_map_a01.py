@@ -7,6 +7,7 @@ It deliberately excludes cosmology, SFR, TDA, and alternative mapping families.
 from __future__ import annotations
 
 import argparse
+from contextlib import ExitStack, contextmanager
 import csv
 import json
 import math
@@ -25,10 +26,54 @@ from src.data.cremona_ecdata import (
 
 
 MASK64 = (1 << 64) - 1
+OUTPUT_FILENAMES = (
+    "observed_projection.csv",
+    "null_statistics.csv",
+    "summary.json",
+)
 
 
 class ProtocolViolation(ValueError):
     """Raised when input/configuration violates the locked preregistration."""
+
+
+def _require_new_output_targets(output_dir: Path) -> None:
+    if output_dir.exists() and not output_dir.is_dir():
+        raise ProtocolViolation(f"output directory is not a directory: {output_dir}")
+    for name in OUTPUT_FILENAMES:
+        path = output_dir / name
+        if path.exists() or path.is_symlink():
+            raise ProtocolViolation(f"refusing to overwrite existing result: {path}")
+
+
+@contextmanager
+def _exclusive_output_streams(output_dir: Path):
+    """Reserve every result before writing, preserving existing runner files."""
+    output_dir.mkdir(parents=True, exist_ok=True)
+    with ExitStack() as stack:
+        streams = {}
+        try:
+            for name in OUTPUT_FILENAMES:
+                path = output_dir / name
+                stream = stack.enter_context(
+                    path.open(
+                        "x",
+                        encoding="utf-8",
+                        newline="" if name.endswith(".csv") else None,
+                    )
+                )
+                streams[name] = stream
+        except OSError as exc:
+            # Never unlink reservations: another writer may have replaced a
+            # pathname even after an ownership check. Empty reservations mark
+            # this failed attempt; no result bytes have been serialized yet.
+            stack.close()
+            raise ProtocolViolation(
+                "output reservation failed before writing result data; "
+                "use a fresh output directory. Empty failed reservations may "
+                f"remain in {output_dir}"
+            ) from exc
+        yield streams
 
 
 def _load_config(path: Path) -> dict:
@@ -279,6 +324,7 @@ class SplitMix64:
 
 def run_protocol(input_path: Path, output_dir: Path, config: dict) -> dict:
     _require_locked_config(config)
+    _require_new_output_targets(output_dir)
     frame = load_locked_dataset(input_path, config)
     projection = project_locked(frame, config)
     edges = _neighbor_edges(projection, int(config["endpoint"]["k"]))
@@ -296,26 +342,6 @@ def run_protocol(input_path: Path, output_dir: Path, config: dict) -> dict:
     exceedances = int(np.count_nonzero(null_values >= observed))
     p_value = (1.0 + exceedances) / (len(null_values) + 1.0)
     alpha = float(config["inference"]["alpha"])
-
-    output_dir.mkdir(parents=True, exist_ok=True)
-    projection.to_csv(
-        output_dir / "observed_projection.csv",
-        index=False,
-        quoting=csv.QUOTE_MINIMAL,
-        lineterminator="\n",
-        float_format="%.17g",
-    )
-    pd.DataFrame(
-        {
-            "realization": np.arange(1, len(null_values) + 1, dtype=int),
-            "statistic": null_values,
-        }
-    ).to_csv(
-        output_dir / "null_statistics.csv",
-        index=False,
-        lineterminator="\n",
-        float_format="%.17g",
-    )
 
     summary = {
         "protocol_version": config["protocol_version"],
@@ -338,9 +364,27 @@ def run_protocol(input_path: Path, output_dir: Path, config: dict) -> dict:
             "rank-permutation null only; it does not establish ACSC or physical support."
         ),
     }
-    with (output_dir / "summary.json").open("x", encoding="utf-8") as stream:
-        json.dump(summary, stream, indent=2, sort_keys=True)
-        stream.write("\n")
+    with _exclusive_output_streams(output_dir) as streams:
+        projection.to_csv(
+            streams["observed_projection.csv"],
+            index=False,
+            quoting=csv.QUOTE_MINIMAL,
+            lineterminator="\n",
+            float_format="%.17g",
+        )
+        pd.DataFrame(
+            {
+                "realization": np.arange(1, len(null_values) + 1, dtype=int),
+                "statistic": null_values,
+            }
+        ).to_csv(
+            streams["null_statistics.csv"],
+            index=False,
+            lineterminator="\n",
+            float_format="%.17g",
+        )
+        json.dump(summary, streams["summary.json"], indent=2, sort_keys=True)
+        streams["summary.json"].write("\n")
     return summary
 
 

@@ -1,0 +1,26 @@
+name: STARMAP prototype
+on:
+  pull_request:
+    paths: ['web_tool/**', 'registry/**', 'preregistrations/**', 'controlled_execution/specs/**', '.github/workflows/starmap.yml', '.vercelignore']
+  push:
+    branches: [main, prototype/starmap]
+    paths: ['web_tool/**', 'registry/**', 'preregistrations/**', 'controlled_execution/specs/**', '.github/workflows/starmap.yml', '.vercelignore']
+permissions:
+  contents: read
+jobs:
+  prototype:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web_tool
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: web_tool/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm run typecheck
