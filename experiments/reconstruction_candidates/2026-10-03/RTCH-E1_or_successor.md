@@ -5,7 +5,7 @@ RTCH-E1 is a noncanonical local experiment, not an alias of `STAR-PDF-v0.2:EXP-R
 
 ## Goal and evidence
 
-Produce one version-pinned computational experiment with adequate null models, effect sizes and a clean separation from the earlier 900-point and 350-point torus demonstrations. Reference E-LCL-007 through E-LCL-011 in the canonical audit package and the preserved generations in `historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/`.
+Produce one version-pinned computational experiment with adequate null models, effect sizes and a clean separation from the earlier 900-point and 350-point torus demonstrations. Reference E-LCL-007 through E-LCL-011 in the canonical audit package and the preserved generations in `data/quarantine/2026-10-03_audit/rtch_e1_synthetic/`.
 
 The audit found incompatible implementation generations, underpowered/failed null tests, invalid NaN-derived significance, global representation construction before cross-validation and repeated whole-sample stability rows. The 350-point run's two null replicates cannot resolve corrected permutation significance below 1/3. Neither torus generation tests a cosmic-data correspondence or validates RTCH field equations.
 
