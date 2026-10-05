@@ -1,4 +1,5 @@
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs)
+[![STARMAP](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/89d2a59a-e22d-4423-b877-39ebb6ed7ee0.jpg)](https://starmap-star-labs.vercel.app/)
 
 # S.T.A.R. Labs
 ## Symbolic–Topological–Arithmetic–Relativity
