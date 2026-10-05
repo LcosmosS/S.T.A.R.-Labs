@@ -61,6 +61,9 @@ A run is rejected unless all of the following are true:
 
 - `Experiment_ID` resolves uniquely;
 - experiment mode is `controlled`;
+- each explicitly bound `Claim_ID` is registered in `claim_evidence_v0.2.csv`
+  and its exact `(Claim_ID, Experiment_ID)` pair is registered in
+  `claim_experiment_crosswalk_v0.2.csv`;
 - experiment and dataset are controlled-execution eligible;
 - provenance is `verified`;
 - provenance evidence status is `controlled` or `derived`;
@@ -102,6 +105,14 @@ Commands are expected to place controlled outputs under `STAR_RUN_DIR`.
 Every file there, other than runner-owned logs/config/manifest files, is hashed
 into the manifest. Missing expected outputs fail the transaction.
 
+EXP-MAP-A01 rejects any existing declared result path and creates its result
+files exclusively. Reusing a manual output directory cannot overwrite an old
+projection, null distribution, or summary. Runner-owned configuration and logs
+may already be present in the output directory.
+If another writer creates a result during reservation, the attempt fails before
+writing result data. Empty reservations may remain as failed-attempt artifacts;
+use a fresh directory for the next attempt. The writer never deletes result paths.
+
 ## Manifest
 
 A successful or failed post-preflight execution writes `manifest.json` and
@@ -137,6 +148,8 @@ difference must remain visible in the manifest.
 After the command exits, the runner rechecks Git state plus every registry,
 execution-spec, dataset, code, and config hash. Any mutation during execution
 fails the transaction even when the experiment command itself returned zero.
+The registry snapshot includes the canonical claim and crosswalk files in these
+manifest hashes and post-run checks.
 
 Passing `verify-reproduction` is necessary transaction-reproduction evidence.
 It is not, by itself, proof of scientific validity or authorization to promote

@@ -2,12 +2,14 @@
 
 import csv
 import json
+import os
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import pytest
 
+from src.experiments import exp_map_a01
 from src.control.execution import PreflightError, preflight_controlled_experiment
 from src.control.registry import RegistrySnapshot
 from src.data.cremona_ecdata import (
@@ -160,3 +162,184 @@ def test_ci_subset_is_real_one_column_cremona_label_csv():
         "24a1",
     ]
     assert all(" " not in label and label[-1].isdigit() for label in labels)
+
+
+def _small_output_fixture(monkeypatch):
+    """Exercise output publication only, without running the registered cohort."""
+    config = _config()
+    config["null"]["realizations"] = 3
+
+    def require_fixture_config(value):
+        # The short fixture is the only allowed test deviation. Production's
+        # locked-config validator is untouched and every other field is checked.
+        locked = json.loads(json.dumps(value))
+        locked["null"]["realizations"] = 999
+        _require_locked_config(locked)
+        assert value["null"]["realizations"] == 3
+
+    frame = pd.DataFrame(
+        {
+            "label": [f"{101 + index}a1" for index in range(12)],
+            "isogeny_class": [f"{101 + index}a" for index in range(12)],
+            "conductor": list(range(101, 113)),
+            "delta": [-value for value in range(37, 49)],
+            "rank": [index % 3 for index in range(12)],
+            "torsion_order": [1] * 12,
+        }
+    )
+    monkeypatch.setattr(exp_map_a01, "_require_locked_config", require_fixture_config)
+    monkeypatch.setattr(exp_map_a01, "load_locked_dataset", lambda *_: frame)
+    return config
+
+
+def _reject_input_loading(*_):
+    raise AssertionError("existing outputs must be rejected before input loading")
+
+
+def test_rerun_preserves_existing_summary_and_csv_bytes(tmp_path, monkeypatch):
+    output_dir = tmp_path / "previous-run"
+    output_dir.mkdir()
+    old_results = {
+        "summary.json": b'{"old_run": true}\n',
+        "observed_projection.csv": b"label,longitude\nold-label,99\n",
+        "null_statistics.csv": b"realization,statistic\n1,-123\n",
+    }
+    for name, content in old_results.items():
+        (output_dir / name).write_bytes(content)
+    monkeypatch.setattr(exp_map_a01, "load_locked_dataset", _reject_input_loading)
+
+    with pytest.raises(ProtocolViolation, match="refusing to overwrite existing result"):
+        exp_map_a01.run_protocol(tmp_path / "unused-input", output_dir, _config())
+
+    assert {path.name: path.read_bytes() for path in output_dir.iterdir()} == old_results
+
+
+@pytest.mark.parametrize(
+    "existing_name", ["summary.json", "observed_projection.csv", "null_statistics.csv"]
+)
+def test_any_existing_result_rejects_before_other_output_is_created(
+    tmp_path, monkeypatch, existing_name
+):
+    output_dir = tmp_path / "previous-run"
+    output_dir.mkdir()
+    old_bytes = b"previous result must survive byte-for-byte\n"
+    (output_dir / existing_name).write_bytes(old_bytes)
+    monkeypatch.setattr(exp_map_a01, "load_locked_dataset", _reject_input_loading)
+
+    with pytest.raises(ProtocolViolation, match="refusing to overwrite existing result"):
+        exp_map_a01.run_protocol(tmp_path / "unused-input", output_dir, _config())
+
+    assert {path.name: path.read_bytes() for path in output_dir.iterdir()} == {
+        existing_name: old_bytes
+    }
+
+
+def test_late_output_collision_preserves_raced_file_and_empty_reservations(
+    tmp_path, monkeypatch
+):
+    config = _small_output_fixture(monkeypatch)
+    output_dir = tmp_path / "raced-run"
+    original_open = Path.open
+    raced_bytes = b'{"another_run": true}\n'
+
+    def racing_open(path, mode="r", *args, **kwargs):
+        if path == output_dir / "summary.json" and mode == "x":
+            with original_open(path, "wb") as stream:
+                stream.write(raced_bytes)
+        return original_open(path, mode, *args, **kwargs)
+
+    def reject_csv_write(*_, **__):
+        raise AssertionError("no output may be written until every target is reserved")
+
+    monkeypatch.setattr(Path, "open", racing_open)
+    monkeypatch.setattr(pd.DataFrame, "to_csv", reject_csv_write)
+    with pytest.raises(ProtocolViolation, match="reservation failed.*fresh output directory"):
+        exp_map_a01.run_protocol(tmp_path / "unused-input", output_dir, config)
+
+    assert {path.name: path.read_bytes() for path in output_dir.iterdir()} == {
+        "summary.json": raced_bytes,
+        "observed_projection.csv": b"",
+        "null_statistics.csv": b"",
+    }
+
+
+def test_failed_reservation_never_deletes_a_competitor_replacement(
+    tmp_path, monkeypatch
+):
+    config = _small_output_fixture(monkeypatch)
+    output_dir = tmp_path / "replaced-run"
+    original_open = Path.open
+    opened = {}
+    competitor_bytes = b"competitor result must not be deleted\n"
+    raced_summary = b'{"another_run": true}\n'
+
+    def replacing_open(path, mode="r", *args, **kwargs):
+        if path == output_dir / "summary.json" and mode == "x":
+            # Closing the captured handle permits this replacement on Windows
+            # too, modeling a writer whose pathname changes during reservation.
+            opened["observed_projection.csv"].close()
+            replacement = output_dir / "competitor.tmp"
+            with original_open(replacement, "wb") as stream:
+                stream.write(competitor_bytes)
+            replacement.replace(output_dir / "observed_projection.csv")
+            with original_open(path, "wb") as stream:
+                stream.write(raced_summary)
+        stream = original_open(path, mode, *args, **kwargs)
+        if mode == "x":
+            opened[path.name] = stream
+        return stream
+
+    def reject_csv_write(*_, **__):
+        raise AssertionError("failed reservations must not serialize result data")
+
+    monkeypatch.setattr(Path, "open", replacing_open)
+    monkeypatch.setattr(pd.DataFrame, "to_csv", reject_csv_write)
+    with pytest.raises(ProtocolViolation, match="reservation failed.*fresh output directory"):
+        exp_map_a01.run_protocol(tmp_path / "unused-input", output_dir, config)
+
+    assert all(stream.closed for stream in opened.values())
+    assert {path.name: path.read_bytes() for path in output_dir.iterdir()} == {
+        "summary.json": raced_summary,
+        "observed_projection.csv": competitor_bytes,
+        "null_statistics.csv": b"",
+    }
+
+
+@pytest.mark.parametrize("runner_owned_files", [False, True])
+def test_fresh_results_write_without_changing_controlled_runner_files(
+    tmp_path, monkeypatch, runner_owned_files
+):
+    config = _small_output_fixture(monkeypatch)
+    output_dir = tmp_path / "fresh-run"
+    existing = {}
+    if runner_owned_files:
+        output_dir.mkdir()
+        existing = {
+            "execution_config.json": b'{"locked_runner_config": true}\n',
+            "stdout.log": b"runner stdout\n",
+            "stderr.log": b"runner stderr\n",
+        }
+        for name, content in existing.items():
+            (output_dir / name).write_bytes(content)
+
+    summary = exp_map_a01.run_protocol(tmp_path / "unused-input", output_dir, config)
+
+    assert set(path.name for path in output_dir.iterdir()) == set(existing) | {
+        "summary.json", "observed_projection.csv", "null_statistics.csv"
+    }
+    for name, content in existing.items():
+        assert (output_dir / name).read_bytes() == content
+    assert json.loads((output_dir / "summary.json").read_text(encoding="utf-8")) == summary
+    projection = pd.read_csv(output_dir / "observed_projection.csv")
+    assert len(projection) == 12
+    assert projection.loc[1, "elevation"] == 200
+    nulls = pd.read_csv(output_dir / "null_statistics.csv")
+    assert nulls["realization"].tolist() == [1, 2, 3]
+    assert len(nulls) == summary["null_realizations"] == 3
+    for name in ("summary.json", "observed_projection.csv", "null_statistics.csv"):
+        content = (output_dir / name).read_bytes()
+        assert content.endswith(b"\n")
+        if name.endswith(".csv"):
+            assert b"\r" not in content
+        else:
+            assert content.endswith(os.linesep.encode("ascii"))
