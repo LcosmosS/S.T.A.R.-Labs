@@ -1,7 +1,7 @@
 ![badge](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/badge.jpg) ![S.T.A.R. Labs](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starlabs.jpg)
 
 [![STARMAP](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starmap.png)](https://starmap-star-labs.vercel.app/)
-`(Click Photo for Web Tool Prototype)`
+`(Click Image for Web Tool Prototype)`
 
 ## Symbolic–Topological–Arithmetic–Relativity
 
