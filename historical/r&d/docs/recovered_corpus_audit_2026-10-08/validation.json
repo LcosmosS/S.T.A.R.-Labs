@@ -79,5 +79,16 @@
   },
   "live_production_deployed": false,
   "onedrive_cloud_sync_verified": false,
-  "setup_incident": "execution_setup_incident.json"
+  "setup_incident": "execution_setup_incident.json",
+  "fresh_runner_verification": {
+    "head": "59dfe877855ea67f748eee46b271e32154c70d77",
+    "recovered_intake_run": "https://github.com/LcosmosS/S.T.A.R.-Labs/actions/runs/37737891512",
+    "recovered_intake": "success",
+    "web_run": "https://github.com/LcosmosS/S.T.A.R.-Labs/actions/runs/37737891565",
+    "web": "success",
+    "registry_validation": "success",
+    "unit_test_step": "success",
+    "installed_wheel_import_and_tests": "success",
+    "remaining_workflow_jobs": "in_progress_at_recording"
+  }
 }
