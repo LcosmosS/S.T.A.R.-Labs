@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Metric } from "@/components/viz/formula";
 import snapshot from "@/lib/star/registry-snapshot.json";
+import researchSnapshot from "@/lib/star/research-content-snapshot.json";
 
 export const Route = createFileRoute("/registry")({ component: RegistryPage });
 
@@ -206,6 +207,56 @@ function RegistryPage() {
           </table>
           {rows.length === 0 ? <p className="p-4 text-sm text-muted">No recorded experiments match this search.</p> : null}
         </div>
+      </section>
+
+      <section id="research-content-v0-1" aria-labelledby="research-content-heading" className="space-y-4">
+        <div className="max-w-3xl">
+          <Badge tone="steel">WEB-CONTENT-v0.1 · read-only</Badge>
+          <h2 id="research-content-heading" className="mt-3 font-display text-2xl tracking-tight">Curated research constructions</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            Versioned illustrations, model equations, conditional mathematical deductions, unreplicated historical
+            metrics, and inert recovered notebook references. This content is not part of the controlled experiment
+            registry and cannot authorize scientific support, execution or physical interpretation.
+          </p>
+          <p className="mt-2 break-all font-mono text-xs text-muted">
+            External source digest (not committed): {researchSnapshot.model.externalSource.sha256}
+          </p>
+        </div>
+        <div className="grid gap-4 xl:grid-cols-2">
+          {researchSnapshot.model.items.map((item) => (
+            <article key={item.id} data-research-entry={item.id} className="min-w-0 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge tone={item.status === "derived_conditional" ? "steel" : "warn"}>{item.status.replaceAll("_", " ")}</Badge>
+                <Badge>{item.kind}</Badge>
+                <span className="font-mono text-xs text-muted">{item.epistemic} · {item.id}</span>
+              </div>
+              <h3 className="mt-3 font-display text-xl tracking-tight">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed">{item.summary}</p>
+              {"formula" in item && item.formula ? (
+                <pre className="mt-3 max-w-full overflow-x-auto rounded-md bg-elevated p-3 text-xs leading-relaxed"><code>{item.formula}</code></pre>
+              ) : null}
+              {"diagramSteps" in item && item.diagramSteps ? (
+                <ol aria-label="Research sequence diagram" className="mt-3 flex flex-wrap items-stretch gap-2">
+                  {item.diagramSteps.map((stage, step) => (
+                    <li key={stage} className="rounded-md border border-border bg-elevated px-3 py-2 text-xs">
+                      <span className="mr-2 font-mono text-steel">{step+1}.</span>{stage}
+                    </li>
+                  ))}
+                </ol>
+              ) : null}
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                <span className="font-medium text-fg">Limitation:</span> {item.caveat}
+              </p>
+              <p className="mt-3 text-xs leading-relaxed text-muted">Source: {item.source}</p>
+              {"sourcePath" in item && item.sourcePath ? (
+                <a className="mt-2 inline-block break-all text-xs text-steel underline underline-offset-4"
+                   href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${item.sourcePath}`}
+                   target="_blank" rel="noreferrer">Inspect repository source</a>
+              ) : null}
+            </article>
+          ))}
+        </div>
+        <p className="text-xs text-muted">Publication source: {researchSnapshot.sourcePath}. The web tool does not deserialize models or execute historical notebooks.</p>
       </section>
 
       <section className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
