@@ -128,7 +128,7 @@ This is a second, independent mathematical route to the flatness of each spatial
 ## 6. Computational provenance and scope
 
 - Interpreter: Python 3, package: SymPy 1.14.0.
-- Entry point: `python m1_inh_e1b_metric_first_audit.py`.
+- Canonical entry point: `python m1_inh_e1b_metric_first_audit_v4.py`; earlier versions are retained solely as historical provenance.
 - Every assertion is an exact symbolic-zero identity; no numerical tolerance is used.
 - The produced JSON record includes the SHA-256 hash of the executed script.
 - During development a notebook-cell embedding Gram assertion produced the nonzero residual `-4/(x**2+y**2+1)**2`; follow-up notebook-cell executions triggered coordinate-symbol identity guards. The exact root cause of every cell failure was not established; subsequent **saved-file** `%run` executions of v1–v4 reported PASS. See `execution_provenance.md`. These historical failures remain part of the audit record.
@@ -198,6 +198,6 @@ The branch restricted to \(\mathcal U\) is regular; \(u=0\) is only the boundary
 \]
 No arbitrary \(z\)-dependent additive \(u\)-shift remains. In particular both \(S_1\) and \(S_2\) use componentwise identical \(M,K,f,\Lambda,\epsilon=0,v_0(z),\sigma(z),g_2,g_3,\Delta_\wp\), as required by the frozen \(\mathfrak E[S]|_J\). Only \(A,B_1,B_2,C,h\) vary; none of those appear in this branch construction.
 
-- **General M1-INH-E1a remains pending:** deriving the *general* Szekeres–Szafron evolution and density equations from the unreduced Einstein system and then checking the Weierstrass transformation, rather than verifying this fixed special pair, is a distinct obligation.
+- **General M1-INH-E1a is separately proposed for review in [draft PR #50](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/50):** deriving the *general* Szekeres–Szafron evolution and density equations and checking the Weierstrass reduction is a distinct obligation; this E1b record does not establish its review acceptance.
 
-**Conclusion:** The specified class-relative E1b constructive pair has a passing independent metric-first symbolic computation and an exact invariant inequivalence argument. Formal registry promotion awaits the registered general E1a predecessor and external/maintainer review of the proof certificate.
+**Conclusion:** The specified class-relative E1b constructive pair has a passing independent metric-first symbolic computation and an exact invariant inequivalence argument. Formal registry promotion awaits external/maintainer review of both the separately proposed general E1a predecessor and this E1b proof certificate.
