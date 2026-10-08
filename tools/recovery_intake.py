@@ -13,6 +13,7 @@ from collections import Counter
 INTAKE = 'data/intake/recovered/2026-10-08/manifest.json'
 CODE = 'historical/r&d/code_log/2026-10-08_recovered/manifest.json'
 QUARANTINE = 'data/quarantine/2026-10-03_audit/relocation.json'
+ENVIRONMENT_HISTORY = 'historical/r&d/docs/recovered_corpus_audit_2026-10-08/upstream_environment_integrity.json'
 
 
 def digest(path):
@@ -130,7 +131,9 @@ def process(repo, output=None):
     records = intake['assets'] + code['artifacts'] + code['queries'] + quarantine['files']
     records += [{'path': n['output_path'], 'sha256': n['output_sha256']} for n in code['notebooks']]
     seen = verify(repo, records)
+    environment_history = verify(repo, read_json(repo, ENVIRONMENT_HISTORY)['files'])
     result = {'schema_version': 1, 'verified_payload_paths': len(seen),
+              'verified_archived_environment_paths': len(environment_history),
               'verified_recovery_overlay_rows': verify_recovery_registries(repo),
               'recovered_programs_executed': False, 'models_deserialized': False,
               'eligibility_promoted': False, 'source_manifest_sha256': digest(repo / INTAKE)}

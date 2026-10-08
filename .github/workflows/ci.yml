@@ -60,6 +60,7 @@ jobs:
           /tmp/star-wheel/bin/python - <<'PY'
           from pathlib import Path
           import src
+          import tools.recovery_intake as recovery_intake
           from src.pipeline.full_inference import run_full_inference
           from src.acsc.projection import project
           from src.likelihoods.data.planck_compressed import PLANCK_COMPRESSED
@@ -68,6 +69,8 @@ jobs:
           assert "site-packages" in str(package_path), package_path
           assert callable(run_full_inference)
           assert callable(project)
+          assert callable(recovery_intake.process)
+          assert "site-packages" in str(Path(recovery_intake.__file__).resolve())
           assert PLANCK_COMPRESSED is not None
           print("clean wheel imports passed:", package_path)
           PY

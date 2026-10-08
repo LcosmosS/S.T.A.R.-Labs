@@ -59,5 +59,14 @@
       30,
       31
     ]
+  },
+  {
+    "id": "REC-008",
+    "assessment": "Upstream PR #48 altered four hash-addressed historical environment fragments. Original extraction bytes are restored and all upstream revisions preserved separately; active runtime dependency updates are retained.",
+    "charter_sections": [
+      31,
+      36,
+      37
+    ]
   }
 ]

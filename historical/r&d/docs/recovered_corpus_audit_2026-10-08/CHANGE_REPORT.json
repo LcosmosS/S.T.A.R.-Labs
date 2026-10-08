@@ -1,5 +1,5 @@
 {
-  "base_commit": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f",
+  "base_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
   "scope": "entire recovery branch compared with audited main base",
   "changed_paths": [
     {
@@ -245,6 +245,22 @@
     {
       "git_status": "A",
       "path": "experiments/reconstruction_candidates/2026-10-08/SDSS_HI_recovered_sources.md"
+    },
+    {
+      "git_status": "M",
+      "path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-00751__requirements.txt__fd76a2f9a15b.txt"
+    },
+    {
+      "git_status": "M",
+      "path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-00990__requirements.txt__cecb639b2aa9.txt"
+    },
+    {
+      "git_status": "M",
+      "path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-01043__requirements.txt__a6cb608a9aba.txt"
+    },
+    {
+      "git_status": "M",
+      "path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-01217__requirements.txt__4595742d658e.txt"
     },
     {
       "git_status": "A",
@@ -5432,6 +5448,10 @@
     },
     {
       "git_status": "A",
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/CHANGE_REPORT.json"
+    },
+    {
+      "git_status": "A",
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/CHANGE_REPORT.md"
     },
     {
@@ -5457,6 +5477,26 @@
     {
       "git_status": "A",
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/dropbox_metadata_snapshots.json"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/LC-00751__requirements.txt__fd76a2f9a15b.txt"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/LC-00990__requirements.txt__cecb639b2aa9.txt"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/LC-01043__requirements.txt__a6cb608a9aba.txt"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/LC-01217__requirements.txt__4595742d658e.txt"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/README.md"
     },
     {
       "git_status": "A",
@@ -5532,11 +5572,19 @@
     },
     {
       "git_status": "A",
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/upstream_environment_integrity.json"
+    },
+    {
+      "git_status": "A",
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/validation.json"
     },
     {
       "git_status": "A",
       "path": "historical/r&d/quarantine/2026-10-03_audit/ACTIVE_LOCATION.md"
+    },
+    {
+      "git_status": "M",
+      "path": "pyproject.toml"
     },
     {
       "git_status": "M",
@@ -5597,10 +5645,6 @@
     {
       "git_status": "M",
       "path": "web_tool/src/routes/registry.tsx"
-    },
-    {
-      "git_status": "A",
-      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/CHANGE_REPORT.json"
     }
   ],
   "newly_populated_repository_directories": [
@@ -5629,7 +5673,8 @@
     "historical/r&d/code_log/2026-10-08_recovered/queries",
     "historical/r&d/code_log/2026-10-08_recovered/saved_outputs",
     "historical/r&d/code_log/2026-10-08_recovered/scripts",
-    "historical/r&d/docs/recovered_corpus_audit_2026-10-08"
+    "historical/r&d/docs/recovered_corpus_audit_2026-10-08",
+    "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions"
   ],
   "external_created_directory": "C:\\Users\\pmqr7\\OneDrive\\code log\\2026-10-08\\recovered_complete",
   "scientific_originals_deleted": 0,

@@ -1,5 +1,5 @@
 {
-  "base_commit": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f",
+  "base_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
   "python_tests": {
     "passed": 217,
     "failed": 0,
@@ -23,8 +23,8 @@
         "status": 200,
         "title": "STARMAP",
         "hasCanvas": false,
-        "bodyTextLen": 9444,
-        "bodyTextHash": "3791b696bc3173b48215b0c2515587aeee8a48b1476e0c49ffdccbfb722d9bdb",
+        "bodyTextLen": 9693,
+        "bodyTextHash": "3783266245459a5f1ea77ac8334d38877de30cb15ff5ce82e6e982e9a6383a4e",
         "bodyTextPrefix": "STARMAP by S.T.A.R. Labs TOY H0_EFF 72.62 km/s/Mpc CATALOG 160 f",
         "horizontalOverflow": false,
         "consoleErrors": [],
@@ -37,8 +37,8 @@
         "status": 200,
         "title": "STARMAP",
         "hasCanvas": false,
-        "bodyTextLen": 9293,
-        "bodyTextHash": "4f794aebf454ab2273f5f0a822762dd78d3d26455ad7235149c98bfdb5ee5e96",
+        "bodyTextLen": 9542,
+        "bodyTextHash": "e105e92835a8488dc5dc9ff07ace932dd0e6bce39a9fb9e7388da136036a2589",
         "bodyTextPrefix": "STARMAP by S.T.A.R. Labs Illustrative prototype. Explore toy mod",
         "horizontalOverflow": false,
         "consoleErrors": [],
@@ -52,6 +52,7 @@
     "divergesFromBaseline": false,
     "baselineReasons": []
   },
+  "upstream_environment_history": "Eight archival paths verified; four original frozen fragments restored and four upstream dependency revisions retained separately.",
   "lfs": {
     "unique_remote_objects_uploaded_and_empty_cache_verified": 286,
     "payload_paths": 291,
@@ -65,6 +66,7 @@
     "status": "complete",
     "schema_version": 1,
     "verified_payload_paths": 1333,
+    "verified_archived_environment_paths": 8,
     "verified_recovery_overlay_rows": {
       "claim_evidence_recovery_2026-10-08.csv": 51,
       "experiment_recovery_2026-10-08.csv": 25,

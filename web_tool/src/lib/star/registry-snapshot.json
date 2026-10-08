@@ -2,22 +2,22 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "721419c217427f6c78975ac8c071177429ee1c1b4c0a97bfce6ef9096c5b78aa",
+  "contentSha256": "e25d238fe0c227d91949192b45e859e95301f171b7aa72d9b2ffb199b458f5a2",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
-      "sha256": "2ff8c9911ee21eb4783790ae65867679ff2b337ec6e126a8e77b6adc8e875c69",
-      "sizeBytes": 3569
+      "sha256": "631f4b6b6b685937711f7348bc2e589a4186a6577060cb30424fe58470840fef",
+      "sizeBytes": 3454
     },
     {
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/findings.json",
-      "sha256": "87a1134998cac6d0d9ce7aabda51c984aba2571c8fabda429fe9b2b16cd284f6",
-      "sizeBytes": 2021
+      "sha256": "0d03eb6034d2738d259e3e677280d323544d161ae94d01a582c823f54fd21b70",
+      "sizeBytes": 2284
     },
     {
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json",
-      "sha256": "8c50e091956efebeefebfc5f772408444bce8d7ce2c9cf90736a9a469c7ba32a",
-      "sizeBytes": 6554
+      "sha256": "15faf73b9cce745f2aa78d32a2276e3393c6d7fe0f3da005522054881fca2a47",
+      "sizeBytes": 7164
     },
     {
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/summary.json",
@@ -741,18 +741,34 @@
           30,
           31
         ]
+      },
+      {
+        "id": "REC-008",
+        "assessment": "Upstream PR #48 altered four hash-addressed historical environment fragments. Original extraction bytes are restored and all upstream revisions preserved separately; active runtime dependency updates are retained.",
+        "charter_sections": [
+          31,
+          36,
+          37
+        ]
       }
     ],
     "mergeHistory": {
       "queried_at": "2026-10-08",
-      "main_head": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f",
+      "main_head": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
       "recent_merged_prs": [
         {
-          "number": 49,
-          "title": "Preserve M1-INH-E1b metric-first proof evidence; hand off general E1a",
-          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/49",
-          "merged_at": "2026-10-08T04:29:44Z",
-          "merge_commit_sha": "3aa9da078fe7968fe4e82f6abc88e823fc4009cc"
+          "number": 47,
+          "title": "Bump source-map-js from 1.2.1 to 1.2.2 in /web_tool",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/47",
+          "merged_at": "2026-10-08T05:38:43Z",
+          "merge_commit_sha": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b"
+        },
+        {
+          "number": 48,
+          "title": "Bump jupyterlab from 4.2.1 to 4.5.11 in /historical/r&d/code_log/2026-10-03/local/review candidates",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/48",
+          "merged_at": "2026-10-08T05:38:20Z",
+          "merge_commit_sha": "7cb121c21c317fc16d92f54ca195d6a22af45507"
         },
         {
           "number": 50,
@@ -760,6 +776,13 @@
           "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/50",
           "merged_at": "2026-10-08T04:30:45Z",
           "merge_commit_sha": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f"
+        },
+        {
+          "number": 49,
+          "title": "Preserve M1-INH-E1b metric-first proof evidence; hand off general E1a",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/49",
+          "merged_at": "2026-10-08T04:29:44Z",
+          "merge_commit_sha": "3aa9da078fe7968fe4e82f6abc88e823fc4009cc"
         },
         {
           "number": 46,

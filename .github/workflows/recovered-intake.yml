@@ -17,8 +17,9 @@ jobs:
           persist-credentials: false
       - name: Fetch real recovery and quarantine LFS payloads
         run: |
+          git lfs install --local
           git lfs fetch --include='data/intake/recovered/**,data/quarantine/**,historical/r&d/code_log/2026-10-08_recovered/saved_outputs/**' origin HEAD
-          git lfs checkout data/intake/recovered/ data/quarantine/ 'historical/r&d/code_log/2026-10-08_recovered/saved_outputs/'
+          git lfs checkout 'data/intake/recovered/**' 'data/quarantine/**' 'historical/r&d/code_log/2026-10-08_recovered/saved_outputs/**'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
