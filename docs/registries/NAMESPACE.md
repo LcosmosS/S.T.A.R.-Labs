@@ -27,9 +27,37 @@ The source definitions must be compared before any merge. The table records the 
 | `REPO-CSV-v0.2:EXP-RTCH-B01` | Standard-physics recovery-limit test | `STAR-PDF-v0.2:EXP-RTCH-B01`: RTCH Mathematical Consistency | Related scope; protocol comparison pending |
 | `REPO-CSV-v0.2:EXP-ECC-B01` | Independent field/cohomology test | `STAR-PDF-v0.2:EXP-ECC-B01`: Entropy/Cohomology Consistency | Related scope; protocol comparison pending |
 
+## Theory-search namespace
+
+`P0-SF-v0.1` and `M1-INH-E1` use the `THEORY-SEARCH-v0.1` governance
+namespace. These identifiers are not aliases for historical PDF experiment IDs
+and are not controlled numerical experiments.
+
+- `P0-SF-v0.1` is an operationally closed five-candidate parent-theory search
+  frame. "Exhausted" means only that all registered candidates have terminal
+  audited states (`N_unresolved=0`).
+- Exhaustion may retire `ACSC-MECH-v0.1` within this registered program. It
+  does not assert that no future or unregistered physical theory could realize
+  an elliptic structure mechanism.
+- `M1-INH-E1` is a parallel class-relative obstruction program for the
+  Szekeres-Szafron sector. A successful counterexample establishes elliptic
+  insufficiency only for the registered class or observable.
+- The parent-theory candidate list is immutable for v0.1 after audit begins.
+  Later theories require a new search-frame version.
+- No theory-search record is controlled-execution, controlled-support, or
+  physical-support eligible at registration.
+
+The machine-readable definitions are
+`registry/theory_search_registry_v0.1.csv`,
+`registry/theory_candidate_registry_v0.1.csv`, and
+`registry/theory_obstruction_registry_v0.1.csv`. The corresponding protocols
+are `preregistrations/P0-ANSATZ-001/protocol.md` and
+`preregistrations/M1-INH-E1/protocol.md`.
+
 ## Source namespaces
 
-- `REPO-CSV-v0.2`: six umbrella claims and 18 planned controlled experiment definitions, with the existing dataset/parameter/null controls. Original unqualified IDs, statements, and definitions remain stable. New qualified fields prevent accidental joins.
+- `REPO-CSV-v0.2`: eight umbrella/mechanism claims and 18 controlled experiment definitions, with the existing dataset/parameter/null controls. The two new mechanism claims have no experiment crosswalk because P0/M1-INH are governance/theory programs rather than executable statistical experiments. Original unqualified IDs, statements, and definitions remain stable. New qualified fields prevent accidental joins.
+- `THEORY-SEARCH-v0.1`: the closed P0 parent-theory search frame, its five prospectively frozen candidates, and the M1-INH-E1 class-relative obstruction program. This namespace carries theory-search governance and does not imply controlled execution or physical support.
 - `STAR-PDF-v0.2`: the historical 51 claims and 25 experiment definitions, with an audited crosswalk covering all 51 claims. Baseline classifications, statements, reported results and original unresolved references remain visible beside the current assessment.
 - `WEB-DISPLAY-main`: display claims in `web_tool/scr/lib/star/claims.ts`. This source is not a controlled registry; original display text/status is preserved and any related PDF claims are explicitly unconfirmed relationships.
 - `STAR-AUDIT-2026-10-03`: the imported E-LCL/E-DRV finding IDs. These diagnose inspected artifacts or document variants; they are not universal scientific falsifications.

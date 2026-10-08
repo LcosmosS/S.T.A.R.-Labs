@@ -4,7 +4,7 @@ import pytest
 from scripts.validate_audit_registries import (
     assert_controlled_input, assert_namespace_identity,
     assert_no_support_promotion, controlled_input_eligible,
-    assert_crosswalk_snapshot,
+    assert_crosswalk_snapshot, assert_original_control_snapshot,
 )
 
 def test_quarantined_valid_hash_is_ineligible_even_when_planned_protocol_references_it():
@@ -56,3 +56,93 @@ def test_crosswalk_assessment_mutation_is_rejected_while_links_remain_valid(fiel
     row[field]='SUPPORTED' if field=='Current_Assessment' else 'I'
     with pytest.raises(AssertionError,match='crosswalk mapped assessment changed'):
         assert_crosswalk_snapshot(row,source)
+
+
+def _claim_row(claim_id="CLAIM-BASE"):
+    return {
+        "Claim_ID": claim_id,
+        "Claim_Type": "theory",
+        "Statement": "baseline statement",
+        "Status": "hypothesis",
+        "Evidence_Requirement": "baseline evidence",
+        "Registry_Namespace": "REPO-CSV-v0.2",
+        "Qualified_Claim_ID": f"REPO-CSV-v0.2:{claim_id}",
+        "Related_Audit_Claim_IDs": "",
+        "Relation_Status": "related_scope_only_not_alias",
+        "Current_Audit_Assessment": "baseline",
+        "Audit_Finding_IDs": "",
+        "Controlled_Support_Eligible": "false",
+        "Physical_Support_Eligible": "false",
+    }
+
+
+def test_audit_baseline_allows_explicit_post_audit_nonalias_claim():
+    baseline = _claim_row()
+    snapshot = {
+        "fields": [
+            "Claim_ID",
+            "Claim_Type",
+            "Statement",
+            "Status",
+            "Evidence_Requirement",
+        ],
+        "rows": [baseline],
+    }
+    added = _claim_row("CLAIM-NEW")
+    added["Relation_Status"] = "new_control_claim_no_historical_alias"
+    added["Current_Audit_Assessment"] = "post-audit claim; unsupported"
+
+    assert_original_control_snapshot(
+        "claim_evidence_v0.2.csv",
+        snapshot,
+        [baseline, added],
+    )
+
+
+def test_audit_baseline_rejects_new_claim_that_inherits_historical_audit_identity():
+    baseline = _claim_row()
+    snapshot = {
+        "fields": [
+            "Claim_ID",
+            "Claim_Type",
+            "Statement",
+            "Status",
+            "Evidence_Requirement",
+        ],
+        "rows": [baseline],
+    }
+    added = _claim_row("CLAIM-NEW")
+    added["Relation_Status"] = "new_control_claim_no_historical_alias"
+    added["Related_Audit_Claim_IDs"] = "STAR-PDF-v0.2:CORE-001"
+
+    with pytest.raises(AssertionError, match="cannot inherit audit claim IDs"):
+        assert_original_control_snapshot(
+            "claim_evidence_v0.2.csv",
+            snapshot,
+            [baseline, added],
+        )
+
+
+def test_audit_baseline_rejects_mutation_of_original_claim_when_new_claim_exists():
+    baseline = _claim_row()
+    snapshot = {
+        "fields": [
+            "Claim_ID",
+            "Claim_Type",
+            "Statement",
+            "Status",
+            "Evidence_Requirement",
+        ],
+        "rows": [baseline],
+    }
+    mutated = dict(baseline)
+    mutated["Statement"] = "changed historical statement"
+    added = _claim_row("CLAIM-NEW")
+    added["Relation_Status"] = "new_control_claim_no_historical_alias"
+
+    with pytest.raises(AssertionError, match="original controlled ID/definition changed"):
+        assert_original_control_snapshot(
+            "claim_evidence_v0.2.csv",
+            snapshot,
+            [mutated, added],
+        )
