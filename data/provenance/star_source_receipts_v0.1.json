@@ -1,0 +1,61 @@
+{
+  "schema_version": "star-source-receipts-v0.1",
+  "acquisition_mode": "Dropbox file metadata ONLY; bytes and provenance lineage not verified",
+  "audit_date": "2026-10-08",
+  "evidence_status": "source_candidate_not_controlled",
+  "source_receipts": [
+    {
+      "name": "SDSSDR18_200000.csv",
+      "dropbox_path": "/STAR/SDSSDR18_200000.csv",
+      "size_bytes": 33007497,
+      "revision": "0165d4248dbdc1b00000003905d91d3",
+      "client_modified": "2025-04-05T01:57:25Z",
+      "sha256": null
+    },
+    {
+      "name": "mangaHIall.csv",
+      "dropbox_path": "/STAR/mangaHIall.csv",
+      "size_bytes": 1952832,
+      "revision": "0165d424144978000000003905d91d3",
+      "client_modified": "2025-04-03T05:36:04Z",
+      "sha256": null
+    },
+    {
+      "name": "mangaHIall.fits",
+      "dropbox_path": "/STAR/mangaHIall.fits",
+      "size_bytes": 1584000,
+      "revision": "0165d4240ca937100000003905d91d3",
+      "client_modified": "2025-04-03T04:39:31Z",
+      "sha256": null
+    },
+    {
+      "name": "pipe3d_data.csv",
+      "dropbox_path": "/STAR/pipe3d_data.csv",
+      "size_bytes": 86685754,
+      "revision": "0165d42593dfab900000003905d91d3",
+      "client_modified": "2025-04-03T05:31:11Z",
+      "sha256": null
+    },
+    {
+      "name": "filtered_Pipe3D.csv",
+      "dropbox_path": "/STAR/filtered_Pipe3D.csv",
+      "size_bytes": 2312587,
+      "revision": "0165d424013f68f00000003905d91d3",
+      "client_modified": "2025-04-03T13:45:13Z",
+      "sha256": null
+    }
+  ],
+  "required_before_lineage_acceptance": [
+    "SHA256 raw bytes and upstream release",
+    "explicit SQL query and export binding and ORDER BY absence",
+    "ICRS epoch/units and coordinate error model",
+    "class STAR contamination/physical galaxy selection",
+    "MaNGA ID semantics and survey footprint",
+    "Pipe3D target derivation and split"
+  ],
+  "controls": {
+    "execution_eligible": false,
+    "controlled_support_eligible": false,
+    "physical_support_eligible": false
+  }
+}
