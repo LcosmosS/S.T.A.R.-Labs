@@ -25,10 +25,10 @@ try {
       assert.match(url, /^https:\/\/github\.com\/LcosmosS\/S\.T\.A\.R\.-Labs\/blob\/main\//);
     }
     await page.getByLabel("Filter research content type").selectOption("diagram");
-    assert.match(await page.getByRole("status").innerText(), /2 of 9/);
+    await page.getByRole("status").filter({ hasText: /2 of 9/ }).waitFor();
     await page.getByLabel("Filter research content type").selectOption("all");
     await page.getByLabel("Search research content").fill("E1A");
-    assert.match(await page.getByRole("status").innerText(), /1 of 9/);
+    await page.getByRole("status").filter({ hasText: /1 of 9/ }).waitFor();
     assert.equal(await page.getByRole("link", { name: "View cited repository source" }).count(), 1);
     await page.getByLabel("Search research content").fill("");
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
