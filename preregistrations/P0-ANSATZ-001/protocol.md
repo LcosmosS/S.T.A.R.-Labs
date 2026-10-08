@@ -112,6 +112,144 @@ The canonical machine-readable definitions are in
 After the first detailed P0 derivation begins, this list is immutable for
 v0.1. A newly encountered theory requires a new search-frame version.
 
+## Registered representative dynamics
+
+The five search classes are not placeholders for arbitrary within-class model
+selection. Their dynamical forms are fixed here before P0 audit work begins.
+Parameters may remain symbolic where the parent theory genuinely contains a
+continuous physical parameter; such parameters may not be chosen using
+elliptic behavior or any target observable.
+
+### P0-T001 — GR + irrotational pressureless matter
+
+The representative theory is Einstein gravity with cosmological constant and
+irrotational geodesic dust:
+
+[
+G_{mu
+u}+Lambda g_{mu
+u}=8pi G,ho u_mu u_
+u,
+]
+
+[
+u^mu
+abla_mu u^
+u=0,
+qquad
+
+abla_mu(ho u^mu)=0,
+]
+
+with vanishing vorticity of the dust congruence. No additional scalar, vector,
+defect, or phenomenological structure field may be added during this audit.
+
+Representative independent source:
+`10.1103/PhysRevD.86.023520`.
+
+### P0-T002 — Einstein-Vlasov collisionless matter
+
+The representative theory is the Einstein equations coupled to a
+collisionless one-particle distribution function (f(x,p)) on the mass shell:
+
+[
+G_{mu
+u}+Lambda g_{mu
+u}=8pi G,T_{mu
+u}[f],
+]
+
+with (f) satisfying the general-relativistic Vlasov equation
+
+[
+p^murac{partial f}{partial x^mu}
+-
+Gamma^i_{alphaeta}p^alpha p^eta
+rac{partial f}{partial p^i}=0.
+]
+
+No self-interaction beyond gravity is added during P0-SF-v0.1.
+
+Representative independent source:
+`10.1088/1475-7516/2013/11/002`.
+
+### P0-T003 — GR + canonical exponential quintessence
+
+The representative theory is
+
+[
+S=
+int d^4xsqrt{-g}
+left[
+rac{M_{m Pl}^2}{2}R
+-rac12
+abla_muphi
+abla^muphi
+-V_0e^{-lambdaphi/M_{m Pl}}
+ight]
++S_m.
+]
+
+The exponential functional form is frozen. (V_0) and (lambda) are parent
+theory parameters and may not be selected because of elliptic integrability,
+topological similarity, or historical ACSC behavior.
+
+Representative independent source:
+`10.1088/0264-9381/30/21/214003`.
+
+### P0-T004 — Brans-Dicke-Lambda gravity
+
+The representative Jordan-frame scalar-tensor theory is
+
+[
+S=
+rac{1}{16pi}
+int d^4xsqrt{-g}
+left[
+phi R
+-
+rac{omega_{m BD}}{phi}
+
+abla_muphi
+abla^muphi
+-
+2Lambda
+ight]
++S_m.
+]
+
+The Brans-Dicke parameter remains a physical theory parameter. It may not be
+selected to create elliptic behavior. The appropriate general-relativistic
+recovery regime must be identified as part of the P0 audit.
+
+Representative independent source:
+`10.3847/2041-8213/AB53E9`.
+
+### P0-T005 — Einstein-Abelian-Higgs defect cosmology
+
+The representative theory is
+
+[
+S=
+int d^4xsqrt{-g}
+left[
+rac{M_{m Pl}^2}{2}R
+-rac14F_{mu
+u}F^{mu
+u}
+-|D_muPhi|^2
+-rac{lambda}{4}(|Phi|^2-eta^2)^2
+ight].
+]
+
+The (U(1)) gauge structure and symmetry-breaking potential are the standard
+Abelian-Higgs defect sector. No ECC-R1 entropy coupling, historical S.T.A.R.
+Chern-class interpretation, or additional ACSC-motivated interaction may be
+introduced.
+
+Representative independent structure-formation source:
+`10.1088/1475-7516/2012/05/026`.
+
 ## One-representative rule
 
 Each candidate class has one registered representative definition. After audit
@@ -297,6 +435,25 @@ structure formation, kinetic matter, dark energy, modified gravity, or
 defect-seeded structure formation. Representative sources are recorded in the
 candidate registry. Presence of elliptic structure was not an admission
 criterion.
+
+## Shared-failure interpretation
+
+Uniform failure across the five candidates is not counted as five independent
+pieces of evidence when the audits identify the same underlying obstruction.
+Each terminal negative candidate must record:
+
+- the gate at which it failed;
+- the physical/mathematical failure mechanism;
+- the permanent audit-record path.
+
+If multiple candidates fail because independent spatial/phase-space modes
+remain invisible to the endogenous elliptic sector, the synthesis must report
+that as a **shared obstruction pattern within P0-SF-v0.1** rather than implying
+five unrelated confirmations.
+
+A shared obstruction may motivate a class-spanning proposition only to the
+extent that its assumptions are actually proved for the registered candidates.
+It does not become a universal no-go theorem by repetition.
 
 ## Execution boundary
 
