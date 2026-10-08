@@ -17,6 +17,10 @@ CHANGED_REGISTRY_TABLES = [
     "null_registry_v0.1.csv",
     "parameter_registry_v0.1.csv",
     "placeholder_tbd_reconciliation_matrix_v0.1.csv",
+    "claim_evidence_v0.2.csv",
+    "theory_search_registry_v0.1.csv",
+    "theory_candidate_registry_v0.1.csv",
+    "theory_obstruction_registry_v0.1.csv",
 ]
 
 
