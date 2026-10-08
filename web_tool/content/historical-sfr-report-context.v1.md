@@ -10,6 +10,10 @@ The report describes `L_cosmo(s)=Σ_(n≥1) a_n n^(-s)`, where `a_n` is a number
 
 The report gives 5-fold test MSE values `0.3904, 0.4312, 0.4420, 0.4322, 0.4371`, reporting mean `0.4266` and dispersion `0.0185`. These are **reported observations**, not controlled results. The dataset is named `Stellar_Mass2_Table_cleaned.csv`; exact input revision, code/seed, feature/target exclusions, split assignments, imputation fitting order and matched null are not bound here. The report also describes fitting 'formula coefficients' with a Random Forest; that does not itself yield fixed linear coefficients. The claimed interpretation of rank as independent physical drivers is conjectural.
 
+## Exact positivity obstruction (mathematical deduction under the report's finite-bin definition)
+
+For a finite number \(B\) of bins, the report defines \(a_n\) as a nonnegative count and \(L_{cosmo}(s)=\sum_{n=1}^B a_n n^{-s}\). If at least one bin is occupied, \(L_{cosmo}(1)=\sum a_n/n>0\). Thus this finite sum has **no zero at \(s=1\)**, and a nonzero derivative does not imply an order-one zero or BSD-type rank. This addresses the exact reported construction without changing the historical report; a different signed/infinite-series model would require a new definition and review.
+
 ## Required before any promotion
 
 - Lock original data identity, download/query SQL, row-level keys, target, preprocessing and join lineage.

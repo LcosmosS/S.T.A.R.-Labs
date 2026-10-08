@@ -16,6 +16,10 @@ and the controlled spec's binding checks. It displays declared gates without
 editing them or granting execution. Run `npm run registry:sync` after intentional
 canonical source changes; `npm run registry:check` rejects a stale snapshot.
 
+## Research content and historical SFR addendum
+
+The separate /research catalog is generated from `content/research-content.v1.json` and remains distinct from /registry's controlled evidence records. The 2026-10-08 merge resolution retained PRs #59–#60 as the canonical source and page implementation, while adding explicit finite-positive-bin mathematics and unreplicated SFR report context from PR #61. No eligibility or physics-support flags were promoted. Use `npm run research:check` and review the desktop/mobile browser smoke test.
+
 ## Development and verification
 
 Use Node 24 and npm. From `web_tool`, run `npm ci`, `npm test`, `npm run build`, and

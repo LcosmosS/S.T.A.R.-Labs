@@ -31,3 +31,22 @@ test("CLI check gate succeeds on committed snapshot", () => {
   const r = spawnSync(process.execPath, ["scripts/sync-research-content.mjs", "--check"], { encoding: "utf8" });
   assert.equal(r.status, 0, r.stderr);
 });
+
+test("merged historical SFR additions preserve scientific-status barriers", () => {
+  const source = model.entries;
+  assert.equal(source.length, 12);
+  const positivity = source.find(e => e.id === "SFR-FINITE-L1");
+  const metric = source.find(e => e.id === "SFR-CV-UNVERIFIED");
+  const ansatz = source.find(e => e.id === "SFR-ADD-ANSATZ");
+  assert.equal(positivity.epistemic, "D");
+  assert.equal(positivity.status, "derived_mathematics");
+  assert.equal(metric.status, "historical_exploratory");
+  assert.equal(ansatz.status, "historical_exploratory");
+  assert.match(positivity.caveat, /nonzero derivative/);
+  assert.match(metric.caveat, /not controlled/);
+  for (const entry of [positivity, metric, ansatz]) {
+    assert.equal(entry.controlledExecutionEligible, false);
+    assert.equal(entry.controlledSupportEligible, false);
+    assert.equal(entry.physicalSupportEligible, false);
+  }
+});
