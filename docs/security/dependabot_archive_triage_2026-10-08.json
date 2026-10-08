@@ -41,7 +41,12 @@
       "github_state_before": "open",
       "assessment": "archived_environment_record_not_an_active_installation_input",
       "proposed_dismissed_reason": "not_used",
-      "github_state_after": "not_yet_changed"
+      "github_state_after": "dismissed",
+      "dismissed_reason": "not_used",
+      "dismissed_at": "2026-10-08T07:54:10Z",
+      "dismissed_by": "LcosmosS",
+      "dismissed_comment": "Archived environment record; not installed by CI/Docker. SHA256 ea1d64caedb4ea131724a4b43d2df51775aa43fcc2fbab96407c50a508fd33f6. Frozen integrity verified; root dependencies are patched. Review: https://github.com/LcosmosS/S.T.A.R.-Labs/pull/55",
+      "verification": "GitHub API GET after dismissal"
     },
     {
       "number": 107,
@@ -57,7 +62,12 @@
       "github_state_before": "open",
       "assessment": "archived_environment_record_not_an_active_installation_input",
       "proposed_dismissed_reason": "not_used",
-      "github_state_after": "not_yet_changed"
+      "github_state_after": "dismissed",
+      "dismissed_reason": "not_used",
+      "dismissed_at": "2026-10-08T07:54:12Z",
+      "dismissed_by": "LcosmosS",
+      "dismissed_comment": "Archived environment record; not installed by CI/Docker. SHA256 ea1d64caedb4ea131724a4b43d2df51775aa43fcc2fbab96407c50a508fd33f6. Frozen integrity verified; root dependencies are patched. Review: https://github.com/LcosmosS/S.T.A.R.-Labs/pull/55",
+      "verification": "GitHub API GET after dismissal"
     },
     {
       "number": 108,
@@ -73,7 +83,12 @@
       "github_state_before": "open",
       "assessment": "archived_environment_record_not_an_active_installation_input",
       "proposed_dismissed_reason": "not_used",
-      "github_state_after": "not_yet_changed"
+      "github_state_after": "dismissed",
+      "dismissed_reason": "not_used",
+      "dismissed_at": "2026-10-08T07:54:14Z",
+      "dismissed_by": "LcosmosS",
+      "dismissed_comment": "Archived environment record; not installed by CI/Docker. SHA256 8984a676491f2f13a1284bd9ecf52cd53c123e889972d1bf7c43a80b1996c2cf. Frozen integrity verified; root dependencies are patched. Review: https://github.com/LcosmosS/S.T.A.R.-Labs/pull/55",
+      "verification": "GitHub API GET after dismissal"
     },
     {
       "number": 109,
@@ -89,7 +104,12 @@
       "github_state_before": "open",
       "assessment": "archived_environment_record_not_an_active_installation_input",
       "proposed_dismissed_reason": "not_used",
-      "github_state_after": "not_yet_changed"
+      "github_state_after": "dismissed",
+      "dismissed_reason": "not_used",
+      "dismissed_at": "2026-10-08T07:54:15Z",
+      "dismissed_by": "LcosmosS",
+      "dismissed_comment": "Archived environment record; not installed by CI/Docker. SHA256 8984a676491f2f13a1284bd9ecf52cd53c123e889972d1bf7c43a80b1996c2cf. Frozen integrity verified; root dependencies are patched. Review: https://github.com/LcosmosS/S.T.A.R.-Labs/pull/55",
+      "verification": "GitHub API GET after dismissal"
     },
     {
       "number": 110,
@@ -105,7 +125,21 @@
       "github_state_before": "open",
       "assessment": "archived_environment_record_not_an_active_installation_input",
       "proposed_dismissed_reason": "not_used",
-      "github_state_after": "not_yet_changed"
+      "github_state_after": "dismissed",
+      "dismissed_reason": "not_used",
+      "dismissed_at": "2026-10-08T07:54:17Z",
+      "dismissed_by": "LcosmosS",
+      "dismissed_comment": "Archived environment record; not installed by CI/Docker. SHA256 3a06d7bf77573da572f99af1c18b1433d0fb1c2b2fb136dcde1661bf037d64c8. Frozen integrity verified; root dependencies are patched. Review: https://github.com/LcosmosS/S.T.A.R.-Labs/pull/55",
+      "verification": "GitHub API GET after dismissal"
     }
-  ]
+  ],
+  "review_pull_request": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/55",
+  "validation": {
+    "python_tests_passed": 217,
+    "python_test_warnings": 15,
+    "active_manifest_advisory_ranges": "excluded after proposed RTCH minimum change",
+    "historical_environment_paths_verified": 8,
+    "historical_bytes_changed": 0,
+    "remote_alert_states_verified": 5
+  }
 }

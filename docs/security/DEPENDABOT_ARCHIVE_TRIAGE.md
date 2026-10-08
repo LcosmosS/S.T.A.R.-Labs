@@ -20,8 +20,11 @@ Root `requirements.txt` already pins those patched versions. A separate active
 manifest, `RTCH_E1/requirements.txt`, allowed `scikit-learn>=1.4`; this change raises
 the minimum to `>=1.5.0`. Experiment eligibility and scientific results are unchanged.
 
-The five reviewed archive-only alerts qualify for the GitHub dismissal reason
-`not_used`, with an alert-specific comment recording the file hash and this review.
+The five reviewed archive-only alerts were dismissed on GitHub with reason
+`not_used`, with an alert-specific comment recording the file hash and
+[PR #55](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/55). Each dismissal was
+verified by a fresh GitHub API read. The active RTCH minimum change remains
+proposed until that PR merges. All 217 existing Python tests passed locally.
 Keep Dependabot monitoring enabled. Do not treat update exclusions, renamed files,
 or this document as proof that an alert was closed. The machine-readable record
 below reports the actual verified GitHub state after triage.
