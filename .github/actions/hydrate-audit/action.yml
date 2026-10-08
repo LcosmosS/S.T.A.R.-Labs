@@ -1,0 +1,9 @@
+name: Hydrate canonical audit quarantine
+description: Fetch only the real quarantined LFS payloads required by registry validation.
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        git lfs fetch --include='data/quarantine/**' origin HEAD
+        git lfs checkout data/quarantine/

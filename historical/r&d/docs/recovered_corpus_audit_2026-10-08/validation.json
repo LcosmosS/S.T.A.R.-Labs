@@ -1,0 +1,81 @@
+{
+  "base_commit": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f",
+  "python_tests": {
+    "passed": 217,
+    "failed": 0,
+    "warnings": 15,
+    "dependencies": "isolated audit test dependencies; historical environments not executed"
+  },
+  "web_tests": {
+    "passed": 253,
+    "skipped_host_skill_tests": 4,
+    "failed": 0
+  },
+  "typescript_no_emit": "passed",
+  "production_build": "passed",
+  "snapshot_sources_verified": 16,
+  "browser": {
+    "url": "http://127.0.0.1:8081/registry#recovered-corpus",
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 800,
+        "status": 200,
+        "title": "STARMAP",
+        "hasCanvas": false,
+        "bodyTextLen": 9444,
+        "bodyTextHash": "3791b696bc3173b48215b0c2515587aeee8a48b1476e0c49ffdccbfb722d9bdb",
+        "bodyTextPrefix": "STARMAP by S.T.A.R. Labs TOY H0_EFF 72.62 km/s/Mpc CATALOG 160 f",
+        "horizontalOverflow": false,
+        "consoleErrors": [],
+        "pageErrors": [],
+        "screenshot": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\recovery-final-section.png"
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844,
+        "status": 200,
+        "title": "STARMAP",
+        "hasCanvas": false,
+        "bodyTextLen": 9293,
+        "bodyTextHash": "4f794aebf454ab2273f5f0a822762dd78d3d26455ad7235149c98bfdb5ee5e96",
+        "bodyTextPrefix": "STARMAP by S.T.A.R. Labs Illustrative prototype. Explore toy mod",
+        "horizontalOverflow": false,
+        "consoleErrors": [],
+        "pageErrors": [],
+        "screenshot": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\recovery-final-section-mobile.png"
+      }
+    },
+    "brandWarnings": [],
+    "authWarnings": [],
+    "verdictFile": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\recovery-final-section.json",
+    "divergesFromBaseline": false,
+    "baselineReasons": []
+  },
+  "lfs": {
+    "unique_remote_objects_uploaded_and_empty_cache_verified": 286,
+    "payload_paths": 291,
+    "payload_bytes": 232824540,
+    "proofs": [
+      "quarantine_lfs_verification.json",
+      "recovery_lfs_verification.json"
+    ]
+  },
+  "intake": {
+    "status": "complete",
+    "schema_version": 1,
+    "verified_payload_paths": 1333,
+    "verified_recovery_overlay_rows": {
+      "claim_evidence_recovery_2026-10-08.csv": 51,
+      "experiment_recovery_2026-10-08.csv": 25,
+      "crosswalk_recovery_2026-10-08.csv": 51
+    },
+    "recovered_programs_executed": false,
+    "models_deserialized": false,
+    "eligibility_promoted": false,
+    "source_manifest_sha256": "9a5e17a91483b5540d6ab04618c5d6050f37523f01d22df1703f44777c99c3ae"
+  },
+  "live_production_deployed": false,
+  "onedrive_cloud_sync_verified": false,
+  "setup_incident": "execution_setup_incident.json"
+}

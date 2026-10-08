@@ -1,0 +1,7 @@
+# SDSS/HI reconstruction after original-corpus recovery
+
+The five payloads in data/intake/recovered/2026-10-08/manifest.json preserve recovered SDSS DR18 CSV and MaNGA HI FITS/CSV candidates. They do not establish the producing releases or transformations. The dated provenance overlay retains qualified artifact IDs and every SHA256 separately from operational dataset IDs.
+
+Static inspection of recovered dropbox_recovered:pip.py finds a cKDTree built directly on RA and Dec radians, with its Euclidean distance converted to arcseconds. This does not implement spherical angular distance, account for cos(dec), or handle RA wrap. Its positional concat occurs after separately selecting/resetting matched indices; that alone is not proof of the original table corruption. The script writes merged_sdssdr18_mangaHI_kdtree.csv, a different name from the two v0.3 quarantined tables. Do not invent a parent/result link between them.
+
+Use E-LCL-001 and E-LCL-002 plus match_recheck_2026-10-08.json as retained negative evidence. Rebuild with unit-vector or great-circle matching, object-key joins, duplicate/multiplicity controls, RA-wrap and polar fixtures, explicit tolerance sensitivity, source release/query/selection bindings, locked code/environment/parameters and independent rerun outputs. Compare every recovered CSV revision against the FITS schema and CasJobs history before accepting a transformation. All recovery intake and quarantine eligibility remains false.

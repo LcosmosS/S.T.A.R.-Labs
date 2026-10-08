@@ -51,6 +51,37 @@ function RegistryPage() {
         <Metric label="Canonical claims" value={String(snapshot.claims.length)} hint="Support eligibility remains separately recorded" />
       </div>
 
+      <section id="recovered-corpus" className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
+        <Badge tone="warn">Historical recovery · {snapshot.recovery.auditDate}</Badge>
+        <h2 className="mt-2 font-display text-2xl tracking-tight">Recovered corpus audit</h2>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          {snapshot.recovery.summary.hashed_files.toLocaleString("en-US")} files have full hashes across four source roots.
+          The recovery preserves {snapshot.recovery.summary.code.whole_program_artifacts.toLocaleString("en-US")} whole-file program candidates.
+          Saved outputs remain historical records; recovery grants no scientific support or execution eligibility.
+        </p>
+        <dl className="mt-4 grid gap-4 sm:grid-cols-3">
+          <Gate label="Quarantined payload files" value={String(snapshot.recovery.summary.quarantine_files)} />
+          <Gate label="Distinct filename revision conflicts" value={String(snapshot.recovery.summary.filename_revision_conflicts)} />
+          <Gate label="Environment version entries, separate from provenance" value={String(snapshot.recovery.summary.environment_metadata_records)} />
+        </dl>
+        <p className="mt-4 text-xs leading-relaxed text-muted">
+          Bulk files above 128 MiB are inventory-only unless selected; library caches are excluded from scientific provenance.
+          Package versions come from metadata filenames and are not bound to saved runs. Whole-file scope and parsing do not establish runtime completeness.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-4 text-sm">
+          <a className="text-steel underline underline-offset-4" href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${snapshot.recovery.reportPath}`}>Audit and coverage gaps</a>
+          <a className="text-steel underline underline-offset-4" href={`https://github.com/LcosmosS/S.T.A.R.-Labs/tree/main/${snapshot.recovery.quarantinePath}`}>Canonical quarantine</a>
+        </div>
+        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted">
+          {snapshot.recovery.findings.map((finding) => <li key={finding.id}><span className="font-mono text-xs">{finding.id}</span> — {finding.assessment}</li>)}
+        </ul>
+        <h3 className="mt-5 font-display text-lg">Recent repository merges</h3>
+        <ul className="mt-2 space-y-2 text-sm text-muted">
+          {snapshot.recovery.mergeHistory.recent_merged_prs.slice(0, 5).map((pr) => <li key={pr.number}><a className="text-steel underline underline-offset-4" href={pr.url}>#{pr.number} {pr.title}</a><span className="ml-2 text-xs">{pr.merged_at.slice(0, 10)} UTC</span></li>)}
+        </ul>
+        <p className="mt-3 text-xs text-muted">PR #44 remains open and conflicted as of this audit; it is not included as a merge.</p>
+      </section>
+
       <section className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>

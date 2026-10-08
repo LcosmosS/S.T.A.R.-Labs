@@ -60,3 +60,6 @@ historical/r&d/code_log/2026-10-08_recovered/saved_outputs/** filter=lfs diff=lf
 registry/*.csv text eol=lf
 preregistrations/** text eol=lf
 controlled_execution/specs/*.json text eol=lf
+
+# Preserve byte-locked mathematical proof evidence on every platform.
+preregistrations/M1-INH-E1/evidence/** -text
