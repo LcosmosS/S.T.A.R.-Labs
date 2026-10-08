@@ -88,6 +88,15 @@ jobs:
           python - <<'PY'
           import csv
           from pathlib import Path
+          from scripts.theory_search_states import (
+              ALLOWED_CANDIDATE_STATUSES,
+              TERMINAL_CANDIDATE_STATUSES,
+              TERMINAL_FAILURE_STATUSES,
+              TERMINAL_SUCCESS_STATUSES,
+              UNRESOLVED_CANDIDATE_STATUSES,
+              is_terminal,
+              is_unresolved,
+          )
 
           root = Path("registry")
           required = [
@@ -392,42 +401,33 @@ jobs:
           assert search["Protocol_Path"] == "preregistrations/P0-ANSATZ-001/protocol.md"
           assert (Path(search["Protocol_Path"])).exists(), "missing P0 protocol"
 
-          allowed_candidate_status = {
-              "REGISTERED_UNTESTED",
-              "FAILS_INDEPENDENT_MOTIVATION",
-              "FAILS_DYNAMICAL_SPECIFICATION",
-              "FAILS_STANDARD_LIMIT",
-              "NO_ENDOGENOUS_ELLIPTIC_SECTOR",
-              "ELLIPTIC_REPRESENTATION_ONLY",
-              "FAILS_P1",
-              "FAILS_STRUCTURE_SUFFICIENCY",
-              "PASSES_P0",
-              "PASSES_P1",
-              "RETIRED",
-          }
-          terminal_candidate_status = allowed_candidate_status - {"REGISTERED_UNTESTED"}
-
           for r in theory_candidates:
               assert r["Search_ID"] == search["Search_ID"]
               assert r["Registry_Namespace"] == "THEORY-SEARCH-v0.1"
               assert r["Qualified_Candidate_ID"] == f"THEORY-SEARCH-v0.1:{r['Candidate_ID']}"
               assert r["Admission_Status"] == "admitted"
-              assert r["Audit_Status"] in allowed_candidate_status
+              assert r["Audit_Status"] in ALLOWED_CANDIDATE_STATUSES
+              expected_terminal = is_terminal(r["Audit_Status"])
+              assert (r["Terminal"] == "true") == expected_terminal, (
+                  f"Terminal flag disagrees with lifecycle state: {r['Candidate_ID']}"
+              )
               if r["Audit_Status"] == "REGISTERED_UNTESTED":
-                  assert r["Terminal"] == "false"
                   assert not r["Failure_Gate"].strip()
                   assert not r["Failure_Mechanism"].strip()
                   assert not r["Audit_Record_Path"].strip()
-              elif r["Audit_Status"] in terminal_candidate_status:
-                  assert r["Terminal"] == "true"
-                  assert r["Audit_Record_Path"].strip()
-                  if r["Audit_Status"].startswith("FAILS_") or r["Audit_Status"] in {
-                      "NO_ENDOGENOUS_ELLIPTIC_SECTOR",
-                      "ELLIPTIC_REPRESENTATION_ONLY",
-                      "RETIRED",
-                  }:
+              else:
+                  assert r["Audit_Record_Path"].strip(), (
+                      f"audited candidate missing Audit_Record_Path: {r['Candidate_ID']}"
+                  )
+                  if r["Audit_Status"] in TERMINAL_FAILURE_STATUSES:
                       assert r["Failure_Gate"].strip()
                       assert r["Failure_Mechanism"].strip()
+                  elif r["Audit_Status"] in {
+                      "PASSES_P0",
+                      *TERMINAL_SUCCESS_STATUSES,
+                  }:
+                      assert not r["Failure_Gate"].strip()
+                      assert not r["Failure_Mechanism"].strip()
               assert r["Independent_Motivation"].strip()
               assert r["Registered_Representative"].strip()
               assert r["Representative_Source_DOI"].strip()
@@ -439,8 +439,12 @@ jobs:
               assert r["Physical_Support_Eligible"] == "false"
 
           unresolved_candidates = [
-              r for r in theory_candidates if r["Terminal"] != "true"
+              r for r in theory_candidates if is_unresolved(r["Audit_Status"])
           ]
+          assert len(unresolved_candidates) == sum(
+              r["Audit_Status"] in UNRESOLVED_CANDIDATE_STATUSES
+              for r in theory_candidates
+          )
           if search["Status"] == "exhausted":
               assert not unresolved_candidates, "exhausted theory search has unresolved candidates"
 
