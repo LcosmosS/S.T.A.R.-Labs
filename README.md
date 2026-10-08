@@ -171,6 +171,19 @@ The current registry layer is:
 | [parameter_registry_v0.1.csv](registry/parameter_registry_v0.1.csv) | Parameter sets and preregistration status |
 | [null_registry_v0.1.csv](registry/null_registry_v0.1.csv) | Null/control models |
 | [r&d_artifact_registry_v0.1.csv](registry/r%26d_artifact_registry_v0.1.csv) | Retained exploratory and historical artifacts |
+| [theory_search_registry_v0.1.csv](registry/theory_search_registry_v0.1.csv) | Closed parent-theory search frames and exhaustion semantics |
+| [theory_candidate_registry_v0.1.csv](registry/theory_candidate_registry_v0.1.csv) | Prospectively frozen parent-theory candidates and audit states |
+| [theory_obstruction_registry_v0.1.csv](registry/theory_obstruction_registry_v0.1.csv) | Class-relative mechanism obstruction programs and interpretation limits |
+
+### Theory-mechanism search status
+
+`P0-SF-v0.1` is a preregistered, closed five-candidate parent-theory search frame.
+It is a governance/theory-search protocol rather than an executable numerical
+experiment: controlled execution, controlled support, and physical support are
+all false. Its exhaustion rule is registry-based (`N_unresolved=0`) and can
+retire `ACSC-MECH-v0.1` only within the registered search frame; it cannot
+establish a universal no-go theorem. The parallel `M1-INH-E1` program tests
+class-relative elliptic insufficiency in the Szekeres-Szafron sector.
 
 ### Current registry status
 
