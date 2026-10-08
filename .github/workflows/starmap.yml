@@ -24,3 +24,25 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run typecheck
+      - name: Install Chromium for research content browser smoke
+        run: npx playwright install --with-deps chromium
+      - name: Test /research in desktop and mobile browsers
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run preview -- --host 127.0.0.1 --port 8081 >/tmp/starmap-research-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in $(seq 1 50); do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8081/research; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          if [ "$ready" != 1 ]; then
+            cat /tmp/starmap-research-preview.log
+            exit 1
+          fi
+          node scripts/research-browser-smoke.mjs http://127.0.0.1:8081
