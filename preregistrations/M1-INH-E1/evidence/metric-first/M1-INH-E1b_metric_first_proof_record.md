@@ -134,7 +134,70 @@ This is a second, independent mathematical route to the flatness of each spatial
 - During development an embedding test initially compared the Gram matrix with \(E^2\) rather than the correct \(E^{-2}\); this **test expectation** was corrected, and the complete final certificate was rerun successfully. The Einstein-tensor calculation was unaffected.
 - This is an independently authored implementation of the mathematical calculation, **not** independent external peer review.
 - No registry or support flags have been modified.
-- The complete frozen elliptic record agrees because both solutions use the same \(M,K,f,\Lambda,\epsilon,v_0,\sigma\) and derived \(g_2,g_3,\Delta_\wp\), with a common expanding branch on \(J\subset(-1,\infty)\).
+- The **complete** frozen elliptic record, including its additive \(u\)-normalization and exact inverse-\(\wp\) representatives, is identified constructively below; equality is **not** inferred merely from agreement of \(g_2,g_3,\Delta_\wp\).
+
+### Explicit common Weierstrass branch and complete elliptic record (review control)
+
+The spatial-sector abbreviation \(v_{k=0}=\nu_{1,z}=0\) used in §1 is **not** the registered elliptic inverse \(v_0(z)\). In this paragraph \(v_0(z)\) refers exclusively to the latter.
+
+Fix the same **open radial interval** \(J=(-1/4,1/4)\), the same physical time interval \(1<t<2\), and the same expanding solution in both sectors. For each \(z\in J\),
+\[
+M(z)=1+z>0,\quad K(z)=0,\quad f(z)=z,\quad\Lambda=3,\quad
+g_2(z)=0,\quad g_3(z)=-M(z)^2/4,\quad
+\Delta_\wp(z)=-27M(z)^4/16\neq0.
+\]
+The shared \(\Phi(t,z)>0\) obeys \(\dot\Phi=\Phi\coth[3(t+z)/2]>0\) on the connected expanding branch \(t+z>0\). Let \(X=-1/\Phi<0\). To remove the unspecified constant in the **frozen** definition \(u=\int[-2MX^3-KX^2+\Lambda/3]^{-1/2}dX\), select for both solutions the identical real, positive-square-root primitive
+\[
+\boxed{\
+u(t,z)=\int_{-\infty}^{X(t,z)}
+ \frac{ds}{\sqrt{1-2M(z)s^3}}
+=\int_{\xi(t,z)}^\infty
+ \frac{d\eta}{\sqrt{4\eta^3+M(z)^2/4}},
+\qquad
+\xi(t,z)=\frac{M(z)}{2\Phi(t,z)}>0.\ }
+\]
+The improper integrals converge at infinity. The lower endpoint \(X=-\infty\), or equivalently the pole of \(\wp\) at \(u=0\), fixes the additive constant **once for both solutions**; it represents the limiting Big-Bang boundary \(t=-z\), not a regular point included in \(\mathcal U\). On \(t+z>0\), \(\dot X>0\), \(du/dt=1/\Phi>0\) and
+\[
+\frac{d\xi}{du}
+=-\sqrt{4\xi^3+M^2/4}<0,\qquad
+\xi=\wp(u;0,-M^2/4),\qquad \wp'(u)<0.
+\]
+In the exact *frozen* form \(\wp(u+\epsilon)\), this selects the common representative
+\[
+\boxed{\epsilon=0\quad\text{(same scalar constant, not a fitted function of \(z\)).}}
+\]
+
+Select the registered Weierstrass inverse **\(v_0(z)\)** by
+\[
+\boxed{\
+v_0(z)=\int_0^\infty\frac{d\eta}{\sqrt{4\eta^3+M(z)^2/4}},
+\qquad
+\wp(v_0(z);0,-M(z)^2/4)=0=-K(z)/12.\ }
+\]
+For \(g_3=-M^2/4<0\), the cubic \(4\eta^3+M^2/4\) has one real root \(e_1=-(M^2/16)^{1/3}<0\). Let
+\[
+\omega_1(z)=\int_{e_1(z)}^\infty
+ \frac{d\eta}{\sqrt{4\eta^3+M(z)^2/4}}
+\]
+be its positive real half-period. Then \(0<u(t,z)<v_0(z)<\omega_1(z)\); \(\wp\) decreases strictly on this interval. Choose the **positive real inverse representative** for \(u\) and \(v_0\), with no sign reversal and **zero** shifts by either period generator \(2\omega_1\) and \(2\omega_3\): lattice-index pair \((n,m)=(0,0)\).
+
+Thus the common frozen discrete branch data are explicitly
+\[
+\boxed{\
+\sigma(z)=\bigl[
+  \text{connected real expanding branch }t>-z;\
+  \mathcal I_z=(u(1,z),u(2,z))\subset(0,v_0(z));\
+  \operatorname{sgn}\dot\Phi=+1;\
+  \operatorname{sgn}\wp'=-1;\
+  \text{positive-real inverse, period indices }(0,0)
+\bigr].\ }
+\]
+The branch restricted to \(\mathcal U\) is regular; \(u=0\) is only the boundary normalization. Using \(du/dt=1/\Phi\) and \(t\downarrow -z\Longrightarrow u\downarrow0\) yields the **same** time primitive,
+\[
+\boxed{t+f(z)=t+z=\int_0^{u(t,z)}\Phi(u',z)\,du'.}
+\]
+No arbitrary \(z\)-dependent additive \(u\)-shift remains. In particular both \(S_1\) and \(S_2\) use componentwise identical \(M,K,f,\Lambda,\epsilon=0,v_0(z),\sigma(z),g_2,g_3,\Delta_\wp\), as required by the frozen \(\mathfrak E[S]|_J\). Only \(A,B_1,B_2,C,h\) vary; none of those appear in this branch construction.
+
 - **General M1-INH-E1a remains pending:** deriving the *general* Szekeres–Szafron evolution and density equations from the unreduced Einstein system and then checking the Weierstrass transformation, rather than verifying this fixed special pair, is a distinct obligation.
 
 **Conclusion:** The specified class-relative E1b constructive pair has a passing independent metric-first symbolic computation and an exact invariant inequivalence argument. Formal registry promotion awaits the registered general E1a predecessor and external/maintainer review of the proof certificate.
