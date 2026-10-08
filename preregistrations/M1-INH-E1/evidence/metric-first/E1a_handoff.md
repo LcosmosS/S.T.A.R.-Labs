@@ -1,6 +1,6 @@
 # Next mathematical task: M1-INH-E1a (general registered class)
 
-**Status: NOT EXECUTED by this PR.** This is an execution handoff, not a change to the frozen protocol. The governing definition remains \`preregistrations/M1-INH-E1/protocol.md\`.
+**Status: NOT EXECUTED by this PR.** This is an execution handoff, not a change to the frozen protocol. The governing definition remains `preregistrations/M1-INH-E1/protocol.md`.
 
 ## Required demonstration
 
