@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "WEB-CONTENT-v0.1",
+  "readOnly": true,
+  "governingCharter": "charter/STAR_Research_Charter_v0-2.pdf",
+  "externalSource": {
+    "title": "Detailed Report_ Bridging BSD Conjecture and Cosmology.docx",
+    "sha256": "a997aee1feb688e99b7c21f23934bfdf625bf4ee0d6be00e3dc8c9f0ae6d1e08",
+    "committed": false
+  },
+  "items": [
+    {
+      "id": "WEB-PHI-001",
+      "kind": "projection",
+      "title": "Historical arithmetic projection",
+      "epistemic": "M",
+      "status": "model_exploratory",
+      "formula": "Phi(E)=(log|Delta_E|, log N_E, alpha*r_E)",
+      "summary": "Candidate coordinate projection of elliptic-curve invariants; no bijection or physical law is established.",
+      "caveat": "Coordinate units, scale, collisions, alpha and independently defined nulls remain subject to validation.",
+      "source": "Research Charter v0.2 sections 4-5",
+      "sourcePath": "charter/RESEARCH_CHARTER_v0.2.md"
+    },
+    {
+      "id": "WEB-ALT-001",
+      "kind": "projection",
+      "title": "Independent mapping controls",
+      "epistemic": "M",
+      "status": "model_exploratory",
+      "formula": "Phi, Phi_MCJ, Phi_PTD, Phi_FT",
+      "summary": "Alternative candidate map families prevent single-mapping selection from automatically implying a correspondence.",
+      "caveat": "Identical samples, normalization and null distributions must be used before comparative claims.",
+      "source": "Research Charter v0.2 section 14",
+      "sourcePath": "charter/RESEARCH_CHARTER_v0.2.md"
+    },
+    {
+      "id": "WEB-L-001",
+      "kind": "equation",
+      "title": "Historical galaxy-bin L-series",
+      "epistemic": "M",
+      "status": "model_exploratory",
+      "formula": "L_cosmo(s)=sum_(n=1)^B a_n*n^(-s),  a_n>=0",
+      "summary": "In the uploaded SFR report, a_n counts galaxies in three-dimensional bins of stellar mass, redshift and Petrosian radius.",
+      "caveat": "An occupancy Dirichlet sum is not automatically an elliptic-curve L-function. Binning and ordering affect the construction.",
+      "source": "Uploaded historical SFR report section 2.2"
+    },
+    {
+      "id": "WEB-POS-001",
+      "kind": "reduction",
+      "title": "Positivity and rank-inference limitation",
+      "epistemic": "D",
+      "status": "derived_conditional",
+      "formula": "a_n>=0, sum(a_n)>0 => L_cosmo(1)=sum(a_n/n)>0",
+      "summary": "For a finite collection of nonnegative occupancies, a nonempty dataset implies the series is strictly positive at s=1.",
+      "caveat": "Thus the stated series has no zero at s=1; a nonzero derivative does not establish rank 1 or an independent physical driver.",
+      "source": "Direct mathematical check of uploaded SFR report sections 2.2-2.3"
+    },
+    {
+      "id": "WEB-SFR-001",
+      "kind": "equation",
+      "title": "Proposed SFR features",
+      "epistemic": "M",
+      "status": "model_exploratory",
+      "formula": "SFR ~ a*logmass+b*z+c*L(1)+d*dec+e*petroRad+f*environment+g*(logmass*z)",
+      "summary": "Historical additive hypothesis using SFR predictors motivated partly by the constructed cosmological series.",
+      "caveat": "The same report states Random Forest optimization; this alone does not estimate coefficients of the displayed linear expression.",
+      "source": "Uploaded historical SFR report section 2.4"
+    },
+    {
+      "id": "WEB-MSE-001",
+      "kind": "reported_result",
+      "title": "Historical five-fold SFR MSE",
+      "epistemic": "M",
+      "status": "historical_unreplicated",
+      "formula": "Reported mean MSE=0.4266; SD=0.0185",
+      "summary": "The report lists fold MSEs 0.3904, 0.4312, 0.4420, 0.4322 and 0.4371.",
+      "caveat": "Exact dataset version, fold membership, leakage-safe preprocessing, software and independent held-out accuracy are not verified.",
+      "source": "Uploaded historical SFR report section 3.2"
+    },
+    {
+      "id": "WEB-DIAGRAM-001",
+      "kind": "diagram",
+      "title": "Charter research architecture",
+      "epistemic": "M",
+      "status": "model_exploratory",
+      "summary": "Research diagram illustrating the required order from mathematics to independent astronomical tests.",
+      "diagramSteps": [
+        "Arithmetic invariants",
+        "Candidate mapping",
+        "Topology and nulls",
+        "Independent observations",
+        "Reproducibility",
+        "Conditional physics"
+      ],
+      "caveat": "This is a workflow diagram, not a measured map of the cosmic web.",
+      "source": "Research Charter v0.2 sections 1-2",
+      "sourcePath": "charter/RESEARCH_CHARTER_v0.2.md"
+    },
+    {
+      "id": "WEB-TDA-001",
+      "kind": "reduction",
+      "title": "Persistent Betti-number interpretation",
+      "epistemic": "D",
+      "status": "derived_conditional",
+      "formula": "beta_k=rank H_k(K_epsilon)",
+      "summary": "Connected components, loops and cavities are filtration-dependent topological descriptors.",
+      "caveat": "beta_1 is not a direct count of cosmic filaments and beta_2 is not automatically the number of observed voids.",
+      "source": "Research Charter v0.2 sections 8-9",
+      "sourcePath": "charter/RESEARCH_CHARTER_v0.2.md"
+    },
+    {
+      "id": "WEB-WP-001",
+      "kind": "reduction",
+      "title": "Einstein-to-Weierstrass class-relative reduction",
+      "epistemic": "D",
+      "status": "derived_conditional",
+      "formula": "(dPhi/dt)^2=-K+2M/Phi+(Lambda/3)*Phi^2",
+      "summary": "A symbolic reduction is recorded for the registered Szekeres/Szafron Einstein-dust subclass.",
+      "caveat": "Metric restrictions, regularity and external review remain; it is not independent proof of an ACSC cosmological mechanism.",
+      "source": "M1-INH-E1a mathematical derivation",
+      "sourcePath": "preregistrations/M1-INH-E1/derivations/E1a_general_reduction.md"
+    },
+    {
+      "id": "WEB-NOTE-001",
+      "kind": "notebook",
+      "title": "Recovered CasJobs notebook saved output",
+      "epistemic": "M",
+      "status": "archive_only",
+      "summary": "Historical notebook output derivative is available as inert archival provenance.",
+      "caveat": "Not the complete notebook; source/query/result lineage remains partial. No notebook or serialized model is executed or loaded by the website.",
+      "source": "October 8 recovered code-log derivative",
+      "sourcePath": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/919afe240f243f18c241e731d680e0a19171c99e3cc685ed7251dfb193730c5a.json"
+    }
+  ]
+}

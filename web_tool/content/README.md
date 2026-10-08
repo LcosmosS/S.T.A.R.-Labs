@@ -1,0 +1,6 @@
+# WEB-CONTENT-v0.1
+The governing authority is `charter/STAR_Research_Charter_v0-2.pdf`. This is a separate versioned **read-only explanatory content catalog**, not a controlled claim or experiment registry. It publishes historical constructions with epistemic categories, sources, and limitations. Never infer physical or empirical support from a card or browser calculation.
+
+Uploaded report source: `Detailed Report_ Bridging BSD Conjecture and Cosmology.docx`, SHA-256 `a997aee1feb688e99b7c21f23934bfdf625bf4ee0d6be00e3dc8c9f0ae6d1e08` (external, not checked into this repository). The reported MSE 0.4266 is not independently reproduced. The report's rank argument is invalid for finite nonnegative bin counts because `L_cosmo(1)>0` for a nonempty sample; Random Forest fitting is not itself a fit of displayed additive coefficients. These corrections are publicly shown as caveats.
+
+Run `cd web_tool && npm run research:sync` to regenerate the separate snapshot, `npm run research:check` to verify it, and `npm test` for the source-qualification tests. The optional browser smoke script requires a running local preview: `node scripts/research-browser-smoke.mjs http://127.0.0.1:8081`. No scripts deserialize pickles, execute recovered notebooks, or modify the canonical registry. Live website deployment is separate from committed source/build validation.
