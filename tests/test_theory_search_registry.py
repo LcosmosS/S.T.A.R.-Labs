@@ -59,6 +59,9 @@ def test_exactly_five_parent_theory_candidates_are_frozen():
         )
         assert row["Admission_Status"] == "admitted"
         assert row["Audit_Status"] == "REGISTERED_UNTESTED"
+        assert row["Failure_Gate"] == ""
+        assert row["Failure_Mechanism"] == ""
+        assert row["Audit_Record_Path"] == ""
         assert row["Terminal"] == "false"
         assert row["Representative_Source_DOI"]
         assert row["Independent_Motivation"]
