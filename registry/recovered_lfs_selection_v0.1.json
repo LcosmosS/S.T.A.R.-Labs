@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "0.1",
+  "namespace": "RECOVERED-LFS-SELECTION-v0.1",
+  "governingCharter": "charter/STAR_Research_Charter_v0-2.pdf",
+  "sourceManifest": "data/intake/recovered/2026-10-08/manifest.json",
+  "lfsProof": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/recovery_lfs_verification.json",
+  "selectionStatus": "reuse_prior_independently_verified_lfs_objects_no_new_uploads",
+  "notes": "Metadata-only overlay. Not new canonical Dataset_IDs, not upstream provenance, not controlled evidence. Hydrate with git lfs and verify locally before processing.",
+  "newObjectsUploadedByThisPR": 0,
+  "assets": [
+    {
+      "artifactId": "REC-DATA-9dca2008683fde4b0f7a",
+      "path": "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv",
+      "sha256": "9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2",
+      "bytes": 33007497,
+      "kind": "csv",
+      "recoveredSource": "documents_star:SDSSDR18_200000.csv",
+      "classification": "historical_recovered_not_verified_upstream",
+      "controlledExecutionEligible": false,
+      "controlledSupportEligible": false,
+      "physicalSupportEligible": false
+    },
+    {
+      "artifactId": "REC-DATA-b713f167dc60da81bd9d",
+      "path": "data/intake/recovered/2026-10-08/b713f167dc60da81bd9dbd99ff05ef5a74b80155db6c20276ba27a07bd2783a9.csv",
+      "sha256": "b713f167dc60da81bd9dbd99ff05ef5a74b80155db6c20276ba27a07bd2783a9",
+      "bytes": 5264526,
+      "kind": "csv",
+      "recoveredSource": "documents_star:SDSSDR18_G.csv",
+      "classification": "historical_recovered_not_verified_upstream",
+      "controlledExecutionEligible": false,
+      "controlledSupportEligible": false,
+      "physicalSupportEligible": false
+    },
+    {
+      "artifactId": "REC-DATA-0f51e1852f7103bd9af9",
+      "path": "data/intake/recovered/2026-10-08/0f51e1852f7103bd9af9699213a7548a7e6b9969ab1256ec86df04352ddec8f5.fits",
+      "sha256": "0f51e1852f7103bd9af9699213a7548a7e6b9969ab1256ec86df04352ddec8f5",
+      "bytes": 1584000,
+      "kind": "fits",
+      "recoveredSource": "documents_star:mangaHIall.fits",
+      "classification": "historical_recovered_not_verified_upstream",
+      "controlledExecutionEligible": false,
+      "controlledSupportEligible": false,
+      "physicalSupportEligible": false
+    },
+    {
+      "artifactId": "REC-DATA-f4662418b92b2013a2c5",
+      "path": "data/intake/recovered/2026-10-08/f4662418b92b2013a2c587921e0e54ab05617810794e736b1d84e0e0663877be.csv",
+      "sha256": "f4662418b92b2013a2c587921e0e54ab05617810794e736b1d84e0e0663877be",
+      "bytes": 1952832,
+      "kind": "csv",
+      "recoveredSource": "documents_star:mangaHIall.csv",
+      "classification": "historical_recovered_not_verified_upstream",
+      "controlledExecutionEligible": false,
+      "controlledSupportEligible": false,
+      "physicalSupportEligible": false
+    },
+    {
+      "artifactId": "REC-DATA-a6a3b50429f6b061b097",
+      "path": "data/intake/recovered/2026-10-08/a6a3b50429f6b061b0977515c3ce01d1ed5e8122cef88c23e042293db30b285a.csv",
+      "sha256": "a6a3b50429f6b061b0977515c3ce01d1ed5e8122cef88c23e042293db30b285a",
+      "bytes": 1616165,
+      "kind": "csv",
+      "recoveredSource": "documents_star:mangaHIall2.csv",
+      "classification": "historical_recovered_not_verified_upstream",
+      "controlledExecutionEligible": false,
+      "controlledSupportEligible": false,
+      "physicalSupportEligible": false
+    }
+  ]
+}
