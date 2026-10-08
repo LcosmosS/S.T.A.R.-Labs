@@ -164,7 +164,7 @@ The improper integrals converge at infinity. The lower endpoint \(X=-\infty\), o
 \]
 In the exact *frozen* form \(\wp(u+\epsilon)\), this selects the common representative
 \[
-\boxed{\epsilon=0\quad\text{(same scalar constant, not a fitted function of \(z\)).}}
+\boxed{\epsilon=0\quad(\text{a scalar constant independent of }z).}
 \]
 
 Select the registered Weierstrass inverse **\(v_0(z)\)** by
@@ -185,10 +185,10 @@ Thus the common frozen discrete branch data are explicitly
 \[
 \boxed{
 \sigma(z)=\bigl[
-  \text{connected real expanding branch }t>-z;\
-  \mathcal I_z=(u(1,z),u(2,z))\subset(0,v_0(z));\
-  \operatorname{sgn}\dot\Phi=+1;\
-  \operatorname{sgn}\wp'=-1;\
+  \text{connected real expanding branch }t>-z;\quad
+  \mathcal I_z=(u(1,z),u(2,z))\subset(0,v_0(z));\quad
+  \operatorname{sgn}\dot\Phi=+1;\quad
+  \operatorname{sgn}\wp'=-1;\quad
   \text{positive-real inverse, period indices }(0,0)
 \bigr].}
 \]
