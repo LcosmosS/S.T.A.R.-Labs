@@ -127,7 +127,7 @@ Recovery protocol: inventory attachment identity -> locate upstream or Dropbox b
 1. Independent reviewers sign #62 and #63 design/theory scope; merge #62 then review/merge stacked #65; do not activate A03.
 2. Review #66 observational fixtures independently; merge only as fail-closed diagnostics, not as data acceptance.
 3. Audit the **combined** branch after those merges, then approve and merge #64 only with exact source-locked CI, two-flag transition and Issue #67 release approval. No full controlled run in CI preflight.
-4. Review #68 web semantics/live CDS; merge as explicitly **local user-hash inspector only**, or supersede in a new PR with genuine CI manifest gating. Do not display verified provenance or scientific support that does not exist.
+4. Review #68 web semantics/live CDS; merge as explicitly **local user-hash inspector only**, then review the existing stacked #71 CI manifest validator before considering any source admission. Do not display verified provenance or scientific support that does not exist.
 5. Acquire, version and review a genuine VizieR ALFALFA α.100 corrected table2 source (published 31,502 rows), preserving both radio-centroid and optical-counterpart roles. Follow independent provenance gate, then CI-frozen overlay release.
 6. After original controlled experiments and independent replications, review any claim-specific support transitions as independent PRs. Retain all negative results.
 
@@ -138,3 +138,31 @@ Recovery protocol: inventory attachment identity -> locate upstream or Dropbox b
 - [VizieR corrected ALFALFA α.100 table2](https://vizier.cds.unistra.fr/viz-bin/VizieR-3?-source=J%2FApJ%2F861%2F49%2Ftable2); Haynes et al., 2018, DOI [10.3847/1538-4357/aac956](https://doi.org/10.3847/1538-4357/aac956).
 - [ALFALFA-SDSS Galaxy Catalog](https://doi.org/10.3847/1538-3881/abc018), published cross-survey association example. Not a drop-in independent null or guaranteed match truth.
 - [Official Aladin Lite API](https://aladin.cds.unistra.fr/AladinLite/doc/API/); [version-pinning guidance](https://github.com/cds-astro/aladin-lite/blob/master/README.md).
+
+
+## 8. Follow-up review: nine open drafts, action history, source receipts and activation hold
+
+**Superseding status snapshot (2026-10-08):** nine drafts are open: #62, #63, #64, #65, #66, #68, #69, #70, #71. GitHub reports no submitted independent reviewer approvals and no merge conflicts. Before the three evidence-only fixes below, every PR's then-current head-specific workflows were green. The previous PR #65 commit `935cc2786b16e231329a4f6429254649e94eaedb` **failed** Tests/S.T.A.R. CI due to a synthetic `ProtocolViolation` versus `MCJProtocolError` assertion mismatch. That was subsequently fixed by explicitly translating A01's existing singularity rejection; the new #65 exact head `485528833aa82a1fdc85ae4870892a149aaeb764` has green Tests, STARMAP and S.T.A.R. CI. History must not be rewritten to assert uninterrupted passing CI.
+
+### Existing PR and issue responsibilities
+| Item | Current scope and non-promotion policy |
+| --- | --- |
+| #62 | Prospective A03 MCJ and DATA/CTRL protocols, **not activated**. Independently check fixed nulls, generators, ownership of historical IDs, and A01 compatibility. |
+| #63 | Mathematical/physical gate review only: P0/M1 exact proofs, TDA, ECC/RTCH recovery. No theorem or physical claim approved. |
+| #64 / Issue #67 | A01 only. Prior head had seven passing workflows incl. source-locked ecdata preflight; activation doc now explicitly marks **technical preactivation readiness conditional on formal independent signoff**, not approval. Issue #67 is an **issue**, not a PR. Main retains false activation until independently authorized merge. |
+| #65 | MCJ fixture implementation stacked on #62. Previous failing regression and corrected exception-contract reasoning preserved; no B=999 experiment execution. |
+| #66 | Adds a **separate 25-sidecar Zone.Identifier receipt record** to source-only observational fixtures, provenance linkage and negative tests. Exact source files, release/admission and full CasJobs SQL/job association not proved. |
+| #68 | Local Aladin inspector and candidate VizieR acquisition template; not verified upstream or observation-derived support. |
+| #69 | This independent-review docket. Authorship of a review *docket* is not an external approval. |
+| #70 | Local CoCalc ZIP ↔ Dropbox copy confirmed with content hash; historical scripts/notebooks remain quarantined and distinct from publisher source proof. |
+| #71 | Existing PR stacked **on #68**, not a new stand-alone PR. Empty-by-default CI sky-source manifest, structural/hash gate and **STARMAP UI review-required disclosure**; zero survey catalogues accepted. |
+
+### Source receipts and reconstructed filenames
+- [PR #66](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/66) now holds `data/provenance/zone_identifier_receipts_v0.1.json` mapping 25 **observed Dropbox Zone.Identifier sidecars** to original HostUrl names or historical TAP/CDS XMatch jobs. It **withholds CDS XMatch sessionId** values and leaves `rawSourceSha256=null`. It records the candidate basename changes `SDSSDR18_200000.csv <- MyTable_pmqr771_0.csv`, `GZ2.csv <- MyTable_pmqr771.csv` (collision/no equality), `SDSSDR18_G2.csv <- SDSSDR18_G2_pmqr771.csv`, and `Flux.csv <- Flux_Bigsby.csv`.
+- `/STAR/CasJobs SQL History.txt` includes `SELECT TOP 200000` matching the recovered SDSS 18-column schema and CasJobs HostUrl; `/star_provenance_r&d/CasJobs SQL History.txt` omits that terminal SQL entry. Treat as two distinguishable historical document versions. No exact CasJobs execution/job binding or complete SDSS raw-file integrity receipt has been independently admitted. The alternate `SELECT TOP 5000000` galaxy-filtered queries **do not** generate the 18-column file.
+- Source URL, sidecar and renamed filename are **receipt evidence**, not permission to mark `DATA-SDSS18-200K`, `DATA-MANGA-HI-ALL`, Pipe3D, ALFALFA or any other observational record `verified`. No raw astronomy data or LFS placeholder was imported.
+
+### Merge/integration instructions
+No new PR is required for these corrections. Recheck CI on the exact new heads of #64/#66/#71, where documentation, fixture tests and web review wording were updated; reviewer approval must still be obtained. Treat every accepted merge as a new integrated software state requiring its **own** registry audit, especially because #64 regenerates `web_tool/src/lib/star/registry-snapshot.json`, while #68/#71 are based on earlier `main` snapshots. After #64 merge (if authorized), reconcile the existing web branch against new `main`, regenerate the synchronized snapshot and rerun all required tests. A passing isolated PR is not proof that a combined merge is safe.
+
+**No independent reviewer has been impersonated, no GitHub approval was submitted by this audit, no original A01 transaction was run, and no controlled or physical support state was advanced.**
