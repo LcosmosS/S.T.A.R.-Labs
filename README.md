@@ -7,6 +7,8 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs)
 
+[![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs?utm_source=readme&utm_medium=badge)
+
 **Author:** Patrick J. McNamara  
 **ORCiD:** 0009-0002-8978-5563  
 **Project:** March 2025 — active research
