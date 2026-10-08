@@ -141,7 +141,7 @@ with vanishing vorticity of the dust congruence. No additional scalar, vector,
 defect, or phenomenological structure field may be added during this audit.
 
 Representative independent source:
-\`10.1103/PhysRevD.86.023520\`.
+`10.1103/PhysRevD.86.023520`.
 
 ### P0-T002 — Einstein-Vlasov collisionless matter
 
@@ -168,7 +168,7 @@ p^\mu\frac{\partial f}{\partial x^\mu}
 No self-interaction beyond gravity is added during P0-SF-v0.1.
 
 Representative independent source:
-\`10.1088/1475-7516/2013/11/002\`.
+`10.1088/1475-7516/2013/11/002`.
 
 ### P0-T003 — GR + canonical exponential quintessence
 
@@ -191,7 +191,7 @@ theory parameters and may not be selected because of elliptic integrability,
 topological similarity, or historical ACSC behavior.
 
 Representative independent source:
-\`10.1088/0264-9381/30/21/214003\`.
+`10.1088/0264-9381/30/21/214003`.
 
 ### P0-T004 — Brans-Dicke-\(\Lambda\) gravity
 
@@ -218,7 +218,7 @@ selected to create elliptic behavior. The appropriate general-relativistic
 recovery regime must be identified as part of the P0 audit.
 
 Representative independent source:
-\`10.3847/2041-8213/AB53E9\`.
+`10.3847/2041-8213/AB53E9`.
 
 ### P0-T005 — Einstein-Abelian-Higgs defect cosmology
 
@@ -242,7 +242,7 @@ Chern-class interpretation, or additional ACSC-motivated interaction may be
 introduced.
 
 Representative independent structure-formation source:
-\`10.1088/1475-7516/2012/05/026\`.
+`10.1088/1475-7516/2012/05/026`.
 
 ## One-representative rule
 
@@ -352,16 +352,16 @@ P1 may the project ask which observables the theory predicts.
 
 The only candidate audit states are:
 
-- \`REGISTERED_UNTESTED\`
-- \`FAILS_INDEPENDENT_MOTIVATION\`
-- \`FAILS_DYNAMICAL_SPECIFICATION\`
-- \`FAILS_STANDARD_LIMIT\`
-- \`NO_ENDOGENOUS_ELLIPTIC_SECTOR\`
-- \`ELLIPTIC_REPRESENTATION_ONLY\`
-- \`FAILS_P1\`
-- \`FAILS_STRUCTURE_SUFFICIENCY\`
-- \`PASSES_P0\`
-- \`PASSES_P1\`
+- `REGISTERED_UNTESTED`
+- `FAILS_INDEPENDENT_MOTIVATION`
+- `FAILS_DYNAMICAL_SPECIFICATION`
+- `FAILS_STANDARD_LIMIT`
+- `NO_ENDOGENOUS_ELLIPTIC_SECTOR`
+- `ELLIPTIC_REPRESENTATION_ONLY`
+- `FAILS_P1`
+- `FAILS_STRUCTURE_SUFFICIENCY`
+- `PASSES_P0`
+- `PASSES_P1`
 
 Failed records are never deleted.
 
@@ -376,7 +376,7 @@ The **unresolved** states are exactly
 \}.
 \]
 
-\`PASSES_P0\` is deliberately unresolved: it records successful parent-theory
+`PASSES_P0` is deliberately unresolved: it records successful parent-theory
 eligibility but the candidate has not yet completed the required P1 audit.
 
 The **terminal failure** states are exactly
@@ -413,12 +413,12 @@ Thus the complete terminal set is
 \mathcal F\cup\mathcal S.
 \]
 
-The registry field \`Terminal\` must be \`true\` if and only if the candidate's
-\`Audit_Status\` belongs to \(\mathcal T_{\rm terminal}\).
+The registry field `Terminal` must be `true` if and only if the candidate's
+`Audit_Status` belongs to \(\mathcal T_{\rm terminal}\).
 
 ### Allowed transitions
 
-Within \`P0-SF-v0.1\`, state changes are restricted to:
+Within `P0-SF-v0.1`, state changes are restricted to:
 
 \[
 \texttt{REGISTERED\_UNTESTED}
@@ -449,9 +449,9 @@ Terminal states have no ordinary outbound transition inside v0.1. Correcting a
 terminal scientific record requires an explicit reviewed amendment or a new
 search-frame version; it is not a silent status edit.
 
-Every state change after \`REGISTERED_UNTESTED\` requires a permanent
-\`Audit_Record_Path\`. Every terminal failure additionally requires
-\`Failure_Gate\` and \`Failure_Mechanism\`.
+Every state change after `REGISTERED_UNTESTED` requires a permanent
+`Audit_Record_Path`. Every terminal failure additionally requires
+`Failure_Gate` and `Failure_Mechanism`.
 
 ## Exhaustion rule
 
@@ -472,8 +472,8 @@ The search frame is exhausted if and only if
 N_{\rm unresolved}=0.
 \]
 
-Consequently, a candidate in \`PASSES_P0\` continues to count as unresolved
-until it transitions to \`PASSES_P1\` or to one of the two permitted terminal
+Consequently, a candidate in `PASSES_P0` continues to count as unresolved
+until it transitions to `PASSES_P1` or to one of the two permitted terminal
 P1-failure states.
 
 The count is registry-derived. No elapsed time, publication count, or subjective
