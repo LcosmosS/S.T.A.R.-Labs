@@ -37,4 +37,6 @@ Audit date: 2026-10-03. All scientific originals and prior history are preserved
 
 ## Verification and missing sources
 
-The [final verification](REMEDIATION_VERIFICATION_v0.3.json) includes registry, code-log and published-byte checks. The [quarantine verification](../../historical/r&d/quarantine/2026-10-03_audit/step1_verification.json) retains the initial copy diagnostics. Missing named sources remain recorded in the applicable `MISSING.md`; no replacement historical artifact was invented. The canonical supplied package itself is complete.
+The [final verification](REMEDIATION_VERIFICATION_v0.3.json) includes registry, code-log and published-byte checks. The [quarantine verification](../../data/quarantine/2026-10-03_audit/step1_verification.json) retains the initial copy diagnostics. Missing named sources remain recorded in the applicable `MISSING.md`; no replacement historical artifact was invented. The canonical supplied package itself is complete.
+
+On 2026-10-05 the canonical quarantine was relocated to `data/quarantine/2026-10-03_audit/`. [Relocation verification](../../data/quarantine/2026-10-03_audit/relocation.json) preserves original locators, payload hashes, source metadata and disabled support eligibility. The October 3 intake packages, imported assessment rows and historical verification inventories retain their original snapshots.

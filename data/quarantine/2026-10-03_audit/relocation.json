@@ -1,0 +1,398 @@
+{
+  "schema_version": "quarantine-relocation-v1",
+  "date": "2026-10-05",
+  "base_commit": "709861efd12261f8aff7ef0dc36df1e30c27974f",
+  "old_root": "historical/r&d/quarantine/2026-10-03_audit",
+  "new_root": "data/quarantine/2026-10-03_audit",
+  "payload_count": 37,
+  "payload_bytes": 2471385,
+  "all_payload_hashes_and_sizes_verified": true,
+  "source_identity_metadata_unchanged": true,
+  "support_eligibility_unchanged": true,
+  "original_scientific_sources_preserved": true,
+  "historical_audit_snapshots_preserved": 664,
+  "immutable_registry_snapshots_preserved": true,
+  "updated_supporting_metadata": [
+    "data/quarantine/2026-10-03_audit/QUARANTINE.md",
+    "data/quarantine/2026-10-03_audit/manifest.json",
+    "data/quarantine/2026-10-03_audit/projection_packages/QUARANTINE.md",
+    "data/quarantine/2026-10-03_audit/projection_packages/manifest.csv",
+    "data/quarantine/2026-10-03_audit/projection_packages/manifest.json",
+    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/QUARANTINE.md",
+    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.csv",
+    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.json",
+    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/QUARANTINE.md",
+    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/QUARANTINE.md",
+    "data/quarantine/2026-10-03_audit/sdss_hi_match/QUARANTINE.md",
+    "data/quarantine/2026-10-03_audit/sdss_hi_match/manifest.csv",
+    "data/quarantine/2026-10-03_audit/sdss_hi_match/manifest.json",
+    "data/quarantine/2026-10-03_audit/step1_summary.json"
+  ],
+  "historical_snapshot_links": "Resolve old quarantine locators by exact old_path/new_path entries; imported snapshot rows and hash-locked audit packages remain unchanged.",
+  "files": [
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/QUARANTINE.md",
+      "new_path": "data/quarantine/2026-10-03_audit/QUARANTINE.md",
+      "previous_sha256": "197b458a8ef81a1f2ca35e6f8f1a8c44a06986bd37ae21a783fd45d2dc0e8f64",
+      "payload": false,
+      "current_sha256": "197b458a8ef81a1f2ca35e6f8f1a8c44a06986bd37ae21a783fd45d2dc0e8f64"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/manifest.json",
+      "new_path": "data/quarantine/2026-10-03_audit/manifest.json",
+      "previous_sha256": "8e28a1c9e9e49e4390fbb720ef730646eb00836254e358aa512aee8b9298a253",
+      "payload": false,
+      "current_sha256": "c206c8cf88f727d7bf97c7b19d33019531eb2153527519f7b30c162814a5a49c"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/QUARANTINE.md",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/QUARANTINE.md",
+      "previous_sha256": "b7fc38a110ce5c3c19345246fa008c46aeba7b897c8480d257d23084a0cba161",
+      "payload": false,
+      "current_sha256": "b7fc38a110ce5c3c19345246fa008c46aeba7b897c8480d257d23084a0cba161"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona.csv",
+      "previous_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "payload": true,
+      "current_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_aligned.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_aligned.csv",
+      "previous_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "payload": true,
+      "current_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv",
+      "previous_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "payload": true,
+      "current_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv.manifest.json",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv.manifest.json",
+      "previous_sha256": "5980d29db9705eba87643f749f443da1d4f779430cfd5ff4e61bb4b0655ba171",
+      "payload": true,
+      "current_sha256": "5980d29db9705eba87643f749f443da1d4f779430cfd5ff4e61bb4b0655ba171"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_ptd_aligned.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_ptd_aligned.csv",
+      "previous_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "payload": true,
+      "current_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_realproj.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_realproj.csv",
+      "previous_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "payload": true,
+      "current_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_with_alt.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_with_alt.csv",
+      "previous_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "payload": true,
+      "current_sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/manifest.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/manifest.csv",
+      "previous_sha256": "4c5e26c4f60da53fbd22330221eb4c392cde54b46ee553d138e652ba98a11611",
+      "payload": false,
+      "current_sha256": "68bfea1eb7c8987bb734ac4b3acbf9217c5420a809fafc4796808f90e979b12d"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/manifest.json",
+      "new_path": "data/quarantine/2026-10-03_audit/projection_packages/manifest.json",
+      "previous_sha256": "f2b421255a5ee750cfdda7c80692ec823e83e7d71fe3ac1307fdd4a3a95ff1b4",
+      "payload": false,
+      "current_sha256": "af4c2b0d4e2afb5f9610618b217bd308534d8f71841e68f289e1e3ed12a3559e"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/QUARANTINE.md",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/QUARANTINE.md",
+      "previous_sha256": "b9f56090d6ca03ca2a1497e7bd2399d3e29879014178a0a97faf7a488dcfd7d3",
+      "payload": false,
+      "current_sha256": "b9f56090d6ca03ca2a1497e7bd2399d3e29879014178a0a97faf7a488dcfd7d3"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.csv",
+      "previous_sha256": "2262606bbe90546a2c69485ca6a348e1a729ad671dd4c16613bf09c6d7cae9f6",
+      "payload": false,
+      "current_sha256": "9657aec236277085dace1c3fbd56fee5410250e9ca3ce859c95982684a72eaa9"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.json",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.json",
+      "previous_sha256": "1ffa5cfd98a654d63222066d58ba312ee9772eca8e558b9afd418a3c3ce3017e",
+      "payload": false,
+      "current_sha256": "19442d74f40313b4e62ee365a192503277dca560d3f6c9b1fd616e394c3704ad"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/QUARANTINE.md",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/QUARANTINE.md",
+      "previous_sha256": "d4f039722a38fdc2cd0b1085cf2152cb03f208c832696a4f1d7718608491c919",
+      "payload": false,
+      "current_sha256": "d4f039722a38fdc2cd0b1085cf2152cb03f208c832696a4f1d7718608491c919"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/data/demo_torus.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/data/demo_torus.csv",
+      "previous_sha256": "ce3e2d8dd919c83362de1fcbe099f8074abe8a693d1dc2664da6956240021e69",
+      "payload": true,
+      "current_sha256": "ce3e2d8dd919c83362de1fcbe099f8074abe8a693d1dc2664da6956240021e69"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/geodesic_projection.png",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/geodesic_projection.png",
+      "previous_sha256": "2002abc025045f8650da99a6e6fffacc7577c34d1df832c0f6ba54f28f9ac156",
+      "payload": true,
+      "current_sha256": "2002abc025045f8650da99a6e6fffacc7577c34d1df832c0f6ba54f28f9ac156"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H0.png",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H0.png",
+      "previous_sha256": "ee46bcd2b4eb98744f6c9e6dac1e524086758a83e1b7f53de4b30211c7d5de27",
+      "payload": true,
+      "current_sha256": "ee46bcd2b4eb98744f6c9e6dac1e524086758a83e1b7f53de4b30211c7d5de27"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H1.png",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H1.png",
+      "previous_sha256": "1419aa7ee51e8b5d3b149951226fbce27d4de2d743bd1d508a7ec42ffaeb8752",
+      "payload": true,
+      "current_sha256": "1419aa7ee51e8b5d3b149951226fbce27d4de2d743bd1d508a7ec42ffaeb8752"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H2.png",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H2.png",
+      "previous_sha256": "ebaaa78ead859198d5cad0f5b5e88674e7927cee148aba5e5446ae0105a7bfea",
+      "payload": true,
+      "current_sha256": "ebaaa78ead859198d5cad0f5b5e88674e7927cee148aba5e5446ae0105a7bfea"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/scalar_embedding.png",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/scalar_embedding.png",
+      "previous_sha256": "85b12971260e04aa7b2df814f2a9de4ecf5dedf667e8426a2c711db6edf9120b",
+      "payload": true,
+      "current_sha256": "85b12971260e04aa7b2df814f2a9de4ecf5dedf667e8426a2c711db6edf9120b"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/geodesics.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/geodesics.csv",
+      "previous_sha256": "702d2310f7fe314e9811235ccc2e4c55eb118c44f080a212416e100306b8b6f5",
+      "payload": true,
+      "current_sha256": "702d2310f7fe314e9811235ccc2e4c55eb118c44f080a212416e100306b8b6f5"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/null_persistence.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/null_persistence.csv",
+      "previous_sha256": "2681b3e39e80847fda2005432b1024c7ec898f43127468643b16e185c03c45b4",
+      "payload": true,
+      "current_sha256": "2681b3e39e80847fda2005432b1024c7ec898f43127468643b16e185c03c45b4"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/prediction_tests.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/prediction_tests.csv",
+      "previous_sha256": "30b91aed6a6a687b2fe73cdebed209552e6f41f1af1127e1110e9bc7ca26f3e6",
+      "payload": true,
+      "current_sha256": "30b91aed6a6a687b2fe73cdebed209552e6f41f1af1127e1110e9bc7ca26f3e6"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/rank_label_nulls.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/rank_label_nulls.csv",
+      "previous_sha256": "c356fe7106d9806f4dd0cad4193f60901e7b19a48aba1c8afd8761c1b6760fdd",
+      "payload": true,
+      "current_sha256": "c356fe7106d9806f4dd0cad4193f60901e7b19a48aba1c8afd8761c1b6760fdd"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/result.json",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/result.json",
+      "previous_sha256": "d294a3426d69f565d33b07b641768479d04bc12b586cb2b2f17e9f9d9b64cef4",
+      "payload": true,
+      "current_sha256": "d294a3426d69f565d33b07b641768479d04bc12b586cb2b2f17e9f9d9b64cef4"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/run_manifest.json",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/run_manifest.json",
+      "previous_sha256": "bd3c605cdcf76c7ba0d348b3266024165c9133e19f4b3b81fb82d81a8b2a5901",
+      "payload": true,
+      "current_sha256": "bd3c605cdcf76c7ba0d348b3266024165c9133e19f4b3b81fb82d81a8b2a5901"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/scalar_embeddings.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/scalar_embeddings.csv",
+      "previous_sha256": "faf680af972780341116a6e14ecbe3acffa6b73f294e8fb11884c4c2a8437b42",
+      "payload": true,
+      "current_sha256": "faf680af972780341116a6e14ecbe3acffa6b73f294e8fb11884c4c2a8437b42"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/stability_summary.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/stability_summary.csv",
+      "previous_sha256": "4af317de92879957316bd3bbeb4cd4c1755b4b4adf15f437aa2ae37e2d0fb265",
+      "payload": true,
+      "current_sha256": "4af317de92879957316bd3bbeb4cd4c1755b4b4adf15f437aa2ae37e2d0fb265"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/topology_summary.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/topology_summary.csv",
+      "previous_sha256": "553574c8c7e3508ee6f1316973388449509ff87934a9c71c3269bf9726d49f95",
+      "payload": true,
+      "current_sha256": "553574c8c7e3508ee6f1316973388449509ff87934a9c71c3269bf9726d49f95"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/QUARANTINE.md",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/QUARANTINE.md",
+      "previous_sha256": "620fb039c0f0d12351d25f942bd0a77b66836bab8a68cdd3f1afacfc30b245ca",
+      "payload": false,
+      "current_sha256": "620fb039c0f0d12351d25f942bd0a77b66836bab8a68cdd3f1afacfc30b245ca"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/data/demo_torus.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/data/demo_torus.csv",
+      "previous_sha256": "2790c3bdebb665ffa9a5df3ec6b8093dc678c743303b56732be751678bdcfce7",
+      "payload": true,
+      "current_sha256": "2790c3bdebb665ffa9a5df3ec6b8093dc678c743303b56732be751678bdcfce7"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/geodesic_projection.png",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/geodesic_projection.png",
+      "previous_sha256": "02442569be3683db2f12f16123c561e6fa2df3d015c1060d661b27eb5616d229",
+      "payload": true,
+      "current_sha256": "02442569be3683db2f12f16123c561e6fa2df3d015c1060d661b27eb5616d229"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/persistence_H0.png",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/persistence_H0.png",
+      "previous_sha256": "4186bae4043643a8009e625840b85b4b1545b8d97c5aee19dfae98884fff9b5e",
+      "payload": true,
+      "current_sha256": "4186bae4043643a8009e625840b85b4b1545b8d97c5aee19dfae98884fff9b5e"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/scalar_embedding.png",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/scalar_embedding.png",
+      "previous_sha256": "6f54fa3a466626c1bc19852365b9516426df4f2c6da5b2f3fec8503d4017e579",
+      "payload": true,
+      "current_sha256": "6f54fa3a466626c1bc19852365b9516426df4f2c6da5b2f3fec8503d4017e579"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/geodesics.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/geodesics.csv",
+      "previous_sha256": "a5f38a93d272e25c5ac384c69e1583797b10d11e1c2ecd61c22c703a8f2d3830",
+      "payload": true,
+      "current_sha256": "a5f38a93d272e25c5ac384c69e1583797b10d11e1c2ecd61c22c703a8f2d3830"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/null_persistence.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/null_persistence.csv",
+      "previous_sha256": "8b08621f928530576b22d197d831f72c34dfe35d3d49411b74718cca778a0772",
+      "payload": true,
+      "current_sha256": "8b08621f928530576b22d197d831f72c34dfe35d3d49411b74718cca778a0772"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/prediction_tests.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/prediction_tests.csv",
+      "previous_sha256": "6a2c0490e6d8e82a554037067719f620ffd3210f12c2da356d53fc70a53e06fb",
+      "payload": true,
+      "current_sha256": "6a2c0490e6d8e82a554037067719f620ffd3210f12c2da356d53fc70a53e06fb"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/rank_label_nulls.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/rank_label_nulls.csv",
+      "previous_sha256": "d8b357e6a10b52279605f26a5b6f233f2eb2e954edc9f6d744185523fbf3ad32",
+      "payload": true,
+      "current_sha256": "d8b357e6a10b52279605f26a5b6f233f2eb2e954edc9f6d744185523fbf3ad32"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/result.json",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/result.json",
+      "previous_sha256": "09136ef0b8d380f09f49f968d9f749673a2470bb8557353e4d31566dddf94460",
+      "payload": true,
+      "current_sha256": "09136ef0b8d380f09f49f968d9f749673a2470bb8557353e4d31566dddf94460"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/run_manifest.json",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/run_manifest.json",
+      "previous_sha256": "331fc7e3c749ff1f0c12632e1d77ba73096ffe6f55e6e40bc3a0e5fe10978925",
+      "payload": true,
+      "current_sha256": "331fc7e3c749ff1f0c12632e1d77ba73096ffe6f55e6e40bc3a0e5fe10978925"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/scalar_embeddings.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/scalar_embeddings.csv",
+      "previous_sha256": "2fa37333da3cf2b876ace8db20561f2695a807cbaf952a3785956f97d3142887",
+      "payload": true,
+      "current_sha256": "2fa37333da3cf2b876ace8db20561f2695a807cbaf952a3785956f97d3142887"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/stability_summary.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/stability_summary.csv",
+      "previous_sha256": "2a4ba4073400126cad152411a675a207ecbae95f6465bec1f4b6a1b8500215f8",
+      "payload": true,
+      "current_sha256": "2a4ba4073400126cad152411a675a207ecbae95f6465bec1f4b6a1b8500215f8"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/topology_summary.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/topology_summary.csv",
+      "previous_sha256": "e2f3f17041d54bba9276791ab9f552bf130e85896c943fd101e194d015ba4c43",
+      "payload": true,
+      "current_sha256": "e2f3f17041d54bba9276791ab9f552bf130e85896c943fd101e194d015ba4c43"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/QUARANTINE.md",
+      "new_path": "data/quarantine/2026-10-03_audit/sdss_hi_match/QUARANTINE.md",
+      "previous_sha256": "68d1c2fd4f7a5dfed946218cd9cd2f5236b919903f128b3738cb99f208ddc734",
+      "payload": false,
+      "current_sha256": "68d1c2fd4f7a5dfed946218cd9cd2f5236b919903f128b3738cb99f208ddc734"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/manifest.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/sdss_hi_match/manifest.csv",
+      "previous_sha256": "12966d5b163c1430c9cbfa0ab071deddb4c73cddfc4a9ea724e8a1ef80b5a2bd",
+      "payload": false,
+      "current_sha256": "d07549946833257d601ab5f15c5204947cb8f923fde4250bcdd8b81bbe2287bb"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/manifest.json",
+      "new_path": "data/quarantine/2026-10-03_audit/sdss_hi_match/manifest.json",
+      "previous_sha256": "77ce30424f274c21ec338b8a4549bb75e3f990c10adce0e03a32cb500b96997b",
+      "payload": false,
+      "current_sha256": "64f45203e1b0a2df6cfd1b70387441b0525640708b9018c260448fdf0db77bfe"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi.csv",
+      "previous_sha256": "5a9606b75bc55de5e7833a04e5c56318df9f21a31560df180db2707374a22d50",
+      "payload": true,
+      "current_sha256": "5a9606b75bc55de5e7833a04e5c56318df9f21a31560df180db2707374a22d50"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi_with_arcsec.csv",
+      "new_path": "data/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi_with_arcsec.csv",
+      "previous_sha256": "e6e2e749d0ec45b5713311dfe3b3cc958fddb13166f770ce2c47a30dbd5f8dad",
+      "payload": true,
+      "current_sha256": "e6e2e749d0ec45b5713311dfe3b3cc958fddb13166f770ce2c47a30dbd5f8dad"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/step1_summary.json",
+      "new_path": "data/quarantine/2026-10-03_audit/step1_summary.json",
+      "previous_sha256": "d458e1545ac63e6c4f00994b31545dfa046301739fa6fefdf6427c92c320ecd8",
+      "payload": false,
+      "current_sha256": "0d1b2ec5816bf61ec35ec44d7a8a7a3b8c5310566be99f9fe2e76d7f3124acec"
+    },
+    {
+      "old_path": "historical/r&d/quarantine/2026-10-03_audit/step1_verification.json",
+      "new_path": "data/quarantine/2026-10-03_audit/step1_verification.json",
+      "previous_sha256": "2b6bc826b3eeb7b9c8a422c6fe80e85e036546f0e72b3fa97018d0b7a54f4d03",
+      "payload": false,
+      "current_sha256": "2b6bc826b3eeb7b9c8a422c6fe80e85e036546f0e72b3fa97018d0b7a54f4d03"
+    }
+  ]
+}
