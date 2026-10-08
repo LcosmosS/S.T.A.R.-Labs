@@ -3,7 +3,7 @@ import copy
 import pytest
 
 from tools.validate_preregistration_transition_candidates import (
-    PreregistrationReviewError, validate, load_json, ROOT, CONFIG, LEDGER
+    PreregistrationReviewError, validate, validate_a01_lifecycle, load_csv, load_json, ROOT, CONFIG, LEDGER
 )
 
 def _fixture():
@@ -49,3 +49,28 @@ def test_reject_changed_source_digest():
     cfg["input"]["source_sha256"] = "0"*64
     with pytest.raises(PreregistrationReviewError, match="Arithmetic source bytes"):
         validate(ledger=ledger, config=cfg)
+
+def _a01_rows():
+    exp = load_csv(ROOT, "registry/experiment_registry_v0.2.csv", "Experiment_ID")
+    datasets = load_csv(ROOT, "registry/dataset_registry_v0.1.csv", "Dataset_ID")
+    return dict(exp["EXP-MAP-A01"]), dict(datasets["DATA-ARITHMETIC"])
+
+def test_a01_inactive_or_exact_separate_activation_is_accepted_not_support():
+    experiment, dataset = _a01_rows()
+    validate_a01_lifecycle(experiment, dataset)
+    experiment["Controlled_Execution_Eligible"] = "true"
+    dataset["Controlled_Execution_Eligible"] = "true"
+    validate_a01_lifecycle(experiment, dataset)
+    experiment["Current_Audit_Assessment"] += " illicit amendment"
+    with pytest.raises(PreregistrationReviewError, match="exact reviewed bindings"):
+        validate_a01_lifecycle(experiment, dataset)
+
+def test_a01_partial_activation_and_support_promotion_are_rejected():
+    experiment, dataset = _a01_rows()
+    experiment["Controlled_Execution_Eligible"] = "true"
+    with pytest.raises(PreregistrationReviewError, match="partial activation"):
+        validate_a01_lifecycle(experiment, dataset)
+    experiment["Controlled_Execution_Eligible"] = "false"
+    dataset["Physical_Support_Eligible"] = "true"
+    with pytest.raises(PreregistrationReviewError, match="physical support"):
+        validate_a01_lifecycle(experiment, dataset)
