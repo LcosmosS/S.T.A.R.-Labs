@@ -51,7 +51,8 @@
     "ICRS epoch/units and coordinate error model",
     "class STAR contamination/physical galaxy selection",
     "MaNGA ID semantics and survey footprint",
-    "Pipe3D target derivation and split"
+    "Pipe3D target derivation and split",
+    "Independent comparison of renamed CSV bytes to their recorded download output, and original CasJobs SQL job"
   ],
   "controls": {
     "execution_eligible": false,
@@ -94,5 +95,17 @@
         "interpretation": "Filtered table alone cannot establish per-galaxy train/test group isolation or a provenance-secure join; recover stable IDs and release metadata from original Pipe3D input."
       }
     ]
+  },
+  "supplemental_evidence": {
+    "zone_identifier_receipts_path": "data/provenance/zone_identifier_receipts_v0.1.json",
+    "zone_sidecars_observed": 25,
+    "evidence_kind": "historical ZoneTransfer HostUrl/ReferrerUrl; no raw byte acquisition or provenance approval",
+    "casjobs_history_divergence": {
+      "more_complete": "/STAR/CasJobs SQL History.txt",
+      "older": "/star_provenance_r&d/CasJobs SQL History.txt",
+      "terminal_top_200000_only_in_more_complete": true
+    },
+    "filename_change_candidate": "SDSSDR18_200000.csv from MyTable_pmqr771_0.csv based on saved HostUrl; not byte verified",
+    "provider_session_tokens_in_repo": false
   }
 }
