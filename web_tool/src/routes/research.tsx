@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import content from "@/lib/star/research-content-snapshot.json";
@@ -13,13 +13,15 @@ const LABELS: Record<string, string> = {
 };
 const SOURCE_BASE = "https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/";
 function ResearchPage() {
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => { setHydrated(true); }, []);
   const [query, setQuery] = useState("");
   const [kind, setKind] = useState("all");
   const items = useMemo(() => content.entries.filter(entry => {
     const text = [entry.title, entry.description, entry.expression, entry.id].join(" ").toLowerCase();
     return (kind === "all" || entry.kind === kind) && text.includes(query.toLowerCase().trim());
   }), [kind, query]);
-  return <div className="space-y-8">
+  return <div className="space-y-8" data-research-hydrated={hydrated ? "true" : "false"}>
     <header className="max-w-3xl">
       <Badge tone="steel">Versioned, read-only catalog · {content.version}</Badge>
       <h1 className="mt-3 font-display text-4xl tracking-tight">Research constructs and source artifacts</h1>

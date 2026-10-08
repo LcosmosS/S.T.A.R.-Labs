@@ -18,6 +18,9 @@ try {
     const response = await page.goto(origin + "/research", { waitUntil: "domcontentloaded", timeout: 40000 });
     assert.equal(response?.status(), 200, "research page HTTP");
     await page.getByRole("heading", { name: "Research constructs and source artifacts" }).waitFor();
+    // SSR content can appear before React installs interactive event handlers.
+    // The page's useEffect-driven marker distinguishes actual hydration.
+    await page.locator('[data-research-hydrated="true"]').waitFor({ timeout: 20000 });
     assert.match(await page.getByRole("status").innerText(), /9 of 9/);
     const links = page.getByRole("link", { name: "View cited repository source" });
     assert.equal(await links.count(), 9);
