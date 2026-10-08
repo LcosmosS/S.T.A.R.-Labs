@@ -40,9 +40,9 @@ def validate(root=ROOT):
                 and a["physical_support_eligible"] is False, "Source evidence promotion prohibited")
         # git show reads committed Git blobs; no lfs smudge/download is needed.
         pointer = subprocess.check_output(["git", "show", "HEAD:" + p], cwd=root, text=True)
-        expected = ("version https://git-lfs.github.com/spec/v1\\n"
-                    + "oid sha256:" + record["sha256"] + "\\n"
-                    + "size " + str(record["bytes"]) + "\\n")
+        expected = ("version https://git-lfs.github.com/spec/v1\n"
+                    + "oid sha256:" + record["sha256"] + "\n"
+                    + "size " + str(record["bytes"]) + "\n")
         require(pointer == expected, "Missing or mismatched *committed* LFS pointer for " + p)
     require(len(ledger["pending_review"]) > 0, "Pending candidate records missing")
     for record in ledger["pending_review"]:
