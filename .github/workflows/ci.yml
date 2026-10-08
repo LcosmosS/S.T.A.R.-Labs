@@ -99,6 +99,9 @@ jobs:
               "parameter_registry_v0.1.csv",
               "null_registry_v0.1.csv",
               "r&d_artifact_registry_v0.1.csv",
+              "theory_search_registry_v0.1.csv",
+              "theory_candidate_registry_v0.1.csv",
+              "theory_obstruction_registry_v0.1.csv",
           ]
           for name in required:
               assert (root / name).exists(), f"missing registry: {name}"
@@ -122,6 +125,9 @@ jobs:
           parameters = rows("parameter_registry_v0.1.csv")
           nulls = rows("null_registry_v0.1.csv")
           artifacts = rows("r&d_artifact_registry_v0.1.csv")
+          theory_searches = rows("theory_search_registry_v0.1.csv")
+          theory_candidates = rows("theory_candidate_registry_v0.1.csv")
+          theory_obstructions = rows("theory_obstruction_registry_v0.1.csv")
 
           claim_ids = {r["Claim_ID"] for r in claims}
           exp_ids = [r["Experiment_ID"] for r in experiments]
@@ -288,6 +294,121 @@ jobs:
 
 
 
+          # Theory-search preregistration validation.
+          theory_search_fields = [
+              "Search_ID",
+              "Name",
+              "Protocol_Path",
+              "Search_Frame_Version",
+              "Status",
+              "Candidate_Count",
+              "Candidate_IDs",
+              "Admission_Criteria_Frozen",
+              "Observable_Embargo",
+              "List_Immutable_After_Start",
+              "Exhaustion_Rule",
+              "Terminal_Conclusion",
+              "Universal_NoGo_Claim",
+              "Controlled_Execution_Eligible",
+              "Controlled_Support_Eligible",
+              "Physical_Support_Eligible",
+              "Notes",
+          ]
+          theory_candidate_fields = [
+              "Candidate_ID",
+              "Search_ID",
+              "Name",
+              "Parent_Theory_Class",
+              "Registered_Representative",
+              "Independent_Motivation",
+              "Representative_Source_DOI",
+              "Admission_Status",
+              "Audit_Status",
+              "Terminal",
+              "Ellipticity_Selection_Prohibited",
+              "Observable_Selection_Prohibited",
+              "Within_Class_Model_Shopping_Prohibited",
+              "Controlled_Execution_Eligible",
+              "Controlled_Support_Eligible",
+              "Physical_Support_Eligible",
+              "Notes",
+          ]
+          theory_obstruction_fields = [
+              "Obstruction_ID",
+              "Name",
+              "Claim_ID",
+              "Protocol_Path",
+              "Parent_Theory_Sector",
+              "Status",
+              "Substage_A",
+              "Substage_B",
+              "Substage_C",
+              "Primary_Question",
+              "Permitted_Conclusion",
+              "Universal_NoGo_Claim",
+              "Controlled_Execution_Eligible",
+              "Controlled_Support_Eligible",
+              "Physical_Support_Eligible",
+              "Notes",
+          ]
+
+          assert len(theory_searches) == 1, "P0-SF-v0.1 must be the single v0.1 search frame"
+          assert list(theory_searches[0].keys()) == theory_search_fields, "unexpected theory search schema"
+          assert all(list(r.keys()) == theory_candidate_fields for r in theory_candidates), "unexpected theory candidate schema"
+          assert all(list(r.keys()) == theory_obstruction_fields for r in theory_obstructions), "unexpected theory obstruction schema"
+
+          search = theory_searches[0]
+          expected_candidates = {"P0-T001", "P0-T002", "P0-T003", "P0-T004", "P0-T005"}
+          candidate_ids = [r["Candidate_ID"] for r in theory_candidates]
+          assert search["Search_ID"] == "P0-SF-v0.1"
+          assert search["Search_Frame_Version"] == "P0-SF-v0.1"
+          assert search["Status"] == "preregistered_closed"
+          assert int(search["Candidate_Count"]) == 5
+          assert set(search["Candidate_IDs"].split(";")) == expected_candidates
+          assert len(candidate_ids) == len(set(candidate_ids)) == 5
+          assert set(candidate_ids) == expected_candidates
+          assert search["Admission_Criteria_Frozen"] == "true"
+          assert search["Observable_Embargo"] == "true"
+          assert search["List_Immutable_After_Start"] == "true"
+          assert search["Exhaustion_Rule"] == "N_unresolved=0"
+          assert search["Universal_NoGo_Claim"] == "false"
+          assert search["Controlled_Execution_Eligible"] == "false"
+          assert search["Controlled_Support_Eligible"] == "false"
+          assert search["Physical_Support_Eligible"] == "false"
+          assert search["Protocol_Path"] == "preregistrations/P0-ANSATZ-001/protocol.md"
+          assert (Path(search["Protocol_Path"])).exists(), "missing P0 protocol"
+
+          for r in theory_candidates:
+              assert r["Search_ID"] == search["Search_ID"]
+              assert r["Admission_Status"] == "admitted"
+              assert r["Audit_Status"] == "REGISTERED_UNTESTED"
+              assert r["Terminal"] == "false"
+              assert r["Independent_Motivation"].strip()
+              assert r["Registered_Representative"].strip()
+              assert r["Representative_Source_DOI"].strip()
+              assert r["Ellipticity_Selection_Prohibited"] == "true"
+              assert r["Observable_Selection_Prohibited"] == "true"
+              assert r["Within_Class_Model_Shopping_Prohibited"] == "true"
+              assert r["Controlled_Execution_Eligible"] == "false"
+              assert r["Controlled_Support_Eligible"] == "false"
+              assert r["Physical_Support_Eligible"] == "false"
+
+          assert "CLAIM-ACSC-MECH-001" in claim_ids
+          assert len(theory_obstructions) == 1
+          obstruction = theory_obstructions[0]
+          assert obstruction["Obstruction_ID"] == "M1-INH-E1"
+          assert obstruction["Claim_ID"] == "CLAIM-ACSC-MECH-002"
+          assert obstruction["Claim_ID"] in claim_ids
+          assert obstruction["Status"] == "planned"
+          assert obstruction["Substage_A"] == "planned"
+          assert obstruction["Substage_B"] == "planned"
+          assert obstruction["Substage_C"] == "planned"
+          assert obstruction["Universal_NoGo_Claim"] == "false"
+          assert obstruction["Controlled_Execution_Eligible"] == "false"
+          assert obstruction["Controlled_Support_Eligible"] == "false"
+          assert obstruction["Physical_Support_Eligible"] == "false"
+          assert (Path(obstruction["Protocol_Path"])).exists(), "missing obstruction protocol"
+
           for r in crosswalk:
               assert r["Claim_ID"] in claim_ids
               assert r["Experiment_ID"] in set(exp_ids)
@@ -302,7 +423,9 @@ jobs:
           print(
               f"validated {len(claims)} claims, {len(experiments)} experiments, "
               f"{len(datasets)} datasets, {len(parameters)} parameter sets, "
-              f"{len(nulls)} null models, {len(artifacts)} R&D artifacts, {len(provenance)} provenance records"
+              f"{len(nulls)} null models, {len(artifacts)} R&D artifacts, {len(provenance)} provenance records, "
+              f"{len(theory_searches)} theory search frames, {len(theory_candidates)} theory candidates, "
+              f"{len(theory_obstructions)} theory obstruction programs"
           )
           PY
       - name: Validate audit namespaces and quarantine eligibility
