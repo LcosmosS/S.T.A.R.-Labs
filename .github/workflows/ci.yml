@@ -297,6 +297,9 @@ jobs:
           # Theory-search preregistration validation.
           theory_search_fields = [
               "Search_ID",
+              "Claim_ID",
+              "Registry_Namespace",
+              "Qualified_Search_ID",
               "Name",
               "Protocol_Path",
               "Search_Frame_Version",
@@ -317,6 +320,8 @@ jobs:
           theory_candidate_fields = [
               "Candidate_ID",
               "Search_ID",
+              "Registry_Namespace",
+              "Qualified_Candidate_ID",
               "Name",
               "Parent_Theory_Class",
               "Registered_Representative",
@@ -335,8 +340,10 @@ jobs:
           ]
           theory_obstruction_fields = [
               "Obstruction_ID",
-              "Name",
               "Claim_ID",
+              "Registry_Namespace",
+              "Qualified_Obstruction_ID",
+              "Name",
               "Protocol_Path",
               "Parent_Theory_Sector",
               "Status",
@@ -361,6 +368,10 @@ jobs:
           expected_candidates = {"P0-T001", "P0-T002", "P0-T003", "P0-T004", "P0-T005"}
           candidate_ids = [r["Candidate_ID"] for r in theory_candidates]
           assert search["Search_ID"] == "P0-SF-v0.1"
+          assert search["Claim_ID"] == "CLAIM-ACSC-MECH-001"
+          assert search["Claim_ID"] in claim_ids
+          assert search["Registry_Namespace"] == "THEORY-SEARCH-v0.1"
+          assert search["Qualified_Search_ID"] == "THEORY-SEARCH-v0.1:P0-SF-v0.1"
           assert search["Search_Frame_Version"] == "P0-SF-v0.1"
           assert search["Status"] == "preregistered_closed"
           assert int(search["Candidate_Count"]) == 5
@@ -380,6 +391,8 @@ jobs:
 
           for r in theory_candidates:
               assert r["Search_ID"] == search["Search_ID"]
+              assert r["Registry_Namespace"] == "THEORY-SEARCH-v0.1"
+              assert r["Qualified_Candidate_ID"] == f"THEORY-SEARCH-v0.1:{r['Candidate_ID']}"
               assert r["Admission_Status"] == "admitted"
               assert r["Audit_Status"] == "REGISTERED_UNTESTED"
               assert r["Terminal"] == "false"
@@ -397,6 +410,8 @@ jobs:
           assert len(theory_obstructions) == 1
           obstruction = theory_obstructions[0]
           assert obstruction["Obstruction_ID"] == "M1-INH-E1"
+          assert obstruction["Registry_Namespace"] == "THEORY-SEARCH-v0.1"
+          assert obstruction["Qualified_Obstruction_ID"] == "THEORY-SEARCH-v0.1:M1-INH-E1"
           assert obstruction["Claim_ID"] == "CLAIM-ACSC-MECH-002"
           assert obstruction["Claim_ID"] in claim_ids
           assert obstruction["Status"] == "planned"
