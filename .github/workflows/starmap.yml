@@ -46,3 +46,4 @@ jobs:
             exit 1
           fi
           node scripts/research-browser-smoke.mjs http://127.0.0.1:8081
+          node scripts/sky-browser-smoke.mjs http://127.0.0.1:8081
