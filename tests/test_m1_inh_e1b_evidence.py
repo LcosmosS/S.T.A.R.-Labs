@@ -58,3 +58,35 @@ def test_e1b_evidence_remains_explicitly_unreviewed_and_e1a_pending():
     assert "NOT EXECUTED" in next_step
     assert "four passing versions are *not* four independent" in readme
     assert "Earlier notebook-cell failures" in provenance
+
+
+def test_frozen_elliptic_record_has_explicit_common_branch_normalization():
+    """The proof must fix the inverse-WP and time origins, not just the cubic."""
+    from sympy import Symbol, cancel
+
+    record = (EVIDENCE / "M1-INH-E1b_metric_first_proof_record.md").read_text(
+        encoding="utf-8"
+    )
+    for requirement in (
+        "J=(-1/4,1/4)",
+        "\\epsilon=0",
+        "v_0(z)=\\int_0^\\infty",
+        "\\sigma(z)=",
+        "\\operatorname{sgn}\\dot\\Phi=+1",
+        "\\operatorname{sgn}\\wp'=-1",
+        "(n,m)=(0,0)",
+        "\\int_{-\\infty}^{X(t,z)}",
+        "\\int_0^{u(t,z)}\\Phi",
+    ):
+        assert requirement in record, f"Missing preregistered branch datum: {requirement}"
+
+    # Frozen X=-2*xi/M and Q(X)=1-2*M*X**3 must give the
+    # nondegenerate Weierstrass cubic with g2=0, g3=-M**2/4.
+    mass = Symbol("M", positive=True)
+    xi = Symbol("xi", positive=True)
+    X = -2 * xi / mass
+    Q = 1 - 2 * mass * X**3
+    assert cancel((mass**2 / 4) * Q - (4 * xi**3 + mass**2 / 4)) == 0
+
+    # This is a documentary and algebraic regression check, not an
+    # independent numerical assessment of the Weierstrass inverse.
