@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -35,6 +36,35 @@ def load_csv(root: Path, relative: str, id_field: str):
             "Malformed CSV record")
     require(len({r[id_field] for r in rows}) == len(rows), "Duplicate registry identity")
     return {r[id_field]: r for r in rows}
+
+
+def _row_hash(row):
+    """Match controlled-runner JSON record binding for audited CSV fields."""
+    encoded = json.dumps(row, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+
+
+def validate_a01_lifecycle(experiment, dataset):
+    """Accept only original inactive state or separately reviewed exact A01 activation.
+
+    The ledger records A01's state at authoring. It is NOT a veto on a later
+    distinct activation PR, and an approved activation is NOT science support.
+    """
+    for row in (experiment, dataset):
+        require(all(row[k] == "false" for k in [
+            "Controlled_Support_Eligible", "Physical_Support_Eligible"]),
+            "A01 cannot gain controlled or physical support")
+    flags = (experiment["Controlled_Execution_Eligible"], dataset["Controlled_Execution_Eligible"])
+    require(flags in {("false", "false"), ("true", "true")},
+            "A01 partial activation or malformed eligibility flags")
+    if flags == ("true", "true"):
+        expected = {
+            "experiment": "97dac41c4d8a866d0abbcdf5515829328e92ea1fb3cf7b4d03e1d9b9c0b9c868",
+            "dataset": "1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2",
+        }
+        require(_row_hash(experiment) == expected["experiment"] and
+                _row_hash(dataset) == expected["dataset"],
+                "A01 post-activation registry rows do not match exact reviewed bindings")
 
 
 def validate(root: Path = ROOT, *, ledger=None, config=None):
@@ -115,14 +145,12 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
         else:
             require(candidate["design_status"].startswith("design_only_blocked_"),
                     "Unbound experiment incorrectly marked locked")
-    require(experiments["EXP-MAP-A01"]["Status"] == "preregistered", "A01 altered")
-    require(all(experiments["EXP-MAP-A01"][k] == "false" for k in [
-        "Controlled_Execution_Eligible","Controlled_Support_Eligible","Physical_Support_Eligible"]),
-        "A01 cannot be activated in a prospective design PR")
+    require(experiments["EXP-MAP-A01"]["Status"] == "preregistered", "A01 status altered")
+    validate_a01_lifecycle(experiments["EXP-MAP-A01"], datasets["DATA-ARITHMETIC"])
     return len(ledger["candidates"])
 
 
 if __name__ == "__main__":
     count = validate()
-    print(f"PASS: {count} prospective candidate reviews; 0 execution/support promotions; "
-          "A01 unchanged; canonical transitions pending.")
+    print(f"PASS: {count} prospective candidate reviews; 0 successor execution/support promotions; "
+          "A01 original or exact reviewed activation accepted; other canonical transitions pending.")
