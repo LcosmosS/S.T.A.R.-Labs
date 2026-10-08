@@ -5,6 +5,17 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+from scripts.theory_search_states import (
+    ALLOWED_CANDIDATE_STATUSES,
+    TERMINAL_CANDIDATE_STATUSES,
+    TERMINAL_FAILURE_STATUSES,
+    TERMINAL_SUCCESS_STATUSES,
+    UNRESOLVED_CANDIDATE_STATUSES,
+    can_transition,
+    is_terminal,
+    is_unresolved,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "registry"
@@ -101,3 +112,98 @@ def test_theory_claims_are_registered_without_physical_support():
         claim = claims[claim_id]
         assert claim["Controlled_Support_Eligible"] == "false"
         assert claim["Physical_Support_Eligible"] == "false"
+
+
+
+def test_candidate_lifecycle_makes_passes_p0_unresolved():
+    assert "REGISTERED_UNTESTED" in UNRESOLVED_CANDIDATE_STATUSES
+    assert "PASSES_P0" in UNRESOLVED_CANDIDATE_STATUSES
+    assert "PASSES_P0" not in TERMINAL_CANDIDATE_STATUSES
+    assert not is_terminal("PASSES_P0")
+    assert is_unresolved("PASSES_P0")
+
+    assert TERMINAL_SUCCESS_STATUSES == {"PASSES_P1"}
+    assert is_terminal("PASSES_P1")
+    assert not is_unresolved("PASSES_P1")
+
+    assert ALLOWED_CANDIDATE_STATUSES == (
+        UNRESOLVED_CANDIDATE_STATUSES | TERMINAL_CANDIDATE_STATUSES
+    )
+
+
+def test_candidate_lifecycle_transitions_are_closed():
+    assert can_transition("REGISTERED_UNTESTED", "PASSES_P0")
+    assert can_transition("REGISTERED_UNTESTED", "NO_ENDOGENOUS_ELLIPTIC_SECTOR")
+    assert not can_transition("REGISTERED_UNTESTED", "PASSES_P1")
+
+    assert can_transition("PASSES_P0", "PASSES_P1")
+    assert can_transition("PASSES_P0", "FAILS_P1")
+    assert can_transition("PASSES_P0", "FAILS_STRUCTURE_SUFFICIENCY")
+    assert not can_transition("PASSES_P0", "NO_ENDOGENOUS_ELLIPTIC_SECTOR")
+
+    for status in TERMINAL_CANDIDATE_STATUSES:
+        for target in ALLOWED_CANDIDATE_STATUSES - {status}:
+            assert not can_transition(status, target)
+
+
+def test_terminal_failure_states_require_failure_provenance_by_contract():
+    assert "FAILS_P1" in TERMINAL_FAILURE_STATUSES
+    assert "FAILS_STRUCTURE_SUFFICIENCY" in TERMINAL_FAILURE_STATUSES
+    assert "PASSES_P1" not in TERMINAL_FAILURE_STATUSES
+
+
+def test_preregistration_protocols_contain_no_ascii_control_characters():
+    for relative in (
+        "preregistrations/P0-ANSATZ-001/protocol.md",
+        "preregistrations/M1-INH-E1/protocol.md",
+    ):
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        invalid = [
+            ord(char)
+            for char in text
+            if ord(char) < 32 and char not in "\n\r\t"
+        ]
+        assert invalid == [], f"{relative} contains ASCII control characters: {invalid}"
+
+
+def test_frozen_dynamics_keep_literal_tex_commands():
+    text = (ROOT / "preregistrations/P0-ANSATZ-001/protocol.md").read_text(
+        encoding="utf-8"
+    )
+    for token in (
+        r"\rho",
+        r"\nabla",
+        r"\frac",
+        r"\beta",
+        r"\eta",
+        r"\mu",
+        r"\nu",
+        r"\Lambda",
+    ):
+        assert token in text
+
+
+def test_szekeres_elliptic_record_is_defined_before_e1a():
+    text = (ROOT / "preregistrations/M1-INH-E1/protocol.md").read_text(
+        encoding="utf-8"
+    )
+    record = text.index("## Registered elliptic-evolution data record")
+    e1a = text.index("## M1-INH-E1a — exact reduction")
+    e1b = text.index("## M1-INH-E1b — field-level insufficiency")
+
+    assert record < e1a < e1b
+    assert r"g_2(z)=\frac{K(z)^2}{12}" in text
+    assert r"g_3(z)" in text
+    assert r"\Delta_{\wp}(z)" in text
+    assert r"\mathfrak E[S]" in text
+
+
+def test_szekeres_kernel_test_is_explicitly_regular_and_nonexact():
+    text = (ROOT / "preregistrations/M1-INH-E1/protocol.md").read_text(
+        encoding="utf-8"
+    )
+    assert "locally constant rank" in text
+    assert "tangent space" in text
+    assert "differentiable local factorization" in text
+    assert "does **not** by itself establish failure of exact sufficiency" in text
+    assert "Exact observable insufficiency under E1c is established only" in text
