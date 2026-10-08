@@ -125,130 +125,124 @@ elliptic behavior or any target observable.
 The representative theory is Einstein gravity with cosmological constant and
 irrotational geodesic dust:
 
-[
-G_{mu
-u}+Lambda g_{mu
-u}=8pi G,ho u_mu u_
-u,
-]
+\[
+G_{\mu\nu}+\Lambda g_{\mu\nu}
+=
+8\pi G\,\rho\,u_\mu u_\nu,
+\]
 
-[
-u^mu
-abla_mu u^
-u=0,
-qquad
-
-abla_mu(ho u^mu)=0,
-]
+\[
+u^\mu\nabla_\mu u^\nu=0,
+\qquad
+\nabla_\mu\!\left(\rho u^\mu\right)=0,
+\]
 
 with vanishing vorticity of the dust congruence. No additional scalar, vector,
 defect, or phenomenological structure field may be added during this audit.
 
 Representative independent source:
-`10.1103/PhysRevD.86.023520`.
+\`10.1103/PhysRevD.86.023520\`.
 
 ### P0-T002 — Einstein-Vlasov collisionless matter
 
 The representative theory is the Einstein equations coupled to a
-collisionless one-particle distribution function (f(x,p)) on the mass shell:
+collisionless one-particle distribution function \(f(x,p)\) on the mass shell:
 
-[
-G_{mu
-u}+Lambda g_{mu
-u}=8pi G,T_{mu
-u}[f],
-]
+\[
+G_{\mu\nu}+\Lambda g_{\mu\nu}
+=
+8\pi G\,T_{\mu\nu}[f],
+\]
 
-with (f) satisfying the general-relativistic Vlasov equation
+with \(f\) satisfying the general-relativistic Vlasov equation
 
-[
-p^murac{partial f}{partial x^mu}
+\[
+p^\mu\frac{\partial f}{\partial x^\mu}
 -
-Gamma^i_{alphaeta}p^alpha p^eta
-rac{partial f}{partial p^i}=0.
-]
+\Gamma^i_{\alpha\beta}p^\alpha p^\beta
+\frac{\partial f}{\partial p^i}
+=
+0.
+\]
 
 No self-interaction beyond gravity is added during P0-SF-v0.1.
 
 Representative independent source:
-`10.1088/1475-7516/2013/11/002`.
+\`10.1088/1475-7516/2013/11/002\`.
 
 ### P0-T003 — GR + canonical exponential quintessence
 
 The representative theory is
 
-[
-S=
-int d^4xsqrt{-g}
-left[
-rac{M_{m Pl}^2}{2}R
--rac12
-abla_muphi
-abla^muphi
--V_0e^{-lambdaphi/M_{m Pl}}
-ight]
+\[
+S
+=
+\int d^4x\,\sqrt{-g}
+\left[
+\frac{M_{\rm Pl}^2}{2}R
+-\frac12\nabla_\mu\phi\,\nabla^\mu\phi
+-V_0e^{-\lambda\phi/M_{\rm Pl}}
+\right]
 +S_m.
-]
+\]
 
-The exponential functional form is frozen. (V_0) and (lambda) are parent
+The exponential functional form is frozen. \(V_0\) and \(\lambda\) are parent
 theory parameters and may not be selected because of elliptic integrability,
 topological similarity, or historical ACSC behavior.
 
 Representative independent source:
-`10.1088/0264-9381/30/21/214003`.
+\`10.1088/0264-9381/30/21/214003\`.
 
-### P0-T004 — Brans-Dicke-Lambda gravity
+### P0-T004 — Brans-Dicke-\(\Lambda\) gravity
 
-The representative Jordan-frame scalar-tensor theory is
+The registered Jordan-frame scalar-tensor representative is
 
-[
-S=
-rac{1}{16pi}
-int d^4xsqrt{-g}
-left[
-phi R
+\[
+S
+=
+\frac{1}{16\pi}
+\int d^4x\,\sqrt{-g}
+\left[
+\phi R
 -
-rac{omega_{m BD}}{phi}
-
-abla_muphi
-abla^muphi
+\frac{\omega_{\rm BD}}{\phi}
+\nabla_\mu\phi\,\nabla^\mu\phi
 -
-2Lambda
-ight]
+2\Lambda
+\right]
 +S_m.
-]
+\]
 
 The Brans-Dicke parameter remains a physical theory parameter. It may not be
 selected to create elliptic behavior. The appropriate general-relativistic
 recovery regime must be identified as part of the P0 audit.
 
 Representative independent source:
-`10.3847/2041-8213/AB53E9`.
+\`10.3847/2041-8213/AB53E9\`.
 
 ### P0-T005 — Einstein-Abelian-Higgs defect cosmology
 
 The representative theory is
 
-[
-S=
-int d^4xsqrt{-g}
-left[
-rac{M_{m Pl}^2}{2}R
--rac14F_{mu
-u}F^{mu
-u}
--|D_muPhi|^2
--rac{lambda}{4}(|Phi|^2-eta^2)^2
-ight].
-]
+\[
+S
+=
+\int d^4x\,\sqrt{-g}
+\left[
+\frac{M_{\rm Pl}^2}{2}R
+-\frac14F_{\mu\nu}F^{\mu\nu}
+-\left|D_\mu\Phi\right|^2
+-\frac{\lambda}{4}\left(|\Phi|^2-\eta^2\right)^2
+\right].
+\]
 
-The (U(1)) gauge structure and symmetry-breaking potential are the standard
+The \(U(1)\) gauge structure and symmetry-breaking potential are the standard
 Abelian-Higgs defect sector. No ECC-R1 entropy coupling, historical S.T.A.R.
 Chern-class interpretation, or additional ACSC-motivated interaction may be
 introduced.
 
 Representative independent structure-formation source:
-`10.1088/1475-7516/2012/05/026`.
+\`10.1088/1475-7516/2012/05/026\`.
 
 ## One-representative rule
 
@@ -354,32 +348,133 @@ This is stronger than blinding its measured value. The observable itself must
 not yet be chosen. Only after a candidate has passed P0 and produced a derived
 P1 may the project ask which observables the theory predicts.
 
-## Candidate status vocabulary
+## Candidate status vocabulary and lifecycle
 
 The only candidate audit states are:
 
-- `REGISTERED_UNTESTED`
-- `FAILS_INDEPENDENT_MOTIVATION`
-- `FAILS_DYNAMICAL_SPECIFICATION`
-- `FAILS_STANDARD_LIMIT`
-- `NO_ENDOGENOUS_ELLIPTIC_SECTOR`
-- `ELLIPTIC_REPRESENTATION_ONLY`
-- `FAILS_P1`
-- `FAILS_STRUCTURE_SUFFICIENCY`
-- `PASSES_P0`
-- `PASSES_P1`
-- `RETIRED`
+- \`REGISTERED_UNTESTED\`
+- \`FAILS_INDEPENDENT_MOTIVATION\`
+- \`FAILS_DYNAMICAL_SPECIFICATION\`
+- \`FAILS_STANDARD_LIMIT\`
+- \`NO_ENDOGENOUS_ELLIPTIC_SECTOR\`
+- \`ELLIPTIC_REPRESENTATION_ONLY\`
+- \`FAILS_P1\`
+- \`FAILS_STRUCTURE_SUFFICIENCY\`
+- \`PASSES_P0\`
+- \`PASSES_P1\`
 
 Failed records are never deleted.
 
+The **unresolved** states are exactly
+
+\[
+\mathcal U
+=
+\{
+\texttt{REGISTERED\_UNTESTED},
+\texttt{PASSES\_P0}
+\}.
+\]
+
+\`PASSES_P0\` is deliberately unresolved: it records successful parent-theory
+eligibility but the candidate has not yet completed the required P1 audit.
+
+The **terminal failure** states are exactly
+
+\[
+\mathcal F
+=
+\{
+\texttt{FAILS\_INDEPENDENT\_MOTIVATION},
+\texttt{FAILS\_DYNAMICAL\_SPECIFICATION},
+\texttt{FAILS\_STANDARD\_LIMIT},
+\texttt{NO\_ENDOGENOUS\_ELLIPTIC\_SECTOR},
+\texttt{ELLIPTIC\_REPRESENTATION\_ONLY},
+\texttt{FAILS\_P1},
+\texttt{FAILS\_STRUCTURE\_SUFFICIENCY}
+\}.
+\]
+
+The sole **terminal success** state for this search frame is
+
+\[
+\mathcal S
+=
+\{
+\texttt{PASSES\_P1}
+\}.
+\]
+
+Thus the complete terminal set is
+
+\[
+\mathcal T_{\rm terminal}
+=
+\mathcal F\cup\mathcal S.
+\]
+
+The registry field \`Terminal\` must be \`true\` if and only if the candidate's
+\`Audit_Status\` belongs to \(\mathcal T_{\rm terminal}\).
+
+### Allowed transitions
+
+Within \`P0-SF-v0.1\`, state changes are restricted to:
+
+\[
+\texttt{REGISTERED\_UNTESTED}
+\longrightarrow
+\begin{cases}
+\texttt{FAILS\_INDEPENDENT\_MOTIVATION},\\
+\texttt{FAILS\_DYNAMICAL\_SPECIFICATION},\\
+\texttt{FAILS\_STANDARD\_LIMIT},\\
+\texttt{NO\_ENDOGENOUS\_ELLIPTIC\_SECTOR},\\
+\texttt{ELLIPTIC\_REPRESENTATION\_ONLY},\\
+\texttt{PASSES\_P0},
+\end{cases}
+\]
+
+and
+
+\[
+\texttt{PASSES\_P0}
+\longrightarrow
+\begin{cases}
+\texttt{FAILS\_P1},\\
+\texttt{FAILS\_STRUCTURE\_SUFFICIENCY},\\
+\texttt{PASSES\_P1}.
+\end{cases}
+\]
+
+Terminal states have no ordinary outbound transition inside v0.1. Correcting a
+terminal scientific record requires an explicit reviewed amendment or a new
+search-frame version; it is not a silent status edit.
+
+Every state change after \`REGISTERED_UNTESTED\` requires a permanent
+\`Audit_Record_Path\`. Every terminal failure additionally requires
+\`Failure_Gate\` and \`Failure_Mechanism\`.
+
 ## Exhaustion rule
 
-The search frame is exhausted when all five registered candidates have terminal
-audited states. Operationally:
+For the five registered candidates \(c_i\), define
 
-[
+\[
+N_{\rm unresolved}
+=
+\#\left\{
+c_i:
+\operatorname{AuditStatus}(c_i)\in\mathcal U
+\right\}.
+\]
+
+The search frame is exhausted if and only if
+
+\[
 N_{\rm unresolved}=0.
-]
+\]
+
+Consequently, a candidate in \`PASSES_P0\` continues to count as unresolved
+until it transitions to \`PASSES_P1\` or to one of the two permitted terminal
+P1-failure states.
 
 The count is registry-derived. No elapsed time, publication count, or subjective
 judgment such as "enough theories have been tried" constitutes exhaustion.
