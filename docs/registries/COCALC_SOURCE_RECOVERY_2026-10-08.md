@@ -3,11 +3,11 @@
 **Classification:** historical source recovery, not source-release admission, controlled experimentation, preregistered validation or claim support.
 
 ## Directly inspected new uploads and archive
-The researcher supplied an original conversational upload named `star_provenance_cocalc.zip`. The ZIP was inspected **without extracting or executing any member**. The original archive bytes must be retained intact, and a reviewer must independently check the digest against any Dropbox or historical copy before asserting byte identity.
+The researcher supplied an original conversational upload named `star_provenance_cocalc.zip`. The ZIP was inspected **without extracting or executing any member**. The original archive bytes must be retained intact. **Dropbox-copy identity was established separately**: the file at `/star_provenance_r&d/star_provenance_cocalc.zip` has Dropbox-reported `content_hash` `a4e8d9aa6606488326051e0d53a91793e01a72bf532bd695a3c3059062f7c021`; applying Dropbox's documented SHA-256-over-4-MiB-block-hashes algorithm to the uploaded archive produced the exact same digest across 12 blocks (49,137,705 bytes). See https://docs.dropboxapi.com/dropbox-api/docs/technical-reference/content-hash. This establishes uploaded-bytes ↔ Dropbox-file-content equality **at the inspected revision**; it does not establish upstream survey release, experiment output authenticity or scientific support. Independent reviewer repetition is still requested.
 
 | Source | Observed SHA-256 of uploaded bytes | Verification boundary |
 | --- | --- | --- |
-| `star_provenance_cocalc.zip` | `cf7d21d34b2f1fb01a6cd04e584eb0fb5b7078168cc80e5afd9e648b3cfdd98d` | Local upload checksum only; no upstream scientific lineage accepted |
+| `star_provenance_cocalc.zip` | `cf7d21d34b2f1fb01a6cd04e584eb0fb5b7078168cc80e5afd9e648b3cfdd98d` | Local SHA-256 plus **verified Dropbox content-hash equality** to the named Dropbox copy; no upstream scientific lineage accepted |
 | `STAR_Experiment_Crosswalk.pdf` | `ae22f956e36d1d66c84435c942794268e129bce1f6c7e3f69f1c8d4e2b5fc22f` | Historical STAR-PDF namespace |
 | `STAR_Experiment_Registry_v0-2.pdf` | `6145d6878410e934c577fcdac7d90a18314b86cb7ea7b55af73903e045838992` | Historical STAR-PDF namespace |
 | `STAR_Claim_Evidence Registry_v0-2.pdf` | `27a3ae4b95077ace559f105a9712ce91f46d46934942aa752edf6ed925c1ba94` | Historical STAR-PDF namespace |
@@ -43,7 +43,7 @@ The independently uploaded `STAR_Experiment_Registry_v0-2.pdf` and native Google
 Likewise `STAR-PDF-v0.2:EXP-MAP-A01` is broad mapping-family comparison, while `REPO-CSV-v0.2:EXP-MAP-A01` has an explicitly different, locked source, projection and primary statistic. `EXP-CTRL-A02` also carries different roles across documents. Protect explicit qualified IDs, and reject unqualified claims/registrations where collisions exist. These are historical/specification differences, not controlled experimental outcomes.
 
 ## Admission and PR gates
-- [ ] Second reviewer recomputes raw archive and key member SHA-256 on an independent host and compares the actual Dropbox ZIP bytes (its copy was located by title) to the uploaded archive.
+- [x] Current connected Dropbox `content_hash` matches the local uploaded archive using the provider's documented 4 MiB block SHA-256 construction; this establishes byte identity to the named Dropbox copy, not upstream scientific provenance.\n- [ ] A **second independent reviewer** recomputes raw archive and key member SHA-256 on a separate host and verifies the Dropbox hash/source revision and receipt before accepting source recovery.
 - [ ] Inventory **every** member with the installed auditor; reconcile names and hashes with `historical/r&d/docs/recovered_corpus_audit_2026-10-08`, preserving duplicates and all negative artifacts.
 - [ ] Review nested ZIPs and historical notebooks in an isolated environment. Notebook outputs are prior artefacts, not allowed controlled reruns. Never execute unreviewed ZIP code in a production CI or notebook job.
 - [ ] Record actual CasJobs SQL/release/job/export link; the recovered `SELECT TOP 200000` query includes STAR-class and negative-redshift rows, so no galaxy-only claim may be inferred.
