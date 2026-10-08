@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "e163d235461f35ef0044e41958ce39584fe2c869f45880932aee570f2cf097a4",
+  "contentSha256": "b97c269d1a06abea2a56ddc5f8c05bcdf1d23d1c546c21c880dcd50501338e69",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
@@ -26,8 +26,8 @@
     },
     {
       "path": "registry/claim_evidence_v0.2.csv",
-      "sha256": "f7c61f26f3ac2c770ce3d815025db2b0e1eff9933b3c006ce4214de16c8b43e1",
-      "sizeBytes": 3433
+      "sha256": "87d912357453085220bd35a91a6d0f09f399a1e3f508c45ef3245d1c9f19f108",
+      "sizeBytes": 4778
     },
     {
       "path": "registry/data_provenance_registry_v0.1.csv",
@@ -143,6 +143,36 @@
       "Relation_Status": "related_scope_only_not_alias",
       "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments.",
       "Audit_Finding_IDs": "E-DRV-002;E-DRV-003;E-LCL-012;E-LCL-013",
+      "Controlled_Support_Eligible": "false",
+      "Physical_Support_Eligible": "false"
+    },
+    {
+      "Claim_ID": "CLAIM-ACSC-MECH-001",
+      "Claim_Type": "mechanism",
+      "Statement": "A strong physical ACSC mechanism requires an independently motivated parent theory that endogenously produces an elliptic or modular sector and derives a structure-determining principle before any target observable is selected.",
+      "Status": "hypothesis",
+      "Evidence_Requirement": "P0-SF-v0.1 parent-theory eligibility audit followed by a derived P1 and the registered M1-M5 mechanism gates; historical ACSC outputs and target observables are embargoed during construction.",
+      "Registry_Namespace": "REPO-CSV-v0.2",
+      "Qualified_Claim_ID": "REPO-CSV-v0.2:CLAIM-ACSC-MECH-001",
+      "Related_Audit_Claim_IDs": "",
+      "Relation_Status": "new_control_claim_no_historical_alias",
+      "Current_Audit_Assessment": "No registered parent theory has passed P0 or P1; mechanism-level ACSC has no controlled or physical support.",
+      "Audit_Finding_IDs": "",
+      "Controlled_Support_Eligible": "false",
+      "Physical_Support_Eligible": "false"
+    },
+    {
+      "Claim_ID": "CLAIM-ACSC-MECH-002",
+      "Claim_Type": "mechanism",
+      "Statement": "Within the registered Szekeres-Szafron dust-plus-Lambda class, elliptic evolution data may be insufficient to determine the complete inhomogeneous matter geometry or a specified structure observable.",
+      "Status": "testable",
+      "Evidence_Requirement": "M1-INH-E1 exact reduction plus a regular physically inequivalent solution pair with identical elliptic evolution data and differing density; each proposed observable requires a separate sufficiency counterexample.",
+      "Registry_Namespace": "REPO-CSV-v0.2",
+      "Qualified_Claim_ID": "REPO-CSV-v0.2:CLAIM-ACSC-MECH-002",
+      "Related_Audit_Claim_IDs": "",
+      "Relation_Status": "new_control_claim_no_historical_alias",
+      "Current_Audit_Assessment": "Planned class-relative obstruction test only; no universal no-go claim and no controlled or physical support.",
+      "Audit_Finding_IDs": "",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
     }

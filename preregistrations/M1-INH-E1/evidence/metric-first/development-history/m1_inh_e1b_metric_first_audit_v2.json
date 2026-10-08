@@ -1,0 +1,32 @@
+{
+  "S1": {
+    "Einstein_dust_tensor": "PASS: all 16 mixed components, exact",
+    "off_diagonal_curvature": "PASS",
+    "SO2_embedding_full_xy": "PASS: unit vector, radial/transverse tangents, all spatial Gram components, exact",
+    "positive_density_on_U": "PROVED: H>1, B>0, and v>=0 on U",
+    "rank_one_timelike_dust_projector": "PASS: exact",
+    "shear_polynomial_identity": "PASS: exact",
+    "shear_projector_idempotent_rank2": "PASS: exact",
+    "J_identity": "0",
+    "J_curvature_expression": "0"
+  },
+  "S2": {
+    "Einstein_dust_tensor": "PASS: all 16 mixed components, exact",
+    "off_diagonal_curvature": "PASS",
+    "SO2_embedding_full_xy": "PASS: unit vector, radial/transverse tangents, all spatial Gram components, exact",
+    "positive_density_on_U": "PROVED: H>1, B>0, and v>=0 on U",
+    "rank_one_timelike_dust_projector": "PASS: exact",
+    "shear_polynomial_identity": "PASS: exact",
+    "shear_projector_idempotent_rank2": "PASS: exact",
+    "J_identity": "positive for x != 0 on meridian; by SO(2), q>0",
+    "J_curvature_expression": "36*_x**2*H**2*W**2*(H - 1)**2*(H + 1)**2*(_x**2*W**2 + 1)**2/(P**2*(_x**2*B*W**2 + _x**2*H*W**2 - _x**2*W**2 + B + H + 1)**4)"
+  },
+  "density_difference": "-3*H*(H - 1)*(H + 1)*(_x*W - 1)*(_x*W + 1)/((B + H)*(_x**2*B*W**2 + _x**2*H*W**2 - _x**2*W**2 + B + H + 1))",
+  "domain_U": "1<t<2, -1/4<z<1/4, x^2+y^2<1/4; H>1, B>0, q<1, v>0",
+  "derivative_rules_exact_Phi": "PASS: 5 direct SymPy hyperbolic identities",
+  "elliptic_record": "same M,K,f,Lambda,epsilon,v0,sigma,g2,g3,Delta",
+  "method": "independent generic-metric Christoffel and Ricci; exact rotational reduction only after differentiation; curvature-derived density, dust flow, shear, projector and J",
+  "general_E1a": "NOT CLAIMED: general Einstein-to-evolution derivation remains pending",
+  "sympy_version": "1.14.0",
+  "script_sha256": "f35286d090d4c84c9c9a95ff30226254009c84fa81d52c78074d7802b06640a6"
+}

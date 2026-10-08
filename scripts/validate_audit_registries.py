@@ -37,6 +37,69 @@ def assert_no_support_promotion(rows, label):
         for key in ['controlled_support_eligible','physical_support_eligible','Controlled_Support_Eligible','Physical_Support_Eligible']:
             if key in row: assert not truth(row[key]), f'audit/quarantine support promotion: {label} {key}'
 
+def assert_original_control_snapshot(name, snapshot, current):
+    """Preserve audited baseline records while permitting explicit post-audit claims.
+
+    The October 3 snapshot is immutable evidence about records that existed at
+    audit time. It is not a permanent ban on adding new canonical claims after
+    that audit. New experiment/crosswalk records remain disallowed here because
+    they require their own reviewed lifecycle integration.
+    """
+    key_fields = {
+        'claim_evidence_v0.2.csv': ('Claim_ID',),
+        'experiment_registry_v0.2.csv': ('Experiment_ID',),
+        'claim_experiment_crosswalk_v0.2.csv': ('Claim_ID', 'Experiment_ID'),
+    }
+    key_fields_for_name = key_fields[name]
+
+    def key(row):
+        return tuple(row[field] for field in key_fields_for_name)
+
+    current_map = {key(row): row for row in current}
+    assert len(current_map) == len(current), f'duplicate operational control key: {name}'
+
+    original_keys = {key(row) for row in snapshot['rows']}
+    assert original_keys.issubset(current_map), f'audited baseline record removed: {name}'
+
+    for original in snapshot['rows']:
+        row = current_map[key(original)]
+
+        # Historical audit snapshots remain immutable. The operational
+        # experiment registry may make one explicit reviewed lifecycle
+        # transition for EXP-MAP-A01: Status planned -> preregistered.
+        allowed_transition = (
+            name == 'experiment_registry_v0.2.csv'
+            and original.get('Experiment_ID') == 'EXP-MAP-A01'
+            and original.get('Status') == 'planned'
+            and row.get('Status') == 'preregistered'
+        )
+        protected = [
+            field for field in snapshot['fields']
+            if not (allowed_transition and field == 'Status')
+        ]
+        assert all(row[field] == original[field] for field in protected), (
+            f'original controlled ID/definition changed: {name}'
+        )
+        if name == 'experiment_registry_v0.2.csv' and original.get('Experiment_ID') == 'EXP-MAP-A01':
+            assert allowed_transition, 'EXP-MAP-A01 audit transition must be explicit planned -> preregistered'
+
+    extra_keys = set(current_map) - original_keys
+    if name != 'claim_evidence_v0.2.csv':
+        assert not extra_keys, f'post-audit operational rows require separate reviewed integration: {name}'
+
+    for extra_key in extra_keys:
+        row = current_map[extra_key]
+        assert row['Registry_Namespace'] == REPO_NS, f'post-audit claim namespace mismatch: {row["Claim_ID"]}'
+        assert row['Qualified_Claim_ID'] == f'{REPO_NS}:{row["Claim_ID"]}', f'post-audit claim qualified ID mismatch: {row["Claim_ID"]}'
+        assert row['Relation_Status'] == 'new_control_claim_no_historical_alias', f'post-audit claim must be explicit non-alias: {row["Claim_ID"]}'
+        assert row['Related_Audit_Claim_IDs'] == '', f'post-audit claim cannot inherit audit claim IDs: {row["Claim_ID"]}'
+        assert row['Audit_Finding_IDs'] == '', f'post-audit claim cannot inherit audit findings: {row["Claim_ID"]}'
+        assert row['Current_Audit_Assessment'].strip(), f'post-audit claim lacks current assessment: {row["Claim_ID"]}'
+        assert not truth(row['Controlled_Support_Eligible']), f'post-audit claim support promotion: {row["Claim_ID"]}'
+        assert not truth(row['Physical_Support_Eligible']), f'post-audit claim physical promotion: {row["Claim_ID"]}'
+
+    assert_no_support_promotion(current, name)
+
 def snapshot_matches(value, cell):
     if isinstance(value,(list,dict)): return json.loads(cell)==value
     if isinstance(value,bool): return cell.strip().lower()==str(value).lower()
@@ -123,28 +186,7 @@ def validate(repo, overlay=None):
             assert row['Target_Qualified_ID']==f'{PDF_NS}:{row["Target_ID"]}'
             assert row['Target_Qualified_ID'] in qualified_claims|qualified_exps
     for name, snapshot in metadata['original_control_snapshots'].items():
-        current=rows(name)
-        assert len(current)==len(snapshot['rows'])
-        for original, row in zip(snapshot['rows'],current):
-            # Historical audit snapshots remain immutable. The operational
-            # experiment registry may make one explicit reviewed lifecycle
-            # transition for EXP-MAP-A01: Status planned -> preregistered.
-            # IDs, claims, dataset/parameter/null bindings, mode, priority and
-            # Historical_RandD must remain identical to the audit snapshot.
-            allowed_transition = (
-                name == 'experiment_registry_v0.2.csv'
-                and original.get('Experiment_ID') == 'EXP-MAP-A01'
-                and original.get('Status') == 'planned'
-                and row.get('Status') == 'preregistered'
-            )
-            protected = [
-                key for key in snapshot['fields']
-                if not (allowed_transition and key == 'Status')
-            ]
-            assert all(row[key]==original[key] for key in protected), f'original controlled ID/definition changed: {name}'
-            if name == 'experiment_registry_v0.2.csv' and original.get('Experiment_ID') == 'EXP-MAP-A01':
-                assert allowed_transition, 'EXP-MAP-A01 audit transition must be explicit planned -> preregistered'
-        assert_no_support_promotion(current,name)
+        assert_original_control_snapshot(name, snapshot, rows(name))
     datasets=rows('dataset_registry_v0.1.csv'); provenance=rows('data_provenance_registry_v0.1.csv'); assets=rows('audit_quarantine_dataset_status_v0.3.csv')
     ds_map={r['Dataset_ID']:r for r in datasets}; prov_map={r['Dataset_ID']:r for r in provenance}
     assert len(ds_map)==len(datasets)==len(prov_map)==len(provenance)==45
