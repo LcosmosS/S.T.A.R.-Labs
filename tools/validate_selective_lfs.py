@@ -9,10 +9,22 @@ ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "registry/recovered_asset_selection_v0.1.json"
 
 def require(condition, message):
+    """Raise ValueError with the given message if condition is falsy."""
     if not condition:
         raise ValueError(message)
 
 def validate(root=ROOT):
+    """Check recovery evidence and committed LFS pointers without hydrating assets.
+
+    Args:
+        root: Repository root containing the selection ledger and evidence files.
+
+    Returns:
+        A tuple of verified existing asset and pending candidate counts.
+
+    Raises:
+        ValueError: If a provenance or fail-closed eligibility check fails.
+    """
     ledger = json.loads((root / "registry/recovered_asset_selection_v0.1.json").read_text(encoding="utf-8"))
     manifest = json.loads((root / ledger["source_manifest"]).read_text(encoding="utf-8"))
     proof = json.loads((root / ledger["remote_lfs_proof"]).read_text(encoding="utf-8"))
