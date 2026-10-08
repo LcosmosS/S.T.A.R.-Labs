@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import re
 from pathlib import Path
 
 from scripts.theory_search_states import (
@@ -202,8 +203,9 @@ def test_szekeres_kernel_test_is_explicitly_regular_and_nonexact():
     text = (ROOT / "preregistrations/M1-INH-E1/protocol.md").read_text(
         encoding="utf-8"
     )
-    assert "locally constant rank" in text
-    assert "tangent space" in text
+    normalized = re.sub(r"\s+", " ", text)
+    assert "locally constant rank" in normalized
+    assert "tangent space" in normalized
     assert "differentiable local factorization" in text
     assert "does **not** by itself establish failure of exact sufficiency" in text
     assert "Exact observable insufficiency under E1c is established only" in text
