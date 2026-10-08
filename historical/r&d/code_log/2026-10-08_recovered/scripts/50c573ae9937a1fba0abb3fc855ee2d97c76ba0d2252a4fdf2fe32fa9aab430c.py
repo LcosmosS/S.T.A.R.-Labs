@@ -1,0 +1,11 @@
+
+from lmfdb.app import app
+from flask import Blueprint
+
+cmf_page = Blueprint("cmf", __name__, template_folder='templates', static_folder="static")
+cmf = cmf_page
+
+from . import main
+assert main # silence pyflakes
+
+app.register_blueprint(cmf_page, url_prefix="/ModularForm/GL2/Q/holomorphic")

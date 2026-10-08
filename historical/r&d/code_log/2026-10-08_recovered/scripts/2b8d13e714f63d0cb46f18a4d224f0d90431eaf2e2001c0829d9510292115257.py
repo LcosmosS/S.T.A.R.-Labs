@@ -1,0 +1,238 @@
+import os
+import yaml
+from flask import url_for
+from lmfdb import db
+from urllib.parse import quote
+from lmfdb.utils import make_graph, setup_isogeny_graph, names_and_urls, web_latex
+from lmfdb.ecnf.WebEllipticCurve import web_ainvs, FIELD
+from lmfdb.number_fields.web_number_field import field_pretty, nf_display_knowl
+from sage.all import latex, Matrix, ZZ, Infinity
+from lmfdb.lfunctions.LfunctionDatabase import (get_lfunction_by_url,
+                                        get_instances_by_Lhash_and_trace_hash)
+
+def curve_url(c):
+    return url_for(".show_ecnf",
+                   nf=c['field_label'],
+                   conductor_label=c['conductor_label'],
+                   class_label=c['iso_label'],
+                   number=c['number'])
+
+class ECNF_isoclass():
+
+    """
+    Class for an isogeny class of elliptic curves over Q
+    """
+
+    def __init__(self, dbdata):
+        """
+        Arguments:
+
+            - dbdata: the data from the database
+        """
+        self.__dict__.update(dbdata)
+        self.make_class()
+
+    def make_code_snippets(self):
+        # read in code.yaml from current directory:
+        _curdir = os.path.dirname(os.path.abspath(__file__))
+        code = yaml.load(open(os.path.join(_curdir, "code.yaml")), Loader=yaml.FullLoader)
+
+        # For now, only Sage supports elliptic curve isogeny classes over number fields
+        code['prompt'] = {'sage':'sage'}
+
+        # Look up the defining polynomial of the base field:
+        from lmfdb.utils import coeff_to_poly
+        poly = coeff_to_poly(db.nf_fields.lookup(self.field_label, projection='coeffs'))
+        code['field']['sage'] = code['field']['sage'] % str(poly.list())
+
+        # Fill in curve coefficients:
+        ainvs = [f"[{ai}]" for ai in self.ainvs.split(";")]
+        ainvs_sage_string = "[" + ",".join("K({})".format(ai) for ai in ainvs) + "]"
+        code['curve']['sage'] = code['curve']['sage'] % ainvs_sage_string
+
+        # Create top code snippet to construct elliptic curve isogeny class
+        code["frontmatter"]["all"] = code["frontmatter"]["all"].replace("curve", "curve isogeny class")
+        for lang in code["isogeny_class"]:
+            if lang != "comment":
+                code["isogeny_class"][lang] = code["curve"][lang]+"\n"+code["isogeny_class"][lang]+"\n"
+        return code
+
+    @staticmethod
+    def by_label(label):
+        """
+        Searches for a specific elliptic curve isogeny class in the
+        curves collection by its label, which can be either a full
+        curve label (including the field_label component) or a full
+        class label.  In either case the data will be obtained from
+        the curve in the database with number 1 in the class.
+        """
+        #print "label = %s" % label
+        try:
+            if label[-1].isdigit():
+                data = db.ec_nfcurves.lookup(label)
+            else:
+                data = db.ec_nfcurves.lookup(label + "1")
+        except AttributeError:
+            return "Invalid label"  # caller must catch this and raise an error
+
+        if data:
+            return ECNF_isoclass(data)
+        return "Class not found"  # caller must catch this and raise an error
+
+    def make_class(self):
+
+        # Create a list of the curves in the class from the database
+        self.db_curves = list(db.ec_nfcurves.search(
+            {'field_label': self.field_label,
+             'conductor_norm': self.conductor_norm,
+             'conductor_label': self.conductor_label,
+             'iso_nlabel': self.iso_nlabel}))
+
+        # Rank or bounds
+        try:
+            self.rk = web_latex(self.db_curves[0]['rank'])
+        except KeyError:
+            self.rk = "?"
+        try:
+            self.rk_bnds = "%s...%s" % tuple(self.db_curves[0]['rank_bounds'])
+        except KeyError:
+            self.rank_bounds = [0, Infinity]
+            self.rk_bnds = "not recorded"
+
+        # Extract the isogeny degree matrix from the database
+        if not hasattr(self, 'isogeny_matrix'):
+            # this would happen if the class is initiated with a curve
+            # which is not #1 in its class:
+            self.isogeny_matrix = self.db_curves[0].isogeny_matrix
+        self.isogeny_matrix = Matrix(self.isogeny_matrix)
+        self.one_deg = ZZ(self.class_deg).is_prime()
+
+        # Create isogeny graph:
+        self.graph = make_graph(self.isogeny_matrix)
+        self.graph_data, self.graph_link, self.graph_layouts, self.graph_default_layout = setup_isogeny_graph(self.graph)
+        # Attach curve URLs and labels to nodes
+        for el in self.graph_data:
+            if el['group'] == 'nodes':
+                idx = int(el['data']['id']) - 1  # 1-indexed labels
+                if 0 <= idx < len(self.db_curves):
+                    c = self.db_curves[idx]
+                    el['data']['url'] = curve_url(c)
+                    el['data']['label'] = c['iso_label'] + str(c['number'])
+                    ts = c.get('torsion_structure', [])
+                    el['data']['torsion'] = ' x '.join('Z/%dZ' % t for t in ts) if ts else 'Trivial'
+                    if c.get('cm'):
+                        el['data']['cm'] = str(c['cm'])
+        self.isogeny_matrix_str = latex(Matrix(self.isogeny_matrix))
+
+        self.field = FIELD(self.field_label)
+        self.field_name = field_pretty(self.field_label)
+        self.field_knowl = nf_display_knowl(self.field_label, self.field_name)
+
+        self.curves = [[c['short_label'], curve_url(c), web_ainvs(self.field_label,c['ainvs'])] for c in self.db_curves]
+
+        self.urls = {}
+        self.urls['class'] = url_for(".show_ecnf_isoclass", nf=self.field_label, conductor_label=self.conductor_label, class_label=self.iso_label)
+        self.urls['conductor'] = url_for(".show_ecnf_conductor", nf=self.field_label, conductor_label=self.conductor_label)
+        self.urls['field'] = url_for('.show_ecnf1', nf=self.field_label)
+        sig = self.signature
+        totally_real = sig[1] == 0
+        imag_quadratic = sig == [0,1]
+        if totally_real:
+            self.hmf_label = "-".join([self.field_label, self.conductor_label, self.iso_label])
+            self.urls['hmf'] = url_for('hmf.render_hmf_webpage', field_label=self.field_label, label=self.hmf_label)
+            lfun_url = url_for("l_functions.l_function_ecnf_page", field_label=self.field_label, conductor_label=self.conductor_label, isogeny_class_label=self.iso_label)
+            origin_url = lfun_url.lstrip('/L/').rstrip('/')
+            if sig[0] <= 2 and db.lfunc_instances.exists({'url': origin_url}):
+                self.urls['Lfunction'] = lfun_url
+            elif self.abs_disc ** 2 * self.conductor_norm < 40000:
+                # we shouldn't trust the Lfun computed on the fly for large conductor
+                self.urls['Lfunction'] = url_for("l_functions.l_function_hmf_page", field=self.field_label, label=self.hmf_label, character='0', number='0')
+
+        if imag_quadratic:
+            self.bmf_label = "-".join([self.field_label, self.conductor_label, self.iso_label])
+            self.bmf_url = url_for('bmf.render_bmf_webpage', field_label=self.field_label, level_label=self.conductor_label, label_suffix=self.iso_label)
+            lfun_url = url_for("l_functions.l_function_ecnf_page", field_label=self.field_label, conductor_label=self.conductor_label, isogeny_class_label=self.iso_label)
+            origin_url = lfun_url.lstrip('/L/').rstrip('/')
+            if db.lfunc_instances.exists({'url':origin_url}):
+                self.urls['Lfunction'] = lfun_url
+
+        # most of this code is repeated in WebEllipticCurve.py
+        # and should be refactored
+        self.friends = []
+        if totally_real and 'Lfunction' not in self.urls:
+            self.friends += [('Hilbert modular form ' + self.hmf_label, self.urls['hmf'])]
+
+        if imag_quadratic:
+            if "CM" in self.label:
+                self.friends += [('Bianchi modular form is not cuspidal', '')]
+            elif 'Lfunction' not in self.urls:
+                if db.bmf_forms.label_exists(self.bmf_label):
+                    self.friends += [('Bianchi modular form %s' % self.bmf_label, self.bmf_url)]
+                else:
+                    self.friends += [('(Bianchi modular form %s)' % self.bmf_label, '')]
+
+        if 'Lfunction' in self.urls:
+            Lfun = get_lfunction_by_url(self.urls['Lfunction'].lstrip('/L').rstrip('/'), projection=['degree', 'trace_hash', 'Lhash'])
+            instances = get_instances_by_Lhash_and_trace_hash(
+                    Lfun['Lhash'],
+                    Lfun['degree'],
+                    Lfun.get('trace_hash'))
+            exclude = {elt[1].rstrip('/').lstrip('/') for elt in self.friends
+                     if elt[1]}
+            exclude.add(lfun_url.lstrip('/L/').rstrip('/'))
+            self.friends += names_and_urls(instances, exclude=exclude)
+            self.friends += [('L-function', self.urls['Lfunction'])]
+        else:
+            self.friends += [('L-function not available', "")]
+
+        self.downloads = []
+        for lang in [("SageMath", "sage")]:
+            self.downloads.append(('{} commands'.format(lang[0]), url_for(".ecnf_isog_code_download", nf=self.field_label,
+                                   conductor_label=quote(self.conductor_label), class_label=self.iso_label, download_type=lang[1])))
+        self.code = self.make_code_snippets()
+
+        self.properties = [('Base field', self.field_name),
+                           ('Label', self.class_label),
+                           ('Number of curves', str(self.class_size)),
+                           ('Graph', ''),
+                           (None, self.graph_link),
+                           ('Conductor', '%s' % self.conductor_label)]
+
+        if self.rk != '?':
+            self.properties += [('Rank', '%s' % self.rk)]
+        else:
+            if self.rk_bnds == 'not recorded':
+                self.properties += [('Rank', '%s' % self.rk_bnds)]
+            else:
+                self.properties += [('Rank bounds', '%s' % self.rk_bnds)]
+
+        self.bread = [('Elliptic curves ', url_for(".index")),
+                      (self.field_label, self.urls['field']),
+                      (self.conductor_label, self.urls['conductor']),
+                      ('isogeny class %s' % self.short_label, self.urls['class'])]
+
+
+def make_iso_matrix(clist):  # clist is a list of ECNFs
+    Elist = [E.E for E in clist]
+    cl = Elist[0].isogeny_class()
+    perm = {i: cl.index(E) for i, E in enumerate(Elist)}
+    return permute_mat(cl.matrix(), perm, True)
+
+
+def invert_perm(perm):
+    n = len(perm)
+    iperm = [0] * n  # just to set the length
+    for i in range(n):
+        iperm[perm[i]] = i
+    return iperm
+
+
+def permute_mat(M, perm, inverse=False):
+    """permute rows and columns of M according to perm.  M should be
+    square, n x n, and perm a list which is a permutation of range(n).
+    If inverse is not False the inverse permutation is used.
+    """
+    iperm = [int(i) for i in perm]
+    if inverse:
+        iperm = invert_perm(iperm)
+    return M.matrix_from_rows_and_columns(iperm, iperm)

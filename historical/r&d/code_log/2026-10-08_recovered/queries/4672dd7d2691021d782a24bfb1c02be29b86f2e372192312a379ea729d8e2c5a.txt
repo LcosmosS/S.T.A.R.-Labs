@@ -1,0 +1,737 @@
+﻿# SciServer/CasJobs - Bigsby Account SQL
+—
+
+SELECT TOP 1000 s.specObjID, s.ra, s.dec, s.z, g.lgm_tot_p50 AS log_mass into mydb.MyTable from SpecObj s
+JOIN GalSpecExtra g ON s.specObjID = g.specObjID
+WHERE s.z > 0 AND g.lgm_tot_p50 > 0 AND s.CLASS = 'GALAXY'
+ORDER BY s.specObjID
+
+
+(1000 row Table)
+—
+
+
+SELECT g.objid, g.ra, g.dec, s.z, m.lgm_tot_p50 AS logmass, g.petrorad_r, (1 - g.expAB_r) AS ellipticity, m.sfr_tot_p50 AS sfr, m.oh_p50 AS metallicity
+INTO mydb.MyTable_0
+FROM galaxy g
+JOIN specObj s ON g.objid = s.bestobjid
+JOIN galSpecExtra m ON s.specobjid = m.specobjid
+WHERE s.specobjid IN (SELECT specObjID FROM mydb.MyTable)
+
+
+(977 Row Table)
+—
+
+
+SELECT TOP 10000
+    g.objid,
+    g.ra,
+    g.dec,
+    s.z,
+    m.lgm_tot_p50 AS logmass,
+    g.petrorad_r,
+    (1 - g.expAB_r) AS ellipticity,
+    m.sfr_tot_p50 AS sfr,
+    m.oh_p50 AS metallicity into mydb.MyTable_3 from galaxy g
+JOIN specObj s ON g.objid = s.bestobjid
+JOIN galSpecExtra m ON s.specobjid = m.specobjid
+WHERE s.z BETWEEN 0 AND 0.5;
+
+
+(1000 Row Table)
+—
+
+
+SELECT ALL
+    s.specObjID AS SpecObj,
+    COALESCE(
+        m.OH_Re_fit_O3N2,
+        CASE 
+            WHEN m.log_OIII_Hb_cen IS NOT NULL AND m.log_NII_Ha_cen IS NOT NULL 
+                 AND m.log_OIII_Hb_cen != 0 AND m.log_NII_Ha_cen != 0 
+            THEN 8.533 - 0.214 * (m.log_OIII_Hb_cen - m.log_NII_Ha_cen)
+            ELSE NULL
+        END,
+        CASE 
+            WHEN e.Flux_OIII_5006 > 0 AND e.Flux_Hb_4861 > 0 
+                 AND e.Flux_NII_6583 > 0 AND e.Flux_Ha_6562 > 0
+            THEN 8.533 - 0.214 * (
+                LOG10(e.Flux_OIII_5006 / e.Flux_Hb_4861) - 
+                LOG10(e.Flux_NII_6583 / e.Flux_Ha_6562)
+            )
+            ELSE NULL
+        END
+    ) AS OH_O3N2_cen,
+    m.OH_Re_fit_T04 AS OH_T04_cen,
+    m.Av_gas_Re,
+    COALESCE(m.sigma_cen_Ha, e.Sigma_Ha_6562) AS vel_disp_Ha_cen,
+    CASE 
+        WHEN m.log_Mass IS NOT NULL AND m.re_kpc > 0 
+        THEN m.log_Mass - 2 * LOG10(m.re_kpc)
+        ELSE NULL
+    END AS Sigma_Mass_Re,
+    m.Age_LW_Re_fit,
+    m.ZH_LW_Re_fit,
+    COALESCE(m.EW_Ha_cen, e.EW_Ha_6562) AS EW_Ha_cen,
+    m.log_Mass AS stellar_mass,
+    m.re_kpc AS Re_kpc,
+    COALESCE(m.redshift, s.z) AS redshift
+INTO MyDB.DR18_env
+FROM SpecObj AS s
+LEFT JOIN emissionLinesPort AS e
+    ON s.specObjID = e.specObjID
+LEFT JOIN mangaPipe3D AS m
+    ON ABS(s.ra - m.objra) < 1.0/3600.0 
+    AND ABS(s.dec - m.objdec) < 1.0/3600.0
+WHERE 
+    (COALESCE(m.EW_Ha_cen, e.EW_Ha_6562) > 0)
+    AND s.sciencePrimary = 1
+    AND s.class = 'GALAXY'
+
+
+(732874 Row Table)
+—
+
+
+SELECT ALL g.objid, g.ra, g.dec, s.z, m.lgm_tot_p50 AS logmass, g.petrorad_r, (1 - g.expAB_r) AS ellipticity, m.sfr_tot_p50 AS sfr, m.oh_p50 AS metallicity
+INTO mydb.Flux
+FROM galaxy g
+JOIN specObj s ON g.objid = s.bestobjid
+JOIN galSpecExtra m ON s.specobjid = m.specobjid
+WHERE s.specobjid IN (SELECT specObjID FROM mydb.MyTable)
+
+
+(977 Row Table)
+—
+
+
+SELECT ALL g.objid, g.ra, g.dec, s.z, m.lgm_tot_p50 AS logmass, g.petrorad_r, (1 - g.expAB_r) AS ellipticity, m.sfr_tot_p50 AS sfr, m.oh_p50 AS metallicity
+INTO mydb.Flux
+FROM galaxy g
+JOIN specObj s ON g.objid = s.bestobjid
+JOIN galSpecExtra m ON s.specobjid = m.specobjid
+WHERE s.specobjid IN (SELECT specObjID FROM mydb.MyTable)
+
+
+(977 Row Table)
+—
+
+
+SELECT ALL
+    g.objid,
+    g.ra,
+    g.dec,
+    s.z,
+    m.lgm_tot_p50 AS logmass,
+    g.petrorad_r,
+    (1 - g.expAB_r) AS ellipticity,
+    m.sfr_tot_p50 AS sfr,
+    m.oh_p50 AS metallicity into mydb.MyTable_3 from galaxy g
+JOIN specObj s ON g.objid = s.bestobjid
+JOIN galSpecExtra m ON s.specobjid = m.specobjid
+WHERE s.z BETWEEN 0 AND 0.5;
+
+
+(866855 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO emissionLines
+FROM emissionLinesPort AS e
+WHERE 
+    e.ra BETWEEN 167.2 AND 192.8
+    AND e.dec BETWEEN 27.2 AND 52.8
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 1.5
+    AND e.AoN_Hb_4861 > 1.5
+    AND e.AoN_OIII_5006 > 1.5
+    AND e.AoN_NII_6583 > 1.5
+
+
+(24431 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO emissionLines
+FROM emissionLinesPort AS e
+WHERE 
+    e.ra BETWEEN 185.0 AND 215.0
+    AND e.dec BETWEEN -15.0 AND 15.0
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 1.0
+
+
+(69569 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines2
+FROM emissionLinesPort AS e
+WHERE 
+    e.ra BETWEEN 170.0 AND 230.0
+    AND e.dec BETWEEN -30.0 AND 30.0
+    AND e.EW_Ha_6562 > 0
+
+
+(325857 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO emissionLines3
+FROM emissionLinesPort AS e
+WHERE 
+    e.ra BETWEEN 155.0 AND 245.0
+    AND e.dec BETWEEN -45.0 AND 45.0
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 0.1
+    AND e.AoN_Hb_4861 > 0.1
+    AND e.AoN_OIII_5006 > 0.1
+    AND e.AoN_NII_6583 > 0.1
+
+
+(426498 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO emissionLines4
+FROM emissionLinesPort AS e
+WHERE 
+    e.ra BETWEEN 155.0 AND 245.0
+    AND e.dec BETWEEN -45.0 AND 45.0
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 0
+    AND e.AoN_Hb_4861 > 0
+    AND e.AoN_OIII_5006 > 0
+    AND e.AoN_NII_6583 > 0
+
+
+(450347 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines5
+FROM emissionLinesPort AS e
+WHERE 
+    e.ra BETWEEN 145.0 AND 255.0
+    AND e.dec BETWEEN -55.0 AND 55.0
+
+
+(1272915 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines5
+FROM emissionLinesPort AS e
+WHERE 
+    e.ra BETWEEN 145.0 AND 255.0
+    AND e.dec BETWEEN -55.0 AND 55.0
+
+
+(1272915 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.ra,
+    e.dec,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines6
+FROM emissionLinesPort AS e
+WHERE 
+    e.ra BETWEEN 145.0 AND 255.0
+    AND e.dec BETWEEN -55.0 AND 55.0
+
+
+(1272915 Row Table)
+—
+
+
+
+
+
+
+# SciServer/CasJobs - Pmqr771 Account SQL (backup account)
+—
+
+
+
+
+select g.dr7objid, g.ra, g.dec,
+ g.total_classifications as Nclass,
+ g.t01_smooth_or_features_a01_smooth_debiased as psmooth, 
+ g.t01_smooth_or_features_a02_features_or_disk_debiased as pfeatures, 
+ g.t01_smooth_or_features_a03_star_or_artifact_debiased as pstar,
+ s.z as redshift,
+ s.dered_u as u, s.dered_g as g, s.dered_r as r, s.dered_i as i, s.dered_z as z, s.petromag_r,
+ s.petromag_r - 5*log10(3e5*s.z) - 15.0 - 0.7745 as rAbs, 
+ s.dered_u-s.dered_r as ur, s.dered_g-s.dered_r as gr, 
+ (4.52-(s.petromag_i- 5*log10(3e5*s.z) - 15.0 - 0.7745))/2.5 + (-0.963 +1.032*(s.dered_g-s.dered_i)) as Mstar
+
+
+ from DR10.zoo2MainSpecz g, DR7.SpecPhotoAll s
+
+
+ where
+ g.dr7objid = s.objid
+ and
+ 
+ s.z < 0.06 and s.z > 0.01
+ and (s.petromag_r - 5*log10(3e5*s.z) - 15 - 0.7745) < -20.15
+
+
+ into MyDB.GalaxyZoo
+
+
+(41559 Row Table)
+—
+
+
+SELECT TOP 5000000
+    t.ra AS ra_2mass,
+    t.dec AS dec_2mass,
+    t.j_m,
+    t.j_msigcom AS j_msig,
+    t.h_m,
+    t.h_msigcom AS h_msig,
+    t.k_m,
+    t.k_msigcom AS k_msig,
+    t.cc_flg AS cc_flg_2mass,
+    t.rd_flg AS rd_flg_2mass,
+    t.j_snr,
+    t.h_snr,
+    t.k_snr
+INTO mydb.twomass_data
+FROM TwoMASS.dbo.PhotoObjAll t
+WHERE 
+    t.j_m IS NOT NULL 
+    AND t.h_m IS NOT NULL 
+    AND t.k_m IS NOT NULL
+
+
+(5000000 Row Table)
+—
+
+
+SELECT TOP 5000000 
+    p.objid, 
+    p.ra, 
+    p.dec, 
+    p.u, 
+    p.g, 
+    p.r, 
+    p.i, 
+    p.z, 
+    p.petroRad_r, 
+    p.clean, 
+    s.specobjid, 
+    s.class, 
+    s.z AS redshift, 
+    s.plate, 
+    s.mjd, 
+    s.fiberid 
+INTO mydb.dr18_galaxy_data 
+FROM PhotoObj AS p 
+JOIN SpecObj AS s ON s.bestobjid = p.objid 
+WHERE  
+    s.class = 'GALAXY' 
+    AND s.z > 0 
+    AND s.zWarning = 0 
+    AND p.clean = 1 
+    AND p.u BETWEEN 0 AND 19.6 
+    AND p.g BETWEEN 0 AND 20
+
+
+(293078 Row Table)
+—
+
+
+SELECT TOP 5000000 
+    p.objid, 
+    p.ra, 
+    p.dec, 
+    p.u, 
+    p.g, 
+    p.r, 
+    p.i, 
+    p.z, 
+    p.petroRad_r, 
+    p.clean, 
+    s.specobjid, 
+    s.class, 
+    s.z AS redshift, 
+    s.plate, 
+    s.mjd, 
+    s.fiberid 
+INTO mydb.dr18_galaxy_data 
+FROM PhotoObj AS p 
+JOIN SpecObj AS s ON s.bestobjid = p.objid 
+WHERE  
+    s.class = 'GALAXY' 
+    AND s.z > 0 
+    AND s.zWarning = 0 
+    AND p.clean = 1 
+    AND p.u BETWEEN 0 AND 19.6 
+    AND p.g BETWEEN 0 AND 20
+
+
+(293065 Row Table)
+—
+
+
+SELECT TOP 1200000
+    s.specObjID AS SpecObj,
+    COALESCE(
+        m.OH_Re_fit_O3N2,
+        CASE 
+            WHEN m.log_OIII_Hb_cen IS NOT NULL AND m.log_NII_Ha_cen IS NOT NULL 
+                 AND m.log_OIII_Hb_cen != 0 AND m.log_NII_Ha_cen != 0 
+            THEN 8.533 - 0.214 * (m.log_OIII_Hb_cen - m.log_NII_Ha_cen)
+            ELSE NULL
+        END,
+        CASE 
+            WHEN e.Flux_OIII_5006 > 0 AND e.Flux_Hb_4861 > 0 
+                 AND e.Flux_NII_6583 > 0 AND e.Flux_Ha_6562 > 0
+            THEN 8.533 - 0.214 * (
+                LOG10(e.Flux_OIII_5006 / e.Flux_Hb_4861) - 
+                LOG10(e.Flux_NII_6583 / e.Flux_Ha_6562)
+            )
+            ELSE NULL
+        END
+    ) AS OH_O3N2_cen,
+    m.OH_Re_fit_T04 AS OH_T04_cen,
+    m.Av_gas_Re,
+    COALESCE(m.sigma_cen_Ha, e.Sigma_Ha_6562) AS vel_disp_Ha_cen,
+    CASE 
+        WHEN m.log_Mass IS NOT NULL AND m.re_kpc > 0 
+        THEN m.log_Mass - 2 * LOG10(m.re_kpc)
+        ELSE NULL
+    END AS Sigma_Mass_Re,
+    m.Age_LW_Re_fit,
+    m.ZH_LW_Re_fit,
+    COALESCE(m.EW_Ha_cen, e.EW_Ha_6562) AS EW_Ha_cen,
+    m.log_Mass AS stellar_mass,
+    m.re_kpc AS Re_kpc,
+    COALESCE(m.redshift, s.z) AS redshift
+INTO MyDB.DR18_env
+FROM SpecObj AS s
+LEFT JOIN emissionLinesPort AS e
+    ON s.specObjID = e.specObjID
+LEFT JOIN mangaPipe3D AS m
+    ON ABS(s.ra - m.objra) < 1.0/3600.0 
+    AND ABS(s.dec - m.objdec) < 1.0/3600.0
+WHERE 
+    (COALESCE(m.EW_Ha_cen, e.EW_Ha_6562) > 0)
+    AND s.sciencePrimary = 1
+    AND s.class = 'GALAXY'
+
+
+(732874 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines
+FROM emissionLinesPort AS e
+WHERE 
+    e.specObjID IN (
+        SELECT specObjID 
+        FROM fGetNearbySpecObjEq(180.0, 40.0, 12.8 * 60)
+    )
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 1.5
+    AND e.AoN_Hb_4861 > 1.5
+    AND e.AoN_OIII_5006 > 1.5
+    AND e.AoN_NII_6583 > 1.5
+
+
+(21587 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines
+FROM emissionLinesPort AS e
+WHERE 
+    e.specObjID IN (
+        SELECT specObjID 
+        FROM fGetNearbySpecObjEq(180.0, 40.0, 12.8 * 60)
+    )
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 0
+    AND e.AoN_Hb_4861 > 0
+    AND e.AoN_OIII_5006 > 0
+    AND e.AoN_NII_6583 > 0
+
+
+(36389 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines2
+FROM emissionLinesPort AS e
+WHERE 
+    e.specObjID IN (
+        SELECT specObjID 
+        FROM fGetNearbySpecObjEq(180.0, 40.0, 12.8 * 120)
+    )
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 0
+    AND e.AoN_Hb_4861 > 0
+    AND e.AoN_OIII_5006 > 0
+    AND e.AoN_NII_6583 > 0
+
+
+(146002 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines3
+FROM emissionLinesPort AS e
+WHERE 
+    e.specObjID IN (
+        SELECT specObjID 
+        FROM fGetNearbySpecObjEq(179.8, 41.0, 12.8 * 120)
+    )
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 0
+    AND e.AoN_Hb_4861 > 0
+    AND e.AoN_OIII_5006 > 0
+    AND e.AoN_NII_6583 > 0
+
+
+(145038 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines4
+FROM emissionLinesPort AS e
+WHERE 
+    e.specObjID IN (
+        SELECT specObjID 
+        FROM fGetNearbySpecObjEq(200.0, 00.0, 15* 120)
+    )
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 0
+    AND e.AoN_Hb_4861 > 0
+    AND e.AoN_OIII_5006 > 0
+    AND e.AoN_NII_6583 > 0
+
+
+(122728 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines4
+FROM emissionLinesPort AS e
+WHERE 
+    e.specObjID IN (
+        SELECT specObjID 
+        FROM fGetNearbySpecObjEq(200.0, 00.0, 120* 5)
+    )
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 0
+    AND e.AoN_Hb_4861 > 0
+    AND e.AoN_OIII_5006 > 0
+    AND e.AoN_NII_6583 > 0
+
+
+(16694 Row Table)
+—
+
+
+SELECT ALL
+    e.specObjID AS SpecObj,
+    e.Flux_Ha_6562 AS flux_Ha,
+    e.Flux_Hb_4861 AS flux_Hb,
+    e.Flux_OIII_5006 AS flux_OIII_5007,
+    e.Flux_NII_6583 AS flux_NII_6584,
+    e.Flux_Ha_6562_Err AS e_flux_Ha
+INTO MyDB.emissionLines
+FROM emissionLinesPort AS e
+WHERE 
+    e.specObjID IN (
+        SELECT specObjID 
+        FROM fGetNearbySpecObjEq(200.0, 00.0, 120* 60)
+    )
+    AND e.EW_Ha_6562 > 0
+    AND e.AoN_Ha_6562 > 0
+    AND e.AoN_Hb_4861 > 0
+    AND e.AoN_OIII_5006 > 0
+    AND e.AoN_NII_6583 > 0
+
+
+(532737 Row Table)
+—
+
+
+SELECT ALL
+    s.specObjID AS SpecObj,
+    COALESCE(
+        m.OH_Re_fit_O3N2,
+        CASE 
+            WHEN m.log_OIII_Hb_cen IS NOT NULL AND m.log_NII_Ha_cen IS NOT NULL 
+                 AND m.log_OIII_Hb_cen != 0 AND m.log_NII_Ha_cen != 0 
+            THEN 8.533 - 0.214 * (m.log_OIII_Hb_cen - m.log_NII_Ha_cen)
+            ELSE NULL
+        END,
+        CASE 
+            WHEN e.Flux_OIII_5006 > 0 AND e.Flux_Hb_4861 > 0 
+                 AND e.Flux_NII_6583 > 0 AND e.Flux_Ha_6562 > 0
+            THEN 8.533 - 0.214 * (
+                LOG10(e.Flux_OIII_5006 / e.Flux_Hb_4861) - 
+                LOG10(e.Flux_NII_6583 / e.Flux_Ha_6562)
+            )
+            ELSE NULL
+        END
+    ) AS OH_O3N2_cen,
+    m.OH_Re_fit_T04 AS OH_T04_cen,
+    m.Av_gas_Re,
+    COALESCE(m.sigma_cen_Ha, e.Sigma_Ha_6562) AS vel_disp_Ha_cen,
+    CASE 
+        WHEN m.log_Mass IS NOT NULL AND m.re_kpc > 0 
+        THEN m.log_Mass - 2 * LOG10(m.re_kpc)
+        ELSE NULL
+    END AS Sigma_Mass_Re,
+    m.Age_LW_Re_fit,
+    m.ZH_LW_Re_fit,
+    COALESCE(m.EW_Ha_cen, e.EW_Ha_6562) AS EW_Ha_cen,
+    m.log_Mass AS stellar_mass,
+    m.re_kpc AS Re_kpc,
+    COALESCE(m.redshift, s.z) AS redshift
+INTO MyDB.DR18_env
+FROM SpecObj AS s
+LEFT JOIN emissionLinesPort AS e
+    ON s.specObjID = e.specObjID
+LEFT JOIN mangaPipe3D AS m
+    ON ABS(s.ra - m.objra) < 1.0/3600.0 
+    AND ABS(s.dec - m.objdec) < 1.0/3600.0
+WHERE 
+    (COALESCE(m.EW_Ha_cen, e.EW_Ha_6562) > 0)
+    AND s.sciencePrimary = 1
+    AND s.class = 'GALAXY'
+
+
+(792874 Row Table)
+—
+
+
+SELECT ALL p.objID, p.ra, p.dec, p.mRrCc_r
+INTO mydb.MyTable
+FROM PhotoObjAll p
+WHERE p.ra BETWEEN 185 AND 215
+  AND p.dec BETWEEN -15 AND 15
+  AND p.mode = 1
+  AND p.type = 3
+  AND p.clean = 1
+
+
+(6378123 Row Table)
+—
+
+
+SELECT TOP 200000
+p.objid,p.ra,p.dec,p.u,p.g,p.r,p.i,p.z,
+p.run, p.rerun, p.camcol, p.field,
+s.specobjid, s.class, s.z as redshift,
+s.plate, s.mjd, s.fiberid into mydb.MyTable from PhotoObj AS p
+JOIN SpecObj AS s ON s.bestobjid = p.objid
+WHERE 
+  p.u BETWEEN 0 AND 19.6
+  AND g BETWEEN 0 AND 20
+
+
+(200000 Row Table)

@@ -1,0 +1,26 @@
+
+from lmfdb.app import app
+from flask import Blueprint
+
+higher_genus_w_automorphisms_page = Blueprint("higher_genus_w_automorphisms",
+                                       __name__, template_folder='templates',
+                                       static_folder="static")
+
+
+@higher_genus_w_automorphisms_page.context_processor
+def body_class():
+    return {'body_class': 'higher_genus_w_automorphisms'}
+
+from . import main
+assert main # silence pyflakes
+
+app.register_blueprint(higher_genus_w_automorphisms_page, url_prefix="/HigherGenus/C/Aut")
+
+# API2 has been disabled for now
+#from lmfdb.api2.searchers import register_search_function
+#register_search_function(
+#    "group_actions_higher_genus_curves",
+#    "Group actions on higher genus curves",
+#    "Search over group actions on higher genus curves",
+#    auto_search = 'hgcwa_passports'
+#)

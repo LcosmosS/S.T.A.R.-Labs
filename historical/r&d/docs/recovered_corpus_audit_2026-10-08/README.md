@@ -1,0 +1,15 @@
+# Recovered corpus provenance audit - 2026-10-08
+
+Governing source: [Research Charter v0.2](../../../../charter/STAR_Research_Charter_v0-2.pdf), especially sections 12-13, 28, 30-32 and 36-37. Document claims and recovered script comments are evidence to assess, not authorization to execute or promote them.
+
+The inventory covers 70,030 accessible file entries across Dropbox recovered, Dropbox STAR, Documents STAR (including star_provenance_cocalc) and WSL kepler. Sizes count duplicate copies and generated material; they are not unique scientific data volume. 18,392 files have full SHA-256 hashes. Environment roots and 1007 package metadata filename/version records are separate from provenance artifacts. See summary.json and inventory.jsonl.gz for exact coverage, exclusions and hash states.
+
+The recovery preserves 1040 distinct whole-file/explicit writefile programs and 3250 source occurrences, plus notebook output objects and query histories. General notebook cells, extracted prose and arbitrary concatenations are not called complete scripts. Parsing establishes syntax only; saved output is not independent replication. Prior October 7 extraction references retain their original scope. Benchmark correction tests are retained as corrections; unrelated curves are not superseded based on shared integers.
+
+Five bounded source candidates needed for SDSS/HI reconstruction are preserved under data/intake/recovered/2026-10-08 with source paths, exact hashes, sizes and disabled eligibility. The FITS/CSV revisions and CasJobs queries still need release, object-key, selection, transformation and result bindings. Models were not unpickled, and no recovered research pipeline or saved model was executed. One dependency setup attempt unexpectedly imported recovered pip.py and failed at its third import before dataset loading; see execution_setup_incident.json.
+
+The 37 v0.3 quarantine assets remain negative/null or synthetic historical evidence. Active canonical copies now live under data/quarantine/2026-10-03_audit, with byte-identical historical originals retained. Quarantine LFS upload and independent-download verification are recorded in quarantine_lfs_verification.json. PR44 remains open/conflicted; this audit does not claim it merged.
+
+Current assessments are recorded in findings.json, the three dated recovery registry overlays and the operational registry recovery references. Existing audit PDFs/deltas remain immutable historical assessments. No namespace aliases, controlled execution, controlled support or physical support were granted. The independently preregistered EXP-MAP-A01 source and bindings remain intact.
+
+See MISSING.md for every observed access/parse gap and bounded coverage limit; filename_revision_conflicts.json for checksum-distinct revisions; code_review_locators.json for review candidates, not newly demonstrated leakage. Reproduce intake validation with `python tools/recovery_intake.py --repo . --output <new-empty-directory>`; processing writes diagnostic profiles outside source data and never merges astronomical rows or executes recovered code.

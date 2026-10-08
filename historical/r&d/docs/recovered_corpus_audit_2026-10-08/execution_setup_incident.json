@@ -1,0 +1,10 @@
+{
+  "operation": "Dependency setup: bundled python -m pip from recovered corpus root",
+  "unexpected_module": "dropbox_recovered:pip.py",
+  "executed_extent": "pandas and numpy imports; astropy import at line 3 raised ModuleNotFoundError; dataset loading beginning at line 8 was not reached",
+  "research_pipeline_executed": false,
+  "recovered_module_import_attempted": true,
+  "remediation": "All further package setup uses Python -I from audit workspace; tests use -P and explicit isolated test-dependency paths. No recovered models were unpickled.",
+  "source_sha256_before": "912eca01f5bee760f5075560460d4928bc842446cddec0281a8e713bfe7e8a91",
+  "source_sha256_after": "912eca01f5bee760f5075560460d4928bc842446cddec0281a8e713bfe7e8a91"
+}

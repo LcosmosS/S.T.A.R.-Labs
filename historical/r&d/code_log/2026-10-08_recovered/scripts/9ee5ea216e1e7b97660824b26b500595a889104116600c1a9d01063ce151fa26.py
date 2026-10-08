@@ -1,0 +1,4 @@
+with open("C:/temp/filtered_log_mass.txt", "r") as f:
+    values = f.read().splitlines()
+formatted = "log_mass = [\n" + ",\n".join(values) + "\n];"
+print(formatted)  # Copy this output for PARI/GP

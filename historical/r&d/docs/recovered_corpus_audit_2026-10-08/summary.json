@@ -1,0 +1,55 @@
+{
+  "inventory_entries": 70030,
+  "inventoried_bytes_including_duplicates_and_generated_material": 120255381220,
+  "hashed_files": 18392,
+  "hash_status": {
+    "excluded_metadata_only": 51518,
+    "full_file": 18392,
+    "not_hashed_large_inventory_only": 120
+  },
+  "roots": {
+    "dropbox_recovered": 37698,
+    "dropbox_star": 1655,
+    "documents_star": 2444,
+    "kepler": 28233
+  },
+  "categories": {
+    "environment_or_private_config": 58,
+    "download_sidecar": 773,
+    "data_or_archive": 1298,
+    "script": 3206,
+    "artifact": 12867,
+    "serialized_model_untrusted": 199,
+    "environment_or_generated_dependency": 38161,
+    "incomplete_download": 2,
+    "notebook": 169,
+    "previous_audit_or_extraction": 13297
+  },
+  "environment_metadata_records": 1007,
+  "filename_revision_conflicts": 225,
+  "intake_payload_files": 5,
+  "intake_payload_bytes": 43425020,
+  "code": {
+    "whole_program_artifacts": 1040,
+    "source_occurrences": 3250,
+    "notebook_occurrences": 249,
+    "saved_output_files": 249,
+    "query_history_occurrences": 3,
+    "superseded": 0,
+    "syntax": {
+      "AST_parses": 968,
+      "parse_failed_or_not_python": 35,
+      "not_checked": 37
+    },
+    "issues": 24,
+    "executed": false,
+    "triage_prior_qualification_sha256": "901dfe453c823b93e31dbd99708ea85a3d9627adae653f8a174ac51eb7016f0b"
+  },
+  "quarantine_files": 37,
+  "quarantine_remote_lfs_objects": 32,
+  "scientific_support_promoted": false,
+  "recovered_code_executed": "incidental_module_import_attempt_only; scientific dataset loading was not reached",
+  "models_deserialized": false,
+  "research_pipeline_executed": false,
+  "recovered_quarantine_exact_occurrences": 98
+}

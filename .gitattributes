@@ -51,3 +51,12 @@ data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/run_manife
 data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/scalar_embeddings.csv filter=lfs diff=lfs merge=lfs -text
 data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/stability_summary.csv filter=lfs diff=lfs merge=lfs -text
 data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/topology_summary.csv filter=lfs diff=lfs merge=lfs -text
+
+# Recovered source candidates and saved notebook outputs are archival LFS payloads.
+data/intake/recovered/2026-10-08/*.csv filter=lfs diff=lfs merge=lfs -text
+data/intake/recovered/2026-10-08/*.fits filter=lfs diff=lfs merge=lfs -text
+historical/r&d/code_log/2026-10-08_recovered/saved_outputs/** filter=lfs diff=lfs merge=lfs -text
+
+registry/*.csv text eol=lf
+preregistrations/** text eol=lf
+controlled_execution/specs/*.json text eol=lf

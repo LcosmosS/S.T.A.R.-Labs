@@ -1,0 +1,63 @@
+[
+  {
+    "id": "REC-001",
+    "assessment": "Recovered whole-file sources, query histories and notebook outputs improve archival traceability, but do not establish independent replication or resolve acquisition-to-output joins.",
+    "charter_sections": [
+      12,
+      13,
+      30,
+      31,
+      36,
+      37
+    ]
+  },
+  {
+    "id": "REC-002",
+    "assessment": "Download Zone.Identifier sidecars and incomplete downloads are metadata, not complete astronomical payloads.",
+    "charter_sections": [
+      31
+    ]
+  },
+  {
+    "id": "REC-003",
+    "assessment": "Checksum-distinct revisions share filenames. Qualified source root/path/hash remain separate; no filename-based alias or keyed-data join is inferred.",
+    "charter_sections": [
+      31,
+      36
+    ]
+  },
+  {
+    "id": "REC-004",
+    "assessment": "Pickled models remain inert; metadata versions are inventoried separately and are not asserted as the producing environment of any saved model or result.",
+    "charter_sections": [
+      31
+    ]
+  },
+  {
+    "id": "REC-005",
+    "assessment": "v0.3 quarantine remains in force. Recovery does not repair the failed SDSS/HI tables, projection manifest conflicts or synthetic RTCH runs. All 37 active quarantine payloads use uploaded and independently downloaded LFS objects.",
+    "charter_sections": [
+      28,
+      31,
+      32
+    ]
+  },
+  {
+    "id": "REC-006",
+    "assessment": "Archived notebooks include invalid JSON placeholders; parse failures and extraction bounds are explicit. Parsing a Python script does not demonstrate runtime completeness or scientific validity.",
+    "charter_sections": [
+      31,
+      36
+    ]
+  },
+  {
+    "id": "REC-007",
+    "assessment": "SFR, matching and null-model static locators require data-flow/protocol review before historical metrics can support claims. Existing negative/null findings are retained.",
+    "charter_sections": [
+      12,
+      13,
+      30,
+      31
+    ]
+  }
+]

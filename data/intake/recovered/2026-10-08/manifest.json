@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-08",
+  "namespace": "RECOVERED-CORPUS-2026-10-08",
+  "assets": [
+    {
+      "artifact_id": "REC-DATA-9dca2008683fde4b0f7a",
+      "path": "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv",
+      "source_root": "documents_star",
+      "source_path": "SDSSDR18_200000.csv",
+      "sha256": "9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2",
+      "bytes": 33007497,
+      "format": "csv",
+      "status": "historical_recovered",
+      "source_identity": "recovered_local_bytes; upstream release/acquisition not yet verified",
+      "lineage_status": "pending_review",
+      "controlled_execution_eligible": false,
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false
+    },
+    {
+      "artifact_id": "REC-DATA-b713f167dc60da81bd9d",
+      "path": "data/intake/recovered/2026-10-08/b713f167dc60da81bd9dbd99ff05ef5a74b80155db6c20276ba27a07bd2783a9.csv",
+      "source_root": "documents_star",
+      "source_path": "SDSSDR18_G.csv",
+      "sha256": "b713f167dc60da81bd9dbd99ff05ef5a74b80155db6c20276ba27a07bd2783a9",
+      "bytes": 5264526,
+      "format": "csv",
+      "status": "historical_recovered",
+      "source_identity": "recovered_local_bytes; upstream release/acquisition not yet verified",
+      "lineage_status": "pending_review",
+      "controlled_execution_eligible": false,
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false
+    },
+    {
+      "artifact_id": "REC-DATA-0f51e1852f7103bd9af9",
+      "path": "data/intake/recovered/2026-10-08/0f51e1852f7103bd9af9699213a7548a7e6b9969ab1256ec86df04352ddec8f5.fits",
+      "source_root": "documents_star",
+      "source_path": "mangaHIall.fits",
+      "sha256": "0f51e1852f7103bd9af9699213a7548a7e6b9969ab1256ec86df04352ddec8f5",
+      "bytes": 1584000,
+      "format": "fits",
+      "status": "historical_recovered",
+      "source_identity": "recovered_local_bytes; upstream release/acquisition not yet verified",
+      "lineage_status": "pending_review",
+      "controlled_execution_eligible": false,
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false
+    },
+    {
+      "artifact_id": "REC-DATA-f4662418b92b2013a2c5",
+      "path": "data/intake/recovered/2026-10-08/f4662418b92b2013a2c587921e0e54ab05617810794e736b1d84e0e0663877be.csv",
+      "source_root": "documents_star",
+      "source_path": "mangaHIall.csv",
+      "sha256": "f4662418b92b2013a2c587921e0e54ab05617810794e736b1d84e0e0663877be",
+      "bytes": 1952832,
+      "format": "csv",
+      "status": "historical_recovered",
+      "source_identity": "recovered_local_bytes; upstream release/acquisition not yet verified",
+      "lineage_status": "pending_review",
+      "controlled_execution_eligible": false,
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false
+    },
+    {
+      "artifact_id": "REC-DATA-a6a3b50429f6b061b097",
+      "path": "data/intake/recovered/2026-10-08/a6a3b50429f6b061b0977515c3ce01d1ed5e8122cef88c23e042293db30b285a.csv",
+      "source_root": "documents_star",
+      "source_path": "mangaHIall2.csv",
+      "sha256": "a6a3b50429f6b061b0977515c3ce01d1ed5e8122cef88c23e042293db30b285a",
+      "bytes": 1616165,
+      "format": "csv",
+      "status": "historical_recovered",
+      "source_identity": "recovered_local_bytes; upstream release/acquisition not yet verified",
+      "lineage_status": "pending_review",
+      "controlled_execution_eligible": false,
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false
+    }
+  ]
+}
