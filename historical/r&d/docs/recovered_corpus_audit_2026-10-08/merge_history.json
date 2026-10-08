@@ -1,7 +1,14 @@
 {
   "queried_at": "2026-10-08",
-  "main_head": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
+  "main_head": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
   "recent_merged_prs": [
+    {
+      "number": 44,
+      "title": "Relocate canonical audit quarantine into data/quarantine",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44",
+      "merged_at": "2026-10-08T06:56:08Z",
+      "merge_commit_sha": "bfe0d9294e9f3e269ee51d234b450ee0d3387241"
+    },
     {
       "number": 47,
       "title": "Bump source-map-js from 1.2.1 to 1.2.2 in /web_tool",
@@ -172,9 +179,13 @@
     }
   ],
   "pr44": {
-    "state": "open",
-    "mergeable": false,
-    "merged": false,
-    "head": "678a33caf54ddf16413b9cc8a10787710901d79f"
+    "number": 44,
+    "title": "Relocate canonical audit quarantine into data/quarantine",
+    "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44",
+    "state": "closed",
+    "merged": true,
+    "merged_at": "2026-10-08T06:56:08Z",
+    "merge_commit_sha": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+    "head": "ea93a76709eff15bd464510042507f45b3f1266a"
   }
 }

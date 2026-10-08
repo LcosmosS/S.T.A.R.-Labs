@@ -90,5 +90,81 @@
     "unit_test_step": "success",
     "installed_wheel_import_and_tests": "success",
     "remaining_workflow_jobs": "in_progress_at_recording"
+  },
+  "post_PR44_merge": {
+    "main_commit": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+    "resolved_conflict_paths": 40,
+    "identical_existing_quarantine_lfs_pointers": 37,
+    "new_lfs_objects": 0,
+    "historical_archive_paths_preserved": 52,
+    "python_tests": {
+      "passed": 217,
+      "failed": 0,
+      "warnings": 15
+    },
+    "web_tests": {
+      "passed": 253,
+      "skipped_host_skill_tests": 4,
+      "failed": 0
+    },
+    "typescript_no_emit": "passed",
+    "production_build": "passed",
+    "registry_validation": "passed; no eligibility promotion",
+    "snapshot_sources_verified_against_git_index": 16,
+    "intake": {
+      "status": "complete",
+      "schema_version": 1,
+      "verified_payload_paths": 1333,
+      "verified_archived_environment_paths": 8,
+      "verified_recovery_overlay_rows": {
+        "claim_evidence_recovery_2026-10-08.csv": 51,
+        "experiment_recovery_2026-10-08.csv": 25,
+        "crosswalk_recovery_2026-10-08.csv": 51
+      },
+      "recovered_programs_executed": false,
+      "models_deserialized": false,
+      "eligibility_promoted": false,
+      "source_manifest_sha256": "9a5e17a91483b5540d6ab04618c5d6050f37523f01d22df1703f44777c99c3ae"
+    },
+    "browser": {
+      "url": "http://127.0.0.1:8081/registry#recovered-corpus",
+      "viewports": {
+        "desktop": {
+          "width": 1280,
+          "height": 800,
+          "status": 200,
+          "title": "STARMAP",
+          "hasCanvas": false,
+          "bodyTextLen": 9684,
+          "bodyTextHash": "a3e163f4a8da5ffaaf4a1004aa8a999ab48b3275b96f02a8586b848a78609681",
+          "bodyTextPrefix": "STARMAP by S.T.A.R. Labs TOY H0_EFF 72.62 km/s/Mpc CATALOG 160 f",
+          "horizontalOverflow": false,
+          "consoleErrors": [],
+          "pageErrors": [],
+          "screenshot": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\pr51-merge.png"
+        },
+        "mobile": {
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "title": "STARMAP",
+          "hasCanvas": false,
+          "bodyTextLen": 9533,
+          "bodyTextHash": "89f8f2569ee411ef45e75be53e4607a9ccade164561e1e42db9281789af7e100",
+          "bodyTextPrefix": "STARMAP by S.T.A.R. Labs Illustrative prototype. Explore toy mod",
+          "horizontalOverflow": false,
+          "consoleErrors": [],
+          "pageErrors": [],
+          "screenshot": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\pr51-merge-mobile.png"
+        }
+      },
+      "brandWarnings": [],
+      "authWarnings": [],
+      "verdictFile": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\pr51-merge.json",
+      "divergesFromBaseline": false,
+      "baselineReasons": []
+    },
+    "merge_evidence": "merge_resolution_2026-10-08.json",
+    "remote_CI_at_recording": "not yet dispatched; this record describes local merge validation"
   }
 }

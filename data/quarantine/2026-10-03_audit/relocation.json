@@ -262,5 +262,8 @@
       "bytes": 30830,
       "binding_id": "QASSET-0037"
     }
-  ]
+  ],
+  "prior_relocation_reference": "data/quarantine/2026-10-03_audit/relocation_PR44_2026-10-05.json",
+  "prior_relocation_sha256": "1cf41c8e76ffcd11e2dad3b346dd54de7adfb4caaa4f92ed5f71ebe32194dda2",
+  "integration_policy": "Canonical payloads retain the existing uploaded LFS object IDs; PR44 relocation evidence and historical source copies are preserved. No support or execution promotion."
 }

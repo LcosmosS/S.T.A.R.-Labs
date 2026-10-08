@@ -7,7 +7,7 @@ Namespace: `STAR-PDF-v0.2:EXP-DATA-A01`. Repository IDs must be interpreted thro
 
 Rebuild SDSS/HI integration using true spherical angular distance, explicit keyed joins, duplicate control, tolerance sensitivity, and locked input/code hashes. Audit findings E-LCL-001 and E-LCL-002 and `historical/r&d/docs/provenance_audit_v0.3/local_match_checks.json` govern the starting assessment. The inspected 1,495-row tables associate every row with one MaNGA ID; all recomputed separations exceed the declared two-arcsecond tolerance. This rejects those associations, not the underlying catalogs or the general matching hypothesis.
 
-The quarantined originals remain in `historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/`. They must never be a default controlled-analysis input.
+The quarantined originals remain in `data/quarantine/2026-10-03_audit/sdss_hi_match/`. They must never be a default controlled-analysis input.
 
 ## Reconstruction protocol
 

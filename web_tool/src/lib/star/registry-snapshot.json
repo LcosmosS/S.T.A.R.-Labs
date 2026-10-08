@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "e25d238fe0c227d91949192b45e859e95301f171b7aa72d9b2ffb199b458f5a2",
+  "contentSha256": "075ad690d16814944e44d5e5e77824d2390451f13b5ef8d8e0d8f0043c17a183",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
@@ -16,8 +16,8 @@
     },
     {
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json",
-      "sha256": "15faf73b9cce745f2aa78d32a2276e3393c6d7fe0f3da005522054881fca2a47",
-      "sizeBytes": 7164
+      "sha256": "e66107d4268dbaca2edf7e321a234ebf50d594392440704c8cdc3dd3045897f2",
+      "sizeBytes": 7691
     },
     {
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/summary.json",
@@ -754,8 +754,15 @@
     ],
     "mergeHistory": {
       "queried_at": "2026-10-08",
-      "main_head": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
+      "main_head": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
       "recent_merged_prs": [
+        {
+          "number": 44,
+          "title": "Relocate canonical audit quarantine into data/quarantine",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44",
+          "merged_at": "2026-10-08T06:56:08Z",
+          "merge_commit_sha": "bfe0d9294e9f3e269ee51d234b450ee0d3387241"
+        },
         {
           "number": 47,
           "title": "Bump source-map-js from 1.2.1 to 1.2.2 in /web_tool",
@@ -926,10 +933,14 @@
         }
       ],
       "pr44": {
-        "state": "open",
-        "mergeable": false,
-        "merged": false,
-        "head": "678a33caf54ddf16413b9cc8a10787710901d79f"
+        "number": 44,
+        "title": "Relocate canonical audit quarantine into data/quarantine",
+        "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44",
+        "state": "closed",
+        "merged": true,
+        "merged_at": "2026-10-08T06:56:08Z",
+        "merge_commit_sha": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+        "head": "ea93a76709eff15bd464510042507f45b3f1266a"
       }
     },
     "reportPath": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",

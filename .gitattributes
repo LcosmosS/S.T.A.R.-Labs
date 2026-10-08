@@ -63,3 +63,6 @@ controlled_execution/specs/*.json text eol=lf
 
 # Preserve byte-locked mathematical proof evidence on every platform.
 preregistrations/M1-INH-E1/evidence/** -text
+
+# Preserve canonical quarantine bytes; retain the LFS filters above.
+data/quarantine/** -text

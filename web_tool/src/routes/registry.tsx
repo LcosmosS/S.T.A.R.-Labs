@@ -79,7 +79,11 @@ function RegistryPage() {
         <ul className="mt-2 space-y-2 text-sm text-muted">
           {snapshot.recovery.mergeHistory.recent_merged_prs.slice(0, 5).map((pr) => <li key={pr.number}><a className="text-steel underline underline-offset-4" href={pr.url}>#{pr.number} {pr.title}</a><span className="ml-2 text-xs">{pr.merged_at.slice(0, 10)} UTC</span></li>)}
         </ul>
-        <p className="mt-3 text-xs text-muted">PR #44 remains open and conflicted as of this audit; it is not included as a merge.</p>
+        <p className="mt-3 text-xs text-muted">
+          {snapshot.recovery.mergeHistory.pr44.merged
+            ? "PR #44 is merged. Its relocation evidence and verified quarantine bytes are preserved."
+            : "PR #44 has not merged in this recorded repository snapshot."}
+        </p>
       </section>
 
       <section className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">

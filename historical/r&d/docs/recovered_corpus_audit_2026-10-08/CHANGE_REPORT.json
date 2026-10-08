@@ -1,6 +1,6 @@
 {
-  "base_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
-  "scope": "entire recovery branch compared with audited main base",
+  "base_commit": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+  "scope": "entire recovery branch compared with main after merged PR #44",
   "changed_paths": [
     {
       "git_status": "M",
@@ -51,195 +51,159 @@
       "path": "data/intake/recovered/2026-10-08/manifest.json"
     },
     {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/QUARANTINE.md"
-    },
-    {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/manifest.json"
-    },
-    {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/projection_packages/QUARANTINE.md"
-    },
-    {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_aligned.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv.manifest.json"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_ptd_aligned.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_realproj.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_with_alt.csv"
     },
     {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/projection_packages/manifest.json"
-    },
-    {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/relocation.json"
     },
     {
       "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/QUARANTINE.md"
+      "path": "data/quarantine/2026-10-03_audit/relocation_PR44_2026-10-05.json"
     },
     {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.json"
-    },
-    {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/QUARANTINE.md"
-    },
-    {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/data/demo_torus.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/geodesic_projection.png"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H0.png"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H1.png"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H2.png"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/scalar_embedding.png"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/geodesics.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/null_persistence.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/prediction_tests.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/rank_label_nulls.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/result.json"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/run_manifest.json"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/scalar_embeddings.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/stability_summary.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/topology_summary.csv"
     },
     {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/QUARANTINE.md"
-    },
-    {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/data/demo_torus.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/geodesic_projection.png"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/persistence_H0.png"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/scalar_embedding.png"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/geodesics.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/null_persistence.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/prediction_tests.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/rank_label_nulls.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/result.json"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/run_manifest.json"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/scalar_embeddings.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/stability_summary.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/topology_summary.csv"
     },
     {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/sdss_hi_match/QUARANTINE.md"
-    },
-    {
-      "git_status": "A",
-      "path": "data/quarantine/2026-10-03_audit/sdss_hi_match/manifest.json"
-    },
-    {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi.csv"
     },
     {
-      "git_status": "A",
+      "git_status": "M",
       "path": "data/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi_with_arcsec.csv"
     },
     {
@@ -5548,6 +5512,10 @@
     },
     {
       "git_status": "A",
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_resolution_2026-10-08.json"
+    },
+    {
+      "git_status": "A",
       "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/quarantine_lfs_verification.json"
     },
     {
@@ -5583,12 +5551,216 @@
       "path": "historical/r&d/quarantine/2026-10-03_audit/ACTIVE_LOCATION.md"
     },
     {
-      "git_status": "M",
-      "path": "pyproject.toml"
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/QUARANTINE.md"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/manifest.json"
     },
     {
       "git_status": "M",
-      "path": "registry/audit_quarantine_dataset_status_v0.3.csv"
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/QUARANTINE.md"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_aligned.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv.manifest.json"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_ptd_aligned.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_realproj.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_with_alt.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/manifest.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/projection_packages/manifest.json"
+    },
+    {
+      "git_status": "M",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/QUARANTINE.md"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/manifest.json"
+    },
+    {
+      "git_status": "M",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/QUARANTINE.md"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/data/demo_torus.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/geodesic_projection.png"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H0.png"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H1.png"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H2.png"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/scalar_embedding.png"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/geodesics.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/null_persistence.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/prediction_tests.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/rank_label_nulls.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/result.json"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/run_manifest.json"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/scalar_embeddings.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/stability_summary.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/topology_summary.csv"
+    },
+    {
+      "git_status": "M",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/QUARANTINE.md"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/data/demo_torus.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/geodesic_projection.png"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/persistence_H0.png"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/scalar_embedding.png"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/geodesics.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/null_persistence.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/prediction_tests.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/rank_label_nulls.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/result.json"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/run_manifest.json"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/scalar_embeddings.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/stability_summary.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/topology_summary.csv"
+    },
+    {
+      "git_status": "M",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/QUARANTINE.md"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/manifest.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/manifest.json"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi_with_arcsec.csv"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/step1_summary.json"
+    },
+    {
+      "git_status": "A",
+      "path": "historical/r&d/quarantine/2026-10-03_audit/step1_verification.json"
+    },
+    {
+      "git_status": "M",
+      "path": "pyproject.toml"
     },
     {
       "git_status": "A",
@@ -5609,14 +5781,6 @@
     {
       "git_status": "A",
       "path": "registry/data_provenance_recovery_2026-10-08.csv"
-    },
-    {
-      "git_status": "M",
-      "path": "registry/data_provenance_registry_v0.1.csv"
-    },
-    {
-      "git_status": "M",
-      "path": "registry/dataset_registry_v0.1.csv"
     },
     {
       "git_status": "A",
@@ -5653,28 +5817,21 @@
     "data/intake",
     "data/intake/recovered",
     "data/intake/recovered/2026-10-08",
-    "data/quarantine",
-    "data/quarantine/2026-10-03_audit",
-    "data/quarantine/2026-10-03_audit/projection_packages",
-    "data/quarantine/2026-10-03_audit/projection_packages/data",
-    "data/quarantine/2026-10-03_audit/projection_packages/data/derived",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/data",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/data",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results",
-    "data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures",
-    "data/quarantine/2026-10-03_audit/sdss_hi_match",
     "experiments/reconstruction_candidates/2026-10-08",
     "historical/r&d/code_log/2026-10-08_recovered",
     "historical/r&d/code_log/2026-10-08_recovered/queries",
     "historical/r&d/code_log/2026-10-08_recovered/saved_outputs",
     "historical/r&d/code_log/2026-10-08_recovered/scripts",
     "historical/r&d/docs/recovered_corpus_audit_2026-10-08",
-    "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions"
+    "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions",
+    "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data",
+    "historical/r&d/quarantine/2026-10-03_audit/projection_packages/data/derived",
+    "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/data",
+    "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results",
+    "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures",
+    "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/data",
+    "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results",
+    "historical/r&d/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures"
   ],
   "external_created_directory": "C:\\Users\\pmqr7\\OneDrive\\code log\\2026-10-08\\recovered_complete",
   "scientific_originals_deleted": 0,
@@ -5947,5 +6104,7 @@
     "experiments": 25,
     "crosswalk": 51,
     "source_candidates": 5
-  }
+  },
+  "original_audit_base_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
+  "merge_resolution": "merge_resolution_2026-10-08.json"
 }
