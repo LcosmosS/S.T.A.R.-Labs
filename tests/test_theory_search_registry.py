@@ -206,6 +206,6 @@ def test_szekeres_kernel_test_is_explicitly_regular_and_nonexact():
     normalized = re.sub(r"\s+", " ", text)
     assert "locally constant rank" in normalized
     assert "tangent space" in normalized
-    assert "differentiable local factorization" in text
-    assert "does **not** by itself establish failure of exact sufficiency" in text
-    assert "Exact observable insufficiency under E1c is established only" in text
+    assert "differentiable local factorization" in normalized
+    assert "does **not** by itself establish failure of exact sufficiency" in normalized
+    assert "Exact observable insufficiency under E1c is established only" in normalized
