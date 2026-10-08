@@ -1,0 +1,35 @@
+name: Recovered corpus integrity and diagnostic intake
+on:
+  pull_request:
+    paths: ['data/intake/recovered/**', 'data/quarantine/**', 'historical/r&d/code_log/2026-10-08_recovered/**', 'tools/recovery_intake.py', 'tests/test_recovery_intake.py', '.github/workflows/recovered-intake.yml']
+  push:
+    branches: [main]
+    paths: ['data/intake/recovered/**', 'data/quarantine/**', 'historical/r&d/code_log/2026-10-08_recovered/**', 'tools/recovery_intake.py', '.github/workflows/recovered-intake.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostic-intake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Fetch real recovery and quarantine LFS payloads
+        run: |
+          git lfs install --local
+          git lfs fetch --include='data/intake/recovered/**,data/quarantine/**,historical/r&d/code_log/2026-10-08_recovered/saved_outputs/**' origin HEAD
+          git lfs checkout 'data/intake/recovered/**' 'data/quarantine/**' 'historical/r&d/code_log/2026-10-08_recovered/saved_outputs/**'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source hashes and process isolated diagnostic profiles
+        run: python tools/recovery_intake.py --output "$RUNNER_TEMP/recovery-diagnostics-${{ github.run_id }}-${{ github.run_attempt }}"
+      - name: Validate existing registry gates with hydrated quarantine
+        run: python scripts/validate_audit_registries.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: recovered-corpus-diagnostics
+          path: ${{ runner.temp }}/recovery-diagnostics-*/
+          if-no-files-found: warn

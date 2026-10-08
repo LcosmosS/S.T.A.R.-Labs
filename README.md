@@ -31,6 +31,18 @@ The repository is both a computational research archive and a controlled-experim
 
 ---
 
+## Recovered corpus audit (2026-10-08)
+
+The [Charter-governed recovery audit](historical/r&d/docs/recovered_corpus_audit_2026-10-08/) inventories 70,030 entries across Dropbox, Documents STAR / star_provenance_cocalc and WSL kepler. It records 18,392 full hashes and 225 filename revision conflicts. Counts include duplicate copies and generated material; library environments are documented separately and are not evidence of a producing run. Large files above 128 MiB remain inventory-only unless explicitly selected; [coverage gaps](historical/r&d/docs/recovered_corpus_audit_2026-10-08/MISSING.md) are preserved.
+
+- [Whole program candidates](historical/r&d/code_log/2026-10-08_recovered/) preserve 1,040 distinct programs and 3,250 source occurrences. Whole-file scope and syntax parsing do not establish runtime completeness; general notebook cells and prose fragments retain their earlier candidate status.
+- [Five SDSS/HI reconstruction source candidates](data/intake/recovered/2026-10-08/manifest.json), CasJobs histories and saved outputs retain source paths, hashes and disabled eligibility. Queries, releases, transformations and result bindings still require review. Pickled models remain inert.
+- All 37 active v0.3 quarantine payloads are under [data/quarantine](data/quarantine/2026-10-03_audit/); historical originals remain unchanged. Uploaded LFS objects are independently downloaded and hashed before storage is reported verified. The failed tables still have zero rows within 2 arcseconds on recheck.
+- Dated [claim](registry/claim_evidence_recovery_2026-10-08.csv), [experiment](registry/experiment_recovery_2026-10-08.csv), [crosswalk](registry/crosswalk_recovery_2026-10-08.csv) and [provenance](registry/data_provenance_recovery_2026-10-08.csv) overlays add archival context without namespace aliases or support promotion. Frozen v0.3 assessments and the separately pinned EXP-MAP-A01 source remain intact.
+- `tools/recovery_intake.py` verifies real payload hashes and emits diagnostic profiles only into a new output directory. It refuses missing LFS payloads, overwrites, malformed CSVs and source-directory outputs. Recovered scripts and notebooks are not automatically executed or merged into controlled inputs. [One setup import incident](historical/r&d/docs/recovered_corpus_audit_2026-10-08/execution_setup_incident.json) is explicitly recorded.
+
+Recent merge history was checked against GitHub on 2026-10-08 (timestamps below are UTC): [#47](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/47) source-map-js and [#48](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/48) JupyterLab dependency updates merged October 8; [#50](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/50) general Einstein-dust / frozen Weierstrass reduction and [#49](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/49) metric-first proof evidence merged October 8; [#46](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/46) closed P0 theory-search preregistration merged October 8; [#43](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/43) deployment isolation and [#42](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/42) admission/write-once protection merged October 5; [#33](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/33) original provenance audit merged October 4. [#44](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44) quarantine relocation merged October 8; its relocation evidence is preserved alongside the LFS-backed canonical payloads. See the [machine-readable history](historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json).
+
 ## Research Charter
 
 The governing document is:

@@ -1,0 +1,27 @@
+{
+  "n_analysis": 350,
+  "topology": {
+    "intrinsic": {
+      "H0": {
+        "max_persistence": 0.30740562081336975,
+        "n_features": 349
+      },
+      "H1": {
+        "max_persistence": 0.7075445652008057,
+        "n_features": 92
+      },
+      "H2": {
+        "max_persistence": 0.38345885276794434,
+        "n_features": 44
+      }
+    }
+  },
+  "nulls": {
+    "intrinsic": {
+      "H0": 1.0,
+      "H1": 0.3333333333333333,
+      "H2": 0.3333333333333333
+    }
+  },
+  "stability": {}
+}

@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "schema_version": 1,
+  "verified_payload_paths": 1333,
+  "verified_archived_environment_paths": 8,
+  "verified_recovery_overlay_rows": {
+    "claim_evidence_recovery_2026-10-08.csv": 51,
+    "experiment_recovery_2026-10-08.csv": 25,
+    "crosswalk_recovery_2026-10-08.csv": 51
+  },
+  "recovered_programs_executed": false,
+  "models_deserialized": false,
+  "eligibility_promoted": false,
+  "source_manifest_sha256": "9a5e17a91483b5540d6ab04618c5d6050f37523f01d22df1703f44777c99c3ae"
+}

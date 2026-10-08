@@ -1,0 +1,3035 @@
+{
+  "policy": "Only these exact paths and OIDs are selected for LFS publication. No --all upload, bulk catalogue, pickle, environment, private configuration, incomplete download or unselected historical object is included.",
+  "files": [
+    {
+      "path": "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv",
+      "oid": "9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2",
+      "bytes": 33007497,
+      "source": "SDSSDR18_200000.csv",
+      "kind": "bounded_sdss_hi_reconstruction_source_candidate"
+    },
+    {
+      "path": "data/intake/recovered/2026-10-08/b713f167dc60da81bd9dbd99ff05ef5a74b80155db6c20276ba27a07bd2783a9.csv",
+      "oid": "b713f167dc60da81bd9dbd99ff05ef5a74b80155db6c20276ba27a07bd2783a9",
+      "bytes": 5264526,
+      "source": "SDSSDR18_G.csv",
+      "kind": "bounded_sdss_hi_reconstruction_source_candidate"
+    },
+    {
+      "path": "data/intake/recovered/2026-10-08/0f51e1852f7103bd9af9699213a7548a7e6b9969ab1256ec86df04352ddec8f5.fits",
+      "oid": "0f51e1852f7103bd9af9699213a7548a7e6b9969ab1256ec86df04352ddec8f5",
+      "bytes": 1584000,
+      "source": "mangaHIall.fits",
+      "kind": "bounded_sdss_hi_reconstruction_source_candidate"
+    },
+    {
+      "path": "data/intake/recovered/2026-10-08/f4662418b92b2013a2c587921e0e54ab05617810794e736b1d84e0e0663877be.csv",
+      "oid": "f4662418b92b2013a2c587921e0e54ab05617810794e736b1d84e0e0663877be",
+      "bytes": 1952832,
+      "source": "mangaHIall.csv",
+      "kind": "bounded_sdss_hi_reconstruction_source_candidate"
+    },
+    {
+      "path": "data/intake/recovered/2026-10-08/a6a3b50429f6b061b0977515c3ce01d1ed5e8122cef88c23e042293db30b285a.csv",
+      "oid": "a6a3b50429f6b061b0977515c3ce01d1ed5e8122cef88c23e042293db30b285a",
+      "bytes": 1616165,
+      "source": "mangaHIall2.csv",
+      "kind": "bounded_sdss_hi_reconstruction_source_candidate"
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e809c59db9153c7ff9bcdcb7485d824040e082394590a5cdd14785942484b836.json",
+      "oid": "e809c59db9153c7ff9bcdcb7485d824040e082394590a5cdd14785942484b836",
+      "bytes": 42915,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "star_provenance_cocalc.zip",
+        "archive_member": "Untitled.ipynb",
+        "archive_crc32": 2605596105
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a0a341e5a224cbff0e7f83d68afa296fb177705923dd7d2fc1cacef0225eb662.json",
+      "oid": "a0a341e5a224cbff0e7f83d68afa296fb177705923dd7d2fc1cacef0225eb662",
+      "bytes": 7889076,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "star_provenance_cocalc.zip",
+        "archive_member": "Paradox.ipynb",
+        "archive_crc32": 2903612579
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9e698e2541cf6c295914d694e5b5e02eb0788b369d3a32c706bb03daf3828ce0.json",
+      "oid": "9e698e2541cf6c295914d694e5b5e02eb0788b369d3a32c706bb03daf3828ce0",
+      "bytes": 53003,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "star_provenance_cocalc.zip",
+        "archive_member": "2025-08-24-file-1.ipynb",
+        "archive_crc32": 4132220359
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9a01b392fe1d633d40b1be68e09e6c1529a642195ba70d2e76eda3a4bef4c0db.json",
+      "oid": "9a01b392fe1d633d40b1be68e09e6c1529a642195ba70d2e76eda3a4bef4c0db",
+      "bytes": 2126,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "star_provenance_cocalc.zip",
+        "archive_member": "2025-08-31-file-1.ipynb",
+        "archive_crc32": 2650330447
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/283b0e1a2894ac38300589729e17d7025b0e31a581cf3b8f93bf2fad08be94dd.json",
+      "oid": "283b0e1a2894ac38300589729e17d7025b0e31a581cf3b8f93bf2fad08be94dd",
+      "bytes": 1788,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "star_provenance_cocalc.zip",
+        "archive_member": "2025-08-31-file-2.ipynb",
+        "archive_crc32": 2877312071
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ebcdf7b0d34ef015fb490f3514ecf80f606fa83f5613308107fca6ed52c52ea9.json",
+      "oid": "ebcdf7b0d34ef015fb490f3514ecf80f606fa83f5613308107fca6ed52c52ea9",
+      "bytes": 9526548,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "records\\ACSC-GLMPCT (1).zip",
+        "archive_member": "Paradox.ipynb",
+        "archive_crc32": 2559716467
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/cd8f58932a74527c4879050f0a6450ff3e650b6533499c738be36a9c03048184.json",
+      "oid": "cd8f58932a74527c4879050f0a6450ff3e650b6533499c738be36a9c03048184",
+      "bytes": 9526544,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "records\\ACSC-GLMPCT.zip",
+        "archive_member": "Paradox.ipynb",
+        "archive_crc32": 2559716467
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f246aabed1844ce1db7b9aeff5a68084a2f7a2a458457086b7e8cc8120a29be1.json",
+      "oid": "f246aabed1844ce1db7b9aeff5a68084a2f7a2a458457086b7e8cc8120a29be1",
+      "bytes": 7429152,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "records\\Globe.zip",
+        "archive_member": "Paradox.ipynb",
+        "archive_crc32": 4289770151
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/23596be0e4ce46657c208f43cb25fbdaa632a711cf2685aa4d149aea66006923.json",
+      "oid": "23596be0e4ce46657c208f43cb25fbdaa632a711cf2685aa4d149aea66006923",
+      "bytes": 298,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "records\\paradox.zip",
+        "archive_member": "BSD Conjuncture Theory /BSD_Theory.ipynb",
+        "archive_crc32": 1168679689
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/406f636b8d26e08409d1038f0a85590a99d7854a281108771760bc1d42a8305a.json",
+      "oid": "406f636b8d26e08409d1038f0a85590a99d7854a281108771760bc1d42a8305a",
+      "bytes": 305,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "records\\paradox.zip",
+        "archive_member": "BSD Conjuncture Theory /2025-04-23-file-1.ipynb",
+        "archive_crc32": 4015063782
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/6ffdd78c6b7c63bb14d8ee561b84aac6d247e176cda2526f95b527d09c91c6f6.json",
+      "oid": "6ffdd78c6b7c63bb14d8ee561b84aac6d247e176cda2526f95b527d09c91c6f6",
+      "bytes": 305,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "records\\paradox.zip",
+        "archive_member": "BSD Conjuncture Theory /2025-04-23-file-2.ipynb",
+        "archive_crc32": 1502508351
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ab2690c8c7434e00aec0dfef340ca1aa7df2fe93c54e2b48a57b10c5a7c39d59.json",
+      "oid": "ab2690c8c7434e00aec0dfef340ca1aa7df2fe93c54e2b48a57b10c5a7c39d59",
+      "bytes": 1112261,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "records\\paradox.zip",
+        "archive_member": "BSD Conjuncture Theory /BSD Conjuncture Theory  .ipynb",
+        "archive_crc32": 3346574866
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ca4e3c13a7a714844b3dc8f622410d92089151d8292e7ff2628c4fa780979e5a.json",
+      "oid": "ca4e3c13a7a714844b3dc8f622410d92089151d8292e7ff2628c4fa780979e5a",
+      "bytes": 3748987,
+      "source": {
+        "root": "dropbox_recovered",
+        "path": "records\\paradox.zip",
+        "archive_member": "Untitled.ipynb",
+        "archive_crc32": 1035049089
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/919afe240f243f18c241e731d680e0a19171c99e3cc685ed7251dfb193730c5a.json",
+      "oid": "919afe240f243f18c241e731d680e0a19171c99e3cc685ed7251dfb193730c5a",
+      "bytes": 187,
+      "source": {
+        "root": "dropbox_star",
+        "path": "CasJobs.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/24477dbae7664775b3337089cec9f6c949fa0d578ad1e7a8484368a5792d776c.json",
+      "oid": "24477dbae7664775b3337089cec9f6c949fa0d578ad1e7a8484368a5792d776c",
+      "bytes": 100509,
+      "source": {
+        "root": "dropbox_star",
+        "path": "NULL STAR R&D.zip",
+        "archive_member": "Untitled1.ipynb",
+        "archive_crc32": 3367933268
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5ab75cb1b8fd28dee734770ba492f656287b10561edfa589ed9d8777dcbdcb2d.json",
+      "oid": "5ab75cb1b8fd28dee734770ba492f656287b10561edfa589ed9d8777dcbdcb2d",
+      "bytes": 96510,
+      "source": {
+        "root": "dropbox_star",
+        "path": "NULL STAR R&D.zip",
+        "archive_member": "Untitled2.ipynb",
+        "archive_crc32": 2966278283
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/16da640e858f27ec5d06b4b1a54b1c8fbfdec10c350b2ddfc05c1d55e24b6554.json",
+      "oid": "16da640e858f27ec5d06b4b1a54b1c8fbfdec10c350b2ddfc05c1d55e24b6554",
+      "bytes": 100511,
+      "source": {
+        "root": "dropbox_star",
+        "path": "NULL_STAR_R&D_4.zip",
+        "archive_member": "Untitled1.ipynb",
+        "archive_crc32": 3367933268
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4ffc27f8bbbc22ac8e128840c4a7845854a0613202aba1476251c3b4a8144a14.json",
+      "oid": "4ffc27f8bbbc22ac8e128840c4a7845854a0613202aba1476251c3b4a8144a14",
+      "bytes": 96512,
+      "source": {
+        "root": "dropbox_star",
+        "path": "NULL_STAR_R&D_4.zip",
+        "archive_member": "Untitled2.ipynb",
+        "archive_crc32": 2966278283
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0aa654b6564cee0f270a353f3cb4bba34a1d1094d2430f68c44b75a36c7e188f.json",
+      "oid": "0aa654b6564cee0f270a353f3cb4bba34a1d1094d2430f68c44b75a36c7e188f",
+      "bytes": 6592482,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/docs/\uf02aSTAR.ipynb",
+        "archive_crc32": 1371406260
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/30d476d7bd3abc34f4f2a30d9d94b9f75c49f5ef10afa31f50ea9235689d2704.json",
+      "oid": "30d476d7bd3abc34f4f2a30d9d94b9f75c49f5ef10afa31f50ea9235689d2704",
+      "bytes": 312,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/00_visualizations.ipynb",
+        "archive_crc32": 3179709063
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c9ad8c01320f02442f76ea96c7e0e10fc4d243bfcac303b14a8866326c38d8e6.json",
+      "oid": "c9ad8c01320f02442f76ea96c7e0e10fc4d243bfcac303b14a8866326c38d8e6",
+      "bytes": 313,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/01_projection_demo.ipynb",
+        "archive_crc32": 3392900408
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c2c636cf44e70202deb7f333a4bdb4e2d74e6a795afeb4a4cb29471e9d7f7305.json",
+      "oid": "c2c636cf44e70202deb7f333a4bdb4e2d74e6a795afeb4a4cb29471e9d7f7305",
+      "bytes": 316,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/02_entropy_field_demo.ipynb",
+        "archive_crc32": 3864516201
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1256fbac56107ab8b945aaae5ce5ad628f97f5254e41626d9f8dfd45296b793d.json",
+      "oid": "1256fbac56107ab8b945aaae5ce5ad628f97f5254e41626d9f8dfd45296b793d",
+      "bytes": 315,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/03_entropy_geodesics.ipynb",
+        "archive_crc32": 2963848907
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/efd6c28b5716b4c9eb6ecc4ae207aa05a271f843a1bce2d80feccf9a9327a624.json",
+      "oid": "efd6c28b5716b4c9eb6ecc4ae207aa05a271f843a1bce2d80feccf9a9327a624",
+      "bytes": 318,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/04_metric_perturbations.ipynb",
+        "archive_crc32": 3459229954
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1b0a77d1b5805c5ea2106a1c56aef4a6c8e821f574b1bdf2729284114ad53b6a.json",
+      "oid": "1b0a77d1b5805c5ea2106a1c56aef4a6c8e821f574b1bdf2729284114ad53b6a",
+      "bytes": 315,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/05_hubble_tension_fit.ipynb",
+        "archive_crc32": 788787684
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f281aaba84fa8ca202aae0685e4592691336771ff5d8cbf8838613c9e10b02a1.json",
+      "oid": "f281aaba84fa8ca202aae0685e4592691336771ff5d8cbf8838613c9e10b02a1",
+      "bytes": 331,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/06_symbolic_regression_law_discovery.ipynb",
+        "archive_crc32": 3851365520
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/90b61d545de1ab543dc4c958755df524bcb445af00a51ec818e0e8809bd6e33a.json",
+      "oid": "90b61d545de1ab543dc4c958755df524bcb445af00a51ec818e0e8809bd6e33a",
+      "bytes": 319,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/07_tda_stability_analysis.ipynb",
+        "archive_crc32": 683395096
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/6711572c1b6d34f12bd0f57bec32ebb28dafdbe9f35580c0d8c253ff60a317c3.json",
+      "oid": "6711572c1b6d34f12bd0f57bec32ebb28dafdbe9f35580c0d8c253ff60a317c3",
+      "bytes": 315,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/cosmology_comparison.ipynb",
+        "archive_crc32": 3530586617
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/7c2e2c0d30c67e09884e5c448a3ad3c5326e38ae71d28ae73f1f7d6ed57b2abb.json",
+      "oid": "7c2e2c0d30c67e09884e5c448a3ad3c5326e38ae71d28ae73f1f7d6ed57b2abb",
+      "bytes": 4783334,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/00_visualizations-executed.ipynb",
+        "archive_crc32": 482623954
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 1
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/927d98232b691b4b6107b4d925dd4f42cb2a948bd83b24c50aa19ce85b804fb7.json",
+      "oid": "927d98232b691b4b6107b4d925dd4f42cb2a948bd83b24c50aa19ce85b804fb7",
+      "bytes": 233669,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/01_projection_demo-executed.ipynb",
+        "archive_crc32": 3820690529
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0efa7b15f5e40000fe006c1cc82973191e582c6bf05057fa32c8e024d8d07088.json",
+      "oid": "0efa7b15f5e40000fe006c1cc82973191e582c6bf05057fa32c8e024d8d07088",
+      "bytes": 114918,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/02_entropy_field_demo-executed.ipynb",
+        "archive_crc32": 4225924955
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a5afc62e78c2d71c0c3c1d9737e48f5ac89749a323afe52e49a3fbe6904eb7ef.json",
+      "oid": "a5afc62e78c2d71c0c3c1d9737e48f5ac89749a323afe52e49a3fbe6904eb7ef",
+      "bytes": 119453,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/03_entropy_geodesics-executed.ipynb",
+        "archive_crc32": 2089289251
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5e89abf04732b037b58a0f5ef170b7d87f2744d4ee5423640bdd797eb1eaa39a.json",
+      "oid": "5e89abf04732b037b58a0f5ef170b7d87f2744d4ee5423640bdd797eb1eaa39a",
+      "bytes": 32456,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/04_metric_perturbations-executed.ipynb",
+        "archive_crc32": 2688530217
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4e6177b9e9de9abe568e5144774fd372f0ba941f8a65f3ddef554da548b5aa1c.json",
+      "oid": "4e6177b9e9de9abe568e5144774fd372f0ba941f8a65f3ddef554da548b5aa1c",
+      "bytes": 92308,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/05_hubble_tension_fit-executed.ipynb",
+        "archive_crc32": 3002568350
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2d8c4b6dc580eaa35937dd59d18b1ac09ecc4c0c2b1b981219d2edbbe0ad8a1d.json",
+      "oid": "2d8c4b6dc580eaa35937dd59d18b1ac09ecc4c0c2b1b981219d2edbbe0ad8a1d",
+      "bytes": 2675,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/06_symbolic_regression_law_discovery-executed.ipynb",
+        "archive_crc32": 1460262890
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/dbf85ebe8e278ee17beade41ca2dbbf337ac019675808882ffb0c577dcd0705b.json",
+      "oid": "dbf85ebe8e278ee17beade41ca2dbbf337ac019675808882ffb0c577dcd0705b",
+      "bytes": 57693,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/07_tda_stability_analysis-executed.ipynb",
+        "archive_crc32": 2168316566
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/762e25d6d93bb983fe275bc20e478ee64f2f3452eb80668bece949c2be9c31b9.json",
+      "oid": "762e25d6d93bb983fe275bc20e478ee64f2f3452eb80668bece949c2be9c31b9",
+      "bytes": 319,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/full_cosmology_inference.ipynb",
+        "archive_crc32": 3983205114
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/866396f7ed3af7c6490cf692eaa6f4cd9645c4336b4f756b9b151420303e816e.json",
+      "oid": "866396f7ed3af7c6490cf692eaa6f4cd9645c4336b4f756b9b151420303e816e",
+      "bytes": 312,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/planck_comparison.ipynb",
+        "archive_crc32": 1140103018
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/6f090d67038bcbbf1228ee3ec5c50e378e52ff1832dde54c31afa19b8184e216.json",
+      "oid": "6f090d67038bcbbf1228ee3ec5c50e378e52ff1832dde54c31afa19b8184e216",
+      "bytes": 318,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/sky_projection_pipeline.ipynb",
+        "archive_crc32": 2998667174
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/711f19740967c9390fb56f5d8a60ac1dc4bc45dc23b452295a877a6769d389de.json",
+      "oid": "711f19740967c9390fb56f5d8a60ac1dc4bc45dc23b452295a877a6769d389de",
+      "bytes": 317,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/symbolic_regression_Hz.ipynb",
+        "archive_crc32": 3144500437
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/29d343f6b06a1d8f262304f71031f13b5fa9be026a4e72cc4bab09fea5018ccd.json",
+      "oid": "29d343f6b06a1d8f262304f71031f13b5fa9be026a4e72cc4bab09fea5018ccd",
+      "bytes": 84286,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/notebooks/01_preprocessing.ipynb",
+        "archive_crc32": 3593365598
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2e712e51c4a44f31c3407d1129cb48024f27eb100d0e2bc02f8bba74844d8ff8.json",
+      "oid": "2e712e51c4a44f31c3407d1129cb48024f27eb100d0e2bc02f8bba74844d8ff8",
+      "bytes": 231325,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/notebooks/ACSC_Verification.ipynb",
+        "archive_crc32": 251428105
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/8b1f387bff49f62fe8ba025e784ec89155cfd0f1a6b393be474f56e75800056e.json",
+      "oid": "8b1f387bff49f62fe8ba025e784ec89155cfd0f1a6b393be474f56e75800056e",
+      "bytes": 318,
+      "source": {
+        "root": "dropbox_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/notebooks/symbolic_regression_Hz.ipynb",
+        "archive_crc32": 3826071818
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a9e5db8e1b0a87d9faebfcf72610125a6e76d72fc5d3d9b2bdb55ee4a9ef1860.json",
+      "oid": "a9e5db8e1b0a87d9faebfcf72610125a6e76d72fc5d3d9b2bdb55ee4a9ef1860",
+      "bytes": 96505,
+      "source": {
+        "root": "dropbox_star",
+        "path": "STAR_R&D.zip",
+        "archive_member": "Untitled2.ipynb",
+        "archive_crc32": 2966278283
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2b2463f58b7b15076b0dc19b3da7034b07c538f18bd602639f0e7627e84b8570.json",
+      "oid": "2b2463f58b7b15076b0dc19b3da7034b07c538f18bd602639f0e7627e84b8570",
+      "bytes": 100504,
+      "source": {
+        "root": "dropbox_star",
+        "path": "STAR_R&D.zip",
+        "archive_member": "Untitled1.ipynb",
+        "archive_crc32": 3367933268
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c37a0f6649eb19e0608d073750a708771b8bf4921ecba54b8c57d0b66d026012.json",
+      "oid": "c37a0f6649eb19e0608d073750a708771b8bf4921ecba54b8c57d0b66d026012",
+      "bytes": 100506,
+      "source": {
+        "root": "dropbox_star",
+        "path": "STAR_R&D_5.zip",
+        "archive_member": "Untitled1.ipynb",
+        "archive_crc32": 3367933268
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ecd773757b60416369680edddb5f73e4570f831b1382ea6f389d02e6ca41c6c2.json",
+      "oid": "ecd773757b60416369680edddb5f73e4570f831b1382ea6f389d02e6ca41c6c2",
+      "bytes": 96507,
+      "source": {
+        "root": "dropbox_star",
+        "path": "STAR_R&D_5.zip",
+        "archive_member": "Untitled2.ipynb",
+        "archive_crc32": 2966278283
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/72d43fb4606abd5ca8097ec22a15a91e3a0f9038ef98d47aea3a0905c68dd6d1.json",
+      "oid": "72d43fb4606abd5ca8097ec22a15a91e3a0f9038ef98d47aea3a0905c68dd6d1",
+      "bytes": 194,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Start here (1).ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/62dd468db6a55829ef84b25e5895e48707effa036fb16c3795ab687295f2e421.json",
+      "oid": "62dd468db6a55829ef84b25e5895e48707effa036fb16c3795ab687295f2e421",
+      "bytes": 190,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Start here.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a793cb3a062d25d3b8ec1222204ff088fb4f863a0889edd8b16e492263606ca6.json",
+      "oid": "a793cb3a062d25d3b8ec1222204ff088fb4f863a0889edd8b16e492263606ca6",
+      "bytes": 7481547,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Untitled (1).ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0121bd58a4aa1443f1783fda90ecde02170bbba0c1a5f86459b07bda6b9f7ee0.json",
+      "oid": "0121bd58a4aa1443f1783fda90ecde02170bbba0c1a5f86459b07bda6b9f7ee0",
+      "bytes": 41492,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Untitled (2).ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/213dacf89c31155d29c61da95dfae96701f3d7d396a82f0ea63af622caa2e68f.json",
+      "oid": "213dacf89c31155d29c61da95dfae96701f3d7d396a82f0ea63af622caa2e68f",
+      "bytes": 48940,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Untitled.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/7f9b81de3db442e025b4732ee6feb27451d8d8e10b0a4e1e04ca01e7e55d7efd.json",
+      "oid": "7f9b81de3db442e025b4732ee6feb27451d8d8e10b0a4e1e04ca01e7e55d7efd",
+      "bytes": 100433,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Untitled1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e5af2cea660bde352354e04e32f60e443ba924c14e7c01a32091617edd948913.json",
+      "oid": "e5af2cea660bde352354e04e32f60e443ba924c14e7c01a32091617edd948913",
+      "bytes": 96434,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Untitled2.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/cf257a8e1f0e3d1ba9ddf663f85682ea2152e87ae22be51f28b9684d58b12bcd.json",
+      "oid": "cf257a8e1f0e3d1ba9ddf663f85682ea2152e87ae22be51f28b9684d58b12bcd",
+      "bytes": 4792623,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/00_visualizations-executed.ipynb",
+        "archive_crc32": 925126157
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 1
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f2dcf8b87eab3f2eaa1cd8b4ffc27ba3dc2f0107728186bdf87d245f5f2d44b8.json",
+      "oid": "f2dcf8b87eab3f2eaa1cd8b4ffc27ba3dc2f0107728186bdf87d245f5f2d44b8",
+      "bytes": 233638,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/01_projection_demo-executed.ipynb",
+        "archive_crc32": 3307974477
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b1e6ccbae5e4145c0f26b7ac394d9e0dd3b3d68d9290dd43a5f919cfcf76fab8.json",
+      "oid": "b1e6ccbae5e4145c0f26b7ac394d9e0dd3b3d68d9290dd43a5f919cfcf76fab8",
+      "bytes": 114887,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/02_entropy_field_demo-executed.ipynb",
+        "archive_crc32": 1530484663
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/70dfbcb54c18b28e1220d790da324923583a9dbc05ea04bd6638424788f52f49.json",
+      "oid": "70dfbcb54c18b28e1220d790da324923583a9dbc05ea04bd6638424788f52f49",
+      "bytes": 119422,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/03_entropy_geodesics-executed.ipynb",
+        "archive_crc32": 2106847282
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/481d900d54aceb2d2ec1e503cd09bc1c1541e1a51b03ae583e90006edca638e0.json",
+      "oid": "481d900d54aceb2d2ec1e503cd09bc1c1541e1a51b03ae583e90006edca638e0",
+      "bytes": 32425,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/04_metric_perturbations-executed.ipynb",
+        "archive_crc32": 2783577766
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/23a390b6a745102052d4689e42aaaff90797431789508a7fdac331266b796a00.json",
+      "oid": "23a390b6a745102052d4689e42aaaff90797431789508a7fdac331266b796a00",
+      "bytes": 92277,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/05_hubble_tension_fit-executed.ipynb",
+        "archive_crc32": 3658047538
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1d6213f4e58d5d7a987812597155e980c34b12f4196f0a7fc338283ee48a2962.json",
+      "oid": "1d6213f4e58d5d7a987812597155e980c34b12f4196f0a7fc338283ee48a2962",
+      "bytes": 2926,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/06_symbolic_regression_law_discovery-executed.ipynb",
+        "archive_crc32": 432967264
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/67e3a5a75699a507b81e7b898a3cf7ef2ed866f160db5dcf7e7ce5d99963efd7.json",
+      "oid": "67e3a5a75699a507b81e7b898a3cf7ef2ed866f160db5dcf7e7ce5d99963efd7",
+      "bytes": 57662,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/07_tda_stability_analysis-executed.ipynb",
+        "archive_crc32": 4174856548
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f8e2de9894d389986aed66d1c8d28ba1bf39f68cf290dd3b2788fb6fbb8a76a0.json",
+      "oid": "f8e2de9894d389986aed66d1c8d28ba1bf39f68cf290dd3b2788fb6fbb8a76a0",
+      "bytes": 233634,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/01_projection_demo-executed.ipynb",
+        "archive_crc32": 3820690529
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a840362288d30c26be53469ca62047444145211b2687089a780f971f9ab93ff0.json",
+      "oid": "a840362288d30c26be53469ca62047444145211b2687089a780f971f9ab93ff0",
+      "bytes": 114883,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/02_entropy_field_demo-executed.ipynb",
+        "archive_crc32": 4225924955
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5c1fd3f9a9f519a2e01af1fa6227740e1bd4937ea3aa2ec277f4db23a5550483.json",
+      "oid": "5c1fd3f9a9f519a2e01af1fa6227740e1bd4937ea3aa2ec277f4db23a5550483",
+      "bytes": 4783299,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/00_visualizations-executed.ipynb",
+        "archive_crc32": 482623954
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 1
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/d5e6ac63fb8398637778d3bfe57d7b0d0d60386f86ed5219c23095ffba1439f0.json",
+      "oid": "d5e6ac63fb8398637778d3bfe57d7b0d0d60386f86ed5219c23095ffba1439f0",
+      "bytes": 119418,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/03_entropy_geodesics-executed.ipynb",
+        "archive_crc32": 2089289251
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a851b64b2607393d991cf3c6848bb1cd672e36d6dc210cb2c75f5a8dee6df31b.json",
+      "oid": "a851b64b2607393d991cf3c6848bb1cd672e36d6dc210cb2c75f5a8dee6df31b",
+      "bytes": 32421,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/04_metric_perturbations-executed.ipynb",
+        "archive_crc32": 2688530217
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2b63b1ed9c549f6e223e1b4270f900809540fa9b4139d2067c911be5ee51e4a4.json",
+      "oid": "2b63b1ed9c549f6e223e1b4270f900809540fa9b4139d2067c911be5ee51e4a4",
+      "bytes": 92273,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/05_hubble_tension_fit-executed.ipynb",
+        "archive_crc32": 3002568350
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2c912284a87913c5363e58243245d33403e6c0f645a8d99b69f33c71806f9b05.json",
+      "oid": "2c912284a87913c5363e58243245d33403e6c0f645a8d99b69f33c71806f9b05",
+      "bytes": 2640,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/06_symbolic_regression_law_discovery-executed.ipynb",
+        "archive_crc32": 1460262890
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b265213d3b21d812e10f3c107a1135622b2e2e98d5cae83503cfdb0789a1ba41.json",
+      "oid": "b265213d3b21d812e10f3c107a1135622b2e2e98d5cae83503cfdb0789a1ba41",
+      "bytes": 57658,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/07_tda_stability_analysis-executed.ipynb",
+        "archive_crc32": 2168316566
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5ca9ad84d183122edfc31ab9fe140d00bca9e7ace3b415ed0359668849583909.json",
+      "oid": "5ca9ad84d183122edfc31ab9fe140d00bca9e7ace3b415ed0359668849583909",
+      "bytes": 233634,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/01_projection_demo-executed.ipynb",
+        "archive_crc32": 2720859838
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/658b5b414816845a4af1c9d9bbc34097f83c0a0946b59a614692c29719b28ea9.json",
+      "oid": "658b5b414816845a4af1c9d9bbc34097f83c0a0946b59a614692c29719b28ea9",
+      "bytes": 119418,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/03_entropy_geodesics-executed.ipynb",
+        "archive_crc32": 4148605836
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/94cc122a92378e9c1f92f6d3adf53c3ad68155ac96496fec48f7de83e2825467.json",
+      "oid": "94cc122a92378e9c1f92f6d3adf53c3ad68155ac96496fec48f7de83e2825467",
+      "bytes": 114883,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/02_entropy_field_demo-executed.ipynb",
+        "archive_crc32": 1201506492
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c3bb69e44f328dd4beddf065c5f2ba171320c659b69406b2b37d7eee1b6a7a67.json",
+      "oid": "c3bb69e44f328dd4beddf065c5f2ba171320c659b69406b2b37d7eee1b6a7a67",
+      "bytes": 32421,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/04_metric_perturbations-executed.ipynb",
+        "archive_crc32": 3526833377
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4fefcc13a064169c87d37014c182874ef41951c5bd7c7c5ddd93802096a4ee0e.json",
+      "oid": "4fefcc13a064169c87d37014c182874ef41951c5bd7c7c5ddd93802096a4ee0e",
+      "bytes": 92273,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/05_hubble_tension_fit-executed.ipynb",
+        "archive_crc32": 3122419750
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2bef31478b0b98a6604b3c8f5665be3667c0321baeee804f77c11e0dd3789faa.json",
+      "oid": "2bef31478b0b98a6604b3c8f5665be3667c0321baeee804f77c11e0dd3789faa",
+      "bytes": 2631,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/06_symbolic_regression_law_discovery-executed.ipynb",
+        "archive_crc32": 646730780
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/6c6b017e21defe552d5c8b6b46e22308f3f60c42b66f8b1b7d9f5098def801ee.json",
+      "oid": "6c6b017e21defe552d5c8b6b46e22308f3f60c42b66f8b1b7d9f5098def801ee",
+      "bytes": 57657,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/07_tda_stability_analysis-executed.ipynb",
+        "archive_crc32": 583408937
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/47b1911db383224f99893cd87438563d62ec793e4ba56be174892dcaa7d1b2b3.json",
+      "oid": "47b1911db383224f99893cd87438563d62ec793e4ba56be174892dcaa7d1b2b3",
+      "bytes": 202,
+      "source": {
+        "root": "dropbox_star",
+        "path": "vizier_jotherraa19.127.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/42779fc08414a1a104f05dd2f4dc255d7001c9653d4060a1d60213f60f9ae8df.json",
+      "oid": "42779fc08414a1a104f05dd2f4dc255d7001c9653d4060a1d60213f60f9ae8df",
+      "bytes": 100450,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Documents\\STAR\\Untitled1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/fe31a4c5e7d0b05bd2599d7e5738db2b89e992ce38ede0c48bb31895f524478a.json",
+      "oid": "fe31a4c5e7d0b05bd2599d7e5738db2b89e992ce38ede0c48bb31895f524478a",
+      "bytes": 96451,
+      "source": {
+        "root": "dropbox_star",
+        "path": "Documents\\STAR\\Untitled2.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a454628ab8d44926a25109b3c016b6fe552329018ac3bd0f15d24ad58596406e.json",
+      "oid": "a454628ab8d44926a25109b3c016b6fe552329018ac3bd0f15d24ad58596406e",
+      "bytes": 4783240,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs\\examples\\00_visualizations-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 1
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/6abb552eed21931357c7ab2083873f665ddc590be2cae01761f8a380c09bea28.json",
+      "oid": "6abb552eed21931357c7ab2083873f665ddc590be2cae01761f8a380c09bea28",
+      "bytes": 233574,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs\\examples\\01_projection_demo-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/7a7674d93a060ac94038d6aac4fb8861da0d895e688495890d1ffbecce73a9de.json",
+      "oid": "7a7674d93a060ac94038d6aac4fb8861da0d895e688495890d1ffbecce73a9de",
+      "bytes": 114823,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs\\examples\\02_entropy_field_demo-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/09adacd3275a1b849f30e19e811c9ad3cfb8f858a20673f240a8d31e0750877f.json",
+      "oid": "09adacd3275a1b849f30e19e811c9ad3cfb8f858a20673f240a8d31e0750877f",
+      "bytes": 119358,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs\\examples\\03_entropy_geodesics-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a0a91b3a465d9314ee83124a2a80202e34943e7916b3f25f66781c10658dad61.json",
+      "oid": "a0a91b3a465d9314ee83124a2a80202e34943e7916b3f25f66781c10658dad61",
+      "bytes": 32361,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs\\examples\\04_metric_perturbations-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/25748fb23327ff67f8775ba54d8ea6f8e5ac524e47ceec298731003295483f2f.json",
+      "oid": "25748fb23327ff67f8775ba54d8ea6f8e5ac524e47ceec298731003295483f2f",
+      "bytes": 92213,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs\\examples\\05_hubble_tension_fit-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ef72ff77a88282f236396ca2e7921710360bcc2b4ca91cdff650477ea31690cd.json",
+      "oid": "ef72ff77a88282f236396ca2e7921710360bcc2b4ca91cdff650477ea31690cd",
+      "bytes": 2580,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs\\examples\\06_symbolic_regression_law_discovery-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e0883acdeed4f32071da73d8be6c3731217b286b48ab541f3061a19f3645cf93.json",
+      "oid": "e0883acdeed4f32071da73d8be6c3731217b286b48ab541f3061a19f3645cf93",
+      "bytes": 57598,
+      "source": {
+        "root": "dropbox_star",
+        "path": "notebook-outputs\\examples\\07_tda_stability_analysis-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2cb6ea8a0111998195e9a8a0e5903d0d85b05242f3c3f6c07ec347fae6dcbd9a.json",
+      "oid": "2cb6ea8a0111998195e9a8a0e5903d0d85b05242f3c3f6c07ec347fae6dcbd9a",
+      "bytes": 100511,
+      "source": {
+        "root": "documents_star",
+        "path": "NULL STAR R&D.zip",
+        "archive_member": "Untitled1.ipynb",
+        "archive_crc32": 3367933268
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f7cad55be3b82b81f115268a6f4719d5bd1f14765d91180a6ca1c75378d2830f.json",
+      "oid": "f7cad55be3b82b81f115268a6f4719d5bd1f14765d91180a6ca1c75378d2830f",
+      "bytes": 96512,
+      "source": {
+        "root": "documents_star",
+        "path": "NULL STAR R&D.zip",
+        "archive_member": "Untitled2.ipynb",
+        "archive_crc32": 2966278283
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5ed39946396793554511e8aaf3a4496d9bee2e3de1c29f4f8c998a950ea9e47e.json",
+      "oid": "5ed39946396793554511e8aaf3a4496d9bee2e3de1c29f4f8c998a950ea9e47e",
+      "bytes": 100513,
+      "source": {
+        "root": "documents_star",
+        "path": "NULL_STAR_R&D_4.zip",
+        "archive_member": "Untitled1.ipynb",
+        "archive_crc32": 3367933268
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9ca57a6928a967e0bd1ed9def461b8b6af8c1f55a597a8d5f4ec43401afe1a4d.json",
+      "oid": "9ca57a6928a967e0bd1ed9def461b8b6af8c1f55a597a8d5f4ec43401afe1a4d",
+      "bytes": 96514,
+      "source": {
+        "root": "documents_star",
+        "path": "NULL_STAR_R&D_4.zip",
+        "archive_member": "Untitled2.ipynb",
+        "archive_crc32": 2966278283
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/8ceee2a6328859e6f55fa33155e41e0a9c2fd4c1c5dc0285c1190c647dc80b83.json",
+      "oid": "8ceee2a6328859e6f55fa33155e41e0a9c2fd4c1c5dc0285c1190c647dc80b83",
+      "bytes": 6592484,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/docs/\uf02aSTAR.ipynb",
+        "archive_crc32": 1371406260
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1cc4e0fe7aab77a2913da646bc37a1ebea34a987c22014966a23c862efca797d.json",
+      "oid": "1cc4e0fe7aab77a2913da646bc37a1ebea34a987c22014966a23c862efca797d",
+      "bytes": 314,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/00_visualizations.ipynb",
+        "archive_crc32": 3179709063
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4e1dad36546726a081f7872560f33df432e98cad3cbdeaff82fe8be7bb8ffd08.json",
+      "oid": "4e1dad36546726a081f7872560f33df432e98cad3cbdeaff82fe8be7bb8ffd08",
+      "bytes": 315,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/01_projection_demo.ipynb",
+        "archive_crc32": 3392900408
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/151c4d843d44add03632a82d9cff9562605209ec4db637e8e2e2483557e923a7.json",
+      "oid": "151c4d843d44add03632a82d9cff9562605209ec4db637e8e2e2483557e923a7",
+      "bytes": 318,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/02_entropy_field_demo.ipynb",
+        "archive_crc32": 3864516201
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a53de9ff288d3b7a04efc6a7e86889bdab64bc22675512ba1dcdb9e28e27874a.json",
+      "oid": "a53de9ff288d3b7a04efc6a7e86889bdab64bc22675512ba1dcdb9e28e27874a",
+      "bytes": 317,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/03_entropy_geodesics.ipynb",
+        "archive_crc32": 2963848907
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/719c8fe8e8893f5965f8fe126e3df1898cf4f27ccc75b15acb09985777ddaa11.json",
+      "oid": "719c8fe8e8893f5965f8fe126e3df1898cf4f27ccc75b15acb09985777ddaa11",
+      "bytes": 320,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/04_metric_perturbations.ipynb",
+        "archive_crc32": 3459229954
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e186000e5ce9827fe74407d9dca62cb59b0092d0fdf8e7992b51f40513463407.json",
+      "oid": "e186000e5ce9827fe74407d9dca62cb59b0092d0fdf8e7992b51f40513463407",
+      "bytes": 317,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/05_hubble_tension_fit.ipynb",
+        "archive_crc32": 788787684
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/17acd5c4d111414c2c30b46b80e61624abf659bd008cc20ef40468a3a6d438ed.json",
+      "oid": "17acd5c4d111414c2c30b46b80e61624abf659bd008cc20ef40468a3a6d438ed",
+      "bytes": 333,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/06_symbolic_regression_law_discovery.ipynb",
+        "archive_crc32": 3851365520
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a5431b5ebf66a72e11ed5e161550c4d1422ab413548adbece3e129ff7f801f51.json",
+      "oid": "a5431b5ebf66a72e11ed5e161550c4d1422ab413548adbece3e129ff7f801f51",
+      "bytes": 321,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/07_tda_stability_analysis.ipynb",
+        "archive_crc32": 683395096
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b7923718dad37118f1b12f2980b2a111d7606a5088cfc7f1517514ac4b15234f.json",
+      "oid": "b7923718dad37118f1b12f2980b2a111d7606a5088cfc7f1517514ac4b15234f",
+      "bytes": 317,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/cosmology_comparison.ipynb",
+        "archive_crc32": 3530586617
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b2baed423f10518b9dfeb2ff4610b58a128a200f43c4a47ae84274c456bc5fde.json",
+      "oid": "b2baed423f10518b9dfeb2ff4610b58a128a200f43c4a47ae84274c456bc5fde",
+      "bytes": 4783336,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/00_visualizations-executed.ipynb",
+        "archive_crc32": 482623954
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 1
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c3059534b79c1e800888331e6d9e5fcdf0a96121e1932c54a253d0df1e55aece.json",
+      "oid": "c3059534b79c1e800888331e6d9e5fcdf0a96121e1932c54a253d0df1e55aece",
+      "bytes": 233671,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/01_projection_demo-executed.ipynb",
+        "archive_crc32": 3820690529
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ee286618f9fef34da5adcd274127dd2f1643bba634f5ddd28926aeb05b3e3039.json",
+      "oid": "ee286618f9fef34da5adcd274127dd2f1643bba634f5ddd28926aeb05b3e3039",
+      "bytes": 114920,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/02_entropy_field_demo-executed.ipynb",
+        "archive_crc32": 4225924955
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e2d2b31ad0b993517e6c543b9951e36b81c5c13e957e6d91030749467b52a273.json",
+      "oid": "e2d2b31ad0b993517e6c543b9951e36b81c5c13e957e6d91030749467b52a273",
+      "bytes": 119455,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/03_entropy_geodesics-executed.ipynb",
+        "archive_crc32": 2089289251
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/71e23eb3b9340aa0a6e1d26071fe27b48ce5b5686259ce82c4be2aa86a86e675.json",
+      "oid": "71e23eb3b9340aa0a6e1d26071fe27b48ce5b5686259ce82c4be2aa86a86e675",
+      "bytes": 32458,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/04_metric_perturbations-executed.ipynb",
+        "archive_crc32": 2688530217
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0129a6c05b1ab782bd8f417964ea8393eddb83a1b6ca26e8fd42a3e4433f8c25.json",
+      "oid": "0129a6c05b1ab782bd8f417964ea8393eddb83a1b6ca26e8fd42a3e4433f8c25",
+      "bytes": 92310,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/05_hubble_tension_fit-executed.ipynb",
+        "archive_crc32": 3002568350
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b5c6fb42c42b9cf74d5599186bc51020a21f1e1203018d06729bae877fd18ebb.json",
+      "oid": "b5c6fb42c42b9cf74d5599186bc51020a21f1e1203018d06729bae877fd18ebb",
+      "bytes": 2677,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/06_symbolic_regression_law_discovery-executed.ipynb",
+        "archive_crc32": 1460262890
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/534e73e8b2a35315f62118152fb771de787cf26e0e313871b26fff9ec2d09363.json",
+      "oid": "534e73e8b2a35315f62118152fb771de787cf26e0e313871b26fff9ec2d09363",
+      "bytes": 57695,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/exports/07_tda_stability_analysis-executed.ipynb",
+        "archive_crc32": 2168316566
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/143512a728911040c6a51280e541a4a0a29c2ba880861dfe7cf1f578e2af68ec.json",
+      "oid": "143512a728911040c6a51280e541a4a0a29c2ba880861dfe7cf1f578e2af68ec",
+      "bytes": 321,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/full_cosmology_inference.ipynb",
+        "archive_crc32": 3983205114
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9050579a31df6263907a633e4737ded82cb862714fba451178308823a7eae47a.json",
+      "oid": "9050579a31df6263907a633e4737ded82cb862714fba451178308823a7eae47a",
+      "bytes": 314,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/planck_comparison.ipynb",
+        "archive_crc32": 1140103018
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9b7ff7527ad23a6245c5f519797d7b33e9e47fd85720d69dfea6cfafdd112c19.json",
+      "oid": "9b7ff7527ad23a6245c5f519797d7b33e9e47fd85720d69dfea6cfafdd112c19",
+      "bytes": 320,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/sky_projection_pipeline.ipynb",
+        "archive_crc32": 2998667174
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ed760becea5f1132a3807e5f382e528cbd4dcc5fb810d6865d1df3ad07957b90.json",
+      "oid": "ed760becea5f1132a3807e5f382e528cbd4dcc5fb810d6865d1df3ad07957b90",
+      "bytes": 319,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/examples/symbolic_regression_Hz.ipynb",
+        "archive_crc32": 3144500437
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/32f5563870634e0cde8486ae7cedbeb61654434a5aceae3de9b28a7329e2c699.json",
+      "oid": "32f5563870634e0cde8486ae7cedbeb61654434a5aceae3de9b28a7329e2c699",
+      "bytes": 84288,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/notebooks/01_preprocessing.ipynb",
+        "archive_crc32": 3593365598
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5159d3d4a08ff81f4b6605800f2476636cb17c6dd9c3ecd9dd9d44e32e9bab00.json",
+      "oid": "5159d3d4a08ff81f4b6605800f2476636cb17c6dd9c3ecd9dd9d44e32e9bab00",
+      "bytes": 231327,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/notebooks/ACSC_Verification.ipynb",
+        "archive_crc32": 251428105
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/26b0560839e96863b1e76c0f0abcf1d646aee4ca34332afd4116514e27e303c5.json",
+      "oid": "26b0560839e96863b1e76c0f0abcf1d646aee4ca34332afd4116514e27e303c5",
+      "bytes": 320,
+      "source": {
+        "root": "documents_star",
+        "path": "S.T.A.R.-Program-main.zip",
+        "archive_member": "S.T.A.R.-Program-main/notebooks/symbolic_regression_Hz.ipynb",
+        "archive_crc32": 3826071818
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/de0aad995c7620f0c662ba550602c14b4f2299fdb0c5d7e9425b913a25cdc60a.json",
+      "oid": "de0aad995c7620f0c662ba550602c14b4f2299fdb0c5d7e9425b913a25cdc60a",
+      "bytes": 96507,
+      "source": {
+        "root": "documents_star",
+        "path": "STAR_R&D.zip",
+        "archive_member": "Untitled2.ipynb",
+        "archive_crc32": 2966278283
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/004542051eae2c8ea9950184cd33e7c81fb77b0794ccc61925e62915d9fd6eb9.json",
+      "oid": "004542051eae2c8ea9950184cd33e7c81fb77b0794ccc61925e62915d9fd6eb9",
+      "bytes": 100506,
+      "source": {
+        "root": "documents_star",
+        "path": "STAR_R&D.zip",
+        "archive_member": "Untitled1.ipynb",
+        "archive_crc32": 3367933268
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f21decdb4c58b02c4f5393e7c0b8b73436ebd99cbd3187e7d886e8b2fdd84eed.json",
+      "oid": "f21decdb4c58b02c4f5393e7c0b8b73436ebd99cbd3187e7d886e8b2fdd84eed",
+      "bytes": 100508,
+      "source": {
+        "root": "documents_star",
+        "path": "STAR_R&D_5.zip",
+        "archive_member": "Untitled1.ipynb",
+        "archive_crc32": 3367933268
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f2a0f5cdfbd6cfea63608cf8cb29b465522c06d3e25be67a3e4af9ba9d92d291.json",
+      "oid": "f2a0f5cdfbd6cfea63608cf8cb29b465522c06d3e25be67a3e4af9ba9d92d291",
+      "bytes": 96509,
+      "source": {
+        "root": "documents_star",
+        "path": "STAR_R&D_5.zip",
+        "archive_member": "Untitled2.ipynb",
+        "archive_crc32": 2966278283
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e5b560c91ae3059ee2a011624e16c4ed7c8a4df4d9c285c6b6f4964b64dd0267.json",
+      "oid": "e5b560c91ae3059ee2a011624e16c4ed7c8a4df4d9c285c6b6f4964b64dd0267",
+      "bytes": 196,
+      "source": {
+        "root": "documents_star",
+        "path": "Start here (1).ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/3526bfbd6d3a66e52735b7a63be484fe826af9b0bc32640ca6d7792b9c56e38b.json",
+      "oid": "3526bfbd6d3a66e52735b7a63be484fe826af9b0bc32640ca6d7792b9c56e38b",
+      "bytes": 192,
+      "source": {
+        "root": "documents_star",
+        "path": "Start here.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f9c53d56edf33d7156a63758f9b2fa504f04860d54791e87be353d125ea1fcd9.json",
+      "oid": "f9c53d56edf33d7156a63758f9b2fa504f04860d54791e87be353d125ea1fcd9",
+      "bytes": 7481549,
+      "source": {
+        "root": "documents_star",
+        "path": "Untitled (1).ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/20984648504d18c31c193daf31e055a9edc6a751d33402ea8021966f9a8b663f.json",
+      "oid": "20984648504d18c31c193daf31e055a9edc6a751d33402ea8021966f9a8b663f",
+      "bytes": 41494,
+      "source": {
+        "root": "documents_star",
+        "path": "Untitled (2).ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/259fd02d81e668c9fe91ef06b56b2693850b3cbd30b7dac33343f2e8e0050872.json",
+      "oid": "259fd02d81e668c9fe91ef06b56b2693850b3cbd30b7dac33343f2e8e0050872",
+      "bytes": 48942,
+      "source": {
+        "root": "documents_star",
+        "path": "Untitled.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c498ac378518efbe7540a8ea1fff010e0ee1fbb62a490584471957a70f97e0f0.json",
+      "oid": "c498ac378518efbe7540a8ea1fff010e0ee1fbb62a490584471957a70f97e0f0",
+      "bytes": 100435,
+      "source": {
+        "root": "documents_star",
+        "path": "Untitled1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/00b8e6c5946f608dca8d1e27b8dd04bb6e3c0512485f564817586737bf07339e.json",
+      "oid": "00b8e6c5946f608dca8d1e27b8dd04bb6e3c0512485f564817586737bf07339e",
+      "bytes": 96436,
+      "source": {
+        "root": "documents_star",
+        "path": "Untitled2.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/7163cd1bd575d7aa0ecc8866a36835cfdae1413493ec74e2fca9b33e5835fcd4.json",
+      "oid": "7163cd1bd575d7aa0ecc8866a36835cfdae1413493ec74e2fca9b33e5835fcd4",
+      "bytes": 4792625,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/00_visualizations-executed.ipynb",
+        "archive_crc32": 925126157
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 1
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c561707856a699dd9e18cc643476d0d7a8dbc4dbbc17e65af7bac8bccdebc297.json",
+      "oid": "c561707856a699dd9e18cc643476d0d7a8dbc4dbbc17e65af7bac8bccdebc297",
+      "bytes": 233640,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/01_projection_demo-executed.ipynb",
+        "archive_crc32": 3307974477
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/cf5a0aada9acad6b4a2640a8f9550b11ec1ee14ce32fc04b42cd2681bc4063f4.json",
+      "oid": "cf5a0aada9acad6b4a2640a8f9550b11ec1ee14ce32fc04b42cd2681bc4063f4",
+      "bytes": 114889,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/02_entropy_field_demo-executed.ipynb",
+        "archive_crc32": 1530484663
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/25246ace33a50c7ee2076e41c3b03ffd4fab9455cecd3751570bcfd456b6610d.json",
+      "oid": "25246ace33a50c7ee2076e41c3b03ffd4fab9455cecd3751570bcfd456b6610d",
+      "bytes": 119424,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/03_entropy_geodesics-executed.ipynb",
+        "archive_crc32": 2106847282
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/81101a105e5bb0c04a3cecb72198407779f37a7762d59b0582fcbf2790083d2a.json",
+      "oid": "81101a105e5bb0c04a3cecb72198407779f37a7762d59b0582fcbf2790083d2a",
+      "bytes": 32427,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/04_metric_perturbations-executed.ipynb",
+        "archive_crc32": 2783577766
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0f80d972ad7514e64fab6987d3ce93b458e36463454ee39ca8675261299d7bda.json",
+      "oid": "0f80d972ad7514e64fab6987d3ce93b458e36463454ee39ca8675261299d7bda",
+      "bytes": 92279,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/05_hubble_tension_fit-executed.ipynb",
+        "archive_crc32": 3658047538
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/7f6ce2dc2aca09a01d0b8a48fcbd02cd179fc0261e1d7893d4e8c47e38f60053.json",
+      "oid": "7f6ce2dc2aca09a01d0b8a48fcbd02cd179fc0261e1d7893d4e8c47e38f60053",
+      "bytes": 2928,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/06_symbolic_regression_law_discovery-executed.ipynb",
+        "archive_crc32": 432967264
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9800d320f50704a9001959410f1d2e131eb59c93e5074bee42df98767ad6012f.json",
+      "oid": "9800d320f50704a9001959410f1d2e131eb59c93e5074bee42df98767ad6012f",
+      "bytes": 57664,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs (1).zip",
+        "archive_member": "examples/07_tda_stability_analysis-executed.ipynb",
+        "archive_crc32": 4174856548
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/356f340a4813c80726495e3d24258966ff23dc1e764567d995cd300fc6b3ea59.json",
+      "oid": "356f340a4813c80726495e3d24258966ff23dc1e764567d995cd300fc6b3ea59",
+      "bytes": 233636,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/01_projection_demo-executed.ipynb",
+        "archive_crc32": 3820690529
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/120ca6e23f5d993ffb8c66381c3d412cd0ecf6d3de01d0ed1fce0501fc099faf.json",
+      "oid": "120ca6e23f5d993ffb8c66381c3d412cd0ecf6d3de01d0ed1fce0501fc099faf",
+      "bytes": 114885,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/02_entropy_field_demo-executed.ipynb",
+        "archive_crc32": 4225924955
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e7fe5d22b3a753a958b88295ecb02934ac4124a02366ac6bf0b1e297e160d431.json",
+      "oid": "e7fe5d22b3a753a958b88295ecb02934ac4124a02366ac6bf0b1e297e160d431",
+      "bytes": 4783301,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/00_visualizations-executed.ipynb",
+        "archive_crc32": 482623954
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 1
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f2ff61b6a787f401ac724c1df694677e861a13cfd31600bd7bc15c55d45aa9ac.json",
+      "oid": "f2ff61b6a787f401ac724c1df694677e861a13cfd31600bd7bc15c55d45aa9ac",
+      "bytes": 119420,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/03_entropy_geodesics-executed.ipynb",
+        "archive_crc32": 2089289251
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4d50be7e64f59b4b2a391b6190a0ce24bb3e350c60aa9ce7b978e90d0bb9e9e7.json",
+      "oid": "4d50be7e64f59b4b2a391b6190a0ce24bb3e350c60aa9ce7b978e90d0bb9e9e7",
+      "bytes": 32423,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/04_metric_perturbations-executed.ipynb",
+        "archive_crc32": 2688530217
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/72486e34dd52376c77179d0ebb4077a25d414621127387f356b3a09b48177afa.json",
+      "oid": "72486e34dd52376c77179d0ebb4077a25d414621127387f356b3a09b48177afa",
+      "bytes": 92275,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/05_hubble_tension_fit-executed.ipynb",
+        "archive_crc32": 3002568350
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/62d93ebb8d8b5915f931ede8dd1aede6950a26b69a4f1e8677e95c4d8922da4f.json",
+      "oid": "62d93ebb8d8b5915f931ede8dd1aede6950a26b69a4f1e8677e95c4d8922da4f",
+      "bytes": 2642,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/06_symbolic_regression_law_discovery-executed.ipynb",
+        "archive_crc32": 1460262890
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5ee2a4c52794e9c4ec02a0eaf222991f6b4a1e654c0a4645b7d89e216d021f88.json",
+      "oid": "5ee2a4c52794e9c4ec02a0eaf222991f6b4a1e654c0a4645b7d89e216d021f88",
+      "bytes": 57660,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs.zip",
+        "archive_member": "examples/07_tda_stability_analysis-executed.ipynb",
+        "archive_crc32": 2168316566
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/696f9b141d766210c104845df4c820fe8aa2006077d40db8b5dbfc1d37dd24ec.json",
+      "oid": "696f9b141d766210c104845df4c820fe8aa2006077d40db8b5dbfc1d37dd24ec",
+      "bytes": 233636,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/01_projection_demo-executed.ipynb",
+        "archive_crc32": 2720859838
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/84e1caec6210bb9281ff7ab038387c9530ab10db34ae4774d3e69a34872c3e93.json",
+      "oid": "84e1caec6210bb9281ff7ab038387c9530ab10db34ae4774d3e69a34872c3e93",
+      "bytes": 119420,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/03_entropy_geodesics-executed.ipynb",
+        "archive_crc32": 4148605836
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e0eb2e2839dfb7d6bb63b8c2e55b7c70efce1d31c9a56e38b26de91182db8d46.json",
+      "oid": "e0eb2e2839dfb7d6bb63b8c2e55b7c70efce1d31c9a56e38b26de91182db8d46",
+      "bytes": 114885,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/02_entropy_field_demo-executed.ipynb",
+        "archive_crc32": 1201506492
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/309ace90f8860ab9ad032828b8bbb16469f0e25d73518d9df574634d9ff5be9b.json",
+      "oid": "309ace90f8860ab9ad032828b8bbb16469f0e25d73518d9df574634d9ff5be9b",
+      "bytes": 32423,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/04_metric_perturbations-executed.ipynb",
+        "archive_crc32": 3526833377
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0aa6b4586dd7f0f860d7a18419dcb96d86d809eca1fe9b28982f42756681056e.json",
+      "oid": "0aa6b4586dd7f0f860d7a18419dcb96d86d809eca1fe9b28982f42756681056e",
+      "bytes": 92275,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/05_hubble_tension_fit-executed.ipynb",
+        "archive_crc32": 3122419750
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ab1804fa991a4e14b080e8a5e6f1e5b21af9d0f2447d54adaae8194e65a194a3.json",
+      "oid": "ab1804fa991a4e14b080e8a5e6f1e5b21af9d0f2447d54adaae8194e65a194a3",
+      "bytes": 2633,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/06_symbolic_regression_law_discovery-executed.ipynb",
+        "archive_crc32": 646730780
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a849998bb169784c796efeeced1b1d4392a74382bfeb9be7fd4555c4f2924a52.json",
+      "oid": "a849998bb169784c796efeeced1b1d4392a74382bfeb9be7fd4555c4f2924a52",
+      "bytes": 57659,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-results.zip",
+        "archive_member": "examples/07_tda_stability_analysis-executed.ipynb",
+        "archive_crc32": 583408937
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/091840f4e1d0d82158e3025d7b669fd775765ed5d5be3d2ab8bf23a420db8906.json",
+      "oid": "091840f4e1d0d82158e3025d7b669fd775765ed5d5be3d2ab8bf23a420db8906",
+      "bytes": 204,
+      "source": {
+        "root": "documents_star",
+        "path": "vizier_jotherraa19.127.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/385b5b6b8cddf9622b8bf5edb7f9a0ac2f77b5f67cd44c39719a55d7cf45e407.json",
+      "oid": "385b5b6b8cddf9622b8bf5edb7f9a0ac2f77b5f67cd44c39719a55d7cf45e407",
+      "bytes": 100452,
+      "source": {
+        "root": "documents_star",
+        "path": "Documents\\STAR\\Untitled1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f8868bc9bf2e01848ec76509dba4b6125da9d0e64f4225c60832b06d4e8a3420.json",
+      "oid": "f8868bc9bf2e01848ec76509dba4b6125da9d0e64f4225c60832b06d4e8a3420",
+      "bytes": 96453,
+      "source": {
+        "root": "documents_star",
+        "path": "Documents\\STAR\\Untitled2.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/10359007f884664485a34bb5487f5db7070d6b29837481588ed4b03b0963dd33.json",
+      "oid": "10359007f884664485a34bb5487f5db7070d6b29837481588ed4b03b0963dd33",
+      "bytes": 4783242,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs\\examples\\00_visualizations-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 1
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b06e89de85c898681107d9b8022da53f27da55f4b9775c825fdb33bff7c9a4f0.json",
+      "oid": "b06e89de85c898681107d9b8022da53f27da55f4b9775c825fdb33bff7c9a4f0",
+      "bytes": 233576,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs\\examples\\01_projection_demo-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4adf7dc1cbfe15fd237d4e56c6c395a77bc729c83134fbf921ba472f62b356a8.json",
+      "oid": "4adf7dc1cbfe15fd237d4e56c6c395a77bc729c83134fbf921ba472f62b356a8",
+      "bytes": 114825,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs\\examples\\02_entropy_field_demo-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f25ad4c3d797f7a2278bc8a7ca379f64a12eedf908a08d586faa403e60cca031.json",
+      "oid": "f25ad4c3d797f7a2278bc8a7ca379f64a12eedf908a08d586faa403e60cca031",
+      "bytes": 119360,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs\\examples\\03_entropy_geodesics-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e9e03ccb0510e575cb040be06c15323e6e90c65dd55990ad55ea5c6653b35af6.json",
+      "oid": "e9e03ccb0510e575cb040be06c15323e6e90c65dd55990ad55ea5c6653b35af6",
+      "bytes": 32363,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs\\examples\\04_metric_perturbations-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4885e066553552005bbf5ac84be93a8fb2b6a59cdceb067c3dcc8378a15a4492.json",
+      "oid": "4885e066553552005bbf5ac84be93a8fb2b6a59cdceb067c3dcc8378a15a4492",
+      "bytes": 92215,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs\\examples\\05_hubble_tension_fit-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ef2ad3f8cc83ce78dcc9a3703690944f87d8088b0f9a0788790baccc964d1b99.json",
+      "oid": "ef2ad3f8cc83ce78dcc9a3703690944f87d8088b0f9a0788790baccc964d1b99",
+      "bytes": 2582,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs\\examples\\06_symbolic_regression_law_discovery-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e9cf0e95b2d0c555f579f21c1e949afb18afec00bfbfdeb7e9e0358d67ac6754.json",
+      "oid": "e9cf0e95b2d0c555f579f21c1e949afb18afec00bfbfdeb7e9e0358d67ac6754",
+      "bytes": 57600,
+      "source": {
+        "root": "documents_star",
+        "path": "notebook-outputs\\examples\\07_tda_stability_analysis-executed.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/6609841d1fd51895deaa58907c652688a99ca3024db02ee8b3e5311cbd8f5767.json",
+      "oid": "6609841d1fd51895deaa58907c652688a99ca3024db02ee8b3e5311cbd8f5767",
+      "bytes": 52939,
+      "source": {
+        "root": "documents_star",
+        "path": "star_provenance_cocalc\\2025-08-24-file-1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/d391a4b3a2f1b2ddafc6bb545459efbc6bbd83802d58c87100928d458b517cca.json",
+      "oid": "d391a4b3a2f1b2ddafc6bb545459efbc6bbd83802d58c87100928d458b517cca",
+      "bytes": 2062,
+      "source": {
+        "root": "documents_star",
+        "path": "star_provenance_cocalc\\2025-08-31-file-1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/98ab2ba3d62ebe89d4dc0cc66bcf0cc783129618b07fcef3aeb2e9785961ae94.json",
+      "oid": "98ab2ba3d62ebe89d4dc0cc66bcf0cc783129618b07fcef3aeb2e9785961ae94",
+      "bytes": 1724,
+      "source": {
+        "root": "documents_star",
+        "path": "star_provenance_cocalc\\2025-08-31-file-2.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/53817eb70c35b51006d9392d26c8e1f136386a7aa920af9294f7aeba9ab9eabb.json",
+      "oid": "53817eb70c35b51006d9392d26c8e1f136386a7aa920af9294f7aeba9ab9eabb",
+      "bytes": 7429164,
+      "source": {
+        "root": "documents_star",
+        "path": "star_provenance_cocalc\\Globe.zip",
+        "archive_member": "Paradox.ipynb",
+        "archive_crc32": 4289770151
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c07ce658f1fa75a129f76757a768598e495e4127e53753a2b7edee9a2fd5a382.json",
+      "oid": "c07ce658f1fa75a129f76757a768598e495e4127e53753a2b7edee9a2fd5a382",
+      "bytes": 9526482,
+      "source": {
+        "root": "documents_star",
+        "path": "star_provenance_cocalc\\Paradox.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/c19fadcd48444a7cd3af49009712d677120fde0fa68e0ba978808e29a18b4cc1.json",
+      "oid": "c19fadcd48444a7cd3af49009712d677120fde0fa68e0ba978808e29a18b4cc1",
+      "bytes": 42851,
+      "source": {
+        "root": "documents_star",
+        "path": "star_provenance_cocalc\\Untitled.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/fd0b546239aa69382472574a5a8cb28e0a2aff4d8e7d1d5fab6f6da044675f8d.json",
+      "oid": "fd0b546239aa69382472574a5a8cb28e0a2aff4d8e7d1d5fab6f6da044675f8d",
+      "bytes": 228,
+      "source": {
+        "root": "documents_star",
+        "path": "star_provenance_cocalc\\vizier_jotherraa19.127.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9cc73c87d78a2f0e4d57919d38341c56d0c01de8e0f0647ce46d906bf9c6df0b.json",
+      "oid": "9cc73c87d78a2f0e4d57919d38341c56d0c01de8e0f0647ce46d906bf9c6df0b",
+      "bytes": 191,
+      "source": {
+        "root": "kepler",
+        "path": "00_visualizations.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/cec36bf2bbbf517bac49b0dfb63cce5ecb36c6a12d6c919f2bf641dfd50d6564.json",
+      "oid": "cec36bf2bbbf517bac49b0dfb63cce5ecb36c6a12d6c919f2bf641dfd50d6564",
+      "bytes": 292902,
+      "source": {
+        "root": "kepler",
+        "path": "01_preprocessing.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/32a540bb087ca67a351d6150b829a9f0a0a16c87acebf6dcc1cafb43ef221bcd.json",
+      "oid": "32a540bb087ca67a351d6150b829a9f0a0a16c87acebf6dcc1cafb43ef221bcd",
+      "bytes": 192,
+      "source": {
+        "root": "kepler",
+        "path": "01_projection_demo.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b928f694351c17b4791212a5bb321eb2db5bc98be6e339c3da7f7bbaeca04050.json",
+      "oid": "b928f694351c17b4791212a5bb321eb2db5bc98be6e339c3da7f7bbaeca04050",
+      "bytes": 195,
+      "source": {
+        "root": "kepler",
+        "path": "02_entropy_field_demo.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/dc7d320b0df6472c6934e7286ce71682d741bace3f600c36446077aad26cffac.json",
+      "oid": "dc7d320b0df6472c6934e7286ce71682d741bace3f600c36446077aad26cffac",
+      "bytes": 194,
+      "source": {
+        "root": "kepler",
+        "path": "03_entropy_geodesics.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1cc9ea4871dbaf16ef6c9dfd56215840630832b5a77d6e51bf1e851bcf104c6a.json",
+      "oid": "1cc9ea4871dbaf16ef6c9dfd56215840630832b5a77d6e51bf1e851bcf104c6a",
+      "bytes": 197,
+      "source": {
+        "root": "kepler",
+        "path": "04_metric_perturbations.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0c89a89a126a2289e7ad09a4873e0d43d15cd2d58e73951b9dcd42bb33056936.json",
+      "oid": "0c89a89a126a2289e7ad09a4873e0d43d15cd2d58e73951b9dcd42bb33056936",
+      "bytes": 195,
+      "source": {
+        "root": "kepler",
+        "path": "05_hubble_tension_fit.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a74b9a446c37516e60a9a61bb0faeacecbb7bc1ec5b34faad758f874793ec579.json",
+      "oid": "a74b9a446c37516e60a9a61bb0faeacecbb7bc1ec5b34faad758f874793ec579",
+      "bytes": 210,
+      "source": {
+        "root": "kepler",
+        "path": "06_symbolic_regression_law_discovery.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/640af6cbcbcd603aa116e3a46e83ccf6a6d9736a331db7f5befcf14ca6434244.json",
+      "oid": "640af6cbcbcd603aa116e3a46e83ccf6a6d9736a331db7f5befcf14ca6434244",
+      "bytes": 199,
+      "source": {
+        "root": "kepler",
+        "path": "07_tda_stability_analysis.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/273929ceaa01632b26dd41154e6b5d1612fb60c34924d693bd0567615873a6e6.json",
+      "oid": "273929ceaa01632b26dd41154e6b5d1612fb60c34924d693bd0567615873a6e6",
+      "bytes": 231204,
+      "source": {
+        "root": "kepler",
+        "path": "ACSC_Verification.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/d0c119486858dd03bd990ab0c5daf2cb3293b41de00355c66a97833f80fd45f2.json",
+      "oid": "d0c119486858dd03bd990ab0c5daf2cb3293b41de00355c66a97833f80fd45f2",
+      "bytes": 679,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.M.A.P.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2fa37771becf6fe933e631c8593019c1557f10c33bf08ad5d99075c0d0569175.json",
+      "oid": "2fa37771becf6fe933e631c8593019c1557f10c33bf08ad5d99075c0d0569175",
+      "bytes": 182,
+      "source": {
+        "root": "kepler",
+        "path": "Untitled.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a2f05b06f6c361163c3f9924a076dea409c1c820005ca26d2ec57fd4abd04e4d.json",
+      "oid": "a2f05b06f6c361163c3f9924a076dea409c1c820005ca26d2ec57fd4abd04e4d",
+      "bytes": 17146,
+      "source": {
+        "root": "kepler",
+        "path": "Untitled1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9c2dfc29548382f0398daf5695466c31f4926035a0b7fe03688480ca44f4b1a3.json",
+      "oid": "9c2dfc29548382f0398daf5695466c31f4926035a0b7fe03688480ca44f4b1a3",
+      "bytes": 55336,
+      "source": {
+        "root": "kepler",
+        "path": "Virgo.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5a1888b0e895109c02f39a8a2c4584028d72b4f7bb0878d564d7c5d4ff89c952.json",
+      "oid": "5a1888b0e895109c02f39a8a2c4584028d72b4f7bb0878d564d7c5d4ff89c952",
+      "bytes": 194,
+      "source": {
+        "root": "kepler",
+        "path": "cosmology_comparison.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/71a37f66c2d0123852f266b24a32166a7f4a82992f8374bedf4445c9ff837c7c.json",
+      "oid": "71a37f66c2d0123852f266b24a32166a7f4a82992f8374bedf4445c9ff837c7c",
+      "bytes": 198,
+      "source": {
+        "root": "kepler",
+        "path": "full_cosmology_inference.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ec37f37d18a47b73040c36fe2b607a8985b0a9c3ef4b1a4758ae9564448940d7.json",
+      "oid": "ec37f37d18a47b73040c36fe2b607a8985b0a9c3ef4b1a4758ae9564448940d7",
+      "bytes": 191,
+      "source": {
+        "root": "kepler",
+        "path": "planck_comparison.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4cba8610026422e77e40d53ad253bc995253e924ebbce2b693d887deb0d87227.json",
+      "oid": "4cba8610026422e77e40d53ad253bc995253e924ebbce2b693d887deb0d87227",
+      "bytes": 197,
+      "source": {
+        "root": "kepler",
+        "path": "sky_projection_pipeline.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5c843f29c7722439f99e1bfeb05a2ff841baad4d741635b2c97864f0497c2dca.json",
+      "oid": "5c843f29c7722439f99e1bfeb05a2ff841baad4d741635b2c97864f0497c2dca",
+      "bytes": 196,
+      "source": {
+        "root": "kepler",
+        "path": "symbolic_regression_Hz.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0b4d2650fed3c1f13cc64e6bf5dc217977e328e33409ca38e7169cfeecbc87a9.json",
+      "oid": "0b4d2650fed3c1f13cc64e6bf5dc217977e328e33409ca38e7169cfeecbc87a9",
+      "bytes": 6592365,
+      "source": {
+        "root": "kepler",
+        "path": "\uf02aSTAR.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b03863cb28e79dddcdb7e81e39553d3e63e0ac812bd08ef805ca769d30e84d7f.json",
+      "oid": "b03863cb28e79dddcdb7e81e39553d3e63e0ac812bd08ef805ca769d30e84d7f",
+      "bytes": 222,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\00_visualizations-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/161b1a6e98c2f9ff3b4870a72d170c85829256860b32eb92cc2f439d9985aa77.json",
+      "oid": "161b1a6e98c2f9ff3b4870a72d170c85829256860b32eb92cc2f439d9985aa77",
+      "bytes": 221,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\01_preprocessing-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9f4a65b4494c7a5a329651854f41e51f3b729b4f86d3fda98e73981e623b764e.json",
+      "oid": "9f4a65b4494c7a5a329651854f41e51f3b729b4f86d3fda98e73981e623b764e",
+      "bytes": 223,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\01_projection_demo-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a7edcdd9a53947c22b2ca70153728a1d1e29055b38a99ad0a54e60c86c10ea43.json",
+      "oid": "a7edcdd9a53947c22b2ca70153728a1d1e29055b38a99ad0a54e60c86c10ea43",
+      "bytes": 226,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\02_entropy_field_demo-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/556f4684d1fcc32423e6b99d3ad89c430e1d66c72cfaee10da21d12327650a58.json",
+      "oid": "556f4684d1fcc32423e6b99d3ad89c430e1d66c72cfaee10da21d12327650a58",
+      "bytes": 225,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\03_entropy_geodesics-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/77964641c438704507c3383cb214ea5a5aafae885e698c6c412e29473b4ed16e.json",
+      "oid": "77964641c438704507c3383cb214ea5a5aafae885e698c6c412e29473b4ed16e",
+      "bytes": 228,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\04_metric_perturbations-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/46d3c80dcf92d1701abaf0fcba0b381d6be7ee542230d01734a4695b4819ba5d.json",
+      "oid": "46d3c80dcf92d1701abaf0fcba0b381d6be7ee542230d01734a4695b4819ba5d",
+      "bytes": 226,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\05_hubble_tension_fit-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/fa54a4ee8959848fbf2b3b08bcc544856deff77611e1fbb11a606a546807091b.json",
+      "oid": "fa54a4ee8959848fbf2b3b08bcc544856deff77611e1fbb11a606a546807091b",
+      "bytes": 241,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\06_symbolic_regression_law_discovery-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0a51d4f8c6fe9e5122a18c43b2423f30c56cb97bcd46e00276758a30ebe31969.json",
+      "oid": "0a51d4f8c6fe9e5122a18c43b2423f30c56cb97bcd46e00276758a30ebe31969",
+      "bytes": 230,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\07_tda_stability_analysis-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4fe23d396fc1ebeaee0cc16ac7183b9c34b43204bfc48121c271a04915ee493e.json",
+      "oid": "4fe23d396fc1ebeaee0cc16ac7183b9c34b43204bfc48121c271a04915ee493e",
+      "bytes": 222,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\ACSC_Verification-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/f96f3ecdad3ae81db6ee923d2b6554585949308409ccd93f90c6c2799f2e0e36.json",
+      "oid": "f96f3ecdad3ae81db6ee923d2b6554585949308409ccd93f90c6c2799f2e0e36",
+      "bytes": 218,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\S.T.A.R.M.A.P-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/b05e1431337198c91fe3d82c0ab22a357e16ba690fe59e95f6ebb5732132e85b.json",
+      "oid": "b05e1431337198c91fe3d82c0ab22a357e16ba690fe59e95f6ebb5732132e85b",
+      "bytes": 213,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\Untitled-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/25f4eff4e38ca0728d20b41055ca2245d4ff21045005efb8fbf558aa8357db4b.json",
+      "oid": "25f4eff4e38ca0728d20b41055ca2245d4ff21045005efb8fbf558aa8357db4b",
+      "bytes": 214,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\Untitled1-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0fa245fe99db58fed934875b10a44f3d2bbc966543a51da7e846459a13a64b38.json",
+      "oid": "0fa245fe99db58fed934875b10a44f3d2bbc966543a51da7e846459a13a64b38",
+      "bytes": 225,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\cosmology_comparison-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/57add6334c71bfe99f2833c91f37fca060c4cde3e11dfe39b66c9cb10fa135e8.json",
+      "oid": "57add6334c71bfe99f2833c91f37fca060c4cde3e11dfe39b66c9cb10fa135e8",
+      "bytes": 229,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\full_cosmology_inference-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/7b534996acbf259fba9d7d1f8ba150d30beca4471bca3adebc1905c4604a768b.json",
+      "oid": "7b534996acbf259fba9d7d1f8ba150d30beca4471bca3adebc1905c4604a768b",
+      "bytes": 222,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\planck_comparison-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/286fce8c4519e5bd8971afacd73643b8db9c21f3ab552425d41c5a9e46ab2b65.json",
+      "oid": "286fce8c4519e5bd8971afacd73643b8db9c21f3ab552425d41c5a9e46ab2b65",
+      "bytes": 228,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\sky_projection_pipeline-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4fff6c731dc176f419b74b4b3a974d09996946b5c4863503e0a24b89fd7518e2.json",
+      "oid": "4fff6c731dc176f419b74b4b3a974d09996946b5c4863503e0a24b89fd7518e2",
+      "bytes": 227,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\symbolic_regression_Hz-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/aa26dc0d535c109be0378e0a2a8c89afad71423d14722d0594e82249972448ef.json",
+      "oid": "aa26dc0d535c109be0378e0a2a8c89afad71423d14722d0594e82249972448ef",
+      "bytes": 6592396,
+      "source": {
+        "root": "kepler",
+        "path": ".ipynb_checkpoints\\\uf02aSTAR-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/582544ebde3ee4a516c7ac11e55f0561f476f9f362acd724984c3b6daee9b540.json",
+      "oid": "582544ebde3ee4a516c7ac11e55f0561f476f9f362acd724984c3b6daee9b540",
+      "bytes": 52931,
+      "source": {
+        "root": "kepler",
+        "path": "star_provenance_cocalc\\2025-08-24-file-1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/12bcad22ef7971509e278fdd8333785c32c3c0d736252bedd4b11c6d565f1c95.json",
+      "oid": "12bcad22ef7971509e278fdd8333785c32c3c0d736252bedd4b11c6d565f1c95",
+      "bytes": 2054,
+      "source": {
+        "root": "kepler",
+        "path": "star_provenance_cocalc\\2025-08-31-file-1.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/44a2bbb3c798b253b5777c6e6b3b213d8ae7a465dfe060ed224c244d494b656e.json",
+      "oid": "44a2bbb3c798b253b5777c6e6b3b213d8ae7a465dfe060ed224c244d494b656e",
+      "bytes": 1716,
+      "source": {
+        "root": "kepler",
+        "path": "star_provenance_cocalc\\2025-08-31-file-2.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/92ca65e66ed4f29ea981d3df155b9a5145a5f4a9c95b0c2bf4cc30290ec6349d.json",
+      "oid": "92ca65e66ed4f29ea981d3df155b9a5145a5f4a9c95b0c2bf4cc30290ec6349d",
+      "bytes": 7429156,
+      "source": {
+        "root": "kepler",
+        "path": "star_provenance_cocalc\\Globe.zip",
+        "archive_member": "Paradox.ipynb",
+        "archive_crc32": 4289770151
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/8b67cecb599eeca2307480ca09941de8ee267c261d371095775c0a4e28e869fe.json",
+      "oid": "8b67cecb599eeca2307480ca09941de8ee267c261d371095775c0a4e28e869fe",
+      "bytes": 9526474,
+      "source": {
+        "root": "kepler",
+        "path": "star_provenance_cocalc\\Paradox.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/a011be5c1836cc7c436b36682abd5996a3aa12f0c44f3c936fcb51546ab2d114.json",
+      "oid": "a011be5c1836cc7c436b36682abd5996a3aa12f0c44f3c936fcb51546ab2d114",
+      "bytes": 42843,
+      "source": {
+        "root": "kepler",
+        "path": "star_provenance_cocalc\\Untitled.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/cf83ebe9254028484d471dc2dca14e3472d29d597ff0a03b4c18b8313e6c3756.json",
+      "oid": "cf83ebe9254028484d471dc2dca14e3472d29d597ff0a03b4c18b8313e6c3756",
+      "bytes": 220,
+      "source": {
+        "root": "kepler",
+        "path": "star_provenance_cocalc\\vizier_jotherraa19.127.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/25f13180f2c144e8e74feeec5b2c3bb0998b408f776a59e012d7ff066403af8f.json",
+      "oid": "25f13180f2c144e8e74feeec5b2c3bb0998b408f776a59e012d7ff066403af8f",
+      "bytes": 258,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\00_visualizations.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/213dcfc1c7754b18fbb36fb5350f0ec962927ceb0ddb1fb0644614e3f533fdef.json",
+      "oid": "213dcfc1c7754b18fbb36fb5350f0ec962927ceb0ddb1fb0644614e3f533fdef",
+      "bytes": 259,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\01_projection_demo.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1307fbeedcf0a222f7d74bd956d239d3fbb406725aa96a26d6ffdf96a15a2a30.json",
+      "oid": "1307fbeedcf0a222f7d74bd956d239d3fbb406725aa96a26d6ffdf96a15a2a30",
+      "bytes": 262,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\02_entropy_field_demo.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/4fb963d611de3eb81d0e5ba0f4089f7ab290806bebde492bc3c2eb79d36bbddf.json",
+      "oid": "4fb963d611de3eb81d0e5ba0f4089f7ab290806bebde492bc3c2eb79d36bbddf",
+      "bytes": 261,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\03_entropy_geodesics.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1735d14581688b1aa56400ac6a0172367f2e2fbf48f52712bf538a3c231c3ce1.json",
+      "oid": "1735d14581688b1aa56400ac6a0172367f2e2fbf48f52712bf538a3c231c3ce1",
+      "bytes": 264,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\04_metric_perturbations.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1628fd9002c2c1afc9c007f8775befe4d3e2da0ba7a4234c11d847b17316ceed.json",
+      "oid": "1628fd9002c2c1afc9c007f8775befe4d3e2da0ba7a4234c11d847b17316ceed",
+      "bytes": 262,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\05_hubble_tension_fit.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/5c8d934794340d86b304ae9e1f1d4bf239054a0629e1c8a2c7be4f67fedecd13.json",
+      "oid": "5c8d934794340d86b304ae9e1f1d4bf239054a0629e1c8a2c7be4f67fedecd13",
+      "bytes": 277,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\06_symbolic_regression_law_discovery.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9085a184eef8cf333706c07b7bb5d33e9e1b3866e43a76c524a5e717d753237c.json",
+      "oid": "9085a184eef8cf333706c07b7bb5d33e9e1b3866e43a76c524a5e717d753237c",
+      "bytes": 266,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\07_tda_stability_analysis.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/45247af6cbd90b8e10624459ad9785440b8788de65c05dee4c4024610dea3fc9.json",
+      "oid": "45247af6cbd90b8e10624459ad9785440b8788de65c05dee4c4024610dea3fc9",
+      "bytes": 261,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\cosmology_comparison.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/6f6dd8da7378782ec92a85409ead3e7e0c56c634c9be1584d065767c8d7ab572.json",
+      "oid": "6f6dd8da7378782ec92a85409ead3e7e0c56c634c9be1584d065767c8d7ab572",
+      "bytes": 265,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\full_cosmology_inference.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/9745e3729c58b2ada8f1d8da792cd902b0fc3a025f9e404ca603dbefe536b327.json",
+      "oid": "9745e3729c58b2ada8f1d8da792cd902b0fc3a025f9e404ca603dbefe536b327",
+      "bytes": 258,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\planck_comparison.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/8484f65a388723f8dbc085093b8fa17523706ffeab961b236426d476adc9c06a.json",
+      "oid": "8484f65a388723f8dbc085093b8fa17523706ffeab961b236426d476adc9c06a",
+      "bytes": 264,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\sky_projection_pipeline.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2442b30356069a13f80276c7a8bf6f8f0216e9db31406356c97ce667408b6f25.json",
+      "oid": "2442b30356069a13f80276c7a8bf6f8f0216e9db31406356c97ce667408b6f25",
+      "bytes": 263,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\examples\\symbolic_regression_Hz.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/e0cf3c26ed580d453916ba3123d4d22ea7de33b7e8f4ef9a220b5db24a8bb7ca.json",
+      "oid": "e0cf3c26ed580d453916ba3123d4d22ea7de33b7e8f4ef9a220b5db24a8bb7ca",
+      "bytes": 84232,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\notebooks\\01_preprocessing.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/225eefd1b45a36592ac052487a80061ffc95267fc29500e0411a7bf8c93374e3.json",
+      "oid": "225eefd1b45a36592ac052487a80061ffc95267fc29500e0411a7bf8c93374e3",
+      "bytes": 231272,
+      "source": {
+        "root": "kepler",
+        "path": "S.T.A.R.-Model-for-Mathematical-and-Theoretical-Physics\\notebooks\\ACSC_Verification.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/17db4a6ead5edf6cc5d13e181d2a7e8e6f2dd534551f176f2e626743e5e0b670.json",
+      "oid": "17db4a6ead5edf6cc5d13e181d2a7e8e6f2dd534551f176f2e626743e5e0b670",
+      "bytes": 11558,
+      "source": {
+        "root": "kepler",
+        "path": "outputs\\20260410_013307_D816nn\\ACSC_verification.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/dfa4b698e2250980a0671b9e8ea198d0147557608c0e812d3d44f690bafd0298.json",
+      "oid": "dfa4b698e2250980a0671b9e8ea198d0147557608c0e812d3d44f690bafd0298",
+      "bytes": 255,
+      "source": {
+        "root": "kepler",
+        "path": "outputs\\20260410_013307_D816nn\\.ipynb_checkpoints\\ACSC_verification-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/7299a10ee00c89c800af9a7c5028820a6aee9f08f5c904b716d435bfdfdf89a3.json",
+      "oid": "7299a10ee00c89c800af9a7c5028820a6aee9f08f5c904b716d435bfdfdf89a3",
+      "bytes": 22640359,
+      "source": {
+        "root": "kepler",
+        "path": "side quest\\Simple.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/0aabd5ede7a781568e54834adecbdd555e6433e757895f2d2b3f389167b8784f.json",
+      "oid": "0aabd5ede7a781568e54834adecbdd555e6433e757895f2d2b3f389167b8784f",
+      "bytes": 194,
+      "source": {
+        "root": "kepler",
+        "path": "side quest\\Untitled.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/2f9d91c63133215927aec2183684c6ecd3ca16ad29dee1b2ea245fc1e4fcf2e8.json",
+      "oid": "2f9d91c63133215927aec2183684c6ecd3ca16ad29dee1b2ea245fc1e4fcf2e8",
+      "bytes": 223,
+      "source": {
+        "root": "kepler",
+        "path": "side quest\\.ipynb_checkpoints\\Simple-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/64dc9b247177f9cc669e88f1dcf7a316a1084aa1fe47d09829bc8d53cfe0e99d.json",
+      "oid": "64dc9b247177f9cc669e88f1dcf7a316a1084aa1fe47d09829bc8d53cfe0e99d",
+      "bytes": 225,
+      "source": {
+        "root": "kepler",
+        "path": "side quest\\.ipynb_checkpoints\\Untitled-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/6ba24303f2e9db9736abf44f520a3fb4a11d8949ec185e399686492bf20ad38e.json",
+      "oid": "6ba24303f2e9db9736abf44f520a3fb4a11d8949ec185e399686492bf20ad38e",
+      "bytes": 256727,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\ACSC_Verification.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/92ccac6535b9e2b20ec981d20bd3071b7c656c2564b352e16b7b2d114aad74c8.json",
+      "oid": "92ccac6535b9e2b20ec981d20bd3071b7c656c2564b352e16b7b2d114aad74c8",
+      "bytes": 268,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\.ipynb_checkpoints\\ACSC_Verification-checkpoint.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/1aa1a404da35f075493508740e4b11bc4ed7ac5079f510bcaecc49c3ffcfc43f.json",
+      "oid": "1aa1a404da35f075493508740e4b11bc4ed7ac5079f510bcaecc49c3ffcfc43f",
+      "bytes": 247,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\examples\\00_visualizations.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/dc4752f8029d699dcd0c435cc54c76a32633ea58c4f8118819543d0015e44e7d.json",
+      "oid": "dc4752f8029d699dcd0c435cc54c76a32633ea58c4f8118819543d0015e44e7d",
+      "bytes": 248,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\examples\\01_projection_demo.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/ce67db040015a9ea03f3c1fdd682fcca4e5c4216243047cd6b35b477a95858d7.json",
+      "oid": "ce67db040015a9ea03f3c1fdd682fcca4e5c4216243047cd6b35b477a95858d7",
+      "bytes": 251,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\examples\\02_entropy_field_demo.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/abca9db1e20c736a9dace9753d4877b74655e527b7001e71d50590e16e742c6e.json",
+      "oid": "abca9db1e20c736a9dace9753d4877b74655e527b7001e71d50590e16e742c6e",
+      "bytes": 250,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\examples\\03_entropy_geodesics.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/8cdcc4aa0c4d3ced012ba9fefc16f82de7fe3e1daadede1fd48a6012441712dc.json",
+      "oid": "8cdcc4aa0c4d3ced012ba9fefc16f82de7fe3e1daadede1fd48a6012441712dc",
+      "bytes": 253,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\examples\\04_metric_perturbations.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/736a7c6669f1bbd944d4c633c47e2f2d8fc4f9f50ea63b40f203f2866a1416f6.json",
+      "oid": "736a7c6669f1bbd944d4c633c47e2f2d8fc4f9f50ea63b40f203f2866a1416f6",
+      "bytes": 251,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\examples\\05_hubble_tension_fit.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/d0b50eaa8bcaf664e2b2210a8174ecab81bb1bfc49070f106aee008545dc750e.json",
+      "oid": "d0b50eaa8bcaf664e2b2210a8174ecab81bb1bfc49070f106aee008545dc750e",
+      "bytes": 266,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\examples\\06_symbolic_regression_law_discovery.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/cf11a0a8e24ffe3dd3fff42670352e471ec3358a7411563980ac8f147758e992.json",
+      "oid": "cf11a0a8e24ffe3dd3fff42670352e471ec3358a7411563980ac8f147758e992",
+      "bytes": 255,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\examples\\07_tda_stability_analysis.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/90a88b0c349390ac3696c1d5986976c0b64ede89f37134763e5321c360e052c8.json",
+      "oid": "90a88b0c349390ac3696c1d5986976c0b64ede89f37134763e5321c360e052c8",
+      "bytes": 84221,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\notebooks\\01_preprocessing.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/218c55be95e6e7ea24381c8376fb4ca97fab4600762d84191267edd437135c7d.json",
+      "oid": "218c55be95e6e7ea24381c8376fb4ca97fab4600762d84191267edd437135c7d",
+      "bytes": 231261,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\notebooks\\ACSC_Verification.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-08_recovered/saved_outputs/68dd045cd3eaebfc53640c001985af2e02b04aa5d9c43e78d89089657495d28f.json",
+      "oid": "68dd045cd3eaebfc53640c001985af2e02b04aa5d9c43e78d89089657495d28f",
+      "bytes": 245,
+      "source": {
+        "root": "kepler",
+        "path": "Arithmetic-Cosmic-Structure-Conjecture-ACSC-\\.Trash-0\\files\\Untitled.ipynb"
+      },
+      "kind": "saved_notebook_output_inert_redacted_derivative",
+      "literal_credential_redactions": 0
+    }
+  ],
+  "unique_oids": 254,
+  "bytes": 230353155
+}

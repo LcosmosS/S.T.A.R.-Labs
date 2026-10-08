@@ -1,0 +1,170 @@
+{
+  "base_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
+  "python_tests": {
+    "passed": 217,
+    "failed": 0,
+    "warnings": 15,
+    "dependencies": "isolated audit test dependencies; historical environments not executed"
+  },
+  "web_tests": {
+    "passed": 253,
+    "skipped_host_skill_tests": 4,
+    "failed": 0
+  },
+  "typescript_no_emit": "passed",
+  "production_build": "passed",
+  "snapshot_sources_verified": 16,
+  "browser": {
+    "url": "http://127.0.0.1:8081/registry#recovered-corpus",
+    "viewports": {
+      "desktop": {
+        "width": 1280,
+        "height": 800,
+        "status": 200,
+        "title": "STARMAP",
+        "hasCanvas": false,
+        "bodyTextLen": 9693,
+        "bodyTextHash": "3783266245459a5f1ea77ac8334d38877de30cb15ff5ce82e6e982e9a6383a4e",
+        "bodyTextPrefix": "STARMAP by S.T.A.R. Labs TOY H0_EFF 72.62 km/s/Mpc CATALOG 160 f",
+        "horizontalOverflow": false,
+        "consoleErrors": [],
+        "pageErrors": [],
+        "screenshot": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\recovery-final-section.png"
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844,
+        "status": 200,
+        "title": "STARMAP",
+        "hasCanvas": false,
+        "bodyTextLen": 9542,
+        "bodyTextHash": "e105e92835a8488dc5dc9ff07ace932dd0e6bce39a9fb9e7388da136036a2589",
+        "bodyTextPrefix": "STARMAP by S.T.A.R. Labs Illustrative prototype. Explore toy mod",
+        "horizontalOverflow": false,
+        "consoleErrors": [],
+        "pageErrors": [],
+        "screenshot": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\recovery-final-section-mobile.png"
+      }
+    },
+    "brandWarnings": [],
+    "authWarnings": [],
+    "verdictFile": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\recovery-final-section.json",
+    "divergesFromBaseline": false,
+    "baselineReasons": []
+  },
+  "upstream_environment_history": "Eight archival paths verified; four original frozen fragments restored and four upstream dependency revisions retained separately.",
+  "lfs": {
+    "unique_remote_objects_uploaded_and_empty_cache_verified": 286,
+    "payload_paths": 291,
+    "payload_bytes": 232824540,
+    "proofs": [
+      "quarantine_lfs_verification.json",
+      "recovery_lfs_verification.json"
+    ]
+  },
+  "intake": {
+    "status": "complete",
+    "schema_version": 1,
+    "verified_payload_paths": 1333,
+    "verified_archived_environment_paths": 8,
+    "verified_recovery_overlay_rows": {
+      "claim_evidence_recovery_2026-10-08.csv": 51,
+      "experiment_recovery_2026-10-08.csv": 25,
+      "crosswalk_recovery_2026-10-08.csv": 51
+    },
+    "recovered_programs_executed": false,
+    "models_deserialized": false,
+    "eligibility_promoted": false,
+    "source_manifest_sha256": "9a5e17a91483b5540d6ab04618c5d6050f37523f01d22df1703f44777c99c3ae"
+  },
+  "live_production_deployed": false,
+  "onedrive_cloud_sync_verified": false,
+  "setup_incident": "execution_setup_incident.json",
+  "fresh_runner_verification": {
+    "head": "59dfe877855ea67f748eee46b271e32154c70d77",
+    "recovered_intake_run": "https://github.com/LcosmosS/S.T.A.R.-Labs/actions/runs/37737891512",
+    "recovered_intake": "success",
+    "web_run": "https://github.com/LcosmosS/S.T.A.R.-Labs/actions/runs/37737891565",
+    "web": "success",
+    "registry_validation": "success",
+    "unit_test_step": "success",
+    "installed_wheel_import_and_tests": "success",
+    "remaining_workflow_jobs": "in_progress_at_recording"
+  },
+  "post_PR44_merge": {
+    "main_commit": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+    "resolved_conflict_paths": 40,
+    "identical_existing_quarantine_lfs_pointers": 37,
+    "new_lfs_objects": 0,
+    "historical_archive_paths_preserved": 52,
+    "python_tests": {
+      "passed": 217,
+      "failed": 0,
+      "warnings": 15
+    },
+    "web_tests": {
+      "passed": 253,
+      "skipped_host_skill_tests": 4,
+      "failed": 0
+    },
+    "typescript_no_emit": "passed",
+    "production_build": "passed",
+    "registry_validation": "passed; no eligibility promotion",
+    "snapshot_sources_verified_against_git_index": 16,
+    "intake": {
+      "status": "complete",
+      "schema_version": 1,
+      "verified_payload_paths": 1333,
+      "verified_archived_environment_paths": 8,
+      "verified_recovery_overlay_rows": {
+        "claim_evidence_recovery_2026-10-08.csv": 51,
+        "experiment_recovery_2026-10-08.csv": 25,
+        "crosswalk_recovery_2026-10-08.csv": 51
+      },
+      "recovered_programs_executed": false,
+      "models_deserialized": false,
+      "eligibility_promoted": false,
+      "source_manifest_sha256": "9a5e17a91483b5540d6ab04618c5d6050f37523f01d22df1703f44777c99c3ae"
+    },
+    "browser": {
+      "url": "http://127.0.0.1:8081/registry#recovered-corpus",
+      "viewports": {
+        "desktop": {
+          "width": 1280,
+          "height": 800,
+          "status": 200,
+          "title": "STARMAP",
+          "hasCanvas": false,
+          "bodyTextLen": 9684,
+          "bodyTextHash": "a3e163f4a8da5ffaaf4a1004aa8a999ab48b3275b96f02a8586b848a78609681",
+          "bodyTextPrefix": "STARMAP by S.T.A.R. Labs TOY H0_EFF 72.62 km/s/Mpc CATALOG 160 f",
+          "horizontalOverflow": false,
+          "consoleErrors": [],
+          "pageErrors": [],
+          "screenshot": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\pr51-merge.png"
+        },
+        "mobile": {
+          "width": 390,
+          "height": 844,
+          "status": 200,
+          "title": "STARMAP",
+          "hasCanvas": false,
+          "bodyTextLen": 9533,
+          "bodyTextHash": "89f8f2569ee411ef45e75be53e4607a9ccade164561e1e42db9281789af7e100",
+          "bodyTextPrefix": "STARMAP by S.T.A.R. Labs Illustrative prototype. Explore toy mod",
+          "horizontalOverflow": false,
+          "consoleErrors": [],
+          "pageErrors": [],
+          "screenshot": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\pr51-merge-mobile.png"
+        }
+      },
+      "brandWarnings": [],
+      "authWarnings": [],
+      "verdictFile": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d\\_audit_2026-10-08\\repo\\web_tool\\screenshots\\pr51-merge.json",
+      "divergesFromBaseline": false,
+      "baselineReasons": []
+    },
+    "merge_evidence": "merge_resolution_2026-10-08.json",
+    "remote_CI_at_recording": "not yet dispatched; this record describes local merge validation"
+  }
+}

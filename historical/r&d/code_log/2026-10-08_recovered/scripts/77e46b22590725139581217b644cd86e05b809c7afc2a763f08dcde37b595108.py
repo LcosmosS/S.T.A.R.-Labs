@@ -1,0 +1,121 @@
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error
+from sklearn.impute import SimpleImputer
+from scipy.stats import randint, uniform
+import matplotlib.pyplot as plt
+import psutil  # For monitoring system resources
+
+# Step 1: Monitor System Resources (CPU and Memory)
+def check_system_resources():
+    memory = psutil.virtual_memory()
+    cpu = psutil.cpu_percent(interval=1)
+    print(f"CPU Usage: {cpu}%")
+    print(f"Memory Usage: {memory.percent}%")
+    return cpu, memory.percent
+
+# Step 2: Load the SDSS dataset
+df = pd.read_csv('SDSSDR18_200000.csv', low_memory=False)
+
+# Inspect the first few rows of the dataset
+print(df.head())
+
+# Step 3: Data Preprocessing
+# Handle missing values by imputing with the mean
+imputer = SimpleImputer(strategy='mean')
+df[['ra', 'dec', 'redshift', 'u', 'g', 'r', 'i', 'z']] = imputer.fit_transform(df[['ra', 'dec', 'redshift', 'u', 'g', 'r', 'i', 'z']])
+
+# Step 4: Feature Engineering
+# Calculate color indices as additional features
+df['u_g'] = df['u'] - df['g']
+df['g_r'] = df['g'] - df['r']
+df['r_i'] = df['r'] - df['i']
+df['i_z'] = df['i'] - df['z']
+
+# Select features and target variable
+X = df[['ra', 'dec', 'redshift', 'u_g', 'g_r', 'r_i', 'i_z']]
+y = df['redshift']  # Assuming we want to predict redshift; adjust as needed
+
+# Step 5: Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Step 6: Standardize the features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Step 7: Initialize models
+rf_model = RandomForestRegressor(random_state=42)
+gb_model = GradientBoostingRegressor(random_state=42)
+
+# Step 8: Define hyperparameter grids for GridSearchCV
+rf_param_grid = {
+    'n_estimators': [100, 200, 300],
+    'max_depth': [10, 20, 30],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4],
+    'max_features': ['sqrt', 'log2', None]
+}
+
+gb_param_grid = {
+    'n_estimators': [100, 200, 300],
+    'learning_rate': [0.01, 0.05, 0.1],
+    'max_depth': [3, 5, 7],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4]
+}
+
+# Step 9: Use RandomizedSearchCV for faster hyperparameter search (optional)
+rf_random_search = RandomizedSearchCV(estimator=rf_model, param_distributions=rf_param_grid, n_iter=10, cv=3, n_jobs=1, verbose=2, random_state=42)
+gb_random_search = RandomizedSearchCV(estimator=gb_model, param_distributions=gb_param_grid, n_iter=10, cv=3, n_jobs=1, verbose=2, random_state=42)
+
+# Perform GridSearchCV for both models if desired
+rf_grid_search = GridSearchCV(estimator=rf_model, param_grid=rf_param_grid, cv=3, n_jobs=1, verbose=2)
+gb_grid_search = GridSearchCV(estimator=gb_model, param_grid=gb_param_grid, cv=3, n_jobs=1, verbose=2)
+
+# Check system resources before fitting
+cpu, memory = check_system_resources()
+
+# Step 10: Fit the models (choose one approach at a time)
+print("Starting RandomizedSearchCV for RandomForest...")
+rf_random_search.fit(X_train_scaled, y_train)
+
+print("Starting RandomizedSearchCV for GradientBoosting...")
+gb_random_search.fit(X_train_scaled, y_train)
+
+# Step 11: Evaluate the models
+rf_best_model = rf_random_search.best_estimator_
+gb_best_model = gb_random_search.best_estimator_
+
+# Predict on the test set
+y_pred_rf = rf_best_model.predict(X_test_scaled)
+y_pred_gb = gb_best_model.predict(X_test_scaled)
+
+# Calculate performance metrics
+mse_rf = mean_squared_error(y_test, y_pred_rf)
+r2_rf = rf_best_model.score(X_test_scaled, y_test)
+
+mse_gb = mean_squared_error(y_test, y_pred_gb)
+r2_gb = gb_best_model.score(X_test_scaled, y_test)
+
+print(f"Random Forest - Mean Squared Error: {mse_rf}, R²: {r2_rf}")
+print(f"Gradient Boosting - Mean Squared Error: {mse_gb}, R²: {r2_gb}")
+
+# Step 12: Optional: Plot feature importances for Random Forest
+importances = rf_best_model.feature_importances_
+indices = np.argsort(importances)[::-1]
+features = X.columns
+
+plt.figure(figsize=(10, 6))
+plt.title('Random Forest Feature Importances')
+plt.bar(range(X.shape[1]), importances[indices], align='center')
+plt.xticks(range(X.shape[1]), features[indices], rotation=90)
+plt.xlim([-1, X.shape[1]])
+plt.save()
+plt.show()
+
+# Final system resource check after fitting models
+cpu, memory = check_system_resources()

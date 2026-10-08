@@ -1,0 +1,76 @@
+{
+  "finding": "REC-008",
+  "reason": "PR #48 changed four hash-addressed historical requirements fragments without updating their immutable extraction hashes. Original bytes restored; upstream revisions retained separately. These are environment records, not executable runtime dependency inputs.",
+  "upstream_pr": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/48",
+  "runtime_dependency_updates_retained": true,
+  "files": [
+    {
+      "path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-00751__requirements.txt__fd76a2f9a15b.txt",
+      "sha256": "fd76a2f9a15b77e21fdc8be474a8b8fd0676ec24fc84790639bc9d67809d5cbe",
+      "bytes": 356,
+      "status": "historical_extracted",
+      "role": "original_frozen_extraction",
+      "source_commit": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f"
+    },
+    {
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/LC-00751__requirements.txt__fd76a2f9a15b.txt",
+      "sha256": "ea1d64caedb4ea131724a4b43d2df51775aa43fcc2fbab96407c50a508fd33f6",
+      "bytes": 357,
+      "status": "historical_extracted_pending_review",
+      "role": "upstream_dependency_revision_preserved_separately",
+      "source_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
+      "original_path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-00751__requirements.txt__fd76a2f9a15b.txt"
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-00990__requirements.txt__cecb639b2aa9.txt",
+      "sha256": "cecb639b2aa92b652222ee5ca8f309c93162269c95ac20b3fe631bc162779992",
+      "bytes": 289,
+      "status": "historical_extracted",
+      "role": "original_frozen_extraction",
+      "source_commit": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f"
+    },
+    {
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/LC-00990__requirements.txt__cecb639b2aa9.txt",
+      "sha256": "8984a676491f2f13a1284bd9ecf52cd53c123e889972d1bf7c43a80b1996c2cf",
+      "bytes": 290,
+      "status": "historical_extracted_pending_review",
+      "role": "upstream_dependency_revision_preserved_separately",
+      "source_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
+      "original_path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-00990__requirements.txt__cecb639b2aa9.txt"
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-01043__requirements.txt__a6cb608a9aba.txt",
+      "sha256": "a6cb608a9aba19ebcd912568fd542efe69d69cbac3b68a70488cc062f317f74e",
+      "bytes": 178,
+      "status": "historical_extracted",
+      "role": "original_frozen_extraction",
+      "source_commit": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f"
+    },
+    {
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/LC-01043__requirements.txt__a6cb608a9aba.txt",
+      "sha256": "3a06d7bf77573da572f99af1c18b1433d0fb1c2b2fb136dcde1661bf037d64c8",
+      "bytes": 179,
+      "status": "historical_extracted_pending_review",
+      "role": "upstream_dependency_revision_preserved_separately",
+      "source_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
+      "original_path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-01043__requirements.txt__a6cb608a9aba.txt"
+    },
+    {
+      "path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-01217__requirements.txt__4595742d658e.txt",
+      "sha256": "4595742d658ed0281ee0eae401390168db8e5911164fbdaf2fc2d9be5a0a611a",
+      "bytes": 207,
+      "status": "historical_extracted",
+      "role": "original_frozen_extraction",
+      "source_commit": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f"
+    },
+    {
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/environment_dependency_revisions/LC-01217__requirements.txt__4595742d658e.txt",
+      "sha256": "6e9c1a397f48dc495dd3afdc90b3ab1bb1ed11e9f9043ee419634f98f0b70fd6",
+      "bytes": 207,
+      "status": "historical_extracted_pending_review",
+      "role": "upstream_dependency_revision_preserved_separately",
+      "source_commit": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b",
+      "original_path": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-01217__requirements.txt__4595742d658e.txt"
+    }
+  ]
+}

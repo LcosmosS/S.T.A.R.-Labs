@@ -1,0 +1,191 @@
+{
+  "queried_at": "2026-10-08",
+  "main_head": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+  "recent_merged_prs": [
+    {
+      "number": 44,
+      "title": "Relocate canonical audit quarantine into data/quarantine",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44",
+      "merged_at": "2026-10-08T06:56:08Z",
+      "merge_commit_sha": "bfe0d9294e9f3e269ee51d234b450ee0d3387241"
+    },
+    {
+      "number": 47,
+      "title": "Bump source-map-js from 1.2.1 to 1.2.2 in /web_tool",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/47",
+      "merged_at": "2026-10-08T05:38:43Z",
+      "merge_commit_sha": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b"
+    },
+    {
+      "number": 48,
+      "title": "Bump jupyterlab from 4.2.1 to 4.5.11 in /historical/r&d/code_log/2026-10-03/local/review candidates",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/48",
+      "merged_at": "2026-10-08T05:38:20Z",
+      "merge_commit_sha": "7cb121c21c317fc16d92f54ca195d6a22af45507"
+    },
+    {
+      "number": 50,
+      "title": "Derive general M1-INH-E1a Einstein–dust and frozen Weierstrass reduction",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/50",
+      "merged_at": "2026-10-08T04:30:45Z",
+      "merge_commit_sha": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f"
+    },
+    {
+      "number": 49,
+      "title": "Preserve M1-INH-E1b metric-first proof evidence; hand off general E1a",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/49",
+      "merged_at": "2026-10-08T04:29:44Z",
+      "merge_commit_sha": "3aa9da078fe7968fe4e82f6abc88e823fc4009cc"
+    },
+    {
+      "number": 46,
+      "title": "Preregister closed P0 theory search and Szekeres obstruction program",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/46",
+      "merged_at": "2026-10-08T01:43:47Z",
+      "merge_commit_sha": "c3c41a14a84c08c4b64cfd8a63844e489e20cdce"
+    },
+    {
+      "number": 43,
+      "title": "Isolate STARMAP deployments from scientific preregistration branches",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/43",
+      "merged_at": "2026-10-05T07:07:09Z",
+      "merge_commit_sha": "0510db9ced7af2cf071eaf287a72325dc1f0a3b9"
+    },
+    {
+      "number": 42,
+      "title": "Harden EXP-MAP-A01 claim admission and write-once results",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/42",
+      "merged_at": "2026-10-05T07:06:29Z",
+      "merge_commit_sha": "0d3e90f639ce8dfed3d624fee6268b008d20d00d"
+    },
+    {
+      "number": 41,
+      "title": "Launch STARMAP prototype with Neon-backed demo notebook",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/41",
+      "merged_at": "2026-10-04T18:56:10Z",
+      "merge_commit_sha": "ca7dc71a7f6ea84be473a07691c7705110ed5a52"
+    },
+    {
+      "number": 40,
+      "title": "Preregister EXP-MAP-A01 protocol and arithmetic source",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/40",
+      "merged_at": "2026-10-04T10:29:58Z",
+      "merge_commit_sha": "681b1633a92af20643167e562d950e8cef80c3b5"
+    },
+    {
+      "number": 39,
+      "title": "Add registry-aware controlled experiment transaction runner",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/39",
+      "merged_at": "2026-10-04T08:37:58Z",
+      "merge_commit_sha": "96c916ab2b4840955fdd42cb7809da268f31dd24"
+    },
+    {
+      "number": 38,
+      "title": "Harden controlled execution boundary and package verification",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/38",
+      "merged_at": "2026-10-04T07:53:52Z",
+      "merge_commit_sha": "e51dbbdf87b8b46eae93eb78fc3e095c032f1c31"
+    },
+    {
+      "number": 37,
+      "title": "Add Fisher–Rao entropy-geodesic stabilization v0.1",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/37",
+      "merged_at": "2026-10-04T05:38:33Z",
+      "merge_commit_sha": "8a6c2541cc08a2278874dc495d0be985647bb7cc"
+    },
+    {
+      "number": 35,
+      "title": "Bump jupyterlab from 4.5.10 to 4.5.11",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/35",
+      "merged_at": "2026-10-04T05:36:56Z",
+      "merge_commit_sha": "01483682c88c603e88d28858a3f1a54e8d3b3096"
+    },
+    {
+      "number": 36,
+      "title": "Harden scientific execution, reproducibility, and CI controls",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/36",
+      "merged_at": "2026-10-04T05:36:31Z",
+      "merge_commit_sha": "1670cecc444f84c5f34897572d886053ddf0dc6a"
+    },
+    {
+      "number": 34,
+      "title": "Bump brace-expansion in /web_tool",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/34",
+      "merged_at": "2026-10-04T03:21:29Z",
+      "merge_commit_sha": "c562a9e1b60de90ed28a0f74e398f4b7d15e06cb"
+    },
+    {
+      "number": 33,
+      "title": "Remediate Provenance Audit v0.3: quarantine evidence and reconcile registries",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/33",
+      "merged_at": "2026-10-04T02:43:24Z",
+      "merge_commit_sha": "8ea78872535ab53b429f870a75e9bd1972881afe"
+    },
+    {
+      "number": 32,
+      "title": "Add Google Docs provenance sync workflow",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/32",
+      "merged_at": "2026-09-23T02:31:11Z",
+      "merge_commit_sha": "97d471e98cae7d7ae996fb02df352ae523d5937a"
+    },
+    {
+      "number": 30,
+      "title": "Refactor parent dataset validation logic",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/30",
+      "merged_at": "2026-09-22T19:55:06Z",
+      "merge_commit_sha": "7d92305dfc6fd20767e84c0b991a557d55445eea"
+    },
+    {
+      "number": 29,
+      "title": "Establish Data Provenance Registry v0.1 and CI validation",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/29",
+      "merged_at": "2026-09-22T19:36:04Z",
+      "merge_commit_sha": "cabe290e681bf4a0b3f27e09f4e935571c1bb986"
+    },
+    {
+      "number": 28,
+      "title": "Audit R&D archives and recover registry metadata",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/28",
+      "merged_at": "2026-09-22T04:31:21Z",
+      "merge_commit_sha": "db92a65877d742a06bc6f5228b713934e764b66d"
+    },
+    {
+      "number": 27,
+      "title": "Add Data Provenance Registry and extend registry CI validation",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/27",
+      "merged_at": "2026-09-20T19:29:09Z",
+      "merge_commit_sha": "1aad91ff5d2f473364e081b2394889415d6ea5fc"
+    },
+    {
+      "number": 26,
+      "title": "Fix Docker image build for Node 24 and current Debian packages",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/26",
+      "merged_at": "2026-09-20T06:02:26Z",
+      "merge_commit_sha": "246af6be97b4eb810e9650788a647c978bca2de6"
+    },
+    {
+      "number": 25,
+      "title": "Restructure S.T.A.R. around charter, registries, and controlled CI",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/25",
+      "merged_at": "2026-09-20T04:45:13Z",
+      "merge_commit_sha": "f86b58bff8c1534c31a718656fe8e0f0f9406961"
+    },
+    {
+      "number": 23,
+      "title": "Bump jupyterlab from 4.5.7 to 4.5.9",
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/23",
+      "merged_at": "2026-06-19T18:36:20Z",
+      "merge_commit_sha": "aeb4134844c566c14b13a8af0be21efe9182edc2"
+    }
+  ],
+  "pr44": {
+    "number": 44,
+    "title": "Relocate canonical audit quarantine into data/quarantine",
+    "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44",
+    "state": "closed",
+    "merged": true,
+    "merged_at": "2026-10-08T06:56:08Z",
+    "merge_commit_sha": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+    "head": "ea93a76709eff15bd464510042507f45b3f1266a"
+  }
+}

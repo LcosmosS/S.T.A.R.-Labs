@@ -1,0 +1,22 @@
+[
+  {
+    "path": "data/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi.csv",
+    "sha256": "5a9606b75bc55de5e7833a04e5c56318df9f21a31560df180db2707374a22d50",
+    "rows": 1495,
+    "unique_mangaid": 1,
+    "spherical_separation_arcsec_min": 741.9258354463291,
+    "spherical_separation_arcsec_max": 445141.88006546855,
+    "within_2_arcsec": 0,
+    "scientific_status": "negative data-quality evidence; retained quarantine"
+  },
+  {
+    "path": "data/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi_with_arcsec.csv",
+    "sha256": "e6e2e749d0ec45b5713311dfe3b3cc958fddb13166f770ce2c47a30dbd5f8dad",
+    "rows": 1495,
+    "unique_mangaid": 1,
+    "spherical_separation_arcsec_min": 741.9258354463291,
+    "spherical_separation_arcsec_max": 445141.88006546855,
+    "within_2_arcsec": 0,
+    "scientific_status": "negative data-quality evidence; retained quarantine"
+  }
+]

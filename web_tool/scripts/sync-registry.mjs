@@ -19,6 +19,12 @@ const files = {
   config: "preregistrations/EXP-MAP-A01/config.json",
   manifest: "preregistrations/EXP-MAP-A01/dataset_manifest.json",
   protocol: "preregistrations/EXP-MAP-A01/protocol.md",
+  recoverySummary: "historical/r&d/docs/recovered_corpus_audit_2026-10-08/summary.json",
+  recoveryFindings: "historical/r&d/docs/recovered_corpus_audit_2026-10-08/findings.json",
+  recoveryMerges: "historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json",
+  recoveryClaims: "registry/claim_evidence_recovery_2026-10-08.csv",
+  recoveryExperiments: "registry/experiment_recovery_2026-10-08.csv",
+  recoveryCrosswalk: "registry/crosswalk_recovery_2026-10-08.csv",
 };
 
 function sha256(bytes) {
@@ -107,6 +113,14 @@ async function main() {
     sources,
     claims: tables.claims,
     experiments: tables.experiments,
+    recovery: {
+      auditDate: "2026-10-08",
+      summary: JSON.parse(bytes.recoverySummary.toString("utf8")),
+      findings: JSON.parse(bytes.recoveryFindings.toString("utf8")),
+      mergeHistory: JSON.parse(bytes.recoveryMerges.toString("utf8")),
+      reportPath: "historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
+      quarantinePath: "data/quarantine/2026-10-03_audit/",
+    },
     declaredExecutionEligibleCount: tables.experiments.filter((row) => flag(row, "Controlled_Execution_Eligible")).length,
     candidate: {
       id: "EXP-MAP-A01",

@@ -2,12 +2,27 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "b97c269d1a06abea2a56ddc5f8c05bcdf1d23d1c546c21c880dcd50501338e69",
+  "contentSha256": "075ad690d16814944e44d5e5e77824d2390451f13b5ef8d8e0d8f0043c17a183",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
       "sha256": "631f4b6b6b685937711f7348bc2e589a4186a6577060cb30424fe58470840fef",
       "sizeBytes": 3454
+    },
+    {
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/findings.json",
+      "sha256": "0d03eb6034d2738d259e3e677280d323544d161ae94d01a582c823f54fd21b70",
+      "sizeBytes": 2284
+    },
+    {
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json",
+      "sha256": "e66107d4268dbaca2edf7e321a234ebf50d594392440704c8cdc3dd3045897f2",
+      "sizeBytes": 7691
+    },
+    {
+      "path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/summary.json",
+      "sha256": "cb82fdd37ac8e5f6d4c66a4350d690f7917fb5a7702742e0d985767599c25ca3",
+      "sizeBytes": 1742
     },
     {
       "path": "preregistrations/EXP-MAP-A01/config.json",
@@ -25,9 +40,19 @@
       "sizeBytes": 7259
     },
     {
+      "path": "registry/claim_evidence_recovery_2026-10-08.csv",
+      "sha256": "682387b5e9bba42fd4796456bdd786782508f28a91a9e0c7c63a487497835f1d",
+      "sizeBytes": 29060
+    },
+    {
       "path": "registry/claim_evidence_v0.2.csv",
-      "sha256": "87d912357453085220bd35a91a6d0f09f399a1e3f508c45ef3245d1c9f19f108",
-      "sizeBytes": 4778
+      "sha256": "13467b477ac0e4f2ea76185245ac868b17a201780d66a405999deb432fb126b0",
+      "sizeBytes": 5650
+    },
+    {
+      "path": "registry/crosswalk_recovery_2026-10-08.csv",
+      "sha256": "c108c1be53ab6f758cee2940158b46477571e1509849fae34d1489b9e08f40a2",
+      "sizeBytes": 29672
     },
     {
       "path": "registry/data_provenance_registry_v0.1.csv",
@@ -40,9 +65,14 @@
       "sizeBytes": 34216
     },
     {
+      "path": "registry/experiment_recovery_2026-10-08.csv",
+      "sha256": "14ae166d9351b2bfb9a138d90e93b7a5ef7c329ac31648c7b0b93b01a57dfc69",
+      "sizeBytes": 14754
+    },
+    {
       "path": "registry/experiment_registry_v0.2.csv",
-      "sha256": "3d75819f4ce94c7e8173bff42aa6a3fcef494929a548aaddc87fc08ce68ab646",
-      "sizeBytes": 8878
+      "sha256": "b9cd6f6250d75b1795d5152628f52e21638721b12b862395036200bce7c9eeaf",
+      "sizeBytes": 12890
     },
     {
       "path": "registry/null_registry_v0.1.csv",
@@ -66,7 +96,7 @@
       "Qualified_Claim_ID": "REPO-CSV-v0.2:CLAIM-ACSC-001",
       "Related_Audit_Claim_IDs": "STAR-PDF-v0.2:CORE-001;STAR-PDF-v0.2:MAP-001;STAR-PDF-v0.2:MAP-002;STAR-PDF-v0.2:MAP-003;STAR-PDF-v0.2:MAP-004;STAR-PDF-v0.2:MAP-005",
       "Relation_Status": "related_scope_only_not_alias",
-      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments.",
+      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments. Recovery audit 2026-10-08 adds archival candidates only; no support promotion. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-004;E-LCL-003;E-LCL-004;E-LCL-005;E-LCL-006;E-LCL-014;E-LCL-016",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
@@ -81,7 +111,7 @@
       "Qualified_Claim_ID": "REPO-CSV-v0.2:CLAIM-ACSC-002",
       "Related_Audit_Claim_IDs": "STAR-PDF-v0.2:MAP-005",
       "Relation_Status": "related_scope_only_not_alias",
-      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments.",
+      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments. Recovery audit 2026-10-08 adds archival candidates only; no support promotion. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-006",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
@@ -96,7 +126,7 @@
       "Qualified_Claim_ID": "REPO-CSV-v0.2:CLAIM-ACSC-003",
       "Related_Audit_Claim_IDs": "STAR-PDF-v0.2:CORE-001;STAR-PDF-v0.2:RANK-002;STAR-PDF-v0.2:TOPO-001",
       "Relation_Status": "related_scope_only_not_alias",
-      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments.",
+      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments. Recovery audit 2026-10-08 adds archival candidates only; no support promotion. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-004;E-LCL-003;E-LCL-005;E-LCL-006;E-LCL-007;E-LCL-008;E-LCL-009;E-LCL-010;E-LCL-011;E-LCL-014;E-LCL-016",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
@@ -111,7 +141,7 @@
       "Qualified_Claim_ID": "REPO-CSV-v0.2:CLAIM-ECC-001",
       "Related_Audit_Claim_IDs": "STAR-PDF-v0.2:ECC-001;STAR-PDF-v0.2:ECC-002;STAR-PDF-v0.2:ECC-003",
       "Relation_Status": "related_scope_only_not_alias",
-      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments.",
+      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments. Recovery audit 2026-10-08 adds archival candidates only; no support promotion. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-004;E-LCL-007;E-LCL-008;E-LCL-010;E-LCL-011",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
@@ -126,7 +156,7 @@
       "Qualified_Claim_ID": "REPO-CSV-v0.2:CLAIM-RTCH-001",
       "Related_Audit_Claim_IDs": "STAR-PDF-v0.2:RTCH-M001;STAR-PDF-v0.2:RTCH-M002;STAR-PDF-v0.2:RTCH-H001;STAR-PDF-v0.2:RTCH-H002;STAR-PDF-v0.2:RTCH-H003;STAR-PDF-v0.2:RTCH-H004",
       "Relation_Status": "related_scope_only_not_alias",
-      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments.",
+      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments. Recovery audit 2026-10-08 adds archival candidates only; no support promotion. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-007;E-LCL-008;E-LCL-010;E-LCL-011",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
@@ -141,7 +171,7 @@
       "Qualified_Claim_ID": "REPO-CSV-v0.2:CLAIM-SFR-001",
       "Related_Audit_Claim_IDs": "STAR-PDF-v0.2:SFR-A001;STAR-PDF-v0.2:SFR-A002;STAR-PDF-v0.2:SFR-A003;STAR-PDF-v0.2:SFR-E001;STAR-PDF-v0.2:COSMO-L002",
       "Relation_Status": "related_scope_only_not_alias",
-      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments.",
+      "Current_Audit_Assessment": "Planned umbrella hypothesis; no independently verified controlled support. See qualified audit claim assessments. Recovery audit 2026-10-08 adds archival candidates only; no support promotion. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-002;E-DRV-003;E-LCL-012;E-LCL-013",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
@@ -195,7 +225,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-DATA-A01",
       "Same_String_PDF_Definition": "Cross-Survey Matching Validation",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-001;E-LCL-002;E-LCL-014;E-LCL-015",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -218,7 +248,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-DATA-A01",
       "Same_String_PDF_Definition": "Data-Lineage Reconstruction",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-001;E-LCL-002;E-LCL-014;E-LCL-015",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -241,7 +271,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-CTRL-A02;STAR-PDF-v0.2:EXP-DATA-A02",
       "Same_String_PDF_Definition": "Random-Feature Baseline",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-004;E-LCL-003;E-LCL-004;E-LCL-009;E-LCL-014;E-LCL-015",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -264,7 +294,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-CTRL-A03",
       "Same_String_PDF_Definition": "Arithmetic Permutation Control",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-002;E-DRV-003;E-LCL-009;E-LCL-010;E-LCL-012;E-LCL-013;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -287,7 +317,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-CTRL-A01",
       "Same_String_PDF_Definition": "Leakage and Contamination Audit",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-013;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -310,7 +340,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-K001",
       "Same_String_PDF_Definition": "Log-Normal Reciprocal-Normalization Test",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-001;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -333,7 +363,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-L001",
       "Same_String_PDF_Definition": "(L_{\\rm cosmo}(s)) Model Validation",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-003;E-LCL-012;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -356,7 +386,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-SFR-A01",
       "Same_String_PDF_Definition": "Arithmetic Incremental SFR Prediction",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-002;E-DRV-003;E-LCL-012;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -379,7 +409,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-SFR-A01",
       "Same_String_PDF_Definition": "Arithmetic-Only SFR Prediction",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-002;E-DRV-003;E-LCL-012;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -402,7 +432,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-SFR-A03",
       "Same_String_PDF_Definition": "Extreme-SFR Robustness",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-002;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -425,7 +455,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-RANK-A01",
       "Same_String_PDF_Definition": "Rank and Cosmic Environment",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-004;E-LCL-005;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -448,7 +478,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-RANK-A01",
       "Same_String_PDF_Definition": "Rank-Weighted Cosmic Topology",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-004;E-LCL-005;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -471,7 +501,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-TOPO-A01",
       "Same_String_PDF_Definition": "Null-Calibrated Persistent Homology",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-003;E-LCL-006;E-LCL-007;E-LCL-008;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -517,7 +547,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-MAP-A01",
       "Same_String_PDF_Definition": "Rank-Scale Sensitivity",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-003;E-LCL-004;E-LCL-006;E-LCL-014;E-LCL-016",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -540,7 +570,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-MAP-A01",
       "Same_String_PDF_Definition": "Arithmetic Generator Controls",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-003;E-LCL-004;E-LCL-006;E-LCL-014;E-LCL-016",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -563,7 +593,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-RTCH-B01",
       "Same_String_PDF_Definition": "RTCH Mathematical Consistency",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-LCL-007;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
@@ -586,13 +616,336 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-ECC-B01",
       "Same_String_PDF_Definition": "Entropy/Cohomology Consistency",
       "Namespace_Resolution": "related_scope_protocol_review_pending_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified.",
+      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
       "Audit_Finding_IDs": "E-DRV-004;E-LCL-007;E-LCL-014",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
     }
   ],
+  "recovery": {
+    "auditDate": "2026-10-08",
+    "summary": {
+      "inventory_entries": 70030,
+      "inventoried_bytes_including_duplicates_and_generated_material": 120255381220,
+      "hashed_files": 18392,
+      "hash_status": {
+        "excluded_metadata_only": 51518,
+        "full_file": 18392,
+        "not_hashed_large_inventory_only": 120
+      },
+      "roots": {
+        "dropbox_recovered": 37698,
+        "dropbox_star": 1655,
+        "documents_star": 2444,
+        "kepler": 28233
+      },
+      "categories": {
+        "environment_or_private_config": 58,
+        "download_sidecar": 773,
+        "data_or_archive": 1298,
+        "script": 3206,
+        "artifact": 12867,
+        "serialized_model_untrusted": 199,
+        "environment_or_generated_dependency": 38161,
+        "incomplete_download": 2,
+        "notebook": 169,
+        "previous_audit_or_extraction": 13297
+      },
+      "environment_metadata_records": 1007,
+      "filename_revision_conflicts": 225,
+      "intake_payload_files": 5,
+      "intake_payload_bytes": 43425020,
+      "code": {
+        "whole_program_artifacts": 1040,
+        "source_occurrences": 3250,
+        "notebook_occurrences": 249,
+        "saved_output_files": 249,
+        "query_history_occurrences": 3,
+        "superseded": 0,
+        "syntax": {
+          "AST_parses": 968,
+          "parse_failed_or_not_python": 35,
+          "not_checked": 37
+        },
+        "issues": 24,
+        "executed": false,
+        "triage_prior_qualification_sha256": "901dfe453c823b93e31dbd99708ea85a3d9627adae653f8a174ac51eb7016f0b"
+      },
+      "quarantine_files": 37,
+      "quarantine_remote_lfs_objects": 32,
+      "scientific_support_promoted": false,
+      "recovered_code_executed": "incidental_module_import_attempt_only; scientific dataset loading was not reached",
+      "models_deserialized": false,
+      "research_pipeline_executed": false,
+      "recovered_quarantine_exact_occurrences": 98
+    },
+    "findings": [
+      {
+        "id": "REC-001",
+        "assessment": "Recovered whole-file sources, query histories and notebook outputs improve archival traceability, but do not establish independent replication or resolve acquisition-to-output joins.",
+        "charter_sections": [
+          12,
+          13,
+          30,
+          31,
+          36,
+          37
+        ]
+      },
+      {
+        "id": "REC-002",
+        "assessment": "Download Zone.Identifier sidecars and incomplete downloads are metadata, not complete astronomical payloads.",
+        "charter_sections": [
+          31
+        ]
+      },
+      {
+        "id": "REC-003",
+        "assessment": "Checksum-distinct revisions share filenames. Qualified source root/path/hash remain separate; no filename-based alias or keyed-data join is inferred.",
+        "charter_sections": [
+          31,
+          36
+        ]
+      },
+      {
+        "id": "REC-004",
+        "assessment": "Pickled models remain inert; metadata versions are inventoried separately and are not asserted as the producing environment of any saved model or result.",
+        "charter_sections": [
+          31
+        ]
+      },
+      {
+        "id": "REC-005",
+        "assessment": "v0.3 quarantine remains in force. Recovery does not repair the failed SDSS/HI tables, projection manifest conflicts or synthetic RTCH runs. All 37 active quarantine payloads use uploaded and independently downloaded LFS objects.",
+        "charter_sections": [
+          28,
+          31,
+          32
+        ]
+      },
+      {
+        "id": "REC-006",
+        "assessment": "Archived notebooks include invalid JSON placeholders; parse failures and extraction bounds are explicit. Parsing a Python script does not demonstrate runtime completeness or scientific validity.",
+        "charter_sections": [
+          31,
+          36
+        ]
+      },
+      {
+        "id": "REC-007",
+        "assessment": "SFR, matching and null-model static locators require data-flow/protocol review before historical metrics can support claims. Existing negative/null findings are retained.",
+        "charter_sections": [
+          12,
+          13,
+          30,
+          31
+        ]
+      },
+      {
+        "id": "REC-008",
+        "assessment": "Upstream PR #48 altered four hash-addressed historical environment fragments. Original extraction bytes are restored and all upstream revisions preserved separately; active runtime dependency updates are retained.",
+        "charter_sections": [
+          31,
+          36,
+          37
+        ]
+      }
+    ],
+    "mergeHistory": {
+      "queried_at": "2026-10-08",
+      "main_head": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+      "recent_merged_prs": [
+        {
+          "number": 44,
+          "title": "Relocate canonical audit quarantine into data/quarantine",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44",
+          "merged_at": "2026-10-08T06:56:08Z",
+          "merge_commit_sha": "bfe0d9294e9f3e269ee51d234b450ee0d3387241"
+        },
+        {
+          "number": 47,
+          "title": "Bump source-map-js from 1.2.1 to 1.2.2 in /web_tool",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/47",
+          "merged_at": "2026-10-08T05:38:43Z",
+          "merge_commit_sha": "fda84961ebe548b55cdf2af4cea5ec7ecf96b20b"
+        },
+        {
+          "number": 48,
+          "title": "Bump jupyterlab from 4.2.1 to 4.5.11 in /historical/r&d/code_log/2026-10-03/local/review candidates",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/48",
+          "merged_at": "2026-10-08T05:38:20Z",
+          "merge_commit_sha": "7cb121c21c317fc16d92f54ca195d6a22af45507"
+        },
+        {
+          "number": 50,
+          "title": "Derive general M1-INH-E1a Einstein–dust and frozen Weierstrass reduction",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/50",
+          "merged_at": "2026-10-08T04:30:45Z",
+          "merge_commit_sha": "6a51e3d6c7a9ec5b08a58323b23574292363eb2f"
+        },
+        {
+          "number": 49,
+          "title": "Preserve M1-INH-E1b metric-first proof evidence; hand off general E1a",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/49",
+          "merged_at": "2026-10-08T04:29:44Z",
+          "merge_commit_sha": "3aa9da078fe7968fe4e82f6abc88e823fc4009cc"
+        },
+        {
+          "number": 46,
+          "title": "Preregister closed P0 theory search and Szekeres obstruction program",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/46",
+          "merged_at": "2026-10-08T01:43:47Z",
+          "merge_commit_sha": "c3c41a14a84c08c4b64cfd8a63844e489e20cdce"
+        },
+        {
+          "number": 43,
+          "title": "Isolate STARMAP deployments from scientific preregistration branches",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/43",
+          "merged_at": "2026-10-05T07:07:09Z",
+          "merge_commit_sha": "0510db9ced7af2cf071eaf287a72325dc1f0a3b9"
+        },
+        {
+          "number": 42,
+          "title": "Harden EXP-MAP-A01 claim admission and write-once results",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/42",
+          "merged_at": "2026-10-05T07:06:29Z",
+          "merge_commit_sha": "0d3e90f639ce8dfed3d624fee6268b008d20d00d"
+        },
+        {
+          "number": 41,
+          "title": "Launch STARMAP prototype with Neon-backed demo notebook",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/41",
+          "merged_at": "2026-10-04T18:56:10Z",
+          "merge_commit_sha": "ca7dc71a7f6ea84be473a07691c7705110ed5a52"
+        },
+        {
+          "number": 40,
+          "title": "Preregister EXP-MAP-A01 protocol and arithmetic source",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/40",
+          "merged_at": "2026-10-04T10:29:58Z",
+          "merge_commit_sha": "681b1633a92af20643167e562d950e8cef80c3b5"
+        },
+        {
+          "number": 39,
+          "title": "Add registry-aware controlled experiment transaction runner",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/39",
+          "merged_at": "2026-10-04T08:37:58Z",
+          "merge_commit_sha": "96c916ab2b4840955fdd42cb7809da268f31dd24"
+        },
+        {
+          "number": 38,
+          "title": "Harden controlled execution boundary and package verification",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/38",
+          "merged_at": "2026-10-04T07:53:52Z",
+          "merge_commit_sha": "e51dbbdf87b8b46eae93eb78fc3e095c032f1c31"
+        },
+        {
+          "number": 37,
+          "title": "Add Fisher–Rao entropy-geodesic stabilization v0.1",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/37",
+          "merged_at": "2026-10-04T05:38:33Z",
+          "merge_commit_sha": "8a6c2541cc08a2278874dc495d0be985647bb7cc"
+        },
+        {
+          "number": 35,
+          "title": "Bump jupyterlab from 4.5.10 to 4.5.11",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/35",
+          "merged_at": "2026-10-04T05:36:56Z",
+          "merge_commit_sha": "01483682c88c603e88d28858a3f1a54e8d3b3096"
+        },
+        {
+          "number": 36,
+          "title": "Harden scientific execution, reproducibility, and CI controls",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/36",
+          "merged_at": "2026-10-04T05:36:31Z",
+          "merge_commit_sha": "1670cecc444f84c5f34897572d886053ddf0dc6a"
+        },
+        {
+          "number": 34,
+          "title": "Bump brace-expansion in /web_tool",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/34",
+          "merged_at": "2026-10-04T03:21:29Z",
+          "merge_commit_sha": "c562a9e1b60de90ed28a0f74e398f4b7d15e06cb"
+        },
+        {
+          "number": 33,
+          "title": "Remediate Provenance Audit v0.3: quarantine evidence and reconcile registries",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/33",
+          "merged_at": "2026-10-04T02:43:24Z",
+          "merge_commit_sha": "8ea78872535ab53b429f870a75e9bd1972881afe"
+        },
+        {
+          "number": 32,
+          "title": "Add Google Docs provenance sync workflow",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/32",
+          "merged_at": "2026-09-23T02:31:11Z",
+          "merge_commit_sha": "97d471e98cae7d7ae996fb02df352ae523d5937a"
+        },
+        {
+          "number": 30,
+          "title": "Refactor parent dataset validation logic",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/30",
+          "merged_at": "2026-09-22T19:55:06Z",
+          "merge_commit_sha": "7d92305dfc6fd20767e84c0b991a557d55445eea"
+        },
+        {
+          "number": 29,
+          "title": "Establish Data Provenance Registry v0.1 and CI validation",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/29",
+          "merged_at": "2026-09-22T19:36:04Z",
+          "merge_commit_sha": "cabe290e681bf4a0b3f27e09f4e935571c1bb986"
+        },
+        {
+          "number": 28,
+          "title": "Audit R&D archives and recover registry metadata",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/28",
+          "merged_at": "2026-09-22T04:31:21Z",
+          "merge_commit_sha": "db92a65877d742a06bc6f5228b713934e764b66d"
+        },
+        {
+          "number": 27,
+          "title": "Add Data Provenance Registry and extend registry CI validation",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/27",
+          "merged_at": "2026-09-20T19:29:09Z",
+          "merge_commit_sha": "1aad91ff5d2f473364e081b2394889415d6ea5fc"
+        },
+        {
+          "number": 26,
+          "title": "Fix Docker image build for Node 24 and current Debian packages",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/26",
+          "merged_at": "2026-09-20T06:02:26Z",
+          "merge_commit_sha": "246af6be97b4eb810e9650788a647c978bca2de6"
+        },
+        {
+          "number": 25,
+          "title": "Restructure S.T.A.R. around charter, registries, and controlled CI",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/25",
+          "merged_at": "2026-09-20T04:45:13Z",
+          "merge_commit_sha": "f86b58bff8c1534c31a718656fe8e0f0f9406961"
+        },
+        {
+          "number": 23,
+          "title": "Bump jupyterlab from 4.5.7 to 4.5.9",
+          "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/23",
+          "merged_at": "2026-06-19T18:36:20Z",
+          "merge_commit_sha": "aeb4134844c566c14b13a8af0be21efe9182edc2"
+        }
+      ],
+      "pr44": {
+        "number": 44,
+        "title": "Relocate canonical audit quarantine into data/quarantine",
+        "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44",
+        "state": "closed",
+        "merged": true,
+        "merged_at": "2026-10-08T06:56:08Z",
+        "merge_commit_sha": "bfe0d9294e9f3e269ee51d234b450ee0d3387241",
+        "head": "ea93a76709eff15bd464510042507f45b3f1266a"
+      }
+    },
+    "reportPath": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
+    "quarantinePath": "data/quarantine/2026-10-03_audit/"
+  },
   "declaredExecutionEligibleCount": 0,
   "candidate": {
     "id": "EXP-MAP-A01",
