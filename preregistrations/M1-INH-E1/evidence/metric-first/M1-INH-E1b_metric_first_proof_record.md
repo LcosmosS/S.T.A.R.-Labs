@@ -131,14 +131,14 @@ This is a second, independent mathematical route to the flatness of each spatial
 - Entry point: `python m1_inh_e1b_metric_first_audit.py`.
 - Every assertion is an exact symbolic-zero identity; no numerical tolerance is used.
 - The produced JSON record includes the SHA-256 hash of the executed script.
-- During development an embedding test initially compared the Gram matrix with \(E^2\) rather than the correct \(E^{-2}\); this **test expectation** was corrected, and the complete final certificate was rerun successfully. The Einstein-tensor calculation was unaffected.
+- During development a notebook-cell embedding Gram assertion produced the nonzero residual `-4/(x**2+y**2+1)**2`; follow-up notebook-cell executions triggered coordinate-symbol identity guards. The exact root cause of every cell failure was not established; subsequent **saved-file** `%run` executions of v1–v4 reported PASS. See `execution_provenance.md`. These historical failures remain part of the audit record.
 - This is an independently authored implementation of the mathematical calculation, **not** independent external peer review.
 - No registry or support flags have been modified.
 - The **complete** frozen elliptic record, including its additive \(u\)-normalization and exact inverse-\(\wp\) representatives, is identified constructively below; equality is **not** inferred merely from agreement of \(g_2,g_3,\Delta_\wp\).
 
 ### Explicit common Weierstrass branch and complete elliptic record (review control)
 
-The spatial-sector abbreviation \(v_{k=0}=\nu_{1,z}=0\) used in §1 is **not** the registered elliptic inverse \(v_0(z)\). In this paragraph \(v_0(z)\) refers exclusively to the latter.
+The spatial-sector abbreviation \(v_0=\nu_{1,z}=0\) used in §1 is **not** the registered elliptic inverse \(v_0(z)\). In this paragraph \(v_0(z)\) refers exclusively to the latter.
 
 Fix the same **open radial interval** \(J=(-1/4,1/4)\), the same physical time interval \(1<t<2\), and the same expanding solution in both sectors. For each \(z\in J\),
 \[
@@ -148,13 +148,13 @@ g_2(z)=0,\quad g_3(z)=-M(z)^2/4,\quad
 \]
 The shared \(\Phi(t,z)>0\) obeys \(\dot\Phi=\Phi\coth[3(t+z)/2]>0\) on the connected expanding branch \(t+z>0\). Let \(X=-1/\Phi<0\). To remove the unspecified constant in the **frozen** definition \(u=\int[-2MX^3-KX^2+\Lambda/3]^{-1/2}dX\), select for both solutions the identical real, positive-square-root primitive
 \[
-\boxed{\
+\boxed{
 u(t,z)=\int_{-\infty}^{X(t,z)}
  \frac{ds}{\sqrt{1-2M(z)s^3}}
 =\int_{\xi(t,z)}^\infty
  \frac{d\eta}{\sqrt{4\eta^3+M(z)^2/4}},
 \qquad
-\xi(t,z)=\frac{M(z)}{2\Phi(t,z)}>0.\ }
+\xi(t,z)=\frac{M(z)}{2\Phi(t,z)}>0.}
 \]
 The improper integrals converge at infinity. The lower endpoint \(X=-\infty\), or equivalently the pole of \(\wp\) at \(u=0\), fixes the additive constant **once for both solutions**; it represents the limiting Big-Bang boundary \(t=-z\), not a regular point included in \(\mathcal U\). On \(t+z>0\), \(\dot X>0\), \(du/dt=1/\Phi>0\) and
 \[
@@ -169,10 +169,10 @@ In the exact *frozen* form \(\wp(u+\epsilon)\), this selects the common represen
 
 Select the registered Weierstrass inverse **\(v_0(z)\)** by
 \[
-\boxed{\
+\boxed{
 v_0(z)=\int_0^\infty\frac{d\eta}{\sqrt{4\eta^3+M(z)^2/4}},
 \qquad
-\wp(v_0(z);0,-M(z)^2/4)=0=-K(z)/12.\ }
+\wp(v_0(z);0,-M(z)^2/4)=0=-K(z)/12.}
 \]
 For \(g_3=-M^2/4<0\), the cubic \(4\eta^3+M^2/4\) has one real root \(e_1=-(M^2/16)^{1/3}<0\). Let
 \[
@@ -183,14 +183,14 @@ be its positive real half-period. Then \(0<u(t,z)<v_0(z)<\omega_1(z)\); \(\wp\) 
 
 Thus the common frozen discrete branch data are explicitly
 \[
-\boxed{\
+\boxed{
 \sigma(z)=\bigl[
   \text{connected real expanding branch }t>-z;\
   \mathcal I_z=(u(1,z),u(2,z))\subset(0,v_0(z));\
   \operatorname{sgn}\dot\Phi=+1;\
   \operatorname{sgn}\wp'=-1;\
   \text{positive-real inverse, period indices }(0,0)
-\bigr].\ }
+\bigr].}
 \]
 The branch restricted to \(\mathcal U\) is regular; \(u=0\) is only the boundary normalization. Using \(du/dt=1/\Phi\) and \(t\downarrow -z\Longrightarrow u\downarrow0\) yields the **same** time primitive,
 \[
