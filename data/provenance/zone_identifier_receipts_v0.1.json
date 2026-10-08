@@ -4,7 +4,7 @@
   "governingDocument": "charter/STAR_Research_Charter_v0-2.pdf",
   "windowsDropboxPath": "C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d",
   "notice": "Observed Zone.Identifier sidecar source URLs and file-name clues only. Exact raw file bytes, upstream publisher release, format/schema and transform history remain unverified. Historical CDS XMatch sessionId values are deliberately withheld. Sidecar name does not prove original/downloaded bytes; no status transitions.",
-  "observedSidecarCount": 25,
+  "observedSidecarCount": 42,
   "receipts": [
     {
       "localName": "SDSSDR18_200000.csv",
@@ -330,6 +330,235 @@
       "byteEqualityVerified": false,
       "upstreamReleaseVerified": false,
       "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "154.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/154.csvZone.Identifier",
+      "sourceService": "VizieR_TAP",
+      "hostUrlOrJobId": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/async/1744087589515/results/result",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only",
+      "referrerTableHint": "V/154"
+    },
+    {
+      "localName": "v154.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/v154.csvZone.Identifier",
+      "sourceService": "VizieR_TAP",
+      "hostUrlOrJobId": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/async/1744265296714/results/result",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only",
+      "referrerTableHint": "V/154/sdss16"
+    },
+    {
+      "localName": "v147.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/v147.csvZone.Identifier",
+      "sourceService": "VizieR_TAP",
+      "hostUrlOrJobId": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/async/1744265439230/results/result",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only",
+      "referrerTableHint": "V/154/sdss16 (referrer/name mismatch)"
+    },
+    {
+      "localName": "v147ssds12.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/v147ssds12.csvZone.Identifier",
+      "sourceService": "VizieR_TAP",
+      "hostUrlOrJobId": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/async/1744089795601/results/result",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only",
+      "referrerTableHint": "II/356/xmmom41s (referrer/name mismatch)"
+    },
+    {
+      "localName": "V154sdss16.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/V154sdss16.csvZone.Identifier",
+      "sourceService": "VizieR_TAP",
+      "hostUrlOrJobId": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/async/1744121573515/results/result",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only",
+      "referrerTableHint": "II/246/out (referrer/name mismatch)"
+    },
+    {
+      "localName": "II246.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/II246.csvZone.Identifier",
+      "sourceService": "VizieR_TAP",
+      "hostUrlOrJobId": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/async/1744093462261/results/result",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only",
+      "referrerTableHint": "II/246/out"
+    },
+    {
+      "localName": "II246out.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/II246out.csvZone.Identifier",
+      "sourceService": "VizieR_TAP",
+      "hostUrlOrJobId": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/async/1744087911724/results/result",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only",
+      "referrerTableHint": "II/356/xmmom41s (referrer/name mismatch)"
+    },
+    {
+      "localName": "II146out.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/II146out.csvZone.Identifier",
+      "sourceService": "VizieR_TAP",
+      "hostUrlOrJobId": "https://tapvizier.cds.unistra.fr/TAPVizieR/tap/async/1744096575483/results/result",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only",
+      "referrerTableHint": "II/246/out (referrer/name mismatch)"
+    },
+    {
+      "localName": "STARHORSE2021_SDSSDR16.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/STARHORSE2021_SDSSDR16.csvZone.Identifier",
+      "sourceService": "CDS_XMATCH",
+      "hostUrlOrJobId": "CDS XMatch jobId=1744588099873A (sessionId withheld)",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "UKIDSSDR9LAS_SDSSDR16..csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/UKIDSSDR9LAS_SDSSDR16..csvZone.Identifier",
+      "sourceService": "CDS_XMATCH",
+      "hostUrlOrJobId": "CDS XMatch jobId=1744493689031A (sessionId withheld)",
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "SDSS_MangaSpec.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/SDSS_MangaSpec.csvZone.Identifier",
+      "sourceService": "CasJobs",
+      "hostUrlOrJobId": "https://skyservice.pha.jhu.edu/CasJobsOutput/CSV/SDSS_MangaSpec_pmqr771.csv",
+      "originalDownloadName": "SDSS_MangaSpec_pmqr771.csv",
+      "renameIndicatedByBasename": true,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "spAllLine-v6_0_4.fits",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/spAllLine-v6_0_4.fitsZone.Identifier",
+      "sourceService": "SDSS_DR18",
+      "hostUrlOrJobId": "https://data.sdss.org/sas/dr18/spectro/boss/redux/v6_0_4/spAllLine-v6_0_4.fits",
+      "originalDownloadName": "spAllLine-v6_0_4.fits",
+      "renameIndicatedByBasename": false,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "gz_hubble_sdss_coadd.fits.gz",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/gz_hubble_sdss_coadd.fits.gzZone.Identifier",
+      "sourceService": "GalaxyZoo",
+      "hostUrlOrJobId": "https://zooniverse-data.s3.amazonaws.com/galaxy-zoo-hubble/gz_hubble_sdss_coadd.fits.gz",
+      "originalDownloadName": "gz_hubble_sdss_coadd.fits.gz",
+      "renameIndicatedByBasename": false,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "zoo2Stripe82Coadd2.fits.gz",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/zoo2Stripe82Coadd2.fits.gzZone.Identifier",
+      "sourceService": "GalaxyZoo",
+      "hostUrlOrJobId": "https://zooniverse-data.s3.amazonaws.com/galaxy-zoo-2/zoo2Stripe82Coadd2.fits.gz",
+      "originalDownloadName": "zoo2Stripe82Coadd2.fits.gz",
+      "renameIndicatedByBasename": false,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "4348349 (2).fit",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/4348349 (2).fitZone.Identifier",
+      "sourceService": "GAMA_DR3",
+      "hostUrlOrJobId": "https://gama-survey.org/dr3/data/files/MagPhys/v06/fit/4348349.fit",
+      "originalDownloadName": "4348349.fit",
+      "renameIndicatedByBasename": true,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "GZ_410166.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/GZ_410166.csvZone.Identifier",
+      "sourceService": "local_zone_without_hosturl",
+      "hostUrlOrJobId": null,
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
+    },
+    {
+      "localName": "merged_data.csv",
+      "zoneIdentifierDropboxPath": "/star_provenance_r&d/merged_data.csvZone.Identifier",
+      "sourceService": "local_zone_without_hosturl",
+      "hostUrlOrJobId": null,
+      "originalDownloadName": null,
+      "renameIndicatedByBasename": null,
+      "registeredDatasetCandidate": null,
+      "sourceSha256": null,
+      "byteEqualityVerified": false,
+      "upstreamReleaseVerified": false,
+      "status": "historical_download_origin_hint_only"
     }
   ],
   "ambiguities": [
@@ -348,6 +577,22 @@
     {
       "localName": "GZ_gzdv1-2.csv",
       "detail": "VizieR referrer listed multiple tables; TAP async result does not establish actual ADQL and selection."
+    },
+    {
+      "localName": "v147.csv",
+      "detail": "ReferrerUrl V/154/sdss16 mismatches retained v147 label; do not infer V/147 acquisition without saved ADQL."
+    },
+    {
+      "localName": "V154sdss16.csv",
+      "detail": "ReferrerUrl II/246/out mismatches retained V154 label; source table unverified."
+    },
+    {
+      "localName": "II246out.csv",
+      "detail": "ReferrerUrl II/356/xmmom41s mismatches retained II246 name; potential renamed or mistaken export, not source identity."
+    },
+    {
+      "localName": "GZ_410166.csv",
+      "detail": "Sidecar contains ZoneTransfer metadata but no HostUrl; cannot infer an external acquisition."
     }
   ],
   "casJobsHistory": {
