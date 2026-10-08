@@ -40,6 +40,7 @@ try {
     const response = await page.goto(origin + "/projection", { waitUntil: "domcontentloaded", timeout: 40000 });
     assert.equal(response?.status(), 200);
     await page.getByRole("heading", { name: "Observed sky · Aladin Lite" }).waitFor();
+    await page.locator('[data-sky-hydrated="true"]').waitFor({ timeout: 20000 });
     assert.equal(await page.locator("#star-aladin-sky-viewport").count(), 0, "No sources before hash verified");
     const source = "source_id,ra_deg,dec_deg\nTEST:1,359.999,-1\nTEST:2,0.001,1\n";
     const buffer = Buffer.from(source);
