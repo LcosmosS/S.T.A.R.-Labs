@@ -2,8 +2,8 @@
 
 ## Governance state
 
-- Obstruction ID: \`M1-INH-E1\`
-- Claim: \`CLAIM-ACSC-MECH-002\`
+- Obstruction ID: `M1-INH-E1`
+- Claim: `CLAIM-ACSC-MECH-002`
 - Parent sector: GR + irrotational pressureless matter
 - Status: **planned**
 - Controlled execution: **disabled**
@@ -21,12 +21,12 @@ Szekeres-Szafron dust+\(\Lambda\) family in comoving coordinates
 Weierstrass reduction while additional nonspherical free functions control
 spatial structure.
 
-No Cremona data, BSD quantities, historical \`Phi_0\`, survey topology, or
+No Cremona data, BSD quantities, historical `Phi_0`, survey topology, or
 astronomy-fitted parameters enter this audit.
 
 The frozen source convention for the exact reduction is the independent
 pre-S.T.A.R. treatment in Kraniotis and Whitehouse,
-\`arXiv:gr-qc/0105022\`, especially its Szekeres-Szafron equations and
+`arXiv:gr-qc/0105022`, especially its Szekeres-Szafron equations and
 Weierstrass reduction. The audit may rederive these equations but may not change
 their registered meaning after E1b begins.
 
@@ -253,17 +253,18 @@ Starting from the Einstein equations for the registered sector, reproduce and
 check the frozen evolution equation, Weierstrass normal form, invariants, time
 relation, and density expression above.
 
-E1a is a verification of the preregistered record. It may identify an algebraic
-or convention error, in which case the audit stops and records
-\`FAILS_DYNAMICAL_SPECIFICATION\`; it may not redefine \(\mathfrak E\) after
-seeing the E1b/E1c outcome.
+E1a is a verification of the preregistered record. If it identifies an
+algebraic or convention error, the obstruction audit stops and records a
+protocol-specification failure in its permanent M1-INH-E1 audit record. That
+finding does not by itself reclassify a P0 candidate, and the audit may not
+redefine \(\mathfrak E\) after seeing the E1b/E1c outcome.
 
 This stage reproduces known mathematics; it is not a new physical-support
 claim.
 
 ## M1-INH-E1b — field-level insufficiency
 
-Construct two regular, physically inequivalent solutions \`S1\` and \`S2\`
+Construct two regular, physically inequivalent solutions `S1` and `S2`
 such that
 
 \[
