@@ -23,7 +23,9 @@ G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi G T^{\rm conventional}_{\mu\nu},
 \qquad\nabla_\mu T^{\mu\nu}_{\rm conventional}=0,
 \]
 
-plus the corresponding ordinary energy conservation and thermodynamic first-law limit. Derive the stress tensor from variation of the **same** action, check Bianchi compatibility, units, boundary terms, signs, weak-field and homogeneous limits, and numerical convergence as `epsilon→0`. Distinguish mathematical existence of the limit from numerical approximation error. Reject singular couplings, ill-posed scalar dynamics or hidden residual stress. No fitting of `epsilon` or new thermodynamic coefficients to Hubble data before this stage.
+plus the corresponding ordinary energy conservation and thermodynamic first-law limit.
+
+**Sign-convention gate:** This conventional \(G+\Lambda g=\kappa T\) display is schematic and must not silently replace the frozen M1-INH-E1 convention \(G-\Lambda g=\kappa T\). The same Riemann/Ricci and cosmological-constant signs must be derived consistently from the selected RTCH action; the reviewer must explicitly provide the dictionary before comparing formulas or interpreting numerical residuals. Derive the stress tensor from variation of the **same** action, check Bianchi compatibility, units, boundary terms, signs, weak-field and homogeneous limits, and numerical convergence as `epsilon→0`. Distinguish mathematical existence of the limit from numerical approximation error. Reject singular couplings, ill-posed scalar dynamics or hidden residual stress. No fitting of `epsilon` or new thermodynamic coefficients to Hubble data before this stage.
 
 ## Controlled protocol gates
 
