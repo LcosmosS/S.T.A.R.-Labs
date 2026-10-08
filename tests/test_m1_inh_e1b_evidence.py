@@ -56,6 +56,5 @@ def test_e1b_evidence_remains_explicitly_unreviewed_and_e1a_pending():
     provenance = (EVIDENCE / "execution_provenance.md").read_text(encoding="utf-8")
     assert "EXTERNAL_REVIEW_AND_GENERAL_E1a_PENDING" in readme
     assert "NOT EXECUTED" in next_step
-    assert "not four independent" in readme
+    assert "four passing versions are *not* four independent" in readme
     assert "Earlier notebook-cell failures" in provenance
-    assert "Controlled" not in next_step or "not" in next_step.lower()
