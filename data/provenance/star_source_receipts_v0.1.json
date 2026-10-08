@@ -57,5 +57,42 @@
     "execution_eligible": false,
     "controlled_support_eligible": false,
     "physical_support_eligible": false
+  },
+  "extracted_text_schema_probe": {
+    "mode": "Dropbox extracted UTF-8 text, NOT byte-identical source download",
+    "raw_sha256_verified": false,
+    "note": "Extractor text character lengths exceed Dropbox file byte sizes by one in both sampled CSVs; do not hash extracted text as a canonical raw-file fingerprint.",
+    "files": [
+      {
+        "name": "mangaHIall.csv",
+        "columns": 34,
+        "rows_in_extracted_text": 6632,
+        "column_count_mismatches": 0,
+        "coordinates": [
+          "OBJRA",
+          "OBJDEC"
+        ],
+        "coordinate_out_of_bounds": 0,
+        "id_columns": [
+          "PLATEIFU",
+          "MANGAID"
+        ],
+        "unique_PLATEIFU": 6442,
+        "duplicate_PLATEIFU_occurrences": 190,
+        "unique_MANGAID": 6358,
+        "duplicate_MANGAID_occurrences": 274,
+        "interpretation": "No unconditional one-to-one join may assume MANGAID or PLATEIFU uniqueness; investigate multiple HI observations, survey versions and unique-record policies."
+      },
+      {
+        "name": "filtered_Pipe3D.csv",
+        "columns": 16,
+        "rows_in_extracted_text": 10081,
+        "column_count_mismatches": 0,
+        "target": "log_SFR_Ha",
+        "has_galaxy_id": false,
+        "has_ra_dec": false,
+        "interpretation": "Filtered table alone cannot establish per-galaxy train/test group isolation or a provenance-secure join; recover stable IDs and release metadata from original Pipe3D input."
+      }
+    ]
   }
 }
