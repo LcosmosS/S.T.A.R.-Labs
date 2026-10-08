@@ -12,3 +12,42 @@ historical/r&d/docs/provenance_audit_v0.3/** -filter -text
 historical/r&d/quarantine/** -filter -text
 historical/r&d/code_log/** -filter -text
 historical/r&d/code_log_triage/2026-10-03/correction_sources/** -filter -text
+
+# Active quarantine payloads use real uploaded Git LFS objects.
+data/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/sdss_hi_match/merged_sdss_hi_with_arcsec.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_aligned.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_ptd_aligned.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_realproj.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_with_alt.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/projection_packages/data/derived/acsc_projected_cremona_final.csv.manifest.json filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/data/demo_torus.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/geodesic_projection.png filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/persistence_H0.png filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/figures/scalar_embedding.png filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/geodesics.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/null_persistence.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/prediction_tests.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/rank_label_nulls.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/result.json filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/run_manifest.json filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/scalar_embeddings.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/stability_summary.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/outer_900/results/topology_summary.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/data/demo_torus.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/geodesic_projection.png filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H0.png filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H1.png filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/persistence_H2.png filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/figures/scalar_embedding.png filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/geodesics.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/null_persistence.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/prediction_tests.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/rank_label_nulls.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/result.json filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/run_manifest.json filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/scalar_embeddings.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/stability_summary.csv filter=lfs diff=lfs merge=lfs -text
+data/quarantine/2026-10-03_audit/rtch_e1_synthetic/nested_350/results/topology_summary.csv filter=lfs diff=lfs merge=lfs -text

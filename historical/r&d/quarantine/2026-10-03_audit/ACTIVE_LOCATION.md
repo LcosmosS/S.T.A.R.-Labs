@@ -1,0 +1,1 @@
+Active quarantine records now refer to `data/quarantine/2026-10-03_audit/`. Historical payloads remain byte-identical here for preservation. See the new relocation.json for hashes and source mapping.
