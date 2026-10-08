@@ -48,6 +48,8 @@ export function FrozenSkyOverlay() {
   const [survey, setSurvey] = useState<string>(SURVEYS[0].id);
   const [visible, setVisible] = useState(true);
   const frame = useRef<HTMLDivElement>(null);
+  const section = useRef<HTMLElement>(null);
+  useEffect(() => { section.current?.setAttribute("data-sky-hydrated", "true"); }, []);
   const viewer = useRef<ViewerAPI | null>(null);
   const overlay = useRef<CatalogAPI | null>(null);
 
@@ -88,7 +90,7 @@ export function FrozenSkyOverlay() {
     const A = window.A; if (A) overlay.current.addSources(verified.sources.map(p => A.source(p.ra_deg, p.dec_deg, { source_id: p.source_id })));
   } }, [visible, verified]);
 
-  return <section aria-label="Verified local sky catalogue" className="space-y-4 rounded-xl border border-border bg-surface p-5">
+  return <section ref={section} aria-label="Verified local sky catalogue" className="space-y-4 rounded-xl border border-border bg-surface p-5">
     <div>
       <h2 className="font-display text-xl tracking-tight">Observed sky · Aladin Lite</h2>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
