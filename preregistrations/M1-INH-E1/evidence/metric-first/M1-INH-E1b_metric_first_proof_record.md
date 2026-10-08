@@ -20,19 +20,19 @@ Both input metrics are expressed as
 
 \[
 g^{(k)}=\operatorname{diag}(1,-a_k^2,-c_k^2,-c_k^2),\quad
- a_k=P(H+B+v_k),\quad c_k=\frac{2Pw_k}{1+w_k^2(x^2+y^2)},
+ a_k=P(H+B+d_k),\quad c_k=\frac{2Pw_k}{1+w_k^2(x^2+y^2)},
 \]
 
-where \(k=0,1\), \(w_0=1\), \(v_0=0\), \(w_1=e^z\), and
+where \(k=0,1\), \(w_0=1\), \(d_0=0\), \(w_1=e^z\), and
 \[
-q=e^{2z}(x^2+y^2),\quad v_1=\frac{1-q}{1+q}.
+q=e^{2z}(x^2+y^2),\quad d_1=\frac{1-q}{1+q}.
 \]
 
 The common positive regular domain is
 \[
 \mathcal U=\{1<t<2,\;-1/4<z<1/4,\;x^2+y^2<1/4\}.
 \]
-Here \(H>1\), \(P>0\), \(B>0\), \(q<1\), and \(v_1>0\).
+Here \(H>1\), \(P>0\), \(B>0\), \(q<1\), and \(d_1>0\).
 
 ## 2. Metric-first differentiation and SO(2) reduction
 
@@ -64,12 +64,12 @@ T^a{}_b=\operatorname{diag}(R_\rho,0,0,0)
 for each metric, and separately verifies all 16 components of \(T^2-R_\rho T=0\), the rank-one projector, and its timelike unit image. The curvature-derived densities, expressed with \(F=H^2-1\), are
 \[
 R_{\rho,1}=\frac{3FB}{H+B},\qquad
-R_{\rho,2}=\frac{3F(B+v_1)}{H+B+v_1}.
+R_{\rho,2}=\frac{3F(B+d_1)}{H+B+d_1}.
 \]
 They are strictly positive on \(\mathcal U\). Their difference, obtained **after** separately computing each Einstein tensor, is
 \[
 R_{\rho,2}-R_{\rho,1}=
-\frac{3FHv_1}{(H+B)(H+B+v_1)}>0.
+\frac{3FHd_1}{(H+B)(H+B+d_1)}>0.
 \]
 The registered matter-density formulas match these independent curvature traces when checked *post hoc*.
 
@@ -81,7 +81,7 @@ h^a{}_b=\delta^a{}_b-u^a u_b,\qquad
 \sigma_{ab}=h_a{}^c h_b{}^d\nabla_{(c}u_{d)}-\frac{\Theta}{3}h_{ab},
 \quad\Theta=\nabla_a u^a.
 \]
-The shear is calculated from the Levi-Civita connection derived above, not supplied as a known Szekeres expression. For \(L=H+B+v_k\), its spatial eigenvalues *emerge* as
+The shear is calculated from the Levi-Civita connection derived above, not supplied as a known Szekeres expression. For \(L=H+B+d_k\), its spatial eigenvalues *emerge* as
 \[
 -\frac{F}{L},\quad \frac{F}{2L},\quad\frac{F}{2L}.
 \]
@@ -138,7 +138,7 @@ This is a second, independent mathematical route to the flatness of each spatial
 
 ### Explicit common Weierstrass branch and complete elliptic record (review control)
 
-The spatial-sector abbreviation \(v_0=\nu_{1,z}=0\) used in §1 is **not** the registered elliptic inverse \(v_0(z)\). In this paragraph \(v_0(z)\) refers exclusively to the latter.
+The spatial derivatives in §1 are denoted \(d_0=\nu_{1,z}=0\) and \(d_1=\nu_{2,z}\) to avoid overloading the **frozen** elliptic inverse \(v_0(z)\), which is defined below.
 
 Fix the same **open radial interval** \(J=(-1/4,1/4)\), the same physical time interval \(1<t<2\), and the same expanding solution in both sectors. For each \(z\in J\),
 \[
