@@ -24,7 +24,7 @@ No controlled experiment or empirical data processing is authorized by this PR. 
 
 ### 2026-10-08 additional Dropbox source receipts: Zone.Identifier and divergent SQL histories
 
-The independent source-recovery pass found **25 specific `Zone.Identifier` sidecars** in the connected Dropbox folder `/star_provenance_r&d/`, the synced directory identified locally as `C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d`. Their observed HostUrl/referrer or redacted CDS XMatch job IDs are transcribed in `data/provenance/zone_identifier_receipts_v0.1.json`. Those strings indicate historical acquisition endpoints, **not cryptographic binding to the current files**. No raw CSV/FITS source digest or upstream survey acceptance has been inferred; registry provenance and execution flags remain unchanged.
+The independent source-recovery pass found **42 inspected `Zone.Identifier` sidecars** in the connected Dropbox folder `/star_provenance_r&d/`, the synced directory identified locally as `C:\\Users\\pmqr7\\Dropbox\\star_provenance_r&d`. Their observed HostUrl/referrer or redacted CDS XMatch job IDs are transcribed in `data/provenance/zone_identifier_receipts_v0.1.json`. Those strings indicate historical acquisition endpoints, **not cryptographic binding to the current files**. No raw CSV/FITS source digest or upstream survey acceptance has been inferred; registry provenance and execution flags remain unchanged.
 
 Four meaningful *filename-to-download-basename candidates* are now explicit:
 - `SDSSDR18_200000.csv` -> `MyTable_pmqr771_0.csv` in the recorded CasJobs HostUrl.
