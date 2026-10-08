@@ -23,6 +23,7 @@ const PRIMARY = [
 const SECONDARY = [
   { to: "/notebook", label: "Notebook", icon: BookOpen },
   { to: "/registry", label: "Registry", icon: FileText },
+  { to: "/research", label: "Research", icon: BookOpen },
   { to: "/hubble", label: "Hubble", icon: Waves },
   { to: "/action", label: "Action", icon: Hexagon },
   { to: "/projection", label: "Projection", icon: Orbit },
