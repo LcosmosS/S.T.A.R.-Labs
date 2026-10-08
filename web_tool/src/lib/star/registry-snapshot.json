@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "075ad690d16814944e44d5e5e77824d2390451f13b5ef8d8e0d8f0043c17a183",
+  "contentSha256": "311dd2ff80c718b00f46682092d3098ad078f8b355c51270b487587b4e84a2bb",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
@@ -38,6 +38,16 @@
       "path": "preregistrations/EXP-MAP-A01/protocol.md",
       "sha256": "762f2ab0e457e3a396e799fc7349d9652383c9449f68922f02c0df174466df71",
       "sizeBytes": 7259
+    },
+    {
+      "path": "preregistrations/M1-INH-E1/protocol.md",
+      "sha256": "98bb38a2047348295ddce55715a6b1d5e9f4bb63c2cf6a10ae43f6a34e309e56",
+      "sizeBytes": 8455
+    },
+    {
+      "path": "preregistrations/P0-ANSATZ-001/protocol.md",
+      "sha256": "95a67983e00a9e14cc91bf5f6dcda63d1c01429b16cda5ac9627054fee2efbb4",
+      "sizeBytes": 17398
     },
     {
       "path": "registry/claim_evidence_recovery_2026-10-08.csv",
@@ -83,6 +93,21 @@
       "path": "registry/parameter_registry_v0.1.csv",
       "sha256": "266f0bdb868260e2018d203ca4535585d41ba270313a7610cace5a6ab801f93c",
       "sizeBytes": 5799
+    },
+    {
+      "path": "registry/theory_candidate_registry_v0.1.csv",
+      "sha256": "f5ae07b01b19a02c54e8276102bc824d8c5777d4840d00724d9de8ae132d9b42",
+      "sizeBytes": 3229
+    },
+    {
+      "path": "registry/theory_obstruction_registry_v0.1.csv",
+      "sha256": "88b3153528b54cc2fa4344864d3ad76537c76f2e6145040c26202bfd8a2e16c7",
+      "sizeBytes": 902
+    },
+    {
+      "path": "registry/theory_search_registry_v0.1.csv",
+      "sha256": "0c9b497b2a0848c4b5c39ac154ff82970f5d4fe39062f2a1d2d36ffdc6801553",
+      "sizeBytes": 904
     }
   ],
   "claims": [
@@ -621,6 +646,210 @@
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
+    }
+  ],
+  "preregistrations": [
+    {
+      "id": "M1-INH-E1",
+      "record": {
+        "Obstruction_ID": "M1-INH-E1",
+        "Claim_ID": "CLAIM-ACSC-MECH-002",
+        "Registry_Namespace": "THEORY-SEARCH-v0.1",
+        "Qualified_Obstruction_ID": "THEORY-SEARCH-v0.1:M1-INH-E1",
+        "Name": "Szekeres-Szafron Inhomogeneous Elliptic Sufficiency Audit",
+        "Protocol_Path": "preregistrations/M1-INH-E1/protocol.md",
+        "Parent_Theory_Sector": "GR_plus_irrotational_dust",
+        "Status": "planned",
+        "Substage_A": "planned",
+        "Substage_B": "planned",
+        "Substage_C": "planned",
+        "Primary_Question": "Do endogenous elliptic evolution data determine or suffice for inhomogeneous structure variables in the registered Szekeres-Szafron class?",
+        "Permitted_Conclusion": "A successful counterexample establishes class-relative elliptic insufficiency only",
+        "Universal_NoGo_Claim": "false",
+        "Controlled_Execution_Eligible": "false",
+        "Controlled_Support_Eligible": "false",
+        "Physical_Support_Eligible": "false",
+        "Notes": "Runs in parallel with P0-SF-v0.1. It cannot prove universal impossibility and cannot promote a physical correspondence."
+      },
+      "candidates": [],
+      "qualifiedId": "THEORY-SEARCH-v0.1:M1-INH-E1",
+      "stages": [
+        {
+          "name": "E1a · Exact reduction",
+          "status": "planned"
+        },
+        {
+          "name": "E1b · Field insufficiency",
+          "status": "planned"
+        },
+        {
+          "name": "E1c · Observable sufficiency",
+          "status": "planned"
+        }
+      ],
+      "protocolPath": "preregistrations/M1-INH-E1/protocol.md",
+      "protocolSha256": "98bb38a2047348295ddce55715a6b1d5e9f4bb63c2cf6a10ae43f6a34e309e56",
+      "gateState": {
+        "controlledExecutionEligible": false,
+        "controlledSupportEligible": false,
+        "physicalSupportEligible": false
+      }
+    },
+    {
+      "id": "P0-ANSATZ-001",
+      "record": {
+        "Search_ID": "P0-SF-v0.1",
+        "Claim_ID": "CLAIM-ACSC-MECH-001",
+        "Registry_Namespace": "THEORY-SEARCH-v0.1",
+        "Qualified_Search_ID": "THEORY-SEARCH-v0.1:P0-SF-v0.1",
+        "Name": "Parent-Theory Eligibility and Closed Search Frame",
+        "Protocol_Path": "preregistrations/P0-ANSATZ-001/protocol.md",
+        "Search_Frame_Version": "P0-SF-v0.1",
+        "Status": "preregistered_closed",
+        "Candidate_Count": "5",
+        "Candidate_IDs": "P0-T001;P0-T002;P0-T003;P0-T004;P0-T005",
+        "Admission_Criteria_Frozen": "true",
+        "Observable_Embargo": "true",
+        "List_Immutable_After_Start": "true",
+        "Exhaustion_Rule": "N_unresolved=0",
+        "Terminal_Conclusion": "Retire ACSC-MECH-v0.1 only within the registered search frame if no candidate yields a viable P1 route",
+        "Universal_NoGo_Claim": "false",
+        "Controlled_Execution_Eligible": "false",
+        "Controlled_Support_Eligible": "false",
+        "Physical_Support_Eligible": "false",
+        "Notes": "Operational exhaustion only; not a universal no-go theorem. Candidate admission is physics-first and ellipticity-first selection is prohibited."
+      },
+      "candidates": [
+        {
+          "Candidate_ID": "P0-T001",
+          "Search_ID": "P0-SF-v0.1",
+          "Registry_Namespace": "THEORY-SEARCH-v0.1",
+          "Qualified_Candidate_ID": "THEORY-SEARCH-v0.1:P0-T001",
+          "Name": "GR plus irrotational pressureless matter",
+          "Parent_Theory_Class": "general_relativity_dust",
+          "Registered_Representative": "Einstein equations with Lambda and irrotational pressureless dust",
+          "Independent_Motivation": "Baseline relativistic continuum theory for nonlinear structure formation",
+          "Representative_Source_DOI": "10.1103/PhysRevD.86.023520",
+          "Admission_Status": "admitted",
+          "Audit_Status": "REGISTERED_UNTESTED",
+          "Failure_Gate": "",
+          "Failure_Mechanism": "",
+          "Audit_Record_Path": "",
+          "Terminal": "false",
+          "Ellipticity_Selection_Prohibited": "true",
+          "Observable_Selection_Prohibited": "true",
+          "Within_Class_Model_Shopping_Prohibited": "true",
+          "Controlled_Execution_Eligible": "false",
+          "Controlled_Support_Eligible": "false",
+          "Physical_Support_Eligible": "false",
+          "Notes": "Szekeres-Szafron is handled as a parallel obstruction case within this broad physical sector; it is not a replacement representative selected for ellipticity."
+        },
+        {
+          "Candidate_ID": "P0-T002",
+          "Search_ID": "P0-SF-v0.1",
+          "Registry_Namespace": "THEORY-SEARCH-v0.1",
+          "Qualified_Candidate_ID": "THEORY-SEARCH-v0.1:P0-T002",
+          "Name": "Einstein-Vlasov collisionless matter",
+          "Parent_Theory_Class": "einstein_vlasov",
+          "Registered_Representative": "Einstein equations coupled to a collisionless phase-space distribution satisfying the Vlasov equation",
+          "Independent_Motivation": "Independently established kinetic theory for relativistic self-gravitating collisionless matter and dark-matter phase-space evolution",
+          "Representative_Source_DOI": "10.1088/1475-7516/2013/11/002",
+          "Admission_Status": "admitted",
+          "Audit_Status": "REGISTERED_UNTESTED",
+          "Failure_Gate": "",
+          "Failure_Mechanism": "",
+          "Audit_Record_Path": "",
+          "Terminal": "false",
+          "Ellipticity_Selection_Prohibited": "true",
+          "Observable_Selection_Prohibited": "true",
+          "Within_Class_Model_Shopping_Prohibited": "true",
+          "Controlled_Execution_Eligible": "false",
+          "Controlled_Support_Eligible": "false",
+          "Physical_Support_Eligible": "false",
+          "Notes": "Velocity-distribution degrees of freedom make this dynamically distinct from pressureless dust."
+        },
+        {
+          "Candidate_ID": "P0-T003",
+          "Search_ID": "P0-SF-v0.1",
+          "Registry_Namespace": "THEORY-SEARCH-v0.1",
+          "Qualified_Candidate_ID": "THEORY-SEARCH-v0.1:P0-T003",
+          "Name": "GR plus canonical exponential quintessence",
+          "Parent_Theory_Class": "canonical_quintessence",
+          "Registered_Representative": "Einstein gravity plus a minimally coupled canonical scalar with V(phi)=V0 exp(-lambda phi/Mpl) and ordinary matter",
+          "Independent_Motivation": "Independently motivated dynamical-dark-energy model with scaling/attractor behavior and structure-growth literature",
+          "Representative_Source_DOI": "10.1088/0264-9381/30/21/214003",
+          "Admission_Status": "admitted",
+          "Audit_Status": "REGISTERED_UNTESTED",
+          "Failure_Gate": "",
+          "Failure_Mechanism": "",
+          "Audit_Record_Path": "",
+          "Terminal": "false",
+          "Ellipticity_Selection_Prohibited": "true",
+          "Observable_Selection_Prohibited": "true",
+          "Within_Class_Model_Shopping_Prohibited": "true",
+          "Controlled_Execution_Eligible": "false",
+          "Controlled_Support_Eligible": "false",
+          "Physical_Support_Eligible": "false",
+          "Notes": "V0 and lambda may not be selected for elliptic integrability or topology agreement."
+        },
+        {
+          "Candidate_ID": "P0-T004",
+          "Search_ID": "P0-SF-v0.1",
+          "Registry_Namespace": "THEORY-SEARCH-v0.1",
+          "Qualified_Candidate_ID": "THEORY-SEARCH-v0.1:P0-T004",
+          "Name": "Brans-Dicke-Lambda scalar-tensor gravity",
+          "Parent_Theory_Class": "brans_dicke_lambda",
+          "Registered_Representative": "Jordan-frame Brans-Dicke gravity with constant omega_BD and cosmological constant plus matter",
+          "Independent_Motivation": "Independently motivated scalar-tensor modification with cosmological perturbation and large-scale-structure applications",
+          "Representative_Source_DOI": "10.3847/2041-8213/AB53E9",
+          "Admission_Status": "admitted",
+          "Audit_Status": "REGISTERED_UNTESTED",
+          "Failure_Gate": "",
+          "Failure_Mechanism": "",
+          "Audit_Record_Path": "",
+          "Terminal": "false",
+          "Ellipticity_Selection_Prohibited": "true",
+          "Observable_Selection_Prohibited": "true",
+          "Within_Class_Model_Shopping_Prohibited": "true",
+          "Controlled_Execution_Eligible": "false",
+          "Controlled_Support_Eligible": "false",
+          "Physical_Support_Eligible": "false",
+          "Notes": "No special omega_BD may be selected for elliptic behavior; the appropriate GR recovery regime must remain identifiable."
+        },
+        {
+          "Candidate_ID": "P0-T005",
+          "Search_ID": "P0-SF-v0.1",
+          "Registry_Namespace": "THEORY-SEARCH-v0.1",
+          "Qualified_Candidate_ID": "THEORY-SEARCH-v0.1:P0-T005",
+          "Name": "Einstein-Abelian-Higgs topological-defect cosmology",
+          "Parent_Theory_Class": "einstein_abelian_higgs",
+          "Registered_Representative": "Einstein gravity coupled to the Abelian-Higgs system with spontaneous symmetry breaking",
+          "Independent_Motivation": "Independent defect-seeded structure-formation program; inclusion is based on physical structure seeding and not on U(1) similarity to ECC",
+          "Representative_Source_DOI": "10.1088/1475-7516/2012/05/026",
+          "Admission_Status": "admitted",
+          "Audit_Status": "REGISTERED_UNTESTED",
+          "Failure_Gate": "",
+          "Failure_Mechanism": "",
+          "Audit_Record_Path": "",
+          "Terminal": "false",
+          "Ellipticity_Selection_Prohibited": "true",
+          "Observable_Selection_Prohibited": "true",
+          "Within_Class_Model_Shopping_Prohibited": "true",
+          "Controlled_Execution_Eligible": "false",
+          "Controlled_Support_Eligible": "false",
+          "Physical_Support_Eligible": "false",
+          "Notes": "ECC-R1 entropy couplings and historical S.T.A.R. gauge constructions are embargoed from this candidate."
+        }
+      ],
+      "qualifiedId": "THEORY-SEARCH-v0.1:P0-SF-v0.1",
+      "stages": [],
+      "protocolPath": "preregistrations/P0-ANSATZ-001/protocol.md",
+      "protocolSha256": "95a67983e00a9e14cc91bf5f6dcda63d1c01429b16cda5ac9627054fee2efbb4",
+      "gateState": {
+        "controlledExecutionEligible": false,
+        "controlledSupportEligible": false,
+        "physicalSupportEligible": false
+      }
     }
   ],
   "recovery": {

@@ -51,39 +51,65 @@ function RegistryPage() {
         <Metric label="Canonical claims" value={String(snapshot.claims.length)} hint="Support eligibility remains separately recorded" />
       </div>
 
-      <section id="recovered-corpus" className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
-        <Badge tone="warn">Historical recovery · {snapshot.recovery.auditDate}</Badge>
-        <h2 className="mt-2 font-display text-2xl tracking-tight">Recovered corpus audit</h2>
-        <p className="mt-3 text-sm leading-relaxed text-muted">
-          {snapshot.recovery.summary.hashed_files.toLocaleString("en-US")} files have full hashes across four source roots.
-          The recovery preserves {snapshot.recovery.summary.code.whole_program_artifacts.toLocaleString("en-US")} whole-file program candidates.
-          Saved outputs remain historical records; recovery grants no scientific support or execution eligibility.
-        </p>
-        <dl className="mt-4 grid gap-4 sm:grid-cols-3">
-          <Gate label="Quarantined payload files" value={String(snapshot.recovery.summary.quarantine_files)} />
-          <Gate label="Distinct filename revision conflicts" value={String(snapshot.recovery.summary.filename_revision_conflicts)} />
-          <Gate label="Environment version entries, separate from provenance" value={String(snapshot.recovery.summary.environment_metadata_records)} />
-        </dl>
-        <p className="mt-4 text-xs leading-relaxed text-muted">
-          Bulk files above 128 MiB are inventory-only unless selected; library caches are excluded from scientific provenance.
-          Package versions come from metadata filenames and are not bound to saved runs. Whole-file scope and parsing do not establish runtime completeness.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-4 text-sm">
-          <a className="text-steel underline underline-offset-4" href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${snapshot.recovery.reportPath}`}>Audit and coverage gaps</a>
-          <a className="text-steel underline underline-offset-4" href={`https://github.com/LcosmosS/S.T.A.R.-Labs/tree/main/${snapshot.recovery.quarantinePath}`}>Canonical quarantine</a>
+      <section id="preregistrations" className="space-y-4">
+        <div>
+          <h2 className="font-display text-2xl tracking-tight">Theory preregistrations</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            Planned obstruction and parent-theory search records in THEORY-SEARCH-v0.1.
+            These protocols have separate identities from numerical experiments; their recorded gates appear below.
+          </p>
         </div>
-        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted">
-          {snapshot.recovery.findings.map((finding) => <li key={finding.id}><span className="font-mono text-xs">{finding.id}</span> — {finding.assessment}</li>)}
-        </ul>
-        <h3 className="mt-5 font-display text-lg">Recent repository merges</h3>
-        <ul className="mt-2 space-y-2 text-sm text-muted">
-          {snapshot.recovery.mergeHistory.recent_merged_prs.slice(0, 5).map((pr) => <li key={pr.number}><a className="text-steel underline underline-offset-4" href={pr.url}>#{pr.number} {pr.title}</a><span className="ml-2 text-xs">{pr.merged_at.slice(0, 10)} UTC</span></li>)}
-        </ul>
-        <p className="mt-3 text-xs text-muted">
-          {snapshot.recovery.mergeHistory.pr44.merged
-            ? "PR #44 is merged. Its relocation evidence and verified quarantine bytes are preserved."
-            : "PR #44 has not merged in this recorded repository snapshot."}
-        </p>
+        <div className="grid gap-4 lg:grid-cols-2">
+          {snapshot.preregistrations.map((preregistration) => {
+            const record = preregistration.record;
+            const preregistrationGates = preregistration.gateState;
+            return (
+              <article key={preregistration.id} id={preregistration.id} className="min-w-0 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
+                <Badge tone="warn">{record.Status}</Badge>
+                <h3 className="mt-3 font-display text-xl tracking-tight">{preregistration.id}</h3>
+                <p className="mt-2 text-sm leading-relaxed">{record.Name}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {"Primary_Question" in record ? record.Primary_Question : record.Terminal_Conclusion}
+                </p>
+                <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+                  <Gate label="Registry identity" value={preregistration.qualifiedId} />
+                  <Gate label="Claim" value={record.Claim_ID} />
+                  <Gate label="Controlled execution eligible" value={String(preregistrationGates.controlledExecutionEligible)} />
+                  <Gate label="Controlled support eligible" value={String(preregistrationGates.controlledSupportEligible)} />
+                  <Gate label="Physical support eligible" value={String(preregistrationGates.physicalSupportEligible)} />
+                  <Gate label="Universal no-go claim" value={String(record.Universal_NoGo_Claim)} />
+                </dl>
+                {preregistration.stages.length > 0 ? (
+                  <dl className="mt-4 grid gap-4 sm:grid-cols-3">
+                    {preregistration.stages.map((stage) => <Gate key={stage.name} label={stage.name} value={stage.status} />)}
+                  </dl>
+                ) : typeof record.Candidate_Count === "string" && typeof record.Observable_Embargo === "string" ? (
+                  <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+                    <Gate label="Registered candidates" value={record.Candidate_Count} />
+                    <Gate label="Observable embargo" value={record.Observable_Embargo} />
+                  </dl>
+                ) : null}
+                {preregistration.candidates.length > 0 ? (
+                  <ul className="mt-4 space-y-3 text-sm leading-relaxed" aria-label={`${preregistration.id} candidates`}>
+                    {preregistration.candidates.map((theory) => (
+                      <li key={theory.Qualified_Candidate_ID}>
+                        <span className="font-mono text-xs">{theory.Candidate_ID}</span> · {theory.Name}
+                        <span className="mt-1 block break-all font-mono text-xs text-muted">{theory.Audit_Status}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                <p className="mt-4 text-xs leading-relaxed text-muted">{record.Notes}</p>
+                <a className="mt-4 inline-block py-2 text-sm text-steel underline underline-offset-4" href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${preregistration.protocolPath}`}>
+                  Read the full {preregistration.id} protocol
+                </a>
+                <dl className="mt-3">
+                  <Gate label="Protocol SHA-256 in this snapshot" value={preregistration.protocolSha256} />
+                </dl>
+              </article>
+            );
+          })}
+        </div>
       </section>
 
       <section className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">

@@ -19,6 +19,11 @@ const files = {
   config: "preregistrations/EXP-MAP-A01/config.json",
   manifest: "preregistrations/EXP-MAP-A01/dataset_manifest.json",
   protocol: "preregistrations/EXP-MAP-A01/protocol.md",
+  theorySearch: "registry/theory_search_registry_v0.1.csv",
+  theoryCandidates: "registry/theory_candidate_registry_v0.1.csv",
+  theoryObstructions: "registry/theory_obstruction_registry_v0.1.csv",
+  m1Protocol: "preregistrations/M1-INH-E1/protocol.md",
+  p0Protocol: "preregistrations/P0-ANSATZ-001/protocol.md",
   recoverySummary: "historical/r&d/docs/recovered_corpus_audit_2026-10-08/summary.json",
   recoveryFindings: "historical/r&d/docs/recovered_corpus_audit_2026-10-08/findings.json",
   recoveryMerges: "historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json",
@@ -86,7 +91,41 @@ async function main() {
   if (process.argv.slice(2).some((arg) => arg !== "--check")) throw new Error("Usage: node scripts/sync-registry.mjs [--check]");
   const bytes = Object.fromEntries(await Promise.all(Object.entries(files).map(async ([key, path]) => [key, await readFile(resolve(repoRoot, path))])));
   const sources = Object.entries(files).map(([key, path]) => ({ path, sha256: sha256(bytes[key]), sizeBytes: bytes[key].length })).sort((a, b) => a.path.localeCompare(b.path));
-  const tables = Object.fromEntries(["experiments", "datasets", "provenance", "parameters", "nulls", "claims"].map((key) => [key, csv(bytes[key].toString("utf8"), files[key])]));
+  const tables = Object.fromEntries(["experiments", "datasets", "provenance", "parameters", "nulls", "claims", "theorySearch", "theoryCandidates", "theoryObstructions"].map((key) => [key, csv(bytes[key].toString("utf8"), files[key])]));
+  const obstruction = one(tables.theoryObstructions, "Obstruction_ID", "M1-INH-E1");
+  const search = one(tables.theorySearch, "Search_ID", "P0-SF-v0.1");
+  const theoryCandidates = search.Candidate_IDs.split(";").map((id) => one(tables.theoryCandidates, "Candidate_ID", id));
+  if (new Set(search.Candidate_IDs.split(";")).size !== Number(search.Candidate_Count)
+      || theoryCandidates.length !== Number(search.Candidate_Count)
+      || theoryCandidates.some((row) => row.Search_ID !== search.Search_ID)) {
+    throw new Error("Theory search candidate list does not match its registered count or search ID");
+  }
+  const preregistrations = [
+    { id: "M1-INH-E1", protocolKey: "m1Protocol", record: obstruction, candidates: [] },
+    { id: "P0-ANSATZ-001", protocolKey: "p0Protocol", record: search, candidates: theoryCandidates },
+  ].map(({ id, protocolKey, record, candidates }) => {
+    const protocol = bytes[protocolKey].toString("utf8");
+    if (record.Protocol_Path !== files[protocolKey] || !protocol.startsWith(`# ${id} — `)) {
+      throw new Error(`Preregistration identity differs: ${id}`);
+    }
+    one(tables.claims, "Claim_ID", record.Claim_ID);
+    return {
+      id, record, candidates,
+      qualifiedId: record.Qualified_Obstruction_ID ?? record.Qualified_Search_ID,
+      stages: id === "M1-INH-E1" ? [
+        { name: "E1a · Exact reduction", status: record.Substage_A },
+        { name: "E1b · Field insufficiency", status: record.Substage_B },
+        { name: "E1c · Observable sufficiency", status: record.Substage_C },
+      ] : [],
+      protocolPath: files[protocolKey],
+      protocolSha256: sha256(bytes[protocolKey]),
+      gateState: {
+        controlledExecutionEligible: flag(record, "Controlled_Execution_Eligible"),
+        controlledSupportEligible: flag(record, "Controlled_Support_Eligible"),
+        physicalSupportEligible: flag(record, "Physical_Support_Eligible"),
+      },
+    };
+  });
   const spec = JSON.parse(bytes.spec.toString("utf8"));
   const config = JSON.parse(bytes.config.toString("utf8"));
   const manifest = JSON.parse(bytes.manifest.toString("utf8"));
@@ -113,6 +152,7 @@ async function main() {
     sources,
     claims: tables.claims,
     experiments: tables.experiments,
+    preregistrations,
     recovery: {
       auditDate: "2026-10-08",
       summary: JSON.parse(bytes.recoverySummary.toString("utf8")),
