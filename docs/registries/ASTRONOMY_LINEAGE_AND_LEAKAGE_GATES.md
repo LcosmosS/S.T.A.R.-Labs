@@ -2,6 +2,12 @@
 
 The connected Dropbox `/STAR/` folder contains the named SDSS/MaNGA/Pipe3D files; this review captures **size and Dropbox revision metadata only**, not raw bytes, SHA-256, release/lineage or executed match/model results. See `data/provenance/star_source_receipts_v0.1.json`. Duplicated names in `/STAR/Documents/STAR/` have **not** been proven byte-identical. No file content or LFS pointer is committed here.
 
+### Evidence from Dropbox text extraction (not raw bytes)
+
+`mangaHIall.csv` exposes 34 columns and 6,632 extracted data rows. Its positional fields are **`OBJRA` and `OBJDEC`**, not generic `ra/dec`; all examined coordinate pairs were in degree bounds. The table has 6,442 unique `PLATEIFU` values (190 extra occurrences) and 6,358 unique `MANGAID` values (274 extra occurrences). These multiplicities mean a naive ID-only 1:1 join or silent `drop_duplicates` is scientifically unacceptable. Confirm repeat-observation semantics and use a prospective ambiguity policy.
+
+`filtered_Pipe3D.csv` exposes 16 columns and 10,081 extracted rows, including `log_SFR_Ha` as target; **it has no MANGAID, PLATEIFU, SDSS objid, or RA/Dec**. It is insufficient to establish a group-disjoint split or source-level SDSS/MaNGA linkage. Resolve the original Pipe3D file's stable galaxy IDs and raw target lineage before even locking `EXP-CTRL-A02`. The extracted CSV text is one character longer than Dropbox-reported file bytes, so extraction is **not** a canonical raw-byte hash basis.
+
 ### Observational constraints
 - The recovered `SELECT TOP 200000` without `ORDER BY` cannot fix a survey sample's ordering, and supplied rows show `class=STAR` / negative redshift. A galaxy-only science target requires an explicit prospective `class='GALAXY'`, positive-z and quality selection; the original raw file remains unmodified.
 - The historical 1,495-row SDSS/HI merge violated a nominal two-arcsecond separation. It remains immutable negative evidence.
