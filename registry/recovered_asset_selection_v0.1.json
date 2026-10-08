@@ -1,0 +1,57 @@
+{
+  "schema_version": "selective-lfs-candidate-v0.1",
+  "date": "2026-10-08",
+  "charter": "charter/STAR_Research_Charter_v0-2.pdf",
+  "epistemic_status": "historical_recovery_inventory_not_empirical_support",
+  "source_manifest": "data/intake/recovered/2026-10-08/manifest.json",
+  "remote_lfs_proof": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/recovery_lfs_verification.json",
+  "existing_verified": [
+    {
+      "source_name": "SDSSDR18_200000.csv",
+      "path": "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv",
+      "sha256": "9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2",
+      "bytes": 33007497,
+      "role": "SDSS source-reconstruction input"
+    },
+    {
+      "source_name": "mangaHIall.csv",
+      "path": "data/intake/recovered/2026-10-08/f4662418b92b2013a2c587921e0e54ab05617810794e736b1d84e0e0663877be.csv",
+      "sha256": "f4662418b92b2013a2c587921e0e54ab05617810794e736b1d84e0e0663877be",
+      "bytes": 1952832,
+      "role": "MaNGA-HI source-reconstruction input"
+    }
+  ],
+  "pending_review": [
+    {
+      "source_name": "PhotoObj_pmqr771.csv",
+      "dropbox_path": "/STAR/PhotoObj_pmqr771.csv",
+      "reported_bytes": 120891007,
+      "format": "csv",
+      "intended_storage": "git_lfs",
+      "sha256": null,
+      "oid": null,
+      "repository_path": null,
+      "status": "pending_source_lineage_checksum_and_verified_lfs_upload",
+      "reason": "Large object catalog candidate; exact survey selection, object-ID integrity and acquisition lineage unverified"
+    },
+    {
+      "source_name": "Stellar_Mass2_Table_cleaned.csv",
+      "dropbox_path": "/STAR/Stellar_Mass2_Table_cleaned.csv",
+      "reported_bytes": 646455,
+      "format": "csv",
+      "intended_storage": "text_or_lfs_after_review",
+      "sha256": null,
+      "oid": null,
+      "repository_path": null,
+      "status": "pending_source_lineage_checksum_and_review",
+      "reason": "Named input in historical SFR report; historical mean imputation and target-leakage checks needed"
+    }
+  ],
+  "controls": {
+    "controlled_execution_eligible": false,
+    "controlled_support_eligible": false,
+    "physical_support_eligible": false,
+    "auto_ingest_enabled": false,
+    "lfs_new_objects_committed": 0
+  }
+}
