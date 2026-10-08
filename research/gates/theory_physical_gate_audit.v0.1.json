@@ -1,0 +1,42 @@
+{
+  "schema_version": "theory-physical-gate-audit-v0.1",
+  "base_commit": "1d87fe9f132d4b0223e23578343fff9aced7521a",
+  "governing_charter": "charter/STAR_Research_Charter_v0-2.pdf",
+  "audit_date": "2026-10-08",
+  "status": "documentation_only_no_evidence_promotion",
+  "controls": {
+    "no_canonical_registry_edits": true,
+    "controlled_execution_eligible": false,
+    "controlled_support_eligible": false,
+    "physical_support_eligible": false
+  },
+  "gates": [
+    {
+      "id": "P0-SF-v0.1",
+      "current": "preregistered_closed",
+      "unresolved_count": 5,
+      "gate": "independently audit all five registered representatives without within-class shopping"
+    },
+    {
+      "id": "M1-INH-E1",
+      "current": "planned",
+      "gate": "independent review of E1a and E1b metric-first proof certificate and nonisometry; E1c observable-specific"
+    },
+    {
+      "id": "EXP-TOPO-A01",
+      "current": "planned",
+      "candidate": "research/gates/EXP-TOPO-A01/config.json",
+      "gate": "implement independent MST/H0 agreement and explicitly review canonical parameter/null transition"
+    },
+    {
+      "id": "EXP-ECC-B01",
+      "current": "planned",
+      "gate": "specify globally closed nonexact class or accept exact-form triviality with positive/negative cohomology controls"
+    },
+    {
+      "id": "EXP-RTCH-B01",
+      "current": "planned",
+      "gate": "derive GR and first-law decoupling limit with independent variational review before parameter fitting"
+    }
+  ]
+}
