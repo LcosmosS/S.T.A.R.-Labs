@@ -1,25 +1,47 @@
 #!/usr/bin/env node
-// Run against a built or development preview: node scripts/research-browser-smoke.mjs http://127.0.0.1:8081
-import {chromium} from "playwright";
-import {mkdirSync} from "node:fs";
-import {checkedUrl} from "./browser-guard.mjs";
-if(!process.argv[2])throw Error("Provide an accessible preview URL");
-const target=new URL("/registry",checkedUrl(process.argv[2])).href;
-mkdirSync("screenshots",{recursive:true});
-const browser=await chromium.launch({headless:true,args:["--no-sandbox","--disable-dev-shm-usage"]});
-try{
- for(const viewport of [{width:1280,height:800},{width:390,height:844}]){
-  const page=await browser.newPage({viewport});
-  const errors=[];page.on("pageerror",e=>errors.push(e.message));
-  page.on("console",m=>{if(m.type()==="error")errors.push(m.text());});
-  const res=await page.goto(target,{waitUntil:"domcontentloaded",timeout:45000});
-  await page.getByRole("heading",{name:"Curated research constructions"}).waitFor();
-  await page.getByText("Historical five-fold SFR MSE").waitFor();
-  const cards=await page.locator("[data-research-entry]").count();
-  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth+1);
-  if(res?.status()!==200||cards!==10||overflow||errors.length)throw Error(JSON.stringify({viewport,cards,overflow,errors,status:res?.status()}));
-  console.log(JSON.stringify({viewport,cards,overflow,consoleErrors:errors.length,status:res.status()}));
-  await page.screenshot({path:`screenshots/research-${viewport.width}.png`,fullPage:false});
-  await page.close();
- }
-} finally {await browser.close();}
+/** Real Chromium checks for research catalog display and its evidence gating. */
+import assert from "node:assert/strict";
+import { chromium } from "playwright";
+
+const origin = process.argv[2];
+if (!/^https?:\/\/127\.0\.0\.1:8081$/.test(origin ?? "")) {
+  console.error("Usage: node scripts/research-browser-smoke.mjs http://127.0.0.1:8081");
+  process.exit(2);
+}
+const browser = await chromium.launch({ headless: true, args: ["--no-sandbox", "--disable-dev-shm-usage"] });
+try {
+  for (const viewport of [{ width: 1280, height: 800 }, { width: 390, height: 844 }]) {
+    const page = await browser.newPage({ viewport });
+    const errors = [];
+    page.on("pageerror", e => errors.push(String(e)));
+    page.on("console", e => { if (e.type() === "error") errors.push(e.text()); });
+    const response = await page.goto(origin + "/research", { waitUntil: "domcontentloaded", timeout: 40000 });
+    assert.equal(response?.status(), 200, "research page HTTP");
+    await page.getByRole("heading", { name: "Research constructs and source artifacts" }).waitFor();
+    // SSR content can appear before React installs interactive event handlers.
+    // The page's useEffect-driven marker distinguishes actual hydration.
+    await page.locator('[data-research-hydrated="true"]').waitFor({ timeout: 20000 });
+    assert.match(await page.getByRole("status").innerText(), /12 of 12/);
+    const links = page.getByRole("link", { name: "View cited repository source" });
+    assert.equal(await links.count(), 12);
+    for (const url of await links.evaluateAll(nodes => nodes.map(n => n.getAttribute("href")))) {
+      assert.match(url, /^https:\/\/github\.com\/LcosmosS\/S\.T\.A\.R\.-Labs\/blob\/main\//);
+    }
+    await page.getByLabel("Filter research content type").selectOption("diagram");
+    await page.getByRole("status").filter({ hasText: /2 of 12/ }).waitFor();
+    await page.getByLabel("Filter research content type").selectOption("all");
+    await page.getByLabel("Search research content").fill("E1A");
+    await page.getByRole("status").filter({ hasText: /1 of 12/ }).waitFor();
+    assert.equal(await page.getByRole("link", { name: "View cited repository source" }).count(), 1);
+    await page.getByLabel("Search research content").fill("");
+    await page.getByRole("heading", { name: "Finite positive bin-count series cannot vanish at s=1" }).waitFor();
+    await page.getByRole("heading", { name: "Historical five-fold SFR metric — unreplicated" }).waitFor();
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
+    assert.equal(overflow, false, "horizontal overflow");
+    assert.deepEqual(errors, [], "uncaught errors");
+    console.log("PASS /research Chromium", viewport.width + "x" + viewport.height);
+    await page.close();
+  }
+} finally {
+  await browser.close();
+}

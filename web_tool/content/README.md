@@ -1,6 +1,20 @@
-# WEB-CONTENT-v0.1
-The governing authority is `charter/STAR_Research_Charter_v0-2.pdf`. This is a separate versioned **read-only explanatory content catalog**, not a controlled claim or experiment registry. It publishes historical constructions with epistemic categories, sources, and limitations. Never infer physical or empirical support from a card or browser calculation.
+# Research content v1 — epistemic display contract
 
-Uploaded report source: `Detailed Report_ Bridging BSD Conjecture and Cosmology.docx`, SHA-256 `a997aee1feb688e99b7c21f23934bfdf625bf4ee0d6be00e3dc8c9f0ae6d1e08` (external, not checked into this repository). The reported MSE 0.4266 is not independently reproduced. The report's rank argument is invalid for finite nonnegative bin counts because `L_cosmo(1)>0` for a nonempty sample; Random Forest fitting is not itself a fit of displayed additive coefficients. These corrections are publicly shown as caveats.
+This is a **versioned, read-only presentation layer** distinct from `registry/*`, the preregistered protocols, the controlled runner, and the synthetic fixture engine. Records are `illustrative_model`, `historical_exploratory`, `derived_mathematics` (formal result under specified assumptions), or `archival_reference`. There is **no published 'scientifically supported physical correspondence' tier** in v1. All three eligibility fields must be `false`, enforced at generation time and in tests.
 
-Run `cd web_tool && npm run research:sync` to regenerate the separate snapshot, `npm run research:check` to verify it, and `npm test` for the source-qualification tests. The optional browser smoke script requires a running local preview: `node scripts/research-browser-smoke.mjs http://127.0.0.1:8081`. No scripts deserialize pickles, execute recovered notebooks, or modify the canonical registry. Live website deployment is separate from committed source/build validation.
+Contents include historical Φ, alternative mappings, a BSD-inspired *cosmological* bin-count series, Betti meanings, an epistemic dependency diagram, registered E1a reduction, crossmatching reconstruction flow, the identity d²=0, and an inert recovered CasJobs notebook output. Source references remain links to audited repository artifacts; no original pickle, arbitrary notebook, proprietary survey output, or private file is executed in the browser.
+
+To publish changes:
+
+```bash
+cd web_tool
+npm run research:sync
+npm run research:check
+npm test
+npm run typecheck
+npm run build
+```
+
+Build and preview browser checks must pass on desktop and mobile, including navigation, filtering, source links, console and horizontal overflow; GitHub Actions results are not a substitute for browser testing. Deployment is restricted to `main` and `prototype/starmap`; this PR does not deploy production. Review the model and snapshot diff together. The educational corpus **does not auto-promote** claims when source documents or registries change.
+
+The original user's BSD/SFR report is not uploaded. An explicitly labeled extraction of its reported constructs and limitations appears in `historical-sfr-report-context.v1.md`; metrics therein are not a verified dataset provenance record.

@@ -1,8 +1,6 @@
 {
   "name": "starmap",
-  "engines": {
-    "node": ">=22.12"
-  },
+  "engines": { "node": ">=22.12" },
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -22,11 +20,10 @@
     "test": "node scripts/test.mjs",
     "registry:sync": "node scripts/sync-registry.mjs",
     "registry:check": "node scripts/sync-registry.mjs --check",
-    "lint": "eslint .",
-    "format": "prettier --write .",
     "research:sync": "node scripts/sync-research-content.mjs",
     "research:check": "node scripts/sync-research-content.mjs --check",
-    "research:browser-smoke": "node scripts/research-browser-smoke.mjs"
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",

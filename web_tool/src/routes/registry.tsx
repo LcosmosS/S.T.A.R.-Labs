@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Metric } from "@/components/viz/formula";
 import snapshot from "@/lib/star/registry-snapshot.json";
-import researchSnapshot from "@/lib/star/research-content-snapshot.json";
+import lfsSelection from "@/lib/star/recovered-lfs-snapshot.json";
 
 export const Route = createFileRoute("/registry")({ component: RegistryPage });
 
@@ -51,6 +51,38 @@ function RegistryPage() {
         <Metric label="Execution eligible" value={String(snapshot.declaredExecutionEligibleCount)} hint="Declared registry flags; not a runner preflight" />
         <Metric label="Canonical claims" value={String(snapshot.claims.length)} hint="Support eligibility remains separately recorded" />
       </div>
+
+      <section id="archival-lfs" className="space-y-4">
+        <h2 className="font-display text-2xl tracking-tight">Selected historical LFS sources</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-muted">
+          These are five already uploaded and independently downloaded archival source candidates from PR #51,
+          not new LFS uploads. Their local byte identities are recorded, but upstream catalog lineage and any
+          experiment-ready association remain unverified. The separate candidate selection does not change
+          this page’s canonical dataset or experiment gates.
+        </p>
+        <div className="grid gap-3 lg:grid-cols-2">
+          {lfsSelection.assets.map((asset) => (
+            <article key={asset.artifactId} className="min-w-0 rounded-xl bg-surface p-4 shadow-[var(--shadow-border)]">
+              <Badge tone="warn">Historical · not controlled</Badge>
+              <h3 className="mt-2 break-all font-mono text-xs">{asset.artifactId}</h3>
+              <p className="mt-2 text-xs text-muted">{asset.kind.toUpperCase()} · {asset.bytes.toLocaleString()} bytes</p>
+              <p className="mt-2 break-all font-mono text-[10px] text-muted">SHA-256: {asset.sha256}</p>
+              <p className="mt-2 break-all text-xs text-muted">{asset.recoveredSource}</p>
+              <p className="mt-2 text-xs text-muted">
+                Execution: {String(asset.controlledExecutionEligible)} · Controlled support: {String(asset.controlledSupportEligible)}
+                {" · "}Physical support: {String(asset.physicalSupportEligible)}
+              </p>
+            </article>
+          ))}
+        </div>
+        <p className="text-xs text-muted">
+          <a href="https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/registry/recovered_lfs_selection_v0.1.json"
+             target="_blank" rel="noopener noreferrer" className="text-steel underline underline-offset-4">
+             Read the separate versioned selection registry
+          </a>
+          . No raw survey data or serialized model is loaded in the browser.
+        </p>
+      </section>
 
       <section id="preregistrations" className="space-y-4">
         <div>
@@ -207,56 +239,6 @@ function RegistryPage() {
           </table>
           {rows.length === 0 ? <p className="p-4 text-sm text-muted">No recorded experiments match this search.</p> : null}
         </div>
-      </section>
-
-      <section id="research-content-v0-1" aria-labelledby="research-content-heading" className="space-y-4">
-        <div className="max-w-3xl">
-          <Badge tone="steel">WEB-CONTENT-v0.1 · read-only</Badge>
-          <h2 id="research-content-heading" className="mt-3 font-display text-2xl tracking-tight">Curated research constructions</h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted">
-            Versioned illustrations, model equations, conditional mathematical deductions, unreplicated historical
-            metrics, and inert recovered notebook references. This content is not part of the controlled experiment
-            registry and cannot authorize scientific support, execution or physical interpretation.
-          </p>
-          <p className="mt-2 break-all font-mono text-xs text-muted">
-            External source digest (not committed): {researchSnapshot.model.externalSource.sha256}
-          </p>
-        </div>
-        <div className="grid gap-4 xl:grid-cols-2">
-          {researchSnapshot.model.items.map((item) => (
-            <article key={item.id} data-research-entry={item.id} className="min-w-0 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
-              <div className="flex flex-wrap items-center gap-2">
-                <Badge tone={item.status === "derived_conditional" ? "steel" : "warn"}>{item.status.replaceAll("_", " ")}</Badge>
-                <Badge>{item.kind}</Badge>
-                <span className="font-mono text-xs text-muted">{item.epistemic} · {item.id}</span>
-              </div>
-              <h3 className="mt-3 font-display text-xl tracking-tight">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed">{item.summary}</p>
-              {"formula" in item && item.formula ? (
-                <pre className="mt-3 max-w-full overflow-x-auto rounded-md bg-elevated p-3 text-xs leading-relaxed"><code>{item.formula}</code></pre>
-              ) : null}
-              {"diagramSteps" in item && item.diagramSteps ? (
-                <ol aria-label="Research sequence diagram" className="mt-3 flex flex-wrap items-stretch gap-2">
-                  {item.diagramSteps.map((stage, step) => (
-                    <li key={stage} className="rounded-md border border-border bg-elevated px-3 py-2 text-xs">
-                      <span className="mr-2 font-mono text-steel">{step+1}.</span>{stage}
-                    </li>
-                  ))}
-                </ol>
-              ) : null}
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                <span className="font-medium text-fg">Limitation:</span> {item.caveat}
-              </p>
-              <p className="mt-3 text-xs leading-relaxed text-muted">Source: {item.source}</p>
-              {"sourcePath" in item && item.sourcePath ? (
-                <a className="mt-2 inline-block break-all text-xs text-steel underline underline-offset-4"
-                   href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${item.sourcePath}`}
-                   target="_blank" rel="noreferrer">Inspect repository source</a>
-              ) : null}
-            </article>
-          ))}
-        </div>
-        <p className="text-xs text-muted">Publication source: {researchSnapshot.sourcePath}. The web tool does not deserialize models or execute historical notebooks.</p>
       </section>
 
       <section className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">

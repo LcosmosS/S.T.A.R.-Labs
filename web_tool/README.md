@@ -16,11 +16,9 @@ and the controlled spec's binding checks. It displays declared gates without
 editing them or granting execution. Run `npm run registry:sync` after intentional
 canonical source changes; `npm run registry:check` rejects a stale snapshot.
 
-## Versioned research content
+## Research content and historical SFR addendum
 
-The `/registry` page also publishes a **separate, read-only** `WEB-CONTENT-v0.1` research catalog of historical arithmetic projections, equations, conditional reductions, one research-sequence diagram, an inert recovered notebook-output locator, and the unreplicated SFR metric. Its source is `content/research-content-v0.1.json`; the generated `src/lib/star/research-content-snapshot.json` must match exactly. See [content/README.md](content/README.md) for caveats and the source-document SHA-256. This content is not part of the controlled-experiment registry and never grants execution or physical support.
-
-Regenerate with `npm run research:sync`; validate with `npm run research:check`. CI runs real Chromium browser checks at desktop/mobile widths on the built `/registry` page and retains review screenshots. It does not run recovered notebooks or serialized models.
+The separate /research catalog is generated from `content/research-content.v1.json` and remains distinct from /registry's controlled evidence records. The 2026-10-08 merge resolution retained PRs #59–#60 as the canonical source and page implementation, while adding explicit finite-positive-bin mathematics and unreplicated SFR report context from PR #61. No eligibility or physics-support flags were promoted. Use `npm run research:check` and review the desktop/mobile browser smoke test.
 
 ## Development and verification
 

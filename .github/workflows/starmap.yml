@@ -24,25 +24,25 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npm run typecheck
-      - name: Install Chromium for research registry browser regression
+      - name: Install Chromium for research content browser smoke
         run: npx playwright install --with-deps chromium
-      - name: Test research registry at desktop/mobile widths
+      - name: Test /research in desktop and mobile browsers
         shell: bash
         run: |
           set -euo pipefail
-          npm run preview -- --host 127.0.0.1 --port 8081 > "$RUNNER_TEMP/starmap-preview.log" 2>&1 &
-          server=$!
-          trap 'kill "$server" 2>/dev/null || true' EXIT
+          npm run preview -- --host 127.0.0.1 --port 8081 >/tmp/starmap-research-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
           ready=0
-          for attempt in $(seq 1 40); do
-            if curl --silent --fail http://127.0.0.1:8081/registry > /dev/null; then ready=1; break; fi
+          for i in $(seq 1 50); do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8081/research; then
+              ready=1
+              break
+            fi
             sleep 2
           done
-          if [ "$ready" -ne 1 ]; then cat "$RUNNER_TEMP/starmap-preview.log"; exit 1; fi
-          npm run research:browser-smoke -- http://127.0.0.1:8081
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: research-registry-viewports
-          path: web_tool/screenshots/research-*.png
-          if-no-files-found: warn
+          if [ "$ready" != 1 ]; then
+            cat /tmp/starmap-research-preview.log
+            exit 1
+          fi
+          node scripts/research-browser-smoke.mjs http://127.0.0.1:8081
