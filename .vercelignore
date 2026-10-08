@@ -10,6 +10,14 @@
 !preregistrations
 !preregistrations/EXP-MAP-A01
 !preregistrations/EXP-MAP-A01/**
+# Only the three audit summaries consumed by the read-only registry build.
+!historical
+!historical/r&d
+!historical/r&d/docs
+!historical/r&d/docs/recovered_corpus_audit_2026-10-08
+!historical/r&d/docs/recovered_corpus_audit_2026-10-08/summary.json
+!historical/r&d/docs/recovered_corpus_audit_2026-10-08/findings.json
+!historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json
 web_tool/attachments
 web_tool/node_modules
 web_tool/.vercel
