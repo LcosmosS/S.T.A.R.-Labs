@@ -67,6 +67,9 @@ def test_a01_inactive_or_exact_separate_activation_is_accepted_not_support():
 
 def test_a01_partial_activation_and_support_promotion_are_rejected():
     experiment, dataset = _a01_rows()
+    # The same test must be correct both before and after approved A01 activation.
+    experiment["Controlled_Execution_Eligible"] = "false"
+    dataset["Controlled_Execution_Eligible"] = "false"
     experiment["Controlled_Execution_Eligible"] = "true"
     with pytest.raises(PreregistrationReviewError, match="partial activation"):
         validate_a01_lifecycle(experiment, dataset)
