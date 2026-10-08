@@ -40,3 +40,9 @@ jobs:
           done
           if [ "$ready" -ne 1 ]; then cat "$RUNNER_TEMP/starmap-preview.log"; exit 1; fi
           npm run research:browser-smoke -- http://127.0.0.1:8081
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: research-registry-viewports
+          path: web_tool/screenshots/research-*.png
+          if-no-files-found: warn
