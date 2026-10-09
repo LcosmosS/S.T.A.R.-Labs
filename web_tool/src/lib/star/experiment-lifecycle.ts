@@ -38,3 +38,24 @@ export function getPreregisteredEntries(snapshot: {
     }));
   return [...experiments, ...theory].sort((a, b) => a.id.localeCompare(b.id));
 }
+
+/** Protocols with a frozen file on record but *without* a formally
+ * preregistered registry lifecycle. Do not reinterpret these as approved
+ * preregistration, executed theory results, or a controlled experiment.
+ */
+export function getPendingTheoryProtocols(snapshot: {
+  preregistrations: readonly TheoryRow[];
+}): PreregisteredEntry[] {
+  return snapshot.preregistrations
+    .filter((entry) =>
+      entry.record.Status === "planned" &&
+      entry.protocolPath.startsWith("preregistrations/") &&
+      entry.protocolPath.endsWith("/protocol.md"))
+    .map((entry) => ({
+      id: entry.id,
+      namespace: "THEORY-SEARCH-v0.1" as const,
+      kind: "Theory/obstruction protocol" as const,
+      status: entry.record.Status,
+      protocolPath: entry.protocolPath,
+    }));
+}
