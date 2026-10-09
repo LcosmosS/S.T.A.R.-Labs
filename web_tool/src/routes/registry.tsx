@@ -5,7 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Metric } from "@/components/viz/formula";
 import snapshot from "@/lib/star/registry-snapshot.json";
+import skyReleases from "../../content/sky-overlay-releases.v1.json";
+import skyCandidates from "../../content/sky-overlay-candidates.v1.json";
 import lfsSelection from "@/lib/star/recovered-lfs-snapshot.json";
+import { getPreregisteredEntries, getPendingTheoryProtocols, isPreregisteredStatus } from "@/lib/star/experiment-lifecycle";
 
 export const Route = createFileRoute("/registry")({ component: RegistryPage });
 
@@ -20,15 +23,19 @@ function downloadSnapshot() {
 
 function RegistryPage() {
   const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const preregistered = useMemo(() => getPreregisteredEntries(snapshot), []);
+  const pendingTheory = useMemo(() => getPendingTheoryProtocols(snapshot), []);
   const candidate = snapshot.candidate;
   const gates = candidate.gateState;
   const config = candidate.config;
   const rows = useMemo(() => {
     const value = query.trim().toLowerCase();
     return snapshot.experiments.filter((row) =>
+      (statusFilter !== "preregistered" || isPreregisteredStatus(row.Status)) &&
       [row.Experiment_ID, row.Qualified_Experiment_ID, row.Claim_IDs, row.Dataset_ID, row.Status].some((field) => field.toLowerCase().includes(value)),
     );
-  }, [query]);
+  }, [query, statusFilter]);
 
   return (
     <div className="space-y-8">
@@ -46,11 +53,81 @@ function RegistryPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Metric label="Recorded experiments" value={String(snapshot.experiments.length)} hint={snapshot.namespace} />
+        <Metric label="Preregistered protocols" value={String(preregistered.length)} hint="Numerical + theory records; not execution" />
         <Metric label="Execution eligible" value={String(snapshot.declaredExecutionEligibleCount)} hint="Declared registry flags; not a runner preflight" />
         <Metric label="Canonical claims" value={String(snapshot.claims.length)} hint="Support eligibility remains separately recorded" />
+        <Metric label="Admitted sky releases" value={String(skyReleases.sources.length)} hint="Reviewed display-only; no inference" />
       </div>
+
+      <section id="preregistered-summary" className="space-y-3">
+        <h2 className="font-display text-2xl tracking-tight">Preregistered research protocols</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-muted">
+          Formal preregistration labels are derived from versioned canonical registry states,
+          not inferred from source-folder names. A preregistered design may still have planned
+          sub-stages and no controlled execution permission. Theory obstructions are distinct
+          from numerical controlled experiments.
+        </p>
+        <div className="grid gap-3 md:grid-cols-2">
+          {preregistered.map((entry) => (
+            <article key={entry.namespace + ":" + entry.id} className="min-w-0 rounded-xl bg-surface p-4 shadow-[var(--shadow-border)]">
+              <Badge tone="steel">{entry.status}</Badge>
+              <h3 className="mt-2 font-mono text-sm">{entry.id}</h3>
+              <p className="mt-1 text-xs text-muted">{entry.kind} · {entry.namespace}</p>
+              <p className="mt-2 text-xs text-muted">Preregistration is not controlled execution, independent proof, or physical support.</p>
+              {entry.protocolPath ? (
+                <a className="mt-2 inline-block text-xs text-steel underline underline-offset-4"
+                  href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${entry.protocolPath}`}
+                  target="_blank" rel="noopener noreferrer">Review frozen protocol</a>
+              ) : null}
+            </article>
+          ))}
+        </div>
+        {pendingTheory.length > 0 ? (
+          <div className="mt-4 space-y-3">
+            <h3 className="font-display text-lg">Frozen protocols pending formal status review</h3>
+            <p className="max-w-3xl text-xs leading-relaxed text-muted">
+              A registered protocol file is not proof of formal preregistration approval.
+              These records remain planned in the canonical registry until independent review
+              authorizes a transition.
+            </p>
+            {pendingTheory.map((entry) => (
+              <article key={entry.id} className="rounded-xl border border-border bg-surface p-4">
+                <Badge tone="warn">Frozen protocol on file · registry: {entry.status}</Badge>
+                <h4 className="mt-2 font-mono text-sm">{entry.id}</h4>
+                <p className="mt-2 text-xs text-muted">No execution authorization or independent theorem certification.</p>
+                <a className="mt-2 inline-block text-xs text-steel underline underline-offset-4"
+                  href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${entry.protocolPath}`}
+                  target="_blank" rel="noopener noreferrer">Read frozen protocol</a>
+              </article>
+            ))}
+          </div>
+        ) : null}
+      </section>
+
+      <section id="sky-admission" className="space-y-3 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
+        <h2 className="font-display text-xl">ALADIN Lite sky-release admission</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-muted">
+          The CI `sky:check` gate verifies publisher-source receipts, exact hydrated data bytes,
+          the hashed coordinate derivative and the committed reviewer decision. Only a
+          separately authorized release-manifest transition can make a sky dataset selectable.
+          CI passing is not, by itself, independent scientific authorization.
+        </p>
+        <p role="status" className="text-sm">
+          Currently {skyReleases.sources.length} dataset release(s) admitted for display.
+        </p>
+        {skyCandidates.candidates.map((candidate) => (
+          <p key={candidate.datasetId} className="text-xs text-muted">
+            <span className="font-mono">{candidate.datasetId}</span> · Candidate status: {candidate.approvalStatus}
+            {" · "}No inference or physical-support promotion
+          </p>
+        ))}
+        <a href="https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/content/sky-overlay-releases.v1.json"
+          className="inline-block text-xs text-steel underline underline-offset-4" target="_blank" rel="noopener noreferrer">
+          Inspect exact committed release manifest
+        </a>
+      </section>
 
       <section id="archival-lfs" className="space-y-4">
         <h2 className="font-display text-2xl tracking-tight">Selected historical LFS sources</h2>
@@ -88,8 +165,9 @@ function RegistryPage() {
         <div>
           <h2 className="font-display text-2xl tracking-tight">Theory preregistrations</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            Planned obstruction and parent-theory search records in THEORY-SEARCH-v0.1.
-            These protocols have separate identities from numerical experiments; their recorded gates appear below.
+            Preregistered or planned obstruction and parent-theory programs in THEORY-SEARCH-v0.1.
+            Protocol status, each stage's progress, and all execution/support gates are displayed
+            separately. Theory registration does not establish a controlled statistical experiment.
           </p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
@@ -98,7 +176,9 @@ function RegistryPage() {
             const preregistrationGates = preregistration.gateState;
             return (
               <article key={preregistration.id} id={preregistration.id} className="min-w-0 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
-                <Badge tone="warn">{record.Status}</Badge>
+                <Badge tone={isPreregisteredStatus(record.Status) ? "steel" : "warn"}>
+                  {record.Status === "planned" ? "Frozen protocol on file · registry planned" : record.Status}
+                </Badge>
                 <h3 className="mt-3 font-display text-xl tracking-tight">{preregistration.id}</h3>
                 <p className="mt-2 text-sm leading-relaxed">{record.Name}</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -216,7 +296,17 @@ function RegistryPage() {
           <h2 className="font-display text-2xl tracking-tight">Recorded experiment eligibility</h2>
           <p className="mt-2 text-sm text-muted">Flags are copied verbatim from experiment_registry_v0.2.csv. Search never changes a gate.</p>
         </div>
-        <Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search experiment, dataset, claim, or status" aria-label="Search experiment registry" />
+        <div className="flex flex-wrap items-center gap-3">
+          <Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search experiment, dataset, claim, or status" aria-label="Search experiment registry" />
+          <label className="flex items-center gap-2 text-xs text-muted">
+            Lifecycle
+            <select aria-label="Filter experiment lifecycle" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
+              className="min-h-11 rounded-md border border-border bg-elevated px-3 text-sm text-fg">
+              <option value="all">All recorded experiments</option>
+              <option value="preregistered">Preregistered only</option>
+            </select>
+          </label>
+        </div>
         <div className="overflow-x-auto rounded-xl bg-surface shadow-[var(--shadow-border)]">
           <table className="w-full min-w-[800px] text-left text-sm">
             <thead className="text-muted">
@@ -228,7 +318,7 @@ function RegistryPage() {
               {rows.map((row) => (
                 <tr key={row.Qualified_Experiment_ID}>
                   <td className="px-4 py-3 font-mono text-xs">{row.Experiment_ID}</td>
-                  <td className="px-4 py-3"><Badge>{row.Status}</Badge></td>
+                  <td className="px-4 py-3"><Badge tone={isPreregisteredStatus(row.Status) ? "steel" : "warn"}>{row.Status}</Badge></td>
                   <td className="px-4 py-3 font-mono text-xs text-muted">{row.Dataset_ID}</td>
                   <td className="px-4 py-3 font-mono text-xs">{row.Controlled_Execution_Eligible}</td>
                   <td className="px-4 py-3 font-mono text-xs">{row.Controlled_Support_Eligible}</td>
