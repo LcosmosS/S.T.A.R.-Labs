@@ -461,7 +461,7 @@ jobs:
           assert obstruction["Qualified_Obstruction_ID"] == "THEORY-SEARCH-v0.1:M1-INH-E1"
           assert obstruction["Claim_ID"] == "CLAIM-ACSC-MECH-002"
           assert obstruction["Claim_ID"] in claim_ids
-          assert obstruction["Status"] == "planned"
+          assert obstruction["Status"] == "preregistered"
           assert obstruction["Substage_A"] == "planned"
           assert obstruction["Substage_B"] == "planned"
           assert obstruction["Substage_C"] == "planned"
