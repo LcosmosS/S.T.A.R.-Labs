@@ -11,6 +11,7 @@ def records(path):
         return list(reader.fieldnames or []), list(reader)
 
 def test_vizier_templates_preserve_pre_acquisition_design_and_operational_row_is_conservative():
+    """Keep intake templates unchanged and live ALFALFA eligibility disabled."""
     specs = [
         ("dataset_registry_v0.1.csv", "dataset_registry_row.template.csv"),
         ("data_provenance_registry_v0.1.csv", "data_provenance_registry_row.template.csv"),

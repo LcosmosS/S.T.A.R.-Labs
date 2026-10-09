@@ -115,6 +115,7 @@ def assert_operational_dataset_coverage(datasets, provenance, assets):
 
 
 def assert_controlled_input(experiment, dataset, provenance):
+    """Reject an execution-enabled experiment whose dataset is ineligible."""
     if truth(experiment.get('Controlled_Execution_Eligible', 'false')):
         assert controlled_input_eligible(dataset, provenance), (
             f'quarantined or unverified input cannot become controlled eligible: {experiment["Experiment_ID"]}'
@@ -229,6 +230,15 @@ def assert_crosswalk_snapshot(row, source):
     assert ids(row['Qualified_Registered_Experiment_Links'])==[f'{PDF_NS}:{eid}' for eid in source['registered_experiment_links']]
 
 def validate(repo, overlay=None):
+    """Validate audit identities, frozen assets, and operational eligibility.
+
+    Args:
+        repo: Repository root containing the registries and source records.
+        overlay: Optional root whose existing files override repository files.
+
+    Raises:
+        AssertionError: If an audit binding, snapshot, or eligibility rule fails.
+    """
     repo=Path(repo)
     def path(relative):
         candidate=Path(overlay)/relative if overlay else None

@@ -74,10 +74,12 @@ PR_LINKS = [
 
 
 def sha256_bytes(value: bytes) -> str:
+    """Return the hexadecimal SHA-256 digest of the supplied bytes."""
     return hashlib.sha256(value).hexdigest()
 
 
 def read_bytes(path: Path) -> bytes:
+    """Read file bytes, raising ValueError for an unhydrated Git LFS pointer."""
     value = path.read_bytes()
     if value.startswith(b"version https://git-lfs.github.com/spec/v1"):
         raise ValueError(f"{path.relative_to(ROOT)} is an unhydrated Git LFS pointer")
@@ -85,11 +87,13 @@ def read_bytes(path: Path) -> bytes:
 
 
 def digest(path: Path) -> tuple[str, int]:
+    """Return a file's SHA-256 digest and byte count, rejecting LFS pointers."""
     value = read_bytes(path)
     return sha256_bytes(value), len(value)
 
 
 def _fits_value(card: str):
+    """Parse a FITS value card as a scalar, or return None for a non-value card."""
     if card[8:10] != "= ":
         return None
     raw = card[10:].split("/", 1)[0].strip()
@@ -107,6 +111,15 @@ def _fits_value(card: str):
 
 
 def fits_hdus(path: Path) -> list[dict[str, object]]:
+    """Read FITS HDU headers while advancing over block-padded data sections.
+
+    Returns:
+        One keyword-to-value mapping for each HDU in file order.
+
+    Raises:
+        ValueError: If the file is an LFS pointer, a header is unterminated,
+            or an HDU extends beyond the file.
+    """
     data = read_bytes(path)
     offset = 0
     hdus: list[dict[str, object]] = []
@@ -145,10 +158,17 @@ def fits_hdus(path: Path) -> list[dict[str, object]]:
 
 
 def local_name(element: ET.Element) -> str:
+    """Return an XML element's tag name without its namespace prefix."""
     return element.tag.rsplit("}", 1)[-1]
 
 
 def parse_votable(path: Path) -> tuple[list[dict[str, str]], list[list[str]]]:
+    """Return VOTable FIELD attributes and stripped TABLEDATA cell strings.
+
+    Raises:
+        ValueError: If the file is an LFS pointer or a row's cell count differs
+            from the number of FIELD elements.
+    """
     root = ET.fromstring(read_bytes(path))
     fields = [dict(element.attrib) for element in root.iter() if local_name(element) == "FIELD"]
     rows = [
@@ -162,6 +182,11 @@ def parse_votable(path: Path) -> tuple[list[dict[str, str]], list[list[str]]]:
 
 
 def ra_degrees(value: str) -> float:
+    """Convert colon- or space-separated HMS to degrees in [0, 360).
+
+    Raises:
+        ValueError: If parsing fails or the resulting angle is out of range.
+    """
     h, m, s = (float(part) for part in value.replace(":", " ").split())
     result = 15.0 * (h + m / 60.0 + s / 3600.0)
     if not 0.0 <= result < 360.0:
@@ -170,6 +195,11 @@ def ra_degrees(value: str) -> float:
 
 
 def dec_degrees(value: str) -> float:
+    """Convert signed colon- or space-separated DMS to degrees in [-90, 90].
+
+    Raises:
+        ValueError: If numeric parsing fails or the resulting angle is invalid.
+    """
     parts = value.replace(":", " ").split()
     sign = -1.0 if parts[0].startswith("-") else 1.0
     d, m, s = abs(float(parts[0])), float(parts[1]), float(parts[2])
@@ -180,6 +210,10 @@ def dec_degrees(value: str) -> float:
 
 
 def csv_bytes(rows: list[tuple[str, float, float]]) -> bytes:
+    """Serialize source IDs and degree coordinates as UTF-8 CSV with a header.
+
+    Coordinates use eight decimal places and records use LF line endings.
+    """
     stream = io.StringIO(newline="")
     writer = csv.writer(stream, lineterminator="\n")
     writer.writerow(["source_id", "ra_deg", "dec_deg"])
@@ -189,6 +223,16 @@ def csv_bytes(rows: list[tuple[str, float, float]]) -> bytes:
 
 
 def analyze() -> tuple[dict[str, object], bytes, bytes]:
+    """Verify preserved sources and derive ALFALFA coordinates without writing.
+
+    Returns:
+        A tuple of source metadata, full coordinate CSV bytes, and deterministic
+        display-subset CSV bytes in source order.
+
+    Raises:
+        ValueError: If source identity, schema, lineage, identifiers, or
+            coordinate checks fail.
+    """
     pipe_sha, pipe_size = digest(PIPE_FITS)
     if (pipe_sha, pipe_size) != (EXPECTED["pipe_sha256"], EXPECTED["pipe_bytes"]):
         raise ValueError("Pipe3D bytes differ from the publisher-verified object")
@@ -325,6 +369,11 @@ def analyze() -> tuple[dict[str, object], bytes, bytes]:
 
 
 def build_manifest(info: dict[str, object]) -> dict[str, object]:
+    """Build the intake manifest from analysis and frozen acquisition records.
+
+    Execution and support eligibility remain false; ALFALFA web admission
+    remains pending independent review.
+    """
     request = json.loads(REQUEST.read_text(encoding="utf-8"))
     return {
         "schema_version": "star-observational-dataset-intake-v1",
@@ -395,6 +444,7 @@ def build_manifest(info: dict[str, object]) -> dict[str, object]:
 
 
 def check_candidate(manifest: dict[str, object]) -> None:
+    """Raise ValueError if the sky candidate's intake bindings or gates drift."""
     candidate = json.loads(CANDIDATE.read_text(encoding="utf-8"))
     if candidate.get("schemaVersion") != "star-sky-overlay-candidates-v1" or len(candidate.get("candidates", [])) != 1:
         raise ValueError("invalid sky-overlay candidate manifest")
@@ -421,7 +471,9 @@ def check_candidate(manifest: dict[str, object]) -> None:
 
 
 def verify_registry(manifest: dict[str, object]) -> None:
+    """Raise ValueError if source bindings or conservative registry states drift."""
     def rows(name: str) -> dict[str, dict[str, str]]:
+        """Read a canonical registry CSV into a mapping keyed by Dataset_ID."""
         with (ROOT / "registry" / name).open(encoding="utf-8", newline="") as stream:
             return {row["Dataset_ID"]: row for row in csv.DictReader(stream, strict=True)}
     datasets, provenance = rows("dataset_registry_v0.1.csv"), rows("data_provenance_registry_v0.1.csv")
@@ -445,6 +497,7 @@ def verify_registry(manifest: dict[str, object]) -> None:
 
 
 def markdown(manifest: dict[str, object]) -> str:
+    """Render source lineage, derivative hashes, and review gates as Markdown."""
     pipe = manifest["datasets"]["DATA-SFR-MANGA-PIP3D"]
     gema = manifest["datasets"]["DATA-COSMIC-ENV"]
     alf = manifest["datasets"]["DATA-VIZIER-ALFALFA100"]
@@ -472,6 +525,11 @@ def markdown(manifest: dict[str, object]) -> str:
 
 
 def main() -> int:
+    """Validate intake and print a report, returning zero on success.
+
+    With --refresh, rewrite deterministic derivatives and the intake manifest
+    before validating them. Validation errors propagate to the caller.
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("--refresh", action="store_true", help="rewrite deterministic derivatives and manifest")
     parser.add_argument("--format", choices=("text", "markdown"), default="text")

@@ -46,6 +46,7 @@ def test_hi_publisher_bytes_match_real_lfs_object_and_only_provenance_advances()
 
 
 def test_pipe3d_historical_gap_is_preserved_and_current_lfs_intake_advances_only_provenance():
+    """Preserve the historical Pipe3D gap while verifying current LFS provenance."""
     receipt = json.loads(RECEIPT.read_text(encoding="utf-8"))
     record = next(row for row in receipt["datasets"] if row["dataset_id"] == "DATA-SFR-MANGA-PIP3D")
     current = json.loads(CURRENT.read_text(encoding="utf-8"))["datasets"]["DATA-SFR-MANGA-PIP3D"]
@@ -70,6 +71,7 @@ def test_pipe3d_historical_gap_is_preserved_and_current_lfs_intake_advances_only
 
 
 def test_gema_current_lfs_intake_advances_only_provenance():
+    """Bind GEMA provenance to its LFS object without enabling scientific use."""
     current = json.loads(CURRENT.read_text(encoding="utf-8"))["datasets"]["DATA-COSMIC-ENV"]
     dataset = _rows("dataset_registry_v0.1.csv", "Dataset_ID")["DATA-COSMIC-ENV"]
     provenance = _rows("data_provenance_registry_v0.1.csv", "Dataset_ID")["DATA-COSMIC-ENV"]
