@@ -116,7 +116,7 @@ export function parsePublishedSkyReleases(manifest: unknown): PublishedSkyReleas
         p.slice(RELEASE_PATH.length).split("/").some(v => !v || v === "." || v === ".." || !/^[A-Za-z0-9_.-]+$/.test(v)))
       throw new Error("Unsafe CI release coordinate path");
     if (!["sdss_position", "hi_centroid", "optical_counterpart"].includes(r.coordinateRole as string) ||
-        !Number.isInteger(r.sourceRows) || (r.sourceRows as number) < 1 ||
+        typeof r.sourceRows !== "number" || !Number.isInteger(r.sourceRows) || r.sourceRows < 1 ||
         r.controlledSupportEligible === true || r.physicalSupportEligible === true)
       throw new Error("Unsupported sky release coordinate role, count or promotion");
     return r as PublishedSkyRelease;
