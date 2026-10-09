@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "fa1f46b61e30dc8419132af5a61106593fcfadb2e06538c00acd892ffae3093e",
+  "contentSha256": "e34d6497bcb597390a5a88ab723197797ad2254f20c75927c69d150d0826d2a1",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
@@ -81,18 +81,18 @@
     },
     {
       "path": "registry/experiment_registry_v0.2.csv",
-      "sha256": "b9cd6f6250d75b1795d5152628f52e21638721b12b862395036200bce7c9eeaf",
-      "sizeBytes": 12890
+      "sha256": "0778c3daa5db8f440307e6ce1af86cb6e14a074a05f24f2b5308f7a9355097fc",
+      "sizeBytes": 12995
     },
     {
       "path": "registry/null_registry_v0.1.csv",
-      "sha256": "60f1d98b15caa305c2495cd4971a64aaf0e551588f5bcf05ba6f52e39f61a049",
-      "sizeBytes": 4093
+      "sha256": "13f153bf024678494a50d43a2b719e7fd55be812605d0e94ba237ad74c43511b",
+      "sizeBytes": 4866
     },
     {
       "path": "registry/parameter_registry_v0.1.csv",
-      "sha256": "266f0bdb868260e2018d203ca4535585d41ba270313a7610cace5a6ab801f93c",
-      "sizeBytes": 5799
+      "sha256": "03654f59c761900a9c19278a3b0c00e00852a2c4e5f3d2f6d15cc37cf8194e44",
+      "sizeBytes": 6619
     },
     {
       "path": "registry/theory_candidate_registry_v0.1.csv",
@@ -586,7 +586,7 @@
       "Parameter_Set_ID": "PAR-MAP-003",
       "Null_ID": "NULL-MAP-003",
       "Mode": "controlled",
-      "Status": "planned",
+      "Status": "preregistered",
       "Historical_RandD": "yes",
       "Registry_Namespace": "REPO-CSV-v0.2",
       "Qualified_Experiment_ID": "REPO-CSV-v0.2:EXP-MAP-A03",
@@ -595,7 +595,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-MAP-A01",
       "Same_String_PDF_Definition": "Arithmetic Generator Controls",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
+      "Current_Audit_Assessment": "EXP-MAP-A03-prereg-v1 is scientifically preregistered as the repository-qualified BSD-independent MCJ arithmetic null test; source bytes, the deterministic 37,936-row analysis cohort, exact j mapping, k=10 endpoint, conductor-decile null, seed=4103, B=999, alpha=0.005, and output contract are locked. Controlled execution and all support promotion remain disabled pending a separate activation-only PR and successful activation preflight.",
       "Audit_Finding_IDs": "E-LCL-003;E-LCL-004;E-LCL-006;E-LCL-014;E-LCL-016",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",
