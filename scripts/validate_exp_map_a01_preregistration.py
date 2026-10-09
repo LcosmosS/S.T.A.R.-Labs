@@ -44,12 +44,6 @@ def main() -> int:
         raise SystemExit(
             f"unexpected data/ecdata gitlink: expected {EXPECTED_SUBMODULE}, got {gitlink}"
         )
-    submodule_head = _git(root / "data/ecdata", "rev-parse", "HEAD")
-    if submodule_head != EXPECTED_SUBMODULE:
-        raise SystemExit(
-            f"initialized ecdata HEAD mismatch: {submodule_head}"
-        )
-
     actual_source_hash = file_sha256(source)
     if actual_source_hash != EXPECTED_SOURCE_SHA256:
         raise SystemExit(

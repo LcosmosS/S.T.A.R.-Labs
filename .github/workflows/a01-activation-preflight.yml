@@ -23,8 +23,14 @@ jobs:
           persist-credentials: false
           submodules: false
           lfs: false
-      - name: Hydrate only the pinned arithmetic ecdata submodule
-        run: git submodule update --init data/ecdata
+      - name: Hydrate exact pinned arithmetic source bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p data/ecdata/allcurves
+          curl --fail --location --retry 3 --retry-all-errors \
+            --output data/ecdata/allcurves/allcurves.00000-09999 \
+            https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/allcurves/allcurves.00000-09999
       - uses: ./.github/actions/hydrate-audit
       - uses: actions/setup-python@v5
         with:
@@ -38,7 +44,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git -C data/ecdata rev-parse HEAD)" = "25cec5ecfec8b9f016eb1631ac633194c2bed39f"
+          test "$(git ls-tree HEAD data/ecdata | awk '{print $3}')" = "25cec5ecfec8b9f016eb1631ac633194c2bed39f"
           python - <<'PY'
           from pathlib import Path
           import hashlib

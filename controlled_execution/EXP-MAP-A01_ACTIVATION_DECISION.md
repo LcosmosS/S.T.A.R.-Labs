@@ -6,7 +6,7 @@ Exactly two operational booleans become true: `EXP-MAP-A01.Controlled_Execution_
 
 ## Mandatory proof of source identity and software readiness
 
-Merge ONLY if the dedicated Actions job fully succeeds: checkout `ecdata` at `25cec5ecfec8b9f016eb1631ac633194c2bed39f`; verify `allcurves.00000-09999` SHA-256 `259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968`, 64,687 source rows, 38,042 representative records through protocol/tests, audited registry and runner bindings, clean tree and actual `star-controlled-experiment preflight`.
+Merge ONLY if the dedicated Actions job fully succeeds: verify the repository `ecdata` gitlink is `25cec5ecfec8b9f016eb1631ac633194c2bed39f`; download `allcurves.00000-09999` from that exact upstream commit; verify SHA-256 `259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968`, 64,687 source rows, 38,042 representative records through protocol/tests, audited registry and runner bindings, clean tree and actual `star-controlled-experiment preflight`.
 
 The legacy frozen October audit remains immutable; its validator has a narrow explicit A01 activation exception. No historical status is rewritten, and support promotion is prohibited.
 
