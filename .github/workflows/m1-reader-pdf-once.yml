@@ -1,0 +1,55 @@
+name: M1 reader PDF one-shot
+
+on:
+  push:
+    branches:
+      - docs/m1-e1b-submission-invitation-20261009
+    paths:
+      - .github/workflows/m1-reader-pdf-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch without third-party actions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" repo
+
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends pandoc texlive-latex-base texlive-latex-extra
+
+      - name: Generate non-canonical reader PDF
+        working-directory: repo/release_packages/M1-INH-E1b-pre-review-v0.1
+        run: |
+          set -euo pipefail
+          echo "7505dd74c0e70d678787a86c850f1c193503b2419b4e6a8fb47a68c731b25de0  M1-INH-E1b_submission_bundle_v0.1.md" | sha256sum -c -
+          pandoc M1-INH-E1b_submission_bundle_v0.1.md \
+            -f markdown+tex_math_single_backslash \
+            --pdf-engine=pdflatex \
+            -V geometry:margin=0.85in \
+            -V fontsize=10pt \
+            -V colorlinks=true \
+            -V linkcolor=blue \
+            -V urlcolor=blue \
+            -o M1-INH-E1b_submission_bundle_v0.1_reader.pdf
+          test -s M1-INH-E1b_submission_bundle_v0.1_reader.pdf
+          echo "Reader PDF SHA-256 (informational only; NOT certificate-locked):"
+          sha256sum M1-INH-E1b_submission_bundle_v0.1_reader.pdf
+
+      - name: Commit PDF and remove one-shot workflow
+        working-directory: repo
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add release_packages/M1-INH-E1b-pre-review-v0.1/M1-INH-E1b_submission_bundle_v0.1_reader.pdf
+          git rm .github/workflows/m1-reader-pdf-once.yml
+          git commit -m "docs(M1): add optional Pandoc reader PDF outside certificate hashes"
+          git push origin "HEAD:$GITHUB_REF_NAME"
