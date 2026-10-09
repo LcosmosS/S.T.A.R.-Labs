@@ -19,6 +19,7 @@ import numpy as np
 import pandas as pd
 from scipy.spatial import cKDTree
 
+from src.control.registry import RegistrySnapshot, execution_gate_failures
 from src.data.cremona_ecdata import load_allcurves, representative_records
 from src.experiments.exp_map_a01 import SplitMix64, ProtocolViolation, _discriminant
 
@@ -203,24 +204,30 @@ def _require_new_output_targets(output_dir: Path) -> None:
 @contextmanager
 def _exclusive_output_streams(output_dir: Path):
     output_dir.mkdir(parents=True, exist_ok=True)
-    with ExitStack() as stack:
-        streams = {}
-        try:
-            for name in OUTPUT_FILENAMES:
-                streams[name] = stack.enter_context(
-                    (output_dir / name).open(
-                        "x",
-                        encoding="utf-8",
-                        newline="" if name.endswith(".csv") else None,
+    streams = {}
+    try:
+        with ExitStack() as stack:
+            try:
+                for name in OUTPUT_FILENAMES:
+                    streams[name] = stack.enter_context(
+                        (output_dir / name).open(
+                            "x",
+                            encoding="utf-8",
+                            newline="" if name.endswith(".csv") else None,
+                        )
                     )
-                )
-        except OSError as exc:
-            stack.close()
-            raise MCJProtocolError(
-                "output reservation failed before writing result data; "
-                "use a fresh output directory. Empty failed reservations may remain."
-            ) from exc
-        yield streams
+            except OSError as exc:
+                raise MCJProtocolError(
+                    "output reservation failed before writing result data; "
+                    "use a fresh output directory."
+                ) from exc
+            yield streams
+    except BaseException:
+        # ExitStack closes every stream, including on flush/close failures,
+        # before removing only the files this invocation reserved.
+        for name in streams:
+            (output_dir / name).unlink(missing_ok=True)
+        raise
 
 
 def c4_from_ainvariants(ainvs: tuple[int, int, int, int, int]) -> int:
@@ -412,6 +419,12 @@ def fixture_null_statistics(frame: pd.DataFrame, *, k: int = K, draws: int = 3, 
 
 def run_protocol(input_path: Path, output_dir: Path, config: dict) -> dict:
     _require_locked_config(config)
+    resolved = RegistrySnapshot.load(Path(__file__).resolve().parents[2]).resolve(
+        "EXP-MAP-A03"
+    )
+    failures = execution_gate_failures(resolved)
+    if failures:
+        raise MCJProtocolError("; ".join(failures))
     _require_new_output_targets(output_dir)
     frame, exclusions = load_locked_arithmetic(input_path, config)
     edges = mcj_neighbor_edges(frame, K)
