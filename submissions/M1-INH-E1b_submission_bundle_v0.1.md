@@ -52,9 +52,9 @@ Thus no open set in the second solution can be diffeomorphic (as an Einstein–d
 ## Canonical verifier identity and replication
 
 **Canonical source:** [m1_inh_e1b_metric_first_audit_v4.py](../preregistrations/M1-INH-E1/evidence/metric-first/m1_inh_e1b_metric_first_audit_v4.py) (Python 3; **SymPy 1.14.0**). **Expected exact file SHA-256:**  
-\`10ccfa264f475fd7bd6d490c80c8862a174730567ee51c0d759b87939b93e6bb\`.
+`10ccfa264f475fd7bd6d490c80c8862a174730567ee51c0d759b87939b93e6bb`.
 
-Run in a *disposable checkout* (the verifier writes a JSON certificate beside itself): \`sha256sum preregistrations/M1-INH-E1/evidence/metric-first/m1_inh_e1b_metric_first_audit_v4.py\`; then \`python preregistrations/M1-INH-E1/evidence/metric-first/m1_inh_e1b_metric_first_audit_v4.py\` after installing \`sympy==1.14.0\`. Compare the new output against the [preserved proof record](../preregistrations/M1-INH-E1/evidence/metric-first/M1-INH-E1b_metric_first_proof_record.md) and [certificate](../preregistrations/M1-INH-E1/evidence/metric-first/m1_inh_e1b_metric_first_audit_v4.json); do **not** call a rerun of the same code independent implementation.
+Run in a *disposable checkout* (the verifier writes a JSON certificate beside itself): `sha256sum preregistrations/M1-INH-E1/evidence/metric-first/m1_inh_e1b_metric_first_audit_v4.py`; then `python preregistrations/M1-INH-E1/evidence/metric-first/m1_inh_e1b_metric_first_audit_v4.py` after installing `sympy==1.14.0`. Compare the new output against the [preserved proof record](../preregistrations/M1-INH-E1/evidence/metric-first/M1-INH-E1b_metric_first_proof_record.md) and [certificate](../preregistrations/M1-INH-E1/evidence/metric-first/m1_inh_e1b_metric_first_audit_v4.json); do **not** call a rerun of the same code independent implementation.
 
 **Explicit non-claims:** This is **not** the general **M1-INH-E1a** Einstein-to-Weierstrass derivation or its independent acceptance; **not** a **M1-INH-E1c** test of sufficiency for any selected observable; **not** a terminal **P0-T001** failure or exhaustion of the five-parent P0 search frame; and **not** physical ACSC support, proof of BSD, a cosmological correspondence, or authorization to execute an experiment.
 
