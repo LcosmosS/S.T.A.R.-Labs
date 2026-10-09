@@ -6,7 +6,7 @@
 
 | Gate | Required evidence | Current repository state |
 |---|---|---|
-| G0 — preservation and governance | immutable audit history, quarantine instead of deletion, qualified namespaces, fail-closed validators | Audit/quarantine and review docket merged; the active GitHub ruleset still requires separate administrator attention because repository protections were observed disabled during integration |
+| G0 — preservation and governance | immutable audit history, quarantine instead of deletion, qualified namespaces, fail-closed validators | Audit/quarantine and review docket merged. GitHub ruleset `Non-negotiable` (ID `15259335`) was active when rechecked after integration, but it does not require a pull request, independent approval or named status checks and permits always-on administrator/integration bypass; final independent review therefore remains a Charter gate outside current GitHub enforcement |
 | G1 — immutable source identity | publisher/release identity, exact source bytes, SHA-256, schema/row count, license/use terms | `DATA-ARITHMETIC` remains verified; `DATA-MANGA-HI-ALL` is now publisher-byte verified; Pipe3D publisher bytes match local recoveries but are not repository-preserved |
 | G2 — prospective protocol | claim/dataset/parameter/null IDs, endpoint, exclusions, seed, alpha and failure rules locked before testing | A01 is preregistered; A03 has a candidate protocol and test-only implementation; astronomical match and leakage protocols remain blocked drafts |
 | G3 — canonical lifecycle transition | reviewed registry migration with exact code/config/spec hashes | A01 complete; A03 and astronomical candidates are not transitioned |
@@ -16,7 +16,7 @@
 | G7 — cross-dataset prediction | independent survey or independently constructed sample and meaningful held-out utility | not established |
 | G8 — physical interpretation | empirical correspondence independently established and known constraints satisfied | not open |
 
-The merge order used preservation and design before execution: PRs #69, #70, #63, #62, #65, #66, #68 and #71. PR #64 is intentionally excluded from this merge set because an outside independent review is its final activation gate.
+The merge order used preservation and design before execution: PRs #69, #70, #63, #62, #65, #66, #68, #71 and provenance-only PR #74. PR #64 is intentionally excluded from this merge set because an outside independent review is its final activation gate.
 
 ## Verified lineage outcomes
 
