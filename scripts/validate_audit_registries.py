@@ -5,6 +5,7 @@ import argparse, csv, hashlib, json
 PDF_NS='STAR-PDF-v0.2'
 REPO_NS='REPO-CSV-v0.2'
 FIND_NS='STAR-AUDIT-2026-10-03'
+A03_LOCKED_ASSESSMENT="EXP-MAP-A03-prereg-v1 is scientifically preregistered as the repository-qualified BSD-independent MCJ arithmetic null test; source bytes, the deterministic 37,936-row analysis cohort, exact j mapping, k=10 endpoint, conductor-decile null, seed=4103, B=999, alpha=0.005, and output contract are locked. Controlled execution and all support promotion remain disabled pending a separate activation-only PR and successful activation preflight."
 
 def read_rows(path):
     with path.open(encoding='utf-8-sig', newline='') as stream:
@@ -64,24 +65,37 @@ def assert_original_control_snapshot(name, snapshot, current):
     for original in snapshot['rows']:
         row = current_map[key(original)]
 
-        # Historical audit snapshots remain immutable. The operational
-        # experiment registry may make one explicit reviewed lifecycle
-        # transition for EXP-MAP-A01: Status planned -> preregistered.
-        allowed_transition = (
+        # Historical audit snapshots remain immutable. Operational lifecycle
+        # transitions are narrow, experiment-specific exceptions.
+        allowed_a01 = (
             name == 'experiment_registry_v0.2.csv'
             and original.get('Experiment_ID') == 'EXP-MAP-A01'
             and original.get('Status') == 'planned'
             and row.get('Status') == 'preregistered'
         )
-        protected = [
-            field for field in snapshot['fields']
-            if not (allowed_transition and field == 'Status')
-        ]
+        allowed_a03 = (
+            name == 'experiment_registry_v0.2.csv'
+            and original.get('Experiment_ID') == 'EXP-MAP-A03'
+            and original.get('Status') == 'planned'
+            and row.get('Status') == 'preregistered'
+            and row.get('Current_Audit_Assessment') == A03_LOCKED_ASSESSMENT
+            and row.get('Controlled_Execution_Eligible') == 'false'
+            and row.get('Controlled_Support_Eligible') == 'false'
+            and row.get('Physical_Support_Eligible') == 'false'
+        )
+        mutable = {'Status'} if allowed_a01 else (
+            {'Status', 'Current_Audit_Assessment'} if allowed_a03 else set()
+        )
+        protected = [field for field in snapshot['fields'] if field not in mutable]
         assert all(row[field] == original[field] for field in protected), (
             f'original controlled ID/definition changed: {name}'
         )
         if name == 'experiment_registry_v0.2.csv' and original.get('Experiment_ID') == 'EXP-MAP-A01':
-            assert allowed_transition, 'EXP-MAP-A01 audit transition must be explicit planned -> preregistered'
+            assert allowed_a01, 'EXP-MAP-A01 audit transition must be explicit planned -> preregistered'
+        if name == 'experiment_registry_v0.2.csv' and original.get('Experiment_ID') == 'EXP-MAP-A03':
+            assert allowed_a03 or row == original, (
+                'EXP-MAP-A03 may change only planned -> preregistered plus the exact locked assessment'
+            )
 
     extra_keys = set(current_map) - original_keys
     if name != 'claim_evidence_v0.2.csv':
@@ -265,7 +279,7 @@ def validate(repo, overlay=None):
         assert row['Relationship']=='diagnostic_context_only_not_dataset_identity'
         assert row['Accepted_Quarantine_Input_Bindings']=='' and not truth(row['Canonical_Source_Identity_Verified'])
         assert set(ids(row['Related_Quarantine_Bindings'])).issubset(asset_ids)
-    print('Validated 51 claims, 25 definitions, 51 crosswalk records, 7 audit-frozen planned scopes, 1 locked preregistered arithmetic scope and 37 quarantined artifacts; no support promotion.')
+    print('Validated 51 claims, 25 definitions, 51 crosswalk records, audit-frozen planned scopes, 2 locked preregistered arithmetic scopes and 37 quarantined artifacts; no support promotion.')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(); parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[1]); parser.add_argument('--overlay',type=Path)

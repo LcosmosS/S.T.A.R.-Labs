@@ -72,7 +72,7 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
     config = config if config is not None else load_json(root, CONFIG)
     require(ledger["schema_version"] == "candidate-preregistration-ledger-v0.1", "Wrong candidate schema")
     require(ledger["governing_charter"] == "charter/STAR_Research_Charter_v0-2.pdf", "Wrong charter")
-    require(config["schema_version"] == "prospective-prereg-v1", "Wrong protocol schema")
+    require(config["schema_version"] == "1.0" and config["protocol_version"] == "EXP-MAP-A03-prereg-v1", "Wrong protocol schema")
     require(config["experiment_id"] == "EXP-MAP-A03", "Wrong experiment")
     require(config["scientific_scope"].endswith("NO cosmological data or physical support"),
             "Arithmetic-only scope must be explicit")
@@ -80,7 +80,9 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
             "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968",
             "Arithmetic source bytes not pinned")
     require(config["input"]["source_rows"] == 64687 and
-            config["input"]["isogeny_representatives"] == 38042, "Incorrect arithmetic cohort")
+            config["input"]["representative_rows"] == 38042 and
+            config["input"]["j_zero_exclusions"] == 106 and
+            config["input"]["analysis_rows"] == 37936, "Incorrect arithmetic cohort")
     a01_manifest = load_json(root, "preregistrations/EXP-MAP-A01/dataset_manifest.json")
     require(config["input"]["source_sha256"] == a01_manifest["artifact"]["sha256"], "A01 source mismatch")
     require(config["input"]["source_gitlink"] == a01_manifest["source"]["git_commit"],
@@ -90,9 +92,11 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
             "Rank contamination in arithmetic embedding")
     require(config["null"]["realizations"] == 999 and config["null"]["seed"] == 4103 and
             config["null"]["rerolls"] is False and
-            config["null"]["algorithm"] == "splitmix64-fisher-yates-v1", "Unfrozen null")
+            config["null"]["algorithm"] == "splitmix64-fisher-yates-v1" and
+            config["null"]["strata"] == 10, "Unfrozen null")
     require(config["endpoint"]["statistic"] ==
             "T_obs = - mean_over_edges(abs(rank_i-rank_j))" and
+            config["endpoint"]["k"] == 10 and
             config["inference"]["alpha"] == 0.005 and
             config["inference"]["primary_endpoint_count"] == 1, "Endpoint or threshold changed")
     require(config["mapping"]["j_zero_policy"].startswith("exclude_before_graph_and_before_rank_use"),
@@ -117,8 +121,14 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
         exp_id = candidate["experiment_id"]
         require(exp_id in experiments, "Experiment missing from canonical registry")
         canonical = experiments[exp_id]
-        require(candidate["canonical_status"] == canonical["Status"] == "planned",
-                "Canonical lifecycle promoted without review")
+        if exp_id == "EXP-MAP-A03":
+            require(canonical["Status"] == "preregistered",
+                    "A03 canonical lifecycle must be preregistered")
+            require(candidate["canonical_status"] in {"planned", "preregistered"},
+                    "A03 ledger status must be transition-lag planned or preregistered")
+        else:
+            require(candidate["canonical_status"] == canonical["Status"] == "planned",
+                    "Canonical lifecycle promoted without review")
         for name,key,lookup in [("qualified_experiment_id","Qualified_Experiment_ID",None),
                                 ("dataset_id","Dataset_ID",datasets),
                                 ("parameter_set_id","Parameter_Set_ID",params),
@@ -139,12 +149,17 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
         require((root / candidate["protocol"]).is_file(), "Missing review protocol")
         if exp_id == "EXP-MAP-A03":
             require(candidate["config"] == CONFIG, "Config does not match reviewed file")
-            require(candidate["design_status"] == "prospective_protocol_locked_pending_canonical_transition",
-                    "Protocol review status changed without approval")
-            require(params[candidate["parameter_set_id"]]["Preregistration_Status"] ==
-                    "not_preregistered" and
-                    nulls[candidate["null_id"]]["Preregistration_Status"] ==
-                    "not_preregistered", "Canonical transition cannot occur silently")
+            require(params[candidate["parameter_set_id"]]["Preregistration_Status"] in {"preregistered", "locked"} and
+                    nulls[candidate["null_id"]]["Preregistration_Status"] in {"preregistered", "locked"},
+                    "A03 parameter/null records must be frozen")
+            if candidate["canonical_status"] == "planned":
+                require(candidate["design_status"] == "prospective_protocol_locked_pending_canonical_transition",
+                        "A03 transition-lag design status changed before post-merge ledger update")
+            else:
+                require(candidate["design_status"] == "preregistered_protocol_locked_execution_disabled",
+                        "A03 post-merge ledger must record preregistered protocol lock")
+                require(candidate["next_gate"] == "activation-only PR after clean preflight; no protocol modifications",
+                        "A03 post-merge next gate is not activation-only")
         else:
             require(candidate["design_status"].startswith("design_only_blocked_"),
                     "Unbound experiment incorrectly marked locked")
