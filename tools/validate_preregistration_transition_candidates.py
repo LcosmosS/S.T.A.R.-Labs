@@ -99,9 +99,12 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
             "Undefined j=0 cannot be handled after checking ranks")
     require(config["outputs"] == ["summary.json","observed_mcj_projection.csv",
                                   "null_statistics.csv","exclusions_j_zero.csv"], "Output contract modified")
-    require(all(v is False for k,v in config["controls"].items()
-                if k in {"controlled_execution_eligible","controlled_support_eligible",
-                         "physical_support_eligible"}), "Execution/support promotion prohibited")
+    controls = config["controls"]
+    require(all(controls.get(k) is False for k in (
+                "controlled_execution_eligible", "controlled_support_eligible",
+                "physical_support_eligible")) and
+            controls.get("no_run_without_separate_activation") is True,
+            "Execution/support promotion prohibited")
     experiments = load_csv(root, "registry/experiment_registry_v0.2.csv", "Experiment_ID")
     params = load_csv(root, "registry/parameter_registry_v0.1.csv", "Parameter_Set_ID")
     nulls = load_csv(root, "registry/null_registry_v0.1.csv", "Null_ID")

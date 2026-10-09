@@ -50,6 +50,33 @@ def test_reject_changed_source_digest():
     with pytest.raises(PreregistrationReviewError, match="Arithmetic source bytes"):
         validate(ledger=ledger, config=cfg)
 
+@pytest.mark.parametrize("key", [
+    "controlled_execution_eligible",
+    "controlled_support_eligible",
+    "physical_support_eligible",
+])
+def test_reject_missing_or_enabled_eligibility_control(key):
+    ledger, cfg = _fixture()
+    del cfg["controls"][key]
+    with pytest.raises(PreregistrationReviewError, match="Execution/support promotion"):
+        validate(ledger=ledger, config=cfg)
+
+    ledger, cfg = _fixture()
+    cfg["controls"][key] = True
+    with pytest.raises(PreregistrationReviewError, match="Execution/support promotion"):
+        validate(ledger=ledger, config=cfg)
+
+def test_reject_missing_or_disabled_separate_activation_gate():
+    ledger, cfg = _fixture()
+    del cfg["controls"]["no_run_without_separate_activation"]
+    with pytest.raises(PreregistrationReviewError, match="Execution/support promotion"):
+        validate(ledger=ledger, config=cfg)
+
+    ledger, cfg = _fixture()
+    cfg["controls"]["no_run_without_separate_activation"] = False
+    with pytest.raises(PreregistrationReviewError, match="Execution/support promotion"):
+        validate(ledger=ledger, config=cfg)
+
 def _a01_rows():
     exp = load_csv(ROOT, "registry/experiment_registry_v0.2.csv", "Experiment_ID")
     datasets = load_csv(ROOT, "registry/dataset_registry_v0.1.csv", "Dataset_ID")
