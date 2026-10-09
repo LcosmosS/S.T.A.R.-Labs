@@ -473,3 +473,16 @@ The **Research Charter** is the authoritative reference for the repository's cur
 When README descriptions, historical documents, exploratory notebooks, or older results differ from the charter, the charter governs the interpretation of controlled research.
 
 
+
+
+---
+
+## Charter-governed status and publication of negative evidence (2026-10-08)
+
+**Authoritative document:** [STAR Research Charter v0.2 — full PDF](charter/STAR_Research_Charter_v0-2.pdf). The shorter [Markdown digest](charter/RESEARCH_CHARTER_v0.2.md) does not supersede the detailed PDF.
+
+**Historical interpretation:** [Claim-status and implementation corrections](docs/registries/CHARTER_EPISTEMIC_CORRECTIONS_v0.1.md) annotate \`OVERVIEW.md\`, \`2_STARMAP.md\`, \`3_SMAT.md\` and \`4_SFT.md\`. Those documents are retained as historical proposals; unsupported declarations about cosmic determinism, Hubble-tension resolution, physical entropy fields or mission-ready software are **not** project-verified conclusions.
+
+**Publishable failures:** [Negative results, obstructions and mechanism retirement protocol](docs/registries/NEGATIVE_RESULTS_PUBLICATION_PROTOCOL_v0.1.md) defines eligible negative/null outcomes, invalid or inconclusive gate failures, independent review, complete preservation and the narrow conclusions permitted for A01, M1-INH-E1 and P0-SF-v0.1.
+
+The Charter's canonical D/E/M/P/H/C/T/S categories are distinct from software readiness and from the evidence-stage tags \`proposed\`, \`derived\`, \`symbolically verified\`, \`independently proved\`, \`preregistered\`, \`controlled-executed\`, \`independently reproduced\`, and \`physically supported\`. None of these documentation changes modifies frozen experiments or eligibility flags.
