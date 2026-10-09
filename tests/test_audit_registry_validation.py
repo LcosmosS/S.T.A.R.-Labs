@@ -5,6 +5,8 @@ from scripts.validate_audit_registries import (
     assert_controlled_input, assert_namespace_identity,
     assert_no_support_promotion, controlled_input_eligible,
     assert_crosswalk_snapshot, assert_original_control_snapshot,
+    assert_dataset_lifecycle, assert_operational_dataset_coverage,
+    has_recorded_sha256,
 )
 
 def test_quarantined_valid_hash_is_ineligible_even_when_planned_protocol_references_it():
@@ -146,3 +148,91 @@ def test_audit_baseline_rejects_mutation_of_original_claim_when_new_claim_exists
             snapshot,
             [mutated, added],
         )
+
+
+def _candidate_rows(dataset_id="DATA-NEW", *, source="verified",
+                    evidence="unknown", execution="false", integrity=None):
+    dataset = {
+        "Dataset_ID": dataset_id, "Status": "planned",
+        "Provenance_Status": source, "Achieved_Evidence_Status": evidence,
+        "Controlled_Execution_Eligible": execution,
+        "Controlled_Support_Eligible": "false",
+        "Physical_Support_Eligible": "false",
+    }
+    provenance = {
+        "Dataset_ID": dataset_id, "Provenance_Status": source,
+        "Evidence_Status": evidence,
+        "Integrity_Check": integrity if integrity is not None else (
+            "SHA256=" + "a" * 64 if source == "verified" else ""
+        ),
+    }
+    return dataset, provenance
+
+
+def test_nonquarantined_dataset_addition_has_no_historical_row_ceiling():
+    old, old_prov = _candidate_rows("DATA-OLD", source="unknown")
+    new, new_prov = _candidate_rows("DATA-NEW")
+    d, p, nonquarantined = assert_operational_dataset_coverage(
+        [old, new], [old_prov, new_prov], []
+    )
+    assert set(d) == set(p) == nonquarantined == {"DATA-OLD", "DATA-NEW"}
+
+
+def test_new_publisher_verified_dataset_is_not_automatically_executable():
+    dataset, provenance = _candidate_rows()
+    assert_dataset_lifecycle(dataset, provenance)
+    assert not controlled_input_eligible(dataset, provenance)
+
+
+@pytest.mark.parametrize("evidence", ["unknown", "historical", "negative_null"])
+def test_verified_source_without_controlled_evidence_rejects_execution(evidence):
+    dataset, provenance = _candidate_rows(
+        evidence=evidence, execution="true"
+    )
+    with pytest.raises(AssertionError, match="controlled execution requires"):
+        assert_dataset_lifecycle(dataset, provenance)
+
+
+@pytest.mark.parametrize("integrity", ["", "SHA256=" + "0" * 64, "not-a-digest"])
+def test_verified_source_requires_nonplaceholder_sha256(integrity):
+    dataset, provenance = _candidate_rows(integrity=integrity)
+    assert not has_recorded_sha256(provenance)
+    with pytest.raises(AssertionError, match="requires recorded SHA-256"):
+        assert_dataset_lifecycle(dataset, provenance)
+
+
+@pytest.mark.parametrize("evidence", ["controlled", "derived"])
+def test_execution_flag_is_eligible_only_with_verified_evidence_and_sha(evidence):
+    dataset, provenance = _candidate_rows(evidence=evidence, execution="true")
+    assert controlled_input_eligible(dataset, provenance)
+    assert_dataset_lifecycle(dataset, provenance)
+
+
+@pytest.mark.parametrize("flag", ["Controlled_Support_Eligible", "Physical_Support_Eligible"])
+def test_unverified_dataset_cannot_promote_support(flag):
+    dataset, provenance = _candidate_rows(source="unknown")
+    dataset[flag] = "true"
+    with pytest.raises(AssertionError, match="requires executable verified"):
+        assert_dataset_lifecycle(dataset, provenance)
+
+
+def test_reject_unmatched_or_duplicate_provenance_and_quarantine():
+    dataset, provenance = _candidate_rows()
+    with pytest.raises(AssertionError, match="missing/orphan provenance"):
+        assert_operational_dataset_coverage([dataset], [], [])
+    with pytest.raises(AssertionError, match="duplicate provenance"):
+        assert_operational_dataset_coverage([dataset], [provenance, provenance], [])
+    with pytest.raises(AssertionError, match="quarantine registry/asset mismatch"):
+        assert_operational_dataset_coverage(
+            [dataset], [provenance],
+            [{"qualified_dataset_id": "AUDIT-QUARANTINE-v0.3:QDATA-001"}],
+        )
+
+
+def test_historical_quarantine_status_never_grants_execution():
+    dataset, provenance = _candidate_rows(
+        "AUDIT-QUARANTINE-v0.3:QDATA-001",
+        source="quarantined", evidence="negative_null", execution="true",
+    )
+    dataset["Status"] = "quarantined"
+    assert not controlled_input_eligible(dataset, provenance)
