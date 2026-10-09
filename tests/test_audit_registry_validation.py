@@ -169,6 +169,14 @@ def _candidate_rows(dataset_id="DATA-NEW", *, source="verified",
     return dataset, provenance
 
 
+def test_source_sha256_receipt_from_vizier_is_recognized():
+    dataset, provenance = _candidate_rows(
+        integrity="source_SHA256=" + "6" * 64 + "; size_bytes=10981088"
+    )
+    assert has_recorded_sha256(provenance)
+    assert_dataset_lifecycle(dataset, provenance)
+
+
 def test_nonquarantined_dataset_addition_has_no_historical_row_ceiling():
     old, old_prov = _candidate_rows("DATA-OLD", source="unknown")
     new, new_prov = _candidate_rows("DATA-NEW")
