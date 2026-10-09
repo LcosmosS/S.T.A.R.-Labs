@@ -8,7 +8,7 @@ on:
       - .github/workflows/m1-reader-pdf-once.yml
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   generate:
@@ -43,13 +43,11 @@ jobs:
           echo "Reader PDF SHA-256 (informational only; NOT certificate-locked):"
           sha256sum M1-INH-E1b_submission_bundle_v0.1_reader.pdf
 
-      - name: Commit PDF and remove one-shot workflow
-        working-directory: repo
+      - name: Emit reader PDF for repository-side import
+        working-directory: repo/release_packages/M1-INH-E1b-pre-review-v0.1
         run: |
           set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add release_packages/M1-INH-E1b-pre-review-v0.1/M1-INH-E1b_submission_bundle_v0.1_reader.pdf
-          git rm .github/workflows/m1-reader-pdf-once.yml
-          git commit -m "docs(M1): add optional Pandoc reader PDF outside certificate hashes"
-          git push origin "HEAD:$GITHUB_REF_NAME"
+          echo "PDF_BASE64_BEGIN"
+          base64 -w 12000 M1-INH-E1b_submission_bundle_v0.1_reader.pdf
+          echo
+          echo "PDF_BASE64_END"
