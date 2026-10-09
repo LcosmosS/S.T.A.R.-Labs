@@ -203,7 +203,10 @@ def validate(repo, overlay=None):
         assert_original_control_snapshot(name, snapshot, rows(name))
     datasets=rows('dataset_registry_v0.1.csv'); provenance=rows('data_provenance_registry_v0.1.csv'); assets=rows('audit_quarantine_dataset_status_v0.3.csv')
     ds_map={r['Dataset_ID']:r for r in datasets}; prov_map={r['Dataset_ID']:r for r in provenance}
-    assert len(ds_map)==len(datasets)==len(prov_map)==len(provenance)==45
+    # Historical audit: 37 quarantined + 8 original canonical entries.
+    # PR #84 adds precisely one candidate (ALFALFA), not an unrestricted
+    # extension of the operational dataset namespace.
+    assert len(ds_map)==len(datasets)==len(prov_map)==len(provenance)==46
     assert set(ds_map)==set(prov_map)
     assert len(provenance[0])==21
     assert_no_support_promotion(datasets+assets,'dataset or quarantined asset')
@@ -220,7 +223,7 @@ def validate(repo, overlay=None):
         assert quarantine.is_file() and hashlib.sha256(quarantine.read_bytes()).hexdigest()==asset['quarantine_sha256']
         assert not controlled_input_eligible(dataset,prov)
     original_ids=set(ds_map)-{r['qualified_dataset_id'] for r in assets}
-    assert len(original_ids)==8
+    assert len(original_ids)==9
 
     # The October 3 audit rows remain immutable historical snapshots, but a
     # later reviewed remediation may advance an operational DATA-* record.
@@ -265,7 +268,29 @@ def validate(repo, overlay=None):
     assert hi_record['comparison']['publisher_equals_repository_lfs'] is True
     assert not controlled_input_eligible(hi_dataset,hi_provenance)
 
-    for did in original_ids-{remediated_id,hi_id}:
+    # Source-only promotions from PR #84 must be bound to the exact
+    # repository receipt and must not imply experiment or release admission.
+    intake=load('data/provenance/observational_dataset_intake_2026-10-09.json')
+    assert intake['schema_version']=='star-observational-dataset-intake-v1'
+    verified_sources={
+        'DATA-SFR-MANGA-PIP3D': 'ac714809044c02dcb2cc8b5007d02981d9316c34dc398a79f4c07bde4d3496fc',
+        'DATA-COSMIC-ENV': '244e9286f225b9e1dbef73bb93e1101d840a2a62ec5dabf3aa16ec88cfef1597',
+        'DATA-VIZIER-ALFALFA100': '654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079',
+    }
+    for did, sha in verified_sources.items():
+        assert did in original_ids, f'candidate not in canonical dataset registry: {did}'
+        dataset=ds_map[did]; prov=prov_map[did]
+        source=intake['datasets'][did]
+        assert source.get('sha256',source.get('source_sha256'))==sha, f'publisher receipt drift: {did}'
+        assert dataset['Status']=='planned', f'unreviewed dataset activation: {did}'
+        assert dataset['Provenance_Status']==prov['Provenance_Status']=='verified', f'publisher provenance drift: {did}'
+        assert dataset['Achieved_Evidence_Status']==prov['Evidence_Status']=='unknown', f'evidence promotion: {did}'
+        for flag in ('Controlled_Execution_Eligible','Controlled_Support_Eligible','Physical_Support_Eligible'):
+            assert not truth(dataset[flag]), f'candidate eligibility promotion: {did}/{flag}'
+        assert sha in prov['Integrity_Check'], f'publisher SHA missing from lineage: {did}'
+        assert not controlled_input_eligible(dataset,prov)
+
+    for did in original_ids-{remediated_id,hi_id,*verified_sources}:
         assert ds_map[did]['Status']=='planned' and prov_map[did]['Provenance_Status']=='unknown' and prov_map[did]['Evidence_Status']=='unknown'
         assert not controlled_input_eligible(ds_map[did],prov_map[did])
     controlled=rows('experiment_registry_v0.2.csv')
@@ -274,7 +299,12 @@ def validate(repo, overlay=None):
         assert_controlled_input(experiment,ds_map[experiment['Dataset_ID']],prov_map[experiment['Dataset_ID']])
     bindings=rows('dataset_audit_bindings_v0.3.csv')
     asset_ids={r['binding_id'] for r in assets}
-    assert {r['Dataset_ID'] for r in bindings}==original_ids
+    audited_ids={r['Dataset_ID'] for r in bindings}
+    assert len(audited_ids)==8
+    # New canonical registrations cannot silently masquerade as October 3
+    # historical bindings; this exact sole addition remains review-gated.
+    assert original_ids-audited_ids=={'DATA-VIZIER-ALFALFA100'}
+    assert audited_ids.issubset(original_ids)
     for row in bindings:
         assert row['Relationship']=='diagnostic_context_only_not_dataset_identity'
         assert row['Accepted_Quarantine_Input_Bindings']=='' and not truth(row['Canonical_Source_Identity_Verified'])
