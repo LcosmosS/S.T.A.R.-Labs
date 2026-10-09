@@ -1,23 +1,28 @@
-# M1-INH-E1 — proposed preregistration lifecycle recognition (2026-10-09)
+# M1-INH-E1 — website display of frozen protocol versus formal status (2026-10-09)
 
-**Authority:** `charter/STAR_Research_Charter_v0-2.pdf`. **Namespace:** `THEORY-SEARCH-v0.1`. **Claim:** `CLAIM-ACSC-MECH-002`.
+**Governing charter:** `charter/STAR_Research_Charter_v0-2.pdf`.
+**Formal source of record:** `registry/theory_obstruction_registry_v0.1.csv` (`THEORY-SEARCH-v0.1:M1-INH-E1`).
+**Frozen protocol:** `preregistrations/M1-INH-E1/protocol.md`.
 
-## Exact, limited transition
+## Why two labels must remain visible
 
-The frozen original `preregistrations/M1-INH-E1/protocol.md` was filed with the obstruction program in `planned` status and already defines the precise Szekeres–Szafron sector, the complete elliptic-evolution record `𝔈`, invariant/branch conventions, and E1a/E1b/E1c stopping and interpretation rules. Its mathematical protocol bytes and recorded SHA-256 remain **untouched**; the original `Status: planned` header is historical rather than silently rewritten.
+M1-INH-E1 has a fully defined **frozen preregistration protocol on file** specifying the Szekeres–Szafron class, its complete elliptic-evolution record and branches, E1a–E1c obligations, limitations and failure rules. Its governing header and formal registry both still say **`planned`**. The independent mathematical review docket at `research/gates/P0_M1_INDEPENDENT_REVIEW.md` explicitly directs that M1 must not be advanced from `planned` pending external mathematical replication.
 
-This prospective registry maintenance PR proposes only:
+Therefore the web tool must display **both**:
 
-- `registry/theory_obstruction_registry_v0.1.csv: M1-INH-E1.Status`: `planned` → `preregistered` (recognition of the protocol already frozen on file).
-- All three substage statuses (`Substage_A/B/C`) remain `planned`, reflecting no independently authorized completed or audited stage.
-- `Controlled_Execution_Eligible`, `Controlled_Support_Eligible`, `Physical_Support_Eligible` and `Universal_NoGo_Claim` remain `false`.
-- No changes to `P0-SF-v0.1`, the five closed-search candidates, crosswalks, arithmetic preregistrations, experimental data, publisher bytes, null models or astronomy/ALADIN admission.
-- The read-only web snapshot must show the current registry status, separately from any protocol's historical governance heading or claims of result completion.
+- **Protocol on file:** frozen/preregistered design document exists and has a SHA-256 bound to the read-only registry website snapshot.
+- **Formal registry lifecycle:** `planned` (no approved preregistration-status promotion, no execution or reviewed theorem). E1a, E1b, E1c are independently still `planned` in the canonical registry.
 
-**This PR is a proposed lifecycle correction, not retrospective execution authorization.** The independent reviewer must confirm that the existing unchanged frozen protocol qualifies for the label `preregistered`; if not, the correct disposition is to retain `planned` until a separately approved registration transition. Mathematical derivation packages and constructive witness proposals remain review submissions rather than automatically established theorems.
+This preserves the user's distinction between having a registered, frozen scientific design and having obtained an independently authorized lifecycle transition. `Mode=controlled` for numerical studies denotes a proposed methodology, not a completed controlled experiment. M1 is a theory obstruction program, **not** an entry in the controlled numerical experiment registry.
 
-## Aladin data release boundary
+## Automatic display and controls
 
-`web_tool/content/sky-overlay-releases.v1.json` continues to contain zero admitted dataset scopes. Successful source integrity/publisher provenance CI (including Pipe3D, GEMA or corrected ALFALFA) does not independently authenticate a human review. A future display-only approval needs an exact hash-bound derivative, positional-role/selection evidence, and an accountable off-author review receipt; only a subsequent reviewed PR may modify the release manifest. This change does not admit a sky release.
+The website discovers all formally `preregistered` and `preregistered_*` records from both controlled-experiment and theory-program registries, instead of maintaining a manual allowlist. The M1 protocol is additionally shown in a **frozen-protocol-on-file / registry-planned** section because it has a committed protocol path but is not formally promoted. No canonical registry or frozen protocol bytes are modified by this display PR.
 
-See the [versioned dataset candidate](../../web_tool/content/sky-overlay-candidates.v1.json), the [CI admission contract](../../web_tool/content/CI_FROZEN_SKY_RELEASE_GATE.md), and the [M1 frozen protocol](../../preregistrations/M1-INH-E1/protocol.md).
+No controlled execution, controlled support, physical support, theorem acceptance, astronomical matching, or ALADIN Lite release is activated.
+
+## ALADIN Lite
+
+As of this review, `web_tool/content/sky-overlay-releases.v1.json` contains `sources: []`. The corrected ALFALFA display extract is a hash-bound candidate with `approvalStatus=pending_independent_review`; publisher/integrity checks and the CI sky gate cannot independently authenticate the scientific reviewer. An off-author, exact-hash review receipt and a separate, approved release-manifest transition are required before ALADIN can offer real observational coordinates.
+
+Related records: `web_tool/content/CI_FROZEN_SKY_RELEASE_GATE.md`, `web_tool/content/sky-overlay-candidates.v1.json`, `research/gates/P0_M1_INDEPENDENT_REVIEW.md`.
