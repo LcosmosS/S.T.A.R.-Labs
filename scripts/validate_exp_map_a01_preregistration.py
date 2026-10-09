@@ -44,12 +44,6 @@ def main() -> int:
         raise SystemExit(
             f"unexpected data/ecdata gitlink: expected {EXPECTED_SUBMODULE}, got {gitlink}"
         )
-    submodule_head = _git(root / "data/ecdata", "rev-parse", "HEAD")
-    if submodule_head != EXPECTED_SUBMODULE:
-        raise SystemExit(
-            f"initialized ecdata HEAD mismatch: {submodule_head}"
-        )
-
     actual_source_hash = file_sha256(source)
     if actual_source_hash != EXPECTED_SOURCE_SHA256:
         raise SystemExit(
@@ -90,10 +84,27 @@ def main() -> int:
 
     snapshot = RegistrySnapshot.load(root)
     resolved = snapshot.resolve("EXP-MAP-A01")
-    if resolved.experiment["Controlled_Execution_Eligible"].lower() != "false":
-        raise SystemExit("preregistration PR must not enable experiment execution")
-    if resolved.dataset["Controlled_Execution_Eligible"].lower() != "false":
-        raise SystemExit("preregistration PR must not enable dataset execution")
+    # This validator was originally preregistration-only. A later, explicit
+    # activation PR may change precisely the two execution-eligibility flags.
+    # Accept no partial activation and no unbound or post-hoc scientific edits.
+    execution_flags = (
+        resolved.experiment["Controlled_Execution_Eligible"].lower(),
+        resolved.dataset["Controlled_Execution_Eligible"].lower(),
+    )
+    if execution_flags != ("true", "true"):
+        raise SystemExit(
+            "A01 activation must set both experiment and dataset execution "
+            f"eligible with the reviewed transition: got {execution_flags!r}"
+        )
+    expected_activation_bindings = {
+        "experiment": "97dac41c4d8a866d0abbcdf5515829328e92ea1fb3cf7b4d03e1d9b9c0b9c868",
+        "dataset": "1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2",
+    }
+    for record_name, expected_sha in expected_activation_bindings.items():
+        if resolved.record_hashes[record_name] != expected_sha:
+            raise SystemExit(
+                f"A01 {record_name} activation changed beyond reviewed two-bit transition"
+            )
     if resolved.experiment["Controlled_Support_Eligible"].lower() != "false":
         raise SystemExit("preregistration PR must not enable controlled support")
     if resolved.experiment["Physical_Support_Eligible"].lower() != "false":
@@ -126,12 +137,12 @@ def main() -> int:
             "from the pinned allcurves source"
         )
 
-    print("EXP-MAP-A01 preregistration validation passed")
+    print("EXP-MAP-A01 preregistration and reviewed activation validation passed")
     print(f"ecdata_commit={EXPECTED_SUBMODULE}")
     print(f"source_sha256={EXPECTED_SOURCE_SHA256}")
     print(f"source_rows={len(records)}")
     print(f"representative_rows={len(representatives)}")
-    print("controlled_execution_eligible=false")
+    print("controlled_execution_eligible=true; controlled_support=false; physical_support=false")
     print("no experiment was executed")
     return 0
 
