@@ -566,8 +566,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Hydrate pinned Cremona ecdata submodule
-        run: git submodule update --init data/ecdata
+      - name: Hydrate exact pinned A03 ecdata input
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p data/ecdata/allcurves
+          curl --fail --location --retry 4 --retry-all-errors \
+            https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/allcurves/allcurves.00000-09999 \
+            -o data/ecdata/allcurves/allcurves.00000-09999
+          echo "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968  data/ecdata/allcurves/allcurves.00000-09999" | sha256sum -c -
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
