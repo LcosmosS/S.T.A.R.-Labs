@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Metric } from "@/components/viz/formula";
 import snapshot from "@/lib/star/registry-snapshot.json";
 import lfsSelection from "@/lib/star/recovered-lfs-snapshot.json";
-import { getPreregisteredEntries, isPreregisteredStatus } from "@/lib/star/experiment-lifecycle";
+import { getPreregisteredEntries, getPendingTheoryProtocols, isPreregisteredStatus } from "@/lib/star/experiment-lifecycle";
 
 export const Route = createFileRoute("/registry")({ component: RegistryPage });
 
@@ -23,6 +23,7 @@ function RegistryPage() {
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const preregistered = useMemo(() => getPreregisteredEntries(snapshot), []);
+  const pendingTheory = useMemo(() => getPendingTheoryProtocols(snapshot), []);
   const candidate = snapshot.candidate;
   const gates = candidate.gateState;
   const config = candidate.config;
@@ -60,10 +61,10 @@ function RegistryPage() {
       <section id="preregistered-summary" className="space-y-3">
         <h2 className="font-display text-2xl tracking-tight">Preregistered research protocols</h2>
         <p className="max-w-3xl text-sm leading-relaxed text-muted">
-          Automatically derived from the current versioned experiment and theory registries.
-          A preregistered design may still have planned sub-stages and no controlled execution
-          permission. These are separate namespaces; a theory obstruction is not a numerical
-          controlled experiment.
+          Formal preregistration labels are derived from versioned canonical registry states,
+          not inferred from source-folder names. A preregistered design may still have planned
+          sub-stages and no controlled execution permission. Theory obstructions are distinct
+          from numerical controlled experiments.
         </p>
         <div className="grid gap-3 md:grid-cols-2">
           {preregistered.map((entry) => (
@@ -80,6 +81,26 @@ function RegistryPage() {
             </article>
           ))}
         </div>
+        {pendingTheory.length > 0 ? (
+          <div className="mt-4 space-y-3">
+            <h3 className="font-display text-lg">Frozen protocols pending formal status review</h3>
+            <p className="max-w-3xl text-xs leading-relaxed text-muted">
+              A registered protocol file is not proof of formal preregistration approval.
+              These records remain planned in the canonical registry until independent review
+              authorizes a transition.
+            </p>
+            {pendingTheory.map((entry) => (
+              <article key={entry.id} className="rounded-xl border border-border bg-surface p-4">
+                <Badge tone="warn">Frozen protocol on file · registry: {entry.status}</Badge>
+                <h4 className="mt-2 font-mono text-sm">{entry.id}</h4>
+                <p className="mt-2 text-xs text-muted">No execution authorization or independent theorem certification.</p>
+                <a className="mt-2 inline-block text-xs text-steel underline underline-offset-4"
+                  href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${entry.protocolPath}`}
+                  target="_blank" rel="noopener noreferrer">Read frozen protocol</a>
+              </article>
+            ))}
+          </div>
+        ) : null}
       </section>
 
       <section id="archival-lfs" className="space-y-4">
@@ -129,7 +150,9 @@ function RegistryPage() {
             const preregistrationGates = preregistration.gateState;
             return (
               <article key={preregistration.id} id={preregistration.id} className="min-w-0 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
-                <Badge tone={isPreregisteredStatus(record.Status) ? "steel" : "warn"}>{record.Status}</Badge>
+                <Badge tone={isPreregisteredStatus(record.Status) ? "steel" : "warn"}>
+                  {record.Status === "planned" ? "Frozen protocol on file · registry planned" : record.Status}
+                </Badge>
                 <h3 className="mt-3 font-display text-xl tracking-tight">{preregistration.id}</h3>
                 <p className="mt-2 text-sm leading-relaxed">{record.Name}</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
