@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "fa1f46b61e30dc8419132af5a61106593fcfadb2e06538c00acd892ffae3093e",
+  "contentSha256": "1f53b74767126ef9cb48d8fccb17f198e7093d6971eb41c3be066c49d2acb4b5",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
-      "sha256": "631f4b6b6b685937711f7348bc2e589a4186a6577060cb30424fe58470840fef",
+      "sha256": "ba9df175f5ddd43c5026a63a9d58cd47e7571927d406eaa7e59db17cf8ac7a0e",
       "sizeBytes": 3454
     },
     {
@@ -71,8 +71,8 @@
     },
     {
       "path": "registry/dataset_registry_v0.1.csv",
-      "sha256": "1224aa6aadb369c0be0cefebec0586b44769052eb0bfe599393a26c44e977f5d",
-      "sizeBytes": 34709
+      "sha256": "3e3a1fad1b3659b0ce337589f59a9ff01192ad45d7b7bea37bd94e8e97bd371e",
+      "sizeBytes": 34708
     },
     {
       "path": "registry/experiment_recovery_2026-10-08.csv",
@@ -81,8 +81,8 @@
     },
     {
       "path": "registry/experiment_registry_v0.2.csv",
-      "sha256": "b9cd6f6250d75b1795d5152628f52e21638721b12b862395036200bce7c9eeaf",
-      "sizeBytes": 12890
+      "sha256": "46cec5f38272e7aabe8c1082834c0d4e610b7317a105dba2677b13451bdbed60",
+      "sizeBytes": 12889
     },
     {
       "path": "registry/null_registry_v0.1.csv",
@@ -551,7 +551,7 @@
       "Namespace_Resolution": "repo_protocol_locked_distinct_from_pdf_mapping_family_comparison_no_alias",
       "Current_Audit_Assessment": "EXP-MAP-A01-prereg-v1 is scientifically preregistered and namespace-resolved as an explicit non-alias of the broader STAR-PDF mapping-family comparison; source bytes, cohort rule, primary mapping, endpoint, null, seed, and output contract are locked. Controlled execution and all support promotion remain disabled pending a separate activation PR and successful runner preflight.",
       "Audit_Finding_IDs": "E-LCL-003;E-LCL-004;E-LCL-006;E-LCL-014;E-LCL-016",
-      "Controlled_Execution_Eligible": "false",
+      "Controlled_Execution_Eligible": "true",
       "Controlled_Support_Eligible": "false",
       "Physical_Support_Eligible": "false"
     },
@@ -1175,7 +1175,7 @@
     "reportPath": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
     "quarantinePath": "data/quarantine/2026-10-03_audit/"
   },
-  "declaredExecutionEligibleCount": 0,
+  "declaredExecutionEligibleCount": 1,
   "candidate": {
     "id": "EXP-MAP-A01",
     "records": {
@@ -1198,7 +1198,7 @@
         "Namespace_Resolution": "repo_protocol_locked_distinct_from_pdf_mapping_family_comparison_no_alias",
         "Current_Audit_Assessment": "EXP-MAP-A01-prereg-v1 is scientifically preregistered and namespace-resolved as an explicit non-alias of the broader STAR-PDF mapping-family comparison; source bytes, cohort rule, primary mapping, endpoint, null, seed, and output contract are locked. Controlled execution and all support promotion remain disabled pending a separate activation PR and successful runner preflight.",
         "Audit_Finding_IDs": "E-LCL-003;E-LCL-004;E-LCL-006;E-LCL-014;E-LCL-016",
-        "Controlled_Execution_Eligible": "false",
+        "Controlled_Execution_Eligible": "true",
         "Controlled_Support_Eligible": "false",
         "Physical_Support_Eligible": "false"
       },
@@ -1214,7 +1214,7 @@
         "Qualified_Dataset_ID": "REPO-CSV-v0.2:DATA-ARITHMETIC",
         "Current_Audit_Assessment": "Exact ecdata gitlink, source revision, license, source-file identity, SHA-256, schema, and 38,042 representative selection are locked for EXP-MAP-A01 preregistration. Historical quarantined projection packages remain diagnostic-only and are not inputs. Controlled execution remains disabled until separate activation review.",
         "Achieved_Evidence_Status": "controlled",
-        "Controlled_Execution_Eligible": "false",
+        "Controlled_Execution_Eligible": "true",
         "Controlled_Support_Eligible": "false",
         "Physical_Support_Eligible": "false"
       },
@@ -1259,8 +1259,8 @@
       }
     },
     "recordSha256": {
-      "experiment": "31f0137f1de87ba1b548758383b664dab13515205a3c2696b0c0edf573a5f4b3",
-      "dataset": "2fe4ab7f5763f39c6cde8392c3f7d8ff1a565e4664ce6e192640b99f3fe146d7",
+      "experiment": "97dac41c4d8a866d0abbcdf5515829328e92ea1fb3cf7b4d03e1d9b9c0b9c868",
+      "dataset": "1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2",
       "provenance": "051578934af53b190605257f49da77ff83683638b12e9d176c74b7b8cc4a0aa1",
       "parameter": "e7dfec16360935d3d5b9c6f4b54f7099f8455d2a3617f55e64a344eaaacc4372",
       "null": "5e8cbc1393093df3f552d0e162a1325175057eb89cbad73912ff1a28ef29eac8"
@@ -1372,8 +1372,8 @@
       }
     ],
     "gateState": {
-      "experimentExecutionEligible": false,
-      "datasetExecutionEligible": false,
+      "experimentExecutionEligible": true,
+      "datasetExecutionEligible": true,
       "controlledSupportEligible": false,
       "physicalSupportEligible": false,
       "provenanceStatus": "verified",

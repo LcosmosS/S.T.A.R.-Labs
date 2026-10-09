@@ -48,14 +48,17 @@ def test_committed_execution_spec_binds_current_preregistration_records():
     assert spec["registry_bindings"] == resolved.record_hashes
 
 
-def test_preregistration_remains_inactive_after_spec_binding_refresh():
+def test_activation_is_execution_only_with_all_support_flags_false():
     resolved = RegistrySnapshot.load(ROOT).resolve("EXP-MAP-A01")
-    assert resolved.experiment["Controlled_Execution_Eligible"].lower() == "false"
-    assert resolved.dataset["Controlled_Execution_Eligible"].lower() == "false"
-    assert resolved.experiment["Controlled_Support_Eligible"].lower() == "false"
-    assert resolved.experiment["Physical_Support_Eligible"].lower() == "false"
-    with pytest.raises(PreflightError, match="not controlled-execution eligible"):
-        preflight_controlled_experiment(ROOT, SPEC)
+    assert resolved.experiment["Status"] == "preregistered"
+    assert resolved.experiment["Controlled_Execution_Eligible"] == "true"
+    assert resolved.dataset["Controlled_Execution_Eligible"] == "true"
+    for row in (resolved.experiment, resolved.dataset):
+        assert row["Controlled_Support_Eligible"] == "false"
+        assert row["Physical_Support_Eligible"] == "false"
+    assert json.loads(SPEC.read_text(encoding="utf-8"))["registry_bindings"] == resolved.record_hashes
+    # Real preflight belongs to the source-hydrated activation CI, not a unit
+    # fixture. No hypothesis test is executed here.
 
 
 def test_allcurves_parser_uses_actual_upstream_schema():

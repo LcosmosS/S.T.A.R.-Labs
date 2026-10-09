@@ -73,9 +73,19 @@ def assert_original_control_snapshot(name, snapshot, current):
             and original.get('Status') == 'planned'
             and row.get('Status') == 'preregistered'
         )
+        # Dedicated execution-only A01 activation exception. The historical
+        # snapshot and every other scientific/claim field remain immutable.
+        allowed_a01_activation = (
+            name == 'experiment_registry_v0.2.csv'
+            and original.get('Experiment_ID') == 'EXP-MAP-A01'
+            and original.get('Controlled_Execution_Eligible') == 'false'
+            and row.get('Controlled_Execution_Eligible') == 'true'
+            and row.get('Status') == 'preregistered'
+        )
         protected = [
             field for field in snapshot['fields']
-            if not (allowed_transition and field == 'Status')
+            if not ((allowed_transition and field == 'Status')
+                    or (allowed_a01_activation and field == 'Controlled_Execution_Eligible'))
         ]
         assert all(row[field] == original[field] for field in protected), (
             f'original controlled ID/definition changed: {name}'
@@ -220,14 +230,14 @@ def validate(repo, overlay=None):
     assert remediated_dataset['Status']=='locked'
     assert remediated_dataset['Provenance_Status']=='verified'
     assert remediated_dataset['Achieved_Evidence_Status']=='controlled'
-    assert not truth(remediated_dataset['Controlled_Execution_Eligible'])
+    assert truth(remediated_dataset['Controlled_Execution_Eligible'])
     assert not truth(remediated_dataset['Controlled_Support_Eligible'])
     assert not truth(remediated_dataset['Physical_Support_Eligible'])
     assert remediated_provenance['Provenance_Status']=='verified'
     assert remediated_provenance['Evidence_Status']=='controlled'
     assert prereg_manifest['artifact']['sha256'] in remediated_provenance['Integrity_Check']
     assert prereg_manifest['source']['git_commit'] in remediated_provenance['Version_or_Release']
-    assert not controlled_input_eligible(remediated_dataset,remediated_provenance)
+    assert controlled_input_eligible(remediated_dataset,remediated_provenance)
 
     # A later provenance-only review independently downloaded the SDSS DR17
     # H I-MaNGA DR3 publisher binary and reproduced the preserved LFS object's
