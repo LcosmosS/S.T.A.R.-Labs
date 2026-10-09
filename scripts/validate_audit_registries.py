@@ -22,7 +22,7 @@ def truth(value): return str(value).strip().lower()=='true'
 def assert_namespace_identity(row, namespace, original_key, qualified_key):
     assert row[qualified_key]==f'{namespace}:{row[original_key]}', f'namespace identity mismatch: {row[original_key]}'
 
-SHA256_RECEIPT = re.compile(r'\bsha[-_ ]?256\s*[:=]\s*([0-9a-f]{64})\b', re.IGNORECASE)
+SHA256_RECEIPT = re.compile(r'\b(?:source_)?sha[-_ ]?256\s*[:=]\s*([0-9a-f]{64})\b', re.IGNORECASE)
 
 
 def has_recorded_sha256(provenance):
