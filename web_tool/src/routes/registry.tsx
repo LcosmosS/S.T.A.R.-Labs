@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Metric } from "@/components/viz/formula";
 import snapshot from "@/lib/star/registry-snapshot.json";
 import lfsSelection from "@/lib/star/recovered-lfs-snapshot.json";
+import { getPreregisteredEntries, isPreregisteredStatus } from "@/lib/star/experiment-lifecycle";
 
 export const Route = createFileRoute("/registry")({ component: RegistryPage });
 
@@ -20,15 +21,18 @@ function downloadSnapshot() {
 
 function RegistryPage() {
   const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const preregistered = useMemo(() => getPreregisteredEntries(snapshot), []);
   const candidate = snapshot.candidate;
   const gates = candidate.gateState;
   const config = candidate.config;
   const rows = useMemo(() => {
     const value = query.trim().toLowerCase();
     return snapshot.experiments.filter((row) =>
+      (statusFilter !== "preregistered" || isPreregisteredStatus(row.Status)) &&
       [row.Experiment_ID, row.Qualified_Experiment_ID, row.Claim_IDs, row.Dataset_ID, row.Status].some((field) => field.toLowerCase().includes(value)),
     );
-  }, [query]);
+  }, [query, statusFilter]);
 
   return (
     <div className="space-y-8">
@@ -46,11 +50,37 @@ function RegistryPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Metric label="Recorded experiments" value={String(snapshot.experiments.length)} hint={snapshot.namespace} />
+        <Metric label="Preregistered protocols" value={String(preregistered.length)} hint="Numerical + theory records; not execution" />
         <Metric label="Execution eligible" value={String(snapshot.declaredExecutionEligibleCount)} hint="Declared registry flags; not a runner preflight" />
         <Metric label="Canonical claims" value={String(snapshot.claims.length)} hint="Support eligibility remains separately recorded" />
       </div>
+
+      <section id="preregistered-summary" className="space-y-3">
+        <h2 className="font-display text-2xl tracking-tight">Preregistered research protocols</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-muted">
+          Automatically derived from the current versioned experiment and theory registries.
+          A preregistered design may still have planned sub-stages and no controlled execution
+          permission. These are separate namespaces; a theory obstruction is not a numerical
+          controlled experiment.
+        </p>
+        <div className="grid gap-3 md:grid-cols-2">
+          {preregistered.map((entry) => (
+            <article key={entry.namespace + ":" + entry.id} className="min-w-0 rounded-xl bg-surface p-4 shadow-[var(--shadow-border)]">
+              <Badge tone="steel">{entry.status}</Badge>
+              <h3 className="mt-2 font-mono text-sm">{entry.id}</h3>
+              <p className="mt-1 text-xs text-muted">{entry.kind} · {entry.namespace}</p>
+              <p className="mt-2 text-xs text-muted">Preregistration is not controlled execution, independent proof, or physical support.</p>
+              {entry.protocolPath ? (
+                <a className="mt-2 inline-block text-xs text-steel underline underline-offset-4"
+                  href={`https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/${entry.protocolPath}`}
+                  target="_blank" rel="noopener noreferrer">Review frozen protocol</a>
+              ) : null}
+            </article>
+          ))}
+        </div>
+      </section>
 
       <section id="archival-lfs" className="space-y-4">
         <h2 className="font-display text-2xl tracking-tight">Selected historical LFS sources</h2>
@@ -88,8 +118,9 @@ function RegistryPage() {
         <div>
           <h2 className="font-display text-2xl tracking-tight">Theory preregistrations</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            Planned obstruction and parent-theory search records in THEORY-SEARCH-v0.1.
-            These protocols have separate identities from numerical experiments; their recorded gates appear below.
+            Preregistered or planned obstruction and parent-theory programs in THEORY-SEARCH-v0.1.
+            Protocol status, each stage's progress, and all execution/support gates are displayed
+            separately. Theory registration does not establish a controlled statistical experiment.
           </p>
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
@@ -98,7 +129,7 @@ function RegistryPage() {
             const preregistrationGates = preregistration.gateState;
             return (
               <article key={preregistration.id} id={preregistration.id} className="min-w-0 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
-                <Badge tone="warn">{record.Status}</Badge>
+                <Badge tone={isPreregisteredStatus(record.Status) ? "steel" : "warn"}>{record.Status}</Badge>
                 <h3 className="mt-3 font-display text-xl tracking-tight">{preregistration.id}</h3>
                 <p className="mt-2 text-sm leading-relaxed">{record.Name}</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">
@@ -216,7 +247,17 @@ function RegistryPage() {
           <h2 className="font-display text-2xl tracking-tight">Recorded experiment eligibility</h2>
           <p className="mt-2 text-sm text-muted">Flags are copied verbatim from experiment_registry_v0.2.csv. Search never changes a gate.</p>
         </div>
-        <Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search experiment, dataset, claim, or status" aria-label="Search experiment registry" />
+        <div className="flex flex-wrap items-center gap-3">
+          <Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search experiment, dataset, claim, or status" aria-label="Search experiment registry" />
+          <label className="flex items-center gap-2 text-xs text-muted">
+            Lifecycle
+            <select aria-label="Filter experiment lifecycle" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
+              className="min-h-11 rounded-md border border-border bg-elevated px-3 text-sm text-fg">
+              <option value="all">All recorded experiments</option>
+              <option value="preregistered">Preregistered only</option>
+            </select>
+          </label>
+        </div>
         <div className="overflow-x-auto rounded-xl bg-surface shadow-[var(--shadow-border)]">
           <table className="w-full min-w-[800px] text-left text-sm">
             <thead className="text-muted">
@@ -228,7 +269,7 @@ function RegistryPage() {
               {rows.map((row) => (
                 <tr key={row.Qualified_Experiment_ID}>
                   <td className="px-4 py-3 font-mono text-xs">{row.Experiment_ID}</td>
-                  <td className="px-4 py-3"><Badge>{row.Status}</Badge></td>
+                  <td className="px-4 py-3"><Badge tone={isPreregisteredStatus(row.Status) ? "steel" : "warn"}>{row.Status}</Badge></td>
                   <td className="px-4 py-3 font-mono text-xs text-muted">{row.Dataset_ID}</td>
                   <td className="px-4 py-3 font-mono text-xs">{row.Controlled_Execution_Eligible}</td>
                   <td className="px-4 py-3 font-mono text-xs">{row.Controlled_Support_Eligible}</td>
