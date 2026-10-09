@@ -3,11 +3,26 @@ name: A01 source-locked activation preflight
 on:
   pull_request:
     paths:
+      - ".gitmodules"
+      - "requirements.txt"
+      - "pyproject.toml"
       - "registry/experiment_registry_v0.2.csv"
       - "registry/dataset_registry_v0.1.csv"
+      - "registry/data_provenance_registry_v0.1.csv"
+      - "registry/parameter_registry_v0.1.csv"
+      - "registry/null_model_registry_v0.1.csv"
+      - "preregistrations/EXP-MAP-A01/**"
       - "controlled_execution/specs/EXP-MAP-A01.json"
+      - "controlled_execution/EXP-MAP-A01_ACTIVATION_DECISION.md"
+      - "data/raw/ci_subset.csv"
       - "scripts/validate_audit_registries.py"
+      - "scripts/validate_exp_map_a01_preregistration.py"
+      - "scripts/check_controlled_readiness.py"
+      - "src/control/**"
+      - "src/data/cremona_ecdata.py"
+      - "src/experiments/exp_map_a01.py"
       - "tests/test_exp_map_a01_preregistration.py"
+      - "web_tool/src/lib/star/registry-snapshot.json"
       - ".github/workflows/a01-activation-preflight.yml"
   workflow_dispatch:
 
@@ -54,6 +69,7 @@ jobs:
           PY
       - name: Validate registry and activation-only regression
         run: |
+          python scripts/validate_exp_map_a01_preregistration.py
           python scripts/validate_audit_registries.py
           python scripts/check_controlled_readiness.py --require-ready
           python -m pytest -q tests/test_exp_map_a01_preregistration.py
