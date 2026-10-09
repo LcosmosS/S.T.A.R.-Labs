@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Formula, Metric } from "@/components/viz/formula";
 import { EntropyField } from "@/components/viz/entropy-canvas";
 import { OrbitCloud } from "@/components/viz/orbit-cloud";
+import { FrozenSkyOverlay } from "@/components/viz/frozen-sky-overlay";
 import { FILAMENTS, PROJECTED } from "@/lib/star/physics";
 import { catalogStats } from "@/lib/star/catalog";
 import { useLab } from "@/lib/star/store";
@@ -46,6 +47,8 @@ function ProjectionPage() {
           className="h-[min(52vh,440px)] w-full"
         />
       </section>
+
+      <FrozenSkyOverlay />
 
       <section className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-border)]">
