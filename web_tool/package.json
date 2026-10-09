@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "node scripts/with-app-env.mjs vite dev --host 0.0.0.0 --port 8080",
-    "build": "npm run registry:check && npm run research:check && node scripts/with-app-env.mjs vite build",
+    "build": "npm run registry:check && npm run research:check && npm run sky:check && node scripts/with-app-env.mjs vite build",
     "db:migrate": "node scripts/migrate.mjs",
     "build:dev": "node scripts/with-app-env.mjs vite build --mode development",
     "preview": "node scripts/with-app-env.mjs vite preview",
@@ -22,6 +22,7 @@
     "registry:check": "node scripts/sync-registry.mjs --check",
     "research:sync": "node scripts/sync-research-content.mjs",
     "research:check": "node scripts/sync-research-content.mjs --check",
+    "sky:check": "node scripts/check-frozen-sky-releases.mjs",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
