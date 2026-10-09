@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Metric } from "@/components/viz/formula";
 import snapshot from "@/lib/star/registry-snapshot.json";
+import skyReleases from "../../content/sky-overlay-releases.v1.json";
+import skyCandidates from "../../content/sky-overlay-candidates.v1.json";
 import lfsSelection from "@/lib/star/recovered-lfs-snapshot.json";
 import { getPreregisteredEntries, getPendingTheoryProtocols, isPreregisteredStatus } from "@/lib/star/experiment-lifecycle";
 
@@ -56,6 +58,7 @@ function RegistryPage() {
         <Metric label="Preregistered protocols" value={String(preregistered.length)} hint="Numerical + theory records; not execution" />
         <Metric label="Execution eligible" value={String(snapshot.declaredExecutionEligibleCount)} hint="Declared registry flags; not a runner preflight" />
         <Metric label="Canonical claims" value={String(snapshot.claims.length)} hint="Support eligibility remains separately recorded" />
+        <Metric label="Admitted sky releases" value={String(skyReleases.sources.length)} hint="Reviewed display-only; no inference" />
       </div>
 
       <section id="preregistered-summary" className="space-y-3">
@@ -101,6 +104,29 @@ function RegistryPage() {
             ))}
           </div>
         ) : null}
+      </section>
+
+      <section id="sky-admission" className="space-y-3 rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
+        <h2 className="font-display text-xl">ALADIN Lite sky-release admission</h2>
+        <p className="max-w-3xl text-sm leading-relaxed text-muted">
+          The CI `sky:check` gate verifies publisher-source receipts, exact hydrated data bytes,
+          the hashed coordinate derivative and the committed reviewer decision. Only a
+          separately authorized release-manifest transition can make a sky dataset selectable.
+          CI passing is not, by itself, independent scientific authorization.
+        </p>
+        <p role="status" className="text-sm">
+          Currently {skyReleases.sources.length} dataset release(s) admitted for display.
+        </p>
+        {skyCandidates.candidates.map((candidate) => (
+          <p key={candidate.datasetId} className="text-xs text-muted">
+            <span className="font-mono">{candidate.datasetId}</span> · Candidate status: {candidate.approvalStatus}
+            {" · "}No inference or physical-support promotion
+          </p>
+        ))}
+        <a href="https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/content/sky-overlay-releases.v1.json"
+          className="inline-block text-xs text-steel underline underline-offset-4" target="_blank" rel="noopener noreferrer">
+          Inspect exact committed release manifest
+        </a>
       </section>
 
       <section id="archival-lfs" className="space-y-4">
