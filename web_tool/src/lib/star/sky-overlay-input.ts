@@ -61,3 +61,120 @@ export async function verifyLocalFrozenSkyTable(file: File, expectedSha: string,
   const sources = parseFrozenSkyCSV(text);
   return { dataset_id, sha256: actual, sources, file_name: file.name };
 }
+
+
+/** CI-admitted observational display releases. The site does not mint or approve
+ * releases: the exact imported manifest must first pass sky:check on the build
+ * commit. The browser independently checks the exact served coordinate bytes.
+ * Neither gate constitutes independent scientific review or physical support.
+ */
+export type PublishedSkyRelease = {
+  datasetId: string;
+  qualifiedDatasetId: string;
+  coordinatePath: string;
+  coordinateSha256: string;
+  selectedIdsSha256: string;
+  coordinateRole: "sdss_position" | "hi_centroid" | "optical_counterpart";
+  sourceSha256: string;
+  reviewSha256: string;
+  sourceRows: number;
+  controlledSupportEligible?: boolean;
+  physicalSupportEligible?: boolean;
+};
+export type PublishedSkyTable = {
+  dataset_id: string;
+  sha256: string;
+  sources: SkySource[];
+  coordinate_role: PublishedSkyRelease["coordinateRole"];
+};
+const RELEASE_SHA = /^[0-9a-f]{64}$/;
+const RELEASE_ID = /^[A-Za-z0-9_.:-]{1,96}$/;
+const RELEASE_PATH = "web_tool/public/sky/";
+
+export function parsePublishedSkyReleases(manifest: unknown): PublishedSkyRelease[] {
+  if (typeof manifest !== "object" || manifest === null || Array.isArray(manifest))
+    throw new Error("Invalid CI release manifest");
+  const data = manifest as Record<string, unknown>;
+  if (data.schemaVersion !== "star-sky-overlay-releases-v1" || !Array.isArray(data.sources) || data.sources.length > 32)
+    throw new Error("Invalid CI release manifest version or source count");
+  const seen = new Set<string>();
+  return data.sources.map((untrusted: unknown) => {
+    if (typeof untrusted !== "object" || untrusted === null || Array.isArray(untrusted))
+      throw new Error("Invalid sky release entry");
+    const r = untrusted as Record<string, unknown>;
+    const id = r.datasetId;
+    if (typeof id !== "string" || !RELEASE_ID.test(id) || seen.has(id) ||
+        r.qualifiedDatasetId !== "REPO-CSV-v0.2:" + id)
+      throw new Error("Unregistered, duplicated or unqualified sky release");
+    seen.add(id);
+    for (const k of ["coordinateSha256", "selectedIdsSha256", "sourceSha256", "reviewSha256"])
+      if (typeof r[k] !== "string" || !RELEASE_SHA.test(r[k] as string))
+        throw new Error("Invalid CI release checksum");
+    const p = r.coordinatePath;
+    if (typeof p !== "string" || !p.startsWith(RELEASE_PATH) ||
+        p.includes("\\") || p.includes("//") ||
+        p.slice(RELEASE_PATH.length).split("/").some(v => !v || v === "." || v === ".." || !/^[A-Za-z0-9_.-]+$/.test(v)))
+      throw new Error("Unsafe CI release coordinate path");
+    if (!["sdss_position", "hi_centroid", "optical_counterpart"].includes(r.coordinateRole as string) ||
+        typeof r.sourceRows !== "number" || !Number.isInteger(r.sourceRows) || r.sourceRows < 1 ||
+        r.controlledSupportEligible === true || r.physicalSupportEligible === true)
+      throw new Error("Unsupported sky release coordinate role, count or promotion");
+    return r as PublishedSkyRelease;
+  });
+}
+
+async function shaHex(bytes: BufferSource): Promise<string> {
+  if (!globalThis.crypto?.subtle) throw new Error("Web Crypto requires a secure browser context");
+  return Array.from(new Uint8Array(await globalThis.crypto.subtle.digest("SHA-256", bytes)),
+    b => b.toString(16).padStart(2, "0")).join("");
+}
+
+export async function verifyPublishedSkyBytes(release: PublishedSkyRelease, input: Uint8Array): Promise<PublishedSkyTable> {
+  if (input.byteLength < 1 || input.byteLength > MAX_SKY_TABLE_BYTES)
+    throw new Error("CI coordinate release is empty or exceeds the 1 MB limit");
+  // Reject malformed or substituted bytes before parsing or showing any markers.
+  const bytes = new Uint8Array(input);
+  const actual = await shaHex(bytes);
+  if (actual !== release.coordinateSha256) throw new Error("Published sky coordinate SHA-256 mismatch");
+  const text = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  const sources = parseFrozenSkyCSV(text);
+  const ids = new TextEncoder().encode(sources.map(s => s.source_id).join("\n") + "\n");
+  if (await shaHex(ids) !== release.selectedIdsSha256)
+    throw new Error("Published sky selected-ID chain mismatch");
+  return { dataset_id: release.datasetId, sha256: actual, sources, coordinate_role: release.coordinateRole };
+}
+
+export async function fetchPublishedSkyTable(
+  release: PublishedSkyRelease, fetcher: typeof fetch = fetch,
+): Promise<PublishedSkyTable> {
+  // Exactly the path approved by CI, with same-origin/no-redirect transport.
+  const relative = release.coordinatePath.slice(RELEASE_PATH.length);
+  if (!relative || !/^[A-Za-z0-9_.\/-]+$/.test(relative) ||
+      relative.split("/").some(v => !v || v === "." || v === ".."))
+    throw new Error("Unsafe published sky path");
+  const response = await fetcher("/sky/" + relative, {
+    cache: "no-store", credentials: "omit", mode: "same-origin", redirect: "error",
+  });
+  if (!response.ok || response.redirected || response.type === "opaque")
+    throw new Error("CI sky release is unavailable or redirected");
+  const declaredLength = response.headers.get("content-length");
+  if (declaredLength !== null && (Number(declaredLength) > MAX_SKY_TABLE_BYTES || !/^\d+$/.test(declaredLength)))
+    throw new Error("CI sky release exceeds size limit");
+  if (!response.body) throw new Error("CI sky release has no readable body");
+  const reader = response.body.getReader();
+  const parts: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > MAX_SKY_TABLE_BYTES) throw new Error("CI sky release exceeds size limit");
+      parts.push(value);
+    }
+  } finally { reader.releaseLock(); }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const part of parts) { bytes.set(part, offset); offset += part.byteLength; }
+  return verifyPublishedSkyBytes(release, bytes);
+}

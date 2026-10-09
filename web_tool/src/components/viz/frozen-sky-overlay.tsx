@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { MAX_SKY_SOURCES, SKY_SCOPE_IDS, verifyLocalFrozenSkyTable, type FrozenSkyTable } from "@/lib/star/sky-overlay-input";
+import { fetchPublishedSkyTable, parsePublishedSkyReleases, type PublishedSkyTable } from "@/lib/star/sky-overlay-input";
+import publishedManifest from "../../../content/sky-overlay-releases.v1.json";
 
-/** Version-pinned CDS build. Scripts, HiPS tiles and catalog selections are
- * third-party network requests; frozen coordinate CSV remains in the browser. */
+/** Version-pinned CDS build. HiPS/CDS requests are third-party network traffic.
+ * Dataset coordinates are served read-only from the CI-verified release, never
+ * from an arbitrary user-declared SHA-256 or from illustrative arithmetic data. */
 const ALADIN_URL = "https://aladin.cds.unistra.fr/AladinLite/api/v3/3.8.1/aladin.js";
 const SURVEYS = [
   { id: "P/DSS2/color", label: "DSS2 color" },
@@ -38,31 +40,49 @@ function loadAladin(): Promise<AladinAPI> {
   return loadPromise;
 }
 
+
+const RELEASES = parsePublishedSkyReleases(publishedManifest);
+
 export function FrozenSkyOverlay() {
-  const [scope, setScope] = useState<string>(SKY_SCOPE_IDS[0]);
-  const [expectedSha, setExpectedSha] = useState("");
-  const [file, setFile] = useState<File | null>(null);
-  const [verified, setVerified] = useState<FrozenSkyTable | null>(null);
-  const [status, setStatus] = useState<string>("No coordinate table loaded. No simulated sky positions are displayed.");
+  const [selectedId, setSelectedId] = useState<string>(RELEASES[0]?.datasetId ?? "");
+  const [verified, setVerified] = useState<PublishedSkyTable | null>(null);
+  const [status, setStatus] = useState<string>(
+    RELEASES.length === 0
+      ? "No CI-admitted observational sky releases. No astronomical markers are available for projection."
+      : "Choose a CI-admitted dataset to fetch and verify its exact published coordinate bytes."
+  );
   const [busy, setBusy] = useState(false);
   const [survey, setSurvey] = useState<string>(SURVEYS[0].id);
   const [visible, setVisible] = useState(true);
   const frame = useRef<HTMLDivElement>(null);
   const section = useRef<HTMLElement>(null);
+  const revision = useRef(0);
   useEffect(() => { section.current?.setAttribute("data-sky-hydrated", "true"); }, []);
   const viewer = useRef<ViewerAPI | null>(null);
   const overlay = useRef<CatalogAPI | null>(null);
 
-  function reset() { setVerified(null); viewer.current = null; overlay.current = null; if (frame.current) frame.current.replaceChildren(); }
-  async function verifyFile() {
-    reset(); setBusy(true); setStatus("Verifying exact bytes and coordinate schema…");
+  function reset() {
+    revision.current++;
+    setVerified(null);
+    viewer.current = null; overlay.current = null;
+    if (frame.current) frame.current.replaceChildren();
+  }
+  async function loadSelected() {
+    reset();
+    const current = revision.current;
+    const release = RELEASES.find(item => item.datasetId === selectedId);
+    if (!release) { setStatus("Dataset is not admitted by the CI release manifest"); return; }
+    setBusy(true);
+    setStatus("Fetching the immutable reviewed coordinate release and checking SHA-256…");
     try {
-      if (!file) throw new Error("Choose a frozen local CSV first");
-      const accepted = await verifyLocalFrozenSkyTable(file, expectedSha, scope);
+      const accepted = await fetchPublishedSkyTable(release);
+      if (current !== revision.current) return;
       setVerified(accepted);
-      setStatus(`SHA-256 verified locally for ${accepted.sources.length} user-supplied sources. This does not verify upstream astronomy provenance.`);
-    } catch (error) { setStatus(error instanceof Error ? error.message : "Unknown validation failure"); }
-    finally { setBusy(false); }
+      setStatus("CI-gated release coordinates and selected IDs verified against committed hashes. Display only; not independent scientific support.");
+    } catch (error) {
+      if (current === revision.current)
+        setStatus(error instanceof Error ? error.message : "Published sky dataset verification failed");
+    } finally { if (current === revision.current) setBusy(false); }
   }
 
   useEffect(() => {
@@ -73,53 +93,55 @@ export function FrozenSkyOverlay() {
       const first = verified.sources[0];
       frame.current.replaceChildren();
       const map = A.aladin("#star-aladin-sky-viewport", {
-        survey, target: `${first.ra_deg} ${first.dec_deg}`, fov: 1.5,
+        survey, target: String(first.ra_deg) + " " + String(first.dec_deg), fov: 1.5,
         cooFrame: "ICRS", showReticle: true, showCooGrid: true,
         showLayersControl: true, showShareControl: false,
       });
-      const cat = A.catalog({ name: `Local SHA-256 checked: ${verified.dataset_id}`, color: "#f59e0b", sourceSize: 8, onClick: "showTable" });
+      const cat = A.catalog({ name: "CI release: " + verified.dataset_id, color: "#f59e0b", sourceSize: 8, onClick: "showTable" });
       map.addCatalog(cat);
-      cat.addSources(verified.sources.map((point) => A.source(point.ra_deg, point.dec_deg, { source_id: point.source_id })));
+      cat.addSources(verified.sources.map(p => A.source(p.ra_deg, p.dec_deg, { source_id: p.source_id })));
       viewer.current = map; overlay.current = cat;
-    }).catch((error) => { if (!disposed) setStatus(error instanceof Error ? error.message : "Aladin failed to load"); });
+    }).catch(error => { if (!disposed) setStatus(error instanceof Error ? error.message : "Aladin failed to load"); });
     return () => { disposed = true; viewer.current = null; overlay.current = null; };
   }, [verified]);
 
   useEffect(() => { try { viewer.current?.setImageSurvey(survey); } catch { setStatus("This external HiPS image survey is unavailable; choose DSS2."); } }, [survey]);
-  useEffect(() => { if (!overlay.current || !verified) return; overlay.current.removeAll(); if (visible) {
-    const A = window.A; if (A) overlay.current.addSources(verified.sources.map(p => A.source(p.ra_deg, p.dec_deg, { source_id: p.source_id })));
-  } }, [visible, verified]);
+  useEffect(() => {
+    if (!overlay.current || !verified) return;
+    overlay.current.removeAll();
+    if (visible) {
+      const A = window.A;
+      if (A) overlay.current.addSources(verified.sources.map(p => A.source(p.ra_deg, p.dec_deg, { source_id: p.source_id })));
+    }
+  }, [visible, verified]);
 
-  return <section ref={section} aria-label="Verified local sky catalogue" className="space-y-4 rounded-xl border border-border bg-surface p-5">
+  return <section ref={section} aria-label="CI-reviewed observational sky catalogue" className="space-y-4 rounded-xl border border-border bg-surface p-5">
     <div>
       <h2 className="font-display text-xl tracking-tight">Observed sky · Aladin Lite</h2>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
-        Separate from the conjectural elliptic-curve projection. Select a user-controlled, frozen ICRS J2000
-        coordinate extract and enter its recorded SHA-256. The registered dataset identifiers are <strong>planned scopes</strong>,
-        not verified source lineages. No crossmatch, inference, or ACSC evidence is produced.
+        Display-only astronomical coordinates are released through a repository CI gate. Select an approved
+        dataset; the browser fetches its read-only coordinate extract and independently verifies its committed
+        SHA-256 and ordered source IDs. There is no user-entered checksum or arbitrary local file upload.
+        A verified display release does not establish an arithmetic correspondence, crossmatch, or physical result.
       </p>
     </div>
     <div className="grid gap-3 sm:grid-cols-2">
-      <label className="text-xs text-muted">Registered dataset scope
-        <select aria-label="Registered dataset scope" value={scope} onChange={e => { reset(); setScope(e.target.value); }}
-          className="mt-1 block h-11 w-full rounded-md border border-border bg-elevated px-3 text-sm text-fg">
-          {SKY_SCOPE_IDS.map(id => <option key={id} value={id}>{id} (provenance pending)</option>)}
+      <label className="text-xs text-muted">CI-admitted observational dataset
+        <select aria-label="CI-admitted sky dataset" value={selectedId}
+          disabled={busy || RELEASES.length === 0}
+          onChange={e => { reset(); setSelectedId(e.target.value); setStatus("Choose Load after selecting an admitted dataset."); }}
+          className="mt-1 block h-11 w-full rounded-md border border-border bg-elevated px-3 text-sm text-fg disabled:opacity-50">
+          {RELEASES.length === 0 ? <option value="">No approved sky releases</option> :
+            RELEASES.map(release => <option key={release.datasetId} value={release.datasetId}>{release.datasetId} · {release.coordinateRole}</option>)}
         </select>
       </label>
-      <label className="text-xs text-muted">Frozen UTF-8 CSV (source_id,ra_deg,dec_deg; up to {MAX_SKY_SOURCES.toLocaleString()} rows)
-        <input aria-label="Frozen local coordinate CSV" className="mt-1 block w-full text-sm text-fg" type="file" accept=".csv,text/csv"
-          onChange={e => { reset(); setFile(e.currentTarget.files?.[0] ?? null); }} />
-      </label>
-      <label className="text-xs text-muted sm:col-span-2">Recorded SHA-256 of exact CSV bytes
-        <input aria-label="Expected SHA-256" spellCheck={false} autoComplete="off" value={expectedSha} onChange={e => { reset(); setExpectedSha(e.target.value); }}
-          placeholder="64 hexadecimal digits from the frozen-source manifest"
-          className="mt-1 h-11 w-full rounded-md border border-border bg-elevated px-3 font-mono text-xs text-fg" />
-      </label>
+      <div className="flex items-end">
+        <button type="button" onClick={() => void loadSelected()} disabled={busy || !selectedId || RELEASES.length === 0}
+          className="h-11 rounded-md bg-primary px-4 text-sm font-medium text-primary-fg disabled:opacity-40">
+          {busy ? "Verifying published dataset…" : "Load CI-verified sky dataset"}
+        </button>
+      </div>
     </div>
-    <button type="button" onClick={() => void verifyFile()} disabled={busy || !file}
-      className="h-11 rounded-md bg-primary px-4 text-sm font-medium text-primary-fg disabled:opacity-40">
-      {busy ? "Checking local file…" : "Verify bytes and display on sky"}
-    </button>
     <p role="status" aria-live="polite" className="text-xs text-muted">{status}</p>
     {verified ? <>
       <div className="flex flex-wrap items-end gap-3">
@@ -136,8 +158,17 @@ export function FrozenSkyOverlay() {
         <span className="font-mono text-xs text-muted">{verified.sources.length} positions · {verified.sha256.slice(0,12)}…</span>
       </div>
       <div id="star-aladin-sky-viewport" ref={frame} className="h-[360px] w-full overflow-hidden rounded-lg border border-border sm:h-[480px]" aria-label="Aladin Lite ICRS sky viewer" />
-      <p className="text-xs text-muted">The source CSV is never sent to S.T.A.R. Labs. Display uses CDS Aladin/HiPS network requests; coordinates and selected fields can be sent to the external map service as part of normal map use. The file hash certifies local bytes only, not identification or scientific eligibility.</p>
+      <p className="text-xs text-muted">
+        The browser retrieves only the CI-released same-origin coordinate extract. CDS Aladin and HiPS imagery
+        may make independent third-party network requests. CI verifies recorded provenance and bytes, but cannot
+        itself establish publisher authority or independent reviewer identity.
+      </p>
     </> : null}
-    <p className="text-xs text-subtle">Expected exact header: <code>source_id,ra_deg,dec_deg</code>. Plain decimal degrees, ICRS/J2000, unique safe IDs, no rounding, missing values, clipping, reordering or silent deduplication. No markers appear unless every row and the exact SHA-256 pass. This viewer never displays the 160 arithmetic illustration points as sky coordinates.</p>
+    <p className="text-xs text-subtle">
+      No released catalogue is silently inferred from historical CSVs or source-provenance status alone.
+      The admission manifest must name a reviewed transformation, exact coordinate role and full file hashes;
+      a modified or missing coordinate file is rejected without plotting any positions.
+      The 160 arithmetic illustration points are never astronomical coordinates.
+    </p>
   </section>;
 }
