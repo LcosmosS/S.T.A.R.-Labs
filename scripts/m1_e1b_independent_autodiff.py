@@ -14,6 +14,15 @@ from jax import jacfwd
 
 
 def metric(v, sector):
+    """Return the diagonal M1 E1b metric with signature (+, -, -, -).
+
+    Args:
+        v: Coordinates in (t, z, x, y) order at a regular interior point.
+        sector: 0 for the transverse-independent case or 1 for the varying case.
+
+    Returns:
+        A 4-by-4 JAX array of covariant metric components.
+    """
     t,z,x,y = v
     m = 1.+z
     P=(2.*m)**(1./3.)*np.sinh(1.5*(t+z))**(2./3.)
@@ -28,6 +37,15 @@ def metric(v, sector):
 
 
 def christoffel(v, sector):
+    """Return Christoffel symbols Gamma^a_bc from metric autodifferentiation.
+
+    Args:
+        v: Coordinates in (t, z, x, y) order at a regular interior point.
+        sector: Metric sector, 0 or 1.
+
+    Returns:
+        A JAX array indexed by (a, b, c), with the first index contravariant.
+    """
     g=metric(v,sector)
     gi=np.linalg.inv(g)
     dg=jacfwd(lambda v: metric(v,sector))(v)
@@ -38,6 +56,15 @@ def christoffel(v, sector):
 
 
 def einstein_mixed(v,sector):
+    """Compute the mixed Einstein tensor G^a_b using JAX derivatives.
+
+    Args:
+        v: Coordinates in (t, z, x, y) order at a regular interior point.
+        sector: Metric sector, 0 or 1.
+
+    Returns:
+        A 4-by-4 JAX array with the first tensor index raised.
+    """
     g=metric(v,sector)
     gi=np.linalg.inv(g)
     ga=christoffel(v,sector)
@@ -51,6 +78,15 @@ def einstein_mixed(v,sector):
 
 
 def rho_expected(v,sector):
+    """Return the analytic dust density used to check G^a_b - 3 delta^a_b.
+
+    Args:
+        v: Coordinates in (t, z, x, y) order at a regular interior point.
+        sector: Metric sector, 0 or 1.
+
+    Returns:
+        The expected scalar density for the chosen sector.
+    """
     t,z,x,y=v
     H=1./np.tanh(1.5*(t+z))
     B=1./(3*(1+z))
@@ -61,6 +97,15 @@ def rho_expected(v,sector):
 
 
 def J_expected(v,sector):
+    """Return the analytic squared transverse density-gradient norm J.
+
+    Args:
+        v: Coordinates in (t, z, x, y) order at a regular interior point.
+        sector: Metric sector, 0 or 1.
+
+    Returns:
+        Zero for sector 0, or the analytic transverse discriminator for sector 1.
+    """
     if not sector:return 0.
     t,z,x,y=v
     P=(2*(1+z))**(1./3.)*np.sinh(1.5*(t+z))**(2./3.)
@@ -72,6 +117,13 @@ def J_expected(v,sector):
 
 
 def run():
+    """Print four numerical spot checks and assert field and gradient tolerances.
+
+    These sampled checks provide numerical corroboration, not a proof.
+
+    Raises:
+        AssertionError: A residual or sector discriminator fails its check.
+    """
     points=[(1.3,0.1,0.2,0.1),(1.8,-0.17,-0.15,0.25)]
     records=[]
     for sector in (0,1):

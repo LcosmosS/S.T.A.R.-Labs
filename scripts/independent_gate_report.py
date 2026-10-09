@@ -12,6 +12,7 @@ from pathlib import Path
 
 
 def _read_rows(path: Path, key: str):
+    """Return CSV rows indexed by key, rejecting empty or duplicate-key registries."""
     with path.open(encoding="utf-8", newline="") as stream:
         rows=list(csv.DictReader(stream))
     if not rows:
@@ -23,6 +24,15 @@ def _read_rows(path: Path, key: str):
 
 
 def inspect(root: Path) -> dict:
+    """Summarize registry integrity, eligibility flags, and unmet research gates.
+
+    Args:
+        root: Repository root containing the canonical registry CSV files.
+
+    Returns:
+        A census with per-experiment blocking gates and integrity violations.
+        Registry files and scientific statuses are never modified.
+    """
     r=root/"registry"
     experiments=_read_rows(r/"experiment_registry_v0.2.csv","Experiment_ID")
     datasets=_read_rows(r/"dataset_registry_v0.1.csv","Dataset_ID")
@@ -91,6 +101,15 @@ def inspect(root: Path) -> dict:
 
 
 def main(argv=None):
+    """Print the registry census as JSON and return a CLI exit status.
+
+    Args:
+        argv: Command-line arguments, or None to use the process arguments.
+
+    Returns:
+        2 for integrity violations, 3 if preregistration is required but planned
+        experiments remain, or 0 otherwise.
+    """
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root",type=Path,default=Path(__file__).resolve().parents[1])
     parser.add_argument("--require-all-preregistered",action="store_true")

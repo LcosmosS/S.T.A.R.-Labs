@@ -14,6 +14,18 @@ class ReferenceCrossmatchError(ValueError):
 
 
 def unit_vector(coord):
+    """Convert an ICRS coordinate in degrees to a Cartesian unit vector.
+
+    Args:
+        coord: A (RA, Dec) pair with RA in [0, 360) and Dec in [-90, 90].
+
+    Returns:
+        The three Cartesian components as a tuple.
+
+    Raises:
+        ReferenceCrossmatchError: The pair has the wrong length, nonfinite
+            values, or coordinates outside the allowed bounds.
+    """
     if len(coord) != 2:
         raise ReferenceCrossmatchError("coordinate must be (RA, Dec)")
     ra, dec = map(float, coord)

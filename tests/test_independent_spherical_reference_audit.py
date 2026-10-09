@@ -13,12 +13,14 @@ from src.data.spherical_match_candidate import (
 
 
 def test_ra_wrap_pole_and_identity():
+    """Verify spherical distances at RA wraparound, the pole, and identity."""
     assert abs(angular_distance_arcsec((359.9999, 0), (0.0001, 0)) - .72) < 1e-7
     assert angular_distance_arcsec((0, 90), (180, 90)) < 1e-6
     assert angular_distance_arcsec((20, -15), (20, -15)) < 1e-9
 
 
 def test_independent_geometry_agrees_randomly_with_existing_haversine():
+    """Compare the oracle with haversine distances on seeded synthetic pairs."""
     rng = random.Random(20261009)
     for _ in range(100):
         ra = rng.random()*360
@@ -31,6 +33,7 @@ def test_independent_geometry_agrees_randomly_with_existing_haversine():
 
 
 def test_candidate_identity_multiplicity_crosscheck():
+    """Cross-check candidate distances and unique versus ambiguous pair counts."""
     left = [(10., 0.), (10.0001, 0.), (30., 0.)]
     right = [(10.00002, 0.), (30.00001, 0.)]
     pairs = enumerate_reference_candidates(left, right)
@@ -46,6 +49,7 @@ def test_candidate_identity_multiplicity_crosscheck():
 
 
 def test_boundary_and_invalid_input_do_not_promote():
+    """Check radius filtering and rejection of invalid coordinates or radius."""
     a = [(0.,0.)]
     b = [(0.,1./3600.),(0.,3./3600.)]
     assert len(enumerate_reference_candidates(a,b))==len(enumerate_candidates(a,b))==1
