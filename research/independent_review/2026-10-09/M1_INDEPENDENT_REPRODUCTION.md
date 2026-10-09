@@ -10,7 +10,7 @@ The original verifier uses symbolic generic-metric Ricci differentiation and sym
 
 `P=[2(1+z)]^(1/3) sinh(3(t+z)/2)^(2/3)`, `H=coth(3(t+z)/2)`, `B=1/[3(1+z)]`, `F=H²-1`, `q=exp(2z)(x²+y²)`, `d=(1-q)/(1+q)`.
 
-- `S1:` `a=P(H+B)`, `c=2P`;
+- `S1:` `a=P(H+B)`, `c=2P/(1+x²+y²)`;
 - `S2:` `a=P(H+B+d)`, `c=2P exp(z)/(1+q)`;
 - `rho1=3FB/(H+B)`, `rho2=3F(B+d)/(H+B+d)`;
 - `J1=0`, `J2=36 H²F² q/[P²(H+B+d)^4(1+q)²]`.

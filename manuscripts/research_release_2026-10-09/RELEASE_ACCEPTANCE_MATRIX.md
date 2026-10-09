@@ -12,7 +12,9 @@ This file defines a submission-preparation checklist, not an editorial acceptanc
 | Independent mathematical verification / replication | Independent proof review **not present** | Independent controlled reproduction **not present** | Independent physical validation **not present** |
 | Explicit null/alternative, multiple testing, selection/sensitivity policy | Class-limited factorization/sufficiency | Locked rank permutation (others separately registered) | Source/mask/cosmic variance and physics baselines |
 | Current status | Candidate + corroborating numerical spot checks | Frozen protocol **not executed** | Hypothesis **not eligible** |
-| Legitimate negative paper | Proof of insufficiency if independently accepted; otherwise reproducibility/methodology report | Valid rank-permutation non-rejection or rejection with limitations | Scoped retirement of P0 search frame if independently audited |
+| Legitimate negative paper | Proof of insufficiency if independently accepted; otherwise reproducibility/methodology report | Valid rank-permutation non-rejection or rejection with limitations | Retirement of mechanism-level ACSC-v0.1 only within P0-SF-v0.1, only after all five registered P0 candidates (P0-T001–T005) reach terminal audited failure statuses |
+
+If no eligible P0 parent exists but the five-failure gate is unmet, Paper III remains conditional; replacement with a negative mechanism-search paper is not yet eligible.
 
 ## Versioned submission recipe
 

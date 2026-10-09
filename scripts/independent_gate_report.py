@@ -23,6 +23,16 @@ def _read_rows(path: Path, key: str):
     return {r[key]:r for r in rows}
 
 
+def _eligibility_flag(row: dict, field: str, name: str, problems: list) -> bool:
+    value = row.get(field)
+    normalized = value.strip().lower() if isinstance(value, str) else None
+    if normalized not in ("true", "false"):
+        problems.append(
+            f"{name}: invalid {field} value {value!r}; expected true or false"
+        )
+    return normalized == "true"
+
+
 def inspect(root: Path) -> dict:
     """Summarize registry integrity, eligibility flags, and unmet research gates.
 
@@ -48,9 +58,13 @@ def inspect(root: Path) -> dict:
             problems.append(f"{name}: unresolved parameter {row['Parameter_Set_ID']}")
         if row["Null_ID"] not in nulls:
             problems.append(f"{name}: unresolved null {row['Null_ID']}")
-        execution=row["Controlled_Execution_Eligible"].strip().lower()=="true"
-        controlled=row["Controlled_Support_Eligible"].strip().lower()=="true"
-        physical=row["Physical_Support_Eligible"].strip().lower()=="true"
+        execution = _eligibility_flag(
+            row, "Controlled_Execution_Eligible", name, problems
+        )
+        controlled = _eligibility_flag(
+            row, "Controlled_Support_Eligible", name, problems
+        )
+        physical = _eligibility_flag(row, "Physical_Support_Eligible", name, problems)
         if status not in ("planned","preregistered","executed","completed"):
             problems.append(f"{name}: review unknown status '{status}'")
         if execution and status=="planned":
