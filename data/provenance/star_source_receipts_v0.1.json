@@ -1,0 +1,111 @@
+{
+  "schema_version": "star-source-receipts-v0.1",
+  "acquisition_mode": "Dropbox file metadata ONLY; bytes and provenance lineage not verified",
+  "audit_date": "2026-10-08",
+  "evidence_status": "source_candidate_not_controlled",
+  "source_receipts": [
+    {
+      "name": "SDSSDR18_200000.csv",
+      "dropbox_path": "/STAR/SDSSDR18_200000.csv",
+      "size_bytes": 33007497,
+      "revision": "0165d4248dbdc1b00000003905d91d3",
+      "client_modified": "2025-04-05T01:57:25Z",
+      "sha256": null
+    },
+    {
+      "name": "mangaHIall.csv",
+      "dropbox_path": "/STAR/mangaHIall.csv",
+      "size_bytes": 1952832,
+      "revision": "0165d424144978000000003905d91d3",
+      "client_modified": "2025-04-03T05:36:04Z",
+      "sha256": null
+    },
+    {
+      "name": "mangaHIall.fits",
+      "dropbox_path": "/STAR/mangaHIall.fits",
+      "size_bytes": 1584000,
+      "revision": "0165d4240ca937100000003905d91d3",
+      "client_modified": "2025-04-03T04:39:31Z",
+      "sha256": null
+    },
+    {
+      "name": "pipe3d_data.csv",
+      "dropbox_path": "/STAR/pipe3d_data.csv",
+      "size_bytes": 86685754,
+      "revision": "0165d42593dfab900000003905d91d3",
+      "client_modified": "2025-04-03T05:31:11Z",
+      "sha256": null
+    },
+    {
+      "name": "filtered_Pipe3D.csv",
+      "dropbox_path": "/STAR/filtered_Pipe3D.csv",
+      "size_bytes": 2312587,
+      "revision": "0165d424013f68f00000003905d91d3",
+      "client_modified": "2025-04-03T13:45:13Z",
+      "sha256": null
+    }
+  ],
+  "required_before_lineage_acceptance": [
+    "SHA256 raw bytes and upstream release",
+    "explicit SQL query and export binding and ORDER BY absence",
+    "ICRS epoch/units and coordinate error model",
+    "class STAR contamination/physical galaxy selection",
+    "MaNGA ID semantics and survey footprint",
+    "Pipe3D target derivation and split",
+    "Independent comparison of renamed CSV bytes to their recorded download output, and original CasJobs SQL job"
+  ],
+  "controls": {
+    "execution_eligible": false,
+    "controlled_support_eligible": false,
+    "physical_support_eligible": false
+  },
+  "extracted_text_schema_probe": {
+    "mode": "Dropbox extracted UTF-8 text, NOT byte-identical source download",
+    "raw_sha256_verified": false,
+    "note": "Extractor text character lengths exceed Dropbox file byte sizes by one in both sampled CSVs; do not hash extracted text as a canonical raw-file fingerprint.",
+    "files": [
+      {
+        "name": "mangaHIall.csv",
+        "columns": 34,
+        "rows_in_extracted_text": 6632,
+        "column_count_mismatches": 0,
+        "coordinates": [
+          "OBJRA",
+          "OBJDEC"
+        ],
+        "coordinate_out_of_bounds": 0,
+        "id_columns": [
+          "PLATEIFU",
+          "MANGAID"
+        ],
+        "unique_PLATEIFU": 6442,
+        "duplicate_PLATEIFU_occurrences": 190,
+        "unique_MANGAID": 6358,
+        "duplicate_MANGAID_occurrences": 274,
+        "interpretation": "No unconditional one-to-one join may assume MANGAID or PLATEIFU uniqueness; investigate multiple HI observations, survey versions and unique-record policies."
+      },
+      {
+        "name": "filtered_Pipe3D.csv",
+        "columns": 16,
+        "rows_in_extracted_text": 10081,
+        "column_count_mismatches": 0,
+        "target": "log_SFR_Ha",
+        "has_galaxy_id": false,
+        "has_ra_dec": false,
+        "interpretation": "Filtered table alone cannot establish per-galaxy train/test group isolation or a provenance-secure join; recover stable IDs and release metadata from original Pipe3D input."
+      }
+    ]
+  },
+  "supplemental_evidence": {
+    "zone_identifier_receipts_path": "data/provenance/zone_identifier_receipts_v0.1.json",
+    "zone_sidecars_observed": 42,
+    "evidence_kind": "historical ZoneTransfer HostUrl/ReferrerUrl; no raw byte acquisition or provenance approval",
+    "casjobs_history_divergence": {
+      "more_complete": "/STAR/CasJobs SQL History.txt",
+      "older": "/star_provenance_r&d/CasJobs SQL History.txt",
+      "terminal_top_200000_only_in_more_complete": true
+    },
+    "filename_change_candidate": "SDSSDR18_200000.csv from MyTable_pmqr771_0.csv based on saved HostUrl; not byte verified",
+    "provider_session_tokens_in_repo": false
+  }
+}
