@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build and verify frozen Pipe3D and ALFALFA provenance-only intake.
+"""Build and verify frozen observational provenance-only intake.
 
 The default mode is read-only and fail-closed. ``--refresh`` is an explicit
 maintainer operation that rewrites only the deterministic ALFALFA derivatives
@@ -31,6 +31,10 @@ README_HEADERS = ALF_DIR / "ReadMe.response-headers.txt"
 REQUEST = ALF_DIR / "request.json"
 PIPE_FITS = PIPE_DIR / "SDSS17Pipe3D_v3_1_1.fits"
 GEMA_FITS = GEMA_DIR / "GEMA_2.0.2.fits"
+SDSS_200K = ROOT / "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv"
+SDSS_200K_BINDING = ROOT / "historical/r&d/docs/recovered_corpus_audit_2026-10-08/casjobs_sdss18_200k_binding_2026-10-08.json"
+SDSS_200K_SQL = ROOT / "historical/r&d/code_log/2026-10-08_recovered/queries/4672dd7d2691021d782a24bfb1c02be29b86f2e372192312a379ea729d8e2c5a.txt"
+ZONE_RECEIPTS = ROOT / "data/provenance/zone_identifier_receipts_v0.1.json"
 DERIVED_DIR = ROOT / "data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019"
 FULL_COORDS = DERIVED_DIR / "alfalfa100_hi_centroids_full.csv"
 DISPLAY_COORDS = DERIVED_DIR / "alfalfa100_hi_centroids_display_2000.csv"
@@ -46,6 +50,9 @@ EXPECTED = {
     "gema_sha256": "244e9286f225b9e1dbef73bb93e1101d840a2a62ec5dabf3aa16ec88cfef1597",
     "gema_bytes": 7_223_040,
     "gema_tables": 15,
+    "sdss_200k_sha256": "9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2",
+    "sdss_200k_bytes": 33_007_497,
+    "sdss_200k_rows": 200_000,
     "alf_sha256": "654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079",
     "alf_bytes": 10_981_088,
     "readme_sha256": "6aa40d3e1552c104e5197a330bb30f440f87206d4763a52322a6c02afd43b9d4",
@@ -54,6 +61,10 @@ EXPECTED = {
     "alf_fields": 25,
     "display_rows": 2_000,
 }
+SDSS_200K_COLUMNS = [
+    "objid", "ra", "dec", "u", "g", "r", "i", "z", "run", "rerun",
+    "camcol", "field", "specobjid", "class", "redshift", "plate", "mjd", "fiberid",
+]
 DISPLAY_SALT = b"ALFALFA-A100-DISPLAY-v1\0"
 PR_LINKS = [
     "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78",
@@ -199,6 +210,38 @@ def analyze() -> tuple[dict[str, object], bytes, bytes]:
         for hdu in gema_tables
     ]
 
+    sdss_sha, sdss_size = digest(SDSS_200K)
+    if (sdss_sha, sdss_size) != (EXPECTED["sdss_200k_sha256"], EXPECTED["sdss_200k_bytes"]):
+        raise ValueError("SDSS 200k bytes differ from the remote-verified recovered LFS object")
+    with SDSS_200K.open(encoding="utf-8-sig", newline="") as stream:
+        reader = csv.reader(stream, strict=True)
+        sdss_header = next(reader)
+        sdss_rows = sum(1 for _ in reader)
+    if sdss_header != SDSS_200K_COLUMNS or sdss_rows != EXPECTED["sdss_200k_rows"]:
+        raise ValueError("SDSS 200k row count or historical CasJobs schema drift")
+    binding = json.loads(SDSS_200K_BINDING.read_text(encoding="utf-8"))
+    required_binding = {
+        "status": "historical_source_binding_candidate_not_controlled",
+        "raw_download_name": "MyTable_pmqr771_0.csv",
+        "historical_local_name": "SDSSDR18_200000.csv",
+        "sha256": sdss_sha,
+        "bytes": sdss_size,
+        "query_limit": sdss_rows,
+        "expected_csv_columns": SDSS_200K_COLUMNS,
+        "sql_order_by_present": False,
+        "sql_row_membership_reproducible_by_rerun": False,
+    }
+    for key, value in required_binding.items():
+        if binding.get(key) != value:
+            raise ValueError(f"SDSS 200k binding drift: {key}")
+    sql = SDSS_200K_SQL.read_text(encoding="utf-8")
+    if "SELECT TOP 200000" not in sql or "INTO mydb.MyTable" not in sql or "s.bestobjid = p.objid" not in sql:
+        raise ValueError("SDSS 200k historical SQL binding is absent")
+    receipts = json.loads(ZONE_RECEIPTS.read_text(encoding="utf-8")).get("receipts", [])
+    receipt = next((item for item in receipts if item.get("originalDownloadName") == "MyTable_pmqr771_0.csv"), None)
+    if receipt is None or receipt.get("registeredDatasetCandidate") != "DATA-SDSS18-200K" or not str(receipt.get("hostUrlOrJobId", "")).endswith("/MyTable_pmqr771_0.csv"):
+        raise ValueError("SDSS 200k Zone.Identifier rename receipt is absent")
+
     raw_sha, raw_size = digest(RAW_VOT)
     readme_sha, readme_size = digest(README)
     if (raw_sha, raw_size) != (EXPECTED["alf_sha256"], EXPECTED["alf_bytes"]):
@@ -249,6 +292,16 @@ def analyze() -> tuple[dict[str, object], bytes, bytes]:
     info: dict[str, object] = {
         "pipe3d": {"sha256": pipe_sha, "size_bytes": pipe_size, "fits_rows": int(table["NAXIS2"]), "fits_fields": int(table["TFIELDS"])},
         "gema": {"sha256": gema_sha, "size_bytes": gema_size, "fits_table_count": len(gema_tables), "fits_tables": gema_schema},
+        "sdss_200k": {
+            "sha256": sdss_sha,
+            "size_bytes": sdss_size,
+            "rows": sdss_rows,
+            "columns": sdss_header,
+            "raw_download_name": binding["raw_download_name"],
+            "historical_local_name": binding["historical_local_name"],
+            "sql_order_by_present": False,
+            "exact_membership_reproducible_by_rerun": False,
+        },
         "alfalfa": {
             "source_sha256": raw_sha,
             "source_size_bytes": raw_size,
@@ -279,6 +332,22 @@ def build_manifest(info: dict[str, object]) -> dict[str, object]:
         "governing_authority": "charter/STAR_Research_Charter_v0-2.pdf",
         "generator": "scripts/validate_observational_datasets.py",
         "datasets": {
+            "DATA-SDSS18-200K": {
+                **info["sdss_200k"],
+                "source_service": "SDSS SkyServer CasJobs",
+                "source_binding": "historical query, 18-column schema, row limit, download-origin sidecar and renamed local file",
+                "repository_path": SDSS_200K.relative_to(ROOT).as_posix(),
+                "binding_record_path": SDSS_200K_BINDING.relative_to(ROOT).as_posix(),
+                "zone_receipts_path": ZONE_RECEIPTS.relative_to(ROOT).as_posix(),
+                "provenance_status": "historical_recovered_pending_lineage_review",
+                "canonical_provenance_status": "unknown",
+                "evidence_status": "unknown",
+                "blockers": [
+                    "CasJobs job ID, execution time and database snapshot are not bound to the output bytes",
+                    "TOP 200000 lacks ORDER BY, so an exact-membership rerun is not possible",
+                    "original source-job output checksum is absent",
+                ],
+            },
             "DATA-SFR-MANGA-PIP3D": {
                 **info["pipe3d"],
                 "publisher": "SDSS",
@@ -368,12 +437,18 @@ def verify_registry(manifest: dict[str, object]) -> None:
         digest_key = "source_sha256" if dataset_id == "DATA-VIZIER-ALFALFA100" else "sha256"
         if source[digest_key] not in pv["Integrity_Check"]:
             raise ValueError(f"{dataset_id} canonical provenance does not bind raw SHA-256")
+    sdss_ds, sdss_pv = datasets["DATA-SDSS18-200K"], provenance["DATA-SDSS18-200K"]
+    if sdss_ds["Status"] != "planned" or sdss_ds["Provenance_Status"] != "unknown" or sdss_pv["Provenance_Status"] != "unknown":
+        raise ValueError("DATA-SDSS18-200K canonical provenance was promoted beyond recovered evidence")
+    if any(sdss_ds[field] != "false" for field in ("Controlled_Execution_Eligible", "Controlled_Support_Eligible", "Physical_Support_Eligible")):
+        raise ValueError("DATA-SDSS18-200K eligibility was promoted")
 
 
 def markdown(manifest: dict[str, object]) -> str:
     pipe = manifest["datasets"]["DATA-SFR-MANGA-PIP3D"]
     gema = manifest["datasets"]["DATA-COSMIC-ENV"]
     alf = manifest["datasets"]["DATA-VIZIER-ALFALFA100"]
+    sdss = manifest["datasets"]["DATA-SDSS18-200K"]
     return "\n".join([
         "# Observational dataset lineage and Aladin review gate",
         "",
@@ -381,6 +456,7 @@ def markdown(manifest: dict[str, object]) -> str:
         "",
         "| Dataset | Preserved source | Validation | Status |",
         "|---|---|---|---|",
+        f"| DATA-SDSS18-200K | `{sdss['sha256']}` ({sdss['size_bytes']} bytes) | {sdss['rows']} rows; {len(sdss['columns'])} columns; SQL/rename receipt bound | historical recovered candidate; exact rerun membership unresolved; canonical provenance/evidence unknown; all eligibility false |",
         f"| DATA-SFR-MANGA-PIP3D | `{pipe['sha256']}` ({pipe['size_bytes']} bytes) | {pipe['fits_rows']} FITS rows; {pipe['fits_fields']} fields | provenance verified; evidence unknown; all eligibility false |",
         f"| DATA-COSMIC-ENV | `{gema['sha256']}` ({gema['size_bytes']} bytes) | {gema['fits_table_count']} FITS tables | provenance verified; evidence unknown; all eligibility false |",
         f"| DATA-VIZIER-ALFALFA100 | `{alf['source_sha256']}` ({alf['source_size_bytes']} bytes) | {alf['source_rows']} VOTable rows; {alf['field_count']} fields; {alf['agc_duplicate_count']} duplicate AGC IDs | provenance verified; Aladin admission pending independent review; all eligibility false |",
@@ -405,7 +481,7 @@ def main() -> int:
         DERIVED_DIR.mkdir(parents=True, exist_ok=True)
         FULL_COORDS.write_bytes(full_bytes)
         DISPLAY_COORDS.write_bytes(display_bytes)
-        MANIFEST.write_text(json.dumps(build_manifest(info), indent=2) + "\n", encoding="utf-8")
+        MANIFEST.write_bytes((json.dumps(build_manifest(info), indent=2) + "\n").encode("utf-8"))
     manifest = build_manifest(info)
     committed = json.loads(MANIFEST.read_text(encoding="utf-8"))
     if committed != manifest:

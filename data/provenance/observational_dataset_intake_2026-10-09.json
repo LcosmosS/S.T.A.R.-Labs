@@ -4,6 +4,48 @@
   "governing_authority": "charter/STAR_Research_Charter_v0-2.pdf",
   "generator": "scripts/validate_observational_datasets.py",
   "datasets": {
+    "DATA-SDSS18-200K": {
+      "sha256": "9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2",
+      "size_bytes": 33007497,
+      "rows": 200000,
+      "columns": [
+        "objid",
+        "ra",
+        "dec",
+        "u",
+        "g",
+        "r",
+        "i",
+        "z",
+        "run",
+        "rerun",
+        "camcol",
+        "field",
+        "specobjid",
+        "class",
+        "redshift",
+        "plate",
+        "mjd",
+        "fiberid"
+      ],
+      "raw_download_name": "MyTable_pmqr771_0.csv",
+      "historical_local_name": "SDSSDR18_200000.csv",
+      "sql_order_by_present": false,
+      "exact_membership_reproducible_by_rerun": false,
+      "source_service": "SDSS SkyServer CasJobs",
+      "source_binding": "historical query, 18-column schema, row limit, download-origin sidecar and renamed local file",
+      "repository_path": "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv",
+      "binding_record_path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/casjobs_sdss18_200k_binding_2026-10-08.json",
+      "zone_receipts_path": "data/provenance/zone_identifier_receipts_v0.1.json",
+      "provenance_status": "historical_recovered_pending_lineage_review",
+      "canonical_provenance_status": "unknown",
+      "evidence_status": "unknown",
+      "blockers": [
+        "CasJobs job ID, execution time and database snapshot are not bound to the output bytes",
+        "TOP 200000 lacks ORDER BY, so an exact-membership rerun is not possible",
+        "original source-job output checksum is absent"
+      ]
+    },
     "DATA-SFR-MANGA-PIP3D": {
       "sha256": "ac714809044c02dcb2cc8b5007d02981d9316c34dc398a79f4c07bde4d3496fc",
       "size_bytes": 55889280,

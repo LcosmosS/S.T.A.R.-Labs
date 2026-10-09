@@ -71,3 +71,4 @@ data/intake/sdss/pipe3d/dr17-v3_1_1-2026-10-09/SDSS17Pipe3D_v3_1_1.fits filter=l
 data/intake/sdss/gema/dr17-2.0.2-2026-10-09/GEMA_2.0.2.fits filter=lfs diff=lfs merge=lfs -text
 data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.vot filter=lfs diff=lfs merge=lfs -text
 data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_full.csv filter=lfs diff=lfs merge=lfs -text
+data/provenance/observational_dataset_intake_2026-10-09.json text eol=lf
