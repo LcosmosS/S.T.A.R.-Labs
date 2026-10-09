@@ -1,0 +1,97 @@
+{
+  "schema_version": "candidate-preregistration-ledger-v0.1",
+  "governing_charter": "charter/STAR_Research_Charter_v0-2.pdf",
+  "evidence_policy": "No canonical registry row or claim is promoted by this prospective review ledger.",
+  "created_at_utc_date": "2026-10-08",
+  "base_main_commit": "1d87fe9f132d4b0223e23578343fff9aced7521a",
+  "candidates": [
+    {
+      "experiment_id": "EXP-MAP-A03",
+      "priority": 1,
+      "qualified_experiment_id": "REPO-CSV-v0.2:EXP-MAP-A03",
+      "claim_ids": [
+        "CLAIM-ACSC-002"
+      ],
+      "dataset_id": "DATA-ARITHMETIC",
+      "parameter_set_id": "PAR-MAP-003",
+      "null_id": "NULL-MAP-003",
+      "protocol": "preregistrations/EXP-MAP-A03/protocol.md",
+      "config": "preregistrations/EXP-MAP-A03/config.json",
+      "design_status": "prospective_protocol_locked_pending_canonical_transition",
+      "canonical_status": "planned",
+      "next_gate": "Build MCJ implementation, pin code/spec and approve explicit immutable-audit lifecycle-transition exception",
+      "controlled_execution_eligible": false,
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false
+    },
+    {
+      "experiment_id": "EXP-DATA-A01",
+      "priority": 2,
+      "qualified_experiment_id": "REPO-CSV-v0.2:EXP-DATA-A01",
+      "claim_ids": [
+        "CLAIM-ACSC-001"
+      ],
+      "dataset_id": "DATA-SDSS18-200K",
+      "parameter_set_id": "PAR-MATCH-001",
+      "null_id": "NULL-MATCH-001",
+      "protocol": "preregistrations/EXP-DATA-A01/protocol_draft.md",
+      "design_status": "design_only_blocked_missing_provenance_and_null",
+      "canonical_status": "planned",
+      "next_gate": "Bind complete source/ID lineage and preregister spatial mask, pair ambiguity and shift-null magnitude",
+      "controlled_execution_eligible": false,
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false
+    },
+    {
+      "experiment_id": "EXP-CTRL-A02",
+      "priority": 3,
+      "qualified_experiment_id": "REPO-CSV-v0.2:EXP-CTRL-A02",
+      "claim_ids": [
+        "CLAIM-ACSC-001"
+      ],
+      "dataset_id": "DATA-PROVENANCE-ALL",
+      "parameter_set_id": "PAR-LEAK-001",
+      "null_id": "NULL-LEAK-001",
+      "protocol": "preregistrations/EXP-CTRL-A02/protocol_draft.md",
+      "design_status": "design_only_blocked_missing_target_and_split",
+      "canonical_status": "planned",
+      "next_gate": "Lock observational target and feature exclusion, fold-grouping and arithmetic permutation null",
+      "controlled_execution_eligible": false,
+      "controlled_support_eligible": false,
+      "physical_support_eligible": false
+    }
+  ],
+  "existing_locked": {
+    "experiment_id": "EXP-MAP-A01",
+    "status": "preregistered",
+    "controlled_execution_eligible": false,
+    "protocol": "preregistrations/EXP-MAP-A01/protocol.md",
+    "next_gate": "activation-only PR after clean preflight; no protocol modifications"
+  },
+  "deferred": [
+    {
+      "experiment_id": "EXP-MAP-A02",
+      "reason": "PTD requires canonical period Omega source/precision/normalization, singular handling, scaling and null"
+    },
+    {
+      "experiment_id": "EXP-TOPO-A01",
+      "reason": "filtration, sample/point cloud, topological endpoint and null calibration not fixed"
+    },
+    {
+      "experiment_id": "EXP-SFR-A01",
+      "reason": "Pipe3D source/target/feature leakage and association to arithmetic curves not independently bound"
+    },
+    {
+      "experiment_id": "EXP-L001",
+      "reason": "distinct historical L_cosmo mass-series versions and median sample dependence not resolved"
+    },
+    {
+      "experiment_id": "EXP-ECC-B01",
+      "reason": "d(dM)=0 prevents nontrivial class from globally exact one-form without new mathematical setup"
+    },
+    {
+      "experiment_id": "EXP-RTCH-B01",
+      "reason": "physical recovery limit and coupling/parameter definitions not frozen"
+    }
+  ]
+}
