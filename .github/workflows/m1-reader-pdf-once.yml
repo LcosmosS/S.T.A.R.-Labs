@@ -23,7 +23,7 @@ jobs:
       - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc texlive-latex-base texlive-latex-extra
+          sudo apt-get install -y --no-install-recommends pandoc lmodern texlive-latex-base texlive-latex-extra
 
       - name: Generate non-canonical reader PDF
         working-directory: repo/release_packages/M1-INH-E1b-pre-review-v0.1
