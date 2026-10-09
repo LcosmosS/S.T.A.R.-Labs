@@ -43,17 +43,21 @@ jobs:
           sage -python -m pip install -r requirements.txt
           sage -python -m pip install -e . --no-deps
 
-      - name: Prepare isolated Parquet smoke environment
+      - name: Install Parquet engine for the Sage Python interpreter
         run: |
           set -euo pipefail
-          # The SageMath image uses a separate Python distribution. A pip
-          # success message is not proof that Sage's import path sees pyarrow.
-          # Use one interpreter for pandas, pyarrow and the union builder.
-          python3 -m venv /tmp/star-sky-parquet-venv
-          /tmp/star-sky-parquet-venv/bin/python -m pip install --disable-pip-version-check \
-            numpy==1.26.2 pandas==2.2.2 pyarrow==21.0.0
-          /tmp/star-sky-parquet-venv/bin/python -m pip install -e . --no-deps
-          /tmp/star-sky-parquet-venv/bin/python -c "import pandas, pyarrow; print('Parquet smoke engine:', pyarrow.__version__)"
+          # The Sage container has no ensurepip/python3-venv. Installing pip
+          # packages globally may use a different site-packages directory.
+          # Install the wheel at a known location and explicitly import it
+          # using the SAME Sage interpreter that runs the survey builder.
+          sage -python -m pip install --no-deps --target /tmp/star-sky-pyarrow pyarrow==21.0.0
+          sage -python - <<'PY'
+          import sys
+          sys.path.insert(0, "/tmp/star-sky-pyarrow")
+          import pandas
+          import pyarrow
+          print("Sage Python Parquet engine:", pyarrow.__version__, "pandas:", pandas.__version__)
+          PY
 
       - name: Run cosmology diagnostics
         run: |
@@ -70,7 +74,9 @@ jobs:
         run: |
           set -euo pipefail
           cd "${{ steps.root.outputs.ROOT }}"
-          /tmp/star-sky-parquet-venv/bin/python - <<'PY'
+          sage -python - <<'PY'
+          import sys
+          sys.path.insert(0, "/tmp/star-sky-pyarrow")
           from pathlib import Path
           import pandas as pd
           from src.data.sky_survey_dataset_builder import SkySurveyUnionBuilder
