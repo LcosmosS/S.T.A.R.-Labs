@@ -36,3 +36,15 @@ def test_no_p0_candidate_terminals_fabricated():
     assert len(candidates)==5
     assert all(x["Audit_Status"] in {"REGISTERED_UNTESTED","PASSES_P0"} or is_terminal(x["Audit_Status"])
                for x in candidates)
+
+
+def test_preregistration_sources_are_syntactically_locked_but_not_activated():
+    """Definition locks never substitute for an accountable activation."""
+    report=inspect(ROOT)
+    a01=next(e for e in report["entries"] if e["experiment_id"]=="EXP-MAP-A01")
+    assert a01["status"] in {"preregistered","executed","completed"}
+    assert "parameter_not_preregistered" not in a01["blocking_gates"]
+    assert "null_not_preregistered" not in a01["blocking_gates"]
+    assert "dataset_source_provenance_not_verified" not in a01["blocking_gates"]
+    # The report refuses to call a locked input physically supported on its own.
+    assert report["no_scientific_experiment_was_run"] is True

@@ -57,6 +57,18 @@ def inspect(root: Path) -> dict:
                                 ("null",row["Null_ID"],nulls)):
             if which not in idx:
                 blocked.append(f"unknown_{field}")
+            elif field == "dataset":
+                dataset=idx[which]
+                if dataset.get("Provenance_Status","").strip().lower() != "verified":
+                    blocked.append("dataset_source_provenance_not_verified")
+                if dataset.get("Status","").strip().lower() != "locked":
+                    blocked.append("dataset_selection_and_processing_not_locked")
+            else:
+                definition=idx[which]
+                if definition.get("Preregistration_Status","").strip().lower() != "locked":
+                    blocked.append(f"{field}_not_preregistered")
+                if definition.get("Definition_Status","").strip().lower() != "locked":
+                    blocked.append(f"{field}_definition_not_locked")
         if not execution:
             blocked.append("separate_controlled_activation_approval")
         if not controlled:
