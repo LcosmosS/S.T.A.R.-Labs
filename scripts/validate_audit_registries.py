@@ -229,7 +229,29 @@ def validate(repo, overlay=None):
     assert prereg_manifest['source']['git_commit'] in remediated_provenance['Version_or_Release']
     assert not controlled_input_eligible(remediated_dataset,remediated_provenance)
 
-    for did in original_ids-{remediated_id}:
+    # A later provenance-only review independently downloaded the SDSS DR17
+    # H I-MaNGA DR3 publisher binary and reproduced the preserved LFS object's
+    # SHA-256.  This advances source identity only: the dataset remains planned,
+    # its achieved evidence remains unknown, and every eligibility gate remains
+    # false until a prospective matching protocol is admitted separately.
+    hi_id='DATA-MANGA-HI-ALL'
+    hi_receipt=load('data/provenance/publisher_byte_verification_2026-10-08.json')
+    hi_dataset=ds_map[hi_id]
+    hi_provenance=prov_map[hi_id]
+    hi_record=next(r for r in hi_receipt['datasets'] if r['dataset_id']==hi_id)
+    assert hi_dataset['Status']=='planned'
+    assert hi_dataset['Provenance_Status']=='verified'
+    assert hi_dataset['Achieved_Evidence_Status']=='unknown'
+    assert not truth(hi_dataset['Controlled_Execution_Eligible'])
+    assert not truth(hi_dataset['Controlled_Support_Eligible'])
+    assert not truth(hi_dataset['Physical_Support_Eligible'])
+    assert hi_provenance['Provenance_Status']=='verified'
+    assert hi_provenance['Evidence_Status']=='unknown'
+    assert hi_record['publisher']['sha256'] in hi_provenance['Integrity_Check']
+    assert hi_record['comparison']['publisher_equals_repository_lfs'] is True
+    assert not controlled_input_eligible(hi_dataset,hi_provenance)
+
+    for did in original_ids-{remediated_id,hi_id}:
         assert ds_map[did]['Status']=='planned' and prov_map[did]['Provenance_Status']=='unknown' and prov_map[did]['Evidence_Status']=='unknown'
         assert not controlled_input_eligible(ds_map[did],prov_map[did])
     controlled=rows('experiment_registry_v0.2.csv')

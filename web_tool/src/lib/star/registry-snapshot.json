@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "311dd2ff80c718b00f46682092d3098ad078f8b355c51270b487587b4e84a2bb",
+  "contentSha256": "fa1f46b61e30dc8419132af5a61106593fcfadb2e06538c00acd892ffae3093e",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
@@ -66,13 +66,13 @@
     },
     {
       "path": "registry/data_provenance_registry_v0.1.csv",
-      "sha256": "93740c0e987f6830de92fee07406279895d6350c3dd8a1bf345f567dc4dff3e8",
-      "sizeBytes": 54958
+      "sha256": "8dba65800065c73a06ff0988e71607afe3202a0b7506b3cae8b0521d3bdb502c",
+      "sizeBytes": 55787
     },
     {
       "path": "registry/dataset_registry_v0.1.csv",
-      "sha256": "26891193caf3d17252546585a4e8444f877d44594f4b6b28009736c52f6c0400",
-      "sizeBytes": 34216
+      "sha256": "1224aa6aadb369c0be0cefebec0586b44769052eb0bfe599393a26c44e977f5d",
+      "sizeBytes": 34709
     },
     {
       "path": "registry/experiment_recovery_2026-10-08.csv",
