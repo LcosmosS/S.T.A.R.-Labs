@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import snapshot from "./registry-snapshot.json" with { type: "json" };
-import { getPreregisteredEntries, isPreregisteredStatus } from "./experiment-lifecycle.ts";
+import { getPreregisteredEntries, getPendingTheoryProtocols, isPreregisteredStatus } from "./experiment-lifecycle.ts";
 
 test("preregistered status is not conflated with planned or eligibility", () => {
   for (const s of ["preregistered", "preregistered_closed", "PREREGISTERED"])
@@ -13,10 +13,12 @@ test("preregistered status is not conflated with planned or eligibility", () => 
 test("all current preregistered experiments and theory protocols are discovered from the snapshot", () => {
   const entries = getPreregisteredEntries(snapshot);
   assert.deepEqual(entries.map((entry) => entry.id), [
-    "EXP-MAP-A01", "EXP-MAP-A03", "M1-INH-E1", "P0-ANSATZ-001",
+    "EXP-MAP-A01", "EXP-MAP-A03", "P0-ANSATZ-001",
   ]);
-  assert.equal(entries.find((entry) => entry.id === "M1-INH-E1")?.status, "preregistered");
-  assert.equal(entries.find((entry) => entry.id === "M1-INH-E1")?.protocolPath, "preregistrations/M1-INH-E1/protocol.md");
+  const pending = getPendingTheoryProtocols(snapshot);
+  assert.deepEqual(pending.map((entry) => entry.id), ["M1-INH-E1"]);
+  assert.equal(pending[0].status, "planned");
+  assert.equal(pending[0].protocolPath, "preregistrations/M1-INH-E1/protocol.md");
   const source = snapshot.preregistrations.find((entry) => entry.id === "M1-INH-E1");
   assert.deepEqual(source?.stages.map(stage => stage.status), ["planned","planned","planned"]);
   assert.equal(source?.gateState.controlledExecutionEligible, false);
@@ -36,4 +38,15 @@ test("new approved preregistrations appear automatically; planned ones do not", 
     ],
   });
   assert.deepEqual(entries.map((entry) => entry.id), ["EXP-NEW", "M1-NEW"]);
+});
+
+test("frozen theory protocol on file is not silently promoted to preregistered", () => {
+  const pending = getPendingTheoryProtocols({
+    preregistrations: [
+      {id:"M1-PENDING", record:{Status:"planned"}, protocolPath:"preregistrations/M1-PENDING/protocol.md"},
+      {id:"M1-REGISTERED", record:{Status:"preregistered"}, protocolPath:"preregistrations/M1-REGISTERED/protocol.md"},
+      {id:"M1-UNBOUND", record:{Status:"planned"}, protocolPath:"somewhere/else.md"},
+    ],
+  });
+  assert.deepEqual(pending.map(row => row.id), ["M1-PENDING"]);
 });
