@@ -1,0 +1,82 @@
+{
+  "schema_version": "star-dataset-resolution-attempts-v1",
+  "date": "2026-10-09",
+  "governing_authority": "charter/STAR_Research_Charter_v0-2.pdf",
+  "search_scopes": [
+    "repository registries and recovered-corpus audit",
+    "connected Dropbox",
+    "connected Google Drive",
+    "official SDSS Science Archive Server",
+    "official CDS VizieR"
+  ],
+  "datasets": [
+    {
+      "dataset_id": "DATA-SFR-MANGA-PIP3D",
+      "prior_provenance_status": "unknown",
+      "located": true,
+      "disposition": "promoted_to_verified_provenance_only",
+      "evidence": "SDSS publisher FITS, two recovered Dropbox copies and the previously checked OneDrive copy are byte-identical; repository object and CI binding added",
+      "sha256": "ac714809044c02dcb2cc8b5007d02981d9316c34dc398a79f4c07bde4d3496fc",
+      "blockers_remaining": [
+        "raw-to-SFR target transformation is not frozen",
+        "leakage-free model protocol and independent replication remain absent"
+      ]
+    },
+    {
+      "dataset_id": "DATA-COSMIC-ENV",
+      "prior_provenance_status": "unknown",
+      "located": true,
+      "disposition": "promoted_to_verified_provenance_only",
+      "evidence": "SDSS DR17 GEMA 2.0.2 publisher FITS is byte-identical to the recovered Dropbox GEMA_2.0.2.fits; repository object and CI binding added",
+      "sha256": "244e9286f225b9e1dbef73bb93e1101d840a2a62ec5dabf3aa16ec88cfef1597",
+      "blockers_remaining": [
+        "analysis-table and environment-variable selection are not preregistered",
+        "downstream joins and independent replication remain absent"
+      ]
+    },
+    {
+      "dataset_id": "DATA-SDSS18-200K",
+      "prior_provenance_status": "unknown",
+      "located": true,
+      "disposition": "existing_historical_lfs_object_retained_not_promoted",
+      "evidence": "Dropbox exposes SDSSDR18_G.csv and SDSSDR18_G2.csv candidates; the repository already preserves the 200,000-row candidate as data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv with remote LFS proof and a recovered CasJobs query",
+      "blockers_remaining": [
+        "original CasJobs job ID and execution timestamp are missing",
+        "source database snapshot is missing",
+        "TOP 200000 has no ORDER BY and cannot reproduce exact membership",
+        "source-job output checksum is missing"
+      ]
+    },
+    {
+      "dataset_id": "DATA-PROVENANCE-ALL",
+      "prior_provenance_status": "unknown",
+      "located": false,
+      "disposition": "not_a_single_source_dataset_identity_unresolved",
+      "evidence": "Searches returned registries and provenance logs rather than a defined versioned dataset",
+      "blockers_remaining": [
+        "scope, schema, source set and construction procedure are undefined"
+      ]
+    },
+    {
+      "dataset_id": "DATA-PHYS-CONSTRAINTS",
+      "prior_provenance_status": "unknown",
+      "located": false,
+      "disposition": "theory_documents_found_no_dataset_promoted",
+      "evidence": "Google Drive returned RTCH theory and registry documents; Dropbox returned no exact dataset",
+      "blockers_remaining": [
+        "no versioned constants table, units schema, source citations or construction manifest was identified"
+      ]
+    },
+    {
+      "dataset_id": "DATA-ECC-THEORY",
+      "prior_provenance_status": "unknown",
+      "located": false,
+      "disposition": "theory_documents_and_historical_fragments_found_no_dataset_promoted",
+      "evidence": "Google Drive returned multiple ECC manuscripts and Dropbox returned historical code-log fragments",
+      "blockers_remaining": [
+        "no canonical theory revision, computational-input schema or reproducible generation chain was identified"
+      ]
+    }
+  ],
+  "policy": "A located filename or manuscript is not promoted unless publisher/release identity, exact bytes, schema and use terms are bound. Existing historical objects are not duplicated."
+}
