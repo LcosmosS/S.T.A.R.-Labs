@@ -409,3 +409,12 @@ SFT unifies arithmetic geometry, entropy cohomology, and symbolic dynamics into 
 
 **This document establishes Symbolic-Field Theory as the natural dynamical extension of the S.T.A.R. Model** — a symbolic analogue to Einstein’s geometric theory of gravity.
 
+
+
+---
+
+## Historical-source status notice (Charter v0.2; appended 2026-10-08)
+
+This document is preserved as a **historical proposal**; its original text is not a record of controlled or independently replicated physical results. The controlling authority is [STAR Research Charter v0.2 (PDF)](charter/STAR_Research_Charter_v0-2.pdf). Its unqualified physical, mathematical, prediction and implementation statements must be read under the [claim-by-claim epistemic and implementation corrections](docs/registries/CHARTER_EPISTEMIC_CORRECTIONS_v0.1.md); see also the [negative-results publication standard](docs/registries/NEGATIVE_RESULTS_PUBLICATION_PROTOCOL_v0.1.md).
+
+**For SFT/ECC:** An implemented function, illustrative projection, synthetic topology test or symbolic calculation is not evidence that observed cosmic dynamics follow the proposed arithmetic mechanism. Original claims remain visible for historical traceability; any changed claim requires a new version and independent validation.
