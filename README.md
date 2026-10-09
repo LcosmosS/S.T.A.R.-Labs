@@ -43,11 +43,37 @@ The [Charter-governed recovery audit](historical/r&d/docs/recovered_corpus_audit
 
 Recent merge history was checked against GitHub on 2026-10-08 (timestamps below are UTC): [#47](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/47) source-map-js and [#48](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/48) JupyterLab dependency updates merged October 8; [#50](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/50) general Einstein-dust / frozen Weierstrass reduction and [#49](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/49) metric-first proof evidence merged October 8; [#46](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/46) closed P0 theory-search preregistration merged October 8; [#43](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/43) deployment isolation and [#42](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/42) admission/write-once protection merged October 5; [#33](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/33) original provenance audit merged October 4. [#44](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44) quarantine relocation merged October 8; its relocation evidence is preserved alongside the LFS-backed canonical payloads. See the [machine-readable history](historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json).
 
+## Observational source intake and Aladin gate (2026-10-09)
+
+**Status:** The Pipe3D, GEMA and corrected ALFALFA source-intake additions below are proposed by
+[PR #84](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/84). They are
+not canonical `main`-branch releases until the PR passes required checks
+and receives an approving review from a reviewer with write access. Source
+byte identity and scientific/release authorization are distinct decisions.
+
+- The SDSS DR17 Pipe3D publisher FITS is now preserved through Git LFS and bound to SHA-256 `ac714809044c02dcb2cc8b5007d02981d9316c34dc398a79f4c07bde4d3496fc` (55,889,280 bytes; 10,220 rows; 536 fields). Publisher, Dropbox and OneDrive copies match. Provenance is verified; SFR target construction and all eligibility remain unresolved/false.
+- The SDSS DR17 GEMA 2.0.2 publisher FITS is preserved through Git LFS and bound to SHA-256 `244e9286f225b9e1dbef73bb93e1101d840a2a62ec5dabf3aa16ec88cfef1597` (7,223,040 bytes; 15 tables). It matches the recovered Dropbox file. Analysis-table selection and all eligibility remain unresolved/false.
+- Corrected VizieR ALFALFA `J/ApJ/861/49/table2` is frozen as an untouched 31,502-row VOTable with SHA-256 `654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079`; its ReadMe, response headers, request and coordinate semantics are separately preserved. All AGC IDs are unique; 344 rows retain missing optical-counterpart coordinates.
+- The full 31,502-row H I-centroid derivative and a prospectively selected 2,000-row display candidate have separate hashes. The [matching protocol](research/acquisition/vizier_alfalfa100/matching_protocol_v1.md) fixes coordinate role, spherical geometry, multiplicity, selection and null boundaries, and blocks inferential matching until a cited positional-error model is frozen.
+- PR #84's [observational intake workflow](.github/workflows/observational_dataset_intake.yml)
+fetches only governed LFS objects, recomputes source and derivative hashes, checks
+FITS/VOTable schemas and registry status, and publishes a human-readable
+[lineage record](docs/registries/OBSERVATIONAL_DATASET_LINEAGE_2026-10-09.md)
+and Actions artifact. **The ALADIN Lite release list remains empty** until a
+separate off-author review receipt authorizes the exact coordinate-extract,
+source-ID and transformation hashes. Passing CI does not approve a scientific
+claim, a crossmatch, or a web release.
+- The recovered SDSS 200k CasJobs sample is already LFS-preserved and is now CI-validated as a 200,000-row, 18-column historical source-binding candidate. Its archived/Dropbox `Zone.Identifier` binds renamed `SDSSDR18_200000.csv` to `MyTable_pmqr771_0.csv`; canonical provenance remains unknown because exact job/database identity and deterministic membership are unresolved.
+- `DATA-PROVENANCE-ALL`, `DATA-PHYS-CONSTRAINTS` and `DATA-ECC-THEORY` are reserved registry placeholders, not missing datasets. They remain non-executable until each has a concrete schema or mathematical definition, frozen source or construction procedure, SHA-256 evidence and verified provenance.
+
+Main also contains the Aladin admission controls and A01 corrective revert from [#76](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/76) and [#77](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/77), claim/audit corrections from [#79](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/79), and protocol-only A03 registration from [#83](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/83). [#78](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78), [#80](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/80), and [#81](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/81) are open review records; none is reused as dataset or Aladin authorization.
+
 ## Research Charter
 
 The governing document is:
 
-- **[RESEARCH_CHARTER_v0.2.md](charter/RESEARCH_CHARTER_v0.2.md)**
+- **[STAR_Research_Charter_v0-2.pdf](charter/STAR_Research_Charter_v0-2.pdf)** — governing authority
+- [RESEARCH_CHARTER_v0.2.md](charter/RESEARCH_CHARTER_v0.2.md) — companion readable text
 
 The charter establishes the project's scientific posture and repository controls.
 
@@ -199,16 +225,50 @@ class-relative elliptic insufficiency in the Szekeres-Szafron sector.
 
 ### Current registry status
 
-The registry tables currently contain planned experiments and placeholder parameter/null definitions where the controlled specifications still need to be fixed.
+The registry includes both **locked, preregistered** arithmetic protocols
+(`EXP-MAP-A01` and `EXP-MAP-A03`) and experiments whose designs remain
+planned. Preregistration does not imply authorized execution. The A01
+activation proposal is separately reviewed in [PR #78](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78);
+A03 has no execution authorization.
 
-In particular:
+The canonical [dataset](registry/dataset_registry_v0.1.csv) and
+[provenance](registry/data_provenance_registry_v0.1.csv) registries are
+**extensible**: their non-quarantined row count is not an immutable October
+audit count. Every Dataset_ID must have exactly one matching provenance row;
+source and evidence states must agree between those registries.
 
-- a parameter value discovered after seeing an outcome is **not** retroactively preregistered;
-- planned experiments remain planned until their definitions are sufficiently specified;
-- dataset records identify the intended data source but do not imply that a particular release/version has already been provenance-locked;
-- the R&D artifact registry preserves historical work without promoting it to controlled evidence.
+- Source provenance `verified` requires recorded non-placeholder SHA-256
+  evidence. A syntactically valid recorded digest is **not** independent proof
+  of a publisher download or a hydrated LFS object's contents; source-specific
+  CI must verify the actual bytes and acquisition lineage.
+- `Controlled_Execution_Eligible=true` is permissible only when the input
+  provenance is `verified`, its achieved evidence state is `controlled` or
+  `derived`, a SHA-256 receipt exists, and the separately reviewed experiment
+  activation has been authorized. Source-only verification with
+  `Evidence_Status=unknown` does **not** qualify.
+- Controlled or physical support must never be promoted using ineligible data.
+  Dataset eligibility is only a *necessary* condition; a controlled result,
+  independent replication, claim-level review and the charter's support rules
+  remain independent gates. CI does not award approval.
+- The [October 3 quarantine snapshot](registry/audit_quarantine_dataset_status_v0.3.csv)
+  and its historical dataset bindings remain immutable audit evidence.
+  Validation checks that all quarantined IDs match those frozen assets, but
+  **does not require new canonical datasets to appear in the historical
+  binding table**.
+- New observational catalogues (including Pipe3D, GEMA, and ALFALFA) may reach
+  `planned / verified / unknown` through independently corroborated publisher
+  provenance. This does not authorize scientific execution, spatial matching,
+  or an ALADIN Lite coordinate release.
+- Parameters/nulls must be prospectively locked; no post-hoc choices are
+  retroactively preregistered. Historical R&D outputs remain diagnostic until
+  separately reconstructed and reviewed.
 
-The **Data Provenance Registry is part of the current repository control layer** and is validated by the existing registry-validation CI job. Individual provenance records may still carry an `unknown`, `unverified`, or `partially_verified` status when their exact source, release/version, selection, acquisition history, or lineage has not yet been established. The provenance registry does not preregister experiment parameters, null models, or scientific claims.
+For audit and admission checks, see
+[`scripts/validate_audit_registries.py`](scripts/validate_audit_registries.py),
+[`scripts/validate_observational_datasets.py`](scripts/validate_observational_datasets.py),
+and the [CI release-gate contract](web_tool/content/CI_FROZEN_SKY_RELEASE_GATE.md).
+The provenance registry does not replace an experiment protocol, null model,
+claim or reviewer authorization.
 
 ---
 
