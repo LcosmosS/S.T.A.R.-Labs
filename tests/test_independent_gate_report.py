@@ -54,6 +54,15 @@ def test_preregistration_sources_are_syntactically_locked_but_not_activated():
     assert "parameter_not_preregistered" not in a01["blocking_gates"]
     assert "null_not_preregistered" not in a01["blocking_gates"]
     assert "dataset_source_provenance_not_verified" not in a01["blocking_gates"]
+    # The gate census is read-only: activation must be explicitly recorded.
+    # This covers both current inactive and separately authorized future
+    # activation states without hard-coding the October 9 roster forever.
+    required_gate = "separate_controlled_activation_approval"
+    assert (required_gate in a01["blocking_gates"]) is (not a01["execution_eligible"])
+    # A03 was preregistered in PR #83 after the historical 17+1 matrix.
+    a03=next(e for e in report["entries"] if e["experiment_id"]=="EXP-MAP-A03")
+    assert a03["status"] in {"preregistered","executed","completed"}
+    assert (required_gate in a03["blocking_gates"]) is (not a03["execution_eligible"])
     # The report refuses to call a locked input physically supported on its own.
     assert report["no_scientific_experiment_was_run"] is True
 

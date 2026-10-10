@@ -1,10 +1,11 @@
 """Validate qualified audit records and prevent quarantine-to-evidence promotion."""
 from pathlib import Path
-import argparse, csv, hashlib, json
+import argparse, csv, hashlib, json, re
 
 PDF_NS='STAR-PDF-v0.2'
 REPO_NS='REPO-CSV-v0.2'
 FIND_NS='STAR-AUDIT-2026-10-03'
+A03_LOCKED_ASSESSMENT="EXP-MAP-A03-prereg-v1 is scientifically preregistered as the repository-qualified BSD-independent MCJ arithmetic null test; source bytes, the deterministic 37,936-row analysis cohort, exact j mapping, k=10 endpoint, conductor-decile null, seed=4103, B=999, alpha=0.005, and output contract are locked. Controlled execution and all support promotion remain disabled pending a separate activation-only PR and successful activation preflight."
 
 def read_rows(path):
     with path.open(encoding='utf-8-sig', newline='') as stream:
@@ -21,16 +22,105 @@ def truth(value): return str(value).strip().lower()=='true'
 def assert_namespace_identity(row, namespace, original_key, qualified_key):
     assert row[qualified_key]==f'{namespace}:{row[original_key]}', f'namespace identity mismatch: {row[original_key]}'
 
+SHA256_RECEIPT = re.compile(r'\b(?:source_)?sha[-_ ]?256\s*[:=]\s*([0-9a-f]{64})\b', re.IGNORECASE)
+
+
+def has_recorded_sha256(provenance):
+    """Require a syntactically valid, non-placeholder hash in source lineage.
+
+    This check is necessary, not proof that publisher bytes were independently
+    hydrated. Dataset-specific source CI verifies the actual object contents.
+    """
+    checks = provenance.get('Integrity_Check', '')
+    return any(
+        match.group(1).lower() != '0' * 64
+        for match in SHA256_RECEIPT.finditer(checks)
+    )
+
+
 def controlled_input_eligible(dataset, provenance):
-    """A valid archival hash never overrides quarantine or unknown source status."""
-    if dataset.get('Status','').lower()=='quarantined' or provenance.get('Provenance_Status','').lower()=='quarantined': return False
-    if provenance.get('Provenance_Status')!='verified': return False
-    if provenance.get('Evidence_Status') in {'negative_null','historical','unknown'}: return False
-    return truth(dataset.get('Controlled_Execution_Eligible','false'))
+    """Execution needs verified source identity, scientific evidence, and SHA.
+
+    Source-only publisher verification with Evidence_Status=unknown is NOT
+    sufficient. An execution flag is a separate authorization, not inferred
+    from these prerequisites.
+    """
+    if dataset.get('Status', '').lower() == 'quarantined':
+        return False
+    if provenance.get('Provenance_Status', '').lower() != 'verified':
+        return False
+    if provenance.get('Evidence_Status', '').lower() not in {'controlled', 'derived'}:
+        return False
+    if not has_recorded_sha256(provenance):
+        return False
+    return truth(dataset.get('Controlled_Execution_Eligible', 'false'))
+
+
+def assert_dataset_lifecycle(dataset, provenance):
+    """Check a canonical operational row without naming any preferred dataset."""
+    did = dataset['Dataset_ID']
+    assert provenance['Dataset_ID'] == did, f'missing/mismatched provenance: {did}'
+    assert dataset['Provenance_Status'] == provenance['Provenance_Status'], (
+        f'dataset/provenance source-status drift: {did}'
+    )
+    assert dataset['Achieved_Evidence_Status'] == provenance['Evidence_Status'], (
+        f'dataset/provenance evidence-status drift: {did}'
+    )
+    if provenance['Provenance_Status'] == 'verified':
+        assert has_recorded_sha256(provenance), (
+            f'verified dataset requires recorded SHA-256 integrity evidence: {did}'
+        )
+    if truth(dataset['Controlled_Execution_Eligible']):
+        assert controlled_input_eligible(dataset, provenance), (
+            f'controlled execution requires verified source, controlled/derived '
+            f'evidence and real SHA-256: {did}'
+        )
+    for flag in ('Controlled_Support_Eligible', 'Physical_Support_Eligible'):
+        if truth(dataset[flag]):
+            assert controlled_input_eligible(dataset, provenance), (
+                f'{flag} requires executable verified dataset evidence: {did}'
+            )
+    # An input passing this check is not by itself an authorized experiment,
+    # approved display release or scientifically reviewed support claim.
+
+
+def assert_operational_dataset_coverage(datasets, provenance, assets):
+    """Separate immutable audit quarantine from extensible canonical inventory.
+
+    Every operational dataset must have exactly one provenance record. The
+    frozen quarantine inventory is checked against exactly its registered
+    assets, rather than assuming the historical canonical row count is fixed.
+    """
+    ds_map = {r['Dataset_ID']: r for r in datasets}
+    prov_map = {r['Dataset_ID']: r for r in provenance}
+    assert len(ds_map) == len(datasets), 'duplicate Dataset_ID'
+    assert len(prov_map) == len(provenance), 'duplicate provenance Dataset_ID'
+    assert set(ds_map) == set(prov_map), 'missing/orphan provenance Dataset_ID'
+    quarantined = {r['qualified_dataset_id'] for r in assets}
+    assert len(quarantined) == len(assets), 'duplicate frozen quarantine asset'
+    operational_quarantine = {
+        did for did, row in ds_map.items()
+        if row['Status'] == 'quarantined'
+    }
+    assert operational_quarantine == quarantined, (
+        'quarantine registry/asset mismatch or unauthorized new quarantine'
+    )
+    non_quarantined = {
+        did for did, row in ds_map.items()
+        if row['Status'] != 'quarantined'
+    }
+    for did in non_quarantined:
+        assert_dataset_lifecycle(ds_map[did], prov_map[did])
+    return ds_map, prov_map, non_quarantined
+
 
 def assert_controlled_input(experiment, dataset, provenance):
-    if truth(experiment.get('Controlled_Execution_Eligible','false')):
-        assert controlled_input_eligible(dataset,provenance), f'quarantined or unverified input cannot become controlled eligible: {experiment["Experiment_ID"]}'
+    """Reject an execution-enabled experiment whose dataset is ineligible."""
+    if truth(experiment.get('Controlled_Execution_Eligible', 'false')):
+        assert controlled_input_eligible(dataset, provenance), (
+            f'quarantined or unverified input cannot become controlled eligible: {experiment["Experiment_ID"]}'
+        )
+
 
 def assert_no_support_promotion(rows, label):
     for row in rows:
@@ -64,24 +154,37 @@ def assert_original_control_snapshot(name, snapshot, current):
     for original in snapshot['rows']:
         row = current_map[key(original)]
 
-        # Historical audit snapshots remain immutable. The operational
-        # experiment registry may make one explicit reviewed lifecycle
-        # transition for EXP-MAP-A01: Status planned -> preregistered.
-        allowed_transition = (
+        # Historical audit snapshots remain immutable. Operational lifecycle
+        # transitions are narrow, experiment-specific exceptions.
+        allowed_a01 = (
             name == 'experiment_registry_v0.2.csv'
             and original.get('Experiment_ID') == 'EXP-MAP-A01'
             and original.get('Status') == 'planned'
             and row.get('Status') == 'preregistered'
         )
-        protected = [
-            field for field in snapshot['fields']
-            if not (allowed_transition and field == 'Status')
-        ]
+        allowed_a03 = (
+            name == 'experiment_registry_v0.2.csv'
+            and original.get('Experiment_ID') == 'EXP-MAP-A03'
+            and original.get('Status') == 'planned'
+            and row.get('Status') == 'preregistered'
+            and row.get('Current_Audit_Assessment') == A03_LOCKED_ASSESSMENT
+            and row.get('Controlled_Execution_Eligible') == 'false'
+            and row.get('Controlled_Support_Eligible') == 'false'
+            and row.get('Physical_Support_Eligible') == 'false'
+        )
+        mutable = {'Status'} if allowed_a01 else (
+            {'Status', 'Current_Audit_Assessment'} if allowed_a03 else set()
+        )
+        protected = [field for field in snapshot['fields'] if field not in mutable]
         assert all(row[field] == original[field] for field in protected), (
             f'original controlled ID/definition changed: {name}'
         )
         if name == 'experiment_registry_v0.2.csv' and original.get('Experiment_ID') == 'EXP-MAP-A01':
-            assert allowed_transition, 'EXP-MAP-A01 audit transition must be explicit planned -> preregistered'
+            assert allowed_a01, 'EXP-MAP-A01 audit transition must be explicit planned -> preregistered'
+        if name == 'experiment_registry_v0.2.csv' and original.get('Experiment_ID') == 'EXP-MAP-A03':
+            assert allowed_a03 or row == original, (
+                'EXP-MAP-A03 may change only planned -> preregistered plus the exact locked assessment'
+            )
 
     extra_keys = set(current_map) - original_keys
     if name != 'claim_evidence_v0.2.csv':
@@ -127,6 +230,15 @@ def assert_crosswalk_snapshot(row, source):
     assert ids(row['Qualified_Registered_Experiment_Links'])==[f'{PDF_NS}:{eid}' for eid in source['registered_experiment_links']]
 
 def validate(repo, overlay=None):
+    """Validate audit identities, frozen assets, and operational eligibility.
+
+    Args:
+        repo: Repository root containing the registries and source records.
+        overlay: Optional root whose existing files override repository files.
+
+    Raises:
+        AssertionError: If an audit binding, snapshot, or eligibility rule fails.
+    """
     repo=Path(repo)
     def path(relative):
         candidate=Path(overlay)/relative if overlay else None
@@ -188,11 +300,13 @@ def validate(repo, overlay=None):
     for name, snapshot in metadata['original_control_snapshots'].items():
         assert_original_control_snapshot(name, snapshot, rows(name))
     datasets=rows('dataset_registry_v0.1.csv'); provenance=rows('data_provenance_registry_v0.1.csv'); assets=rows('audit_quarantine_dataset_status_v0.3.csv')
-    ds_map={r['Dataset_ID']:r for r in datasets}; prov_map={r['Dataset_ID']:r for r in provenance}
-    assert len(ds_map)==len(datasets)==len(prov_map)==len(provenance)==45
-    assert set(ds_map)==set(prov_map)
-    assert len(provenance[0])==21
-    assert_no_support_promotion(datasets+assets,'dataset or quarantined asset')
+    ds_map, prov_map, non_quarantined = assert_operational_dataset_coverage(
+        datasets, provenance, assets
+    )
+    assert provenance and len(provenance[0])==21
+    assert_no_support_promotion(assets,'frozen quarantined asset')
+    # The quarantined assets are an immutable October 3 audit snapshot;
+    # their cardinality is historical, unlike the evolving canonical registry.
     assert len(assets)==37 and len({r['qualified_dataset_id'] for r in assets})==37
     for asset in assets:
         did=asset['qualified_dataset_id']; dataset=ds_map[did]; prov=prov_map[did]
@@ -205,8 +319,7 @@ def validate(repo, overlay=None):
         quarantine=path(asset['quarantine_path'])
         assert quarantine.is_file() and hashlib.sha256(quarantine.read_bytes()).hexdigest()==asset['quarantine_sha256']
         assert not controlled_input_eligible(dataset,prov)
-    original_ids=set(ds_map)-{r['qualified_dataset_id'] for r in assets}
-    assert len(original_ids)==8
+    # Deliberately no fixed number of non-quarantined canonical datasets.
 
     # The October 3 audit rows remain immutable historical snapshots, but a
     # later reviewed remediation may advance an operational DATA-* record.
@@ -214,20 +327,19 @@ def validate(repo, overlay=None):
     # source bytes while deliberately leaving execution/support eligibility off.
     prereg_manifest=load('preregistrations/EXP-MAP-A01/dataset_manifest.json')
     remediated_id='DATA-ARITHMETIC'
-    assert remediated_id in original_ids
+    assert remediated_id in non_quarantined
     remediated_dataset=ds_map[remediated_id]
     remediated_provenance=prov_map[remediated_id]
     assert remediated_dataset['Status']=='locked'
     assert remediated_dataset['Provenance_Status']=='verified'
     assert remediated_dataset['Achieved_Evidence_Status']=='controlled'
-    assert not truth(remediated_dataset['Controlled_Execution_Eligible'])
-    assert not truth(remediated_dataset['Controlled_Support_Eligible'])
-    assert not truth(remediated_dataset['Physical_Support_Eligible'])
+    # Future execution activation requires a separate preregistered experiment
+    # and approval transaction, not another hard-coded validator exception.
     assert remediated_provenance['Provenance_Status']=='verified'
     assert remediated_provenance['Evidence_Status']=='controlled'
     assert prereg_manifest['artifact']['sha256'] in remediated_provenance['Integrity_Check']
     assert prereg_manifest['source']['git_commit'] in remediated_provenance['Version_or_Release']
-    assert not controlled_input_eligible(remediated_dataset,remediated_provenance)
+    assert_dataset_lifecycle(remediated_dataset,remediated_provenance)
 
     # A later provenance-only review independently downloaded the SDSS DR17
     # H I-MaNGA DR3 publisher binary and reproduced the preserved LFS object's
@@ -251,21 +363,28 @@ def validate(repo, overlay=None):
     assert hi_record['comparison']['publisher_equals_repository_lfs'] is True
     assert not controlled_input_eligible(hi_dataset,hi_provenance)
 
-    for did in original_ids-{remediated_id,hi_id}:
-        assert ds_map[did]['Status']=='planned' and prov_map[did]['Provenance_Status']=='unknown' and prov_map[did]['Evidence_Status']=='unknown'
-        assert not controlled_input_eligible(ds_map[did],prov_map[did])
+    # All other canonical datasets, whether newly registered or promoted
+    # from placeholders, use the same evidence/eligibility predicate. Source
+    # hashes alone never grant controlled execution or web admission.
+    for did in non_quarantined:
+        assert_dataset_lifecycle(ds_map[did], prov_map[did])
+
     controlled=rows('experiment_registry_v0.2.csv')
     for experiment in controlled:
         assert_namespace_identity(experiment,REPO_NS,'Experiment_ID','Qualified_Experiment_ID')
         assert_controlled_input(experiment,ds_map[experiment['Dataset_ID']],prov_map[experiment['Dataset_ID']])
     bindings=rows('dataset_audit_bindings_v0.3.csv')
     asset_ids={r['binding_id'] for r in assets}
-    assert {r['Dataset_ID'] for r in bindings}==original_ids
+    audited_ids={r['Dataset_ID'] for r in bindings}
+    assert len(audited_ids)==len(bindings), 'duplicate frozen audit dataset binding'
+    # Historical bindings are an immutable subset, not a complete enumeration
+    # of future, independently reviewed canonical registrations.
+    assert audited_ids.issubset(non_quarantined)
     for row in bindings:
         assert row['Relationship']=='diagnostic_context_only_not_dataset_identity'
         assert row['Accepted_Quarantine_Input_Bindings']=='' and not truth(row['Canonical_Source_Identity_Verified'])
         assert set(ids(row['Related_Quarantine_Bindings'])).issubset(asset_ids)
-    print('Validated 51 claims, 25 definitions, 51 crosswalk records, 7 audit-frozen planned scopes, 1 locked preregistered arithmetic scope and 37 quarantined artifacts; no support promotion.')
+    print('Validated 51 claims, 25 definitions, 51 crosswalk records, audit-frozen planned scopes, 2 locked preregistered arithmetic scopes and 37 quarantined artifacts; no support promotion.')
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(); parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[1]); parser.add_argument('--overlay',type=Path)

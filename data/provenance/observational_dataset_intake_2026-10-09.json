@@ -1,0 +1,217 @@
+{
+  "schema_version": "star-observational-dataset-intake-v1",
+  "acquisition_date": "2026-10-09",
+  "governing_authority": "charter/STAR_Research_Charter_v0-2.pdf",
+  "generator": "scripts/validate_observational_datasets.py",
+  "datasets": {
+    "DATA-SDSS18-200K": {
+      "sha256": "9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2",
+      "size_bytes": 33007497,
+      "rows": 200000,
+      "columns": [
+        "objid",
+        "ra",
+        "dec",
+        "u",
+        "g",
+        "r",
+        "i",
+        "z",
+        "run",
+        "rerun",
+        "camcol",
+        "field",
+        "specobjid",
+        "class",
+        "redshift",
+        "plate",
+        "mjd",
+        "fiberid"
+      ],
+      "raw_download_name": "MyTable_pmqr771_0.csv",
+      "historical_local_name": "SDSSDR18_200000.csv",
+      "sql_order_by_present": false,
+      "exact_membership_reproducible_by_rerun": false,
+      "source_service": "SDSS SkyServer CasJobs",
+      "source_binding": "historical query, 18-column schema, row limit, download-origin sidecar and renamed local file",
+      "repository_path": "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv",
+      "binding_record_path": "historical/r&d/docs/recovered_corpus_audit_2026-10-08/casjobs_sdss18_200k_binding_2026-10-08.json",
+      "zone_receipts_path": "data/provenance/zone_identifier_receipts_v0.1.json",
+      "provenance_status": "historical_recovered_pending_lineage_review",
+      "canonical_provenance_status": "unknown",
+      "evidence_status": "unknown",
+      "blockers": [
+        "CasJobs job ID, execution time and database snapshot are not bound to the output bytes",
+        "TOP 200000 lacks ORDER BY, so an exact-membership rerun is not possible",
+        "original source-job output checksum is absent"
+      ]
+    },
+    "DATA-SFR-MANGA-PIP3D": {
+      "sha256": "ac714809044c02dcb2cc8b5007d02981d9316c34dc398a79f4c07bde4d3496fc",
+      "size_bytes": 55889280,
+      "fits_rows": 10220,
+      "fits_fields": 536,
+      "publisher": "SDSS",
+      "version_or_release": "SDSS DR17; MANGADRP_VER v3_1_1; PIPE3D_VER 3.1.1",
+      "source_url": "https://data.sdss.org/sas/dr17/env/MANGA_PIPE3D/v3_1_1/3.1.1/SDSS17Pipe3D_v3_1_1.fits",
+      "repository_path": "data/intake/sdss/pipe3d/dr17-v3_1_1-2026-10-09/SDSS17Pipe3D_v3_1_1.fits",
+      "provenance_status": "verified",
+      "evidence_status": "unknown"
+    },
+    "DATA-VIZIER-ALFALFA100": {
+      "source_sha256": "654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079",
+      "source_size_bytes": 10981088,
+      "readme_sha256": "6aa40d3e1552c104e5197a330bb30f440f87206d4763a52322a6c02afd43b9d4",
+      "readme_size_bytes": 24714,
+      "source_rows": 31502,
+      "field_count": 25,
+      "agc_duplicate_count": 0,
+      "optical_coordinate_missing_rows": 344,
+      "optical_coordinate_partial_rows": 0,
+      "hi_quality_code_counts": {
+        "1": 25434,
+        "2": 6068
+      },
+      "full_coordinate_sha256": "ae65f7e0ffd4f90219f91aaa0d29f6cad6930696f6a181ba37740e4758206ba2",
+      "full_coordinate_size_bytes": 1117779,
+      "display_coordinate_sha256": "ddf040c5954bc9ae2c19415d46071443cd6a3f209069e095fd2b4bbe7b8fadf9",
+      "display_coordinate_size_bytes": 70959,
+      "display_rows": 2000,
+      "selected_ids_sha256": "7b5de4187e24df2c0c1936164ecd1ade0ae5c4ee15d2ff64847499fd7e7c6221",
+      "publisher": "CDS VizieR",
+      "version_or_release": "J/ApJ/861/49/table2 corrected August 2019",
+      "catalogue_doi": "10.26093/cds/vizier.18610049",
+      "article_doi": "10.3847/1538-4357/aac956",
+      "request": {
+        "method": "GET",
+        "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J%2FApJ%2F861%2F49%2Ftable2&-out.max=unlimited&-out.all=1",
+        "parameters": {
+          "-source": "J/ApJ/861/49/table2",
+          "-out.max": "unlimited",
+          "-out.all": "1"
+        },
+        "retrieved_at_utc": "2026-10-09T07:47:29Z",
+        "mirror": "vizier.cds.unistra.fr",
+        "response_media_type": "application/x-votable+xml",
+        "response_headers_path": "data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.response-headers.txt",
+        "readme_url": "https://cdsarc.cds.unistra.fr/viz-bin/ReadMe/J/ApJ/861/49?format=html&tex=true",
+        "readme_retrieved_at_utc": "2026-10-09T07:47:46Z",
+        "catalogue_doi": "10.26093/cds/vizier.18610049",
+        "article_doi": "10.3847/1538-4357/aac956",
+        "designation": "Corrected August 2019 table2"
+      },
+      "source_path": "data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.vot",
+      "source_headers_path": "data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.response-headers.txt",
+      "readme_path": "data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/ReadMe.html",
+      "readme_headers_path": "data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/ReadMe.response-headers.txt",
+      "full_coordinate_path": "data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_full.csv",
+      "display_coordinate_path": "data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_display_2000.csv",
+      "coordinate_role": "hi_centroid",
+      "coordinate_frame": "J2000 equatorial; VizieR main-coordinate UCDs",
+      "selection_policy": "2000 lowest SHA256(ALFALFA-A100-DISPLAY-v1\\0 + AGC); output in source order",
+      "matching_protocol_path": "research/acquisition/vizier_alfalfa100/matching_protocol_v1.md",
+      "matching_protocol_sha256": "af5e052237641539cc04457f81067e499877dca811bd231680482340ec98861d",
+      "provenance_status": "verified",
+      "evidence_status": "unknown",
+      "web_admission_status": "pending_independent_review"
+    },
+    "DATA-COSMIC-ENV": {
+      "sha256": "244e9286f225b9e1dbef73bb93e1101d840a2a62ec5dabf3aa16ec88cfef1597",
+      "size_bytes": 7223040,
+      "fits_table_count": 15,
+      "fits_tables": [
+        {
+          "extname": "DR17_param_completeness_footprint",
+          "rows": 10087,
+          "fields": 5
+        },
+        {
+          "extname": "DR17_param_1Mpc_all",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_1Mpc_002",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_1Mpc_006",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_1Mpc_010",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_1Mpc_015",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_5Mpc_all",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_5Mpc_002",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_5Mpc_006",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_5Mpc_010",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_5Mpc_015",
+          "rows": 10087,
+          "fields": 7
+        },
+        {
+          "extname": "DR17_param_pairs",
+          "rows": 1062,
+          "fields": 5
+        },
+        {
+          "extname": "DR17_param_groups",
+          "rows": 9670,
+          "fields": 10
+        },
+        {
+          "extname": "DR17_param_overdensity",
+          "rows": 3287,
+          "fields": 3
+        },
+        {
+          "extname": "DR17_param_LSS",
+          "rows": 10086,
+          "fields": 14
+        }
+      ],
+      "publisher": "SDSS / MaNGA GEMA",
+      "version_or_release": "SDSS DR17; GEMA 2.0.2",
+      "source_url": "https://data.sdss.org/sas/dr17/env/MANGA_GEMA/2.0.2/GEMA_2.0.2.fits",
+      "repository_path": "data/intake/sdss/gema/dr17-2.0.2-2026-10-09/GEMA_2.0.2.fits",
+      "provenance_status": "verified",
+      "evidence_status": "unknown"
+    }
+  },
+  "eligibility": {
+    "controlled_execution": false,
+    "controlled_support": false,
+    "physical_support": false
+  },
+  "independent_review_references": [
+    "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78",
+    "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/80",
+    "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/81"
+  ]
+}

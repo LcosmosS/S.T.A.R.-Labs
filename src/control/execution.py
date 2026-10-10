@@ -358,6 +358,7 @@ def preflight_controlled_experiment(
     root: Path | str,
     spec_path: Path | str,
     *,
+    require_execution_eligibility: bool = True,
     git_state_provider: Callable[[Path], dict] = _git_state,
     tracked_path_checker: Callable[[Path, Path], None] = _assert_tracked_code_path,
 ) -> PreparedExecution:
@@ -377,10 +378,18 @@ def preflight_controlled_experiment(
     snapshot = RegistrySnapshot.load(root)
     resolved = snapshot.resolve(spec["experiment_id"])
 
-    failures = execution_gate_failures(resolved)
+    failures = execution_gate_failures(
+        resolved,
+        require_execution_eligibility=require_execution_eligibility,
+    )
     if failures:
+        gate_name = (
+            "controlled-execution"
+            if require_execution_eligibility
+            else "binding-only preregistration"
+        )
         raise PreflightError(
-            "controlled-execution gates rejected the experiment:\n- "
+            f"{gate_name} gates rejected the experiment:\n- "
             + "\n- ".join(failures)
         )
 

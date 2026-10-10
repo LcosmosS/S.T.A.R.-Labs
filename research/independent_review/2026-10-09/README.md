@@ -10,6 +10,25 @@ The baseline canonical experiment registry has **18 experiments: 17 planned and 
 
 See the [complete 18-experiment baseline census](experiment_gate_matrix.json), with exact registered dataset/parameter/null identifiers, status, and a specifically identified minimum next gate. This census is a dated **snapshot**, not the canonical source of record or an automatically updated approval.
 
+## Snapshot date versus current canonical state
+
+The 18-row `experiment_gate_matrix.json` is an **immutable October 9
+baseline observation**, not today's live activation ledger. In that archived
+snapshot A01 alone was preregistered and A03 was planned. Since then, merged
+PR #83 preregistered `EXP-MAP-A03` on the canonical `main` branch, so
+both A01 and A03 are preregistered with execution/support still disabled.
+New observational publisher-source verification also advances provenance
+without authorizing inference. Use `python scripts/independent_gate_report.py`
+on the checked-out current revision for the live count; do not rewrite the
+historical matrix to match newer science-control records.
+
+The source review notes in this dated packet are **methodology and historical
+blocker records**, not evidence that every issue is still unresolved after
+later integration. In particular, CodeRabbit's S1 metric correction,
+eligibility-flag validation, and five-terminal-failure P0 retirement restriction
+are reflected in this PR's current files. Independent review must evaluate
+the final merged-code candidate, not rely only on the October 9 baseline.
+
 ## Workstreams, hard stops and immutable results
 
 | Workstream | What this branch supplies | Remaining **non-waivable** gate |
