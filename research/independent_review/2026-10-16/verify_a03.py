@@ -39,15 +39,18 @@ SOURCE_COMMIT = "25cec5ecfec8b9f016eb1631ac633194c2bed39f"
 
 
 def require(condition, message):
+    """Raise a verification error when a required integrity check fails."""
     if not condition:
         raise ValueError(message)
 
 
 def sha(path):
+    """Return the SHA-256 hex digest of the bytes at the given path."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def git(*args):
+    """Return a Git command's stdout from the governed repository root."""
     return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
 
 
@@ -67,6 +70,9 @@ def reference_invariants(a):
 
 
 def symbolic_identity():
+    """Prove the c4/c6 and b8 discriminant formulas agree symbolically.
+
+    This checks an exact polynomial identity without loading observed ranks."""
     a1,a2,a3,a4,a6 = sp.symbols("a1 a2 a3 a4 a6")
     b2=a1**2+4*a2; b4=a1*a3+2*a4; b6=a3**2+4*a6
     b8=a1**2*a6+4*a2*a6-a1*a3*a4+a2*a3**2-a4**2
@@ -77,6 +83,11 @@ def symbolic_identity():
 
 
 def reference_cohort():
+    """Independently parse pinned ecdata and verify the rank-blind cohort.
+
+    Check source bytes, representative membership, exact j=0 exclusions,
+    c4/Delta, and principal-log coordinates. Never compute the cohort's
+    neighbor graph, endpoint statistic, or registered null distribution."""
     raw=(ROOT/SOURCE).read_bytes()
     require(hashlib.sha256(raw).hexdigest()==SOURCE_SHA, "source hash mismatch")
     require(len(raw)==2146401, "source size mismatch")
@@ -133,6 +144,10 @@ def reference_cohort():
 
 
 def fixture(kind):
+    """Construct a deterministic 40-row synthetic graph/null test fixture.
+
+    The kind selects tied, duplicate, or seeded asymmetric coordinates.
+    Synthetic ranks are diagnostic only, not observed cohort data."""
     n=40
     if kind=="duplicates":
         points=[(0.0,0.0,0.0) if i<14 else (float(i%5),float(i//5),0.0) for i in range(n)]
@@ -150,6 +165,10 @@ def fixture(kind):
 
 
 def reference_edges(frame):
+    """Enumerate the undirected k=10 graph on at most 64 synthetic rows.
+
+    Use squared Euclidean distances and ASCII labels to break ties.
+    Refuse production-cohort sizes before accessing coordinate columns."""
     require(len(frame)<=64, "reference graph is restricted to synthetic fixtures")
     points=frame[["x","y","z"]].to_numpy(dtype=np.float64)
     labels=frame.label.tolist(); edges=set()
@@ -165,6 +184,10 @@ def reference_edges(frame):
 
 
 def reference_words(seed):
+    """Yield an independent SplitMix64 unsigned 64-bit word stream.
+
+    Keep the RNG state continuous across calls and use 64-bit modular
+    arithmetic with the frozen SplitMix64 shift/multiply constants."""
     state=seed
     while True:
         state=(state+int("9e3779b97f4a7c15",16)) % (2**64)
@@ -175,6 +198,10 @@ def reference_words(seed):
 
 
 def reference_permutation(size,stream):
+    """Generate a Fisher-Yates index permutation from an existing stream.
+
+    Use rejection sampling to avoid modulo bias; do not reseed the
+    stream between successive permutations or conductor strata."""
     values=list(range(size))
     for i in reversed(range(1,size)):
         upper=i+1; cutoff=(2**64//upper)*upper
@@ -187,6 +214,11 @@ def reference_permutation(size,stream):
 
 
 def fixture_checks():
+    """Compare reference PRNG, kNN, strata, and nulls on synthetic inputs.
+
+    Check published-style vectors, rejection boundaries, rank-blind
+    graph membership, continuing-stream permutations, and three-draw
+    synthetic rank nulls. Never evaluate the registered cohort endpoint."""
     vectors=[0xe220a8397b1dcdaf,0x6e789e6aa1b965f4,0x06c45d188009454f]
     rng=SplitMix64(0)
     require([rng.next_u64() for _ in vectors]==vectors,"published-style seed-zero vectors failed")
@@ -241,6 +273,12 @@ def fixture_checks():
 
 
 def verify():
+    """Produce a read-only, source-locked A03 pre-execution receipt.
+
+    Block real-cohort graph, endpoint, null, and run functions before
+    selecting source rows. Check frozen bindings, synthetic algorithms,
+    both closed execution gates, and unmodified governed-file hashes.
+    This does not execute EXP-MAP-A03 or confer scientific approval."""
     config=json.loads((ROOT/CONFIG).read_text())
     spec=json.loads((ROOT/SPEC).read_text())
     paths={SOURCE,SPEC,CONFIG,"charter/STAR_Research_Charter_v0-2.pdf",
@@ -297,6 +335,10 @@ def verify():
 
 
 def main():
+    """Run the verifier and print JSON, optionally creating a new receipt.
+
+    The --output destination uses exclusive file creation; an existing
+    receipt is never overwritten. Leave all governed inputs unchanged."""
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output",type=Path)
     args=parser.parse_args()

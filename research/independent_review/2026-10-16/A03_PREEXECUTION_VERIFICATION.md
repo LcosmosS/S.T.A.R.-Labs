@@ -25,6 +25,18 @@ environment versions, synthetic outputs, and blocked-function names.
 The final PR adds this report and receipt after that clean verification commit;
 its CI must recheck the final revision and archive a new receipt.
 
+### Documentation-only verifier revision after the original receipt
+
+The October 10 local receipt remains historical evidence for verifier
+SHA-256 `845a9f7e50b454bffcfb7df637c462df454a38ecba10a5823276e6c8ad7e9590`
+at its recorded checkout `e9ce748b526d2c9af209a2e5bcf88bc39357678d`.
+CodeRabbit requested function docstring coverage; later annotations change
+the verifier's file digest but do **not** alter its computation, cohort
+selection, source locks, statistical-execution guards, or frozen scientific
+inputs. The historical JSON is not silently regenerated or retitled:
+exact-head CI must produce a **new** receipt and verifier hash for review.
+No independent approval or experimental execution follows from either.
+
 ## Source and arithmetic checks
 
 The source was freshly fetched from the exact publisher commit URL:
