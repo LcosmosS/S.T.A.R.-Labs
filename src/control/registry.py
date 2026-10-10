@@ -287,8 +287,12 @@ class RegistrySnapshot:
         )
 
 
-def execution_gate_failures(resolved: ResolvedExperiment) -> list[str]:
-    """Return reasons an experiment may not enter the controlled runner."""
+def execution_gate_failures(
+    resolved: ResolvedExperiment,
+    *,
+    require_execution_eligibility: bool = True,
+) -> list[str]:
+    """Return fail-closed registry gate failures for execution or binding review."""
     failures = []
     experiment = resolved.experiment
     dataset = resolved.dataset
@@ -322,13 +326,25 @@ def execution_gate_failures(resolved: ResolvedExperiment) -> list[str]:
     namespace_resolution = experiment.get("Namespace_Resolution", "").strip()
     if not namespace_resolution or "pending" in namespace_resolution.lower():
         failures.append(f"{experiment_id}: namespace resolution is not closed")
-    if not _truth(experiment.get("Controlled_Execution_Eligible", "false")):
+    experiment_execution_eligible = _truth(
+        experiment.get("Controlled_Execution_Eligible", "false")
+    )
+    dataset_execution_eligible = _truth(
+        dataset.get("Controlled_Execution_Eligible", "false")
+    )
+    if require_execution_eligibility:
+        if not experiment_execution_eligible:
+            failures.append(
+                f"{experiment_id}: experiment is not controlled-execution eligible"
+            )
+        if not dataset_execution_eligible:
+            failures.append(
+                f"{experiment_id}: dataset is not controlled-execution eligible"
+            )
+    elif experiment_execution_eligible or dataset_execution_eligible:
         failures.append(
-            f"{experiment_id}: experiment is not controlled-execution eligible"
-        )
-    if not _truth(dataset.get("Controlled_Execution_Eligible", "false")):
-        failures.append(
-            f"{experiment_id}: dataset is not controlled-execution eligible"
+            f"{experiment_id}: binding-only preflight requires experiment and "
+            "dataset controlled-execution eligibility to remain false"
         )
     if provenance.get("Provenance_Status") != "verified":
         failures.append(f"{experiment_id}: provenance is not verified")

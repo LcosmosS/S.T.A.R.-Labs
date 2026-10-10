@@ -12,6 +12,20 @@ def _fixture():
 def test_prospective_reviews_preserve_canonical_gates():
     assert validate() == 3
 
+def test_a03_preregistration_transition_lag_is_explicit_and_inactive():
+    ledger, _ = _fixture()
+    experiments = load_csv(ROOT, "registry/experiment_registry_v0.2.csv", "Experiment_ID")
+    params = load_csv(ROOT, "registry/parameter_registry_v0.1.csv", "Parameter_Set_ID")
+    nulls = load_csv(ROOT, "registry/null_registry_v0.1.csv", "Null_ID")
+    a03 = experiments["EXP-MAP-A03"]
+    assert a03["Status"] == "preregistered"
+    assert all(a03[key] == "false" for key in (
+        "Controlled_Execution_Eligible", "Controlled_Support_Eligible", "Physical_Support_Eligible"
+    ))
+    assert params["PAR-MAP-003"]["Preregistration_Status"] == "locked"
+    assert nulls["NULL-MAP-003"]["Preregistration_Status"] == "locked"
+    assert ledger["candidates"][0]["canonical_status"] == "planned"
+
 def test_reject_candidate_support_promotion():
     ledger, cfg = _fixture()
     ledger["candidates"][1]["physical_support_eligible"] = True

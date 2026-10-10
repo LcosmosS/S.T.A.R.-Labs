@@ -1,7 +1,9 @@
-# EXP-MAP-A03 implementation (fixtures only)
+# EXP-MAP-A03 implementation and activation gates
 
-This PR adds exact arithmetic `c4`/discriminant and the principal rational-`j` mapping, explicit j=0 exclusions before rank access, a rank-blind 3D neighbor graph, conditioned conductor deciles, and a **three-draw fixture only**.
+EXP-MAP-A03-prereg-v1 now has a complete production implementation of the locked arithmetic map, k=10 graph, B=999 conditional null, inferential rule, and four-file output contract. The implementation is committed for hashing and review only.
 
-**Production has no executable full-cohort entrypoint.** Running the module exits with a deliberate error until the separate canonical transition and activation-review PRs. The 999-draw inferential function is intentionally **not** exposed or run; a controlled runner implementation/spec and pinned source code hashes must be reviewed next.
+**Controlled execution remains disabled.** This preregistration transition does not run the 999-realization experiment, does not create scientific result files, and does not promote controlled or physical support.
 
-This branch is stacked on PR #62. When #62 is merged, rebase/retarget here before changing canonical statuses. No historical scores are validated, no inference result exists and all support flags remain false.
+Locked cohort: 64,687 pinned ecdata rows -> 38,042 curve-number-1 representatives -> 106 exact j=0 exclusions before rank use -> 37,936 accepted rows.
+
+Next gate after merge: **activation-only PR after clean preflight; no protocol modifications**. Any change to a scientific constant, cohort rule, endpoint, null, seed, alpha, code path, or output contract requires a new protocol version and a new Experiment_ID.

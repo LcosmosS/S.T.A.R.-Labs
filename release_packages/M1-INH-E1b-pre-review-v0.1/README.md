@@ -47,3 +47,23 @@ This package is **not** M1-INH-E1a; **not** M1-INH-E1c; **not** a terminal P0-T0
 Re-implement from the two explicit metric tensors without importing the supplied Einstein tensor, density, shear eigenspace, or invariant. Check all Einstein-tensor components and sign conventions, full positive-density regularity domain, complete frozen elliptic branch record, curvature reconstruction of dust/shear structures, and the zero-versus-positive invariant obstruction. Publish source, environment, exact hashes, failures as well as successes, and a scoped verdict. Counterexamples and falsification are explicitly solicited.
 
 Any future registry promotion remains governed by the separate independent-review process on `main`; this package cannot satisfy or bypass that gate.
+
+## Immutable GitHub release versus review-branch additions
+
+The independently citable, immutable GitHub release is
+[`m1-inh-e1b-pre-review-v0.1`](https://github.com/LcosmosS/S.T.A.R.-Labs/releases/tag/m1-inh-e1b-pre-review-v0.1).
+That tag refers to commit `b513d6756fd34bb1f16ef355f8d93bc1b3748a40`.
+All five substantive files listed in `SHA256SUMS` in this package have
+**byte-identical Git blobs** to the files in that tag, and the `SHA256SUMS`
+manifest itself is identical; do not move or retag the release.
+
+The optional Pandoc reader PDF and the expanded package README were added
+to PR #81 **after the immutable tag**. They are noncanonical review aids
+and were not part of the tagged archive. Their inclusion in the later merged
+repository tree does not retroactively alter the immutable GitHub release or
+any existing Zenodo deposit. The original Markdown, verifier, certificate,
+proof and execution provenance remain the authoritative review sources.
+
+The tag, any DOI, green CI, and this package cannot substitute for external
+mathematical proof review. This PR is documentation-only and does not approve
+the theorem or change a scientific registry state.

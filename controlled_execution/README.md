@@ -81,6 +81,26 @@ A run is rejected unless all of the following are true:
 This is intentionally stricter than the registry readiness checker because an
 execution transaction must bind concrete bytes, not only statuses.
 
+
+### Non-authorizing binding-only preflight
+
+A preregistration PR may prove that an execution-spec skeleton binds the exact
+registry records, dataset bytes, tracked code, configuration, seed, and expected
+outputs **without opening the execution gate**:
+
+```bash
+star-controlled-experiment preflight \
+  --spec controlled_execution/specs/EXP-MAP-A03.json \
+  --binding-only
+```
+
+Binding-only mode is intentionally the inverse of activation: it requires both
+the experiment and dataset `Controlled_Execution_Eligible` flags to remain
+`false`. It performs the same registry, provenance, row-binding, data-hash,
+code-hash, config-hash, Git-state, and container checks as preflight, but it
+cannot authorize or execute a command. The `run` and `rerun` paths never use
+binding-only mode and continue to require normal execution eligibility.
+
 ## Execution spec
 
 Specs conform to [`spec.schema.json`](spec.schema.json).
