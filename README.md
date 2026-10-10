@@ -1,11 +1,12 @@
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs) [![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs?utm_source=readme&utm_medium=badge) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) 
+
 ![badge](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/badge.jpg)![S.T.A.R. Labs](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starlabs.jpg)
 ## Symbolic–Topological–Arithmetic–Relativity
 ### A Research Center for Testing Models in Mathematical & Theoretical Physics
 
 [![STARMAP](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starmap.png)](https://starmap-star-labs.vercel.app/)
 `(Click Image for Web Tool Prototype)`
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs) [![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs?utm_source=readme&utm_medium=badge)
+ 
 
 **Author:** Patrick J. McNamara  
 **ORCiD:** 0009-0002-8978-5563  
