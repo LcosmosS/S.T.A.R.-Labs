@@ -1,4 +1,4 @@
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs) [![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs?utm_source=readme&utm_medium=badge) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) 
 
 ![badge](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/badge.jpg)![S.T.A.R. Labs](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starlabs.jpg)
 ## Symbolic–Topological–Arithmetic–Relativity
@@ -6,7 +6,8 @@
 
 [![STARMAP](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starmap.png)](https://starmap-star-labs.vercel.app/)
 `(Click Image for Web Tool Prototype)`
- 
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs) [![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs?utm_source=readme&utm_medium=badge) 
 
 **Author:** Patrick J. McNamara  
 **ORCiD:** 0009-0002-8978-5563  
@@ -23,11 +24,17 @@ The repository is both a computational research center and a controlled-experime
 ## Provenance Audit v0.3 (2026-10-03) – Summary Status
 
 - The inspected 1,495-row SDSS/HI match tables fail their claimed ≤2″ tolerance: every recomputed spherical separation exceeds it, and every row uses the same MaNGA identifier. These associations are quarantined pending reconstruction.
+
 - The inspected projection package contains blank artifacts alongside a manifest claiming 38,042 output rows. Different cleaned or working revisions are preserved separately and do not repair that package's provenance.
+
 - The examined RTCH-E1 torus runs are synthetic 900-point and 350-point demonstrations. Failed, underpowered or undefined null statistics and incomplete version binding prevent controlled empirical or physical support.
+
 - Repository CSVs, historical PDF registries and web-tool identifiers have conflicting meanings. [Namespace mappings](docs/registries/NAMESPACE.md) preserve each definition; matching text alone does not establish an alias.
+
 - The [Data Provenance Registry](registry/data_provenance_registry_v0.1.csv), the audit assessment tables and the [dated quarantine records](data/quarantine/2026-10-03_audit/) govern artifact eligibility. Historical originals remain preserved; promotion requires the Charter's evidence and reproducibility gates.
+
 - The [complete canonical audit package](historical/r&d/docs/provenance_audit_v0.3/) contains all supplied PDFs, registry deltas, diagnostics, snapshots and manifests. The [initial ingestion path](historical/r&d/docs/provenance_audit/) retains an identical package for the requested intake history.
+
 - The [code log](historical/r&d/code_log/) remains historical material awaiting review. [Triage records](historical/r&d/code_log_triage/2026-10-03/) mark obsolete benchmark arithmetic as superseded without altering extracted code. [Reconstruction candidates](experiments/reconstruction_candidates/2026-10-03/) define the next SDSS/HI, RTCH and SFR investigations; no new controlled result is claimed.
 
 ---
@@ -37,9 +44,13 @@ The repository is both a computational research center and a controlled-experime
 The [Charter-governed recovery audit](historical/r&d/docs/recovered_corpus_audit_2026-10-08/) inventories 70,030 entries, and records 18,392 full hashes and 225 filename revision conflicts. Counts include duplicate copies and generated material; library environments are documented separately and are not evidence of a producing run. Large files above 128 MiB remain inventory-only unless explicitly selected; [coverage gaps](historical/r&d/docs/recovered_corpus_audit_2026-10-08/MISSING.md) are preserved.
 
 - [Whole program candidates](historical/r&d/code_log/2026-10-08_recovered/) preserve 1,040 distinct programs and 3,250 source occurrences. Whole-file scope and syntax parsing do not establish runtime completeness; general notebook cells and prose fragments retain their earlier candidate status.
+
 - [Five SDSS/HI reconstruction source candidates](data/intake/recovered/2026-10-08/manifest.json), CasJobs histories and saved outputs retain source paths, hashes and disabled eligibility. Queries, releases, transformations and result bindings still require review. Pickled models remain inert.
+
 - All 37 active v0.3 quarantine payloads are under [data/quarantine](data/quarantine/2026-10-03_audit/); historical originals remain unchanged. Uploaded LFS objects are independently downloaded and hashed before storage is reported verified. The failed tables still have zero rows within 2 arcseconds on recheck.
+
 - Dated [claim](registry/claim_evidence_recovery_2026-10-08.csv), [experiment](registry/experiment_recovery_2026-10-08.csv), [crosswalk](registry/crosswalk_recovery_2026-10-08.csv) and [provenance](registry/data_provenance_recovery_2026-10-08.csv) overlays add archival context without namespace aliases or support promotion. Frozen v0.3 assessments and the separately pinned EXP-MAP-A01 source remain intact.
+
 - `tools/recovery_intake.py` verifies real payload hashes and emits diagnostic profiles only into a new output directory. It refuses missing LFS payloads, overwrites, malformed CSVs and source-directory outputs. Recovered scripts and notebooks are not automatically executed or merged into controlled inputs. [One setup import incident](historical/r&d/docs/recovered_corpus_audit_2026-10-08/execution_setup_incident.json) is explicitly recorded.
 
 Recent merge history was checked against GitHub on 2026-10-08 (timestamps below are UTC): [#47](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/47) source-map-js and [#48](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/48) JupyterLab dependency updates merged October 8; [#50](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/50) general Einstein-dust / frozen Weierstrass reduction and [#49](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/49) metric-first proof evidence merged October 8; [#46](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/46) closed P0 theory-search preregistration merged October 8; [#43](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/43) deployment isolation and [#42](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/42) admission/write-once protection merged October 5; [#33](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/33) original provenance audit merged October 4. [#44](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/44) quarantine relocation merged October 8; its relocation evidence is preserved alongside the LFS-backed canonical payloads. See the [machine-readable history](historical/r&d/docs/recovered_corpus_audit_2026-10-08/merge_history.json).
@@ -53,9 +64,13 @@ and receives an approving review from a reviewer with write access. Source
 byte identity and scientific/release authorization are distinct decisions.
 
 - The SDSS DR17 Pipe3D publisher FITS is now preserved through Git LFS and bound to SHA-256 `ac714809044c02dcb2cc8b5007d02981d9316c34dc398a79f4c07bde4d3496fc` (55,889,280 bytes; 10,220 rows; 536 fields). Publisher, Dropbox and OneDrive copies match. Provenance is verified; SFR target construction and all eligibility remain unresolved/false.
+
 - The SDSS DR17 GEMA 2.0.2 publisher FITS is preserved through Git LFS and bound to SHA-256 `244e9286f225b9e1dbef73bb93e1101d840a2a62ec5dabf3aa16ec88cfef1597` (7,223,040 bytes; 15 tables). It matches the recovered Dropbox file. Analysis-table selection and all eligibility remain unresolved/false.
+
 - Corrected VizieR ALFALFA `J/ApJ/861/49/table2` is frozen as an untouched 31,502-row VOTable with SHA-256 `654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079`; its ReadMe, response headers, request and coordinate semantics are separately preserved. All AGC IDs are unique; 344 rows retain missing optical-counterpart coordinates.
+
 - The full 31,502-row H I-centroid derivative and a prospectively selected 2,000-row display candidate have separate hashes. The [matching protocol](research/acquisition/vizier_alfalfa100/matching_protocol_v1.md) fixes coordinate role, spherical geometry, multiplicity, selection and null boundaries, and blocks inferential matching until a cited positional-error model is frozen.
+
 - PR #84's [observational intake workflow](.github/workflows/observational_dataset_intake.yml)
 fetches only governed LFS objects, recomputes source and derivative hashes, checks
 FITS/VOTable schemas and registry status, and publishes a human-readable
@@ -64,10 +79,21 @@ and Actions artifact. **The ALADIN Lite release list remains empty** until a
 separate off-author review receipt authorizes the exact coordinate-extract,
 source-ID and transformation hashes. Passing CI does not approve a scientific
 claim, a crossmatch, or a web release.
+
 - The recovered SDSS 200k CasJobs sample is already LFS-preserved and is now CI-validated as a 200,000-row, 18-column historical source-binding candidate. Its archived/Dropbox `Zone.Identifier` binds renamed `SDSSDR18_200000.csv` to `MyTable_pmqr771_0.csv`; canonical provenance remains unknown because exact job/database identity and deterministic membership are unresolved.
+
 - `DATA-PROVENANCE-ALL`, `DATA-PHYS-CONSTRAINTS` and `DATA-ECC-THEORY` are reserved registry placeholders, not missing datasets. They remain non-executable until each has a concrete schema or mathematical definition, frozen source or construction procedure, SHA-256 evidence and verified provenance.
 
 Main also contains the Aladin admission controls and A01 corrective revert from [#76](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/76) and [#77](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/77), claim/audit corrections from [#79](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/79), and protocol-only A03 registration from [#83](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/83). [#78](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78), [#80](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/80), and [#81](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/81) are open review records; none is reused as dataset or Aladin authorization.
+
+### M1-INH-E1b — Pre-review package v0.1
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882)
+
+- **Archived release:** https://doi.org/10.5281/zenodo.23260882
+- **GitHub release:** [m1-inh-e1b-pre-review-v0.1](https://github.com/LcosmosS/S.T.A.R.-Labs/releases/tag/m1-inh-e1b-pre-review-v0.1)
+- **Verifier SHA-256:** `10ccfa264f475fd7bd6d490c80c8862a174730567ee51c0d759b87939b93e6bb`
+- **Scientific status:** Candidate theorem with an exact symbolic certificate; independent mathematical review pending.
 
 ## Research Charter
 
