@@ -68,6 +68,19 @@ def validate_a01_lifecycle(experiment, dataset):
 
 
 def validate(root: Path = ROOT, *, ledger=None, config=None):
+    """Validate candidate reviews and frozen A03 controls without execution.
+
+    Args:
+        root: Repository root containing registries and preregistrations.
+        ledger: Candidate ledger mapping, loaded from disk when omitted.
+        config: A03 configuration mapping, loaded from disk when omitted.
+
+    Returns:
+        The number of validated candidate reviews.
+
+    Raises:
+        PreregistrationReviewError: A checked review or control invariant fails.
+    """
     ledger = ledger if ledger is not None else load_json(root, LEDGER)
     config = config if config is not None else load_json(root, CONFIG)
     require(ledger["schema_version"] == "candidate-preregistration-ledger-v0.1", "Wrong candidate schema")
@@ -124,8 +137,8 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
         if exp_id == "EXP-MAP-A03":
             require(canonical["Status"] == "preregistered",
                     "A03 canonical lifecycle must be preregistered")
-            require(candidate["canonical_status"] in {"planned", "preregistered"},
-                    "A03 ledger status must be transition-lag planned or preregistered")
+            require(candidate["canonical_status"] == "preregistered",
+                    "A03 ledger is stale: expected canonical preregistered status")
         else:
             require(candidate["canonical_status"] == canonical["Status"] == "planned",
                     "Canonical lifecycle promoted without review")
@@ -152,14 +165,10 @@ def validate(root: Path = ROOT, *, ledger=None, config=None):
             require(params[candidate["parameter_set_id"]]["Preregistration_Status"] in {"preregistered", "locked"} and
                     nulls[candidate["null_id"]]["Preregistration_Status"] in {"preregistered", "locked"},
                     "A03 parameter/null records must be frozen")
-            if candidate["canonical_status"] == "planned":
-                require(candidate["design_status"] == "prospective_protocol_locked_pending_canonical_transition",
-                        "A03 transition-lag design status changed before post-merge ledger update")
-            else:
-                require(candidate["design_status"] == "preregistered_protocol_locked_execution_disabled",
-                        "A03 post-merge ledger must record preregistered protocol lock")
-                require(candidate["next_gate"] == "activation-only PR after clean preflight; no protocol modifications",
-                        "A03 post-merge next gate is not activation-only")
+            require(candidate["design_status"] == "preregistered_protocol_locked_execution_disabled",
+                    "A03 reconciled design must remain preregistered and execution disabled")
+            require(candidate["next_gate"] == "activation-only PR after clean preflight; no protocol modifications",
+                    "A03 post-merge next gate is not activation-only")
         else:
             require(candidate["design_status"].startswith("design_only_blocked_"),
                     "Unbound experiment incorrectly marked locked")
