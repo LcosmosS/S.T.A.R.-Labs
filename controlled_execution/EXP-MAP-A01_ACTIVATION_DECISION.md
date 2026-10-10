@@ -73,3 +73,25 @@ This blocker is in addition to — not a replacement for — the required
 off-author **human APPROVED review** on the prospective *exact final*
 activation diff. The two execution flags proposed here have no force on
 the canonical `main` registry until an authorized merge.
+
+## Review dependency: compatibility PR #87 (2026-10-10)
+
+A non-activating implementation of the exact two-hash `DATA-ARITHMETIC`
+compatibility rule, its negative tests, and the A03 reference verification
+adaptation are now proposed in
+[PR #87](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87).
+The reviewed design is versioned in
+`docs/registries/A01_A03_SHARED_DATASET_COMPATIBILITY_DESIGN_v0.1.md`
+on that branch. The original frozen A03 spec is not rewritten.
+**PR #87 is a separate review, not an activation or approval.**
+
+PR #78 must **not** resolve the main-branch conflict by restoring its
+historical copies of `experiment_registry_v0.2.csv`,
+`dataset_registry_v0.1.csv`, `validate_audit_registries.py`,
+or `registry-snapshot.json`. Finish the dedicated #87 compatibility review,
+merge that *non-activating* software design only after its own approvals and
+exact-head CI, and then rebase/rebuild this activation proposal from the
+new canonical `main`. Require A03 reference verification to pass in
+both inactive and A01-only-activated metadata states; A03 normal preflight
+must remain blocked. All A01 activation flags and review requirements stay
+pending; this PR remains open and unmerged.
