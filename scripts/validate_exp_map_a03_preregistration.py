@@ -7,6 +7,9 @@ from pathlib import Path
 
 from src.control.execution import PreflightError, preflight_controlled_experiment
 from src.control.registry import RegistrySnapshot, file_sha256
+from src.control.shared_dataset_compatibility import (
+    a03_bindings_compatible, a03_shared_dataset_transition_is_compatible,
+)
 from src.experiments.exp_map_a03 import (
     LOCKED_ANALYSIS_ROWS,
     LOCKED_J_ZERO_EXCLUSIONS,
@@ -49,7 +52,16 @@ def validate() -> None:
     require(("CLAIM-ACSC-002", "EXP-MAP-A03") in resolved.claim_experiments)
     require(resolved.experiment["Namespace_Resolution"] == "scope_conflict_no_alias")
     require(resolved.experiment["Controlled_Execution_Eligible"] == "false")
-    require(resolved.dataset["Controlled_Execution_Eligible"] == "false")
+    # Shared dataset eligibility may become true solely for independently
+    # reviewed A01 activation; A03 itself MUST remain ineligible.
+    shared_transition = a03_shared_dataset_transition_is_compatible(
+        spec, resolved, snapshot
+    )
+    require(
+        resolved.dataset["Controlled_Execution_Eligible"] == "false"
+        or shared_transition,
+        "unreviewed shared dataset execution transition"
+    )
     require(resolved.experiment["Controlled_Support_Eligible"] == "false")
     require(resolved.experiment["Physical_Support_Eligible"] == "false")
     require(resolved.dataset["Controlled_Support_Eligible"] == "false")
@@ -59,7 +71,8 @@ def validate() -> None:
     require(SOURCE_SHA256 in resolved.provenance["Integrity_Check"])
     require(resolved.parameter["Preregistration_Status"] == "locked")
     require(resolved.null["Preregistration_Status"] == "locked")
-    require(spec["registry_bindings"] == resolved.record_hashes)
+    require(a03_bindings_compatible(spec, resolved, snapshot),
+            "A03 frozen binding or exact reviewed dataset transition mismatch")
 
     require(config["input"]["source_rows"] == LOCKED_SOURCE_ROWS == 64687)
     require(config["input"]["representative_rows"] == LOCKED_REPRESENTATIVES == 38042)
@@ -108,9 +121,10 @@ def validate() -> None:
         SPEC,
         require_execution_eligibility=False,
     )
-    require(prepared.resolved.record_hashes == spec["registry_bindings"])
+    require(a03_bindings_compatible(spec, prepared.resolved, snapshot))
     require(prepared.resolved.experiment["Controlled_Execution_Eligible"] == "false")
-    require(prepared.resolved.dataset["Controlled_Execution_Eligible"] == "false")
+    require(prepared.resolved.dataset["Controlled_Execution_Eligible"] == "false"
+            or shared_transition)
 
     try:
         preflight_controlled_experiment(ROOT, SPEC)

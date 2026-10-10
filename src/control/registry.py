@@ -341,10 +341,15 @@ def execution_gate_failures(
             failures.append(
                 f"{experiment_id}: dataset is not controlled-execution eligible"
             )
-    elif experiment_execution_eligible or dataset_execution_eligible:
+    elif experiment_execution_eligible or (
+        dataset_execution_eligible and experiment_id != "EXP-MAP-A03"
+    ):
+        # A03 alone may inspect an A01-eligible *shared* dataset while its own
+        # experiment flag remains false. The later registry-binding check must
+        # prove the exact hash-locked transition; this gate is not an exemption.
         failures.append(
-            f"{experiment_id}: binding-only preflight requires experiment and "
-            "dataset controlled-execution eligibility to remain false"
+            f"{experiment_id}: binding-only preflight requires an inactive "
+            "experiment and inactive dataset outside reviewed A03 compatibility"
         )
     if provenance.get("Provenance_Status") != "verified":
         failures.append(f"{experiment_id}: provenance is not verified")
