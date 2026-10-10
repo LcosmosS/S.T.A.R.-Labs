@@ -15,6 +15,32 @@
 - `M1-INH-E1b_submission_bundle_v0.1_reader.pdf` — optional Pandoc-rendered convenience PDF for human reading only; non-canonical and deliberately excluded from `SHA256SUMS`.
 - `SHA256SUMS` — SHA-256 digest of every substantive, hash-locked component.
 
+## Working links without modifying the frozen source
+
+The canonical bundle `M1-INH-E1b_submission_bundle_v0.1.md` is
+**byte-identical** to the already-tagged release and is pinned by
+`SHA256SUMS` (SHA-256:
+`7505dd74c0e70d678787a86c850f1c193503b2419b4e6a8fb47a68c731b25de0`).
+Its five relative Markdown links were authored from the
+[`submissions/` directory](../../submissions/M1-INH-E1b_submission_bundle_v0.1.md),
+where they resolve correctly. They do not resolve when that *same file* is
+viewed from inside `release_packages/`. Silently changing it would invalidate
+the published hash-locked artifact.
+
+For clickable links in this directory, use the
+[noncanonical link-corrected navigation copy](M1-INH-E1b_submission_bundle_v0.1_navigation.md).
+This helper modifies **only the five link destinations**, adds a navigation
+notice, and is deliberately excluded from `SHA256SUMS`. Its existence does
+not reissue v0.1, alter the certificate, or confer independent proof review.
+
+Verified authoritative targets:
+
+- [Governing Charter PDF](../../charter/STAR_Research_Charter_v0-2.pdf)
+- [Frozen M1-INH-E1 protocol](../../preregistrations/M1-INH-E1/protocol.md)
+- [Hash-locked verifier](m1_inh_e1b_metric_first_audit_v4.py)
+- [Exact proof record](M1-INH-E1b_metric_first_proof_record.md)
+- [Preserved certificate](m1_inh_e1b_metric_first_audit_v4.json)
+
 ## Optional reader PDF
 
 `M1-INH-E1b_submission_bundle_v0.1_reader.pdf` is generated from the canonical Markdown submission bundle with Pandoc for **human reading only**. It is a convenience rendering, **not part of the hash-locked certificate**, is deliberately **not listed in `SHA256SUMS`**, and must **not replace or supersede the Markdown sources**. If the PDF and Markdown differ, the Markdown source controls.
@@ -22,14 +48,14 @@
 Generation command used by this branch:
 
 ```bash
-pandoc M1-INH-E1b_submission_bundle_v0.1.md \\
-  -f markdown+tex_math_single_backslash \\
-  --pdf-engine=pdflatex \\
-  -V geometry:margin=0.85in \\
-  -V fontsize=10pt \\
-  -V colorlinks=true \\
-  -V linkcolor=blue \\
-  -V urlcolor=blue \\
+pandoc M1-INH-E1b_submission_bundle_v0.1.md \
+  -f markdown+tex_math_single_backslash \
+  --pdf-engine=pdflatex \
+  -V geometry:margin=0.85in \
+  -V fontsize=10pt \
+  -V colorlinks=true \
+  -V linkcolor=blue \
+  -V urlcolor=blue \
   -o M1-INH-E1b_submission_bundle_v0.1_reader.pdf
 ```
 
