@@ -27,6 +27,9 @@ import sympy as sp
 
 from src.control.execution import PreflightError, preflight_controlled_experiment
 from src.control.registry import RegistrySnapshot
+from src.control.shared_dataset_compatibility import (
+    a03_shared_dataset_transition_is_compatible,
+)
 from src.experiments import exp_map_a03 as production
 from src.experiments.exp_map_a01 import SplitMix64, _discriminant
 
@@ -317,13 +320,22 @@ def verify():
     for label,row in [("experiment",resolved.experiment),("dataset",resolved.dataset)]:
         flags[label]={k:row[k] for k in ["Controlled_Execution_Eligible",
             "Controlled_Support_Eligible","Physical_Support_Eligible"]}
-        require(set(flags[label].values())=={"false"}, "eligibility gate opened")
+    require(set(flags["experiment"].values())=={"false"}, "A03 experiment eligibility gate opened")
+    require(flags["dataset"]["Controlled_Support_Eligible"]=="false"
+            and flags["dataset"]["Physical_Support_Eligible"]=="false",
+            "shared dataset support gate opened")
+    shared_a01_activation=a03_shared_dataset_transition_is_compatible(
+        spec, resolved, RegistrySnapshot.load(ROOT)
+    )
+    require(flags["dataset"]["Controlled_Execution_Eligible"]=="false"
+            or shared_a01_activation, "unreviewed shared dataset activation")
     require(before=={p:sha(ROOT/p) for p in sorted(paths)},"governed bytes modified")
     return {"verification_status":"PASS","recorded_utc":datetime.now(timezone.utc).isoformat(),
             "governed_repository_commit":git("rev-parse","HEAD"),
             "source_commit":SOURCE_COMMIT,"charter_sha256":before["charter/STAR_Research_Charter_v0-2.pdf"],
             "input_sha256":before,"verifier_sha256":sha(Path(__file__)),
             "cohort":cohort,"synthetic_checks":fixtures,"registry_flags":flags,
+            "a01_shared_dataset_transition_compatible":shared_a01_activation,
             "registry_bindings":prepared.resolved.record_hashes,
             "binding_only_preflight":"PASS","normal_preflight":"BLOCKED_AS_REQUIRED",
             "normal_preflight_message":gate_message,"real_cohort_blocked_functions":blocked,
