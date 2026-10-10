@@ -68,6 +68,19 @@ def validate_a01_lifecycle(experiment, dataset):
 
 
 def validate(root: Path = ROOT, *, ledger=None, config=None):
+    """Validate candidate reviews and frozen A03 controls without execution.
+
+    Args:
+        root: Repository root containing registries and preregistrations.
+        ledger: Candidate ledger mapping, loaded from disk when omitted.
+        config: A03 configuration mapping, loaded from disk when omitted.
+
+    Returns:
+        The number of validated candidate reviews.
+
+    Raises:
+        PreregistrationReviewError: A checked review or control invariant fails.
+    """
     ledger = ledger if ledger is not None else load_json(root, LEDGER)
     config = config if config is not None else load_json(root, CONFIG)
     require(ledger["schema_version"] == "candidate-preregistration-ledger-v0.1", "Wrong candidate schema")

@@ -7,12 +7,15 @@ from tools.validate_preregistration_transition_candidates import (
 )
 
 def _fixture():
+    """Load fresh ledger and A03 configuration mappings for each test."""
     return load_json(ROOT, LEDGER), load_json(ROOT, CONFIG)
 
 def test_prospective_reviews_preserve_canonical_gates():
+    """Accept all three candidate reviews with canonical gates preserved."""
     assert validate() == 3
 
 def test_a03_reconciled_ledger_is_preregistered_but_execution_inactive():
+    """Keep A03 preregistered and frozen with execution and support disabled."""
     ledger, _ = _fixture()
     experiments = load_csv(ROOT, "registry/experiment_registry_v0.2.csv", "Experiment_ID")
     params = load_csv(ROOT, "registry/parameter_registry_v0.1.csv", "Parameter_Set_ID")
@@ -35,6 +38,7 @@ def test_a03_reconciled_ledger_is_preregistered_but_execution_inactive():
     assert ledger["reconciliation"]["main_baseline_commit"].isalnum()
 
 def test_reject_a03_ledger_regression_to_planned_after_reconciliation():
+    """Reject a stale planned status in the reconciled A03 ledger."""
     ledger, cfg = _fixture()
     ledger["candidates"][0]["canonical_status"] = "planned"
     with pytest.raises(PreregistrationReviewError, match="ledger is stale"):
@@ -42,6 +46,7 @@ def test_reject_a03_ledger_regression_to_planned_after_reconciliation():
 
 
 def test_reject_a03_next_gate_replacement_or_ledger_execution_promotion():
+    """Reject changes to A03's activation-only gate or execution eligibility."""
     ledger, cfg = _fixture()
     ledger["candidates"][0]["next_gate"] = "run A03 endpoint now"
     with pytest.raises(PreregistrationReviewError, match="next gate is not activation-only"):
@@ -53,6 +58,7 @@ def test_reject_a03_next_gate_replacement_or_ledger_execution_promotion():
 
 
 def test_reject_candidate_support_promotion():
+    """Reject physical support eligibility in a prospective candidate review."""
     ledger, cfg = _fixture()
     ledger["candidates"][1]["physical_support_eligible"] = True
     with pytest.raises(PreregistrationReviewError, match="eligibility promotion"):
