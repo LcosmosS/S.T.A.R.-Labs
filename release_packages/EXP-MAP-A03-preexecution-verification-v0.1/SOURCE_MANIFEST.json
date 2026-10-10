@@ -1,0 +1,107 @@
+{
+  "schema_version": "star-exp-map-a03-preexecution-review-release-v0.1",
+  "record_kind": "candidate_review_archive_not_an_authorized_scientific_release",
+  "source_repository": "LcosmosS/S.T.A.R.-Labs",
+  "source_commit": "ded6317a20d78fbb9c451b8ef54eb87cc09d8242",
+  "source_pr": 86,
+  "current_main_at_assembly": "4f89bd3bc5c2225d9b0d2ce985e7eb18e8cbd73d",
+  "later_implementation_note": "PR #87 subsequently changed the live A03 verifier for the shared DATA-ARITHMETIC gate; this v0.1 archive freezes the independently CI-tested PR #86 verifier instead.",
+  "ci_reference": {
+    "workflow_name": "A03 reference pre-execution verification",
+    "run_id": 38085559993,
+    "run_url": "https://github.com/LcosmosS/S.T.A.R.-Labs/actions/runs/38085559993",
+    "artifact_id": 11682142104,
+    "artifact_url": "https://github.com/LcosmosS/S.T.A.R.-Labs/actions/runs/38085559993/artifacts/11682142104",
+    "conclusion_checked": "success",
+    "artifact_contents_embedded": false,
+    "artifact_retention_note": "GitHub Actions artifact is temporary; retain a separately reviewed downloaded copy before an immutable public deposit."
+  },
+  "historical_local_receipt": {
+    "path": "local_verification_2026-10-10.json",
+    "verifier_sha256": "845a9f7e50b454bffcfb7df637c462df454a38ecba10a5823276e6c8ad7e9590",
+    "status": "PASS",
+    "not_a_receipt_for_archived_pr86_code": true
+  },
+  "source_input": {
+    "repository": "JohnCremona/ecdata",
+    "commit": "25cec5ecfec8b9f016eb1631ac633194c2bed39f",
+    "path": "allcurves/allcurves.00000-09999",
+    "sha256": "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968",
+    "bytes": 2146401,
+    "source_rows": 64687,
+    "representatives": 38042,
+    "exact_j_zero_exclusions": 106,
+    "accepted": 37936,
+    "not_embedded_in_review_package": true
+  },
+  "science_boundaries": {
+    "registered_experiment_executed": false,
+    "actual_cohort_endpoint_computed": false,
+    "controlled_execution_authorized": false,
+    "controlled_support_established": false,
+    "physical_support_established": false,
+    "off_author_review_pending": true
+  },
+  "files": [
+    {
+      "path": "verify_a03.py",
+      "origin_path": "research/independent_review/2026-10-16/verify_a03.py",
+      "git_blob_sha": "1fbdc3af6721a3d0075070d7d1420efec4c38368",
+      "sha256": "de1ca63ee509f7f9e27297af434f02fb2c690283291cdd19be8450d9b88bde9c"
+    },
+    {
+      "path": "test_a03_reference_verification.py",
+      "origin_path": "tests/test_a03_reference_verification.py",
+      "git_blob_sha": "f5c1c37a0e4013bab61c0dbe8fc8107698f38093",
+      "sha256": "052fea7c63088e1cd933f72d564ca01a6cc8c6e5e9df73c8bffc20c3b776055e"
+    },
+    {
+      "path": "requirements.txt",
+      "origin_path": "research/independent_review/2026-10-16/requirements.txt",
+      "git_blob_sha": "336b31688d3469c99c828c4b33df9e6908aac7bd",
+      "sha256": "6e80b57fb2e5ed9289b1b97d26b94d20bf4a3a89d4491c66b0bdd7e9f2b57f08"
+    },
+    {
+      "path": "A03_PREEXECUTION_VERIFICATION.md",
+      "origin_path": "research/independent_review/2026-10-16/A03_PREEXECUTION_VERIFICATION.md",
+      "git_blob_sha": "8f2f79284ca478deb86f574f36df14d23ae1834f",
+      "sha256": "537d0815191536d3f94ed0a02c9ab694dbe20485844da2d0dbd9ea9b449b3f1a"
+    },
+    {
+      "path": "local_verification_2026-10-10.json",
+      "origin_path": "research/independent_review/2026-10-16/local_verification_2026-10-10.json",
+      "git_blob_sha": "caea2dd80923714f1437d2af4253153c85361cef",
+      "sha256": "a714171c29ab732906faa214e06abd0850849b24df54c285072bb114aa2c2263"
+    },
+    {
+      "path": "frozen/config.json",
+      "origin_path": "preregistrations/EXP-MAP-A03/config.json",
+      "git_blob_sha": "6e6cdfa45a16793d050941439e4dfd3e1e839074",
+      "sha256": "ce082118d964fdb8ad2b3d667466066a6acebff2df223e53b79f84381abedffa"
+    },
+    {
+      "path": "frozen/dataset_manifest.json",
+      "origin_path": "preregistrations/EXP-MAP-A03/dataset_manifest.json",
+      "git_blob_sha": "06d55903f3efcb957034d4dfae41ed25fe85a1d2",
+      "sha256": "6a7188f362422c6468a85d7011219c168df394c9d75a51bfe05db461eeeaf630"
+    },
+    {
+      "path": "frozen/protocol.md",
+      "origin_path": "preregistrations/EXP-MAP-A03/protocol.md",
+      "git_blob_sha": "6b0c574c3de7c8c59005488c89643828cf531bb2",
+      "sha256": "dbe32ebd45f5037b2c5b4dfd452c09e2bb4f617a68a112f3caf9257db2d1356d"
+    },
+    {
+      "path": "frozen/controlled_execution_spec.json",
+      "origin_path": "controlled_execution/specs/EXP-MAP-A03.json",
+      "git_blob_sha": "848cb70dccd1689c1d4b6a123fffd0f604fe5142",
+      "sha256": "6486e199bdc51359b8dd7b6c31b413b095e54c2fedaba3b85d0e1cf533a12f3f"
+    },
+    {
+      "path": "frozen/STAR_Research_Charter_v0-2.pdf",
+      "origin_path": "charter/STAR_Research_Charter_v0-2.pdf",
+      "git_blob_sha": "c2c40b0690f6ba4876b463bacd7dfefe6c4426ae",
+      "sha256": "9a63284900d5349f1d307160929b2542885e4c751439b785369b722d349a5c03"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+name: A03 pre-execution release review integrity
+
+on:
+  pull_request:
+    paths:
+      - "release_packages/EXP-MAP-A03-preexecution-verification-v0.1/**"
+      - "scripts/validate_a03_preexecution_release.py"
+      - "tests/test_a03_review_release.py"
+      - ".github/workflows/a03_preexecution_release_review.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review-archive-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout complete history and frozen package
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          lfs: false
+          submodules: false
+      - name: Check archive against immutable PR86 source commit
+        run: python3 scripts/validate_a03_preexecution_release.py --verify-origin
+      - name: Exercise tampering and false-status rejections
+        run: python3 -m unittest discover -s tests -p test_a03_review_release.py -v
+      - name: Upload review-only package
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: a03-preexecution-review-package-v0.1
+          path: release_packages/EXP-MAP-A03-preexecution-verification-v0.1/
+          if-no-files-found: error
+          retention-days: 30
