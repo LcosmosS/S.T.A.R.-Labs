@@ -1,0 +1,48 @@
+name: A03 reference pre-execution verification
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reference-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch exact pinned ecdata source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p data/ecdata/allcurves
+          curl --fail --location --retry 4 --retry-all-errors \
+            https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/allcurves/allcurves.00000-09999 \
+            -o data/ecdata/allcurves/allcurves.00000-09999
+          echo '259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968  data/ecdata/allcurves/allcurves.00000-09999' | sha256sum -c -
+      - name: Install pinned reference-check environment
+        run: python -m pip install -r research/independent_review/2026-10-16/requirements.txt
+      - name: Verify arithmetic, synthetic algorithms and closed execution gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -c 'import runpy; runpy.run_path("research/independent_review/2026-10-16/verify_a03.py", run_name="__main__")' \
+            --output "$RUNNER_TEMP/a03-reference-verification.json"
+          python -c 'import runpy; runpy.run_path("scripts/validate_exp_map_a03_preregistration.py", run_name="__main__")'
+          python -m pytest -q tests/test_a03_reference_verification.py tests/test_exp_map_a03_candidate.py tests/test_exp_map_a03_safety.py
+          echo '### A03 pre-execution verification: PASS' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Pinned cohort and synthetic reference checks passed. Registered real-cohort endpoint/null execution was prohibited. Execution and support flags remain false; off-author activation approval is still required.' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: a03-reference-verification
+          path: ${{ runner.temp }}/a03-reference-verification.json
+          if-no-files-found: error
+          retention-days: 30
