@@ -12,7 +12,7 @@ def _fixture():
 def test_prospective_reviews_preserve_canonical_gates():
     assert validate() == 3
 
-def test_a03_preregistration_transition_lag_is_explicit_and_inactive():
+def test_a03_reconciled_ledger_is_preregistered_but_execution_inactive():
     ledger, _ = _fixture()
     experiments = load_csv(ROOT, "registry/experiment_registry_v0.2.csv", "Experiment_ID")
     params = load_csv(ROOT, "registry/parameter_registry_v0.1.csv", "Parameter_Set_ID")
@@ -24,7 +24,33 @@ def test_a03_preregistration_transition_lag_is_explicit_and_inactive():
     ))
     assert params["PAR-MAP-003"]["Preregistration_Status"] == "locked"
     assert nulls["NULL-MAP-003"]["Preregistration_Status"] == "locked"
-    assert ledger["candidates"][0]["canonical_status"] == "planned"
+    a03_ledger = ledger["candidates"][0]
+    assert a03_ledger["canonical_status"] == "preregistered"
+    assert a03_ledger["design_status"] == "preregistered_protocol_locked_execution_disabled"
+    assert a03_ledger["next_gate"] == "activation-only PR after clean preflight; no protocol modifications"
+    assert all(a03_ledger[key] is False for key in (
+        "controlled_execution_eligible", "controlled_support_eligible",
+        "physical_support_eligible"
+    ))
+    assert ledger["reconciliation"]["main_baseline_commit"].isalnum()
+
+def test_reject_a03_ledger_regression_to_planned_after_reconciliation():
+    ledger, cfg = _fixture()
+    ledger["candidates"][0]["canonical_status"] = "planned"
+    with pytest.raises(PreregistrationReviewError, match="ledger is stale"):
+        validate(ledger=ledger, config=cfg)
+
+
+def test_reject_a03_next_gate_replacement_or_ledger_execution_promotion():
+    ledger, cfg = _fixture()
+    ledger["candidates"][0]["next_gate"] = "run A03 endpoint now"
+    with pytest.raises(PreregistrationReviewError, match="next gate is not activation-only"):
+        validate(ledger=ledger, config=cfg)
+    ledger, cfg = _fixture()
+    ledger["candidates"][0]["controlled_execution_eligible"] = True
+    with pytest.raises(PreregistrationReviewError, match="eligibility promotion"):
+        validate(ledger=ledger, config=cfg)
+
 
 def test_reject_candidate_support_promotion():
     ledger, cfg = _fixture()
