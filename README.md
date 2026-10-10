@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) [![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785)
 
 ![badge](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/badge.jpg)![S.T.A.R. Labs](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starlabs.jpg)
 ## Symbolic–Topological–Arithmetic–Relativity
@@ -28,7 +28,8 @@ The repository is both a computational research center and a controlled-experime
 - **Archived release:** https://doi.org/10.5281/zenodo.23260882
 - **GitHub release:** [m1-inh-e1b-pre-review-v0.1](https://github.com/LcosmosS/S.T.A.R.-Labs/releases/tag/m1-inh-e1b-pre-review-v0.1)
 - **Verifier SHA-256:** `10ccfa264f475fd7bd6d490c80c8862a174730567ee51c0d759b87939b93e6bb`
-- **Scientific status:** Candidate theorem with an exact symbolic certificate; independent mathematical review pending.
+
+**Scientific status:** Candidate theorem with an exact symbolic certificate; independent mathematical review pending.
 
 ### EXP-MAP-A03 — Published pre-execution verification archive v0.1
 
