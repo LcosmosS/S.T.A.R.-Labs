@@ -1,0 +1,124 @@
+{
+  "actual_cohort_endpoint_computed": false,
+  "binding_only_preflight": "PASS",
+  "charter_sha256": "9a63284900d5349f1d307160929b2542885e4c751439b785369b722d349a5c03",
+  "cohort": {
+    "accepted": 37936,
+    "accepted_label_sha256": "9a9784bd2ccb0b89f072db365ab4dd3ac52460b6574effeea2efb406621c105a",
+    "excluded_label_sha256": "ddab1f40f49367c1f83595e2234cac1bd05d958e399bf89bae9780d8571a2c2d",
+    "j_zero_exclusions": 106,
+    "log_check_absolute_tolerance": 1e-12,
+    "representatives": 38042,
+    "source_rows": 64687
+  },
+  "environment": {
+    "packages": {
+      "PyYAML": "6.0.2",
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "scipy": "1.13.1",
+      "sympy": "1.13.3"
+    },
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.13"
+  },
+  "governed_bytes_unchanged": true,
+  "governed_repository_commit": "e9ce748b526d2c9af209a2e5bcf88bc39357678d",
+  "input_sha256": {
+    "charter/STAR_Research_Charter_v0-2.pdf": "9a63284900d5349f1d307160929b2542885e4c751439b785369b722d349a5c03",
+    "controlled_execution/specs/EXP-MAP-A03.json": "6486e199bdc51359b8dd7b6c31b413b095e54c2fedaba3b85d0e1cf533a12f3f",
+    "data/ecdata/allcurves/allcurves.00000-09999": "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968",
+    "preregistrations/EXP-MAP-A03/config.json": "ce082118d964fdb8ad2b3d667466066a6acebff2df223e53b79f84381abedffa",
+    "preregistrations/EXP-MAP-A03/dataset_manifest.json": "6a7188f362422c6468a85d7011219c168df394c9d75a51bfe05db461eeeaf630",
+    "preregistrations/EXP-MAP-A03/protocol.md": "dbe32ebd45f5037b2c5b4dfd452c09e2bb4f617a68a112f3caf9257db2d1356d",
+    "registry/data_provenance_registry_v0.1.csv": "1a89fe41fe6d0fdbbae0c0ae098db15170b4a282e72a2667a3c0ee5b5fe2c9a9",
+    "registry/dataset_registry_v0.1.csv": "86eb25eafa47cbf46238b541a49474a9b6a0873bdc0c68b28a1941f15b22dbb0",
+    "registry/experiment_registry_v0.2.csv": "0778c3daa5db8f440307e6ce1af86cb6e14a074a05f24f2b5308f7a9355097fc",
+    "src/data/cremona_ecdata.py": "7e3f79a9fd7ddf6af9c95d5dd4637015cc871b628ec6bf78f9060febc3067b97",
+    "src/experiments/exp_map_a01.py": "d3e1b844cfc7e0ed99efbddcfa69646f31b5b90b72a96840af3d106f386c75ab",
+    "src/experiments/exp_map_a03.py": "940dfc5d59fab4aa6612a1b229e193fd81a7812086f7af770bda5bd5a1319f30"
+  },
+  "normal_preflight": "BLOCKED_AS_REQUIRED",
+  "normal_preflight_message": "controlled-execution gates rejected the experiment:\n- EXP-MAP-A03: experiment is not controlled-execution eligible\n- EXP-MAP-A03: dataset is not controlled-execution eligible",
+  "off_author_scientific_approval": false,
+  "real_cohort_blocked_functions": [
+    "mcj_neighbor_edges",
+    "rank_coherence",
+    "_null_statistics_core",
+    "full_null_statistics",
+    "fixture_null_statistics",
+    "run_protocol"
+  ],
+  "recorded_utc": "2026-10-10T19:51:16.385546+00:00",
+  "registered_experiment_executed": false,
+  "registry_bindings": {
+    "dataset": "2fe4ab7f5763f39c6cde8392c3f7d8ff1a565e4664ce6e192640b99f3fe146d7",
+    "experiment": "3b0bb9c77c80a19a0fca69103f084bb9368593d56d1e3bf037775fb74732794e",
+    "null": "396bfcc6d124cfea5a8cff8df3f1605aa6f3be177afd2202915ad5c3c844950a",
+    "parameter": "58b2aac41dc18d3ce8a7729ef610d11c05d089846a34ef447b337bc45589da76",
+    "provenance": "051578934af53b190605257f49da77ff83683638b12e9d176c74b7b8cc4a0aa1"
+  },
+  "registry_flags": {
+    "dataset": {
+      "Controlled_Execution_Eligible": "false",
+      "Controlled_Support_Eligible": "false",
+      "Physical_Support_Eligible": "false"
+    },
+    "experiment": {
+      "Controlled_Execution_Eligible": "false",
+      "Controlled_Support_Eligible": "false",
+      "Physical_Support_Eligible": "false"
+    }
+  },
+  "source_commit": "25cec5ecfec8b9f016eb1631ac633194c2bed39f",
+  "synthetic_checks": {
+    "fixtures": [
+      {
+        "edges": 237,
+        "fixture": "ties",
+        "null_draws": 3,
+        "null_statistics": [
+          -1.7721518987341771,
+          -1.7468354430379747,
+          -1.6877637130801688
+        ],
+        "permuted_rank_sha256": "8a8d6c4af2be605046f3f4f14ba91024f3a1428f10398e33b828e37336cfe8c4",
+        "rows": 40
+      },
+      {
+        "edges": 243,
+        "fixture": "duplicates",
+        "null_draws": 3,
+        "null_statistics": [
+          -1.7242798353909465,
+          -1.7489711934156378,
+          -1.7119341563786008
+        ],
+        "permuted_rank_sha256": "8a8d6c4af2be605046f3f4f14ba91024f3a1428f10398e33b828e37336cfe8c4",
+        "rows": 40
+      },
+      {
+        "edges": 267,
+        "fixture": "asymmetric",
+        "null_draws": 3,
+        "null_statistics": [
+          -1.7041198501872659,
+          -1.7453183520599251,
+          -1.801498127340824
+        ],
+        "permuted_rank_sha256": "8a8d6c4af2be605046f3f4f14ba91024f3a1428f10398e33b828e37336cfe8c4",
+        "rows": 40
+      }
+    ],
+    "prng_words_checked": 128,
+    "rejection_boundary_checked": true,
+    "seed_zero_vectors": [
+      16294208416658607535,
+      7960286522194355700,
+      487617019471545679
+    ],
+    "unequal_strata_checked": true
+  },
+  "verification_status": "PASS",
+  "verifier_sha256": "845a9f7e50b454bffcfb7df637c462df454a38ecba10a5823276e6c8ad7e9590"
+}
