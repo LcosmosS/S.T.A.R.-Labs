@@ -33,3 +33,43 @@ Original [PR #64](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/64) was merged 
 **Review status:** *pending*. Neither the earlier PR #64 merge nor PR #77 revert provides prospective independent authorization for this newly rebuilt proposal. Keep unmerged until the above review succeeds. Do not fabricate or backdate an approval.
 
 **After authorized merge only:** [Issue #67](https://github.com/LcosmosS/S.T.A.R.-Labs/issues/67) tracks the separate investigator-A original controlled run and investigator-B independent reproduction with manifests and sha256 sidecars. Non-rejection and negative outcomes must remain reportable. Even success is an arithmetic-only mapping diagnostic, not cosmological correspondence or physical support.
+
+## New integration blocker detected against current `main` (2026-10-10)
+
+**Not execution-authorized; do not merge this original activation diff.**
+The original #78 head predates the merged A03 preregistration (PR #83) and
+observational dataset lineage (PR #84). It currently reports an actual merge
+conflict with `main`, so the original full-file registry and web snapshot
+versions cannot be used as a conflict-resolution source. A future activation
+diff must preserve current main's A03 status, all newer provenance rows,
+the dynamic audit validator, and the ALADIN release gate.
+
+There is also a distinct **shared dataset / frozen A03 binding** conflict:
+
+- A01 and A03 both reference `DATA-ARITHMETIC`.
+- The proposed A01 transition changes that dataset's execution flag
+  `false -> true`, with canonical dataset-row digest
+  `1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2`.
+- The already frozen A03 execution spec binds the original dataset-row
+  digest `2fe4ab7f5763f39c6cde8392c3f7d8ff1a565e4664ce6e192640b99f3fe146d7`.
+- A03's canonical preregistration validator requires the shared dataset
+  flag `false`, an exact current registry-binding hash, and a binding-only
+  preflight that currently requires both experiment and dataset eligibility
+  `false`. All three would break after A01's proposed dataset transition,
+  even while A03's own experiment flag remains `false`.
+
+A mere Git conflict resolution, a stale A01-only preflight success, or a
+forced acceptance of the new dataset digest is **not** adequate.
+Before a successor A01 activation proposal can be merge-eligible, an
+independently reviewed, reproducible compatibility design must preserve
+A03's execution prohibition **and** give a transparent, hash-locked
+transition record for any operational A03 spec-bound dataset-row update.
+The original scientific A03 protocol, cohort, parameters, null, and
+endpoint cannot be silently changed. Assess compatibility with the
+A03 pre-execution verification package in PR #86, including its preserved
+local and CI receipts, before final approval.
+
+This blocker is in addition to — not a replacement for — the required
+off-author **human APPROVED review** on the prospective *exact final*
+activation diff. The two execution flags proposed here have no force on
+the canonical `main` registry until an authorized merge.
