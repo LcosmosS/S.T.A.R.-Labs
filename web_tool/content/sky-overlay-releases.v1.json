@@ -1,7 +1,6 @@
 {
   "schemaVersion": "star-sky-overlay-releases-v1",
-  "sources": [],
-  "reviewCandidates": [
+  "sources": [
     {
       "datasetId": "DATA-VIZIER-ALFALFA100",
       "qualifiedDatasetId": "REPO-CSV-v0.2:DATA-VIZIER-ALFALFA100",
@@ -14,10 +13,12 @@
       "coordinateSha256": "ddf040c5954bc9ae2c19415d46071443cd6a3f209069e095fd2b4bbe7b8fadf9",
       "selectedIdsSha256": "7b5de4187e24df2c0c1936164ecd1ade0ae5c4ee15d2ff64847499fd7e7c6221",
       "coordinateRole": "hi_centroid",
-      "reviewPath": "docs/registries/ALFALFA_HI_CENTROID_SKY_V1_REVIEW_PENDING.json",
-      "reviewStatus": "pending_off_author_display_approval",
+      "reviewPath": "docs/registries/ALFALFA_HI_CENTROID_SKY_V1_REVIEW_RECEIPT.json",
+      "reviewSha256": "e6d50c63ffbdc5349e227804557d0151caed0133e601b10ff39303bcfe5815ec",
+      "reviewStatus": "approved_display_only",
       "controlledSupportEligible": false,
       "physicalSupportEligible": false
     }
-  ]
+  ],
+  "reviewCandidates": []
 }
