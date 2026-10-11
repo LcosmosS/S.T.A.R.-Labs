@@ -41,7 +41,7 @@ class A01PackageTests(unittest.TestCase):
         spec = json.loads((ROOT / "controlled_execution/specs/EXP-MAP-A03.json").read_text())
         modified = dict(a03)
         modified["Controlled_Execution_Eligible"] = "true"
-        with self.assertRaisesRegex(ValueError, "A03 experiment execution"):
+        with self.assertRaisesRegex(ValueError, "A03 frozen experiment binding"):
             check_a03_compatibility(ds, modified, spec, meta["a03_original_dataset_sha256"])
         modified = dict(ds)
         modified["Notes"] += " invalid"
@@ -97,8 +97,8 @@ class A01PackageTests(unittest.TestCase):
                         verify(root=root)
             file.write_text(json.dumps(original))
 
-    def test_reject_modified_a03_experiment_notes_with_flags_unchanged(self):
-        """Reject A03 record changes even when all safety flags still say false."""
+    def test_reject_modified_a03_experiment_assessment_with_flags_unchanged(self):
+        """Reject A03 audit-assessment edits even when safety flags remain false."""
         with tempfile.TemporaryDirectory() as temporary:
             root = self.make_root(temporary)
             path = root / "registry/experiment_registry_v0.2.csv"
@@ -108,7 +108,7 @@ class A01PackageTests(unittest.TestCase):
             with path.open(newline="", encoding="utf-8") as fh:
                 rows = list(csv.DictReader(fh))
             changed = next(r for r in rows if r["Experiment_ID"] == "EXP-MAP-A03")
-            changed["Notes"] = changed.get("Notes", "") + " unauthorized note"
+            changed["Current_Audit_Assessment"] += " unauthorized audit amendment"
             with path.open("w", newline="", encoding="utf-8") as fh:
                 writer = csv.DictWriter(fh, fieldnames=list(rows[0]))
                 writer.writeheader()
