@@ -113,3 +113,35 @@ test("build stage copies only approved sky assets without modifying tracked sour
     }),/unsafe/);
   } finally {await rm(tmp,{recursive:true,force:true});}
 });
+
+
+test("two concurrent release stages retain independently verified assets",async()=>{
+  const tmp=await mkdtemp(join(tmpdir(),"alfalfa-concurrent-"));
+  try {
+    const source=join(tmp,"public");
+    await mkdir(join(source,"sky"),{recursive:true});
+    await writeFile(join(source,"favicon.svg"),"<svg/>");
+    await writeFile(join(source,"sky","approved.csv"),"reviewed");
+    await writeFile(join(source,"sky","unreviewed.csv"),"pending");
+    const m={schemaVersion:"star-sky-overlay-releases-v1",
+      sources:[{coordinatePath:"web_tool/public/sky/approved.csv"}]};
+    const stage1=join(tmp,"stage-one"),stage2=join(tmp,"stage-two");
+    await Promise.all([
+      filterSkyAssets(source,stage1,m),
+      filterSkyAssets(source,stage2,m),
+    ]);
+    await writeFile(join(stage1,"sky","approved.csv"),"independent run");
+    assert.equal(await readFile(join(stage2,"sky","approved.csv"),"utf8"),"reviewed");
+    assert.equal(await readFile(join(source,"sky","approved.csv"),"utf8"),"reviewed");
+    await assert.rejects(stat(join(stage1,"sky","unreviewed.csv")),{code:"ENOENT"});
+    await assert.rejects(stat(join(stage2,"sky","unreviewed.csv")),{code:"ENOENT"});
+  } finally {await rm(tmp,{recursive:true,force:true});}
+});
+
+test("deployment upload permits only the ALFALFA source and receipt inputs",async()=>{
+  const ignore=await readFile(join(root,".vercelignore"),"utf8");
+  assert.ok(ignore.includes("!data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.vot"));
+  assert.ok(ignore.includes("!docs/registries/ALFALFA_HI_CENTROID_SKY_V1_REVIEW_RECEIPT.json"));
+  assert.ok(!ignore.includes("!data/**"));
+  assert.ok(!ignore.includes("!docs/**"));
+});
