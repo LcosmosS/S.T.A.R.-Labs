@@ -1,0 +1,42 @@
+name: EXP-MAP-A01 reproducibility-package source verification
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  read-only-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          submodules: true
+          lfs: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Fetch governed upstream ecdata and verify SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p data/ecdata/allcurves
+          curl --fail --location --retry 4 --retry-all-errors \
+            https://raw.githubusercontent.com/JohnCremona/ecdata/25cec5ecfec8b9f016eb1631ac633194c2bed39f/allcurves/allcurves.00000-09999 \
+            -o data/ecdata/allcurves/allcurves.00000-09999
+          echo '259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968  data/ecdata/allcurves/allcurves.00000-09999' | sha256sum -c -
+      - name: Verify preregistration, activated rows, A03 closed gate, and immutable source
+        run: |
+          set -euo pipefail
+          python scripts/verify_exp_map_a01_release_package.py --require-source --receipt "$RUNNER_TEMP/a01-package-read-only.json"
+          python -m unittest discover -s tests -p test_exp_map_a01_release_package.py -v
+          echo '### A01 package source verification PASS — no registered inference' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: a01-package-read-only
+          path: \${{ runner.temp }}/a01-package-read-only.json
+          if-no-files-found: error
+          retention-days: 30
