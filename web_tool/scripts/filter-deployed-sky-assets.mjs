@@ -4,7 +4,9 @@
  * unchanged. Sky-release approval remains governed by sky:check and a
  * separately accountable human review.
  */
-import { copyFile, mkdir, readFile, readdir, rm } from "node:fs/promises";
+import { copyFile, mkdir, mkdtemp, readFile, readdir, rm } from "node:fs/promises";
+import { spawn } from "node:child_process";
+import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -62,11 +64,35 @@ export async function filterSkyAssets(publicDir, stagingDir, manifest) {
       throw new Error("admitted coordinate bytes missing from tracked public source: "+file);
   return {approved:approved.size,excluded,copied};
 }
+/** Run Vite with a unique, temporary, admission-filtered public tree.
+
+ * Each build owns and cleans up only its own staging directory; parallel
+ * builds never modify one another or the checked-in public source.
+ */
 async function main() {
   const manifest=JSON.parse(await readFile(join(ROOT,"content/sky-overlay-releases.v1.json"),"utf8"));
-  const r=await filterSkyAssets(join(ROOT,"public"),join(ROOT,".sky-public-build"),manifest);
-  console.log("Sky public build staged:",r.approved,"approved;",r.excluded,
-              "excluded;",r.copied,"files copied. Tracked source untouched.");
+  const staging=await mkdtemp(join(tmpdir(),"star-sky-public-"));
+  try {
+    const r=await filterSkyAssets(join(ROOT,"public"),staging,manifest);
+    console.log("Sky public build staged:",r.approved,"approved;",r.excluded,
+                "excluded;",r.copied,"files copied. Tracked source untouched.");
+    const status=await new Promise((resolveBuild,rejectBuild)=>{
+      const child=spawn(process.execPath,[
+        join(ROOT,"scripts/with-app-env.mjs"),"vite","build",
+      ],{
+        cwd:ROOT, stdio:"inherit",
+        env:{...process.env,STAR_SKY_BUILD_PUBLIC_DIR:staging},
+      });
+      child.once("error",rejectBuild);
+      child.once("close",(code,signal)=>{
+        if(signal)rejectBuild(new Error("Vite build interrupted by "+signal));
+        else resolveBuild(code??1);
+      });
+    });
+    if(status!==0)throw new Error("Vite build failed with exit status "+status);
+  } finally {
+    await rm(staging,{recursive:true,force:true});
+  }
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url))
   main().catch(e=>{console.error(e);process.exitCode=1;});
