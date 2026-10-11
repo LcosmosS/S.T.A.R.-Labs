@@ -1,0 +1,257 @@
+[
+  {
+    "id": "G1",
+    "bibliographic_label": "S.T.A.R. Research Charter v0.2.",
+    "annotation": "Governing PDF, 37 pages. Local bytes and Git blob identity verified against the consulted repository. Source: https://github.com/LcosmosS/S.T.A.R.-Labs/blob/046d90e5cdb4d575ea27c305535c91d0ff3aa6ec/charter/STAR_Research_Charter_v0-2.pdf . Relevant authority includes its claim taxonomy, mapping conventions, nulls, leakage controls, historical-claim reclassification and evidence ladder.",
+    "urls": [
+      "https://github.com/LcosmosS/S.T.A.R.-Labs/blob/046d90e5cdb4d575ea27c305535c91d0ff3aa6ec/charter/STAR_Research_Charter_v0-2.pdf"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "G2",
+    "bibliographic_label": "Patrick J. McNamara. The Arithmetic-Cosmic Structure Conjecture (ACSC) Monograph.",
+    "annotation": "Original May 2025 manuscript, 121 pages, supplied local PDF; source SHA-256 is recorded in the front matter and revision manifest. Historical manuscript, not an independently validated source of ACSC conclusions.",
+    "urls": [],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "G3",
+    "bibliographic_label": "S.T.A.R.-Labs repository snapshot.",
+    "annotation": "Main commit 046d90e5cdb4d575ea27c305535c91d0ff3aa6ec; README, registry/claim_evidence_v0.2.csv, EXP-MAP-A01 and EXP-MAP-A03 protocols, P0-ANSATZ-001 protocol, and P0/M1 independent-review records. https://github.com/LcosmosS/S.T.A.R.-Labs/tree/046d90e5cdb4d575ea27c305535c91d0ff3aa6ec . Protocol/source records, not independent physical evidence.",
+    "urls": [
+      "https://github.com/LcosmosS/S.T.A.R.-Labs/tree/046d90e5cdb4d575ea27c305535c91d0ff3aa6ec"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R1",
+    "bibliographic_label": "Joseph H. Silverman (2009). The Arithmetic of Elliptic Curves, second edition.",
+    "annotation": "Graduate Texts in Mathematics 106, Springer. Arithmetic reference for minimal models, heights and isogenies. https://doi.org/10.1007/978-0-387-09494-6",
+    "urls": [
+      "https://doi.org/10.1007/978-0-387-09494-6"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R2",
+    "bibliographic_label": "J. S. Milne (2021). Elliptic Curves, second edition.",
+    "annotation": "World Scientific; author-hosted text. Arithmetic background and BSD formulation. The consulted PDF's bibliographic page gives 2021. https://www.jmilne.org/math/Books/EC2.pdf",
+    "urls": [
+      "https://www.jmilne.org/math/Books/EC2.pdf"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R3",
+    "bibliographic_label": "Christophe Breuil, Brian Conrad, Fred Diamond and Richard Taylor (2001). On the modularity of elliptic curves over Q: wild 3-adic exercises.",
+    "annotation": "Journal of the American Mathematical Society 14, 843-939. Modularity theorem, not BSD or ACSC. Author-hosted paper: https://virtualmath1.stanford.edu/~conrad/papers/tswfinal.pdf",
+    "urls": [
+      "https://virtualmath1.stanford.edu/~conrad/papers/tswfinal.pdf"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R4",
+    "bibliographic_label": "David Cohen-Steiner, Herbert Edelsbrunner and John Harer (2007). Stability of Persistence Diagrams.",
+    "annotation": "Discrete & Computational Geometry 37, 103-120. Conditional bottleneck stability. https://doi.org/10.1007/s00454-006-1276-5",
+    "urls": [
+      "https://doi.org/10.1007/s00454-006-1276-5"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R5",
+    "bibliographic_label": "Frederic Chazal, Vin de Silva, Marc Glisse and Steve Oudot (2012 preprint). The structure and stability of persistence modules.",
+    "annotation": "Algebraic stability framework. https://arxiv.org/abs/1207.3674",
+    "urls": [
+      "https://arxiv.org/abs/1207.3674"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R6",
+    "bibliographic_label": "Primoz Skraba and Katharine Turner (2020 preprint; consulted revision 7, 2025). Wasserstein Stability for Persistence Diagrams.",
+    "annotation": "Wasserstein results require their own finiteness and perturbation assumptions; the manuscript does not replace them with an unconditional bottleneck assertion. https://arxiv.org/abs/2006.16824v7",
+    "urls": [
+      "https://arxiv.org/abs/2006.16824v7"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R7",
+    "bibliographic_label": "Pratyush Pranav et al. (2017). The topology of the cosmic web in terms of persistent Betti numbers.",
+    "annotation": "Monthly Notices of the Royal Astronomical Society. Cosmic-web topology methodology. https://arxiv.org/abs/1608.04519 ; https://doi.org/10.1093/mnras/stw2862",
+    "urls": [
+      "https://arxiv.org/abs/1608.04519",
+      "https://doi.org/10.1093/mnras/stw2862"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R8",
+    "bibliographic_label": "G. Wilding et al. (2021). Persistent homology of the cosmic web. I. Hierarchical topology in Lambda-CDM cosmologies.",
+    "annotation": "Monthly Notices of the Royal Astronomical Society. Cosmic topology and hierarchical structure in a specified cosmological setting. https://arxiv.org/abs/2011.12851 ; https://doi.org/10.1093/mnras/stab2326",
+    "urls": [
+      "https://arxiv.org/abs/2011.12851",
+      "https://doi.org/10.1093/mnras/stab2326"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R9",
+    "bibliographic_label": "Thierry Sousbie (2011). The persistent cosmic web and its filamentary structure. I. Theory and implementation.",
+    "annotation": "Monthly Notices of the Royal Astronomical Society. Persistence-based cosmic-web extraction, distinct from equating beta_1 with filament number. https://arxiv.org/abs/1009.4015",
+    "urls": [
+      "https://arxiv.org/abs/1009.4015"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R10",
+    "bibliographic_label": "Brittany Terese Fasy, Fabrizio Lecci, Alessandro Rinaldo, Larry Wasserman, Sivaraman Balakrishnan and Aarti Singh (2014). Confidence sets for persistence diagrams.",
+    "annotation": "Annals of Statistics 42(6), 2301-2339. Statistical uncertainty, under the paper's sampling assumptions. https://arxiv.org/abs/1303.7117 ; https://doi.org/10.1214/14-AOS1252",
+    "urls": [
+      "https://arxiv.org/abs/1303.7117",
+      "https://doi.org/10.1214/14-AOS1252"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R11",
+    "bibliographic_label": "Partha Niyogi, Stephen Smale and Shmuel Weinberger (2008). Finding the homology of submanifolds with high confidence from random samples.",
+    "annotation": "Discrete & Computational Geometry 39, 419-441. Consulted noiseless reach/density reconstruction statement, especially Proposition 3.1. https://math.uchicago.edu/~shmuel/NSW1.pdf ; https://doi.org/10.1007/s00454-006-1250-7",
+    "urls": [
+      "https://math.uchicago.edu/~shmuel/NSW1.pdf",
+      "https://doi.org/10.1007/s00454-006-1250-7"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R12",
+    "bibliographic_label": "Benedict H. Gross and Don B. Zagier (1986). Heegner points and derivatives of L-series.",
+    "annotation": "Inventiones Mathematicae 84, 225-320. Arithmetic height/derivative relation with specified hypotheses; not a quantum probability law. https://doi.org/10.1007/BF01388809",
+    "urls": [
+      "https://doi.org/10.1007/BF01388809"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R13",
+    "bibliographic_label": "Thomas Barnet-Lamb, Toby Gee and David Geraghty (2009 preprint, revised 2010). The Sato-Tate conjecture for Hilbert modular forms.",
+    "annotation": "Primary source for the relevant non-CM equidistribution setting. https://arxiv.org/abs/0912.1054",
+    "urls": [
+      "https://arxiv.org/abs/0912.1054"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R14",
+    "bibliographic_label": "Barry Mazur (1978). Rational isogenies of prime degree.",
+    "annotation": "Inventiones Mathematicae 44, 129-162; includes the rational torsion classification statement. Primary paper copy: https://www.math.columbia.edu/~goldfeld/Mazur-Goldfeld1978.pdf ; https://doi.org/10.1007/BF01390348",
+    "urls": [
+      "https://www.math.columbia.edu/~goldfeld/Mazur-Goldfeld1978.pdf",
+      "https://doi.org/10.1007/BF01390348"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R15",
+    "bibliographic_label": "Anton Kapustin and Edward Witten (2006). Electric-Magnetic Duality and the Geometric Langlands Program.",
+    "annotation": "Related mathematical-physics framework; not an ACSC construction. https://arxiv.org/abs/hep-th/0604151",
+    "urls": [
+      "https://arxiv.org/abs/hep-th/0604151"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R16",
+    "bibliographic_label": "Juan Maldacena (1997 preprint). The Large N Limit of Superconformal Field Theories and Supergravity.",
+    "annotation": "Related gauge/gravity proposal in specific theories and limits. https://arxiv.org/abs/hep-th/9711200",
+    "urls": [
+      "https://arxiv.org/abs/hep-th/9711200"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R17",
+    "bibliographic_label": "Max Tegmark (2008). The Mathematical Universe.",
+    "annotation": "Foundations of Physics 38, 101-150. Related philosophical proposal. https://arxiv.org/abs/0704.0646v2 ; https://doi.org/10.1007/s10701-007-9186-9",
+    "urls": [
+      "https://arxiv.org/abs/0704.0646v2",
+      "https://doi.org/10.1007/s10701-007-9186-9"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R18",
+    "bibliographic_label": "J. S. Milne (2017). Modular Functions and Modular Forms, version 1.31.",
+    "annotation": "Author's course notes; modular transformation conventions and Eisenstein zeros, especially Example 4.15. https://www.jmilne.org/math/CourseNotes/MF.pdf",
+    "urls": [
+      "https://www.jmilne.org/math/CourseNotes/MF.pdf"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R19",
+    "bibliographic_label": "The L-functions and Modular Forms Database. Elliptic curve 11.a3.",
+    "annotation": "Catalog record for the small-discriminant conductor-11 example; consulted alongside ecdata, rather than treating labels as a new proof of classification. https://www.lmfdb.org/EllipticCurve/Q/11/a/3",
+    "urls": [
+      "https://www.lmfdb.org/EllipticCurve/Q/11/a/3"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R20",
+    "bibliographic_label": "John Cremona. ecdata.",
+    "annotation": "Pinned source commit 25cec5ecfec8b9f016eb1631ac633194c2bed39f, allcurves/allcurves.00000-09999; catalog labels and coefficient vectors used in the elementary counterexample. https://github.com/JohnCremona/ecdata/blob/25cec5ecfec8b9f016eb1631ac633194c2bed39f/allcurves/allcurves.00000-09999",
+    "urls": [
+      "https://github.com/JohnCremona/ecdata/blob/25cec5ecfec8b9f016eb1631ac633194c2bed39f/allcurves/allcurves.00000-09999"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R21",
+    "bibliographic_label": "Miles Cranmer (2023). Interpretable Machine Learning for Science with PySR and SymbolicRegression.jl.",
+    "annotation": "Symbolic-regression tooling and methodology. https://arxiv.org/abs/2305.01582",
+    "urls": [
+      "https://arxiv.org/abs/2305.01582"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  },
+  {
+    "id": "R22",
+    "bibliographic_label": "Michael Schmidt and Hod Lipson (2009). Distilling Free-Form Natural Laws from Experimental Data.",
+    "annotation": "Science 324, 81-85. Related experimental equation discovery, not evidence for the historical ACSC fits. https://doi.org/10.1126/science.1165893 . Publisher access failed during this revision; inspected original-paper copy: https://scispace.com/pdf/distilling-free-form-natural-laws-from-experimental-data-7wp48fiem8.pdf",
+    "urls": [
+      "https://doi.org/10.1126/science.1165893",
+      "https://scispace.com/pdf/distilling-free-form-natural-laws-from-experimental-data-7wp48fiem8.pdf"
+    ],
+    "supports_ACSC_empirically": false,
+    "checked_date": "2026-10-11"
+  }
+]

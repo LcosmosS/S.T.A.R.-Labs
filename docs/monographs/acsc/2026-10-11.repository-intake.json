@@ -1,0 +1,110 @@
+{
+  "schema": "star-manuscript-intake-v1",
+  "intake_date": "2026-10-11",
+  "document_id": "DOC-ACSC-REVISION-2026-10-11",
+  "document_status": "editorial_review_pending",
+  "scientific_scope": "Charter-aligned candidate manuscript; mathematical and editorial review draft",
+  "source_archive": {
+    "filename": "ACSC_Charter_Aligned_Revision_Package.zip",
+    "bytes": 372542,
+    "sha256": "3bbc3429a24759332b6eeff51175f4714a8dd594b4ba93d1b5b50f03c57cf744"
+  },
+  "repository_base_commit": "046d90e5cdb4d575ea27c305535c91d0ff3aa6ec",
+  "governing_authority": {
+    "path": "charter/STAR_Research_Charter_v0-2.pdf",
+    "sha256": "9a63284900d5349f1d307160929b2542885e4c751439b785369b722d349a5c03"
+  },
+  "historical_original": {
+    "path": "docs/The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf",
+    "sha256": "2f1cd1cf5a4069122407a8d722343d3a7b2a09b29043b7a371ea33f63dc91ef6",
+    "preserved_unchanged": true
+  },
+  "package_creation_record": "docs/monographs/acsc/2026-10-11/revision_manifest.json",
+  "package_creation_record_semantics": "Local generation record; its no-commit/no-PR fields describe creation before this separately authorized intake.",
+  "package_members_preserved_byte_for_byte": true,
+  "members": [
+    {
+      "archive_member": "ACSC_Charter_Aligned_Rewrite.pdf",
+      "repository_path": "docs/monographs/acsc/2026-10-11/ACSC_Charter_Aligned_Rewrite.pdf",
+      "bytes": 389454,
+      "sha256": "c5833fd1b9b3455691143530b7abd4afa8b1e728d5ead65ba37047d8ffae5649"
+    },
+    {
+      "archive_member": "ACSC_Charter_Aligned_Rewrite.md",
+      "repository_path": "docs/monographs/acsc/2026-10-11/ACSC_Charter_Aligned_Rewrite.md",
+      "bytes": 107283,
+      "sha256": "00c536c82266f765ffb652af49fcab4e61996d4f0cbc2bfa7826b2a92b476f57"
+    },
+    {
+      "archive_member": "CORRECTION_LEDGER.md",
+      "repository_path": "docs/monographs/acsc/2026-10-11/CORRECTION_LEDGER.md",
+      "bytes": 6569,
+      "sha256": "13131b2737887fff33633fcd64a0e0bf739c954016ffa5f37f415c720b58ed79"
+    },
+    {
+      "archive_member": "correction_ledger.csv",
+      "repository_path": "docs/monographs/acsc/2026-10-11/correction_ledger.csv",
+      "bytes": 6647,
+      "sha256": "1ff6eebd271132d8cc6d9475bce2e745fea7410ca2229b4076b005714f8adf4d"
+    },
+    {
+      "archive_member": "correction_ledger.json",
+      "repository_path": "docs/monographs/acsc/2026-10-11/correction_ledger.json",
+      "bytes": 12054,
+      "sha256": "95cc50aa8176c58dfffbee55ff9907af3ac4a0d003ab2c0036e695b0335022c6"
+    },
+    {
+      "archive_member": "local_claim_worksheet.json",
+      "repository_path": "docs/monographs/acsc/2026-10-11/local_claim_worksheet.json",
+      "bytes": 7037,
+      "sha256": "389776bb938425f3d802ff52ac41b9268a37c439d4159c71774b372db71ae286"
+    },
+    {
+      "archive_member": "references.json",
+      "repository_path": "docs/monographs/acsc/2026-10-11/references.json",
+      "bytes": 13190,
+      "sha256": "126e7c696c024f38f85fb4f06d8e50dfb12148874d12784fd4546d73736ffbcf"
+    },
+    {
+      "archive_member": "mathematical_checks.json",
+      "repository_path": "docs/monographs/acsc/2026-10-11/mathematical_checks.json",
+      "bytes": 11156,
+      "sha256": "31b06c8291d13bdc8c609c4f9119a17b78eb1af7e277faa976b9d291e23a6d74"
+    },
+    {
+      "archive_member": "README.md",
+      "repository_path": "docs/monographs/acsc/2026-10-11/README.md",
+      "bytes": 3427,
+      "sha256": "83e8dbdb636bd74156a97107a4d6b35793fc37650499ba47fd6675a1e39777d7"
+    },
+    {
+      "archive_member": "layout_review.json",
+      "repository_path": "docs/monographs/acsc/2026-10-11/layout_review.json",
+      "bytes": 10534,
+      "sha256": "f1c7480513f7b92dcdc50424d67eb84b82a90189350b7c7a52bf105579d896af"
+    },
+    {
+      "archive_member": "revision_manifest.json",
+      "repository_path": "docs/monographs/acsc/2026-10-11/revision_manifest.json",
+      "bytes": 2837,
+      "sha256": "da95a9e85506f340a60e54296843554fd4e7cb12286e15403f6f8ee2d83b7c3a"
+    }
+  ],
+  "local_claim_namespace": "ACSC-LOCAL-2026-10-11",
+  "local_ids_are_canonical_registry_aliases": false,
+  "related_canonical_claims": [
+    "REPO-CSV-v0.2:CLAIM-ACSC-001",
+    "REPO-CSV-v0.2:CLAIM-ACSC-002",
+    "REPO-CSV-v0.2:CLAIM-ACSC-003"
+  ],
+  "relation": "related_scope_only_not_alias",
+  "evidence_status": "author_produced_editorial_and_elementary_mathematical_checks_only",
+  "independent_mathematical_review": "pending",
+  "controlled_execution_authorized": false,
+  "controlled_support_eligible": false,
+  "physical_support_eligible": false,
+  "sky_display_authorized": false,
+  "frozen_protocols_changed": false,
+  "canonical_scientific_registry_rows_changed": false,
+  "storage": "ordinary Git; largest member is 389454 bytes; no LFS pointers introduced"
+}

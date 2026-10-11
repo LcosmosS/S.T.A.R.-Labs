@@ -72,3 +72,7 @@ data/intake/sdss/gema/dr17-2.0.2-2026-10-09/GEMA_2.0.2.fits filter=lfs diff=lfs 
 data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.vot filter=lfs diff=lfs merge=lfs -text
 data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_full.csv filter=lfs diff=lfs merge=lfs -text
 data/provenance/observational_dataset_intake_2026-10-09.json text eol=lf
+
+# Preserve the approved manuscript package's hashed bytes on every platform.
+docs/monographs/acsc/2026-10-11/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/monographs/acsc/2026-10-11/*.pdf binary
