@@ -15,6 +15,19 @@ if (!/^https?:\/\/127\.0\.0\.1:8081$/.test(origin??"")) {
 }
 const ALADIN="https://aladin.cds.unistra.fr/AladinLite/api/v3/3.8.1/aladin.js";
 const ASSET="/sky/alfalfa100-hi-centroids-v1.csv";
+const reviewedCsv=await readFile(
+  fileURLToPath(new URL("../public/sky/alfalfa100-hi-centroids-v1.csv",import.meta.url)),
+  "utf8",
+);
+const [header,...dataRows]=reviewedCsv.trimEnd().split(/\r?\n/);
+assert.equal(header,"source_id,ra_deg,dec_deg","Reviewed CSV schema changed");
+const expectedMarkers=dataRows.map((line,index)=>{
+  const columns=line.split(",");
+  assert.equal(columns.length,3,`Reviewed CSV row ${index+2} must have three columns`);
+  const [id,ra,dec]=columns;
+  return {ra:Number(ra),dec:Number(dec),id};
+});
+assert.equal(expectedMarkers.length,2000,"Expected exactly 2,000 reviewed sky marker rows");
 const aladinSpy=`
 window.__starAladinAudit = { sourceCalls: [], added: 0 };
 window.A = {
@@ -51,9 +64,12 @@ try {
     await page.getByRole("status").filter({hasText:/coordinates and selected IDs verified/}).waitFor({timeout:30000});
     await page.waitForFunction(()=>window.__starAladinAudit?.added===2000,{timeout:25000});
     const audit=await page.evaluate(()=>window.__starAladinAudit);
-    assert.equal(audit.sourceCalls.length,2000);
-    assert.equal(audit.added,2000);
-    assert.ok(audit.sourceCalls.every(x=>x.id.startsWith("AGC-")));
+    assert.equal(audit.sourceCalls.length,expectedMarkers.length);
+    assert.equal(audit.added,expectedMarkers.length);
+    // Compare every Aladin API input to the reviewed CSV row, in order:
+    // a swapped RA/Dec, wrong valid-looking ID, or dropped row must fail.
+    assert.deepEqual(audit.sourceCalls,expectedMarkers,
+      "Aladin must receive every reviewed source_id/RA/Dec in CSV order");
     assert.deepEqual(skyRequests,[origin+ASSET],"Fetch only same-origin reviewed release");
     assert.equal(await page.locator("#star-aladin-sky-viewport").count(),1);
     assert.equal(await page.getByText(/2000 positions/).count(),1);
