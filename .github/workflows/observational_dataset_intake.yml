@@ -1,0 +1,81 @@
+name: Observational dataset intake
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/observational_dataset_intake.yml"
+      - ".gitattributes"
+      - "data/intake/sdss/pipe3d/**"
+      - "data/intake/sdss/gema/**"
+      - "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv"
+      - "data/intake/vizier/alfalfa100/**"
+      - "data/derived/vizier/alfalfa100/**"
+      - "data/provenance/observational_dataset_intake_2026-10-09.json"
+      - "data/provenance/zone_identifier_receipts_v0.1.json"
+      - "historical/r&d/docs/recovered_corpus_audit_2026-10-08/casjobs_sdss18_200k_binding_2026-10-08.json"
+      - "historical/r&d/code_log/2026-10-08_recovered/queries/4672dd7d2691021d782a24bfb1c02be29b86f2e372192312a379ea729d8e2c5a.txt"
+      - "registry/dataset_registry_v0.1.csv"
+      - "registry/data_provenance_registry_v0.1.csv"
+      - "research/acquisition/vizier_alfalfa100/**"
+      - "scripts/validate_observational_datasets.py"
+      - "web_tool/content/sky-overlay-candidates.v1.json"
+      - "web_tool/content/sky-overlay-releases.v1.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/observational_dataset_intake.yml"
+      - ".gitattributes"
+      - "data/intake/sdss/pipe3d/**"
+      - "data/intake/sdss/gema/**"
+      - "data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv"
+      - "data/intake/vizier/alfalfa100/**"
+      - "data/derived/vizier/alfalfa100/**"
+      - "data/provenance/observational_dataset_intake_2026-10-09.json"
+      - "data/provenance/zone_identifier_receipts_v0.1.json"
+      - "historical/r&d/docs/recovered_corpus_audit_2026-10-08/casjobs_sdss18_200k_binding_2026-10-08.json"
+      - "historical/r&d/code_log/2026-10-08_recovered/queries/4672dd7d2691021d782a24bfb1c02be29b86f2e372192312a379ea729d8e2c5a.txt"
+      - "registry/dataset_registry_v0.1.csv"
+      - "registry/data_provenance_registry_v0.1.csv"
+      - "research/acquisition/vizier_alfalfa100/**"
+      - "scripts/validate_observational_datasets.py"
+      - "web_tool/content/sky-overlay-candidates.v1.json"
+      - "web_tool/content/sky-overlay-releases.v1.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  provenance-and-aladin-candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          lfs: false
+      - name: Fetch only governed observational LFS objects
+        run: |
+          set -euo pipefail
+          INCLUDE="data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv,data/intake/sdss/pipe3d/dr17-v3_1_1-2026-10-09/SDSS17Pipe3D_v3_1_1.fits,data/intake/sdss/gema/dr17-2.0.2-2026-10-09/GEMA_2.0.2.fits,data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.vot,data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_full.csv"
+          git lfs fetch --include="$INCLUDE" origin "$GITHUB_SHA"
+          git lfs checkout -- data/intake/recovered/2026-10-08/9dca2008683fde4b0f7a90af5de85ee846a30a47f6f6fae3968c83dea06fa5d2.csv
+          git lfs checkout -- data/intake/sdss/pipe3d/dr17-v3_1_1-2026-10-09/SDSS17Pipe3D_v3_1_1.fits
+          git lfs checkout -- data/intake/sdss/gema/dr17-2.0.2-2026-10-09/GEMA_2.0.2.fits
+          git lfs checkout -- data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.vot
+          git lfs checkout -- data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_full.csv
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify source bytes, schemas, coordinates, registries and pending review gate
+        run: |
+          set -euo pipefail
+          mkdir -p results
+          python scripts/validate_observational_datasets.py --format markdown | tee results/observational_dataset_lineage.md
+          cat results/observational_dataset_lineage.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: observational-dataset-lineage
+          path: results/observational_dataset_lineage.md
+          retention-days: 90
+          if-no-files-found: error

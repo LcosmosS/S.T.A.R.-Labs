@@ -21,10 +21,12 @@ def _print_json(value):
     print(json.dumps(value, indent=2, sort_keys=True))
 
 
-def _preflight_summary(prepared):
+def _preflight_summary(prepared, *, binding_only=False):
     resolved = prepared.resolved
     return {
         "ready": True,
+        "binding_only": bool(binding_only),
+        "controlled_execution_authorized": not bool(binding_only),
         "experiment_id": resolved.experiment["Experiment_ID"],
         "dataset_id": resolved.dataset["Dataset_ID"],
         "parameter_set_id": resolved.parameter["Parameter_Set_ID"],
@@ -61,6 +63,14 @@ def build_parser():
         help="verify registry gates, bindings, hashes, Git state, and execution spec",
     )
     preflight.add_argument("--spec", required=True, type=Path)
+    preflight.add_argument(
+        "--binding-only",
+        action="store_true",
+        help=(
+            "verify preregistration bindings while requiring experiment and "
+            "dataset execution eligibility to remain false; never authorizes a run"
+        ),
+    )
 
     run = sub.add_parser(
         "run",
@@ -99,8 +109,12 @@ def main(argv=None):
 
     try:
         if args.command_name == "preflight":
-            prepared = preflight_controlled_experiment(root, args.spec)
-            _print_json(_preflight_summary(prepared))
+            prepared = preflight_controlled_experiment(
+                root,
+                args.spec,
+                require_execution_eligibility=not args.binding_only,
+            )
+            _print_json(_preflight_summary(prepared, binding_only=args.binding_only))
             return 0
 
         if args.command_name == "run":

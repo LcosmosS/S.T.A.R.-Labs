@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "star-sky-overlay-candidates-v1",
+  "candidates": [
+    {
+      "datasetId": "DATA-VIZIER-ALFALFA100",
+      "qualifiedDatasetId": "REPO-CSV-v0.2:DATA-VIZIER-ALFALFA100",
+      "sourcePath": "data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.vot",
+      "sourceSha256": "654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079",
+      "coordinatePath": "data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_display_2000.csv",
+      "coordinateSha256": "ddf040c5954bc9ae2c19415d46071443cd6a3f209069e095fd2b4bbe7b8fadf9",
+      "selectedIdsSha256": "7b5de4187e24df2c0c1936164ecd1ade0ae5c4ee15d2ff64847499fd7e7c6221",
+      "coordinateRole": "hi_centroid",
+      "sourceRows": 31502,
+      "displayRows": 2000,
+      "approvalStatus": "pending_independent_review",
+      "reviewReferences": [
+        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78",
+        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/80",
+        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/81"
+      ],
+      "controlledSupportEligible": false,
+      "physicalSupportEligible": false
+    }
+  ]
+}

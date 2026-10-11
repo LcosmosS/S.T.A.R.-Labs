@@ -52,6 +52,7 @@ def _fixture_root(
     tmp_path,
     *,
     experiment_eligible=True,
+    dataset_eligible=True,
     provenance_hash=None,
     claim_ids="CLAIM-TEST",
     registered_claims=("CLAIM-TEST",),
@@ -128,7 +129,14 @@ def _fixture_root(
     _write_csv(
         registry / "dataset_registry_v0.1.csv",
         ["Dataset_ID", "Controlled_Execution_Eligible"],
-        [{"Dataset_ID": "DATA-TEST", "Controlled_Execution_Eligible": "true"}],
+        [
+            {
+                "Dataset_ID": "DATA-TEST",
+                "Controlled_Execution_Eligible": (
+                    "true" if dataset_eligible else "false"
+                ),
+            }
+        ],
     )
     _write_csv(
         registry / "data_provenance_registry_v0.1.csv",
@@ -459,6 +467,53 @@ def test_preflight_rejects_ineligible_experiment_before_execution(tmp_path):
         preflight_controlled_experiment(
             root,
             spec,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+
+def test_binding_only_preflight_succeeds_only_with_both_execution_gates_false(tmp_path):
+    root, spec, _ = _fixture_root(
+        tmp_path,
+        experiment_eligible=False,
+        dataset_eligible=False,
+    )
+    prepared = preflight_controlled_experiment(
+        root,
+        spec,
+        require_execution_eligibility=False,
+        git_state_provider=_fake_git,
+        tracked_path_checker=_allow_tracked,
+    )
+    assert prepared.resolved.experiment["Controlled_Execution_Eligible"] == "false"
+    assert prepared.resolved.dataset["Controlled_Execution_Eligible"] == "false"
+
+    with pytest.raises(PreflightError, match="not controlled-execution eligible"):
+        preflight_controlled_experiment(
+            root,
+            spec,
+            git_state_provider=_fake_git,
+            tracked_path_checker=_allow_tracked,
+        )
+
+
+@pytest.mark.parametrize(
+    "experiment_eligible,dataset_eligible",
+    [(True, False), (False, True), (True, True)],
+)
+def test_binding_only_preflight_rejects_any_open_execution_gate(
+    tmp_path, experiment_eligible, dataset_eligible
+):
+    root, spec, _ = _fixture_root(
+        tmp_path,
+        experiment_eligible=experiment_eligible,
+        dataset_eligible=dataset_eligible,
+    )
+    with pytest.raises(PreflightError, match="binding-only preflight requires"):
+        preflight_controlled_experiment(
+            root,
+            spec,
+            require_execution_eligibility=False,
             git_state_provider=_fake_git,
             tracked_path_checker=_allow_tracked,
         )

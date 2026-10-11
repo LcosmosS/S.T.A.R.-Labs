@@ -1,0 +1,18 @@
+{
+  "method": "GET",
+  "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J%2FApJ%2F861%2F49%2Ftable2&-out.max=unlimited&-out.all=1",
+  "parameters": {
+    "-source": "J/ApJ/861/49/table2",
+    "-out.max": "unlimited",
+    "-out.all": "1"
+  },
+  "retrieved_at_utc": "2026-10-09T07:47:29Z",
+  "mirror": "vizier.cds.unistra.fr",
+  "response_media_type": "application/x-votable+xml",
+  "response_headers_path": "data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.response-headers.txt",
+  "readme_url": "https://cdsarc.cds.unistra.fr/viz-bin/ReadMe/J/ApJ/861/49?format=html&tex=true",
+  "readme_retrieved_at_utc": "2026-10-09T07:47:46Z",
+  "catalogue_doi": "10.26093/cds/vizier.18610049",
+  "article_doi": "10.3847/1538-4357/aac956",
+  "designation": "Corrected August 2019 table2"
+}

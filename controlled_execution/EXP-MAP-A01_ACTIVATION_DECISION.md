@@ -34,64 +34,37 @@ Original [PR #64](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/64) was merged 
 
 **After authorized merge only:** [Issue #67](https://github.com/LcosmosS/S.T.A.R.-Labs/issues/67) tracks the separate investigator-A original controlled run and investigator-B independent reproduction with manifests and sha256 sidecars. Non-rejection and negative outcomes must remain reportable. Even success is an arithmetic-only mapping diagnostic, not cosmological correspondence or physical support.
 
-## New integration blocker detected against current `main` (2026-10-10)
+## Merged PR #87 compatibility — rebuild against live canonical main
 
-**Not execution-authorized; do not merge this original activation diff.**
-The original #78 head predates the merged A03 preregistration (PR #83) and
-observational dataset lineage (PR #84). It currently reports an actual merge
-conflict with `main`, so the original full-file registry and web snapshot
-versions cannot be used as a conflict-resolution source. A future activation
-diff must preserve current main's A03 status, all newer provenance rows,
-the dynamic audit validator, and the ALADIN release gate.
+The independent, non-activating shared-dataset compatibility implementation from
+[PR #87](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87) **merged** as
+[`4f89bd3bc5c2225d9b0d2ce985e7eb18e8cbd73d`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/4f89bd3bc5c2225d9b0d2ce985e7eb18e8cbd73d).
+This activation proposal is rebuilt on canonical main `e051ec2660b92e36b2208dfb756410ce5c931d6b`, which
+includes that implementation and the subsequently merged A03 review-release
+safeguards. This does not itself approve or activate anything on main.
 
-There is also a distinct **shared dataset / frozen A03 binding** conflict:
+The exact inactive-to-active canonical row SHA-256 transitions are:
+- `DATA-ARITHMETIC`: `2fe4ab7f5763f39c6cde8392c3f7d8ff1a565e4664ce6e192640b99f3fe146d7` -> `1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2`.
+- `EXP-MAP-A01`: `31f0137f1de87ba1b548758383b664dab13515205a3c2696b0c0edf573a5f4b3` -> `97dac41c4d8a866d0abbcdf5515829328e92ea1fb3cf7b4d03e1d9b9c0b9c868`.
 
-- A01 and A03 both reference `DATA-ARITHMETIC`.
-- The proposed A01 transition changes that dataset's execution flag
-  `false -> true`, with canonical dataset-row digest
-  `1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2`.
-- The already frozen A03 execution spec binds the original dataset-row
-  digest `2fe4ab7f5763f39c6cde8392c3f7d8ff1a565e4664ce6e192640b99f3fe146d7`.
-- A03's canonical preregistration validator requires the shared dataset
-  flag `false`, an exact current registry-binding hash, and a binding-only
-  preflight that currently requires both experiment and dataset eligibility
-  `false`. All three would break after A01's proposed dataset transition,
-  even while A03's own experiment flag remains `false`.
+Only the `Controlled_Execution_Eligible` boolean of each row changes.
+The locked A03 spec deliberately retains its original dataset digest, and
+the merged compatibility layer reversibly proves that the new row differs
+by only this one eligibility bit. A03's own experiment flag remains false;
+A03 normal execution preflight must remain blocked. No frozen scientific
+protocol, code input, null, cohort or source SHA is modified.
 
-A mere Git conflict resolution, a stale A01-only preflight success, or a
-forced acceptance of the new dataset digest is **not** adequate.
-Before a successor A01 activation proposal can be merge-eligible, an
-independently reviewed, reproducible compatibility design must preserve
-A03's execution prohibition **and** give a transparent, hash-locked
-transition record for any operational A03 spec-bound dataset-row update.
-The original scientific A03 protocol, cohort, parameters, null, and
-endpoint cannot be silently changed. Assess compatibility with the
-A03 pre-execution verification package in PR #86, including its preserved
-local and CI receipts, before final approval.
+Current-main A03 preregistration, compatibility, release archive, source
+provenance/LFS receipts, dynamic audit rules, and ALADIN Lite display gate
+are preserved intact. The read-only website registry snapshot is regenerated
+from the current source values, not restored from historical PR #64/#78.
 
-This blocker is in addition to — not a replacement for — the required
-off-author **human APPROVED review** on the prospective *exact final*
-activation diff. The two execution flags proposed here have no force on
-the canonical `main` registry until an authorized merge.
+**Required exact-final-head gates:** source-hydrated A01 preflight, A03
+preregistration/reference checks, all shared-dataset negative mutation tests,
+audit validator, website snapshot check, unit tests, CodeQL and all required
+Actions. No original A01/A03 endpoint, 999-draw null or result is run during
+this activation proposal. A separate, accountable **off-author human APPROVED
+review on the final head** is mandatory before merge, irrespective of bot
+approval, PR #87 integration or passing CI.
 
-## Review dependency: compatibility PR #87 (2026-10-10)
-
-A non-activating implementation of the exact two-hash `DATA-ARITHMETIC`
-compatibility rule, its negative tests, and the A03 reference verification
-adaptation are now proposed in
-[PR #87](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87).
-The reviewed design is versioned in
-`docs/registries/A01_A03_SHARED_DATASET_COMPATIBILITY_DESIGN_v0.1.md`
-on that branch. The original frozen A03 spec is not rewritten.
-**PR #87 is a separate review, not an activation or approval.**
-
-PR #78 must **not** resolve the main-branch conflict by restoring its
-historical copies of `experiment_registry_v0.2.csv`,
-`dataset_registry_v0.1.csv`, `validate_audit_registries.py`,
-or `registry-snapshot.json`. Finish the dedicated #87 compatibility review,
-merge that *non-activating* software design only after its own approvals and
-exact-head CI, and then rebase/rebuild this activation proposal from the
-new canonical `main`. Require A03 reference verification to pass in
-both inactive and A01-only-activated metadata states; A03 normal preflight
-must remain blocked. All A01 activation flags and review requirements stay
-pending; this PR remains open and unmerged.
+**Status: pending independent authorization. Do not merge without it.**

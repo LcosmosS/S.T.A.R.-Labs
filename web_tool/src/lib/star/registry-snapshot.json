@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "1f53b74767126ef9cb48d8fccb17f198e7093d6971eb41c3be066c49d2acb4b5",
+  "contentSha256": "fa9d99dfd9575ed1428fdad052c60c556a85d407ff0420c5e2ea193dccb3d56b",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
@@ -66,13 +66,13 @@
     },
     {
       "path": "registry/data_provenance_registry_v0.1.csv",
-      "sha256": "8dba65800065c73a06ff0988e71607afe3202a0b7506b3cae8b0521d3bdb502c",
-      "sizeBytes": 55787
+      "sha256": "1a89fe41fe6d0fdbbae0c0ae098db15170b4a282e72a2667a3c0ee5b5fe2c9a9",
+      "sizeBytes": 59316
     },
     {
       "path": "registry/dataset_registry_v0.1.csv",
-      "sha256": "3e3a1fad1b3659b0ce337589f59a9ff01192ad45d7b7bea37bd94e8e97bd371e",
-      "sizeBytes": 34708
+      "sha256": "578812040a7baa2d3e15c3b0ba879bba631cbdddf91c05f6aa556904da8a5f9a",
+      "sizeBytes": 36094
     },
     {
       "path": "registry/experiment_recovery_2026-10-08.csv",
@@ -81,18 +81,18 @@
     },
     {
       "path": "registry/experiment_registry_v0.2.csv",
-      "sha256": "46cec5f38272e7aabe8c1082834c0d4e610b7317a105dba2677b13451bdbed60",
-      "sizeBytes": 12889
+      "sha256": "45fd589cef4cdb73d4a722fcc567b8e395403a162085fde5c6b84abb0547cf74",
+      "sizeBytes": 12994
     },
     {
       "path": "registry/null_registry_v0.1.csv",
-      "sha256": "60f1d98b15caa305c2495cd4971a64aaf0e551588f5bcf05ba6f52e39f61a049",
-      "sizeBytes": 4093
+      "sha256": "13f153bf024678494a50d43a2b719e7fd55be812605d0e94ba237ad74c43511b",
+      "sizeBytes": 4866
     },
     {
       "path": "registry/parameter_registry_v0.1.csv",
-      "sha256": "266f0bdb868260e2018d203ca4535585d41ba270313a7610cace5a6ab801f93c",
-      "sizeBytes": 5799
+      "sha256": "03654f59c761900a9c19278a3b0c00e00852a2c4e5f3d2f6d15cc37cf8194e44",
+      "sizeBytes": 6619
     },
     {
       "path": "registry/theory_candidate_registry_v0.1.csv",
@@ -586,7 +586,7 @@
       "Parameter_Set_ID": "PAR-MAP-003",
       "Null_ID": "NULL-MAP-003",
       "Mode": "controlled",
-      "Status": "planned",
+      "Status": "preregistered",
       "Historical_RandD": "yes",
       "Registry_Namespace": "REPO-CSV-v0.2",
       "Qualified_Experiment_ID": "REPO-CSV-v0.2:EXP-MAP-A03",
@@ -595,7 +595,7 @@
       "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-MAP-A01",
       "Same_String_PDF_Definition": "Arithmetic Generator Controls",
       "Namespace_Resolution": "scope_conflict_no_alias",
-      "Current_Audit_Assessment": "Planned; parameters/nulls not preregistered; controlled execution and independent reproduction unverified. Recovery audit 2026-10-08: whole scripts, saved outputs and raw-source candidates catalogued; source-to-result binding and independent replication remain unresolved. See historical/r&d/docs/recovered_corpus_audit_2026-10-08/README.md",
+      "Current_Audit_Assessment": "EXP-MAP-A03-prereg-v1 is scientifically preregistered as the repository-qualified BSD-independent MCJ arithmetic null test; source bytes, the deterministic 37,936-row analysis cohort, exact j mapping, k=10 endpoint, conductor-decile null, seed=4103, B=999, alpha=0.005, and output contract are locked. Controlled execution and all support promotion remain disabled pending a separate activation-only PR and successful activation preflight.",
       "Audit_Finding_IDs": "E-LCL-003;E-LCL-004;E-LCL-006;E-LCL-014;E-LCL-016",
       "Controlled_Execution_Eligible": "false",
       "Controlled_Support_Eligible": "false",

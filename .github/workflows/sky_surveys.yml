@@ -41,8 +41,23 @@ jobs:
         run: |
           cd "${{ steps.root.outputs.ROOT }}"
           sage -python -m pip install -r requirements.txt
-          sage -python -m pip install pyarrow
           sage -python -m pip install -e . --no-deps
+
+      - name: Install Parquet engine for the Sage Python interpreter
+        run: |
+          set -euo pipefail
+          # The Sage container has no ensurepip/python3-venv. Installing pip
+          # packages globally may use a different site-packages directory.
+          # Install the wheel at a known location and explicitly import it
+          # using the SAME Sage interpreter that runs the survey builder.
+          sage -python -m pip install --no-deps --target /tmp/star-sky-pyarrow pyarrow==21.0.0
+          sage -python - <<'PY'
+          import sys
+          sys.path.insert(0, "/tmp/star-sky-pyarrow")
+          import pandas
+          import pyarrow
+          print("Sage Python Parquet engine:", pyarrow.__version__, "pandas:", pandas.__version__)
+          PY
 
       - name: Run cosmology diagnostics
         run: |
@@ -57,9 +72,22 @@ jobs:
 
       - name: Run dataset union builder (downsampled)
         run: |
+          set -euo pipefail
           cd "${{ steps.root.outputs.ROOT }}"
           sage -python - <<'PY'
+          import sys
+          sys.path.insert(0, "/tmp/star-sky-pyarrow")
+          from pathlib import Path
+          import pandas as pd
           from src.data.sky_survey_dataset_builder import SkySurveyUnionBuilder
+
+          output = Path("sky_surveys_ci.parquet")
           builder = SkySurveyUnionBuilder(downsample=200)
-          builder.save("sky_surveys_ci.parquet")
+          expected = builder.build()
+          builder.save(output)
+          assert output.is_file() and output.stat().st_size > 0, "Parquet output missing"
+          restored = pd.read_parquet(output)
+          pd.testing.assert_frame_equal(restored, expected, check_dtype=True)
+          assert len(restored) <= 400, "downsampled union exceeded input bound"
+          print(f"Parquet union round-trip passed: {len(restored)} rows")
           PY

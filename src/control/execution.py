@@ -18,6 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
+from src.control.shared_dataset_compatibility import a03_bindings_compatible
 from src.control.registry import (
     RegistrySnapshot,
     canonical_json_bytes,
@@ -358,6 +359,7 @@ def preflight_controlled_experiment(
     root: Path | str,
     spec_path: Path | str,
     *,
+    require_execution_eligibility: bool = True,
     git_state_provider: Callable[[Path], dict] = _git_state,
     tracked_path_checker: Callable[[Path, Path], None] = _assert_tracked_code_path,
 ) -> PreparedExecution:
@@ -377,10 +379,18 @@ def preflight_controlled_experiment(
     snapshot = RegistrySnapshot.load(root)
     resolved = snapshot.resolve(spec["experiment_id"])
 
-    failures = execution_gate_failures(resolved)
+    failures = execution_gate_failures(
+        resolved,
+        require_execution_eligibility=require_execution_eligibility,
+    )
     if failures:
+        gate_name = (
+            "controlled-execution"
+            if require_execution_eligibility
+            else "binding-only preregistration"
+        )
         raise PreflightError(
-            "controlled-execution gates rejected the experiment:\n- "
+            f"{gate_name} gates rejected the experiment:\n- "
             + "\n- ".join(failures)
         )
 
@@ -390,14 +400,18 @@ def preflight_controlled_experiment(
         for key, value in spec["registry_bindings"].items()
     }
     if declared_bindings != actual_bindings:
-        differences = [
-            name
-            for name in sorted(actual_bindings)
-            if declared_bindings.get(name) != actual_bindings[name]
-        ]
-        raise PreflightError(
-            "execution spec registry binding mismatch: " + ", ".join(differences)
-        )
+        # Only A03 may retain its original frozen dataset-row digest when A01
+        # becomes eligible on the shared dataset. Validate BOTH exact row
+        # digests and the active A01 + inactive A03 experiment hashes.
+        if not a03_bindings_compatible(spec, resolved, snapshot):
+            differences = [
+                name
+                for name in sorted(actual_bindings)
+                if declared_bindings.get(name) != actual_bindings[name]
+            ]
+            raise PreflightError(
+                "execution spec registry binding mismatch: " + ", ".join(differences)
+            )
 
     dataset_inputs = _normalize_hashed_inputs(
         root, spec["dataset_inputs"], "dataset_inputs"

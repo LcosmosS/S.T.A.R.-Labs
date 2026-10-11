@@ -17,9 +17,9 @@
       "null_id": "NULL-MAP-003",
       "protocol": "preregistrations/EXP-MAP-A03/protocol.md",
       "config": "preregistrations/EXP-MAP-A03/config.json",
-      "design_status": "prospective_protocol_locked_pending_canonical_transition",
-      "canonical_status": "planned",
-      "next_gate": "Build MCJ implementation, pin code/spec and approve explicit immutable-audit lifecycle-transition exception",
+      "design_status": "preregistered_protocol_locked_execution_disabled",
+      "canonical_status": "preregistered",
+      "next_gate": "activation-only PR after clean preflight; no protocol modifications",
       "controlled_execution_eligible": false,
       "controlled_support_eligible": false,
       "physical_support_eligible": false
@@ -93,5 +93,12 @@
       "experiment_id": "EXP-RTCH-B01",
       "reason": "physical recovery limit and coupling/parameter definitions not frozen"
     }
-  ]
+  ],
+  "reconciliation": {
+    "reconciled_utc_date": "2026-10-10",
+    "main_baseline_commit": "76a35aee9c11774ede4d1ff1892c2e6bee959b7d",
+    "source_transition": "PR #83 — canonical A03 preregistration",
+    "compatible_shared_dataset_control": "PR #87 — A01-first shared dataset compatibility, A03 execution disabled",
+    "class": "historical ledger reconciliation only, no scientific status or execution promotion"
+  }
 }
