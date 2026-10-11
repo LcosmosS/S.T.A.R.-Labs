@@ -62,7 +62,7 @@ try {
     assert.match(choices[0],/DATA-VIZIER-ALFALFA100.*hi_centroid/);
     await page.getByRole("button",{name:"Load CI-verified sky dataset"}).click();
     await page.getByRole("status").filter({hasText:/coordinates and selected IDs verified/}).waitFor({timeout:30000});
-    await page.waitForFunction(()=>window.__starAladinAudit?.added===2000,{timeout:25000});
+    await page.waitForFunction(()=>window.__starAladinAudit?.added===2000,undefined,{timeout:25000});
     const audit=await page.evaluate(()=>window.__starAladinAudit);
     assert.equal(audit.sourceCalls.length,expectedMarkers.length);
     assert.equal(audit.added,expectedMarkers.length);
