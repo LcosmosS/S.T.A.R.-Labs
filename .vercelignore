@@ -2,6 +2,17 @@
 *
 !web_tool
 !web_tool/**
+# Exact inputs needed by the admitted sky release build.
+# Vercel must receive HYDRATED VOTable bytes, never a Git LFS pointer.
+!data
+!data/intake
+!data/intake/vizier
+!data/intake/vizier/alfalfa100
+!data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019
+!data/intake/vizier/alfalfa100/2026-10-09-cds-corrected-2019/table2.vot
+!docs
+!docs/registries
+!docs/registries/ALFALFA_HI_CENTROID_SKY_V1_REVIEW_RECEIPT.json
 !registry
 !registry/**
 !controlled_execution
@@ -33,3 +44,6 @@ web_tool/.env*
 !web_tool/.env.example
 web_tool/*.log
 web_tool/.grok/*.pid
+
+# Regenerated during build; never upload staging as repository input.
+web_tool/.sky-public-build

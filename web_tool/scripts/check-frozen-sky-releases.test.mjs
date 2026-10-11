@@ -61,3 +61,16 @@ test("namespace and admission flags cannot be spoofed",async()=>{
   const b=fixture();b.manifest.sources[0].controlledSupportEligible=true;
   await assert.rejects(checkFrozenReleases(b),/cannot grant scientific/);
 });
+
+test("pending, forged or wrong display decision cannot pass the receipt gate",async()=>{
+  const a=fixture();
+  const path=a.manifest.sources[0].reviewPath;
+  for(const decision of ["pending_off_author_display_approval","approved_display_only","approved_for_science"]){
+    const x=fixture();
+    const obj=JSON.parse(x.files[path].toString("utf8"));
+    obj.decision=decision;
+    x.files[path]=Buffer.from(JSON.stringify(obj));
+    x.manifest.sources[0].reviewSha256=sha256(x.files[path]);
+    await assert.rejects(checkFrozenReleases(x),/missing or mismatched reviewed sky release decision/);
+  }
+});

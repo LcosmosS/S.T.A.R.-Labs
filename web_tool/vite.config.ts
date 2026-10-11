@@ -145,7 +145,16 @@ function authPopupPlugin(): Plugin {
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
-export default defineConfig(({ command, isPreview }) => ({
+export default defineConfig(({ command, mode, isPreview }) => {
+  // A production build must be launched through the source-verified wrapper.
+  // Local development-mode builds continue to use checked-in public assets.
+  const production = command === "build" && mode !== "development";
+  const stagedPublic = process.env.STAR_SKY_BUILD_PUBLIC_DIR;
+  if (production && (!stagedPublic || !/^(\/|[A-Za-z]:[\\/])/.test(stagedPublic))) {
+    throw new Error("Production build requires isolated verified sky staging (npm run build)");
+  }
+  return {
+  publicDir: production ? stagedPublic : "./public",
   server: {
     host: "0.0.0.0",
     port: 8080,
@@ -180,4 +189,5 @@ export default defineConfig(({ command, isPreview }) => ({
       : []),
     viteReact(),
   ],
-}));
+  };
+});
