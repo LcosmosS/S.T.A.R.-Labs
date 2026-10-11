@@ -146,6 +146,9 @@ function authPopupPlugin(): Plugin {
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
 export default defineConfig(({ command, isPreview }) => ({
+  // Build copies only the independently admitted sky asset from disposable staging.
+  // Development continues to serve the untouched checked-in public directory.
+  publicDir: command === "build" ? "./.sky-public-build" : "./public",
   server: {
     host: "0.0.0.0",
     port: 8080,

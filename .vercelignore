@@ -33,3 +33,6 @@ web_tool/.env*
 !web_tool/.env.example
 web_tool/*.log
 web_tool/.grok/*.pid
+
+# Regenerated during build; never upload staging as repository input.
+web_tool/.sky-public-build

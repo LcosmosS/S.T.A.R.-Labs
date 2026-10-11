@@ -27,3 +27,6 @@ screenshots/
 .env*
 !.env.example
 .grok/*.pid
+
+# Disposable generated public assets for approved sky builds.
+web_tool/.sky-public-build/
