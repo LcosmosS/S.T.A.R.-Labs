@@ -37,7 +37,7 @@ try {
     const errors=[],skyRequests=[];
     page.on("pageerror",e=>errors.push(String(e)));
     page.on("request",req=>{if(req.url().endsWith(ASSET))skyRequests.push(req.url());});
-    await page.route(ALADIN,route=>route.fulfill({status:200,contentType:"application/javascript",body:aladinSpy}));
+    await page.route(ALADIN,route=>route.fulfill({status:200,contentType:"application/javascript",headers:{"access-control-allow-origin":"*"},body:aladinSpy}));
     const response=await page.goto(origin+"/projection",{waitUntil:"domcontentloaded",timeout:40000});
     assert.equal(response?.status(),200);
     await page.getByRole("heading",{name:"Observed sky · Aladin Lite"}).waitFor();
@@ -70,7 +70,7 @@ try {
   const altered=Buffer.from(bytes);
   altered[altered.length-2]=altered[altered.length-2]===48?49:48;
   await page.route("**"+ASSET,route=>route.fulfill({status:200,contentType:"text/csv",body:altered}));
-  await page.route(ALADIN,route=>route.fulfill({status:200,contentType:"application/javascript",body:aladinSpy}));
+  await page.route(ALADIN,route=>route.fulfill({status:200,contentType:"application/javascript",headers:{"access-control-allow-origin":"*"},body:aladinSpy}));
   await page.goto(origin+"/projection",{waitUntil:"domcontentloaded",timeout:40000});
   await page.locator('[data-sky-hydrated="true"]').waitFor({timeout:20000});
   await page.getByRole("button",{name:"Load CI-verified sky dataset"}).click();
