@@ -90,10 +90,15 @@ def main() -> int:
 
     snapshot = RegistrySnapshot.load(root)
     resolved = snapshot.resolve("EXP-MAP-A01")
-    if resolved.experiment["Controlled_Execution_Eligible"].lower() != "false":
-        raise SystemExit("preregistration PR must not enable experiment execution")
-    if resolved.dataset["Controlled_Execution_Eligible"].lower() != "false":
-        raise SystemExit("preregistration PR must not enable dataset execution")
+    # The exact prospective A01 execution-only transition is bounded by
+    # the merged A01/A03 shared-dataset compatibility design (PR #87).
+    if (resolved.experiment["Controlled_Execution_Eligible"],
+            resolved.dataset["Controlled_Execution_Eligible"]) != ("true", "true"):
+        raise SystemExit("A01 activation requires exactly both execution flags true")
+    expected = {"experiment": "97dac41c4d8a866d0abbcdf5515829328e92ea1fb3cf7b4d03e1d9b9c0b9c868", "dataset": "1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2"}
+    for name, digest in expected.items():
+        if resolved.record_hashes[name] != digest:
+            raise SystemExit(f"A01 {name} changed beyond locked activation row")
     if resolved.experiment["Controlled_Support_Eligible"].lower() != "false":
         raise SystemExit("preregistration PR must not enable controlled support")
     if resolved.experiment["Physical_Support_Eligible"].lower() != "false":
@@ -126,12 +131,12 @@ def main() -> int:
             "from the pinned allcurves source"
         )
 
-    print("EXP-MAP-A01 preregistration validation passed")
+    print("EXP-MAP-A01 prospective activation validation passed")
     print(f"ecdata_commit={EXPECTED_SUBMODULE}")
     print(f"source_sha256={EXPECTED_SOURCE_SHA256}")
     print(f"source_rows={len(records)}")
     print(f"representative_rows={len(representatives)}")
-    print("controlled_execution_eligible=false")
+    print("controlled_execution_eligible=true; support=false; physical=false")
     print("no experiment was executed")
     return 0
 

@@ -172,8 +172,21 @@ def assert_original_control_snapshot(name, snapshot, current):
             and row.get('Controlled_Support_Eligible') == 'false'
             and row.get('Physical_Support_Eligible') == 'false'
         )
-        mutable = {'Status'} if allowed_a01 else (
-            {'Status', 'Current_Audit_Assessment'} if allowed_a03 else set()
+        # Only the already-pinned, independently defined A01 full-row hash
+        # may enable execution after preregistration. All other audit columns
+        # remain immutable and support flags remain false.
+        allowed_a01_activation = (
+            allowed_a01
+            and row.get('Controlled_Execution_Eligible') == 'true'
+            and hashlib.sha256(json.dumps(
+                row, sort_keys=True, separators=(',', ':'), ensure_ascii=False
+            ).encode('utf-8')).hexdigest() == '97dac41c4d8a866d0abbcdf5515829328e92ea1fb3cf7b4d03e1d9b9c0b9c868'
+        )
+        mutable = (
+            {'Status', 'Controlled_Execution_Eligible'} if allowed_a01_activation
+            else {'Status'} if allowed_a01
+            else {'Status', 'Current_Audit_Assessment'} if allowed_a03
+            else set()
         )
         protected = [field for field in snapshot['fields'] if field not in mutable]
         assert all(row[field] == original[field] for field in protected), (
