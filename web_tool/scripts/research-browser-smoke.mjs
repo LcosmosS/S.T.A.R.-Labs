@@ -2,6 +2,10 @@
 /** Real Chromium checks for research catalog display and its evidence gating. */
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
+import { readFile } from "node:fs/promises";
+
+const repository = JSON.parse(await readFile(new URL("../src/lib/star/registry-snapshot.json", import.meta.url), "utf8"));
+const releases = JSON.parse(await readFile(new URL("../content/sky-overlay-releases.v1.json", import.meta.url), "utf8"));
 
 const origin = process.argv[2];
 if (!/^https?:\/\/127\.0\.0\.1:8081$/.test(origin ?? "")) {
@@ -38,6 +42,17 @@ try {
     await page.getByRole("heading", { name: "Historical five-fold SFR metric — unreplicated" }).waitFor();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1);
     assert.equal(overflow, false, "horizontal overflow");
+    for (const path of ["research", "projection", "registry"]) {
+      if (path !== "research") await page.goto(origin + "/" + path, { waitUntil: "networkidle" });
+      const status = page.getByRole("region", { name: "Current repository status" });
+      const text = await status.innerText();
+      assert.ok(text.includes(repository.contentSha256), "status identifies the deployed source snapshot");
+      assert.ok(text.includes(`Observational sky releases admitted for display: ${releases.sources.length}`));
+      assert.match(text, /EXP-MAP-A03: preregistered; execution eligible: false/);
+      assert.match(text, /source-locked runner preflight is still required/);
+      assert.equal(await status.getByRole("link", { name: /Version-specific DOI/ }).count(), repository.publications.length);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1), false, path + " horizontal overflow");
+    }
     assert.deepEqual(errors, [], "uncaught errors");
     console.log("PASS /research Chromium", viewport.width + "x" + viewport.height);
     await page.close();

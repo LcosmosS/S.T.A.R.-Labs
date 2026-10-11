@@ -15,6 +15,9 @@ test("all current preregistered experiments and theory protocols are discovered 
   assert.deepEqual(entries.map((entry) => entry.id), [
     "EXP-MAP-A01", "EXP-MAP-A03", "P0-ANSATZ-001",
   ]);
+  for (const id of ["EXP-MAP-A01", "EXP-MAP-A03"]) {
+    assert.equal(entries.find(entry => entry.id === id)?.protocolPath, `preregistrations/${id}/protocol.md`);
+  }
   const pending = getPendingTheoryProtocols(snapshot);
   assert.deepEqual(pending.map((entry) => entry.id), ["M1-INH-E1"]);
   assert.equal(pending[0].status, "planned");

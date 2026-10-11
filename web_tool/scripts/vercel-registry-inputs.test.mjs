@@ -19,7 +19,7 @@ test("registry check passes with only inputs retained by the Vercel deployment f
   try {
     // Run the actual build-time check in an isolated tree, so an unfiltered
     // checkout cannot hide a required input excluded from deployment.
-    for (const path of [syncPath, snapshotPath, ...snapshot.sources.map((source) => source.path)]) {
+    for (const path of [syncPath, "web_tool/scripts/repository-publications.mjs", snapshotPath, ...snapshot.sources.map((source) => source.path)]) {
       if (deploymentFilter.ignores(path)) continue;
       const destination = join(fixture, path);
       mkdirSync(dirname(destination), { recursive: true });

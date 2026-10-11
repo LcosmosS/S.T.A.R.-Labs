@@ -16,6 +16,14 @@ and the controlled spec's binding checks. It displays declared gates without
 editing them or granting execution. Run `npm run registry:sync` after intentional
 canonical source changes; `npm run registry:check` rejects a stale snapshot.
 
+The projection, registry and research pages share the same current-status panel.
+Execution descriptions follow canonical flags; sky candidates are shown as admitted
+only when source, coordinate and ordered-ID hashes and coordinate role match the
+release manifest. Published M1/A01/A03 packages and their scientific limits are
+copied from the root README, which is included in the snapshot SHA-256 inputs.
+Updating its publication metadata therefore also requires `npm run registry:sync`.
+Canonical dataset provenance is shown separately from historical LFS classifications.
+
 ## Research content and historical SFR addendum
 
 The separate /research catalog is generated from `content/research-content.v1.json` and remains distinct from /registry's controlled evidence records. The 2026-10-08 merge resolution retained PRs #59–#60 as the canonical source and page implementation, while adding explicit finite-positive-bin mathematics and unreplicated SFR report context from PR #61. No eligibility or physics-support flags were promoted. Use `npm run research:check` and review the desktop/mobile browser smoke test.
@@ -80,6 +88,8 @@ are not notebook state; exports make no claim about controlled research results.
 
 ## Launch status
 
-Repository checks and local preview verification do not establish a live launch.
-Confirm the deployment URL and a successful durable save/load round trip before
-announcing public availability.
+The public app is available at [starmap-star-labs.vercel.app](https://starmap-star-labs.vercel.app/).
+Deployed pages are versioned snapshots, not a live GitHub status feed. Inspect
+the registry snapshot digest after each deployment to distinguish current source
+from old explanatory text. Notebook storage health and durable save/load verification
+remain separate from registry freshness and scientific evidence.
