@@ -20,6 +20,7 @@ import { Route as HubbleRouteImport } from './routes/hubble'
 import { Route as NotebookRouteImport } from './routes/notebook'
 import { Route as ProjectionRouteImport } from './routes/projection'
 import { Route as RegistryRouteImport } from './routes/registry'
+import { Route as ResearchRouteImport } from './routes/research'
 import { Route as TheoryRouteImport } from './routes/theory'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ApiSnapshotsIndexRouteImport } from './routes/api/snapshots/index'
@@ -80,6 +81,11 @@ const RegistryRoute = RegistryRouteImport.update({
   path: '/registry',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TheoryRoute = TheoryRouteImport.update({
   id: '/theory',
   path: '/theory',
@@ -113,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/notebook': typeof NotebookRoute
   '/projection': typeof ProjectionRoute
   '/registry': typeof RegistryRoute
+  '/research': typeof ResearchRoute
   '/theory': typeof TheoryRoute
   '/api/health': typeof ApiHealthRoute
   '/api/snapshots/$id': typeof ApiSnapshotsIdRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/notebook': typeof NotebookRoute
   '/projection': typeof ProjectionRoute
   '/registry': typeof RegistryRoute
+  '/research': typeof ResearchRoute
   '/theory': typeof TheoryRoute
   '/api/health': typeof ApiHealthRoute
   '/api/snapshots/$id': typeof ApiSnapshotsIdRoute
@@ -148,6 +156,7 @@ export interface FileRoutesById {
   '/notebook': typeof NotebookRoute
   '/projection': typeof ProjectionRoute
   '/registry': typeof RegistryRoute
+  '/research': typeof ResearchRoute
   '/theory': typeof TheoryRoute
   '/api/health': typeof ApiHealthRoute
   '/api/snapshots/$id': typeof ApiSnapshotsIdRoute
@@ -167,6 +176,7 @@ export interface FileRouteTypes {
     | '/notebook'
     | '/projection'
     | '/registry'
+    | '/research'
     | '/theory'
     | '/api/health'
     | '/api/snapshots/$id'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/notebook'
     | '/projection'
     | '/registry'
+    | '/research'
     | '/theory'
     | '/api/health'
     | '/api/snapshots/$id'
@@ -201,6 +212,7 @@ export interface FileRouteTypes {
     | '/notebook'
     | '/projection'
     | '/registry'
+    | '/research'
     | '/theory'
     | '/api/health'
     | '/api/snapshots/$id'
@@ -219,6 +231,7 @@ export interface RootRouteChildren {
   NotebookRoute: typeof NotebookRoute
   ProjectionRoute: typeof ProjectionRoute
   RegistryRoute: typeof RegistryRoute
+  ResearchRoute: typeof ResearchRoute
   TheoryRoute: typeof TheoryRoute
   ApiHealthRoute: typeof ApiHealthRoute
   ApiSnapshotsIdRoute: typeof ApiSnapshotsIdRoute
@@ -304,6 +317,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegistryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/theory': {
       id: '/theory'
       path: '/theory'
@@ -347,6 +367,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotebookRoute: NotebookRoute,
   ProjectionRoute: ProjectionRoute,
   RegistryRoute: RegistryRoute,
+  ResearchRoute: ResearchRoute,
   TheoryRoute: TheoryRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiSnapshotsIdRoute: ApiSnapshotsIdRoute,

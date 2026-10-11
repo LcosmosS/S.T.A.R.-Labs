@@ -18,6 +18,7 @@ export type PreregisteredEntry = {
 export function getPreregisteredEntries(snapshot: {
   experiments: readonly ExperimentRow[];
   preregistrations: readonly TheoryRow[];
+  sources?: readonly { path: string }[];
 }): PreregisteredEntry[] {
   const experiments = snapshot.experiments
     .filter((row) => isPreregisteredStatus(row.Status))
@@ -26,6 +27,7 @@ export function getPreregisteredEntries(snapshot: {
       namespace: "REPO-CSV-v0.2" as const,
       kind: "Controlled experiment protocol" as const,
       status: row.Status,
+      protocolPath: snapshot.sources?.find(source => source.path === `preregistrations/${row.Experiment_ID}/protocol.md`)?.path,
     }));
   const theory = snapshot.preregistrations
     .filter((row) => isPreregisteredStatus(row.record.Status))

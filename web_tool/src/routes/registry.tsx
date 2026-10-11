@@ -9,6 +9,8 @@ import skyReleases from "../../content/sky-overlay-releases.v1.json";
 import skyCandidates from "../../content/sky-overlay-candidates.v1.json";
 import lfsSelection from "@/lib/star/recovered-lfs-snapshot.json";
 import { getPreregisteredEntries, getPendingTheoryProtocols, isPreregisteredStatus } from "@/lib/star/experiment-lifecycle";
+import { RepositoryStatus } from "@/components/repository-status";
+import { executionSummary, matchingSkyRelease, unresolvedPlaceholders } from "@/lib/star/repository-status";
 
 export const Route = createFileRoute("/registry")({ component: RegistryPage });
 
@@ -21,6 +23,36 @@ function downloadSnapshot() {
   URL.revokeObjectURL(url);
 }
 
+const provenanceFields = [
+  ["Source_Name", "Source"], ["Source_URL", "Source URL"], ["Source_Type", "Source type"],
+  ["Provider", "Provider"], ["Version_or_Release", "Version / release"],
+  ["Acquisition_Method", "Acquisition method"], ["Acquisition_Date", "Acquisition date"],
+  ["Original_Format", "Original format"], ["Transformation_History", "Transformations"],
+  ["Parent_Dataset_ID", "Parent dataset"], ["Spatial_Match_Method", "Matching method"],
+  ["Match_Tolerance", "Match tolerance"], ["Selection_Criteria", "Selection"],
+  ["Missingness_Policy", "Missingness policy"], ["Integrity_Check", "Integrity evidence"],
+  ["License_or_Usage", "License / usage"], ["Provenance_Status", "Provenance status"],
+  ["Evidence_Status", "Evidence status"], ["Notes", "Notes"],
+] as const;
+
+function DatasetProvenance({ datasetId }: { datasetId: string }) {
+  const records = snapshot.provenance.filter(row => row.Dataset_ID === datasetId);
+  return <details className="mt-2 w-72 max-w-full" data-provenance-dataset={datasetId}>
+    <summary className="cursor-pointer text-steel">Source lineage · {datasetId}</summary>
+    <div className="mt-3 space-y-4 break-words [overflow-wrap:anywhere]">
+      <a className="text-steel underline" href="https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/registry/data_provenance_registry_v0.1.csv" target="_blank" rel="noreferrer">Canonical provenance registry</a>
+      {records.length === 0 && <p>No canonical provenance record is recorded for this dataset.</p>}
+      {records.map(record => <div key={record.Provenance_ID}>
+        <p className="font-mono">{record.Provenance_ID}</p>
+        <dl className="mt-2 space-y-2">{provenanceFields.map(([field, label]) => <div key={field}>
+          <dt className="font-semibold">{label}</dt>
+          <dd className="whitespace-pre-wrap text-muted">{record[field].trim() || "Not recorded"}</dd>
+        </div>)}</dl>
+      </div>)}
+    </div>
+  </details>;
+}
+
 function RegistryPage() {
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -29,6 +61,7 @@ function RegistryPage() {
   const candidate = snapshot.candidate;
   const gates = candidate.gateState;
   const config = candidate.config;
+  const placeholders = unresolvedPlaceholders(snapshot.datasets);
   const rows = useMemo(() => {
     const value = query.trim().toLowerCase();
     return snapshot.experiments.filter((row) =>
@@ -60,6 +93,8 @@ function RegistryPage() {
         <Metric label="Canonical claims" value={String(snapshot.claims.length)} hint="Support eligibility remains separately recorded" />
         <Metric label="Admitted sky releases" value={String(skyReleases.sources.length)} hint="Reviewed display-only; no inference" />
       </div>
+
+      <RepositoryStatus />
 
       <section id="preregistered-summary" className="space-y-3">
         <h2 className="font-display text-2xl tracking-tight">Preregistered research protocols</h2>
@@ -119,7 +154,7 @@ function RegistryPage() {
         </p>
         {skyCandidates.candidates.map((candidate) => (
           <p key={candidate.datasetId} className="text-xs text-muted">
-            <span className="font-mono">{candidate.datasetId}</span> · Candidate status: {candidate.approvalStatus}
+            <span className="font-mono">{candidate.datasetId}</span> · Current display status: {matchingSkyRelease(candidate, skyReleases.sources)?.reviewStatus ?? candidate.approvalStatus}
             {" · "}No inference or physical-support promotion
           </p>
         ))}
@@ -133,9 +168,9 @@ function RegistryPage() {
         <h2 className="font-display text-2xl tracking-tight">Selected historical LFS sources</h2>
         <p className="max-w-3xl text-sm leading-relaxed text-muted">
           These are five already uploaded and independently downloaded archival source candidates from PR #51,
-          not new LFS uploads. Their local byte identities are recorded, but upstream catalog lineage and any
-          experiment-ready association remain unverified. The separate candidate selection does not change
-          this page’s canonical dataset or experiment gates.
+          not new LFS uploads. This selection preserves its original recovery classifications. Current canonical
+          dataset provenance is listed below; verified publisher bytes do not establish an experiment-ready association.
+          The separate historical selection does not change canonical dataset or experiment gates.
         </p>
         <div className="grid gap-3 lg:grid-cols-2">
           {lfsSelection.assets.map((asset) => (
@@ -234,7 +269,7 @@ function RegistryPage() {
           </div>
           <Button variant="secondary" onClick={downloadSnapshot}>Download registry snapshot</Button>
         </div>
-        <p className="mt-4 text-sm leading-relaxed text-muted">{candidate.records.experiment.Current_Audit_Assessment}</p>
+        <p className="mt-4 text-sm leading-relaxed text-muted">{executionSummary(gates)} Controlled and physical support remain separately recorded below.</p>
         <dl className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <Gate label="Experiment execution eligible" value={String(gates.experimentExecutionEligible)} />
           <Gate label="Dataset execution eligible" value={String(gates.datasetExecutionEligible)} />
@@ -247,6 +282,30 @@ function RegistryPage() {
           Five registry-record hashes match the controlled specification; all three preregistration-file hashes and
           configuration match it. These binding checks do not verify a live execution environment or authorize a run.
         </p>
+      </section>
+
+      <section id="dataset-provenance" className="space-y-3">
+        <h2 className="font-display text-2xl tracking-tight">Current canonical dataset provenance</h2>
+        <p className="text-sm leading-relaxed text-muted">
+          Source provenance, dataset lifecycle and execution permission are separate registry fields.
+          Historical recovery classifications remain in the archival selection.
+        </p>
+        {placeholders.length > 0 && <p className="text-sm leading-relaxed text-muted">
+          {placeholders.join(", ")} are planned placeholders with unknown provenance, not concrete scientific input objects.
+        </p>}
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[650px] text-left text-xs">
+            <thead><tr><th className="p-3">Dataset</th><th className="p-3">Lifecycle</th><th className="p-3">Provenance</th><th className="p-3">Execution</th><th className="p-3">Controlled support</th><th className="p-3">Physical support</th></tr></thead>
+            <tbody className="divide-y divide-border">{snapshot.datasets.map(row => <tr key={row.Dataset_ID}>
+              <td className="p-3 font-mono">{row.Dataset_ID}</td><td className="p-3">{row.Status}</td>
+              <td className="p-3">
+                {row.Provenance_Status}
+                <DatasetProvenance datasetId={row.Dataset_ID} />
+              </td><td className="p-3">{row.Controlled_Execution_Eligible}</td>
+              <td className="p-3">{row.Controlled_Support_Eligible}</td><td className="p-3">{row.Physical_Support_Eligible}</td>
+            </tr>)}</tbody>
+          </table>
+        </div>
       </section>
 
       <section className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">

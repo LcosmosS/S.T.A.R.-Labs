@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import content from "@/lib/star/research-content-snapshot.json";
+import { RepositoryStatus } from "@/components/repository-status";
 
 export const Route = createFileRoute("/research")({ component: ResearchPage });
 const LABELS: Record<string, string> = {
@@ -31,6 +32,7 @@ function ResearchPage() {
         No entry here authorizes a controlled run or establishes physical support.
       </p>
     </header>
+    <RepositoryStatus />
     <div className="flex flex-col gap-3 sm:flex-row">
       <Input aria-label="Search research content" placeholder="Search constructs or sources" value={query} onChange={e => setQuery(e.target.value)} />
       <select aria-label="Filter research content type" className="min-h-11 rounded-md border border-border bg-elevated px-3 text-sm text-fg" value={kind} onChange={e => setKind(e.target.value)}>

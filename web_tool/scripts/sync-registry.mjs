@@ -5,6 +5,7 @@ import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { publicationsFromReadme } from "./repository-publications.mjs";
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const target = resolve(repoRoot, "web_tool/src/lib/star/registry-snapshot.json");
@@ -19,6 +20,10 @@ const files = {
   config: "preregistrations/EXP-MAP-A01/config.json",
   manifest: "preregistrations/EXP-MAP-A01/dataset_manifest.json",
   protocol: "preregistrations/EXP-MAP-A01/protocol.md",
+  a03Protocol: "preregistrations/EXP-MAP-A03/protocol.md",
+  readme: "README.md",
+  skyReleases: "web_tool/content/sky-overlay-releases.v1.json",
+  skyCandidates: "web_tool/content/sky-overlay-candidates.v1.json",
   theorySearch: "registry/theory_search_registry_v0.1.csv",
   theoryCandidates: "registry/theory_candidate_registry_v0.1.csv",
   theoryObstructions: "registry/theory_obstruction_registry_v0.1.csv",
@@ -152,6 +157,9 @@ async function main() {
     sources,
     claims: tables.claims,
     experiments: tables.experiments,
+    datasets: tables.datasets,
+    provenance: tables.provenance,
+    publications: publicationsFromReadme(bytes.readme.toString("utf8")),
     preregistrations,
     recovery: {
       auditDate: "2026-10-08",

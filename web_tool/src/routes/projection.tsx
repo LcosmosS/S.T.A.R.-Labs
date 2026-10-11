@@ -7,6 +7,7 @@ import { FrozenSkyOverlay } from "@/components/viz/frozen-sky-overlay";
 import { FILAMENTS, PROJECTED } from "@/lib/star/physics";
 import { catalogStats } from "@/lib/star/catalog";
 import { useLab } from "@/lib/star/store";
+import { RepositoryStatus } from "@/components/repository-status";
 
 export const Route = createFileRoute("/projection")({ component: ProjectionPage });
 
@@ -29,26 +30,7 @@ function ProjectionPage() {
         </p>
       </header>
 
-      <section aria-label="Independent scientific review status" className="rounded-xl border border-border bg-surface p-5">
-        <div className="flex items-center gap-3">
-          <Badge tone="warn">Independent review required</Badge>
-          <h2 className="text-sm font-medium text-fg">A01 activation and observational provenance are separate gates</h2>
-        </div>
-        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
-          The October 8, 2026 review docket found the source-locked A01 preflight technically passing.
-          PR #64 was subsequently merged, setting execution eligibility true despite no recorded
-          independent GitHub APPROVED review. Do not treat that transition as scientific approval or run A01
-          before an independent governance resolution. SDSS provenance remains unknown; H I-MaNGA raw FITS
-          source bytes are verified, but no observational coordinate release has been admitted. This viewer
-          cannot convert a local file hash or a sky overlay into scientific evidence.
-        </p>
-        <p className="mt-2 text-xs text-muted">
-          Governing document: <code>charter/STAR_Research_Charter_v0-2.pdf</code>. Inspect merged
-          <a className="ml-1 underline underline-offset-2" href="https://github.com/LcosmosS/S.T.A.R.-Labs/pull/64" target="_blank" rel="noopener noreferrer">activation PR #64</a>
-          {" · "}<a className="underline underline-offset-2" href="https://github.com/LcosmosS/S.T.A.R.-Labs/issues/67" target="_blank" rel="noopener noreferrer">execution and independent reproduction Issue #67</a>.
-          This dated note is not a live GitHub approval signal.
-        </p>
-      </section>
+      <RepositoryStatus />
 
       <Formula boxed>Y^A ∼ (log N_E, log |Δ_E|, r_E, log R_E, log |Ω_E|, …)</Formula>
 

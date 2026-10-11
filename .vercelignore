@@ -2,6 +2,7 @@
 *
 !web_tool
 !web_tool/**
+!README.md
 # Exact inputs needed by the admitted sky release build.
 # Vercel must receive HYDRATED VOTable bytes, never a Git LFS pointer.
 !data
@@ -21,6 +22,8 @@
 !preregistrations
 !preregistrations/EXP-MAP-A01
 !preregistrations/EXP-MAP-A01/**
+!preregistrations/EXP-MAP-A03
+!preregistrations/EXP-MAP-A03/protocol.md
 !preregistrations/M1-INH-E1
 !preregistrations/M1-INH-E1/protocol.md
 !preregistrations/P0-ANSATZ-001
