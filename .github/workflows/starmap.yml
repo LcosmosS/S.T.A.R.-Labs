@@ -1,10 +1,11 @@
 name: STARMAP prototype
+# Every repository change can affect an admitted release through data, tools,
+# provenance, receipt, dependencies or build output. Never skip this gate via
+# an incomplete paths filter, including changes confined to Git LFS pointers.
 on:
   pull_request:
-    paths: ['web_tool/**', 'registry/**', 'preregistrations/**', 'controlled_execution/specs/**', '.github/workflows/starmap.yml', '.vercelignore']
   push:
     branches: [main, prototype/starmap]
-    paths: ['web_tool/**', 'registry/**', 'preregistrations/**', 'controlled_execution/specs/**', '.github/workflows/starmap.yml', '.vercelignore']
 permissions:
   contents: read
 jobs:
@@ -35,6 +36,8 @@ jobs:
             echo "654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079  $FILE" | sha256sum -c -
           fi
       - run: npm test
+      - name: Verify source-hydrated admitted release receipt and bytes
+        run: npm run sky:check
       - run: npm run build
       - run: npm run typecheck
       - name: Install Chromium for research content browser smoke
