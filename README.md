@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) [![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) [![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23292229.svg)](https://doi.org/10.5281/zenodo.23292229)
 
 ![badge](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/badge.jpg)![S.T.A.R. Labs](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starlabs.jpg)
 ## Symbolic–Topological–Arithmetic–Relativity
@@ -42,6 +42,18 @@ The repository is both a computational research center and a controlled-experime
 - **Scope and checksum details:** [A03 DOI/release lineage](docs/registries/EXP_MAP_A03_PREEXECUTION_RELEASE_LINEAGE_v0.1.md) and [frozen package](release_packages/EXP-MAP-A03-preexecution-verification-v0.1/README.md)
 
 **Scientific status:** Publicly archived, author-produced **pre-execution reference verification**, not independently replicated inference, an A03 activation, or controlled/physical support. The frozen release package's pre-publication wording is historical; this external citation records the subsequent publication **without editing its SHA-256-locked contents**.
+
+### EXP-MAP-A01 — Preregistration, activation and reproducibility package v0.1
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23292229.svg)](https://doi.org/10.5281/zenodo.23292229)
+
+- **Version-specific DOI:** [10.5281/zenodo.23292229](https://doi.org/10.5281/zenodo.23292229)
+- **Published GitHub release:** [EXP-MAP-A01 preregistration, activation and reproducibility package v0.1](https://github.com/LcosmosS/S.T.A.R.-Labs/releases/tag/EXP-MAP-A01-preregistration-activation-%26-reproducibility-package-v0.1)
+- **Approved activation lineage:** [PR #78](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78), merged as [`7f1a03692539542e23b78263422f3be71da952ea`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/7f1a03692539542e23b78263422f3be71da952ea)
+- **Shared-dataset compatibility:** [PR #87](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87); A03 remains separately preregistered and execution-ineligible.
+- **Governance and reproducibility:** [frozen A01 protocol](preregistrations/EXP-MAP-A01/protocol.md), [execution specification](controlled_execution/specs/EXP-MAP-A01.json), and [governing Charter](charter/STAR_Research_Charter_v0-2.pdf)
+
+**Scientific status:** A01's reviewed execution-only activation and source/reproducibility package are archived. A separate original controlled experiment and independently reproduced result are **not established by this release or DOI**. Controlled-support and physical-support eligibility remain false; no BSD proof, cosmological correspondence, or SFR claim follows from the archive.
 
 ---
 
