@@ -22,7 +22,8 @@ only when source, coordinate and ordered-ID hashes and coordinate role match the
 release manifest. Published M1/A01/A03 packages and their scientific limits are
 copied from the root README, which is included in the snapshot SHA-256 inputs.
 Updating its publication metadata therefore also requires `npm run registry:sync`.
-Canonical dataset provenance is shown separately from historical LFS classifications.
+Canonical dataset provenance includes expandable source, acquisition, transformation,
+selection and integrity records, separately from historical LFS classifications.
 
 ## Research content and historical SFR addendum
 

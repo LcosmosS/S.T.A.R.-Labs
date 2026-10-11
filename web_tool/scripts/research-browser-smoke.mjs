@@ -51,6 +51,25 @@ try {
       assert.match(text, /EXP-MAP-A03: preregistered; execution eligible: false/);
       assert.match(text, /source-locked runner preflight is still required/);
       assert.equal(await status.getByRole("link", { name: /Version-specific DOI/ }).count(), repository.publications.length);
+      if (path === "registry") {
+        const lineage = page.locator('[data-provenance-dataset="DATA-MANGA-HI-ALL"]');
+        await lineage.locator("summary").click();
+        const canonicalRecords = repository.provenance.filter(row => row.Dataset_ID === "DATA-MANGA-HI-ALL");
+        assert.ok(canonicalRecords.length > 0, "source-backed dataset has canonical provenance records");
+        for (const record of canonicalRecords) {
+          const details = await lineage.innerText();
+          for (const field of ["Provenance_ID", "Source_URL", "Acquisition_Method", "Integrity_Check"]) {
+            assert.ok(record[field], `canonical ${field} is recorded`);
+            assert.ok(details.includes(record[field]), `lineage renders canonical ${field}`);
+          }
+        }
+        assert.equal(await lineage.getByRole("link", { name: "Canonical provenance registry" }).count(), 1);
+        const placeholder = page.locator('[data-provenance-dataset="DATA-PROVENANCE-ALL"]');
+        await placeholder.locator("summary").click();
+        assert.match(await placeholder.innerText(), /Not recorded/);
+        await lineage.scrollIntoViewIfNeeded();
+        await page.screenshot({ path: `screenshots/provenance-review-${viewport.width}.png` });
+      }
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1), false, path + " horizontal overflow");
     }
     assert.deepEqual(errors, [], "uncaught errors");

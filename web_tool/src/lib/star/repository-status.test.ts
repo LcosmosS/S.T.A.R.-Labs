@@ -3,7 +3,10 @@ import assert from "node:assert/strict";
 import { executionSummary, matchingSkyRelease, unresolvedPlaceholders } from "./repository-status.ts";
 
 test("execution presentation requires both current flags and still requires preflight", () => {
-  assert.match(executionSummary({ experimentExecutionEligible: true, datasetExecutionEligible: true }), /preflight is still required/);
+  const eligible = executionSummary({ experimentExecutionEligible: true, datasetExecutionEligible: true });
+  assert.match(eligible, /Execution eligibility is recorded for the experiment and dataset/);
+  assert.match(eligible, /preflight is still required/);
+  assert.doesNotMatch(eligible, /blocked/);
   for (const [experimentExecutionEligible, datasetExecutionEligible] of [[false, false], [true, false], [false, true]]) {
     assert.match(executionSummary({ experimentExecutionEligible, datasetExecutionEligible }), /blocked/);
   }

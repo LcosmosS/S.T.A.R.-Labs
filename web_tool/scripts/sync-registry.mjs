@@ -158,6 +158,7 @@ async function main() {
     claims: tables.claims,
     experiments: tables.experiments,
     datasets: tables.datasets,
+    provenance: tables.provenance,
     publications: publicationsFromReadme(bytes.readme.toString("utf8")),
     preregistrations,
     recovery: {

@@ -23,6 +23,36 @@ function downloadSnapshot() {
   URL.revokeObjectURL(url);
 }
 
+const provenanceFields = [
+  ["Source_Name", "Source"], ["Source_URL", "Source URL"], ["Source_Type", "Source type"],
+  ["Provider", "Provider"], ["Version_or_Release", "Version / release"],
+  ["Acquisition_Method", "Acquisition method"], ["Acquisition_Date", "Acquisition date"],
+  ["Original_Format", "Original format"], ["Transformation_History", "Transformations"],
+  ["Parent_Dataset_ID", "Parent dataset"], ["Spatial_Match_Method", "Matching method"],
+  ["Match_Tolerance", "Match tolerance"], ["Selection_Criteria", "Selection"],
+  ["Missingness_Policy", "Missingness policy"], ["Integrity_Check", "Integrity evidence"],
+  ["License_or_Usage", "License / usage"], ["Provenance_Status", "Provenance status"],
+  ["Evidence_Status", "Evidence status"], ["Notes", "Notes"],
+] as const;
+
+function DatasetProvenance({ datasetId }: { datasetId: string }) {
+  const records = snapshot.provenance.filter(row => row.Dataset_ID === datasetId);
+  return <details className="mt-2 w-72 max-w-full" data-provenance-dataset={datasetId}>
+    <summary className="cursor-pointer text-steel">Source lineage · {datasetId}</summary>
+    <div className="mt-3 space-y-4 break-words [overflow-wrap:anywhere]">
+      <a className="text-steel underline" href="https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/registry/data_provenance_registry_v0.1.csv" target="_blank" rel="noreferrer">Canonical provenance registry</a>
+      {records.length === 0 && <p>No canonical provenance record is recorded for this dataset.</p>}
+      {records.map(record => <div key={record.Provenance_ID}>
+        <p className="font-mono">{record.Provenance_ID}</p>
+        <dl className="mt-2 space-y-2">{provenanceFields.map(([field, label]) => <div key={field}>
+          <dt className="font-semibold">{label}</dt>
+          <dd className="whitespace-pre-wrap text-muted">{record[field].trim() || "Not recorded"}</dd>
+        </div>)}</dl>
+      </div>)}
+    </div>
+  </details>;
+}
+
 function RegistryPage() {
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -268,7 +298,10 @@ function RegistryPage() {
             <thead><tr><th className="p-3">Dataset</th><th className="p-3">Lifecycle</th><th className="p-3">Provenance</th><th className="p-3">Execution</th><th className="p-3">Controlled support</th><th className="p-3">Physical support</th></tr></thead>
             <tbody className="divide-y divide-border">{snapshot.datasets.map(row => <tr key={row.Dataset_ID}>
               <td className="p-3 font-mono">{row.Dataset_ID}</td><td className="p-3">{row.Status}</td>
-              <td className="p-3">{row.Provenance_Status}</td><td className="p-3">{row.Controlled_Execution_Eligible}</td>
+              <td className="p-3">
+                {row.Provenance_Status}
+                <DatasetProvenance datasetId={row.Dataset_ID} />
+              </td><td className="p-3">{row.Controlled_Execution_Eligible}</td>
               <td className="p-3">{row.Controlled_Support_Eligible}</td><td className="p-3">{row.Physical_Support_Eligible}</td>
             </tr>)}</tbody>
           </table>
