@@ -136,11 +136,15 @@ controlled scientific input.
 
 The S.T.A.R. Labs research program currently spans several related components.
 
-### **[ACSC](docs/The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf)** — Arithmetic–Cosmic Structure Conjecture
+### **[ACSC](docs/monographs/acsc/README.md)** — Arithmetic–Cosmic Structure Conjecture
 
 ACSC investigates whether computable arithmetic invariants can be mapped into geometric/topological representations that can be compared with cosmic data.
 
 The repository treats the mapping problem as an empirical question. Candidate mappings and their null models are registered separately, including BSD-independent alternatives where specified.
+
+The [Charter-aligned revision (2026-10-11)](docs/monographs/acsc/2026-10-11/ACSC_Charter_Aligned_Rewrite.pdf) retains all fifteen chapters with model axioms, optional physical postulates, conditional lemmas, proof sketches and related-work citations. The [editable manuscript](docs/monographs/acsc/2026-10-11/ACSC_Charter_Aligned_Rewrite.md) and [47-entry correction ledger](docs/monographs/acsc/2026-10-11/CORRECTION_LEDGER.md) distinguish identified mathematical corrections from reworded unsupported conclusions. **Status: editorial and mathematical review draft; independent specialist review pending.** Publishing it does not establish controlled or physical support, authorize execution, change frozen protocols or admit a sky overlay. The [status and claim relationships](docs/registries/ACSC_REVISION_STATUS_2026-10-11.md) and [byte-preserving package intake](docs/monographs/acsc/2026-10-11.repository-intake.json) document those boundaries under the governing [Charter](charter/STAR_Research_Charter_v0-2.pdf).
+
+The [original ACSC monograph](docs/The_Arithmetic–Cosmic_Structure_Conjecture_(ACSC)_Monograph.pdf) remains unchanged as the historical source; its numerical reports do not become validated evidence through this revision.
 
 ### **[ECC](docs/The_Entropy_Cohomology_Conjecture_(ECC).pdf)** — Entropy Cohomology Conjecture
 

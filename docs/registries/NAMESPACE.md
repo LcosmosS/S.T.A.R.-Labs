@@ -56,6 +56,7 @@ are `preregistrations/P0-ANSATZ-001/protocol.md` and
 
 ## Source namespaces
 
+- `ACSC-LOCAL-2026-10-11`: the Charter-aligned manuscript's local claim worksheet, preserved in `docs/monographs/acsc/2026-10-11/local_claim_worksheet.json`. These IDs are manuscript review records, not aliases for canonical claims, experiments or datasets. [Revision status and topic relationships](ACSC_REVISION_STATUS_2026-10-11.md) document the limited relationship to `REPO-CSV-v0.2:CLAIM-ACSC-001` through `CLAIM-ACSC-003`; the intake grants no controlled or physical support, execution authorization or sky-display admission.
 - `REPO-CSV-v0.2`: eight umbrella/mechanism claims and 18 controlled experiment definitions, with the existing dataset/parameter/null controls. The two new mechanism claims have no experiment crosswalk because P0/M1-INH are governance/theory programs rather than executable statistical experiments. Original unqualified IDs, statements, and definitions remain stable. New qualified fields prevent accidental joins.
 - `THEORY-SEARCH-v0.1`: the closed P0 parent-theory search frame, its five prospectively frozen candidates, and the M1-INH-E1 class-relative obstruction program. This namespace carries theory-search governance and does not imply controlled execution or physical support.
 - `STAR-PDF-v0.2`: the historical 51 claims and 25 experiment definitions, with an audited crosswalk covering all 51 claims. Baseline classifications, statements, reported results and original unresolved references remain visible beside the current assessment.
