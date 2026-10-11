@@ -5,7 +5,7 @@ byte lineage has an identifiable, recorded **display-only** review receipt
 from LibertySquared. The single release is included in the PR #95 admission
 manifest as `sources[0]`. This is an **unmerged proposal**, not evidence that
 the production deployment is approved or that exact-final-head CI/repository
-branch review is complete. The GitHub PR remains in draft/review hold until
+branch review is complete. The GitHub PR remains open and unmerged until
 both requirements are met.
 
 Governing authority:
@@ -46,12 +46,16 @@ support or cosmological correspondence.
    smoke must pass on the **same final PR head**. Integrity checks include raw
    SHA, derivative file SHA, selected-ID chain, review receipt SHA and
    deliberate source/receipt/coordinate tampering failures.
-3. **Nondestructive deployment.** `web_tool/public/sky` remains checked-in and
-   unchanged by building. `filter-deployed-sky-assets.mjs` stages a separate
-   `web_tool/.sky-public-build` directory containing **only admitted sky
-   files** plus other static assets. Vite uses that generated directory for
-   production builds. The generated directory is ignored by Git and Vercel
-   source upload; no tracked files are deleted by `npm run build`.
+3. **Nondestructive, concurrent-safe deployment.**
+   `web_tool/public/sky` remains unchanged. Each production
+   `npm run build` creates its **own unique temporary public tree**,
+   stages only admitted sky files plus other public assets, supplies its
+   isolated staging path to Vite and deletes only that tree on exit.
+   `npm run build:dev` instead uses checked-in `public/` locally.
+   Root `.vercelignore` allows the exact source VOTable and the review
+   receipt required for production `sky:check`. Vercel must receive
+   **hydrated Git LFS object bytes**; a pointer-only build fails closed.
+   The deployed Vercel context must be checked separately from GitHub CI.
 4. **Browser checks before visualization.** The browser requests only its
    same-origin admitted CSV with redirects denied, recomputes both SHA-256
    chains and parses 2,000 distinct in-range centroids before passing markers
