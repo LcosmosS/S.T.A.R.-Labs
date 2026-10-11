@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   read-only-package:
@@ -31,7 +32,7 @@ jobs:
       - name: Verify preregistration, activated rows, A03 closed gate, and immutable source
         run: |
           set -euo pipefail
-          python scripts/verify_exp_map_a01_release_package.py --require-source --receipt "$RUNNER_TEMP/a01-package-read-only.json"
+          GITHUB_TOKEN="${{ github.token }}" python scripts/verify_exp_map_a01_release_package.py --require-source --verify-github-approval --receipt "$RUNNER_TEMP/a01-package-read-only.json"
           python -m unittest discover -s tests -p test_exp_map_a01_release_package.py -v
           echo '### A01 package source verification PASS — no registered inference' >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

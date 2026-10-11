@@ -37,6 +37,24 @@ python scripts/verify_exp_map_a01_release_package.py --require-source --receipt 
 python -m unittest discover -s tests -p test_exp_map_a01_release_package.py -v
 ```
 
+The default invocation performs **offline integrity checks** using SHA-256
+values independently pinned to the exact PR #78 merge, not mutable values
+copied from the package manifest or execution specs. Offline `status=PASS`
+does **not** mean that live GitHub approval has been authenticated; the receipt
+sets `approval_verified_against_github=false` and records its evidence level
+explicitly.
+
+The dedicated [CI workflow](../../.github/workflows/a01_release_package.yml)
+adds `--verify-github-approval` and a read-only `GITHUB_TOKEN`. That mode
+must obtain PR #78's exact merged head, merge SHA, reviewer identity, final-head
+APPROVED review and timestamp from GitHub, and confirm PR #87's compatibility
+merge before it can issue a verified receipt. Network/API failures fail closed.
+The CI receipt therefore distinguishes verified live GitHub lineage from
+locally compared historical assertions. The original preregistration files,
+A01/A03 execution specs and charter PDF are each protected by independent
+hash constants in the verifier. Updating the manifest and spec together does
+not allow a different protocol to pass.
+
 Both commands **must not** invoke the registered A01 statistic, 999-permutation distribution, or production runner. Their PASS is source/software readiness evidence, **not** experimental reproduction. A failed check blocks use of this package; do not edit frozen values merely to obtain PASS.
 
 ## Evidence boundaries
