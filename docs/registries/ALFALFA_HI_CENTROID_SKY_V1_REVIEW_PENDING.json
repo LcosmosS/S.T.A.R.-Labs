@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "star-sky-display-review-v1",
+  "decision": "pending_independent_review",
+  "datasetId": "DATA-VIZIER-ALFALFA100",
+  "qualifiedDatasetId": "REPO-CSV-v0.2:DATA-VIZIER-ALFALFA100",
+  "sourceSha256": "654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079",
+  "coordinateSha256": "ddf040c5954bc9ae2c19415d46071443cd6a3f209069e095fd2b4bbe7b8fadf9",
+  "selectedIdsSha256": "7b5de4187e24df2c0c1936164ecd1ade0ae5c4ee15d2ff64847499fd7e7c6221",
+  "coordinateRole": "hi_centroid",
+  "sourceRows": 31502,
+  "displayRows": 2000,
+  "originalDerivedPath": "data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_display_2000.csv",
+  "publishedCoordinatePath": "web_tool/public/sky/alfalfa100-hi-centroids-v1.csv",
+  "sourceProvenance": "data/provenance/observational_dataset_intake_2026-10-09.json",
+  "governingCharter": "charter/STAR_Research_Charter_v0-2.pdf",
+  "reviewerIdentity": null,
+  "reviewedCommit": null,
+  "reviewEvidenceUrl": null,
+  "scope": "display_only_no_crossmatching_no_scientific_inference",
+  "notes": "This author-prepared review request is NOT an independent approval. Move this candidate to manifest.sources only after an actual off-author signed/linked approval of exact bytes and coordinate role; never invent reviewer identity or decision."
+}
