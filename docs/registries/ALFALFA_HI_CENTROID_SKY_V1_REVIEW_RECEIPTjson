@@ -1,0 +1,49 @@
+{
+  "approvals": {
+    "byteIntegrity": true,
+    "coordinateRoleHiCentroidNotOptical": true,
+    "derivedEqualsWebAsset": true,
+    "deterministicNonScientificSelection": true,
+    "failClosedUntilAdmission": true
+  },
+  "coordinateRole": "hi_centroid",
+  "coordinateSha256": "ddf040c5954bc9ae2c19415d46071443cd6a3f209069e095fd2b4bbe7b8fadf9",
+  "datasetId": "DATA-VIZIER-ALFALFA100",
+  "decision": "approved_display_only",
+  "displayRows": 2000,
+  "governingCharter": "charter/STAR_Research_Charter_v0-2.pdf",
+  "matchingProtocolPath": "research/acquisition/vizier_alfalfa100/matching_protocol_v1.md",
+  "nonApprovals": {
+    "controlledExecutionEligible": false,
+    "controlledSupportEligible": false,
+    "crossMatchingAuthorized": false,
+    "physicalSupportEligible": false,
+    "populationInferenceFromDisplaySubset": false,
+    "scientificClaimSupport": false
+  },
+  "notes": "This receipt records independent recomputation of the locked source, coordinate, and selected-ID digests on PR head a2644f22ff89c7ab866fb13a737dec361d472a3a, plus set-equality of the hash-rank selection and confirmation of HI-centroid role. It is a display-integrity approval only. It does not invent a human journal referee, does not grant controlled or physical support, and does not authorize cross-matching or scientific inference from the 2000-row subset.",
+  "originalDerivedPath": "data/derived/vizier/alfalfa100/2026-10-09-cds-corrected-2019/alfalfa100_hi_centroids_display_2000.csv",
+  "publishedCoordinatePath": "web_tool/public/sky/alfalfa100-hi-centroids-v1.csv",
+  "qualifiedDatasetId": "REPO-CSV-v0.2:DATA-VIZIER-ALFALFA100",
+  "reviewEvidenceUrl": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/95",
+  "reviewedAtUtc": "2026-10-11T03:24:00Z",
+  "reviewedCommit": "a2644f22ff89c7ab866fb13a737dec361d472a3a",
+  "reviewerIdentity": "LibertySquared - Shaughn McNamara",
+  "schemaVersion": "star-sky-display-review-v1",
+  "scope": "display_only_no_crossmatching_no_scientific_inference",
+  "selectedIdsSha256": "7b5de4187e24df2c0c1936164ecd1ade0ae5c4ee15d2ff64847499fd7e7c6221",
+  "sourceProvenance": "data/provenance/observational_dataset_intake_2026-10-09.json",
+  "sourceRows": 31502,
+  "sourceSha256": "654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079",
+  "verificationActions": [
+    "Hydrated Git LFS VOTable; confirmed not an LFS pointer; XML starts with VOTABLE",
+    "sha256sum source VOTable == 654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079; size 10981088",
+    "sha256sum derived display CSV == ddf040c5954bc9ae2c19415d46071443cd6a3f209069e095fd2b4bbe7b8fadf9; size 70959; 2001 lines",
+    "cmp derived CSV and web_tool/public/sky/alfalfa100-hi-centroids-v1.csv: IDENTICAL",
+    "Recomputed selected-ID chain SHA-256 over 2000 source_id lines + trailing LF == 7b5de4187e24df2c0c1936164ecd1ade0ae5c4ee15d2ff64847499fd7e7c6221",
+    "Reparsed VOTable 31502 rows; rank by SHA256(b'ALFALFA-A100-DISPLAY-v1\\0' + AGC); selected set equals published AGC set",
+    "Rebuilt first published line AGC-630358,0.03125000,-0.04694444 matches sexagesimal transform of RAJ2000/DEJ2000",
+    "npm test alfalfa-sky-release tests: all pass (pending candidate not admitted; deploy filter strips unapproved assets)",
+    "External catalogue identity confirmed: Haynes et al. 2018 ApJ 861 49; VizieR J/ApJ/861/49/table2 corrected August 2019; DOI 10.26093/cds/vizier.18610049"
+  ]
+}
