@@ -31,17 +31,7 @@ The repository is both a computational research center and a controlled-experime
 
 **Scientific status:** Candidate theorem with an exact symbolic certificate; independent mathematical review pending.
 
-### EXP-MAP-A03 — Published pre-execution verification archive v0.1
-
-[![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785)
-
-- **Version-specific DOI:** [10.5281/zenodo.23288785](https://doi.org/10.5281/zenodo.23288785)
-- **Published GitHub release:** [EXP-MAP-A03-preexecution-verification-v0.1](https://github.com/LcosmosS/S.T.A.R.-Labs/releases/tag/EXP-MAP-A03-preexecution-verification-v0.1)
-- **Release tag commit:** [`b291699163c4d57ec39b11bc09503ad00a42a7a2`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/b291699163c4d57ec39b11bc09503ad00a42a7a2) (the reviewed PR #89 merge)
-- **Frozen verification implementation:** PR #86 at [`ded6317a20d78fbb9c451b8ef54eb87cc09d8242`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/ded6317a20d78fbb9c451b8ef54eb87cc09d8242)
-- **Scope and checksum details:** [A03 DOI/release lineage](docs/registries/EXP_MAP_A03_PREEXECUTION_RELEASE_LINEAGE_v0.1.md) and [frozen package](release_packages/EXP-MAP-A03-preexecution-verification-v0.1/README.md)
-
-**Scientific status:** Publicly archived, author-produced **pre-execution reference verification**, not independently replicated inference, an A03 activation, or controlled/physical support. The frozen release package's pre-publication wording is historical; this external citation records the subsequent publication **without editing its SHA-256-locked contents**.
+---
 
 ### EXP-MAP-A01 — Preregistration, activation and reproducibility package v0.1
 
@@ -57,7 +47,21 @@ The repository is both a computational research center and a controlled-experime
 
 ---
 
-## Research Charter
+### EXP-MAP-A03 — Published pre-execution verification archive v0.1
+
+[![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785)
+
+- **Version-specific DOI:** [10.5281/zenodo.23288785](https://doi.org/10.5281/zenodo.23288785)
+- **Published GitHub release:** [EXP-MAP-A03-preexecution-verification-v0.1](https://github.com/LcosmosS/S.T.A.R.-Labs/releases/tag/EXP-MAP-A03-preexecution-verification-v0.1)
+- **Release tag commit:** [`b291699163c4d57ec39b11bc09503ad00a42a7a2`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/b291699163c4d57ec39b11bc09503ad00a42a7a2) (the reviewed PR #89 merge)
+- **Frozen verification implementation:** PR #86 at [`ded6317a20d78fbb9c451b8ef54eb87cc09d8242`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/ded6317a20d78fbb9c451b8ef54eb87cc09d8242)
+- **Scope and checksum details:** [A03 DOI/release lineage](docs/registries/EXP_MAP_A03_PREEXECUTION_RELEASE_LINEAGE_v0.1.md) and [frozen package](release_packages/EXP-MAP-A03-preexecution-verification-v0.1/README.md)
+
+**Scientific status:** Publicly archived, author-produced **pre-execution reference verification**, not independently replicated inference, an A03 activation, or controlled/physical support. The frozen release package's pre-publication wording is historical; this external citation records the subsequent publication **without editing its SHA-256-locked contents**.
+
+---
+
+# Research Charter
 
 The governing document is:
 
@@ -66,7 +70,7 @@ The governing document is:
 
 The charter establishes the project's scientific posture and repository controls.
 
-### Core principles
+## Core principles
 
 > Do not ask whether the theory can be made to fit the universe. Ask whether a fixed mathematical construction predicts structure that was not used to construct it.
 > ~ Michael Dine ~
