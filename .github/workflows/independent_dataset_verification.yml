@@ -61,6 +61,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install hardened VOTable parser
+        run: python -m pip install -r verification/datasets/requirements.txt
       - name: Re-fetch VizieR and direct SDSS/MaNGA publisher sources
         run: |
           set -euo pipefail

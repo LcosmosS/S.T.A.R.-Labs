@@ -100,3 +100,14 @@ def test_static_verifier_never_promotes_registry_state():
     report = _module().static_report()
 
     assert report["automatic_registry_promotion"] is False
+
+
+def test_live_vizier_parser_is_hardened():
+    source = SCRIPT.read_text(encoding="utf-8")
+    requirements = (
+        ROOT / "verification" / "datasets" / "requirements.txt"
+    ).read_text(encoding="utf-8")
+
+    assert "xml.etree.ElementTree" not in source
+    assert "from defusedxml import ElementTree as SafeET" in source
+    assert "defusedxml==0.7.1" in requirements

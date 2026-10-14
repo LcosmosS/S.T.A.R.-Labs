@@ -15,7 +15,6 @@ import json
 import sys
 import tempfile
 import urllib.request
-import xml.etree.ElementTree as ET
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -294,15 +293,23 @@ def verify_publisher_source(dataset_id: str, source: dict) -> dict:
         temp_path.unlink(missing_ok=True)
 
 
-def local_name(element: ET.Element) -> str:
+def local_name(element) -> str:
     return element.tag.rsplit("}", 1)[-1]
 
 
 def verify_vizier_live() -> dict:
+    try:
+        from defusedxml import ElementTree as SafeET
+    except ImportError as exc:
+        raise RuntimeError(
+            "live VizieR verification requires defusedxml; install "
+            "verification/datasets/requirements.txt"
+        ) from exc
+
     spec = json.loads(VIZIER_REQUEST.read_text(encoding="utf-8"))
     temp_path, digest, size = _download_to_temp(spec["url"])
     try:
-        root = ET.parse(temp_path).getroot()
+        root = SafeET.parse(temp_path).getroot()
         fields = [
             dict(element.attrib)
             for element in root.iter()
