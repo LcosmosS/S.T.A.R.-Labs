@@ -63,7 +63,8 @@ def test_matrix_covers_all_canonical_dataset_ids_once():
 
 
 def test_historical_casjobs_query_preserves_nondeterminism():
-    sql = HISTORICAL_SQL.read_text(encoding="utf-8").upper()
+    module = _module()
+    sql = module.sql_code(HISTORICAL_SQL.read_text(encoding="utf-8")).upper()
 
     assert "SELECT TOP 200000" in sql
     assert "JOIN SPECOBJ AS S" in sql
@@ -74,7 +75,8 @@ def test_historical_casjobs_query_preserves_nondeterminism():
 
 
 def test_deterministic_probe_is_explicitly_ordered():
-    sql = DETERMINISTIC_SQL.read_text(encoding="utf-8").upper()
+    module = _module()
+    sql = module.sql_code(DETERMINISTIC_SQL.read_text(encoding="utf-8")).upper()
 
     assert "SELECT TOP 200000" in sql
     assert "ORDER BY" in sql

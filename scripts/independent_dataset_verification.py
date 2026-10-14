@@ -139,6 +139,11 @@ def _bool_text(value: str) -> bool:
     raise ValueError(f"invalid boolean text: {value!r}")
 
 
+def sql_code(text: str) -> str:
+    """Return SQL text with -- line comments removed for clause checks."""
+    return "\n".join(line.split("--", 1)[0] for line in text.splitlines())
+
+
 def static_report() -> dict:
     datasets = canonical_dataset_rows()
     provenance = canonical_provenance_rows()
@@ -185,8 +190,8 @@ def static_report() -> dict:
 
     historical_sql = HISTORICAL_SQL.read_text(encoding="utf-8")
     deterministic_sql = DETERMINISTIC_SQL.read_text(encoding="utf-8")
-    historical_upper = historical_sql.upper()
-    deterministic_upper = deterministic_sql.upper()
+    historical_upper = sql_code(historical_sql).upper()
+    deterministic_upper = sql_code(deterministic_sql).upper()
 
     required_sql = [
         "SELECT TOP 200000",
