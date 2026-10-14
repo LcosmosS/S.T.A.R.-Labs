@@ -10,6 +10,7 @@ on:
       - "tests/test_independent_dataset_verification.py"
       - "registry/dataset_registry_v0.1.csv"
       - "registry/data_provenance_registry_v0.1.csv"
+      - "data/provenance/observational_dataset_intake_2026-10-09.json"
   push:
     branches: [main]
     paths:
@@ -19,6 +20,7 @@ on:
       - "tests/test_independent_dataset_verification.py"
       - "registry/dataset_registry_v0.1.csv"
       - "registry/data_provenance_registry_v0.1.csv"
+      - "data/provenance/observational_dataset_intake_2026-10-09.json"
   workflow_dispatch:
     inputs:
       live_public_sources:
@@ -33,6 +35,7 @@ permissions:
 jobs:
   static-verification-contract:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,18 +44,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install verification dependencies
+        run: python -m pip install pytest -r verification/datasets/requirements.txt
       - name: Verify canonical census and reconstruction contracts
         run: |
           set -euo pipefail
           python scripts/independent_dataset_verification.py --format markdown
       - name: Run independent-verification tests
-        run: |
-          python -m pip install pytest
-          pytest -q tests/test_independent_dataset_verification.py
+        run: pytest -q tests/test_independent_dataset_verification.py
 
   live-public-source-refetch:
     if: github.event_name == 'workflow_dispatch' && inputs.live_public_sources
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -66,11 +70,8 @@ jobs:
       - name: Re-fetch VizieR and direct SDSS/MaNGA publisher sources
         run: |
           set -euo pipefail
-          mkdir -p results
-          python scripts/independent_dataset_verification.py \
-            --live-public-sources \
-            --receipt-out results/live_public_source_receipt.json \
-            | tee results/live_public_source_receipt.stdout.json
+          mkdir -p results/mismatches
+          python scripts/independent_dataset_verification.py             --live-public-sources             --mismatch-dir results/mismatches             --receipt-out results/live_public_source_receipt.json             | tee results/live_public_source_receipt.stdout.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -78,5 +79,6 @@ jobs:
           path: |
             results/live_public_source_receipt.json
             results/live_public_source_receipt.stdout.json
+            results/mismatches/
           retention-days: 90
           if-no-files-found: error

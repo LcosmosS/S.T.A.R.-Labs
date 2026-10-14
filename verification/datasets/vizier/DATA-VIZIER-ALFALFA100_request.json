@@ -1,10 +1,12 @@
 {
-  "schema_version": "star-independent-vizier-request-v0.1",
+  "schema_version": "star-independent-vizier-request-v0.2",
   "dataset_id": "DATA-VIZIER-ALFALFA100",
   "catalogue": "J/ApJ/861/49/table2",
   "designation": "ALFALFA alpha.100 corrected August 2019",
   "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J%2FApJ%2F861%2F49%2Ftable2&-out.max=unlimited&-out.all=1",
   "expected_frozen_sha256": "654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079",
+  "expected_frozen_bytes": 10981088,
+  "max_response_bytes": 33554432,
   "expected_rows": 31502,
   "expected_fields": 25,
   "required_fields": [
@@ -24,9 +26,20 @@
     "logMHI",
     "HI"
   ],
+  "coordinate_contract": {
+    "RAJ2000": {
+      "ucd": "pos.eq.ra;meta.main",
+      "ref": "J2000"
+    },
+    "DEJ2000": {
+      "ucd": "pos.eq.dec;meta.main",
+      "ref": "J2000"
+    }
+  },
   "expected_invariants": {
     "duplicate_agc_ids": 0,
     "paired_missing_optical_coordinates": 344,
+    "partial_optical_coordinate_rows": 0,
     "hi_quality_code_counts": {
       "1": 25434,
       "2": 6068

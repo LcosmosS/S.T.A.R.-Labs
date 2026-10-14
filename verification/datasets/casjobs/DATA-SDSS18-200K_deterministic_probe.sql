@@ -6,6 +6,9 @@
 -- stable comparison sample. The output must never replace the preserved
 -- historical CSV or silently change DATA-SDSS18-200K provenance.
 
+IF OBJECT_ID('mydb.STAR_SDSS18_200K_DETERMINISTIC_PROBE', 'U') IS NOT NULL
+    DROP TABLE mydb.STAR_SDSS18_200K_DETERMINISTIC_PROBE;
+
 SELECT TOP 200000
     p.objid,
     p.ra,
