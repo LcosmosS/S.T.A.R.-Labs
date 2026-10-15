@@ -4,6 +4,10 @@
 -- Upload a two-column table named mydb.STAR_SDSS18_200K_IDS containing the
 -- frozen historical sample's objid and specobjid values, one pair per row.
 --
+-- Submit each SELECT below as a separate CasJobs job. For each job, provide a
+-- different unique output name in the CasJobs "Table" field, then retrieve both
+-- resulting MyDB tables before comparing the aggregate and exception results.
+--
 -- This check can establish whether every frozen pair still resolves in the
 -- DR18 PhotoObj/SpecObj relation and satisfies the recovered magnitude
 -- predicates. It CANNOT recover the original unordered TOP 200000 selection
