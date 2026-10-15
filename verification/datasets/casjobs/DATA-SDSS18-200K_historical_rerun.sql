@@ -1,13 +1,16 @@
--- DATA-SDSS18-200K historical-query rerun wrapper
+-- DATA-SDSS18-200K historical-query rerun recipe
 --
--- The archived DATA-SDSS18-200K_historical_recovered.sql remains an exact
--- normalized record of the recovered terminal query and is not modified for
--- rerunnability. This wrapper clears the historical MyDB destination and then
--- executes the same SELECT/JOIN/predicates. It still has NO ORDER BY, so a
--- fresh result is not expected to prove exact historical membership.
-
-IF OBJECT_ID('mydb.MyTable', 'U') IS NOT NULL
-    DROP TABLE mydb.MyTable;
+-- The archival DATA-SDSS18-200K_historical_recovered.sql remains the exact
+-- normalized recovered query, including its original INTO mydb.MyTable.
+--
+-- For an independent rerun, submit THIS recipe in the DR18 CasJobs context
+-- using the Submit button and provide a UNIQUE output name in the CasJobs
+-- "Table" field. Omitting a fixed INTO destination avoids MyDB name collisions
+-- without requiring a cross-context DROP TABLE.
+--
+-- This recipe preserves the recovered SELECT/JOIN/predicates and still has NO
+-- ORDER BY, so a fresh result cannot prove the exact original TOP 200000
+-- membership decision.
 
 SELECT TOP 200000
     p.objid,
@@ -28,7 +31,6 @@ SELECT TOP 200000
     s.plate,
     s.mjd,
     s.fiberid
-INTO mydb.MyTable
 FROM PhotoObj AS p
 JOIN SpecObj AS s
     ON s.bestobjid = p.objid

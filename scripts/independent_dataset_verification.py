@@ -316,13 +316,14 @@ def static_report() -> dict:
         raise ValueError("historical SQL must preserve the no-ORDER-BY condition")
     if "ORDER BY" not in deterministic_upper:
         raise ValueError("deterministic probe must have ORDER BY")
-    if (
-        "DROP TABLE MYDB.STAR_SDSS18_200K_DETERMINISTIC_PROBE"
-        not in deterministic_upper
-    ):
-        raise ValueError("deterministic probe does not clear its prior MyDB table")
-    if "DROP TABLE MYDB.MYTABLE" not in historical_rerun_upper:
-        raise ValueError("historical rerun wrapper does not clear mydb.MyTable")
+    if " INTO " in f" {historical_rerun_upper} ":
+        raise ValueError(
+            "historical rerun recipe must use the CasJobs Table field, not a fixed INTO"
+        )
+    if " INTO " in f" {deterministic_upper} ":
+        raise ValueError(
+            "deterministic probe must use the CasJobs Table field, not a fixed INTO"
+        )
     if (
         "CLASS = 'GALAXY'" in historical_upper
         or "CLASS='GALAXY'" in historical_upper

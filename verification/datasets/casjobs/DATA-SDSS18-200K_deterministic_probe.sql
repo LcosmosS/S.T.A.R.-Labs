@@ -1,13 +1,16 @@
 -- DATA-SDSS18-200K deterministic independent probe
 --
+-- Submit this query in the DR18 CasJobs context using the Submit button and
+-- provide a UNIQUE output name in the CasJobs "Table" field for each run.
+-- CasJobs will create that result in MyDB. Do not add a fixed INTO target:
+-- unique Table-field names make reruns collision-free without cross-context
+-- DROP TABLE operations.
+--
 -- This is NOT a reconstruction of the historical row membership. It applies
 -- the recovered schema, join, and magnitude predicates to the current DR18
 -- context with an explicit order so an independent reviewer can obtain a
--- stable comparison sample. The output must never replace the preserved
--- historical CSV or silently change DATA-SDSS18-200K provenance.
-
-IF OBJECT_ID('mydb.STAR_SDSS18_200K_DETERMINISTIC_PROBE', 'U') IS NOT NULL
-    DROP TABLE mydb.STAR_SDSS18_200K_DETERMINISTIC_PROBE;
+-- stable comparison sample. It must never replace the frozen historical CSV
+-- or silently change DATA-SDSS18-200K provenance.
 
 SELECT TOP 200000
     p.objid,
@@ -28,7 +31,6 @@ SELECT TOP 200000
     s.plate,
     s.mjd,
     s.fiberid
-INTO mydb.STAR_SDSS18_200K_DETERMINISTIC_PROBE
 FROM PhotoObj AS p
 JOIN SpecObj AS s
     ON s.bestobjid = p.objid

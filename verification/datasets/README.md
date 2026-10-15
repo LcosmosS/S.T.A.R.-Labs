@@ -51,7 +51,23 @@ verification target is instead:
 6. class/redshift distributions;
 7. overlap of `(objid,specobjid)` pairs with the frozen historical CSV.
 
-The deterministic probe SQL adds an explicit `ORDER BY p.objid,s.specobjid`\nfor repeatable current-DR18 comparison. It is **not** the historical dataset\nand must never replace the frozen source. Both executable probe/rerun recipes\nclear their MyDB destination tables first; the archival recovered SQL remains\nunchanged as provenance evidence.\n\nA separate `DATA-SDSS18-200K_membership_backcheck.sql` supports a stronger\nrow-level check: upload the frozen `(objid,specobjid)` pairs to\n`mydb.STAR_SDSS18_200K_IDS`, then verify that all pairs resolve through the\nDR18 `PhotoObj`/`SpecObj` relation and satisfy the recovered magnitude\npredicates. Passing that check establishes membership in the reconstructed\nquery-defined population at the checked DR18 context; it still does **not**\nrecover the original unordered `TOP 200000` selection decision, job ID, or\nexport checksum.\n
+The deterministic probe SQL adds an explicit `ORDER BY p.objid,s.specobjid`
+for repeatable current-DR18 comparison. It is **not** the historical dataset
+and must never replace the frozen source. The executable probe/rerun recipes
+omit a fixed `INTO` destination. In CasJobs, the reviewer submits each query
+with a unique output name in the **Table** field, which creates a new MyDB
+result table without a cross-context `DROP TABLE`. The archival recovered SQL
+remains unchanged as provenance evidence.
+
+A separate `DATA-SDSS18-200K_membership_backcheck.sql` supports a stronger
+row-level check: upload the frozen `(objid,specobjid)` pairs to
+`mydb.STAR_SDSS18_200K_IDS`, then verify that all pairs resolve through the
+DR18 `PhotoObj`/`SpecObj` relation and satisfy the recovered magnitude
+predicates. Passing that check establishes membership in the reconstructed
+query-defined population at the checked DR18 context; it still does **not**
+recover the original unordered `TOP 200000` selection decision, job ID, or
+export checksum.
+
 Current SDSS documentation describes DR18 SkyServer as using the BestDR18
 database and exposes CasJobs for long asynchronous SQL jobs. Reviewers should
 record the actual CasJobs context, job ID, submission/completion timestamps,

@@ -118,24 +118,24 @@ def test_historical_casjobs_query_preserves_recovered_predicates():
     assert "CLASS='GALAXY'" not in sql
 
 
-def test_historical_rerun_wrapper_is_rerunnable_but_still_unordered():
+def test_historical_rerun_recipe_uses_unique_table_field_and_stays_unordered():
     module = _module()
     sql = module.sql_code(
         HISTORICAL_RERUN_SQL.read_text(encoding="utf-8")
     ).upper()
 
-    assert "DROP TABLE MYDB.MYTABLE" in sql
     assert "SELECT TOP 200000" in sql
+    assert " INTO " not in f" {sql} "
     assert "G BETWEEN 0 AND 20" in sql
     assert "ORDER BY" not in sql
 
 
-def test_deterministic_probe_is_rerunnable_and_ordered():
+def test_deterministic_probe_uses_unique_table_field_and_is_ordered():
     module = _module()
     sql = module.sql_code(DETERMINISTIC_SQL.read_text(encoding="utf-8")).upper()
 
-    assert "DROP TABLE MYDB.STAR_SDSS18_200K_DETERMINISTIC_PROBE" in sql
     assert "SELECT TOP 200000" in sql
+    assert " INTO " not in f" {sql} "
     assert "P.U BETWEEN 0 AND 19.6" in sql
     assert "P.G BETWEEN 0 AND 20" in sql
     assert "ORDER BY" in sql
