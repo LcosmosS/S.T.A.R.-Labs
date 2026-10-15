@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import importlib.util
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -125,7 +126,7 @@ def test_historical_rerun_recipe_uses_unique_table_field_and_stays_unordered():
     ).upper()
 
     assert "SELECT TOP 200000" in sql
-    assert " INTO " not in f" {sql} "
+    assert re.search(r"\bINTO\b", sql) is None
     assert "G BETWEEN 0 AND 20" in sql
     assert "ORDER BY" not in sql
 
@@ -135,7 +136,7 @@ def test_deterministic_probe_uses_unique_table_field_and_is_ordered():
     sql = module.sql_code(DETERMINISTIC_SQL.read_text(encoding="utf-8")).upper()
 
     assert "SELECT TOP 200000" in sql
-    assert " INTO " not in f" {sql} "
+    assert re.search(r"\bINTO\b", sql) is None
     assert "P.U BETWEEN 0 AND 19.6" in sql
     assert "P.G BETWEEN 0 AND 20" in sql
     assert "ORDER BY" in sql
