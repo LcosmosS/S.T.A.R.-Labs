@@ -1,0 +1,84 @@
+name: Independent dataset verification
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/independent_dataset_verification.yml"
+      - "verification/datasets/**"
+      - "scripts/independent_dataset_verification.py"
+      - "tests/test_independent_dataset_verification.py"
+      - "registry/dataset_registry_v0.1.csv"
+      - "registry/data_provenance_registry_v0.1.csv"
+      - "data/provenance/observational_dataset_intake_2026-10-09.json"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/independent_dataset_verification.yml"
+      - "verification/datasets/**"
+      - "scripts/independent_dataset_verification.py"
+      - "tests/test_independent_dataset_verification.py"
+      - "registry/dataset_registry_v0.1.csv"
+      - "registry/data_provenance_registry_v0.1.csv"
+      - "data/provenance/observational_dataset_intake_2026-10-09.json"
+  workflow_dispatch:
+    inputs:
+      live_public_sources:
+        description: "Re-download public VizieR/SDSS source objects and compare hashes"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  static-verification-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install verification dependencies
+        run: python -m pip install pytest -r verification/datasets/requirements.txt
+      - name: Verify canonical census and reconstruction contracts
+        run: |
+          set -euo pipefail
+          python scripts/independent_dataset_verification.py --format markdown
+      - name: Run independent-verification tests
+        run: pytest -q tests/test_independent_dataset_verification.py
+
+  live-public-source-refetch:
+    if: github.event_name == 'workflow_dispatch' && inputs.live_public_sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install hardened VOTable parser
+        run: python -m pip install -r verification/datasets/requirements.txt
+      - name: Re-fetch VizieR and direct SDSS/MaNGA publisher sources
+        run: |
+          set -euo pipefail
+          mkdir -p results/mismatches
+          python scripts/independent_dataset_verification.py             --live-public-sources             --mismatch-dir results/mismatches             --receipt-out results/live_public_source_receipt.json             | tee results/live_public_source_receipt.stdout.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: independent-public-source-receipt
+          path: |
+            results/live_public_source_receipt.json
+            results/live_public_source_receipt.stdout.json
+            results/mismatches/
+          retention-days: 90
+          if-no-files-found: error
