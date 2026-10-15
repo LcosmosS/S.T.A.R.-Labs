@@ -20,7 +20,7 @@ seaborn==0.12.2
 black==26.3.1
 pytest==9.0.3
 
-# Notebook and reproducibility
+# Notebook and reproducibility (keep synchronized with pyproject.toml and docker/Dockerfile)
 jupyterlab==4.5.11
 
 # Optional but recommended for reproducible environments

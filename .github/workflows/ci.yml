@@ -59,6 +59,7 @@ jobs:
           export PYTHONSAFEPATH=1
           /tmp/star-wheel/bin/python - <<'PY'
           from pathlib import Path
+          from importlib.metadata import requires
           import src
           import tools.recovery_intake as recovery_intake
           from src.pipeline.full_inference import run_full_inference
@@ -72,10 +73,13 @@ jobs:
           assert callable(recovery_intake.process)
           assert "site-packages" in str(Path(recovery_intake.__file__).resolve())
           assert PLANCK_COMPRESSED is not None
+          star_requires = requires("star") or []
+          assert any(req.lower().startswith("jupyterlab==4.5.11") for req in star_requires), star_requires
           print("clean wheel imports passed:", package_path)
           PY
           /tmp/star-wheel/bin/star-run-inference --help
           /tmp/star-wheel/bin/star-controlled-experiment --help
+          test "$(/tmp/star-wheel/bin/jupyter lab --version)" = "4.5.11"
           /tmp/star-wheel/bin/python -m pytest -q /tmp/star-wheel-tests
 
   registry-validation:
