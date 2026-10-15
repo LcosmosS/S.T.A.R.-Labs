@@ -13,6 +13,7 @@ import csv
 import hashlib
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
@@ -316,11 +317,11 @@ def static_report() -> dict:
         raise ValueError("historical SQL must preserve the no-ORDER-BY condition")
     if "ORDER BY" not in deterministic_upper:
         raise ValueError("deterministic probe must have ORDER BY")
-    if " INTO " in f" {historical_rerun_upper} ":
+    if re.search(r"\bINTO\b", historical_rerun_upper):
         raise ValueError(
             "historical rerun recipe must use the CasJobs Table field, not a fixed INTO"
         )
-    if " INTO " in f" {deterministic_upper} ":
+    if re.search(r"\bINTO\b", deterministic_upper):
         raise ValueError(
             "deterministic probe must use the CasJobs Table field, not a fixed INTO"
         )
