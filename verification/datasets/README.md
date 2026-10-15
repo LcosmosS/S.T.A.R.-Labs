@@ -104,7 +104,13 @@ results.
 
 ### Internal/theory placeholders
 
-VizieR and CasJobs are not appropriate for `DATA-PROVENANCE-ALL`,\n`DATA-PHYS-CONSTRAINTS`, or `DATA-ECC-THEORY`. They need an explicit\nconstruction/schema/reference package first. Until then they remain blocked\nrather than being assigned fabricated public sources. The proposed freeze\ntransaction and dataset-specific schema contracts are documented in\n[`placeholders/CONSTRUCTION_FREEZE_PLAN.md`](placeholders/CONSTRUCTION_FREEZE_PLAN.md).\n
+VizieR and CasJobs are not appropriate for `DATA-PROVENANCE-ALL`,
+`DATA-PHYS-CONSTRAINTS`, or `DATA-ECC-THEORY`. They need an explicit
+construction/schema/reference package first. Until then they remain blocked
+rather than being assigned fabricated public sources. The proposed freeze
+transaction and dataset-specific schema contracts are documented in
+[`placeholders/CONSTRUCTION_FREEZE_PLAN.md`](placeholders/CONSTRUCTION_FREEZE_PLAN.md).
+
 ## Commands
 
 Static census and governance check:
