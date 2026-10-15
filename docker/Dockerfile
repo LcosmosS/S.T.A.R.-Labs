@@ -24,7 +24,7 @@ RUN mkdir -p /var/lib/apt/lists/partial \
 RUN micromamba create -y -n ${CONDA_ENV} python=${PYTHON_VERSION} -c conda-forge \
     numpy scipy pandas plotly scikit-learn\
     gudhi=3.12.0 ripser=0.6.14 persim=0.3.8 \
-    plotly=5.18.0 nbconvert nbclient jupyter_core ipykernel \
+    plotly=5.18.0 jupyterlab=4.5.11 nbconvert nbclient jupyter_core ipykernel \
  && micromamba clean --all --yes
 
 # Make the conda env the default for subsequent RUN steps
@@ -51,7 +51,8 @@ RUN chown -R ${USER}:${USER} /home/${USER}/app
 # Install package into the conda env using the env's python (run as root)
 # This guarantees the editable install uses the exact interpreter that has gudhi/ripser
 RUN micromamba run -n ${CONDA_ENV} python -m pip install --upgrade pip setuptools wheel \
- && micromamba run -n ${CONDA_ENV} python -m pip install --no-cache-dir ".[dev,tda]"
+ && micromamba run -n ${CONDA_ENV} python -m pip install --no-cache-dir ".[dev,tda]" \
+ && micromamba run -n ${CONDA_ENV} jupyter lab --version
 
 # Switch to non-root user for runtime
 USER ${USER}

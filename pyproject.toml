@@ -17,7 +17,8 @@ dependencies = [
   "scipy>=1.11.0,<2.0",
   "sympy>=1.12",
   "PyYAML>=6.0,<7.0",
-  "corner>=2.2.1"
+  "corner>=2.2.1",
+  "jupyterlab==4.5.11"
 ]
 
 [project.optional-dependencies]
