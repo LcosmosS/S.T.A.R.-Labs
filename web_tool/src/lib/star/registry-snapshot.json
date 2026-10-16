@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "6a0b8d1cc486751f1011b97a11beac1c2b581233f21c6b4e9fba51d3e1da734d",
+  "contentSha256": "9ad7cf5c9ed2f52c36a9daf11b00eae8b4cae3a9e99c4b3a9e0c97765eef1105",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
@@ -56,8 +56,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "9aaa5ba506d2fe6b2d204be4997e0b9c976800b7b6c40aaca6b91c339a7aec70",
-      "sizeBytes": 39834
+      "sha256": "77ef409e42ea0a6708d90982ca9ae57c16e5c0111f02b2c8c0c7752aa51df232",
+      "sizeBytes": 43603
     },
     {
       "path": "registry/claim_evidence_recovery_2026-10-08.csv",
@@ -2481,10 +2481,11 @@
       "title": "EXP-MAP-A01 — Preregistration, activation and reproducibility package v0.1",
       "doi": "https://doi.org/10.5281/zenodo.23292229",
       "release": "https://github.com/LcosmosS/S.T.A.R.-Labs/releases/tag/EXP-MAP-A01-preregistration-activation-%26-reproducibility-package-v0.1",
-      "status": "A01's reviewed execution-only activation and source/reproducibility package are archived. A separate original controlled experiment and independently reproduced result are not established by this release or DOI. Controlled-support and physical-support eligibility remain false; no BSD proof, cosmological correspondence, or SFR claim follows from the archive.",
+      "status": "Primary investigator-A execution is preserved separately in merged PR #104; independent replication is not established. The DOI above archives the earlier preregistration/activation package, not the later run. Controlled-support and physical-support eligibility remain false; no BSD proof, cosmological correspondence, or SFR result is established.",
       "reviewLinks": [
         "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78",
-        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87"
+        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87",
+        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/104"
       ],
       "sourcePath": "README.md"
     },

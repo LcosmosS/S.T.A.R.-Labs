@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
+import { A01PrimaryEvidence } from "@/components/repository-status";
 import { catalogStats, getCatalog } from "@/lib/star/catalog";
 import { OrbitCloud } from "@/components/viz/orbit-cloud";
 import { Formula as Eq, Metric, Sym } from "@/components/viz/formula";
@@ -120,7 +121,7 @@ function Home() {
         <div>
           <Badge tone="steel">Observatory</Badge>
           <h1 className="mt-4 font-display text-4xl leading-[1.05] tracking-tight text-fg sm:text-5xl lg:text-6xl">
-            Correspondence first. Physics later.
+            Arithmetic evidence. Explicit limits.
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">
             STARMAP is the in-browser mapping engine for{" "}
@@ -138,6 +139,8 @@ function Home() {
           <Metric label="⟨Ω_E⟩" value={stats.meanOmega.toFixed(3)} hint="catalog mean period" />
         </div>
       </section>
+
+      <A01PrimaryEvidence />
 
       <section className="overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-border)]">
         <div className="flex flex-col gap-3 border-b border-border px-4 py-3 sm:px-5">

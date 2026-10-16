@@ -11,12 +11,36 @@ synthetic records. These are not verified LMFDB exports. Synthetic features depe
 on rank; omitting rank as a coordinate does not establish independence. Browser
 diagnostics are educational, not `EXP-MAP-A01` execution or scientific evidence.
 
+The homepage, projection, registry and research pages now distinguish these
+fixtures from the preserved investigator-A primary transaction
+`20261016T041335361140Z-e60fd05117fc`, recorded at source revision
+[`1b0f2d7853608bfbab79cf2dc04b002f1f193eb2`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/1b0f2d7853608bfbab79cf2dc04b002f1f193eb2)
+and preserved by [PR #104](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/104).
+The [pinned primary package](https://github.com/LcosmosS/S.T.A.R.-Labs/tree/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1)
+records **T = -114.40183841751903**, **p = 0.001**, **0/999 exceedances**,
+**alpha = 0.01**, and **38,042 analysis rows** from 64,687 source rows.
+T is negative mean absolute elevation difference on the fixed k=10 arithmetic
+neighbor graph; larger T means greater local rank/elevation coherence.
+Exceedances are `T_null >= T_observed`, and the locked correction is
+`p = (1 + 0) / (999 + 1) = 0.001`, the smallest attainable p-value for 999
+permutations, rather than zero.
+
+The endpoint rejects only `NULL-MAP-001`, the locked arithmetic rank-permutation
+null. It neither tests a survey-selection-matched cosmological null nor
+distinguishes ACSC from other arithmetic structure. Independent rerun and
+replication remain outstanding. The [verification receipt](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/verification.json)
+documents saved-package inspection, not independent replication or physical
+ACSC support. Current execution eligibility comes from canonical registry flags;
+controlled-support and physical-support eligibility remain false. Older
+preregistration/activation package descriptions retain their historical state.
+
 `/registry` is generated from canonical repository files, with their SHA-256 hashes
 and the controlled spec's binding checks. It displays declared gates without
 editing them or granting execution. Run `npm run registry:sync` after intentional
 canonical source changes; `npm run registry:check` rejects a stale snapshot.
 
-The projection, registry and research pages share the same current-status panel.
+The projection, registry and research pages share the same current-status panel;
+the homepage reuses its primary-evidence component.
 Execution descriptions follow canonical flags; sky candidates are shown as admitted
 only when source, coordinate and ordered-ID hashes and coordinate role match the
 release manifest. Published M1/A01/A03 packages and their scientific limits are
