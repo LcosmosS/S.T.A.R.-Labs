@@ -1,3 +1,5 @@
+[![A01 primary execution DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23409249.svg)](https://doi.org/10.5281/zenodo.23409249)
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) [![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23292229.svg)](https://doi.org/10.5281/zenodo.23292229)
 
 ![badge](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/badge.jpg)![S.T.A.R. Labs](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starlabs.jpg)
@@ -101,7 +103,13 @@ controlled or physical support.
 
 See [preregistrations/EXP-MAP-A01/protocol.md](preregistrations/EXP-MAP-A01/protocol.md).
 
-#### Primary execution evidence — preserved in PR #104
+### EXP-MAP-A01 — Primary execution evidence v0.1
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23409249.svg)](https://doi.org/10.5281/zenodo.23409249)
+
+**Primary execution evidence v0.1 DOI:** [10.5281/zenodo.23409249](https://doi.org/10.5281/zenodo.23409249).
+This DOI archives the primary evidence release; it is separate from the earlier
+preregistration/activation DOI above and does not establish independent replication.
 
 The [immutable primary package](release_packages/EXP-MAP-A01-primary-execution-v0.1/README.md)
 preserves investigator-A's run `20261016T041335361140Z-e60fd05117fc`, recorded

@@ -62,6 +62,7 @@ export function A01PrimaryEvidence({ headingAs = "h2" }: { headingAs?: "h2" | "h
       Preserved primary transaction: {RUN_ID} · source revision {SOURCE_COMMIT}.
     </p>
     <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-steel">
+      <a href="https://doi.org/10.5281/zenodo.23409249" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Primary execution evidence DOI · v0.1</a>
       <a href={`${EVIDENCE_URL}/${RUN_ID}/summary.json`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Saved run summary</a>
       <a href={PACKAGE_URL} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Immutable primary package</a>
       <a href={`${EVIDENCE_URL}/verification.json`} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">Package verification receipt</a>

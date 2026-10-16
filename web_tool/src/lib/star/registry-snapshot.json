@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "namespace": "REPO-CSV-v0.2",
   "readOnly": true,
-  "contentSha256": "9ad7cf5c9ed2f52c36a9daf11b00eae8b4cae3a9e99c4b3a9e0c97765eef1105",
+  "contentSha256": "40cfe7baef269217b605cbc60d890c2d8adac166b55bbd246065b0be3e401552",
   "sources": [
     {
       "path": "controlled_execution/specs/EXP-MAP-A01.json",
@@ -56,8 +56,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "77ef409e42ea0a6708d90982ca9ae57c16e5c0111f02b2c8c0c7752aa51df232",
-      "sizeBytes": 43603
+      "sha256": "430f86cd37c8bf1dc6725becf175466b6b40c4848021d318d875c0a27298ede9",
+      "sizeBytes": 44113
     },
     {
       "path": "registry/claim_evidence_recovery_2026-10-08.csv",
@@ -2484,8 +2484,7 @@
       "status": "Primary investigator-A execution is preserved separately in merged PR #104; independent replication is not established. The DOI above archives the earlier preregistration/activation package, not the later run. Controlled-support and physical-support eligibility remain false; no BSD proof, cosmological correspondence, or SFR result is established.",
       "reviewLinks": [
         "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78",
-        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87",
-        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/104"
+        "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87"
       ],
       "sourcePath": "README.md"
     },
