@@ -1,0 +1,96 @@
+{
+  "archive": {
+    "name": "EXP-MAP-A01-primary-execution.tar.gz",
+    "sha256": "1a62bf4320a7465ff7308dffd9840e58ed9c68dad9267757c630ff621b60f9a8",
+    "size_bytes": 965169
+  },
+  "binding_sha256": "e9a1e4464975fd60366a932aeb21514f292028c387aac472a90343553e94d8d2",
+  "environment_sha256": "8d6098a80e07dee3c8814bd9dd0d30d435e3d888e3763f46b3154ac85fd8f93b",
+  "execution_authenticity_independently_verified": false,
+  "independent_rerun_performed": false,
+  "interpretation_limit": "This endpoint tests local rank/elevation coherence against the locked rank-permutation null only; it does not establish ACSC or physical support.",
+  "neighbor_graph_recomputed": false,
+  "null_inspection": {
+    "alpha": 0.01,
+    "corrected_p_value": 0.001,
+    "decision": "reject_null",
+    "exceedances": 0,
+    "finite": true,
+    "indices": "1..999 in order",
+    "maximum": -117.1396386247916,
+    "mean": -117.83736063373787,
+    "minimum": -118.45626999504348,
+    "observed_statistic": -114.40183841751903,
+    "rows": 999,
+    "sample_sd": 0.2217022855063595,
+    "unique_statistics": 608
+  },
+  "null_permutations_regenerated": false,
+  "pinned_source_file_sha256": {
+    "controlled_execution/specs/EXP-MAP-A01.json": "ba9df175f5ddd43c5026a63a9d58cd47e7571927d406eaa7e59db17cf8ac7a0e",
+    "preregistrations/EXP-MAP-A01/config.json": "f3818f2753961feab603cd6c69b1ab0c1d743705e51de1641757d4d5fd96be75",
+    "preregistrations/EXP-MAP-A01/dataset_manifest.json": "8550aaf6b5769fbf33f0a9ac6ee6fd8aa1cc59635bb92c59b461d107af34da42",
+    "preregistrations/EXP-MAP-A01/protocol.md": "762f2ab0e457e3a396e799fc7349d9652383c9449f68922f02c0df174466df71",
+    "registry/claim_evidence_v0.2.csv": "13467b477ac0e4f2ea76185245ac868b17a201780d66a405999deb432fb126b0",
+    "registry/claim_experiment_crosswalk_v0.2.csv": "f17e8fa910f86be4bd7339dcbf8c5bab6e34fd4483d0e4ff5a3b2110384e41a1",
+    "registry/data_provenance_registry_v0.1.csv": "1a89fe41fe6d0fdbbae0c0ae098db15170b4a282e72a2667a3c0ee5b5fe2c9a9",
+    "registry/dataset_registry_v0.1.csv": "578812040a7baa2d3e15c3b0ba879bba631cbdddf91c05f6aa556904da8a5f9a",
+    "registry/experiment_registry_v0.2.csv": "45fd589cef4cdb73d4a722fcc567b8e395403a162085fde5c6b84abb0547cf74",
+    "registry/null_registry_v0.1.csv": "13f153bf024678494a50d43a2b719e7fd55be812605d0e94ba237ad74c43511b",
+    "registry/parameter_registry_v0.1.csv": "03654f59c761900a9c19278a3b0c00e00852a2c4e5f3d2f6d15cc37cf8194e44",
+    "src/data/cremona_ecdata.py": "7e3f79a9fd7ddf6af9c95d5dd4637015cc871b628ec6bf78f9060febc3067b97",
+    "src/experiments/exp_map_a01.py": "d3e1b844cfc7e0ed99efbddcfa69646f31b5b90b72a96840af3d106f386c75ab"
+  },
+  "projection_inspection": {
+    "formulas_checked_from_saved_columns": true,
+    "rank_counts": {
+      "0": 16450,
+      "1": 19622,
+      "2": 1969,
+      "3": 1
+    },
+    "rows": 38042,
+    "unique_isogeny_classes": 38042,
+    "unique_labels": 38042
+  },
+  "run_files": {
+    "execution_config.json": {
+      "sha256": "b017287a8b1e0f82bb3439748188f9d7d67b8ce32430dab6aa51d0639beead4e",
+      "size_bytes": 1427
+    },
+    "manifest.json": {
+      "sha256": "8a85f37958b5a2337fea40b02a69c5a521e5e599a9a13987524e2d40f5608cdb",
+      "size_bytes": 46163
+    },
+    "manifest.sha256": {
+      "sha256": "dcf213e882b1b91437144fc88208d795fb385ab9777d75e7b0b087c1d3ceccc9",
+      "size_bytes": 80
+    },
+    "null_statistics.csv": {
+      "sha256": "8463993ec291635671e5ac8a9195539c3faa2ba8decaf280b02d086e9a38308f",
+      "size_bytes": 23768
+    },
+    "observed_projection.csv": {
+      "sha256": "00d9d7fee63aabab80bb96172d694a39a53843741eef665c5d276ed1c37c08bb",
+      "size_bytes": 2812267
+    },
+    "stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "stdout.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "summary.json": {
+      "sha256": "d390949bc9adb222a094c1cf733545f9800d269aa05db7aa50afadc874438981",
+      "size_bytes": 657
+    }
+  },
+  "run_id": "20261016T041335361140Z-e60fd05117fc",
+  "scientific_code_executed": false,
+  "source_git_sha": "1b0f2d7853608bfbab79cf2dc04b002f1f193eb2",
+  "status": "PASS",
+  "support_flags_promoted": false,
+  "verification_scope": "saved_primary_package_integrity_and_consistency"
+}

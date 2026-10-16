@@ -1,0 +1,37 @@
+name: EXP-MAP-A01 primary evidence integrity
+
+on:
+  pull_request:
+    paths:
+      - 'release_packages/EXP-MAP-A01-primary-execution-v0.1/**'
+      - '.github/workflows/a01_primary_evidence.yml'
+      - '.gitattributes'
+  push:
+    branches: [main]
+    paths:
+      - 'release_packages/EXP-MAP-A01-primary-execution-v0.1/**'
+      - '.github/workflows/a01_primary_evidence.yml'
+      - '.gitattributes'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-saved-primary-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          lfs: false
+          submodules: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Inspect saved bytes and primary outputs without an experiment run
+        shell: bash
+        run: |
+          python release_packages/EXP-MAP-A01-primary-execution-v0.1/verify_package.py | tee "$RUNNER_TEMP/a01-primary-inspection.json"
+          diff -u release_packages/EXP-MAP-A01-primary-execution-v0.1/verification.json "$RUNNER_TEMP/a01-primary-inspection.json"

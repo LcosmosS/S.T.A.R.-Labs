@@ -1,0 +1,18 @@
+{
+  "alpha": 0.01,
+  "analysis_rows": 38042,
+  "decision": "reject_null",
+  "experiment_id": "EXP-MAP-A01",
+  "interpretation_limit": "This endpoint tests local rank/elevation coherence against the locked rank-permutation null only; it does not establish ACSC or physical support.",
+  "isogeny_policy": "curve_number_equals_1_per_isogeny_class",
+  "neighbor_k": 10,
+  "null_exceedances": 0,
+  "null_prng": "splitmix64-fisher-yates-v1",
+  "null_realizations": 999,
+  "null_seed": 1729,
+  "observed_statistic": -114.40183841751903,
+  "p_value": 0.001,
+  "protocol_version": "EXP-MAP-A01-prereg-v1",
+  "source_rows": 64687,
+  "undirected_edge_count": 221930
+}
