@@ -31,7 +31,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Inspect saved bytes and primary outputs without an experiment run
+        shell: bash
         run: |
-          python release_packages/EXP-MAP-A01-primary-execution-v0.1/verify_package.py > "$RUNNER_TEMP/a01-primary-inspection.json"
-          cat "$RUNNER_TEMP/a01-primary-inspection.json"
+          python release_packages/EXP-MAP-A01-primary-execution-v0.1/verify_package.py | tee "$RUNNER_TEMP/a01-primary-inspection.json"
           diff -u release_packages/EXP-MAP-A01-primary-execution-v0.1/verification.json "$RUNNER_TEMP/a01-primary-inspection.json"
