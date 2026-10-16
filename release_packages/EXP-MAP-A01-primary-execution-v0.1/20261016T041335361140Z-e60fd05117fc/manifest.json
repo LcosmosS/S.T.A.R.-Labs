@@ -1,0 +1,1777 @@
+{
+  "claim_ids": [
+    "CLAIM-ACSC-001"
+  ],
+  "dataset": {
+    "inputs": [
+      {
+        "declared_path": "data/ecdata/allcurves/allcurves.00000-09999",
+        "resolved_path": "/home/kepler/S.T.A.R.-Labs/data/ecdata/allcurves/allcurves.00000-09999",
+        "sha256": "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968",
+        "size_bytes": 2146401
+      }
+    ],
+    "provenance_integrity_sha256": [
+      "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968"
+    ]
+  },
+  "dataset_id": "DATA-ARITHMETIC",
+  "environment": {
+    "environment_sha256": "8d6098a80e07dee3c8814bd9dd0d30d435e3d888e3763f46b3154ac85fd8f93b",
+    "machine": "x86_64",
+    "packages": [
+      {
+        "name": "absl-py",
+        "version": "2.4.0"
+      },
+      {
+        "name": "acsc",
+        "version": "0.0.0"
+      },
+      {
+        "name": "addict",
+        "version": "2.4.0"
+      },
+      {
+        "name": "alabaster",
+        "version": "1.0.0"
+      },
+      {
+        "name": "alembic",
+        "version": "1.18.4"
+      },
+      {
+        "name": "altair",
+        "version": "6.0.0"
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.7.0"
+      },
+      {
+        "name": "anyio",
+        "version": "4.13.0"
+      },
+      {
+        "name": "appdirs",
+        "version": "1.4.4"
+      },
+      {
+        "name": "argon2-cffi",
+        "version": "25.1.0"
+      },
+      {
+        "name": "argon2-cffi-bindings",
+        "version": "25.1.0"
+      },
+      {
+        "name": "arrow",
+        "version": "1.4.0"
+      },
+      {
+        "name": "astropy",
+        "version": "7.2.0"
+      },
+      {
+        "name": "astropy-iers-data",
+        "version": "0.2026.4.1.15.5.49"
+      },
+      {
+        "name": "asttokens",
+        "version": "3.0.1"
+      },
+      {
+        "name": "async-lru",
+        "version": "2.3.0"
+      },
+      {
+        "name": "attrs",
+        "version": "26.1.0"
+      },
+      {
+        "name": "av",
+        "version": "17.0.0"
+      },
+      {
+        "name": "babel",
+        "version": "2.18.0"
+      },
+      {
+        "name": "backports.zstd",
+        "version": "1.3.0"
+      },
+      {
+        "name": "beautifulsoup4",
+        "version": "4.14.3"
+      },
+      {
+        "name": "beniget",
+        "version": "0.4.2.post1"
+      },
+      {
+        "name": "bidict",
+        "version": "0.23.1"
+      },
+      {
+        "name": "bleach",
+        "version": "6.3.0"
+      },
+      {
+        "name": "blinker",
+        "version": "1.9.0"
+      },
+      {
+        "name": "Brotli",
+        "version": "1.2.0"
+      },
+      {
+        "name": "cached-property",
+        "version": "1.5.2"
+      },
+      {
+        "name": "cachetools",
+        "version": "7.0.5"
+      },
+      {
+        "name": "catboost",
+        "version": "1.2.10"
+      },
+      {
+        "name": "certifi",
+        "version": "2026.2.25"
+      },
+      {
+        "name": "cffi",
+        "version": "2.0.0"
+      },
+      {
+        "name": "charset-normalizer",
+        "version": "3.4.7"
+      },
+      {
+        "name": "click",
+        "version": "8.3.2"
+      },
+      {
+        "name": "colorama",
+        "version": "0.4.6"
+      },
+      {
+        "name": "colorlog",
+        "version": "6.10.1"
+      },
+      {
+        "name": "comet_ml",
+        "version": "3.57.3"
+      },
+      {
+        "name": "comm",
+        "version": "0.2.3"
+      },
+      {
+        "name": "ConfigArgParse",
+        "version": "1.7.5"
+      },
+      {
+        "name": "configobj",
+        "version": "5.0.9"
+      },
+      {
+        "name": "contourpy",
+        "version": "1.3.3"
+      },
+      {
+        "name": "conway-polynomials",
+        "version": "0.10"
+      },
+      {
+        "name": "cramjam",
+        "version": "2.11.0"
+      },
+      {
+        "name": "cryptography",
+        "version": "46.0.6"
+      },
+      {
+        "name": "cvxopt",
+        "version": "1.3.3"
+      },
+      {
+        "name": "cycler",
+        "version": "0.12.1"
+      },
+      {
+        "name": "cypari2",
+        "version": "2.2.4"
+      },
+      {
+        "name": "cysignals",
+        "version": "1.12.6"
+      },
+      {
+        "name": "Cython",
+        "version": "3.2.4"
+      },
+      {
+        "name": "dash",
+        "version": "4.1.0"
+      },
+      {
+        "name": "debugpy",
+        "version": "1.8.20"
+      },
+      {
+        "name": "decorator",
+        "version": "5.2.1"
+      },
+      {
+        "name": "defusedxml",
+        "version": "0.7.1"
+      },
+      {
+        "name": "Deprecated",
+        "version": "1.3.1"
+      },
+      {
+        "name": "descartes",
+        "version": "1.1.0"
+      },
+      {
+        "name": "dill",
+        "version": "0.4.1"
+      },
+      {
+        "name": "docstring_parser",
+        "version": "0.17.0"
+      },
+      {
+        "name": "docutils",
+        "version": "0.21.2"
+      },
+      {
+        "name": "dulwich",
+        "version": "0.25.2"
+      },
+      {
+        "name": "embreex",
+        "version": "2.17.7.post7"
+      },
+      {
+        "name": "everett",
+        "version": "3.1.0"
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1"
+      },
+      {
+        "name": "executing",
+        "version": "2.2.1"
+      },
+      {
+        "name": "fastjsonschema",
+        "version": "2.21.2"
+      },
+      {
+        "name": "fastparquet",
+        "version": "2026.3.0"
+      },
+      {
+        "name": "filelock",
+        "version": "3.25.2"
+      },
+      {
+        "name": "fire",
+        "version": "0.7.1"
+      },
+      {
+        "name": "Flask",
+        "version": "3.1.3"
+      },
+      {
+        "name": "fonttools",
+        "version": "4.62.0"
+      },
+      {
+        "name": "fpsample",
+        "version": "1.0.2"
+      },
+      {
+        "name": "fpylll",
+        "version": "0.6.4"
+      },
+      {
+        "name": "fqdn",
+        "version": "1.5.1"
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.3.0"
+      },
+      {
+        "name": "future",
+        "version": "1.0.0"
+      },
+      {
+        "name": "gast",
+        "version": "0.6.0"
+      },
+      {
+        "name": "gdown",
+        "version": "5.2.1"
+      },
+      {
+        "name": "gitdb",
+        "version": "4.0.12"
+      },
+      {
+        "name": "GitPython",
+        "version": "3.1.46"
+      },
+      {
+        "name": "gmpy2",
+        "version": "2.2.1"
+      },
+      {
+        "name": "graphviz",
+        "version": "0.21"
+      },
+      {
+        "name": "greenlet",
+        "version": "3.4.0"
+      },
+      {
+        "name": "grpcio",
+        "version": "1.80.0"
+      },
+      {
+        "name": "gsplat",
+        "version": "1.4.0"
+      },
+      {
+        "name": "gudhi",
+        "version": "3.12.0"
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0"
+      },
+      {
+        "name": "h2",
+        "version": "4.3.0"
+      },
+      {
+        "name": "h5py",
+        "version": "3.16.0"
+      },
+      {
+        "name": "hopcroftkarp",
+        "version": "1.2.5"
+      },
+      {
+        "name": "hpack",
+        "version": "4.1.0"
+      },
+      {
+        "name": "httpcore",
+        "version": "1.0.9"
+      },
+      {
+        "name": "httpx",
+        "version": "0.28.1"
+      },
+      {
+        "name": "hyperframe",
+        "version": "6.1.0"
+      },
+      {
+        "name": "idna",
+        "version": "3.11"
+      },
+      {
+        "name": "ImageIO",
+        "version": "2.37.3"
+      },
+      {
+        "name": "imagesize",
+        "version": "2.0.0"
+      },
+      {
+        "name": "importlib_metadata",
+        "version": "8.8.0"
+      },
+      {
+        "name": "importlib_resources",
+        "version": "6.5.2"
+      },
+      {
+        "name": "ipykernel",
+        "version": "6.31.0"
+      },
+      {
+        "name": "ipython",
+        "version": "8.37.0"
+      },
+      {
+        "name": "ipywidgets",
+        "version": "8.1.8"
+      },
+      {
+        "name": "isoduration",
+        "version": "20.11.0"
+      },
+      {
+        "name": "itsdangerous",
+        "version": "2.2.0"
+      },
+      {
+        "name": "jaxtyping",
+        "version": "0.3.9"
+      },
+      {
+        "name": "jedi",
+        "version": "0.19.2"
+      },
+      {
+        "name": "Jinja2",
+        "version": "3.1.6"
+      },
+      {
+        "name": "joblib",
+        "version": "1.5.3"
+      },
+      {
+        "name": "json5",
+        "version": "0.14.0"
+      },
+      {
+        "name": "jsonpointer",
+        "version": "3.1.1"
+      },
+      {
+        "name": "jsonschema",
+        "version": "4.26.0"
+      },
+      {
+        "name": "jsonschema-specifications",
+        "version": "2025.9.1"
+      },
+      {
+        "name": "julia",
+        "version": "0.6.2"
+      },
+      {
+        "name": "juliacall",
+        "version": "0.9.26"
+      },
+      {
+        "name": "juliapkg",
+        "version": "0.1.23"
+      },
+      {
+        "name": "jupyter-events",
+        "version": "0.12.0"
+      },
+      {
+        "name": "jupyter-lsp",
+        "version": "2.3.1"
+      },
+      {
+        "name": "jupyter_client",
+        "version": "8.8.0"
+      },
+      {
+        "name": "jupyter_core",
+        "version": "5.9.1"
+      },
+      {
+        "name": "jupyter_server",
+        "version": "2.17.0"
+      },
+      {
+        "name": "jupyter_server_terminals",
+        "version": "0.5.4"
+      },
+      {
+        "name": "jupyterlab",
+        "version": "4.5.6"
+      },
+      {
+        "name": "jupyterlab_pygments",
+        "version": "0.3.0"
+      },
+      {
+        "name": "jupyterlab_server",
+        "version": "2.28.0"
+      },
+      {
+        "name": "jupyterlab_widgets",
+        "version": "3.0.16"
+      },
+      {
+        "name": "kiwisolver",
+        "version": "1.5.0"
+      },
+      {
+        "name": "lark",
+        "version": "1.3.1"
+      },
+      {
+        "name": "lazy-loader",
+        "version": "0.5"
+      },
+      {
+        "name": "lightgbm",
+        "version": "4.6.0"
+      },
+      {
+        "name": "lightning-utilities",
+        "version": "0.15.3"
+      },
+      {
+        "name": "lmfdb-lite",
+        "version": "0.1"
+      },
+      {
+        "name": "lrcalc",
+        "version": "2.1"
+      },
+      {
+        "name": "lxml",
+        "version": "6.0.2"
+      },
+      {
+        "name": "Mako",
+        "version": "1.3.10"
+      },
+      {
+        "name": "manifold3d",
+        "version": "3.4.1"
+      },
+      {
+        "name": "mapbox_earcut",
+        "version": "2.0.0"
+      },
+      {
+        "name": "Markdown",
+        "version": "3.10.2"
+      },
+      {
+        "name": "markdown-it-py",
+        "version": "4.0.0"
+      },
+      {
+        "name": "MarkupSafe",
+        "version": "3.0.3"
+      },
+      {
+        "name": "matplotlib",
+        "version": "3.10.8"
+      },
+      {
+        "name": "matplotlib-inline",
+        "version": "0.2.1"
+      },
+      {
+        "name": "mdurl",
+        "version": "0.1.2"
+      },
+      {
+        "name": "mediapy",
+        "version": "1.2.6"
+      },
+      {
+        "name": "memory_allocator",
+        "version": "0.2.0"
+      },
+      {
+        "name": "mistune",
+        "version": "3.2.0"
+      },
+      {
+        "name": "mpmath",
+        "version": "1.3.0"
+      },
+      {
+        "name": "msgpack",
+        "version": "1.1.2"
+      },
+      {
+        "name": "msgpack-numpy",
+        "version": "0.4.8"
+      },
+      {
+        "name": "msgspec",
+        "version": "0.20.0"
+      },
+      {
+        "name": "multiprocess",
+        "version": "0.70.19"
+      },
+      {
+        "name": "munkres",
+        "version": "1.1.4"
+      },
+      {
+        "name": "narwhals",
+        "version": "2.18.1"
+      },
+      {
+        "name": "nbclient",
+        "version": "0.8.0"
+      },
+      {
+        "name": "nbconvert",
+        "version": "7.17.0"
+      },
+      {
+        "name": "nbformat",
+        "version": "5.10.4"
+      },
+      {
+        "name": "nerfacc",
+        "version": "0.5.2"
+      },
+      {
+        "name": "nerfstudio",
+        "version": "1.1.5"
+      },
+      {
+        "name": "nest_asyncio",
+        "version": "1.6.0"
+      },
+      {
+        "name": "networkx",
+        "version": "3.6.1"
+      },
+      {
+        "name": "ninja",
+        "version": "1.13.0"
+      },
+      {
+        "name": "nodeenv",
+        "version": "1.10.0"
+      },
+      {
+        "name": "notebook",
+        "version": "7.5.5"
+      },
+      {
+        "name": "notebook_shim",
+        "version": "0.2.4"
+      },
+      {
+        "name": "numpy",
+        "version": "1.26.4"
+      },
+      {
+        "name": "nuscenes-devkit",
+        "version": "1.2.0"
+      },
+      {
+        "name": "nvidia-nccl-cu12",
+        "version": "2.29.7"
+      },
+      {
+        "name": "open3d",
+        "version": "0.19.0"
+      },
+      {
+        "name": "opencv-python-headless",
+        "version": "4.10.0.84"
+      },
+      {
+        "name": "optree",
+        "version": "0.19.0"
+      },
+      {
+        "name": "optuna",
+        "version": "4.8.0"
+      },
+      {
+        "name": "overrides",
+        "version": "7.7.0"
+      },
+      {
+        "name": "packaging",
+        "version": "26.0"
+      },
+      {
+        "name": "pandas",
+        "version": "2.3.3"
+      },
+      {
+        "name": "pandocfilters",
+        "version": "1.5.0"
+      },
+      {
+        "name": "parameterized",
+        "version": "0.9.0"
+      },
+      {
+        "name": "parso",
+        "version": "0.8.6"
+      },
+      {
+        "name": "pathos",
+        "version": "0.3.5"
+      },
+      {
+        "name": "persim",
+        "version": "0.3.8"
+      },
+      {
+        "name": "pexpect",
+        "version": "4.9.0"
+      },
+      {
+        "name": "pickleshare",
+        "version": "0.7.5"
+      },
+      {
+        "name": "pillow",
+        "version": "11.3.0"
+      },
+      {
+        "name": "pip",
+        "version": "26.0.1"
+      },
+      {
+        "name": "pkgconfig",
+        "version": "1.6.0"
+      },
+      {
+        "name": "platformdirs",
+        "version": "4.9.4"
+      },
+      {
+        "name": "plotly",
+        "version": "6.6.0"
+      },
+      {
+        "name": "ply",
+        "version": "3.11"
+      },
+      {
+        "name": "plyfile",
+        "version": "1.1.3"
+      },
+      {
+        "name": "pox",
+        "version": "0.3.7"
+      },
+      {
+        "name": "ppft",
+        "version": "1.7.8"
+      },
+      {
+        "name": "pplpy",
+        "version": "0.8.10"
+      },
+      {
+        "name": "primecountpy",
+        "version": "0.1.1"
+      },
+      {
+        "name": "prometheus_client",
+        "version": "0.24.1"
+      },
+      {
+        "name": "prompt_toolkit",
+        "version": "3.0.52"
+      },
+      {
+        "name": "protobuf",
+        "version": "3.20.3"
+      },
+      {
+        "name": "psutil",
+        "version": "7.2.2"
+      },
+      {
+        "name": "psycodict",
+        "version": "0.1.13"
+      },
+      {
+        "name": "psycopg2-binary",
+        "version": "2.9.11"
+      },
+      {
+        "name": "ptyprocess",
+        "version": "0.7.0"
+      },
+      {
+        "name": "pure_eval",
+        "version": "0.2.3"
+      },
+      {
+        "name": "pyarrow",
+        "version": "23.0.1"
+      },
+      {
+        "name": "pybind11",
+        "version": "3.0.1"
+      },
+      {
+        "name": "pybind11-global",
+        "version": "3.0.1"
+      },
+      {
+        "name": "pycocotools",
+        "version": "2.0.11"
+      },
+      {
+        "name": "pycollada",
+        "version": "0.9.3"
+      },
+      {
+        "name": "pycparser",
+        "version": "2.22"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.12.5"
+      },
+      {
+        "name": "pydantic_core",
+        "version": "2.41.5"
+      },
+      {
+        "name": "pyerfa",
+        "version": "2.0.1.5"
+      },
+      {
+        "name": "Pygments",
+        "version": "2.20.0"
+      },
+      {
+        "name": "pyliblzfse",
+        "version": "0.4.1"
+      },
+      {
+        "name": "pymeshlab",
+        "version": "2025.7.post1"
+      },
+      {
+        "name": "pyngrok",
+        "version": "8.0.0"
+      },
+      {
+        "name": "pyparsing",
+        "version": "3.3.2"
+      },
+      {
+        "name": "pyquaternion",
+        "version": "0.9.9"
+      },
+      {
+        "name": "PySocks",
+        "version": "1.7.1"
+      },
+      {
+        "name": "pysr",
+        "version": "1.5.10"
+      },
+      {
+        "name": "python-box",
+        "version": "6.1.0"
+      },
+      {
+        "name": "python-dateutil",
+        "version": "2.9.0.post0"
+      },
+      {
+        "name": "python-engineio",
+        "version": "4.13.1"
+      },
+      {
+        "name": "python-json-logger",
+        "version": "2.0.7"
+      },
+      {
+        "name": "python-socketio",
+        "version": "5.16.1"
+      },
+      {
+        "name": "pythran",
+        "version": "0.17.0"
+      },
+      {
+        "name": "pytorch-msssim",
+        "version": "1.0.0"
+      },
+      {
+        "name": "pytz",
+        "version": "2026.1.post1"
+      },
+      {
+        "name": "PyYAML",
+        "version": "6.0.3"
+      },
+      {
+        "name": "pyzmq",
+        "version": "27.1.0"
+      },
+      {
+        "name": "rawpy",
+        "version": "0.26.1"
+      },
+      {
+        "name": "referencing",
+        "version": "0.37.0"
+      },
+      {
+        "name": "requests",
+        "version": "2.33.1"
+      },
+      {
+        "name": "requests-toolbelt",
+        "version": "1.0.0"
+      },
+      {
+        "name": "retrying",
+        "version": "1.4.2"
+      },
+      {
+        "name": "rfc3339_validator",
+        "version": "0.1.4"
+      },
+      {
+        "name": "rfc3986-validator",
+        "version": "0.1.1"
+      },
+      {
+        "name": "rfc3987-syntax",
+        "version": "1.1.0"
+      },
+      {
+        "name": "rich",
+        "version": "14.3.3"
+      },
+      {
+        "name": "ripser",
+        "version": "0.6.14"
+      },
+      {
+        "name": "roman-numerals",
+        "version": "4.1.0"
+      },
+      {
+        "name": "roman-numerals-py",
+        "version": "4.1.0"
+      },
+      {
+        "name": "rpds-py",
+        "version": "0.30.0"
+      },
+      {
+        "name": "rpy2",
+        "version": "3.6.6"
+      },
+      {
+        "name": "rpy2-rinterface",
+        "version": "3.6.5"
+      },
+      {
+        "name": "rpy2-robjects",
+        "version": "3.6.4"
+      },
+      {
+        "name": "rtree",
+        "version": "1.4.1"
+      },
+      {
+        "name": "sagemath-standard",
+        "version": "10.7"
+      },
+      {
+        "name": "sagetex",
+        "version": "3.6.1"
+      },
+      {
+        "name": "scikit-image",
+        "version": "0.26.0"
+      },
+      {
+        "name": "scikit-learn",
+        "version": "1.8.0"
+      },
+      {
+        "name": "scipy",
+        "version": "1.17.1"
+      },
+      {
+        "name": "seaborn",
+        "version": "0.13.2"
+      },
+      {
+        "name": "semantic-version",
+        "version": "2.10.0"
+      },
+      {
+        "name": "semver",
+        "version": "3.0.4"
+      },
+      {
+        "name": "Send2Trash",
+        "version": "2.1.0"
+      },
+      {
+        "name": "sentry-sdk",
+        "version": "2.57.0"
+      },
+      {
+        "name": "setuptools",
+        "version": "82.0.1"
+      },
+      {
+        "name": "shapely",
+        "version": "2.0.7"
+      },
+      {
+        "name": "simple-websocket",
+        "version": "1.1.0"
+      },
+      {
+        "name": "simplejson",
+        "version": "3.20.2"
+      },
+      {
+        "name": "six",
+        "version": "1.17.0"
+      },
+      {
+        "name": "smmap",
+        "version": "5.0.3"
+      },
+      {
+        "name": "sniffio",
+        "version": "1.3.1"
+      },
+      {
+        "name": "snowballstemmer",
+        "version": "3.0.1"
+      },
+      {
+        "name": "soupsieve",
+        "version": "2.8.3"
+      },
+      {
+        "name": "Sphinx",
+        "version": "8.2.3"
+      },
+      {
+        "name": "sphinxcontrib-applehelp",
+        "version": "2.0.0"
+      },
+      {
+        "name": "sphinxcontrib-devhelp",
+        "version": "2.0.0"
+      },
+      {
+        "name": "sphinxcontrib-htmlhelp",
+        "version": "2.1.0"
+      },
+      {
+        "name": "sphinxcontrib-jsmath",
+        "version": "1.0.1"
+      },
+      {
+        "name": "sphinxcontrib-qthelp",
+        "version": "2.0.0"
+      },
+      {
+        "name": "sphinxcontrib-serializinghtml",
+        "version": "1.1.10"
+      },
+      {
+        "name": "splines",
+        "version": "0.3.0"
+      },
+      {
+        "name": "SQLAlchemy",
+        "version": "2.0.49"
+      },
+      {
+        "name": "stack_data",
+        "version": "0.6.3"
+      },
+      {
+        "name": "star",
+        "version": "0.1.0"
+      },
+      {
+        "name": "svg.path",
+        "version": "7.0"
+      },
+      {
+        "name": "SVR",
+        "version": "0.5"
+      },
+      {
+        "name": "sympy",
+        "version": "1.14.0"
+      },
+      {
+        "name": "tensorboard",
+        "version": "2.20.0"
+      },
+      {
+        "name": "tensorboard-data-server",
+        "version": "0.7.2"
+      },
+      {
+        "name": "tensorly",
+        "version": "0.9.0"
+      },
+      {
+        "name": "termcolor",
+        "version": "3.3.0"
+      },
+      {
+        "name": "terminado",
+        "version": "0.18.1"
+      },
+      {
+        "name": "threadpoolctl",
+        "version": "3.6.0"
+      },
+      {
+        "name": "tifffile",
+        "version": "2026.3.3"
+      },
+      {
+        "name": "timm",
+        "version": "0.6.7"
+      },
+      {
+        "name": "tinycss2",
+        "version": "1.4.0"
+      },
+      {
+        "name": "tomli",
+        "version": "2.4.1"
+      },
+      {
+        "name": "tomlkit",
+        "version": "0.13.3"
+      },
+      {
+        "name": "tomlkit",
+        "version": "0.14.0"
+      },
+      {
+        "name": "torch",
+        "version": "2.7.1"
+      },
+      {
+        "name": "torch_fidelity",
+        "version": "0.4.0"
+      },
+      {
+        "name": "torchaudio",
+        "version": "2.7.1"
+      },
+      {
+        "name": "torchmetrics",
+        "version": "1.9.0"
+      },
+      {
+        "name": "torchvision",
+        "version": "0.24.0"
+      },
+      {
+        "name": "torchvision-extra-decoders",
+        "version": "0.0.2"
+      },
+      {
+        "name": "tornado",
+        "version": "6.5.5"
+      },
+      {
+        "name": "tqdm",
+        "version": "4.67.3"
+      },
+      {
+        "name": "traitlets",
+        "version": "5.14.3"
+      },
+      {
+        "name": "trimesh",
+        "version": "4.11.5"
+      },
+      {
+        "name": "triton",
+        "version": "3.3.1+git96394dff"
+      },
+      {
+        "name": "typeguard",
+        "version": "4.5.1"
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.2"
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.15.0"
+      },
+      {
+        "name": "typing_utils",
+        "version": "0.1.0"
+      },
+      {
+        "name": "tyro",
+        "version": "1.0.12"
+      },
+      {
+        "name": "tzdata",
+        "version": "2026.1"
+      },
+      {
+        "name": "tzlocal",
+        "version": "5.3.1"
+      },
+      {
+        "name": "unicodedata2",
+        "version": "17.0.1"
+      },
+      {
+        "name": "uri-template",
+        "version": "1.3.0"
+      },
+      {
+        "name": "urllib3",
+        "version": "2.6.3"
+      },
+      {
+        "name": "vhacdx",
+        "version": "0.0.10"
+      },
+      {
+        "name": "viser",
+        "version": "0.2.7"
+      },
+      {
+        "name": "wadler_lindig",
+        "version": "0.1.7"
+      },
+      {
+        "name": "wandb",
+        "version": "0.25.0"
+      },
+      {
+        "name": "wcwidth",
+        "version": "0.6.0"
+      },
+      {
+        "name": "webcolors",
+        "version": "25.10.0"
+      },
+      {
+        "name": "webencodings",
+        "version": "0.5.1"
+      },
+      {
+        "name": "websocket-client",
+        "version": "1.9.0"
+      },
+      {
+        "name": "websockets",
+        "version": "16.0"
+      },
+      {
+        "name": "Werkzeug",
+        "version": "3.1.8"
+      },
+      {
+        "name": "wheel",
+        "version": "0.46.3"
+      },
+      {
+        "name": "widgetsnbextension",
+        "version": "4.0.15"
+      },
+      {
+        "name": "wrapt",
+        "version": "2.1.2"
+      },
+      {
+        "name": "wsproto",
+        "version": "1.3.2"
+      },
+      {
+        "name": "wurlitzer",
+        "version": "3.1.1"
+      },
+      {
+        "name": "xatlas",
+        "version": "0.0.11"
+      },
+      {
+        "name": "xgboost",
+        "version": "3.2.0"
+      },
+      {
+        "name": "xxhash",
+        "version": "3.6.0"
+      },
+      {
+        "name": "yourdfpy",
+        "version": "0.0.60"
+      },
+      {
+        "name": "zipp",
+        "version": "3.23.0"
+      }
+    ],
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python_executable": "/home/kepler/miniforge3/envs/sage/bin/python",
+    "python_implementation": "CPython",
+    "python_version": "3.12.13",
+    "pythonhashseed": null
+  },
+  "execution": {
+    "binding": {
+      "claim_ids": "CLAIM-ACSC-001",
+      "code_inputs": [
+        {
+          "path": "src/data/cremona_ecdata.py",
+          "sha256": "7e3f79a9fd7ddf6af9c95d5dd4637015cc871b628ec6bf78f9060febc3067b97",
+          "size_bytes": 3956
+        },
+        {
+          "path": "src/experiments/exp_map_a01.py",
+          "sha256": "d3e1b844cfc7e0ed99efbddcfa69646f31b5b90b72a96840af3d106f386c75ab",
+          "size_bytes": 14734
+        }
+      ],
+      "command_template": [
+        "python",
+        "-m",
+        "src.experiments.exp_map_a01",
+        "--input",
+        "{repo_root}/data/ecdata/allcurves/allcurves.00000-09999",
+        "--output-dir",
+        "{run_dir}"
+      ],
+      "config": {
+        "endpoint": {
+          "base_metric": "euclidean",
+          "direction": "greater_or_equal_is_more_extreme",
+          "k": 10,
+          "name": "base_knn_elevation_coherence",
+          "neighbor_coordinates": [
+            "longitude",
+            "latitude"
+          ],
+          "statistic": "negative_mean_absolute_elevation_difference",
+          "tie_break": "cremona_label_ascii",
+          "undirected_edge_policy": "unique_sorted"
+        },
+        "inference": {
+          "alpha": 0.01,
+          "multiple_testing": "none_single_endpoint",
+          "p_value": "(1 + count(T_null >= T_obs)) / (B + 1)",
+          "sidedness": "one-sided"
+        },
+        "input": {
+          "allow_rank_fallback": false,
+          "allow_row_exclusion": false,
+          "analysis_rows": 38042,
+          "deduplicate": "fail",
+          "selection": "curve_number_equals_1_per_isogeny_class",
+          "source_format": "ecdata-allcurves-v1",
+          "source_rows": 64687
+        },
+        "null": {
+          "name": "rank_permutation_fixed_base",
+          "preserve": [
+            "curve_identities",
+            "delta",
+            "conductor",
+            "base_coordinates",
+            "rank_multiset",
+            "neighbor_graph"
+          ],
+          "prng": "splitmix64-fisher-yates-v1",
+          "realizations": 999,
+          "seed": 1729
+        },
+        "projection": {
+          "clip": false,
+          "conductor_max": "1e9",
+          "delta_max": "1e30",
+          "latitude_scale_degrees": 180,
+          "logarithm": "natural",
+          "longitude_scale_degrees": 360,
+          "rank_scale": 200,
+          "regulator_used": false
+        },
+        "protocol_version": "EXP-MAP-A01-prereg-v1"
+      },
+      "config_files": [
+        {
+          "path": "preregistrations/EXP-MAP-A01/config.json",
+          "sha256": "f3818f2753961feab603cd6c69b1ab0c1d743705e51de1641757d4d5fd96be75",
+          "size_bytes": 1433
+        },
+        {
+          "path": "preregistrations/EXP-MAP-A01/dataset_manifest.json",
+          "sha256": "8550aaf6b5769fbf33f0a9ac6ee6fd8aa1cc59635bb92c59b461d107af34da42",
+          "size_bytes": 1390
+        },
+        {
+          "path": "preregistrations/EXP-MAP-A01/protocol.md",
+          "sha256": "762f2ab0e457e3a396e799fc7349d9652383c9449f68922f02c0df174466df71",
+          "size_bytes": 7259
+        }
+      ],
+      "container_image_digest": null,
+      "dataset_id": "DATA-ARITHMETIC",
+      "dataset_inputs": [
+        {
+          "path": "data/ecdata/allcurves/allcurves.00000-09999",
+          "sha256": "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968",
+          "size_bytes": 2146401
+        }
+      ],
+      "experiment_id": "EXP-MAP-A01",
+      "git_sha": "1b0f2d7853608bfbab79cf2dc04b002f1f193eb2",
+      "null_id": "NULL-MAP-001",
+      "output_paths": [
+        "summary.json",
+        "observed_projection.csv",
+        "null_statistics.csv"
+      ],
+      "parameter_set_id": "PAR-MAP-001",
+      "registry_file_sha256": {
+        "claim_evidence_v0.2.csv": "13467b477ac0e4f2ea76185245ac868b17a201780d66a405999deb432fb126b0",
+        "claim_experiment_crosswalk_v0.2.csv": "f17e8fa910f86be4bd7339dcbf8c5bab6e34fd4483d0e4ff5a3b2110384e41a1",
+        "data_provenance_registry_v0.1.csv": "1a89fe41fe6d0fdbbae0c0ae098db15170b4a282e72a2667a3c0ee5b5fe2c9a9",
+        "dataset_registry_v0.1.csv": "578812040a7baa2d3e15c3b0ba879bba631cbdddf91c05f6aa556904da8a5f9a",
+        "experiment_registry_v0.2.csv": "45fd589cef4cdb73d4a722fcc567b8e395403a162085fde5c6b84abb0547cf74",
+        "null_registry_v0.1.csv": "13f153bf024678494a50d43a2b719e7fd55be812605d0e94ba237ad74c43511b",
+        "parameter_registry_v0.1.csv": "03654f59c761900a9c19278a3b0c00e00852a2c4e5f3d2f6d15cc37cf8194e44"
+      },
+      "registry_record_sha256": {
+        "dataset": "1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2",
+        "experiment": "97dac41c4d8a866d0abbcdf5515829328e92ea1fb3cf7b4d03e1d9b9c0b9c868",
+        "null": "5e8cbc1393093df3f552d0e162a1325175057eb89cbad73912ff1a28ef29eac8",
+        "parameter": "e7dfec16360935d3d5b9c6f4b54f7099f8455d2a3617f55e64a344eaaacc4372",
+        "provenance": "051578934af53b190605257f49da77ff83683638b12e9d176c74b7b8cc4a0aa1"
+      },
+      "rng_seeds": {
+        "rank_permutation": 1729
+      },
+      "spec_sha256": "ba9df175f5ddd43c5026a63a9d58cd47e7571927d406eaa7e59db17cf8ac7a0e",
+      "timeout_seconds": 3600
+    },
+    "binding_sha256": "e9a1e4464975fd60366a932aeb21514f292028c387aac472a90343553e94d8d2",
+    "code_inputs": [
+      {
+        "declared_path": "src/data/cremona_ecdata.py",
+        "resolved_path": "/home/kepler/S.T.A.R.-Labs/src/data/cremona_ecdata.py",
+        "sha256": "7e3f79a9fd7ddf6af9c95d5dd4637015cc871b628ec6bf78f9060febc3067b97",
+        "size_bytes": 3956
+      },
+      {
+        "declared_path": "src/experiments/exp_map_a01.py",
+        "resolved_path": "/home/kepler/S.T.A.R.-Labs/src/experiments/exp_map_a01.py",
+        "sha256": "d3e1b844cfc7e0ed99efbddcfa69646f31b5b90b72a96840af3d106f386c75ab",
+        "size_bytes": 14734
+      }
+    ],
+    "command_template": [
+      "python",
+      "-m",
+      "src.experiments.exp_map_a01",
+      "--input",
+      "{repo_root}/data/ecdata/allcurves/allcurves.00000-09999",
+      "--output-dir",
+      "{run_dir}"
+    ],
+    "config": {
+      "endpoint": {
+        "base_metric": "euclidean",
+        "direction": "greater_or_equal_is_more_extreme",
+        "k": 10,
+        "name": "base_knn_elevation_coherence",
+        "neighbor_coordinates": [
+          "longitude",
+          "latitude"
+        ],
+        "statistic": "negative_mean_absolute_elevation_difference",
+        "tie_break": "cremona_label_ascii",
+        "undirected_edge_policy": "unique_sorted"
+      },
+      "inference": {
+        "alpha": 0.01,
+        "multiple_testing": "none_single_endpoint",
+        "p_value": "(1 + count(T_null >= T_obs)) / (B + 1)",
+        "sidedness": "one-sided"
+      },
+      "input": {
+        "allow_rank_fallback": false,
+        "allow_row_exclusion": false,
+        "analysis_rows": 38042,
+        "deduplicate": "fail",
+        "selection": "curve_number_equals_1_per_isogeny_class",
+        "source_format": "ecdata-allcurves-v1",
+        "source_rows": 64687
+      },
+      "null": {
+        "name": "rank_permutation_fixed_base",
+        "preserve": [
+          "curve_identities",
+          "delta",
+          "conductor",
+          "base_coordinates",
+          "rank_multiset",
+          "neighbor_graph"
+        ],
+        "prng": "splitmix64-fisher-yates-v1",
+        "realizations": 999,
+        "seed": 1729
+      },
+      "projection": {
+        "clip": false,
+        "conductor_max": "1e9",
+        "delta_max": "1e30",
+        "latitude_scale_degrees": 180,
+        "logarithm": "natural",
+        "longitude_scale_degrees": 360,
+        "rank_scale": 200,
+        "regulator_used": false
+      },
+      "protocol_version": "EXP-MAP-A01-prereg-v1"
+    },
+    "config_files": [
+      {
+        "declared_path": "preregistrations/EXP-MAP-A01/config.json",
+        "resolved_path": "/home/kepler/S.T.A.R.-Labs/preregistrations/EXP-MAP-A01/config.json",
+        "sha256": "f3818f2753961feab603cd6c69b1ab0c1d743705e51de1641757d4d5fd96be75",
+        "size_bytes": 1433
+      },
+      {
+        "declared_path": "preregistrations/EXP-MAP-A01/dataset_manifest.json",
+        "resolved_path": "/home/kepler/S.T.A.R.-Labs/preregistrations/EXP-MAP-A01/dataset_manifest.json",
+        "sha256": "8550aaf6b5769fbf33f0a9ac6ee6fd8aa1cc59635bb92c59b461d107af34da42",
+        "size_bytes": 1390
+      },
+      {
+        "declared_path": "preregistrations/EXP-MAP-A01/protocol.md",
+        "resolved_path": "/home/kepler/S.T.A.R.-Labs/preregistrations/EXP-MAP-A01/protocol.md",
+        "sha256": "762f2ab0e457e3a396e799fc7349d9652383c9449f68922f02c0df174466df71",
+        "size_bytes": 7259
+      }
+    ],
+    "config_sha256": "b017287a8b1e0f82bb3439748188f9d7d67b8ce32430dab6aa51d0639beead4e",
+    "container_image_digest": null,
+    "resolved_command": [
+      "python",
+      "-m",
+      "src.experiments.exp_map_a01",
+      "--input",
+      "/home/kepler/S.T.A.R.-Labs/data/ecdata/allcurves/allcurves.00000-09999",
+      "--output-dir",
+      "/home/kepler/S.T.A.R.-Labs/controlled_runs/EXP-MAP-A01/20261016T041335361140Z-e60fd05117fc"
+    ],
+    "rng_seeds": {
+      "rank_permutation": 1729
+    },
+    "runtime_error": null,
+    "spec_path": "/home/kepler/S.T.A.R.-Labs/controlled_execution/specs/EXP-MAP-A01.json",
+    "spec_sha256": "ba9df175f5ddd43c5026a63a9d58cd47e7571927d406eaa7e59db17cf8ac7a0e",
+    "timeout_seconds": 3600
+  },
+  "executor_id": "investigator-A",
+  "exit_status": 0,
+  "experiment_id": "EXP-MAP-A01",
+  "git": {
+    "branch": "HEAD",
+    "dirty": false,
+    "sha": "1b0f2d7853608bfbab79cf2dc04b002f1f193eb2"
+  },
+  "logs": {
+    "stderr": {
+      "path": "stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "stdout": {
+      "path": "stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    }
+  },
+  "mode": "primary",
+  "null_id": "NULL-MAP-001",
+  "null_model": {
+    "definition": "EXP-MAP-A01-prereg-v1 rank-permutation fixed-base null: hold curve identities, Delta, conductor, longitude/latitude point cloud, k=10 neighbor graph and empirical rank/elevation multiset fixed; permute ranks across curve identities using splitmix64-fisher-yates-v1 with seed=1729 for exactly B=999 sequential realizations; no discarded/regenerated nulls; p=(1+count(T_null>=T_obs))/(B+1); one-sided alpha=0.01; single endpoint, no multiplicity adjustment.",
+    "preregistration_status": "locked"
+  },
+  "outputs": {
+    "artifacts": [
+      {
+        "path": "null_statistics.csv",
+        "sha256": "8463993ec291635671e5ac8a9195539c3faa2ba8decaf280b02d086e9a38308f",
+        "size_bytes": 23768
+      },
+      {
+        "path": "observed_projection.csv",
+        "sha256": "00d9d7fee63aabab80bb96172d694a39a53843741eef665c5d276ed1c37c08bb",
+        "size_bytes": 2812267
+      },
+      {
+        "path": "summary.json",
+        "sha256": "d390949bc9adb222a094c1cf733545f9800d269aa05db7aa50afadc874438981",
+        "size_bytes": 657
+      }
+    ],
+    "expected_paths": [
+      "summary.json",
+      "observed_projection.csv",
+      "null_statistics.csv"
+    ],
+    "missing_expected_paths": []
+  },
+  "parameter_set_id": "PAR-MAP-001",
+  "parameters": {
+    "definition": "EXP-MAP-A01-prereg-v1: one number-1 representative per ecdata isogeny class; Delta is the exact Weierstrass discriminant from [a1,a2,a3,a4,a6]; N is ecdata conductor; r is ecdata algebraic rank; longitude=360*ln(|Delta|)/ln(1e30); latitude=180*ln(N)/ln(1e9); elevation=200*r; natural logarithms; no clipping, fitting, sample-derived normalization, jitter or regulator term; endpoint uses k=10 Euclidean nearest neighbors in longitude/latitude only and T=-mean absolute elevation difference on unique undirected edges with Cremona-label tie breaking.",
+    "preregistration_status": "locked"
+  },
+  "post_run_integrity": {
+    "failures": [],
+    "git_after": {
+      "branch": "HEAD",
+      "dirty": false,
+      "sha": "1b0f2d7853608bfbab79cf2dc04b002f1f193eb2"
+    },
+    "passed": true
+  },
+  "registry": {
+    "record_sha256": {
+      "dataset": "1b81e05ab90ce822c7dcbda88bdb206f191f6523fac03fea5ecdf55724de44c2",
+      "experiment": "97dac41c4d8a866d0abbcdf5515829328e92ea1fb3cf7b4d03e1d9b9c0b9c868",
+      "null": "5e8cbc1393093df3f552d0e162a1325175057eb89cbad73912ff1a28ef29eac8",
+      "parameter": "e7dfec16360935d3d5b9c6f4b54f7099f8455d2a3617f55e64a344eaaacc4372",
+      "provenance": "051578934af53b190605257f49da77ff83683638b12e9d176c74b7b8cc4a0aa1"
+    },
+    "records": {
+      "dataset": {
+        "Achieved_Evidence_Status": "controlled",
+        "Controlled_Execution_Eligible": "true",
+        "Controlled_Support_Eligible": "false",
+        "Current_Audit_Assessment": "Exact ecdata gitlink, source revision, license, source-file identity, SHA-256, schema, and 38,042 representative selection are locked for EXP-MAP-A01 preregistration. Historical quarantined projection packages remain diagnostic-only and are not inputs. Controlled execution remains disabled until separate activation review.",
+        "Dataset_ID": "DATA-ARITHMETIC",
+        "Name": "Elliptic-curve arithmetic inputs",
+        "Notes": "Exact upstream git source and bytes are locked in preregistrations/EXP-MAP-A01/dataset_manifest.json. Full source has 64,687 rows; EXP-MAP-A01 separately selects curve number 1 per isogeny class (38,042 rows). data/raw/ci_subset.csv is a CI fixture only, not a controlled input.",
+        "Physical_Support_Eligible": "false",
+        "Provenance_Status": "verified",
+        "Qualified_Dataset_ID": "REPO-CSV-v0.2:DATA-ARITHMETIC",
+        "Registry_Namespace": "REPO-CSV-v0.2",
+        "Source_or_Definition": "JohnCremona/ecdata pinned git submodule; canonical controlled source file allcurves/allcurves.00000-09999 at commit 25cec5ecfec8b9f016eb1631ac633194c2bed39f.",
+        "Status": "locked",
+        "Type": "computational"
+      },
+      "experiment": {
+        "Audit_Finding_IDs": "E-LCL-003;E-LCL-004;E-LCL-006;E-LCL-014;E-LCL-016",
+        "Claim_IDs": "CLAIM-ACSC-001",
+        "Controlled_Execution_Eligible": "true",
+        "Controlled_Support_Eligible": "false",
+        "Current_Audit_Assessment": "EXP-MAP-A01-prereg-v1 is scientifically preregistered and namespace-resolved as an explicit non-alias of the broader STAR-PDF mapping-family comparison; source bytes, cohort rule, primary mapping, endpoint, null, seed, and output contract are locked. Controlled execution and all support promotion remain disabled pending a separate activation PR and successful runner preflight.",
+        "Dataset_ID": "DATA-ARITHMETIC",
+        "Experiment_ID": "EXP-MAP-A01",
+        "Historical_RandD": "yes",
+        "Mode": "controlled",
+        "Namespace_Resolution": "repo_protocol_locked_distinct_from_pdf_mapping_family_comparison_no_alias",
+        "Null_ID": "NULL-MAP-001",
+        "Parameter_Set_ID": "PAR-MAP-001",
+        "Physical_Support_Eligible": "false",
+        "Priority": "A",
+        "Qualified_Claim_IDs": "REPO-CSV-v0.2:CLAIM-ACSC-001",
+        "Qualified_Dataset_ID": "REPO-CSV-v0.2:DATA-ARITHMETIC",
+        "Qualified_Experiment_ID": "REPO-CSV-v0.2:EXP-MAP-A01",
+        "Registry_Namespace": "REPO-CSV-v0.2",
+        "Related_Audit_Experiment_IDs": "STAR-PDF-v0.2:EXP-MAP-A01",
+        "Same_String_PDF_Definition": "Mapping-Family Comparison",
+        "Status": "preregistered"
+      },
+      "null": {
+        "Definition": "EXP-MAP-A01-prereg-v1 rank-permutation fixed-base null: hold curve identities, Delta, conductor, longitude/latitude point cloud, k=10 neighbor graph and empirical rank/elevation multiset fixed; permute ranks across curve identities using splitmix64-fisher-yates-v1 with seed=1729 for exactly B=999 sequential realizations; no discarded/regenerated nulls; p=(1+count(T_null>=T_obs))/(B+1); one-sided alpha=0.01; single endpoint, no multiplicity adjustment.",
+        "Definition_Status": "locked",
+        "Historical_RandD": "yes",
+        "Null_ID": "NULL-MAP-001",
+        "Preregistration_Status": "locked",
+        "Scope": "primary mapping"
+      },
+      "parameter": {
+        "Definition": "EXP-MAP-A01-prereg-v1: one number-1 representative per ecdata isogeny class; Delta is the exact Weierstrass discriminant from [a1,a2,a3,a4,a6]; N is ecdata conductor; r is ecdata algebraic rank; longitude=360*ln(|Delta|)/ln(1e30); latitude=180*ln(N)/ln(1e9); elevation=200*r; natural logarithms; no clipping, fitting, sample-derived normalization, jitter or regulator term; endpoint uses k=10 Euclidean nearest neighbors in longitude/latitude only and T=-mean absolute elevation difference on unique undirected edges with Cremona-label tie breaking.",
+        "Definition_Status": "locked",
+        "Historical_RandD": "yes",
+        "Parameter_Set_ID": "PAR-MAP-001",
+        "Preregistration_Status": "locked",
+        "Scope": "primary mapping"
+      },
+      "provenance": {
+        "Acquisition_Date": "2026-10-04",
+        "Acquisition_Method": "Repository git submodule data/ecdata pinned to the exact upstream commit; canonical file allcurves/allcurves.00000-09999",
+        "Dataset_ID": "DATA-ARITHMETIC",
+        "Evidence_Status": "controlled",
+        "Integrity_Check": "SHA256=259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968; git_blob_sha1=baab5801d7f81e1d5c44f5eb5acf4f1e100bc90b; submodule_commit=25cec5ecfec8b9f016eb1631ac633194c2bed39f; source_rows=64687; representative_rows=38042",
+        "License_or_Usage": "Artistic License 2.0 per upstream ecdata README/LICENSE.",
+        "Match_Tolerance": "",
+        "Missingness_Policy": "No imputation or fallback. Malformed/blank source lines, duplicate curve labels, duplicate number-1 class representatives, unexpected row counts, or singular derived curves fail closed.",
+        "Notes": "Controlled provenance verified directly against the pinned JohnCremona/ecdata git submodule. The prior historical derived cremona_3selmer_full_pari.csv is not the canonical input for EXP-MAP-A01. Acquisition_Date records the controlled provenance capture/reverification date, not the upstream publication date.",
+        "Original_Format": "ecdata allcurves whitespace-delimited text: conductor isogeny curve_number [a1,a2,a3,a4,a6] rank torsion_order",
+        "Parent_Dataset_ID": "",
+        "Provenance_ID": "PROV-004",
+        "Provenance_Status": "verified",
+        "Provider": "John Cremona / ecdata",
+        "Selection_Criteria": "Canonical source includes all 64,687 rows in allcurves.00000-09999 (conductors 11-9999). EXP-MAP-A01 analysis cohort retains exactly curve number 1 per isogeny class, yielding 38,042 representatives.",
+        "Source_Name": "Cremona Database ecdata — allcurves.00000-09999",
+        "Source_Type": "catalog",
+        "Source_URL": "https://github.com/JohnCremona/ecdata.git",
+        "Spatial_Match_Method": "",
+        "Transformation_History": "None for canonical source bytes. EXP-MAP-A01 performs an in-memory preregistered selection of curve_number=1 per isogeny class and exact discriminant derivation; no rewritten source artifact is substituted.",
+        "Version_or_Release": "git commit 25cec5ecfec8b9f016eb1631ac633194c2bed39f; release-family DOI 10.5281/zenodo.161341"
+      }
+    },
+    "registry_file_sha256": {
+      "claim_evidence_v0.2.csv": "13467b477ac0e4f2ea76185245ac868b17a201780d66a405999deb432fb126b0",
+      "claim_experiment_crosswalk_v0.2.csv": "f17e8fa910f86be4bd7339dcbf8c5bab6e34fd4483d0e4ff5a3b2110384e41a1",
+      "data_provenance_registry_v0.1.csv": "1a89fe41fe6d0fdbbae0c0ae098db15170b4a282e72a2667a3c0ee5b5fe2c9a9",
+      "dataset_registry_v0.1.csv": "578812040a7baa2d3e15c3b0ba879bba631cbdddf91c05f6aa556904da8a5f9a",
+      "experiment_registry_v0.2.csv": "45fd589cef4cdb73d4a722fcc567b8e395403a162085fde5c6b84abb0547cf74",
+      "null_registry_v0.1.csv": "13f153bf024678494a50d43a2b719e7fd55be812605d0e94ba237ad74c43511b",
+      "parameter_registry_v0.1.csv": "03654f59c761900a9c19278a3b0c00e00852a2c4e5f3d2f6d15cc37cf8194e44"
+    }
+  },
+  "reproduction": null,
+  "run_id": "20261016T041335361140Z-e60fd05117fc",
+  "runner_exit_status": 0,
+  "schema_version": "1.0",
+  "support_promotion": {
+    "automatic": false,
+    "statement": "This manifest records execution/reproduction evidence only. It never changes controlled-support or physical-support eligibility."
+  },
+  "timestamps": {
+    "duration_seconds": 23.29985721700359,
+    "ended_at_utc": "2026-10-16T04:13:58.797116Z",
+    "started_at_utc": "2026-10-16T04:13:35.497261Z"
+  },
+  "transaction_identity": {
+    "claim_ids": [
+      "CLAIM-ACSC-001"
+    ],
+    "dataset_id": "DATA-ARITHMETIC",
+    "environment_sha256": "8d6098a80e07dee3c8814bd9dd0d30d435e3d888e3763f46b3154ac85fd8f93b",
+    "execution_binding_sha256": "e9a1e4464975fd60366a932aeb21514f292028c387aac472a90343553e94d8d2",
+    "experiment_id": "EXP-MAP-A01",
+    "git_sha": "1b0f2d7853608bfbab79cf2dc04b002f1f193eb2",
+    "null_id": "NULL-MAP-001",
+    "parameter_set_id": "PAR-MAP-001"
+  },
+  "transaction_status": "completed"
+}
