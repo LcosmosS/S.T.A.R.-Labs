@@ -1,10 +1,12 @@
+[![A01 primary execution DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23409249.svg)](https://doi.org/10.5281/zenodo.23409249)
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) [![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23292229.svg)](https://doi.org/10.5281/zenodo.23292229)
 
 ![badge](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/badge.jpg)![S.T.A.R. Labs](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starlabs.jpg)
 ## Symbolic–Topological–Arithmetic–Relativity
 ### A Research Center for Testing Models in Mathematical & Theoretical Physics
 
-[![STARMAP](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starmap.png)](https://starmap-star-labs.vercel.app/)
+[![STARMAP EXP-MAP-A01 primary execution: arithmetic rank-permutation null rejected at p=0.001 (0/999 exceedances), alpha=0.01, 38,042 analysis rows; independent replication pending, controlled-support eligibility false, no physical ACSC support established](web_tool/artifacts/imagine_images/starmap.png)](https://starmap-star-labs.vercel.app/)
 `(Click Image for Web Tool Prototype)`
 
 [![Launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LcosmosS/S.T.A.R.-Labs-Binder/main?urlpath=lab/tree/notebooks/00_welcome.ipynb) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs) [![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs?utm_source=readme&utm_medium=badge) 
@@ -86,7 +88,7 @@ for the execution-spec schema, manifest fields, and reproduction workflow.
 - **Shared-dataset compatibility:** [PR #87](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/87); A03 remains separately preregistered and execution-ineligible.
 - **Governance and reproducibility:** [frozen A01 protocol](preregistrations/EXP-MAP-A01/protocol.md), [execution specification](controlled_execution/specs/EXP-MAP-A01.json), and [governing Charter](charter/STAR_Research_Charter_v0-2.pdf)
 
-**Scientific status:** A01's reviewed execution-only activation and source/reproducibility package are archived. A separate original controlled experiment and independently reproduced result are **not established by this release or DOI**. Controlled-support and physical-support eligibility remain false; no BSD proof, cosmological correspondence, or SFR claim follows from the archive.
+**Scientific status:** Primary investigator-A execution is preserved separately in merged PR #104; independent replication is not established. The DOI above archives the earlier preregistration/activation package, not the later run. Controlled-support and physical-support eligibility remain false; no BSD proof, cosmological correspondence, or SFR result is established.
 
 `EXP-MAP-A01` is preregistered as the repository's first controlled-execution
 candidate because it has a narrow deterministic arithmetic surface.
@@ -94,9 +96,68 @@ candidate because it has a narrow deterministic arithmetic surface.
 The protocol is locked to the pinned `data/ecdata` Cremona submodule source,
 one representative per isogeny class, the historical primary projection
 constants, one local rank-coherence endpoint, and one seeded rank-permutation
-null. The preregistration intentionally keeps controlled execution disabled.
+null. The frozen preregistration's execution-disabled wording records its
+pre-activation state. The separately approved activation now permits A01
+execution, subject to runner preflight; execution eligibility does not grant
+controlled or physical support.
 
 See [preregistrations/EXP-MAP-A01/protocol.md](preregistrations/EXP-MAP-A01/protocol.md).
+
+### EXP-MAP-A01 — Primary execution evidence v0.1
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23409249.svg)](https://doi.org/10.5281/zenodo.23409249)
+
+**Primary execution evidence v0.1 DOI:** [10.5281/zenodo.23409249](https://doi.org/10.5281/zenodo.23409249).
+This DOI archives the primary evidence release; it is separate from the earlier
+preregistration/activation DOI above and does not establish independent replication.
+
+The [immutable primary package](release_packages/EXP-MAP-A01-primary-execution-v0.1/README.md)
+preserves investigator-A's run `20261016T041335361140Z-e60fd05117fc`, recorded
+at source commit [`1b0f2d7853608bfbab79cf2dc04b002f1f193eb2`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/1b0f2d7853608bfbab79cf2dc04b002f1f193eb2).
+[PR #104](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/104) merged as
+[`f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b).
+Its [saved summary](release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/summary.json)
+and [verification receipt](release_packages/EXP-MAP-A01-primary-execution-v0.1/verification.json)
+record:
+
+| Primary endpoint / decision | Saved value |
+|---|---:|
+| Observed statistic T | -114.40183841751903 |
+| Corrected one-sided permutation p | 0.001 |
+| Null exceedances (`T_null >= T_obs`) | 0 / 999 |
+| Preregistered alpha | 0.01 |
+| Analysis rows (one curve-number-1 representative per isogeny class) | 38,042 |
+| Canonical source rows | 64,687 |
+
+The endpoint is `T = -mean(abs(elevation_i - elevation_j))`, with
+`elevation = 200 * rank`, on 221,930 unique undirected edges of the fixed k=10
+longitude/latitude neighbor graph. Larger T indicates greater local
+rank/elevation coherence. `NULL-MAP-001` globally permutes the empirical rank
+multiset while holding curve identities, discriminants, conductors, base
+coordinates, and the neighbor graph fixed. The locked correction is
+`p = (1 + 0) / (999 + 1) = 0.001`, the smallest attainable p with 999 draws;
+zero exceedances does not mean p=0 or justify a smaller tail probability.
+
+**Bounded result:** the saved primary result rejects only this specified
+arithmetic rank-permutation null for the single preregistered endpoint at
+alpha=0.01. It does not test a survey-selection-matched cosmological null,
+distinguish ACSC from other arithmetic structure, or establish a cosmological
+correspondence. An accountable independent rerun and separate linked manifest
+remain outstanding. Inspecting saved files and passing package-integrity CI
+verify the archive; they do not independently authenticate the execution history,
+regenerate the permutations, rederive the source cohort or graph, or constitute
+independent replication. Controlled-support and physical-support eligibility
+remain **false**.
+
+The governing identity is `REPO-CSV-v0.2:EXP-MAP-A01`, protocol
+`EXP-MAP-A01-prereg-v1`, with `CLAIM-ACSC-001`, `DATA-ARITHMETIC`,
+`PAR-MAP-001`, and `NULL-MAP-001`. The original archive SHA-256 is
+`1a62bf4320a7465ff7308dffd9840e58ed9c68dad9267757c630ff621b60f9a8`;
+the [manifest](release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/manifest.json)
+and receipt retain source, environment, and output bindings. The earlier DOI
+package and historical/quarantined projections remain separate records.
+STARMAP's 160 illustrative/synthetic browser fixtures are not these analysis
+rows and do not display or execute the primary run.
 
 `data/raw/ci_subset.csv` is only a CI fixture. It is regenerated as a genuine
 one-column Cremona-label CSV from the pinned `allcurves` source and is not a
@@ -222,9 +283,12 @@ class-relative elliptic insufficiency in the Szekeres-Szafron sector.
 
 The registry includes both **locked, preregistered** arithmetic protocols
 (`EXP-MAP-A01` and `EXP-MAP-A03`) and experiments whose designs remain
-planned. Preregistration does not imply authorized execution. The A01
-activation proposal is separately reviewed in [PR #78](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78);
-A03 has no execution authorization.
+planned. Preregistration does not imply authorized execution. A01's separately
+approved [PR #78 activation](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78)
+permits execution subject to preflight, and [PR #104](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/104)
+preserves its primary execution. Independent replication remains outstanding;
+controlled-support and physical-support eligibility remain false. A03 has no
+execution authorization.
 
 The canonical [dataset](registry/dataset_registry_v0.1.csv) and
 [provenance](registry/data_provenance_registry_v0.1.csv) registries are
@@ -574,7 +638,7 @@ claim, a crossmatch, or a web release.
 
 - `DATA-PROVENANCE-ALL`, `DATA-PHYS-CONSTRAINTS` and `DATA-ECC-THEORY` are reserved registry placeholders, not missing datasets. They remain non-executable until each has a concrete schema or mathematical definition, frozen source or construction procedure, SHA-256 evidence and verified provenance.
 
-Main also contains the Aladin admission controls and A01 corrective revert from [#76](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/76) and [#77](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/77), claim/audit corrections from [#79](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/79), and protocol-only A03 registration from [#83](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/83). [#78](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78), [#80](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/80), and [#81](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/81) are open review records; none is reused as dataset or Aladin authorization.
+Main also contains the Aladin admission controls and A01 corrective revert from [#76](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/76) and [#77](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/77), claim/audit corrections from [#79](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/79), and protocol-only A03 registration from [#83](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/83). The merged [#78](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/78) is A01 execution-only activation; the separate [#80](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/80) and [#81](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/81) review records are not reused as dataset or Aladin authorization.
 
 ---
 

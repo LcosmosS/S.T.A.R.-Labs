@@ -43,7 +43,8 @@ function ExperimentPage() {
           exploratory, and provide no controlled or physical support.
         </p>
         <p className="mt-3 text-sm leading-relaxed text-muted">
-          EXP-MAP-A01 separately fixes 38,042 source rows, k = 10, 999 SplitMix64 rank permutations, and α = 0.01.
+          EXP-MAP-A01 separately selects 38,042 analysis rows (one curve-number-1 representative per isogeny class)
+          from 64,687 source rows, with k = 10, 999 SplitMix64 rank permutations, and α = 0.01.
           These browser protocols differ. <Link to="/registry" className="text-steel underline underline-offset-4">Inspect the recorded gates</Link>.
         </p>
       </header>
