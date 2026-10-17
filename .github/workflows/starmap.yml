@@ -63,3 +63,4 @@ jobs:
           fi
           node scripts/research-browser-smoke.mjs http://127.0.0.1:8081
           node scripts/sky-browser-smoke.mjs http://127.0.0.1:8081
+          node scripts/a01-browser-smoke.mjs http://127.0.0.1:8081

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "EXP-MAP-A01",
+  "runId": "20261016T041335361140Z-e60fd05117fc",
+  "protocolVersion": "EXP-MAP-A01-prereg-v1",
+  "nullId": "NULL-MAP-001",
+  "parameterSetId": "PAR-MAP-001",
+  "datasetId": "DATA-ARITHMETIC",
+  "artifactDirectory": "release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc",
+  "preservationCommit": "f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b",
+  "executionCommit": "1b0f2d7853608bfbab79cf2dc04b002f1f193eb2",
+  "sourceCommit": "25cec5ecfec8b9f016eb1631ac633194c2bed39f",
+  "sourceSha256": "259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968",
+  "sourceRows": 64687,
+  "analysisRows": 38042,
+  "nullRealizations": 999,
+  "observedStatistic": -114.40183841751903,
+  "nullExceedances": 0,
+  "pValue": 0.001,
+  "alpha": 0.01,
+  "payload": {
+    "url": "/evidence/a01-primary-v1.json",
+    "sha256": "98d3c4b9d668f2800c0b0665c20a245d9658841cc8140e6edef54a742bf53575",
+    "sizeBytes": 6958863
+  },
+  "sources": [
+    {
+      "name": "observed_projection.csv",
+      "path": "release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/observed_projection.csv",
+      "sha256": "00d9d7fee63aabab80bb96172d694a39a53843741eef665c5d276ed1c37c08bb",
+      "sizeBytes": 2812267,
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/blob/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/observed_projection.csv",
+      "rawUrl": "https://raw.githubusercontent.com/LcosmosS/S.T.A.R.-Labs/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/observed_projection.csv"
+    },
+    {
+      "name": "null_statistics.csv",
+      "path": "release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/null_statistics.csv",
+      "sha256": "8463993ec291635671e5ac8a9195539c3faa2ba8decaf280b02d086e9a38308f",
+      "sizeBytes": 23768,
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/blob/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/null_statistics.csv",
+      "rawUrl": "https://raw.githubusercontent.com/LcosmosS/S.T.A.R.-Labs/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/null_statistics.csv"
+    },
+    {
+      "name": "summary.json",
+      "path": "release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/summary.json",
+      "sha256": "d390949bc9adb222a094c1cf733545f9800d269aa05db7aa50afadc874438981",
+      "sizeBytes": 657,
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/blob/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/summary.json",
+      "rawUrl": "https://raw.githubusercontent.com/LcosmosS/S.T.A.R.-Labs/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/summary.json"
+    },
+    {
+      "name": "manifest.json",
+      "path": "release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/manifest.json",
+      "sha256": "8a85f37958b5a2337fea40b02a69c5a521e5e599a9a13987524e2d40f5608cdb",
+      "sizeBytes": 46163,
+      "url": "https://github.com/LcosmosS/S.T.A.R.-Labs/blob/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/manifest.json",
+      "rawUrl": "https://raw.githubusercontent.com/LcosmosS/S.T.A.R.-Labs/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/manifest.json"
+    }
+  ],
+  "links": {
+    "pullRequest": "https://github.com/LcosmosS/S.T.A.R.-Labs/pull/104",
+    "preservationCommit": "https://github.com/LcosmosS/S.T.A.R.-Labs/commit/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b",
+    "executionCommit": "https://github.com/LcosmosS/S.T.A.R.-Labs/commit/1b0f2d7853608bfbab79cf2dc04b002f1f193eb2",
+    "upstream": "https://github.com/JohnCremona/ecdata/tree/25cec5ecfec8b9f016eb1631ac633194c2bed39f",
+    "protocol": "https://github.com/LcosmosS/S.T.A.R.-Labs/blob/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/preregistrations/EXP-MAP-A01/protocol.md",
+    "package": "https://github.com/LcosmosS/S.T.A.R.-Labs/blob/f6d8bc8e954d5923ab9fa512ffcc6320d4c4018b/release_packages/EXP-MAP-A01-primary-execution-v0.1/README.md"
+  },
+  "coordinates": {
+    "longitude": "360 × ln(|Δ|) / ln(10^30)",
+    "latitude": "180 × ln(N) / ln(10^9)",
+    "elevation": "200 × r",
+    "units": "arithmetic coordinate degrees; elevation in rank × 200",
+    "skyLocations": false
+  },
+  "pinnedParameters": {
+    "neighborK": 10,
+    "rankScale": 200,
+    "seed": 1729,
+    "realizations": 999,
+    "prng": "splitmix64-fisher-yates-v1",
+    "pValueFormula": "(1 + count(T_null >= T_obs)) / (B + 1)",
+    "sidedness": "one-sided",
+    "normalization": "fixed constants 10^30 and 10^9; natural logarithms",
+    "clipping": false
+  },
+  "interpretation": {
+    "scope": "Rejects only the locked arithmetic rank-permutation NULL-MAP-001 at alpha = 0.01.",
+    "limits": [
+      "Arithmetic coordinates are not observed sky locations.",
+      "The release records one primary execution; no independent replication is established.",
+      "This result does not establish ACSC or physical support.",
+      "Viewer filtering and deterministic sampling change rendering only, never the locked statistic, null distribution, p-value, parameters, or registry eligibility."
+    ],
+    "independentReplication": false,
+    "controlledSupportEligible": false,
+    "physicalSupportEligible": false,
+    "eligibilityPromotion": false
+  },
+  "rankCounts": {
+    "0": 16450,
+    "1": 19622,
+    "2": 1969,
+    "3": 1
+  },
+  "ranges": {
+    "longitude": [
+      18.81842068880394,
+      422.1547250129328
+    ],
+    "latitude": [
+      20.827853703164504,
+      79.99913136760385
+    ],
+    "elevation": [
+      0,
+      600
+    ],
+    "nullStatistic": [
+      -118.45626999504348,
+      -117.1396386247916
+    ]
+  }
+}

@@ -53,6 +53,57 @@ selection and integrity records, separately from historical LFS classifications.
 
 The separate /research catalog is generated from `content/research-content.v1.json` and remains distinct from /registry's controlled evidence records. The 2026-10-08 merge resolution retained PRs #59–#60 as the canonical source and page implementation, while adding explicit finite-positive-bin mathematics and unreplicated SFR report context from PR #61. No eligibility or physics-support flags were promoted. Use `npm run research:check` and review the desktop/mobile browser smoke test.
 
+## A01 Evidence Mode
+
+On `/projection`, **Synthetic Demo** preserves the existing 160-fixture browser.
+**A01 Evidence** displays the saved primary arithmetic projection from PR #104,
+separately from the independently governed observed-sky panel. The arithmetic
+longitude and latitude are in degrees; elevation is `200 * rank`. These are
+arithmetic coordinates, not observed sky locations or a survey crossmatch.
+
+`npm run evidence:sync` deterministically generates `public/evidence/a01-primary-v1.json`
+and `src/lib/star/a01-evidence-metadata.json` from exactly `observed_projection.csv`,
+`null_statistics.csv`, `summary.json`, and `manifest.json` inside the preserved run
+directory. The generator validates pinned source SHA-256 hashes, formats, counts,
+coordinate formulas, and saved endpoint consistency before writing derived files.
+It never edits the primary package or executes the experiment. `npm run evidence:check`
+checks the sources and byte-for-byte generated output without writing; production
+builds require this check, including in the filtered Vercel upload tree. The browser
+verifies the payload SHA-256 before showing evidence and displays a failure if it
+cannot verify the data.
+
+Rank filtering and deterministic sampling are rendering controls only. Counts
+identify the filtered and rendered cohorts; label selection can inspect every
+filtered saved row, including rows omitted from the rendering sample. Statistics
+always use the full preserved run: 38,042 representatives, T=-114.40183841751903,
+0/999 `T_null >= T_observed` exceedances, corrected one-sided p=0.001, alpha=0.01.
+The null histogram includes all 999 draws and shows the observed T on a common
+statistic axis; any zoomed null view is labeled separately. Zero exceedances does
+not imply p=0. Rejecting `NULL-MAP-001` supplies no independent replication,
+cosmological correspondence, ACSC physical support, or eligibility promotion.
+
+Validation from `web_tool`:
+
+```sh
+npm ci
+npm test
+npm run registry:check
+npm run research:check
+npm run evidence:check
+npm run sky:check
+npm run build
+npm run typecheck
+npm run preview
+# In another terminal, after the preview is ready:
+npm run evidence:smoke -- http://127.0.0.1:8081
+```
+
+The evidence smoke test covers desktop/mobile rendering, exact saved-coordinate
+and selection checks, rank filtering, deterministic rendering, fixed statistics,
+provenance, mode switching, and fail-closed missing/altered/truncated assets.
+It writes review screenshots under `screenshots/`. CI runs it against the built
+app alongside the existing research and observed-sky smoke tests.
+
 ## Development and verification
 
 Use Node 24 and npm. From `web_tool`, run `npm ci`, `npm test`, `npm run build`, and

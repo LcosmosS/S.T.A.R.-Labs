@@ -156,8 +156,16 @@ The governing identity is `REPO-CSV-v0.2:EXP-MAP-A01`, protocol
 the [manifest](release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/manifest.json)
 and receipt retain source, environment, and output bindings. The earlier DOI
 package and historical/quarantined projections remain separate records.
-STARMAP's 160 illustrative/synthetic browser fixtures are not these analysis
-rows and do not display or execute the primary run.
+STARMAP's `/projection` page offers separate **Synthetic Demo** and **A01 Evidence**
+modes. The 160 illustrative/synthetic fixtures remain the demo. Evidence Mode
+reads a deterministically generated, SHA-256-checked static copy of all 38,042
+saved arithmetic-coordinate rows and all 999 null statistics from the package
+pinned to PR #104's merge commit. Arithmetic longitude/latitude are not observed
+sky locations. Rank filtering and the explicitly labeled rendering sample affect
+only the display; the full-cohort statistic, nulls, and decision stay fixed.
+Curve selection exposes the saved row and source provenance. No experiment runs,
+artifact writes, registry edits, or eligibility promotion occur in the browser.
+See [viewer validation and generation instructions](web_tool/README.md#a01-evidence-mode).
 
 `data/raw/ci_subset.csv` is only a CI fixture. It is regenerated as a genuine
 one-column Cremona-label CSV from the pinned `allcurves` source and is not a
