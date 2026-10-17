@@ -1,0 +1,104 @@
+{
+  "schema": "ECC-B01-investigator-B-supplemental-integrity-v1",
+  "evidence_class": "historical preservation and cross-run file inventory, not scientific validation",
+  "investigator_b_reported": "Shaughn McNamara",
+  "experiment_id": "EXP-ECC-B01",
+  "parent_pr": 103,
+  "timestamp_basis": "generated_at_utc embedded in each submitted result JSON; not independently signed",
+  "source_archives_sha256": {
+    "ECC_B01_Full_Independent_Reproduction(1).zip": "96f10252cef652d643c45a765eb4d918dad80120273f2152099bcd17eed4eec6",
+    "ECC_B01_Full_Independent_Reproduction(2).zip": "fcb408926043c220441b349fc74e4c6883c0ab9481ef6d858e35ee6c22f153df"
+  },
+  "original_2026_10_17_1606UTC": {
+    "path": "original_2026-10-17_1606UTC/",
+    "generated_at_utc": "2026-10-17T16:06:23.441590+00:00",
+    "original_manifest_sha256": "c798295332851df0103840a36835c17fca3d9252dfecbfa629fe8a2eb135d8d8",
+    "original_manifest_entries": 14,
+    "entries_sha256_verified": 14,
+    "recovered_original_results_sha256": "26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b",
+    "recovered_original_results_bytes": 26175,
+    "source_sha256": "7857fca7f3642fdaa896ab10c46e92ffb07588450bcf687a4791a830f3ec1639",
+    "backend": "fallback",
+    "gmsh_gudhi_gate": "BLOCKED_OPTIONAL_DEPENDENCY",
+    "result": {
+      "PASS": 92,
+      "FAIL": 0
+    },
+    "note": "The original manifest remains byte-for-byte unmodified. Its 14 entries can be verified against files in this timestamped directory."
+  },
+  "fallback_2026_10_17_1627UTC": {
+    "path": "fallback_2026-10-17_1627UTC/results/",
+    "generated_at_utc": "2026-10-17T16:27:49.646596+00:00",
+    "backend": "fallback",
+    "result": {
+      "PASS": 92,
+      "FAIL": 0
+    },
+    "files": [
+      {
+        "name": "reproduction_results.json",
+        "bytes": 26231,
+        "sha256": "8091f04522a576e809e76ca21a33e01dfbab98980ffcc86f1fd90d134b63934d"
+      },
+      {
+        "name": "mesh_details.json",
+        "bytes": 13767,
+        "sha256": "951520e359c6ddb4c0a1a6b667c210703e7c64880d115f2cfdd0066fd2b6e2b6"
+      },
+      {
+        "name": "convergence_b.csv",
+        "bytes": 6853,
+        "sha256": "37f88138243eb00749f86629741feef876ede4854c10f7218e4b0917c09a642b"
+      }
+    ]
+  },
+  "gmsh_2026_10_17_1632UTC": {
+    "path": "gmsh_2026-10-17_1632UTC/results_gmsh/",
+    "generated_at_utc": "2026-10-17T16:32:37.788858+00:00",
+    "backend": "gmsh",
+    "versions": {
+      "gmsh": "4.15.2",
+      "gudhi": "3.13.0"
+    },
+    "result": {
+      "PASS": 92,
+      "FAIL": 0
+    },
+    "files": [
+      {
+        "name": "reproduction_results.json",
+        "bytes": 25122,
+        "sha256": "2dceb8397385971fc68a657197c812e056a98cdb3c3b8ecdc84456c0f4b3ac2b"
+      },
+      {
+        "name": "mesh_details.json",
+        "bytes": 12441,
+        "sha256": "bf599d470d4db6bacdb6f56b40c9a0b74841fea93f0909404cb0d989878e4c0b"
+      },
+      {
+        "name": "convergence_b.csv",
+        "bytes": 6283,
+        "sha256": "66b924c60b1e3e6ffb89d24e3fcaf520da5a7f68fc8e0e915d6b74e89c8b292f"
+      },
+      {
+        "name": "pip-freeze.txt",
+        "bytes": 82,
+        "sha256": "5f0f9ea2b4d2fed793f176795e728010e91b7e6c3e601d3ae931247e9f97a928"
+      }
+    ]
+  },
+  "remote_verification": "All 22 preserved files' Git blob SHA-1 hashes were compared against locally calculated Git blob hashes; all matched after correcting CSV CRLF transport normalization.",
+  "excluded_artifacts": [
+    ".venv/",
+    "__pycache__/",
+    "*.pyc",
+    "*Zone.Identifier"
+  ],
+  "limitations": [
+    "The 92 PASS entries are reports for mathematical fixtures, not physical or cosmological evidence.",
+    "Original run was fallback-only; its Gmsh/GUDHI gate remains blocked.",
+    "Gmsh/GUDHI run is a separately reported execution and is not covered by the 16:06 manifest.",
+    "Both investigator submissions are accessible in the same draft PR, so GitHub does not enforce a blinded comparison.",
+    "No experiment activation, registry change, foundation selection, or theorem change."
+  ]
+}
