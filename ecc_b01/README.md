@@ -46,3 +46,9 @@ Review note: the present `C-03` assertion passes an unconditional Boolean `True`
 Known exact fixture targets are public. **Investigator A's source and preliminary WSL results are now visible in this draft PR** at a clearly labeled submission path, so strict blind access is not enforced by GitHub. Investigator B should not inspect Investigator A's source or results until their own implementation and results have been committed; record any prior exposure transparently. A later blinded comparison requires independently frozen output submissions and a documented access protocol.
 
 This PR does not change experiment registries, support flags, claims, or the ECC monograph's dependent theorems. Keep it in draft, unmerged state pending two investigator submissions and documented adjudication.
+
+## Investigator B submission — Shaughn McNamara
+
+The partner's independently described reproduction package is preserved under [`submissions/investigator_b/`](submissions/investigator_b/README.md). It contains three timestamped execution records (16:06 fallback, 16:27 fallback, 16:32 Gmsh/GUDHI), the original manifest, recovered original output, source code, proof notes, numerical results, and [supplemental checksums](submissions/investigator_b/archive_integrity.json). The original 14-entry manifest is unchanged and was matched against the reconstructed 16:06 snapshot.
+
+**Not a blinded repository view:** Both investigators' evidence can now be opened from this draft PR. Log any exposure and freeze comparisons before adjudication. Reported mathematical fixture passes do not imply physical support or a selected ECC foundational theory.
