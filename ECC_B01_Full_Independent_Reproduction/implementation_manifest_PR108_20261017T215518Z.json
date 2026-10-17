@@ -1,0 +1,162 @@
+{
+  "manifest_format": "ECC-B01-independent-kit-sha256-v2",
+  "generated_at_utc": "2026-10-17T21:55:19.152263+00:00",
+  "note": "New package inventory. The historical implementation_manifest.json is preserved. Run outputs under runs/ are separate snapshots.",
+  "python": "3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]",
+  "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "dependencies": {
+    "sympy": {
+      "available": true,
+      "version": "1.14.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.3.3"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.16.2"
+    },
+    "gmsh": {
+      "available": true,
+      "version": "4.15.2"
+    },
+    "gudhi": {
+      "available": true,
+      "version": "3.11.0"
+    }
+  },
+  "freeze_command": "python freeze_manifest.py --out /home/pmqr7/S.T.A.R.-Labs/ECC_B01_Full_Independent_Reproduction/implementation_manifest_PR108_20261017T215518Z.json",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "75130264b9ad94d01a375bb1c8f8b8aa0b5c20bfafc19b2f092898dc6fdaab11",
+      "bytes": 42
+    },
+    {
+      "path": "README.md",
+      "sha256": "322ea5f6adaf7a9f9adeda1dc4e455f0bbf49d0cfe72c8f38b5dff8ff44855c6",
+      "bytes": 6019
+    },
+    {
+      "path": "claim_boundary.md",
+      "sha256": "5980a7749ff7ca95de5bb2d88f0c8bf4f2d5ccc96ce4b39848e49cb1b05ff945",
+      "bytes": 3327
+    },
+    {
+      "path": "freeze_manifest.py",
+      "sha256": "a019a66f865e84c9c29cc3775bdaff8f06455270e79f93e4369dd133577f1605",
+      "bytes": 2782
+    },
+    {
+      "path": "implementation_manifest.json",
+      "sha256": "c798295332851df0103840a36835c17fca3d9252dfecbfa629fe8a2eb135d8d8",
+      "bytes": 3051
+    },
+    {
+      "path": "partner_proof_notes.md",
+      "sha256": "67e4ce090661af07476b5623b6430c5159bee1fc4532e92c6727c4a74e745c27",
+      "bytes": 7522
+    },
+    {
+      "path": "reproduce.py",
+      "sha256": "a8ed8fbd9678fbd42944f4a83a9517e654ff4d8fe56f51f0aa0674cb0451fa21",
+      "bytes": 52310
+    },
+    {
+      "path": "reproduction_protocol.md",
+      "sha256": "4acfa0b9e0b9ce1b8c9118df817085a235d438ed0d870bbd4273b632de70a203",
+      "bytes": 4479
+    },
+    {
+      "path": "requirements-fallback-20261017T1606.txt",
+      "sha256": "b8bd1336be433346353b8f0f274919bd5963f4fc12984f132c7fe333c3c0b66d",
+      "bytes": 198
+    },
+    {
+      "path": "requirements-fallback-20261017T1627.txt",
+      "sha256": "7725801582613d273b29015bf7cf6be4f368ea02bbb7de5c231921fb676c0644",
+      "bytes": 192
+    },
+    {
+      "path": "requirements-gmsh.txt",
+      "sha256": "5b1abf6ca5d8440f13741455c5933ef1b2ec34c6ebc315728d9635e56c9a4d4c",
+      "bytes": 148
+    },
+    {
+      "path": "requirements-optional.txt",
+      "sha256": "32565d5faec1b7e9bfaaaf6d0ca5911987eb899318602fd7b9e09e8620fb4dee",
+      "bytes": 104
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "46d85068911cad6fb7e9c8c2f7e5990e46921d1df9488e647094e425a19f4ec2",
+      "bytes": 116
+    },
+    {
+      "path": "results/convergence_b.csv",
+      "sha256": "37f88138243eb00749f86629741feef876ede4854c10f7218e4b0917c09a642b",
+      "bytes": 6853
+    },
+    {
+      "path": "results/mesh_details.json",
+      "sha256": "951520e359c6ddb4c0a1a6b667c210703e7c64880d115f2cfdd0066fd2b6e2b6",
+      "bytes": 13767
+    },
+    {
+      "path": "results/reproduction_and_unit_tests.log",
+      "sha256": "f3d2b59ec61e348dd52e6e64f7f8805b9587ac2958a5b3cd56ee3c05bc8c2919",
+      "bytes": 1513
+    },
+    {
+      "path": "results/reproduction_results.json",
+      "sha256": "8091f04522a576e809e76ca21a33e01dfbab98980ffcc86f1fd90d134b63934d",
+      "bytes": 26231
+    },
+    {
+      "path": "results/reproduction_results_gmsh_missing.json",
+      "sha256": "26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b",
+      "bytes": 26175
+    },
+    {
+      "path": "results_gmsh/convergence_b.csv",
+      "sha256": "66b924c60b1e3e6ffb89d24e3fcaf520da5a7f68fc8e0e915d6b74e89c8b292f",
+      "bytes": 6283
+    },
+    {
+      "path": "results_gmsh/mesh_details.json",
+      "sha256": "bf599d470d4db6bacdb6f56b40c9a0b74841fea93f0909404cb0d989878e4c0b",
+      "bytes": 12441
+    },
+    {
+      "path": "results_gmsh/pip-freeze.txt",
+      "sha256": "5f0f9ea2b4d2fed793f176795e728010e91b7e6c3e601d3ae931247e9f97a928",
+      "bytes": 82
+    },
+    {
+      "path": "results_gmsh/reproduction_results.json",
+      "sha256": "2dceb8397385971fc68a657197c812e056a98cdb3c3b8ecdc84456c0f4b3ac2b",
+      "bytes": 25122
+    },
+    {
+      "path": "run_all.sh",
+      "sha256": "81f62f84acce84fccbb08538055162c1ab73b4d60afba8829e4139136b7f9984",
+      "bytes": 387
+    },
+    {
+      "path": "run_manifests/fallback-20261017T162749Z.json",
+      "sha256": "001214f1b13015a887c5c2e9e421c4a02e9ef315eff3372635808ac283d6f610",
+      "bytes": 2872
+    },
+    {
+      "path": "run_manifests/gmsh-gudhi-20261017T163237Z.json",
+      "sha256": "0b7fa2af3657dab540d9b35612db9b61d2eb889366ac5c574ec1b0d441627aad",
+      "bytes": 2549
+    },
+    {
+      "path": "tests/test_independent_reproduction.py",
+      "sha256": "1fff52eb9206c99c8c372dd5804fc1febfe7448916850fe65a3278bdd2aaba1a",
+      "bytes": 8905
+    }
+  ]
+}

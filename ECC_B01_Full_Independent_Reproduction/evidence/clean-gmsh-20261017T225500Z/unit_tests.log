@@ -1,0 +1,22 @@
+test_candidate_c_face_integrals_and_nonzero_local_response (test_independent_reproduction.DiscreteTorusTests.test_candidate_c_face_integrals_and_nonzero_local_response) ... ok
+test_periods_and_closed_cochain_at_two_resolutions (test_independent_reproduction.DiscreteTorusTests.test_periods_and_closed_cochain_at_two_resolutions) ... ok
+test_independent_quadrature_controls_all_pass (test_independent_reproduction.ExactMathematicsTests.test_independent_quadrature_controls_all_pass) ... ok
+test_symbolic_controls_all_pass (test_independent_reproduction.ExactMathematicsTests.test_symbolic_controls_all_pass) ... ok
+test_solid_ball_homology_and_incidence (test_independent_reproduction.SimplicialTopologyTests.test_solid_ball_homology_and_incidence) ... ok
+test_sphere_flat_facet_quadrature_converges (test_independent_reproduction.SimplicialTopologyTests.test_sphere_flat_facet_quadrature_converges) ... ok
+test_sphere_homology_incidence_and_flux (test_independent_reproduction.SimplicialTopologyTests.test_sphere_homology_incidence_and_flux) ... ok
+test_torus_homology_and_incidence (test_independent_reproduction.SimplicialTopologyTests.test_torus_homology_and_incidence) ... ok
+test_existing_output_directory_refused_and_untouched (test_independent_reproduction.ToolchainAndRunSafetyTests.test_existing_output_directory_refused_and_untouched) ... ok
+test_explicit_gmsh_blocked_gate_returns_nonzero_and_receipt_hashes_match (test_independent_reproduction.ToolchainAndRunSafetyTests.test_explicit_gmsh_blocked_gate_returns_nonzero_and_receipt_hashes_match) ... ok
+test_fallback_backend_marks_gmsh_not_requested (test_independent_reproduction.ToolchainAndRunSafetyTests.test_fallback_backend_marks_gmsh_not_requested) ... ok
+test_fallback_sphere_refinement_depends_on_h_not_input_order (test_independent_reproduction.ToolchainAndRunSafetyTests.test_fallback_sphere_refinement_depends_on_h_not_input_order) ... ok
+test_gmsh_pass_requires_every_shape (test_independent_reproduction.ToolchainAndRunSafetyTests.test_gmsh_pass_requires_every_shape) ... ok
+test_gudhi_pass_requires_every_homology_record (test_independent_reproduction.ToolchainAndRunSafetyTests.test_gudhi_pass_requires_every_homology_record) ... ok
+test_manifest_writer_refuses_to_overwrite (test_independent_reproduction.ToolchainAndRunSafetyTests.test_manifest_writer_refuses_to_overwrite) ... ok
+test_mesh_resource_budget_rejects_extreme_resolution (test_independent_reproduction.ToolchainAndRunSafetyTests.test_mesh_resource_budget_rejects_extreme_resolution) ... ok
+test_nonfinite_or_nonpositive_mesh_sizes_rejected (test_independent_reproduction.ToolchainAndRunSafetyTests.test_nonfinite_or_nonpositive_mesh_sizes_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.956s
+
+OK
