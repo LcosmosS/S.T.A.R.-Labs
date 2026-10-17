@@ -30,6 +30,36 @@ function ProjectionPage() {
         </p>
       </header>
 
+      <section aria-label="EXP-MAP-A01 primary execution evidence" className="rounded-xl bg-surface p-5 shadow-[var(--shadow-border)]">
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge>Verified primary execution · EXP-MAP-A01</Badge>
+          <Badge tone="warn">Not independently replicated</Badge>
+        </div>
+        <h2 className="mt-3 font-display text-2xl tracking-tight">A01 arithmetic projection evidence</h2>
+        <p className="mt-2 text-sm leading-relaxed text-muted">
+          The preserved primary run analyzed 38,042 elliptic-curve representatives (64,687 source rows).
+          Its locked k=10 arithmetic neighbor statistic was T = -114.40183841751903, with 0 of
+          999 rank-permutation null statistics at least as extreme (one-sided p = 0.001; alpha = 0.01).
+          This rejects only NULL-MAP-001. It does not establish a cosmological correspondence,
+          independent reproduction, or controlled/physical support eligibility.
+        </p>
+        <p className="mt-3 text-sm text-muted">
+          The point cloud below remains the separate illustrative/synthetic fixture display,
+          <strong> not </strong> the 38,042-row A01 projection. Do not interpret it as observed A01 coordinates.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-4 text-sm">
+          <a className="text-primary underline underline-offset-4" href="https://github.com/LcosmosS/S.T.A.R.-Labs/tree/main/release_packages/EXP-MAP-A01-primary-execution-v0.1">
+            Inspect immutable primary package
+          </a>
+          <a className="text-primary underline underline-offset-4" href="https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/observed_projection.csv">
+            Inspect A01 projection CSV
+          </a>
+          <a className="text-primary underline underline-offset-4" href="https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/null_statistics.csv">
+            Inspect null statistics
+          </a>
+        </div>
+      </section>
+
       <RepositoryStatus />
 
       <Formula boxed>Y^A ∼ (log N_E, log |Δ_E|, r_E, log R_E, log |Ω_E|, …)</Formula>
