@@ -1,0 +1,77 @@
+{
+  "receipt_format": "ECC-B01-run-receipt-v1",
+  "run_id": "output",
+  "receipt_created_at_utc": "2026-10-17T22:56:14.669398+00:00",
+  "recorded_run_generated_at_utc": "2026-10-17T22:56:14.667405+00:00",
+  "source_sha256": "a8ed8fbd9678fbd42944f4a83a9517e654ff4d8fe56f51f0aa0674cb0451fa21",
+  "python": "3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]",
+  "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "dependencies": {
+    "sympy": {
+      "available": true,
+      "version": "1.14.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.5.4"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.18.1"
+    },
+    "gmsh": {
+      "available": true,
+      "version": "4.15.2"
+    },
+    "gudhi": {
+      "available": true,
+      "version": "3.13.0"
+    }
+  },
+  "run_parameters": {
+    "mesh_requested": true,
+    "backend_requested": "gmsh",
+    "h": [
+      0.8,
+      0.5,
+      0.3,
+      0.2
+    ],
+    "out_dir": "/home/pmqr7/ECC-B01-evidence/clean-gmsh-20261017T225500Z/output"
+  },
+  "overall_status": "PASS",
+  "counts": {
+    "PASS": 92,
+    "FAIL": 0
+  },
+  "mesh_manifest": {
+    "backend_requested": "gmsh",
+    "backend_used": "gmsh",
+    "gmsh_available": true,
+    "gudhi_available": true,
+    "fallback_note": "",
+    "gmsh_gate_status": "PASS",
+    "gudhi_gate_status": "PASS",
+    "full_requested_toolchain_gate_status": "PASS",
+    "gmsh_execution_records": 12,
+    "gudhi_execution_records": 12
+  },
+  "artifacts": [
+    {
+      "path": "convergence_b.csv",
+      "sha256": "66b924c60b1e3e6ffb89d24e3fcaf520da5a7f68fc8e0e915d6b74e89c8b292f",
+      "bytes": 6283
+    },
+    {
+      "path": "mesh_details.json",
+      "sha256": "0482344fd515d03a301a85d944a474d716fb90ff687e071a3c1a6b62da0d6700",
+      "bytes": 12510
+    },
+    {
+      "path": "reproduction_results.json",
+      "sha256": "dc17209743daddc19c4f8a4fdea5c58ee01f707e49123a253599831cdf2ee229",
+      "bytes": 26353
+    }
+  ],
+  "note": "Artifact hashes exclude this receipt to avoid a self-referential digest."
+}
