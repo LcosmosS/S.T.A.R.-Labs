@@ -3,6 +3,14 @@
 !web_tool
 !web_tool/**
 !README.md
+# Read-only inputs for the generated A01 evidence viewer integrity check.
+!release_packages
+!release_packages/EXP-MAP-A01-primary-execution-v0.1
+!release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc
+!release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/observed_projection.csv
+!release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/null_statistics.csv
+!release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/summary.json
+!release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/manifest.json
 # Exact inputs needed by the admitted sky release build.
 # Vercel must receive HYDRATED VOTable bytes, never a Git LFS pointer.
 !data

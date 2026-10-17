@@ -81,3 +81,7 @@ docs/monographs/acsc/2026-10-11/*.pdf binary
 release_packages/EXP-MAP-A01-primary-execution-v0.1/20261016T041335361140Z-e60fd05117fc/** -filter -text
 release_packages/EXP-MAP-A01-primary-execution-v0.1/*.tar.gz -filter -text
 release_packages/EXP-MAP-A01-primary-execution-v0.1/*.sha256 -filter -text
+
+# Deterministically generated viewer bytes must retain their checked SHA-256.
+web_tool/public/evidence/a01-primary-v1.json text eol=lf
+web_tool/src/lib/star/a01-evidence-metadata.json text eol=lf
