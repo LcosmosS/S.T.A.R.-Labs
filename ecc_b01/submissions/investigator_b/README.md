@@ -1,42 +1,38 @@
-# Investigator B — Shaughn McNamara: preserved mathematical-reproduction evidence
+# Investigator B evidence index — Shaughn McNamara
 
-**Experiment:** `EXP-ECC-B01` (mathematical foundation controls, draft/not activated)  
-**Investigator B (reported):** Shaughn McNamara  
-**PR:** [#103](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/103) — **DRAFT; UNMERGED**  
-**Evidence classification:** submitted independent-implementation report and mathematical fixture executions; **not** approval of physical, arithmetic–cosmological, or new-theorem claims.
+**Review date:** 2026-10-17. **Disposition:** keep PRs [#103](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/103) and [#108](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/108) DRAFT and UNMERGED. This index is packaging/governance documentation, not scientific approval.
 
-## Timestamped execution records
+## Ownership and pinned provenance
 
-| Folder (UTC date/time) | Run environment and backend | Reported result | Preserved components |
-|---|---|---|---|
-| [`original_2026-10-17_1606UTC/`](original_2026-10-17_1606UTC/) | Python 3.13.5 on Linux; Gmsh and GUDHI **unavailable**; independent GF(2) fallback | 92 PASS, 0 FAIL; Gmsh/GUDHI toolchain gate **BLOCKED** | Original 14-file frozen manifest inventory, exact first-run JSON recovered after overwrite, original unmodified manifest, source, tests, protocol, proof notes, requirements, unit-test log, numerical data |
-| [`fallback_2026-10-17_1627UTC/`](fallback_2026-10-17_1627UTC/) | Python 3.12.11 on WSL2; fallback mesh | 92 PASS, 0 FAIL; Gmsh/GUDHI gate **BLOCKED** | Later run's result JSON, mesh details, convergence CSV |
-| [`gmsh_2026-10-17_1632UTC/`](gmsh_2026-10-17_1632UTC/) | Python 3.12.11 on WSL2; Gmsh 4.15.2, GUDHI 3.13.0 | 92 PASS, 0 FAIL **reported** | Separate Gmsh/GUDHI run's result JSON, mesh details, convergence CSV, package-version snapshot |
+Investigator A/control protocol stays in #103. Investigator B's independently submitted package is maintained in #108, submitted by GitHub account `LibertySquared`. No change to #108 is made by this cleanup.
 
-Run timestamps are reported by the submitted JSON files, not independently certified clock times. The first run was generated at 16:06:23 UTC and its original manifest at 16:06:26 UTC; the later runs at 16:27:49 and 16:32:37 UTC, respectively.
+- Reviewed #103 head and complete pre-cleanup archive: [`c33916a35009674ab5abd5e74c717cc0289b1cbd`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/c33916a35009674ab5abd5e74c717cc0289b1cbd); [historical evidence directory](https://github.com/LcosmosS/S.T.A.R.-Labs/tree/c33916a35009674ab5abd5e74c717cc0289b1cbd/ecc_b01/submissions/investigator_b).
+- Reviewed #108 head: [`79296815837985d25f4f1a732d89811814cac4ad`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/79296815837985d25f4f1a732d89811814cac4ad); [package README](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC_B01_Full_Independent_Reproduction/README.md).
+- [Typed independent-authorship/non-consultation attestation](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC-B01%20Independent%20Reproduction%20Attestation.txt) signed Shaughn McNamara, dated 2026-10-17. SHA-256 `84527bae4c8e600eb6bdd7369315921dbdce936bce3619d0e55cf3965c0b083a` (4,637 bytes).
+- [Governance/non-claim gates](../../GOVERNANCE_GATES.md) and [verification receipt](../../verification/2026-10-17_cross_pr_integrity.json).
 
-## Provenance reconciliation: no history rewritten
+This forward commit removes the imported 22 evidence/source files and supplemental archive inventory from #103's current tree, retaining this index. **No history is rewritten.** Thirteen evidence files are byte-identical to their #108 counterparts; nine source/document/dependency/test files have evolved in #108. Those nine historical versions remain at the pinned #103 SHA, not represented as byte-identical copies. The receipt supplies all 22 path/blob mappings and permanent links. The previous [archive index](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/c33916a35009674ab5abd5e74c717cc0289b1cbd/ecc_b01/submissions/investigator_b/README.md) and [supplemental inventory](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/c33916a35009674ab5abd5e74c717cc0289b1cbd/ecc_b01/submissions/investigator_b/archive_integrity.json) remain accessible in history.
 
-The `implementation_manifest.json` in `original_2026-10-17_1606UTC/` is **unaltered**. It lists 14 files and their original sizes/SHA-256 values. The first run's `results/reproduction_results.json` was subsequently overwritten in its source working directory. The separately recovered original output (26,175 bytes; SHA-256 `26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b`) has now been restored to the original timestamped snapshot, making **all 14/14 listed manifest entries match**. The later overwritten fallback result (26,231 bytes; SHA-256 `8091f04522a576e809e76ca21a33e01dfbab98980ffcc86f1fd90d134b63934d`) has its own timestamped directory.
+## Three distinct run records
 
-The Gmsh/GUDHI run postdates the first manifest and was never part of its 14-file inventory. It is preserved as a separate event, **not retroactively inserted into or claimed to be covered by the original manifest**. The supplemental `archive_integrity.json` inventories all three retained records without altering them.
+All times below are reported UTC timestamps embedded in submitted artifacts, not certified execution times. Each JSON reports 92 PASS / 0 FAIL for its specified mathematical checks.
 
-## Submission preservation and exclusions
+| Record | Pinned #108 artifact | Toolchain interpretation |
+| --- | --- | --- |
+| 16:06:23 historical fallback | [recovered JSON](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC_B01_Full_Independent_Reproduction/results/reproduction_results_gmsh_missing.json) | Gmsh/GUDHI unavailable; gate blocked |
+| 16:27:49 later fallback | [result JSON](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC_B01_Full_Independent_Reproduction/results/reproduction_results.json); [retrospective inventory](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC_B01_Full_Independent_Reproduction/run_manifests/fallback-20261017T162749Z.json) | Separate fallback record; gate blocked |
+| 16:32:37 Gmsh/GUDHI | [result JSON](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC_B01_Full_Independent_Reproduction/results_gmsh/reproduction_results.json); [retrospective inventory](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC_B01_Full_Independent_Reproduction/run_manifests/gmsh-gudhi-20261017T163237Z.json) | Reports actual Gmsh/GUDHI gates PASS; not independently reexecuted in this audit |
 
-This archive commits all relevant human-authored source/protocol/test files and all three substantive result sets: **22 preserved files**, plus this explanatory index and the supplemental integrity inventory. The approximately 133 MiB source ZIP is **not** copied into GitHub because it contains an entire virtual environment. The later lightweight ZIP contains the same relevant non-environment files, while the first-run overwritten JSON was recovered separately. We also deliberately exclude `.venv/`, `__pycache__/`, `*.pyc`, and Windows `Zone.Identifier` metadata.
+The [unchanged original manifest](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC_B01_Full_Independent_Reproduction/implementation_manifest.json) names `results/reproduction_results.json` with SHA-256 `26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b` and 26,175 bytes. In #108 these bytes are explicitly remapped to `results/reproduction_results_gmsh_missing.json`. The present `results/reproduction_results.json` instead contains the later fallback record (`8091f04522a576e809e76ca21a33e01dfbab98980ffcc86f1fd90d134b63934d`, 26,231 bytes). Renaming the recovered file does not create a new original manifest entry.
 
-Original ZIP SHA-256: `96f10252cef652d643c45a765eb4d918dad80120273f2152099bcd17eed4eec6`.  
-Lightweight ZIP SHA-256: `fcb408926043c220441b349fc74e4c6883c0ab9481ef6d858e35ee6c22f153df`.
+The original manifest's **14/14 entries** were independently checked against the complete historical #103 snapshot. The new [#108 package inventory](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/79296815837985d25f4f1a732d89811814cac4ad/ECC_B01_Full_Independent_Reproduction/implementation_manifest_PR108_20261017T215518Z.json) passed **26/26 references**, and the two retrospective run inventories passed **10/10 references**, including their repeated historical-context references. SHA-256, byte counts, and Git blob hashes matched. This verifies artifact integrity only.
 
-## Evidence limits and blinded comparison
+Historical run source SHA-256 is `7857fca7f3642fdaa896ab10c46e92ffb07588450bcf687a4791a830f3ec1639`. Revised #108 source SHA-256 is `a8ed8fbd9678fbd42944f4a83a9517e654ff4d8fe56f51f0aa0674cb0451fa21`. Historical 92-check reports and the eight-test log do not certify execution of the revised runner or its expanded tests.
 
-- Investigator B's JSON declares a fresh implementation and proofs. Independent authorship is **reported by the submission**, not independently certified by the existence of a script alone.
-- A fallback-backend rerun of the 92 controls and eight unit tests was separately reported in the audit; the Gmsh/GUDHI backend was reviewed for internal consistency, but was **not independently rerun** by that audit.
-- The tests establish specified mathematical examples: nonzero periods of a closed non-exact 1-form; local bundle curvature and integer flux; and local entropy-coupled exact curvature redistribution with fixed cohomology class. They do **not** establish an entropy-derived topological law or observational correspondence.
-- Both Investigator A's preliminary files and these Investigator B files are in the **same visible draft PR**. GitHub access does not implement cryptographic blinding. Any independent comparison must document prior exposure and freeze submissions before adjudication.
-- The original Investigator A C-03 smoke-test assertion defect and any unexecuted gauge/mesh tests remain open unless corrected in a separately versioned test.
-- This evidence does **not** activate `EXP-ECC-B01`, amend `PAR-ECC-001`/`NULL-ECC-001`, modify support flags, choose a foundation, or revise the ECC monograph's dependent theorems.
+## Receipts, independence and non-claims
 
-## Recommendation
+#108 now contains unique-output/collision safeguards, a non-overwriting manifest writer, and code to emit `run_receipt.json` binding new outputs to source, environment, parameters and gates. The reviewed file list contains retrospective manifests but no committed fresh `run_receipt.json`. No new revised-source run is asserted here. Require the actual new run receipt and its hashed outputs before execution signoff.
 
-Retain PR #103 as **DRAFT/UNMERGED**. Record subsequent corrections or new executions in new timestamped directories, rather than overwriting these frozen submissions. The next gate is independently reviewed paired comparison, discrepancy and coverage analysis, and a predeclared foundation-selection/non-selection rule.
+The attestation declares independent authorship and non-consultation with A's results during initial development/reproduction. It is a typed declaration, not an external signature or proof of blindness. Both investigators' materials have been publicly accessible; removing current-tree duplicates cannot undo prior exposure or create retrospective blinding. Preserve exposure disclosures and freeze comparison criteria before adjudication.
+
+Mathematical fixture passes do not establish physical/cosmological support, arithmetic correspondence, entropy-generated topology, a new ECC theorem, or foundation selection. This cleanup does not activate EXP-ECC-B01 or authorize registry, PAR/NULL, eligibility/support-flag, foundational-definition or dependent-theorem changes. See the [open gate checklist](../../GOVERNANCE_GATES.md).

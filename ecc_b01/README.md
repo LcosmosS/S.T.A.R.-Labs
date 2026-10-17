@@ -49,6 +49,6 @@ This PR does not change experiment registries, support flags, claims, or the ECC
 
 ## Investigator B submission — Shaughn McNamara
 
-The partner's independently described reproduction package is preserved under [`submissions/investigator_b/`](submissions/investigator_b/README.md). It contains three timestamped execution records (16:06 fallback, 16:27 fallback, 16:32 Gmsh/GUDHI), the original manifest, recovered original output, source code, proof notes, numerical results, and [supplemental checksums](submissions/investigator_b/archive_integrity.json). The original 14-entry manifest is unchanged and was matched against the reconstructed 16:06 snapshot.
+Investigator B's independently submitted package is maintained in [draft PR #108](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/108). The [evidence index](submissions/investigator_b/README.md) links the reviewed #108 head, three distinct run records, attestation, manifests, and the complete historical #103 archive by immutable SHA. Imported evidence copies were removed from the current tree by a forward commit; historical bytes remain accessible without rewriting history.
 
-**Not a blinded repository view:** Both investigators' evidence can now be opened from this draft PR. Log any exposure and freeze comparisons before adjudication. Reported mathematical fixture passes do not imply physical support or a selected ECC foundational theory.
+See the [integrity receipt](verification/2026-10-17_cross_pr_integrity.json) and [non-claim/governance checklist](GOVERNANCE_GATES.md). Both PRs remain DRAFT/UNMERGED. Public historical access remains a blinding limitation; reported mathematical fixture passes do not imply physical support or a selected foundation.
