@@ -1,0 +1,56 @@
+# ECC-B01 Independent Reproduction
+## Attestation of Independent Authorship and Blind Comparison
+
+**Experiment ID:** `EXP-ECC-B01-INDEPENDENT-REPRODUCTION`  
+**Investigator:** Shaughn McNamara - Investigator B  
+**Date:** [2026-10-17]  
+**Version:** 1.0
+
+### 1. Independent authorship
+
+I attest that the ECC-B01 independent reproduction implementation, its mathematical verification procedures, and its associated analysis were independently developed for the purpose of evaluating the stated mathematical claims and candidate constructions.
+
+The implementation was not produced by copying or adapting Investigator A’s result files. The analytical checks, computational tests, and reproduction procedures were developed as an independent implementation, with the aim of testing the stated claims on their mathematical merits.
+
+This attestation concerns the authorship and development process of the independent reproduction. It does not imply that every mathematical idea, definition, or candidate construction originated independently of all prior work, nor does it claim that the implementation is free from all shared assumptions or methodological similarities.
+
+### 2. Blind comparison and non-consultation
+
+I attest that I did **not consult Investigator A’s results** when developing the independent implementation or when conducting the initial reproduction and evaluation reported here.
+
+In particular, Investigator A’s result files were not used as observed outputs, numerical targets, or reference answers to tune the implementation or determine whether its tests passed.
+
+The reproduction was designed to evaluate the stated candidate constructions using its own analytical derivations, computational procedures, and test outputs. Any subsequent comparison with Investigator A’s results is to be treated as a separate comparison activity, distinct from the initial reproduction.
+
+This statement is limited to my own conduct and the materials I consulted. It is not a claim that all information about the broader research programme was unknown to me, or that the work was conducted without any prior knowledge of the problem statement, candidate definitions, or hypotheses being tested.
+
+### 3. Computational evidence and scope
+
+The reproduction record reports 92 passing checks and zero failing checks in the recorded fallback run, with all eight unit tests passing. A subsequent run using the optional Gmsh and GUDHI dependencies also reported 92 passing checks and zero failing checks.
+
+These computational outcomes support the claim that the implemented checks passed under the recorded conditions. They do not, by themselves, establish the truth of broader physical, cosmological, arithmetic, or theoretical conclusions beyond the explicitly tested mathematical scope.
+
+The fallback run and the Gmsh/GUDHI run are distinct computational records and should be preserved and identified separately.
+
+### 4. Provenance and preservation
+
+The recovered fallback result file, `results/reproduction_results_gmsh_missing.json`, has been verified to match the SHA-256 digest and byte count recorded in the existing implementation manifest:
+
+- **SHA-256:** `26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b`
+- **File size:** 26,175 bytes
+
+This verifies the recovered file’s byte-for-byte agreement with the manifest entry. It does not, on its own, prove the time or circumstances under which the file was created, nor does it independently establish the blindness or authorship statements above.
+
+The separately recorded fallback and Gmsh/GUDHI outputs should remain preserved as distinct artifacts. Any refreshed manifest or later comparison should be dated and documented without silently replacing the historical record.
+
+### 5. Limitations and declaration
+
+I acknowledge that passing computational tests are evidence about the specified implementation and test suite, not a substitute for mathematical proof or independent review. In particular, any untested gauge-transformation cases, discretization limitations, or claims requiring additional physical or arithmetic inputs must remain explicitly identified as limitations.
+
+I make this attestation in good faith and understand that it should be evaluated alongside the implementation, test suite, run logs, source files, and provenance records.
+
+**Signed:** Shaughn McNamara
+
+**Investigator designation:** Investigator B
+
+**Date:** 2026-10-17

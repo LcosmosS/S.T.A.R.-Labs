@@ -1,0 +1,102 @@
+{
+  "manifest_format": "ECC-B01-independent-kit-sha256-v1",
+  "generated_at_utc": "2026-10-17T16:06:26.721070+00:00",
+  "note": "The manifest deliberately excludes itself; refresh after edits or reruns.",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "dependencies": {
+    "sympy": {
+      "available": true,
+      "version": "1.14.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.3.5"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.17.0"
+    },
+    "gmsh": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'gmsh'"
+    },
+    "gudhi": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'gudhi'"
+    }
+  },
+  "freeze_command": "python freeze_manifest.py",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "9de2ffe97bab3e2152e2a0790aead026e9cd4c9e158472de070a847fe1a1f8fb",
+      "bytes": 4957
+    },
+    {
+      "path": "claim_boundary.md",
+      "sha256": "7062703594faa38708ad51459be901e53cc6cf86d33a9273d436fa8b69db5b72",
+      "bytes": 2716
+    },
+    {
+      "path": "freeze_manifest.py",
+      "sha256": "d8b68dd21be118d926d944364a88429d5813c350943d028cb72af9e0655d2273",
+      "bytes": 1512
+    },
+    {
+      "path": "partner_proof_notes.md",
+      "sha256": "67e4ce090661af07476b5623b6430c5159bee1fc4532e92c6727c4a74e745c27",
+      "bytes": 7522
+    },
+    {
+      "path": "reproduce.py",
+      "sha256": "7857fca7f3642fdaa896ab10c46e92ffb07588450bcf687a4791a830f3ec1639",
+      "bytes": 44630
+    },
+    {
+      "path": "reproduction_protocol.md",
+      "sha256": "71a0a6d2126d664844abbc753bb4a7288d1651a2b42fe9ed82ed50f13d79d814",
+      "bytes": 3342
+    },
+    {
+      "path": "requirements-optional.txt",
+      "sha256": "9682a1f998b5e00ec32e3d0e4f71a00f788aaac24ea8b3adddcb154845b2d664",
+      "bytes": 95
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "578c572aacf6b49e6b1e9f4102583bf96682d769252e662783748db3d7d34d6e",
+      "bytes": 36
+    },
+    {
+      "path": "results/convergence_b.csv",
+      "sha256": "37f88138243eb00749f86629741feef876ede4854c10f7218e4b0917c09a642b",
+      "bytes": 6853
+    },
+    {
+      "path": "results/mesh_details.json",
+      "sha256": "951520e359c6ddb4c0a1a6b667c210703e7c64880d115f2cfdd0066fd2b6e2b6",
+      "bytes": 13767
+    },
+    {
+      "path": "results/reproduction_and_unit_tests.log",
+      "sha256": "f3d2b59ec61e348dd52e6e64f7f8805b9587ac2958a5b3cd56ee3c05bc8c2919",
+      "bytes": 1513
+    },
+    {
+      "path": "results/reproduction_results.json",
+      "sha256": "26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b",
+      "bytes": 26175
+    },
+    {
+      "path": "run_all.sh",
+      "sha256": "a6e42f91925b8be52121cdd56aaaeb2d4504e96a8e65b66361a94a1cec035635",
+      "bytes": 235
+    },
+    {
+      "path": "tests/test_independent_reproduction.py",
+      "sha256": "46e94a1427ade567dee4d976b000072e1387664001bccd84807686d094f85395",
+      "bytes": 3593
+    }
+  ]
+}
