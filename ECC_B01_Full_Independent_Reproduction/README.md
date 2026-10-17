@@ -31,8 +31,9 @@ python -m pip install -r requirements.txt
 Run the complete available pipeline and unit tests:
 
 ```bash
-python reproduce.py --mesh --backend auto --h 0.8 0.5 0.3 0.2 --out-dir results
-python -m unittest discover -s tests -v
+./run_all.sh
+# Or choose a unique, not-yet-existing output directory:
+python reproduce.py --mesh --backend auto --h 0.8 0.5 0.3 0.2 --out-dir runs/manual-$(date -u +%Y%m%dT%H%M%SZ)
 ```
 
 Or on macOS/Linux, run `./run_all.sh`.
@@ -42,30 +43,30 @@ Or on macOS/Linux, run `./run_all.sh`.
 The original requested toolchain includes Gmsh geometry meshing and GUDHI simplicial homology. They are optional runtime dependencies here because the current execution environment had neither installed and could not reach the package index to install them. Install them on a machine where package installation is available:
 
 ```bash
-python -m pip install -r requirements-optional.txt
+python -m pip install -r requirements-gmsh.txt
 ```
 
 Then run:
 
 ```bash
-python reproduce.py --mesh --backend gmsh --h 0.8 0.5 0.3 0.2 --out-dir results
+python reproduce.py --mesh --backend gmsh --h 0.8 0.5 0.3 0.2 --out-dir runs/gmsh-$(date -u +%Y%m%dT%H%M%SZ)
 ```
 
-The runner uses Gmsh if it imports successfully. If Gmsh is missing or fails to initialize, the output records that the **Gmsh-specific gate is blocked** and runs independently generated fallback meshes instead. It does not silently report the fallback as a Gmsh run. If GUDHI is unavailable, the pipeline calculates Betti numbers with an independently written GF(2) boundary-rank routine; output identifies which method was used.
+An explicit `--backend gmsh` request is fail-closed: an unavailable Gmsh/GUDHI gate produces a nonzero exit code even if fallback fixture checks pass. `--backend auto` may use fallback meshes but records the blocked gate; `--backend fallback` reports Gmsh as `NOT_REQUESTED`. Existing output directories are refused, and every completed run includes `run_receipt.json` with output hashes, source hash, environment, parameters, and gate status. It does not silently report the fallback as a Gmsh run. If GUDHI is unavailable, the pipeline calculates Betti numbers with an independently written GF(2) boundary-rank routine; output identifies which method was used.
 
 The fallback run is useful and executable: it checks periodic torus cochains, face-wise curvature integrals, sphere-flux convergence, chain-complex identities, and the homology of triangulated sphere, torus, and solid-ball models. It is not a substitute for an actual Gmsh/GUDHI execution when the review protocol specifically requires those libraries.
 
 ## Current execution status
 
-The packaged results were generated with `--mesh --backend auto --h 0.8 0.5 0.3 0.2` and the separate unit-test suite. The recorded run reports **92 passed checks and 0 failed checks** across analytic, quadrature, discrete-mesh, and topology checks. The overall state is `PASS_CORE_AND_AVAILABLE_MESH; GMSH_GUDHI_GATE_BLOCKED`, because Gmsh/GUDHI were not available in this environment. The eight supplemental unit tests also pass. See `results/reproduction_results.json` and `results/mesh_details.json` for the details; do not paraphrase this as a complete Gmsh/GUDHI run.
+Three separate records are preserved: (1) the 16:06:23Z historical fallback bytes at `results/reproduction_results_gmsh_missing.json`, which match the hash and size of the original manifest entry named `results/reproduction_results.json`; (2) the distinct 16:27:49Z fallback report at `results/reproduction_results.json`, with 92/92 checks but Gmsh/GUDHI blocked; and (3) the 16:32:37Z Gmsh/GUDHI report under `results_gmsh/`, with 92/92 checks and both toolchain gates PASS. The third run does not retroactively satisfy the historical manifest. Dated manifests created by this patch are retrospective artifact inventories, not contemporaneous run-time receipts. The eight supplemental unit tests also pass. See `results/reproduction_results.json` and `results/mesh_details.json` for the details; do not paraphrase this as a complete Gmsh/GUDHI run.
 
 After making changes or re-running, refresh hashes:
 
 ```bash
-python freeze_manifest.py
+python freeze_manifest.py --out implementation_manifest_review_snapshot.json
 ```
 
-`implementation_manifest.json` excludes its own hash to avoid a self-referential digest. For a two-investigator blinded protocol, each person should freeze and share their own manifest only after agreeing in advance on formulas, orientations, tolerances, and pass/fail criteria.
+`implementation_manifest.json` is an immutable historical snapshot. The freezer refuses to replace an existing manifest; provide a new timestamped path for each snapshot. `requirements-fallback-20261017T1606.txt` and `requirements-fallback-20261017T1627.txt` record the known core package versions for those fallback runs; the 16:06 and 16:27 reports did not record mpmath, so those are not complete transitive locks. `requirements-gmsh.txt` is the exact toolchain list from `results_gmsh/pip-freeze.txt`. For a two-investigator blinded protocol, each person should freeze and share their own manifest only after agreeing in advance on formulas, orientations, tolerances, and pass/fail criteria.
 
 ## Conventions
 

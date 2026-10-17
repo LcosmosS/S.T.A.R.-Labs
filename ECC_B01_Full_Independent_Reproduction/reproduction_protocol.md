@@ -35,4 +35,14 @@ The mesh-size inputs `0.8, 0.5, 0.3, 0.2` are passed to Gmsh as target sizes whe
 
 ## Required artifact retention
 
-Keep `reproduction_results.json`, `convergence_b.csv`, `mesh_details.json`, console output, Python/dependency versions, and `implementation_manifest.json`. When changing the script, regenerate outputs and refresh the manifest; do not overwrite a failed run without retaining its report. A review package should include discrepancies and blocked gates as well as passes.
+Keep `reproduction_results.json`, `convergence_b.csv`, `mesh_details.json`, console output, Python/dependency versions, and `implementation_manifest.json`. When changing the script, use a new output directory; the runner refuses existing targets and writes a run receipt. Do not overwrite a failed run without retaining its report. The manifest freezer refuses to replace an existing manifest; create a new timestamped snapshot instead. A review package should include discrepancies and blocked gates as well as passes.
+
+
+## PR #108 provenance/runtime safeguards
+
+- Gate PASS is derived from every expected per-shape mesh and homology record; import availability alone is insufficient. An explicit `--backend gmsh` request exits nonzero if the requested Gmsh/GUDHI gate is not PASS.
+- `--backend fallback` labels Gmsh `NOT_REQUESTED`.
+- Mesh targets must be finite and positive, and fallback resolution estimates are checked against documented resource budgets before allocation. Sphere refinement follows requested `h`, not input ordering.
+- Each new completed run writes `run_receipt.json` with the source hash, environment, requested parameters, overall result, toolchain gate status, and hashes/byte counts of all other run outputs.
+- The original `implementation_manifest.json` and historical result JSONs are preserved unchanged; retrospective run manifests are labelled as retrospective.
+- Smooth gauge-transformation consistency on overlapping connection patches remains an unmet mathematical gate.

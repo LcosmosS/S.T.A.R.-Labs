@@ -1,0 +1,86 @@
+{
+  "manifest_format": "ECC-B01-run-manifest-sha256-v1",
+  "manifest_created_at_utc": "2026-10-17T21:40:53.479007+00:00",
+  "recorded_run_generated_at_utc": "2026-10-17T16:32:37.788858+00:00",
+  "run_type": "Gmsh/GUDHI toolchain run",
+  "source_sha256": "7857fca7f3642fdaa896ab10c46e92ffb07588450bcf687a4791a830f3ec1639",
+  "python": "3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]",
+  "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "dependencies": {
+    "sympy": {
+      "available": true,
+      "version": "1.14.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.5.4"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.18.1"
+    },
+    "gmsh": {
+      "available": true,
+      "version": "4.15.2"
+    },
+    "gudhi": {
+      "available": true,
+      "version": "3.13.0"
+    }
+  },
+  "run_parameters": {
+    "mesh_requested": true,
+    "backend_requested": "gmsh",
+    "backend_used": "gmsh",
+    "h": [
+      0.8,
+      0.5,
+      0.3,
+      0.2
+    ]
+  },
+  "overall_status": "PASS",
+  "counts": {
+    "PASS": 92,
+    "FAIL": 0
+  },
+  "mesh_manifest": {
+    "backend_requested": "gmsh",
+    "backend_used": "gmsh",
+    "gmsh_available": true,
+    "gudhi_available": true,
+    "gmsh_gate_status": "PASS",
+    "gudhi_gate_status": "PASS",
+    "full_requested_toolchain_gate_status": "PASS",
+    "fallback_note": ""
+  },
+  "artifacts": [
+    {
+      "path": "results_gmsh/reproduction_results.json",
+      "sha256": "2dceb8397385971fc68a657197c812e056a98cdb3c3b8ecdc84456c0f4b3ac2b",
+      "bytes": 25122
+    },
+    {
+      "path": "results_gmsh/mesh_details.json",
+      "sha256": "bf599d470d4db6bacdb6f56b40c9a0b74841fea93f0909404cb0d989878e4c0b",
+      "bytes": 12441
+    },
+    {
+      "path": "results_gmsh/convergence_b.csv",
+      "sha256": "66b924c60b1e3e6ffb89d24e3fcaf520da5a7f68fc8e0e915d6b74e89c8b292f",
+      "bytes": 6283
+    },
+    {
+      "path": "results_gmsh/pip-freeze.txt",
+      "sha256": "5f0f9ea2b4d2fed793f176795e728010e91b7e6c3e601d3ae931247e9f97a928",
+      "bytes": 82
+    }
+  ],
+  "historical_context_artifact": {
+    "path": "results/reproduction_results_gmsh_missing.json",
+    "sha256": "26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b",
+    "bytes": 26175,
+    "note": "Recovered 16:06:23Z fallback report; historical context only, not output of the later runs."
+  },
+  "note": "Retrospective artifact manifest assembled from preserved files after the run; not a contemporaneous run-time receipt."
+}

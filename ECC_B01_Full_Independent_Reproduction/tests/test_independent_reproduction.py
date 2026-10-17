@@ -50,6 +50,95 @@ class DiscreteTorusTests(unittest.TestCase):
         self.assertLess(rms_errors[-1], 0.002)
 
 
+class ToolchainAndRunSafetyTests(unittest.TestCase):
+    def _rows(self, gmsh=True, gudhi=True):
+        mesh_source = "Gmsh linear simplex mesh" if gmsh else "fallback test mesh"
+        homology = "GUDHI SimplexTree over GF(2)" if gudhi else "independent Python GF(2) boundary-rank fallback"
+        shapes = {name: {"mesh_source": mesh_source, "homology_method": homology} for name in ("sphere", "torus", "ball")}
+        return [{"target_h": 0.8, "shapes": shapes}]
+
+    def test_fallback_backend_marks_gmsh_not_requested(self):
+        got = kit.derive_mesh_gate_statuses("fallback", self._rows(gmsh=False, gudhi=False), [0.8], False, False)
+        self.assertEqual(got["gmsh_gate_status"], "NOT_REQUESTED")
+        self.assertEqual(got["gudhi_gate_status"], "BLOCKED_OPTIONAL_DEPENDENCY")
+        self.assertEqual(got["full_requested_toolchain_gate_status"], "NOT_REQUESTED")
+
+    def test_gmsh_pass_requires_every_shape(self):
+        rows = self._rows(gmsh=True, gudhi=True)
+        self.assertEqual(kit.derive_mesh_gate_statuses("gmsh", rows, [0.8], True, True)["gmsh_gate_status"], "PASS")
+        rows[0]["shapes"]["ball"]["mesh_source"] = "fallback test mesh"
+        self.assertEqual(kit.derive_mesh_gate_statuses("gmsh", rows, [0.8], True, True)["gmsh_gate_status"], "BLOCKED_RUNTIME_FAILURE")
+
+    def test_gudhi_pass_requires_every_homology_record(self):
+        rows = self._rows(gmsh=True, gudhi=True)
+        self.assertEqual(kit.derive_mesh_gate_statuses("gmsh", rows, [0.8], True, True)["gudhi_gate_status"], "PASS")
+        rows[0]["shapes"]["torus"]["homology_method"] = "independent Python GF(2) boundary-rank fallback"
+        self.assertEqual(kit.derive_mesh_gate_statuses("gmsh", rows, [0.8], True, True)["gudhi_gate_status"], "BLOCKED_RUNTIME_FAILURE")
+
+    def test_nonfinite_or_nonpositive_mesh_sizes_rejected(self):
+        for value in (float("nan"), float("inf"), float("-inf"), 0.0, -0.1):
+            with self.subTest(value=value):
+                with self.assertRaises(ValueError):
+                    kit.validate_mesh_resources([value])
+
+    def test_mesh_resource_budget_rejects_extreme_resolution(self):
+        with self.assertRaisesRegex(ValueError, "budget"):
+            kit.validate_mesh_resources([0.01])
+
+    def test_fallback_sphere_refinement_depends_on_h_not_input_order(self):
+        self.assertIn("level 1", kit.fallback_mesh("sphere", 99, 0.8)[2])
+        self.assertIn("level 4", kit.fallback_mesh("sphere", 0, 0.2)[2])
+
+    def test_existing_output_directory_refused_and_untouched(self):
+        import tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp) / "existing"
+            target.mkdir()
+            sentinel = target / "prior-run.txt"
+            sentinel.write_text("preserve", encoding="utf-8")
+            with self.assertRaises(FileExistsError):
+                kit.prepare_output_directory(str(target))
+            self.assertEqual(sentinel.read_text(encoding="utf-8"), "preserve")
+
+    def test_explicit_gmsh_blocked_gate_returns_nonzero_and_receipt_hashes_match(self):
+        import contextlib
+        import io
+        import json
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp) / "run-output"
+            blocked = {"backend_requested": "gmsh", "backend_used": "fallback",
+                       "gmsh_gate_status": "BLOCKED_OPTIONAL_DEPENDENCY",
+                       "gudhi_gate_status": "BLOCKED_OPTIONAL_DEPENDENCY",
+                       "full_requested_toolchain_gate_status": "BLOCKED_OPTIONAL_DEPENDENCY"}
+            argv = ["reproduce.py", "--mesh", "--backend", "gmsh", "--h", "0.8", "--out-dir", str(target)]
+            with patch.object(sys, "argv", argv), patch.object(kit, "run_mesh_suite", return_value=([], [], blocked)), contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(kit.main(), 2)
+            report = json.loads((target / "reproduction_results.json").read_text(encoding="utf-8"))
+            receipt = json.loads((target / "run_receipt.json").read_text(encoding="utf-8"))
+            self.assertEqual(report["mesh_manifest"]["full_requested_toolchain_gate_status"], "BLOCKED_OPTIONAL_DEPENDENCY")
+            for artifact in receipt["artifacts"]:
+                path = target / artifact["path"]
+                self.assertEqual(path.stat().st_size, artifact["bytes"])
+                import hashlib
+                self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), artifact["sha256"])
+
+    def test_manifest_writer_refuses_to_overwrite(self):
+        import subprocess
+        import tempfile
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as temp:
+            target = Path(temp) / "prior-manifest.json"
+            target.write_text("preserve", encoding="utf-8")
+            process = subprocess.run([sys.executable, str(kit.ROOT / "freeze_manifest.py"), "--out", str(target)], text=True, capture_output=True)
+            self.assertNotEqual(process.returncode, 0)
+            self.assertIn("refusing to overwrite existing manifest", process.stderr)
+            self.assertEqual(target.read_text(encoding="utf-8"), "preserve")
+
+
 class SimplicialTopologyTests(unittest.TestCase):
     def assert_chain_identities(self, top):
         report = kit.incidence_report(top)

@@ -1,9 +1,9 @@
 # ECC-B01 Independent Reproduction
 ## Attestation of Independent Authorship and Blind Comparison
 
-**Experiment ID:** `EXP-ECC-B01-INDEPENDENT-REPRODUCTION`  
-**Investigator:** Shaughn McNamara - Investigator B  
-**Date:** [2026-10-17]  
+**Experiment ID:** `EXP-ECC-B01-INDEPENDENT-REPRODUCTION`
+**Investigator:** Shaughn McNamara - Investigator B
+**Date:** [2026-10-17]
 **Version:** 1.0
 
 ### 1. Independent authorship
@@ -34,7 +34,7 @@ The fallback run and the Gmsh/GUDHI run are distinct computational records and s
 
 ### 4. Provenance and preservation
 
-The recovered fallback result file, `results/reproduction_results_gmsh_missing.json`, has been verified to match the SHA-256 digest and byte count recorded in the existing implementation manifest:
+The original `implementation_manifest.json` contains an entry for `results/reproduction_results.json`, recorded at 16:06:26 UTC with the SHA-256 digest and byte count below. The recovered historical bytes are preserved under the distinct filename `results/reproduction_results_gmsh_missing.json`; this is a restored historical mapping to that manifest entry, not a claim that the renamed file had its own entry:
 
 - **SHA-256:** `26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b`
 - **File size:** 26,175 bytes

@@ -18,6 +18,7 @@ import importlib.metadata
 import itertools
 import json
 import math
+import os
 import platform
 import sys
 import traceback
@@ -32,6 +33,23 @@ from scipy.integrate import quad
 
 TAU = 2.0 * math.pi
 ROOT = Path(__file__).resolve().parent
+MAX_FALLBACK_BALL_TETRAHEDRA = 5_000
+MAX_STRUCTURED_TORUS_FACES = 50_000
+MAX_FALLBACK_SPHERE_FACES = 80_000
+MAX_FALLBACK_SPHERE_LEVEL = 5
+TOLERANCES: dict[str, Any] = {
+    "symbolic_identities": "exact SymPy simplification to the expected expression",
+    "scipy_quadrature_absolute_error": 1e-10,
+    "candidate_a_period_absolute_error": 1e-9,
+    "candidate_a_triangle_circulation_max_absolute_error": 1e-9,
+    "candidate_c_exact_face_flux_absolute_error": 2e-9,
+    "candidate_c_centroid_total_flux_absolute_error": 2e-8,
+    "candidate_c_local_response_absolute_error": 1e-12,
+    "sphere_solid_angle_normalized_flux_absolute_error": 1e-8,
+    "sphere_planar_quadrature": "size-aware per-resolution bound and strictly decreasing errors over requested refinements",
+    "chain_complex_identities": "exact zero boundary-squared matrices",
+    "betti_vectors": "exact equality with the specified expected vector",
+}
 
 
 def sha256_file(path: Path) -> str:
@@ -616,11 +634,79 @@ def max_edge_length(points: dict[int,tuple[float,float,float]] | np.ndarray,
     return max((float(np.linalg.norm(p(i)-p(j))) for i,j in edges), default=0.0)
 
 
+def sphere_refinement_level(h: float) -> int:
+    # Choose a monotone fallback icosphere refinement from requested target size.
+    return max(1, int(math.ceil(0.8 / h)))
+
+
+def validate_mesh_resources(h_levels: list[float]) -> None:
+    # Reject unsafe/non-finite target sizes before mesh allocation.
+    for h in h_levels:
+        if not math.isfinite(h) or h <= 0:
+            raise ValueError("all --h values must be finite and positive")
+        # Bound each fallback family before ceil/exponent calculations can explode.
+        if h < TAU / math.floor(math.sqrt(MAX_STRUCTURED_TORUS_FACES / 2)):
+            raise ValueError(
+                f"h={h:g} exceeds structured-torus budget ({MAX_STRUCTURED_TORUS_FACES:,} faces)"
+            )
+        n_torus = max(4, int(math.ceil(TAU / h)))
+        torus_faces = 2 * n_torus * n_torus
+        if torus_faces > MAX_STRUCTURED_TORUS_FACES:
+            raise ValueError(
+                f"h={h:g} requires {torus_faces:,} structured-torus faces; "
+                f"budget is {MAX_STRUCTURED_TORUS_FACES:,}"
+            )
+        if h < 1.0 / math.floor((MAX_FALLBACK_BALL_TETRAHEDRA / 6) ** (1 / 3)):
+            raise ValueError(
+                f"h={h:g} exceeds fallback ball budget ({MAX_FALLBACK_BALL_TETRAHEDRA:,} tetrahedra)"
+            )
+        n_ball = max(1, int(math.ceil(1.0 / h)))
+        ball_tetrahedra = 6 * n_ball**3
+        if ball_tetrahedra > MAX_FALLBACK_BALL_TETRAHEDRA:
+            raise ValueError(
+                f"h={h:g} requires {ball_tetrahedra:,} fallback tetrahedra; "
+                f"budget is {MAX_FALLBACK_BALL_TETRAHEDRA:,}"
+            )
+        if h < 0.8 / MAX_FALLBACK_SPHERE_LEVEL:
+            raise ValueError(
+                f"h={h:g} exceeds fallback sphere refinement budget "
+                f"(maximum level {MAX_FALLBACK_SPHERE_LEVEL})"
+            )
+        level = sphere_refinement_level(h)
+        sphere_faces = 20 * (4 ** level)
+        if sphere_faces > MAX_FALLBACK_SPHERE_FACES:
+            raise ValueError(
+                f"h={h:g} requires {sphere_faces:,} fallback sphere faces; "
+                f"budget is {MAX_FALLBACK_SPHERE_FACES:,}"
+            )
+
+
+def prepare_output_directory(requested: str | None) -> Path:
+    # Never reuse a path containing earlier evidence.
+    if requested:
+        target = Path(requested).expanduser().resolve()
+    else:
+        stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+        target = ROOT / "runs" / f"run-{stamp}-{os.getpid()}"
+    if target.exists():
+        raise FileExistsError(f"refusing to overwrite existing output directory: {target}")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.mkdir(exist_ok=False)
+    return target
+
+
+class _GmshRuntimeFailure(RuntimeError):
+    # Signal that an imported Gmsh runtime failed during mesh generation.
+    pass
+
+
 def fallback_mesh(shape: str, index: int, h: float) -> tuple[dict[int,tuple[float,float,float]] | np.ndarray, list[tuple[int,...]], str]:
+    del index  # Refinement is driven by the requested h, not list ordering.
+    validate_mesh_resources([h])
     if shape == "sphere":
-        # Progressively refined radial icospheres; level 1 is already sub-target for h=0.8.
-        verts, faces=refine_sphere(index+1)
-        return verts, faces, f"fallback radial icosphere refinement level {index+1}"
+        level = sphere_refinement_level(h)
+        verts, faces=refine_sphere(level)
+        return verts, faces, f"fallback radial icosphere refinement level {level}"
     if shape == "torus":
         n=max(4, int(math.ceil(TAU/h)))
         coords, faces=structured_torus(n)
@@ -634,6 +720,11 @@ def fallback_mesh(shape: str, index: int, h: float) -> tuple[dict[int,tuple[floa
         return np.asarray(embedded), faces, f"fallback periodic structured torus n={n}"
     if shape == "ball":
         n=max(1,int(math.ceil(1.0/h)))
+        if 6 * n**3 > MAX_FALLBACK_BALL_TETRAHEDRA:
+            raise ValueError(
+                f"fallback ball mesh needs {6*n**3:,} tetrahedra; "
+                f"budget is {MAX_FALLBACK_BALL_TETRAHEDRA:,}"
+            )
         pts,tets=cube_tetra_mesh(n)
         return pts,tets,f"fallback Freudenthal tetrahedralization of a cube, n={n} cells per axis"
     raise ValueError(shape)
@@ -646,6 +737,52 @@ def normalize_mesh_points(points: dict[int,tuple[float,float,float]] | np.ndarra
         return arr,{tag:i for i,tag in enumerate(ids)}
     arr=np.asarray(points,dtype=float)
     return arr,{i:i for i in range(len(arr))}
+
+
+def derive_mesh_gate_statuses(
+    backend_request: str,
+    mesh_rows: list[dict[str, Any]],
+    h_levels: list[float],
+    gmsh_available: bool,
+    gudhi_available: bool,
+) -> dict[str, str]:
+    # Derive toolchain gate status from every expected per-shape result.
+    records = [record for row in mesh_rows for record in row.get("shapes", {}).values()]
+    complete = len(records) == 3 * len(h_levels) and all("error" not in record for record in records)
+    gmsh_all = complete and all(str(record.get("mesh_source", "")).startswith("Gmsh") for record in records)
+    gudhi_all = complete and all(str(record.get("homology_method", "")).startswith("GUDHI") for record in records)
+
+    if backend_request == "fallback":
+        gmsh_status = "NOT_REQUESTED"
+    elif not gmsh_available:
+        gmsh_status = "BLOCKED_OPTIONAL_DEPENDENCY"
+    elif gmsh_all:
+        gmsh_status = "PASS"
+    else:
+        gmsh_status = "BLOCKED_RUNTIME_FAILURE"
+
+    if not gudhi_available:
+        gudhi_status = "BLOCKED_OPTIONAL_DEPENDENCY"
+    elif gudhi_all:
+        gudhi_status = "PASS"
+    else:
+        gudhi_status = "BLOCKED_RUNTIME_FAILURE"
+
+    if backend_request == "fallback":
+        full_status = "NOT_REQUESTED"
+    elif gmsh_status == "PASS" and gudhi_status == "PASS":
+        full_status = "PASS"
+    elif "BLOCKED_OPTIONAL_DEPENDENCY" in (gmsh_status, gudhi_status):
+        full_status = "BLOCKED_OPTIONAL_DEPENDENCY"
+    else:
+        full_status = "BLOCKED_RUNTIME_FAILURE"
+    return {
+        "gmsh_gate_status": gmsh_status,
+        "gudhi_gate_status": gudhi_status,
+        "full_requested_toolchain_gate_status": full_status,
+        "gmsh_execution_records": sum(str(r.get("mesh_source", "")).startswith("Gmsh") for r in records),
+        "gudhi_execution_records": sum(str(r.get("homology_method", "")).startswith("GUDHI") for r in records),
+    }
 
 
 def run_mesh_suite(rec: Recorder, h_levels: list[float], backend_request: str) -> tuple[list[dict[str,Any]],list[dict[str,Any]],dict[str,Any]]:
@@ -665,13 +802,9 @@ def run_mesh_suite(rec: Recorder, h_levels: list[float], backend_request: str) -
     mesh_rows: list[dict[str,Any]]=[]
     convergence_rows: list[dict[str,Any]]=[]
     gudhi_available=dependency_state()["gudhi"]["available"]
-    toolchain_ok = backend_actual == "gmsh" and gudhi_available
     mesh_manifest={"backend_requested":backend_request,"backend_used":backend_actual,
                    "gmsh_available":gmsh_available,"gudhi_available":gudhi_available,
-                   "gmsh_gate_status":"PASS" if backend_actual=="gmsh" else "BLOCKED_OPTIONAL_DEPENDENCY",
-                   "gudhi_gate_status":"PASS" if gudhi_available else "BLOCKED_OPTIONAL_DEPENDENCY",
-                   "full_requested_toolchain_gate_status":"PASS" if toolchain_ok else "BLOCKED_OPTIONAL_DEPENDENCY",
-                   "fallback_note":gmsh_failure or ("Gmsh unavailable; used independent fallback simplicial meshes. This does not count as a Gmsh execution." if backend_actual!="gmsh" else "")}
+                   "fallback_note":gmsh_failure or ("Explicit fallback backend selected; Gmsh was not requested." if backend_request=="fallback" else ("Gmsh unavailable; used independent fallback simplicial meshes. This does not count as a Gmsh execution." if backend_actual!="gmsh" else ""))}
 
     sphere_planar_errors=[]
     for idx,h in enumerate(h_levels):
@@ -806,19 +939,28 @@ def run_mesh_suite(rec: Recorder, h_levels: list[float], backend_request: str) -
             else:
                 row["convergence_rate"]=None
 
+    mesh_manifest.update(derive_mesh_gate_statuses(backend_request, mesh_rows, h_levels, gmsh_available, gudhi_available))
     return mesh_rows, convergence_rows, mesh_manifest
 
 
 def main() -> int:
     parser=argparse.ArgumentParser(description="Independent ECC-B01 mathematical reproduction kit")
-    parser.add_argument("--out-dir",default="results",help="Directory for JSON/CSV outputs (default: results)")
+    parser.add_argument("--out-dir",default=None,help="New output directory; default is unique under runs/")
     parser.add_argument("--mesh",action="store_true",help="Run topology, incidence, mesh-flux, torus-period, and face-curvature checks")
     parser.add_argument("--h",nargs="+",type=float,default=[0.8,0.5,0.3,0.2],help="Target mesh sizes")
     parser.add_argument("--backend",choices=["auto","gmsh","fallback"],default="auto",help="Use Gmsh if available or deterministic independent meshes")
     args=parser.parse_args()
-    if any(h<=0 for h in args.h):
-        parser.error("all --h values must be positive")
-    outdir=Path(args.out_dir).resolve(); outdir.mkdir(parents=True,exist_ok=True)
+    if any(not math.isfinite(h) or h<=0 for h in args.h):
+        parser.error("all --h values must be finite and positive")
+    if args.mesh:
+        try:
+            validate_mesh_resources(args.h)
+        except ValueError as exc:
+            parser.error(str(exc))
+    try:
+        outdir = prepare_output_directory(args.out_dir)
+    except (FileExistsError, OSError) as exc:
+        parser.error(str(exc))
 
     rec=Recorder()
     symbolic_controls(rec)
@@ -837,7 +979,7 @@ def main() -> int:
     pass_count=sum(r["status"]=="PASS" for r in rec.results)
     if fail_count:
         status="FAIL"
-    elif args.mesh and mesh_manifest.get("full_requested_toolchain_gate_status") != "PASS":
+    elif args.mesh and (str(mesh_manifest.get("gmsh_gate_status", "")).startswith("BLOCKED") or str(mesh_manifest.get("gudhi_gate_status", "")).startswith("BLOCKED")):
         status="PASS_CORE_AND_AVAILABLE_MESH; GMSH_GUDHI_GATE_BLOCKED"
     else:
         status="PASS"
@@ -853,6 +995,9 @@ def main() -> int:
         "mesh_requested":bool(args.mesh),
         "mesh_manifest":mesh_manifest,
         "source_sha256":sha256_file(Path(__file__).resolve()),
+        "run_parameters":{"mesh_requested":bool(args.mesh),"backend_requested":args.backend,"h":list(args.h) if args.mesh else [],"out_dir":str(outdir)},
+        "tolerances":TOLERANCES,
+        "resource_limits":{"fallback_ball_tetrahedra_max":MAX_FALLBACK_BALL_TETRAHEDRA,"structured_torus_faces_max":MAX_STRUCTURED_TORUS_FACES,"fallback_sphere_faces_max":MAX_FALLBACK_SPHERE_FACES,"fallback_sphere_level_max":MAX_FALLBACK_SPHERE_LEVEL},
         "results":rec.results,
         "counts":{"PASS":pass_count,"FAIL":fail_count},
         "limitations":[
@@ -864,8 +1009,24 @@ def main() -> int:
         ],
     }
     (outdir/"reproduction_results.json").write_text(json.dumps(payload,indent=2,allow_nan=False)+"\n",encoding="utf-8")
+    artifact_rows=[]
+    for artifact in sorted(outdir.iterdir()):
+        if artifact.is_file():
+            artifact_rows.append({"path":artifact.name,"sha256":sha256_file(artifact),"bytes":artifact.stat().st_size})
+    receipt={"receipt_format":"ECC-B01-run-receipt-v1","run_id":outdir.name,
+             "receipt_created_at_utc":datetime.now(timezone.utc).isoformat(),
+             "recorded_run_generated_at_utc":payload["generated_at_utc"],"source_sha256":payload["source_sha256"],
+             "python":payload["python"],"platform":payload["platform"],"dependencies":payload["dependencies"],
+             "run_parameters":payload["run_parameters"],"overall_status":payload["overall_status"],
+             "counts":payload["counts"],"mesh_manifest":payload["mesh_manifest"],"artifacts":artifact_rows,
+             "note":"Artifact hashes exclude this receipt to avoid a self-referential digest."}
+    (outdir/"run_receipt.json").write_text(json.dumps(receipt,indent=2,allow_nan=False)+"\n",encoding="utf-8")
     print(json.dumps({"overall_status":status,"counts":payload["counts"],"out_dir":str(outdir),"mesh_backend":mesh_manifest.get("backend_used")},indent=2))
-    return 1 if fail_count else 0
+    if fail_count:
+        return 1
+    if args.mesh and args.backend=="gmsh" and mesh_manifest.get("full_requested_toolchain_gate_status")!="PASS":
+        return 2
+    return 0
 
 
 if __name__=="__main__":

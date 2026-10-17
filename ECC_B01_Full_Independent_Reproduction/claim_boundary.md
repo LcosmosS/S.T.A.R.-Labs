@@ -26,4 +26,9 @@
 
 ## Exact interpretation of the current packaged run
 
-The recorded run passes its analytic, quadrature, fallback mesh, incidence, topology, and convergence checks. Its overall state remains `PASS_CORE_AND_AVAILABLE_MESH; GMSH_GUDHI_GATE_BLOCKED` because Gmsh/GUDHI could not be installed in the current environment. A downstream review requiring those exact tools should rerun with the optional dependencies and retain the new outputs and hashes.
+Three separate records must not be conflated: (1) the historical 16:06:23Z fallback report restored as `results/reproduction_results_gmsh_missing.json`, which matches the hash and byte count of the original `results/reproduction_results.json` manifest entry; (2) the 16:27:49Z fallback run in `results/reproduction_results.json`, which reports 92/92 fixture checks with Gmsh/GUDHI blocked; and (3) the 16:32:37Z Gmsh/GUDHI run in `results_gmsh/reproduction_results.json`, which reports 92/92 fixture checks and both toolchain gates PASS. The later run does not retroactively satisfy the historical manifest. Future run receipts bind newly generated outputs to source and environment.
+
+
+## Unmet mathematical gate
+
+- Smooth gauge-transformation consistency on overlapping connection patches has not yet been independently exercised. Matching curvature and normalized flux do not substitute for verifying transition consistency under a smooth gauge transformation. This remains an unmet mathematical gate.

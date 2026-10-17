@@ -1,0 +1,86 @@
+{
+  "manifest_format": "ECC-B01-run-manifest-sha256-v1",
+  "manifest_created_at_utc": "2026-10-17T21:40:53.479007+00:00",
+  "recorded_run_generated_at_utc": "2026-10-17T16:27:49.646596+00:00",
+  "run_type": "later fallback run; Gmsh/GUDHI gates blocked",
+  "source_sha256": "7857fca7f3642fdaa896ab10c46e92ffb07588450bcf687a4791a830f3ec1639",
+  "python": "3.12.11 | packaged by conda-forge | (main, Jun  4 2025, 14:45:31) [GCC 13.3.0]",
+  "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "dependencies": {
+    "sympy": {
+      "available": true,
+      "version": "1.14.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.5.4"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.18.1"
+    },
+    "gmsh": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'gmsh'"
+    },
+    "gudhi": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'gudhi'"
+    }
+  },
+  "run_parameters": {
+    "mesh_requested": true,
+    "backend_requested": "auto",
+    "backend_used": "fallback",
+    "h": [
+      0.8,
+      0.5,
+      0.3,
+      0.2
+    ]
+  },
+  "overall_status": "PASS_CORE_AND_AVAILABLE_MESH; GMSH_GUDHI_GATE_BLOCKED",
+  "counts": {
+    "PASS": 92,
+    "FAIL": 0
+  },
+  "mesh_manifest": {
+    "backend_requested": "auto",
+    "backend_used": "fallback",
+    "gmsh_available": false,
+    "gudhi_available": false,
+    "gmsh_gate_status": "BLOCKED_OPTIONAL_DEPENDENCY",
+    "gudhi_gate_status": "BLOCKED_OPTIONAL_DEPENDENCY",
+    "full_requested_toolchain_gate_status": "BLOCKED_OPTIONAL_DEPENDENCY",
+    "fallback_note": "Gmsh unavailable; used independent fallback simplicial meshes. This does not count as a Gmsh execution."
+  },
+  "artifacts": [
+    {
+      "path": "results/reproduction_results.json",
+      "sha256": "8091f04522a576e809e76ca21a33e01dfbab98980ffcc86f1fd90d134b63934d",
+      "bytes": 26231
+    },
+    {
+      "path": "results/mesh_details.json",
+      "sha256": "951520e359c6ddb4c0a1a6b667c210703e7c64880d115f2cfdd0066fd2b6e2b6",
+      "bytes": 13767
+    },
+    {
+      "path": "results/convergence_b.csv",
+      "sha256": "37f88138243eb00749f86629741feef876ede4854c10f7218e4b0917c09a642b",
+      "bytes": 6853
+    },
+    {
+      "path": "results/reproduction_and_unit_tests.log",
+      "sha256": "f3d2b59ec61e348dd52e6e64f7f8805b9587ac2958a5b3cd56ee3c05bc8c2919",
+      "bytes": 1513
+    }
+  ],
+  "historical_context_artifact": {
+    "path": "results/reproduction_results_gmsh_missing.json",
+    "sha256": "26aab3dfd025620f1e59e02b0f29e40483794993e24300f85c15411217fc103b",
+    "bytes": 26175,
+    "note": "Recovered 16:06:23Z fallback report; historical context only, not output of the later runs."
+  },
+  "note": "Retrospective artifact manifest assembled from preserved files after the run; not a contemporaneous run-time receipt."
+}
