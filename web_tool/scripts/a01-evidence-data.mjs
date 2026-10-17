@@ -37,8 +37,21 @@ export const EXPECTED_SUMMARY = Object.freeze({
 });
 export const PAYLOAD_PATH = "web_tool/public/evidence/a01-primary-v1.json";
 export const METADATA_PATH = "web_tool/src/lib/star/a01-evidence-metadata.json";
+/**
+ * Compute the byte identity used to compare preserved sources and derived files.
+ * A matching digest establishes byte equality, not scientific validity.
+ * @param {import("node:crypto").BinaryLike} bytes - Bytes or text accepted by Node's hash API.
+ * @returns {string} The lowercase hexadecimal SHA-256 digest.
+ */
 export const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 
+/**
+ * Split the locked, unquoted CSV dialect without normalizing preserved text.
+ * @param {string} text - CSV with LF endings and a final newline.
+ * @param {string} header - Exact header, including column order.
+ * @returns {string[][]} Data cells in source order, excluding the header.
+ * @throws {Error} If line endings, the header, column counts, or cell syntax differ.
+ */
 function csvRows(text, header) {
   if (typeof text !== "string" || text.includes("\r") || !text.endsWith("\n")) throw new Error("Expected exact LF-terminated CSV");
   const rows = text.slice(0, -1).split("\n");
@@ -49,18 +62,52 @@ function csvRows(text, header) {
     return cells;
   });
 }
+/**
+ * Parse a non-negative decimal integer without accepting signs, padding, or rounding.
+ * @param {string} text - Canonical decimal representation to validate.
+ * @param {string} name - Field name included in a validation error.
+ * @param {number} [minimum=0] - Inclusive lower bound for the parsed safe integer.
+ * @returns {number} The validated integer.
+ * @throws {Error} If the syntax, safe-integer constraint, or lower bound fails.
+ */
 function integer(text, name, minimum = 0) {
   if (!/^(0|[1-9]\d*)$/.test(text) || !Number.isSafeInteger(Number(text)) || Number(text) < minimum) throw new Error(`Invalid ${name}`);
   return Number(text);
 }
+/**
+ * Parse a finite decimal or scientific-notation field using the locked numeric syntax.
+ * @param {string} text - Numeric source cell, with no surrounding whitespace.
+ * @param {string} name - Field name included in a validation error.
+ * @returns {number} The finite numeric value.
+ * @throws {Error} If the syntax is unsupported or conversion is not finite.
+ */
 function finite(text, name) {
   if (!/^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(text) || !Number.isFinite(Number(text))) throw new Error(`Invalid ${name}`);
   return Number(text);
 }
+/**
+ * Check a parsed coordinate against its saved projection formula's absolute tolerance.
+ * Callers validate numeric finiteness before invoking this comparison.
+ * @param {number} actual - Finite coordinate read from the preserved CSV.
+ * @param {number} expected - Coordinate recomputed from the locked formula.
+ * @param {string} name - Coordinate name included in a mismatch error.
+ * @returns {void}
+ * @throws {Error} If the absolute difference exceeds 1e-10.
+ */
 function near(actual, expected, name) {
   if (Math.abs(actual - expected) > 1e-10) throw new Error(`Projection formula mismatch: ${name}`);
 }
 
+/**
+ * Decode saved arithmetic projection points and verify their identities and formulas.
+ * Discriminants remain exact decimal strings; coordinates are neither clipped nor
+ * interpreted as observed sky locations. This parser does not execute the endpoint.
+ * @param {string} text - Exact observed-projection CSV in the locked column order.
+ * @param {number} [expectedRows=EXPECTED_SUMMARY.analysis_rows] - Required data-row count.
+ * @returns {Array<{label: string, isogeny_class: string, conductor: number, delta: string, rank: number, torsion_order: number, longitude: number, latitude: number, elevation: number}>} Validated points in source order.
+ * @throws {Error} If the CSV, row count, curve-number-1 selection, uniqueness,
+ * conductor bounds, numeric fields, or saved projection formulas fail validation.
+ */
 export function parseProjectionCSV(text, expectedRows = EXPECTED_SUMMARY.analysis_rows) {
   const rows = csvRows(text, "label,isogeny_class,conductor,delta,rank,torsion_order,longitude,latitude,elevation");
   if (rows.length !== expectedRows) throw new Error(`Expected ${expectedRows} observed rows`);
@@ -90,6 +137,14 @@ export function parseProjectionCSV(text, expectedRows = EXPECTED_SUMMARY.analysi
   });
 }
 
+/**
+ * Decode the preserved null distribution without generating any new realizations.
+ * @param {string} text - Exact two-column null-statistics CSV.
+ * @param {number} [expectedRows=EXPECTED_SUMMARY.null_realizations] - Required realization count.
+ * @returns {number[]} Finite, non-positive statistics in realization order.
+ * @throws {Error} If the schema or count differs, identifiers are not contiguous
+ * from 1, or a statistic is malformed, non-finite, or positive.
+ */
 export function parseNullCSV(text, expectedRows = EXPECTED_SUMMARY.null_realizations) {
   const rows = csvRows(text, "realization,statistic");
   if (rows.length !== expectedRows) throw new Error(`Expected ${expectedRows} null realizations`);
@@ -101,6 +156,17 @@ export function parseNullCSV(text, expectedRows = EXPECTED_SUMMARY.null_realizat
   });
 }
 
+/**
+ * Check the pinned summary and its one-sided exceedance arithmetic against saved data.
+ * This verifies internal consistency of the primary run; it supplies no replication
+ * or physical-support evidence and does not recompute the observed endpoint.
+ * @param {typeof EXPECTED_SUMMARY} summary - Parsed preserved summary to match exactly.
+ * @param {number[]} nullStatistics - Already validated saved null statistics.
+ * @param {ReturnType<typeof parseProjectionCSV>} points - Already validated projection rows.
+ * @returns {void}
+ * @throws {import("node:assert").AssertionError} If any summary field differs from the pin.
+ * @throws {Error} If counts, exceedances, the p-value formula, or the decision disagree.
+ */
 export function validateSummary(summary, nullStatistics, points) {
   assert.deepEqual(summary, EXPECTED_SUMMARY, "Summary differs from the pinned primary execution");
   if (points.length !== summary.analysis_rows || nullStatistics.length !== summary.null_realizations) throw new Error("Summary row count mismatch");
@@ -109,6 +175,16 @@ export function validateSummary(summary, nullStatistics, points) {
   if (!(summary.p_value <= summary.alpha) || summary.decision !== "reject_null") throw new Error("Summary decision mismatch");
 }
 
+/**
+ * Validate the saved primary-run identity, output inventory, locked parameters,
+ * integrity status, and false support-eligibility flags. The manifest's claims
+ * are checked as preserved records, not as an independent rerun or authentication.
+ * @param {object} manifest - Parsed preserved manifest with its execution and registry records.
+ * @returns {void}
+ * @throws {Error} If required fields, completion status, source/output pins,
+ * parameter values, or support-promotion restrictions differ from the locked run.
+ * @throws {import("node:assert").AssertionError} If exact inventory or configuration checks fail.
+ */
 export function validateManifest(manifest) {
   if (manifest.schema_version !== "1.0" || manifest.experiment_id !== "EXP-MAP-A01" || manifest.run_id !== RUN_ID || manifest.null_id !== "NULL-MAP-001" || manifest.parameter_set_id !== "PAR-MAP-001") throw new Error("Manifest identity mismatch");
   if (manifest.mode !== "primary" || manifest.transaction_status !== "completed" || manifest.exit_status !== 0 || manifest.runner_exit_status !== 0 || manifest.git?.dirty !== false || manifest.post_run_integrity?.passed !== true || manifest.post_run_integrity?.failures?.length !== 0) throw new Error("Manifest does not record a clean completed primary run");
@@ -129,6 +205,17 @@ export function validateManifest(manifest) {
   }
 }
 
+/**
+ * Derive deterministic viewer payload and provenance metadata from four pinned files.
+ * Every input is checked by byte length and digest before parsing. Subsequent checks
+ * validate saved formulas and inference arithmetic without executing EXP-MAP-A01,
+ * modifying registry eligibility, or writing files. Interpretation limits are retained.
+ * @param {Record<string, Buffer>} sources - Canonical source filenames mapped to their bytes.
+ * @returns {{payload: object, metadata: object, payloadBytes: Buffer, metadataBytes: Buffer}}
+ * In-memory viewer records and their deterministic newline-terminated JSON encodings.
+ * @throws {Error} If any input is missing, not a Buffer, or differs from its byte pin,
+ * or if JSON parsing or any downstream projection, summary, or manifest validation fails.
+ */
 export function generateArtifactsFromSources(sources) {
   for (const [name, expected] of Object.entries(SOURCE_FILES)) {
     const bytes = sources[name];
@@ -145,6 +232,11 @@ export function generateArtifactsFromSources(sources) {
   const repository = "https://github.com/LcosmosS/S.T.A.R.-Labs";
   const preserved = `${repository}/blob/${PRESERVATION_COMMIT}`;
   const rankCounts = Object.fromEntries([...new Set(points.map((point) => point.rank))].sort((a, b) => a - b).map((rank) => [rank, points.filter((point) => point.rank === rank).length]));
+  /**
+   * Summarize extrema for already validated, nonempty numeric data in viewer metadata.
+   * @param {number[]} values - Finite values from the pinned point or null arrays.
+   * @returns {[number, number]} Inclusive minimum and maximum without clipping.
+   */
   const range = (values) => [Math.min(...values), Math.max(...values)];
   const metadata = {
     schemaVersion: 1, experimentId: "EXP-MAP-A01", runId: RUN_ID,
@@ -165,10 +257,29 @@ export function generateArtifactsFromSources(sources) {
   return { payload, metadata, payloadBytes, metadataBytes: Buffer.from(`${JSON.stringify(metadata, null, 2)}\n`) };
 }
 
+/**
+ * Read the four canonical preservation files as bytes without executing or changing them.
+ * Digest and schema verification occur later in generateArtifactsFromSources.
+ * @param {string} root - Repository root containing the pinned artifact directory.
+ * @returns {Promise<Record<string, Buffer>>} Canonical filenames mapped to file contents.
+ * @throws {Error} Rejects if a required preservation file cannot be read.
+ */
 export async function readPinnedSources(root) {
   return Object.fromEntries(await Promise.all(Object.keys(SOURCE_FILES).map(async (name) => [name, await readFile(resolve(root, ARTIFACT_DIRECTORY, name))])));
 }
 
+/**
+ * Derive viewer artifacts and either compare existing output bytes or write them.
+ * Check mode performs no repairs or writes; sync mode creates parent directories
+ * and overwrites only the two derived viewer files. Both modes validate the pinned
+ * primary sources first and leave the preserved run and registry records untouched.
+ * @param {object} [options={}] - Repository location and comparison mode.
+ * @param {string} [options.root] - Repository root; defaults to this script's repository.
+ * @param {boolean} [options.check=false] - Require exact existing output bytes without writing.
+ * @returns {Promise<object>} Derived provenance metadata after both outputs succeed.
+ * @throws {Error} Rejects on source validation/read failures, missing or stale output
+ * in check mode, or directory creation and file-write failures in sync mode.
+ */
 export async function syncA01Evidence({ root = resolve(dirname(fileURLToPath(import.meta.url)), "../.."), check = false } = {}) {
   const artifacts = generateArtifactsFromSources(await readPinnedSources(root));
   for (const [relative, bytes] of [[PAYLOAD_PATH, artifacts.payloadBytes], [METADATA_PATH, artifacts.metadataBytes]]) {

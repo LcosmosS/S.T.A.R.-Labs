@@ -16,6 +16,16 @@ const sourcePaths = Object.keys(SOURCE_FILES).map((name) => `${ARTIFACT_DIRECTOR
 const observedLines = sources["observed_projection.csv"].toString("utf8").split("\n");
 const onePoint = `${observedLines[0]}\n${observedLines[1]}\n`;
 
+/**
+ * Run a synchronous test against a temporary copy of the generator and its inputs.
+ * The optional path filter models deployment exclusions. Cleanup runs after success
+ * or failure and first checks that the deletion target is the created temp child.
+ * @template T
+ * @param {(fixture: string) => T} callback - Synchronous assertions using the fixture root.
+ * @param {(path: string) => boolean} [filter] - Include each repository-relative fixture path.
+ * @returns {T} The callback result; asynchronous callbacks are unsupported because cleanup is immediate.
+ * @throws {Error} Propagates copy, callback, cleanup-guard, and removal failures.
+ */
 function isolatedFixture(callback, filter = () => true) {
   const tempParent = realpathSync(tmpdir());
   const fixture = mkdtempSync(join(tempParent, "star-a01-evidence-"));
@@ -33,6 +43,12 @@ function isolatedFixture(callback, filter = () => true) {
     rmSync(fixture, { recursive: true, force: true });
   }
 }
+/**
+ * Execute the copied generator's read-only check in an isolated repository fixture.
+ * @param {string} fixture - Fixture root containing the script and preserved files.
+ * @returns {import("node:child_process").SpawnSyncReturns<string>} Captured status,
+ * stdout, stderr, and any spawn error for the caller's assertions; failures are not thrown.
+ */
 function runCheck(fixture) {
   return spawnSync(process.execPath, [join(fixture, script), "--check"], { cwd: join(fixture, "web_tool"), encoding: "utf8" });
 }
@@ -85,6 +101,12 @@ test("projection parser preserves exact discriminant text and does not clip arit
 
 test("projection parser fails on wrong schema, duplicate class, unsafe fields and formula drift", () => {
   const cells = observedLines[1].split(",");
+  /**
+   * Replace one cell in the saved first point to isolate a parser rejection case.
+   * @param {number} index - Zero-based source column to replace.
+   * @param {string} text - Deliberate replacement, including invalid values under test.
+   * @returns {string} A one-row CSV retaining the exact header and LF termination.
+   */
   const changed = (index, text) => `${observedLines[0]}\n${cells.map((cell, i) => i === index ? text : cell).join(",")}\n`;
   for (const text of [
     onePoint.replace("longitude,latitude", "ra,dec"),

@@ -27,6 +27,11 @@ const [sourceBytes, nullBytes, summaryBytes, manifestBytes, metadataBytes, paylo
   readFile(new URL("../src/lib/star/a01-evidence-metadata.json", import.meta.url)),
   readFile(new URL("../public/evidence/a01-primary-v1.json", import.meta.url)),
 ]);
+/**
+ * Hash the exact file bytes for comparison with the reviewed viewer metadata.
+ * @param {import("node:crypto").BinaryLike} bytes - Preserved or generated file contents.
+ * @returns {string} Lowercase hexadecimal SHA-256 digest; no text normalization is applied.
+ */
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const metadata = JSON.parse(metadataBytes);
 const summary = JSON.parse(summaryBytes);
@@ -41,6 +46,12 @@ for (const [name, bytes] of [["observed_projection.csv", sourceBytes], ["null_st
   assert.equal(bytes.length, recorded.sizeBytes, `Immutable ${name} size`);
   assert.equal(sha256(bytes), recorded.sha256, `Immutable ${name} SHA-256`);
 }
+/**
+ * Read the simple, unquoted primary CSV format into records of original strings.
+ * @param {Buffer} bytes - Saved CSV bytes with a header and equal-width data rows.
+ * @returns {Record<string, string>[]} Source-order records, retaining exact integer text.
+ * @throws {assert.AssertionError} When a row has a different cell count from the header.
+ */
 const parseCsv = (bytes) => {
   const [header, ...lines] = bytes.toString("utf8").trimEnd().split(/\r?\n/);
   const columns = header.split(",");
@@ -82,6 +93,14 @@ const browser = await chromium.launch({
   args: ["--no-sandbox", "--disable-dev-shm-usage"],
 });
 
+/**
+ * Create an isolated browser page with local substitutes for every off-origin request.
+ * Optionally replace the evidence response to exercise explicit failure states, and
+ * collect page errors, console errors, and payload requests for later assertions.
+ * @param {{width: number, height: number}} viewport - Browser dimensions for this case.
+ * @param {{status?: number, body: string | Buffer}} [replacement] - Evidence response override.
+ * @returns {Promise<object>} Context, page, and mutable error/request collections; the caller closes the context.
+ */
 async function newOfflinePage(viewport, replacement) {
   const context = await browser.newContext({ viewport, reducedMotion: "reduce" });
   const page = await context.newPage();
@@ -123,6 +142,13 @@ async function newOfflinePage(viewport, replacement) {
   return { context, page, errors, payloadRequests };
 }
 
+/**
+ * Navigate to a local route and wait for the projection controls to hydrate.
+ * @param {import("playwright").Page} page - Offline page returned by newOfflinePage.
+ * @param {string} [path="/projection"] - Route expected to contain the projection mode controls.
+ * @returns {Promise<void>} Resolves once the Synthetic Demo control and hydration marker exist.
+ * @throws {Error} On navigation/readiness timeout or a non-200 response.
+ */
 async function open(page, path = "/projection") {
   const response = await page.goto(origin + path, { waitUntil: "domcontentloaded", timeout: 45000 });
   assert.equal(response?.status(), 200, `${path} production HTTP status`);
@@ -130,6 +156,12 @@ async function open(page, path = "/projection") {
   await page.locator('[data-a01-hydrated="true"]').waitFor({ timeout: 20000 });
 }
 
+/**
+ * Select A01 Evidence and assert saved-result labels and scientific limitations.
+ * @param {import("playwright").Page} page - Hydrated projection page.
+ * @returns {Promise<import("playwright").Locator>} Loaded evidence panel after the synthetic plot is hidden.
+ * @throws {Error} If the evidence plot fails to appear or required boundaries/results are absent.
+ */
 async function evidence(page) {
   await page.getByRole("button", { name: "A01 Evidence", exact: true }).click();
   await page.getByTestId("a01-arithmetic-plot").waitFor({ timeout: 30000 });
@@ -148,10 +180,22 @@ async function evidence(page) {
   return panel;
 }
 
+/**
+ * Assert that the document fits the viewport, allowing one pixel of browser rounding.
+ * Local chart scrolling is permitted; horizontal overflow of the whole page is not.
+ * @param {import("playwright").Page} page - Page whose document dimensions are inspected.
+ * @returns {Promise<void>} Resolves when the page width assertion passes.
+ */
 async function assertNoOverflow(page) {
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1), false, "No horizontal page overflow");
 }
 
+/**
+ * Check that an SVG mark has finite geometry wholly inside its owning viewBox.
+ * @param {import("playwright").Locator} mark - SVG mark supporting getBBox.
+ * @param {string} label - Description included in assertion failures.
+ * @returns {Promise<void>} Resolves when the mark is not clipped by the SVG domain.
+ */
 async function assertSvgMarkVisible(mark, label) {
   const geometry = await mark.evaluate((node) => {
     const svg = node.ownerSVGElement;
@@ -163,6 +207,12 @@ async function assertSvgMarkVisible(mark, label) {
   assert.ok(geometry.x >= geometry.viewX && geometry.y >= geometry.viewY && geometry.x + geometry.width <= geometry.viewX + geometry.viewWidth && geometry.y + geometry.height <= geometry.viewY + geometry.viewHeight, `${label} is inside the SVG, not clipped outside its domain`);
 }
 
+/**
+ * Scroll a chart mark into view and verify its bounds fit the chart's local viewport.
+ * @param {import("playwright").Locator} mark - SVG mark inside a horizontal scroll container.
+ * @param {string} label - Description included in assertion failures.
+ * @returns {Promise<void>} Resolves when a mobile user can reach the whole mark horizontally.
+ */
 async function assertHorizontallyReachable(mark, label) {
   await mark.scrollIntoViewIfNeeded();
   const [markBox, clipBox] = await Promise.all([
@@ -176,6 +226,12 @@ async function assertHorizontallyReachable(mark, label) {
   assert.ok(markBox.x >= clipBox.x - 1 && markBox.x + markBox.width <= clipBox.x + clipBox.width + 1, `${label} is reachable inside its local horizontal scroll region`);
 }
 
+/**
+ * Read rendered sample identities, saved coordinates, and SVG positions from the DOM.
+ * Selection overlays are excluded so the result measures only the rendering sample.
+ * @param {import("playwright").Page} page - Page with an A01 arithmetic plot.
+ * @returns {Promise<object[]>} Source values and screen positions for each sampled circle.
+ */
 async function plottedPoints(page) {
   return page.getByTestId("a01-arithmetic-plot").locator('[data-sampled-point="true"]').evaluateAll((nodes) => nodes.map((node) => ({
     label: node.getAttribute("data-label"),
@@ -187,6 +243,14 @@ async function plottedPoints(page) {
   })));
 }
 
+/**
+ * Compare sampled marks against the preserved CSV and check equal linear axis spacing.
+ * This checks display fidelity only; it does not rerun A01 or establish physical support.
+ * @param {object[]} points - DOM records returned by plottedPoints.
+ * @param {number} [rank] - Optional cohort rank that every sampled representative must match.
+ * @returns {void} Returns after identity, exact coordinate, and scale assertions pass.
+ * @throws {assert.AssertionError} On duplicate/unknown labels, changed coordinates, or nonlinear scaling.
+ */
 function assertPrimaryCoordinates(points, rank) {
   assert.equal(new Set(points.map((point) => point.label)).size, points.length, "Rendering sample never duplicates representatives");
   for (const point of points) {
@@ -213,6 +277,13 @@ function assertPrimaryCoordinates(points, rank) {
   }
 }
 
+/**
+ * Wait for and verify full filtered counts separately from the capped rendering count.
+ * @param {import("playwright").Page} page - Evidence page after a rank selection.
+ * @param {number} filtered - Expected number of representatives in the complete cohort.
+ * @param {number} rendered - Expected number of sampled points actually plotted.
+ * @returns {Promise<void>} Resolves when both counts and the display-cap explanation agree.
+ */
 async function assertCount(page, filtered, rendered) {
   const count = page.getByTestId("a01-rendering-count");
   await page.waitForFunction(({ filtered, rendered }) => {

@@ -5,8 +5,20 @@ import { a01EvidenceMetadata, buildNullHistogram, filterEvidencePoints, loadA01E
 
 const payloadBytes = readFileSync(new URL("../../../public/evidence/a01-primary-v1.json", import.meta.url));
 const raw = JSON.parse(payloadBytes.toString("utf8"));
+/**
+ * Copy exactly the supplied byte view into a standalone ArrayBuffer for browser tests.
+ * This excludes any prefix or suffix in a Buffer's shared backing allocation and
+ * preserves deliberate truncation or tampering in integrity-failure cases.
+ *
+ * @param bytes - Complete payload bytes or the exact altered byte view under test.
+ * @returns An independent buffer containing only the supplied bytes.
+ */
 const buffer = (bytes: Uint8Array): ArrayBuffer => Uint8Array.from(bytes).buffer;
 
+/**
+ * Check that the real pinned bytes yield frozen evidence with locked results, and
+ * that truncation or a same-length byte edit is rejected by the integrity gate.
+ */
 test("browser model verifies SHA-256 before parsing and returns immutable exact-coordinate data", async () => {
   const data = await verifyAndParseEvidencePayload(buffer(payloadBytes));
   assert.equal(data.points.length, 38042);
@@ -27,6 +39,10 @@ test("browser model verifies SHA-256 before parsing and returns immutable exact-
   await assert.rejects(verifyAndParseEvidencePayload(buffer(tampered)), /SHA-256 mismatch/);
 });
 
+/**
+ * Independently corrupt each bound payload property on a fresh clone to prove the
+ * structural validator fails closed without modifying the preserved fixture.
+ */
 test("browser shape checks fail closed on malformed points, summary or null distribution", () => {
   for (const modify of [
     (data: typeof raw) => { data.schemaVersion = 2; },
@@ -49,11 +65,19 @@ test("browser shape checks fail closed on malformed points, summary or null dist
   }
 });
 
+/**
+ * Exercise loader HTTP, signal-forwarding, success, and truncated-body paths with
+ * scoped fetch replacements; restore the original global even if an assertion fails.
+ */
 test("loader rejects HTTP failures and forwards cancellation to its immutable static fetch", async () => {
   const originalFetch = globalThis.fetch;
   const controller = new AbortController();
   let receivedSignal: AbortSignal | null | undefined;
   try {
+    /**
+     * Record the requested cancellation signal and return a controlled HTTP error
+     * after checking that the loader used the pinned static payload location.
+     */
     globalThis.fetch = async (url, init) => {
       assert.equal(url, "/evidence/a01-primary-v1.json");
       receivedSignal = init?.signal;
@@ -61,13 +85,19 @@ test("loader rejects HTTP failures and forwards cancellation to its immutable st
     };
     await assert.rejects(loadA01Evidence({ signal: controller.signal }), /HTTP 404/);
     assert.equal(receivedSignal, controller.signal);
+    /** Return unchanged real payload bytes to exercise the loader's verified success path. */
     globalThis.fetch = async () => new Response(buffer(payloadBytes), { status: 200 });
     assert.equal((await loadA01Evidence()).runId, a01EvidenceMetadata.runId);
+    /** Return an HTTP-success body missing its last byte to isolate body-integrity rejection. */
     globalThis.fetch = async () => new Response(buffer(payloadBytes.subarray(0, -1)), { status: 200 });
     await assert.rejects(loadA01Evidence(), /byte length mismatch/);
   } finally { globalThis.fetch = originalFetch; }
 });
 
+/**
+ * Verify rank counts, source-order sampling, invalid display parameters, and array
+ * reuse while proving view operations leave the full locked run and summary intact.
+ */
 test("rank filtering and deterministic rendering samples preserve all locked evidence", () => {
   const data = validateEvidenceData(structuredClone(raw));
   const before = JSON.stringify(data.summary);
@@ -90,6 +120,10 @@ test("rank filtering and deterministic rendering samples preserve all locked evi
   assert.equal(JSON.stringify(data.summary), before);
 });
 
+/**
+ * Verify all stored nulls contribute to the displayed histogram, including the
+ * upper edge and constant-valued inputs, while invalid inputs are rejected.
+ */
 test("null histogram includes all 999 stored realizations and handles edge values", () => {
   const data = validateEvidenceData(structuredClone(raw));
   const histogram = buildNullHistogram(data.nullStatistics);

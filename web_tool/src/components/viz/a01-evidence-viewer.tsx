@@ -10,6 +10,11 @@ import {
 import styles from "./a01-evidence-viewer.module.css";
 
 const RENDER_CAP = 4_000;
+/**
+ * Formats cohort sizes and artifact byte counts for the viewer's English labels.
+ * @param value - Numeric display value; the underlying evidence is not changed.
+ * @returns The value formatted with the en-US locale's grouping conventions.
+ */
 const number = (value: number) => value.toLocaleString("en-US");
 
 /** Read-only visual specification: the saved arithmetic base coordinates are
@@ -80,6 +85,12 @@ export function A01EvidenceViewer() {
     [choices],
   );
 
+  /**
+   * Applies the rank selector's string value to the display cohort and clears
+   * label search. Keeps the current selection when it remains in that cohort;
+   * otherwise selects its first representative, or clears an empty selection.
+   * @param value - The selector's numeric rank string or the literal "all".
+   */
   function changeRank(value: string) {
     const next = value === "all" ? "all" : Number(value);
     setRank(next);
@@ -301,10 +312,28 @@ const PLOT = {
   plotWidth: 716,
   plotHeight: 268.5,
 };
+/**
+ * Maps a saved arithmetic longitude to the SVG's linear 0-480 degree axis.
+ * @param value - Saved longitude in degrees, including values above 360.
+ * @returns The horizontal SVG coordinate, without wrapping or clipping.
+ */
 const xPosition = (value: number) => PLOT.left + (value / 480) * PLOT.plotWidth;
+/**
+ * Maps a saved arithmetic latitude to the SVG's inverted 0-180 degree axis.
+ * @param value - Saved arithmetic latitude in degrees, not a sky coordinate.
+ * @returns The vertical SVG coordinate with higher values nearer the top.
+ */
 const yPosition = (value: number) =>
   PLOT.top + ((180 - value) / 180) * PLOT.plotHeight;
 
+/**
+ * Renders a display sample and an optional selected representative at their
+ * saved arithmetic longitude/latitude, using equal linear spacing per degree.
+ * Selection emits the curve label only; rendering neither remaps coordinates
+ * nor recomputes the full-cohort statistic or supplies an astronomical layer.
+ * @param props - Read-only plotted points, optional selection, and label callback.
+ * @returns An SVG coordinate plot with a separate selected-point marker.
+ */
 const ArithmeticPlot = memo(function ArithmeticPlot({
   points,
   selected,
@@ -420,6 +449,12 @@ const ArithmeticPlot = memo(function ArithmeticPlot({
   );
 });
 
+/**
+ * Displays one saved primary-run representative, including its exact integer
+ * discriminant string and arithmetic coordinates at round-trip precision.
+ * @param props - The selected evidence point; no coordinate formula is rerun.
+ * @returns The selected curve's labeled source fields and provenance note.
+ */
 function SelectedRecord({ point }: { point: EvidencePoint }) {
   return (
     <section
@@ -472,6 +507,11 @@ function SelectedRecord({ point }: { point: EvidencePoint }) {
   );
 }
 
+/**
+ * Renders one field of an evidence or provenance definition list.
+ * @param props - A human-readable field label and its already formatted value.
+ * @returns A paired definition term and value without altering their contents.
+ */
 function RecordValue({ label, value }: { label: string; value: string }) {
   return (
     <div>
@@ -481,6 +521,16 @@ function RecordValue({ label, value }: { label: string; value: string }) {
   );
 }
 
+/**
+ * Counts saved statistics into equal-width display bins without changing them.
+ * Values outside the supplied bounds are assigned to the nearest endpoint bin,
+ * so a statistic exactly at the upper bound remains in the final bin.
+ * @param values - Read-only saved statistics to count.
+ * @param low - Lower bound of the display interval.
+ * @param high - Upper bound, greater than low.
+ * @param count - Positive integer number of bins.
+ * @returns Ordered bin boundaries and counts for the histogram renderer.
+ */
 function histogram(
   values: readonly number[],
   low: number,
@@ -502,6 +552,13 @@ function histogram(
   return bins;
 }
 
+/**
+ * Presents all saved null statistics on a complete axis with observed T and a
+ * separately labeled null-only detail axis. Both panels reuse saved values;
+ * neither resamples the null nor extends its arithmetic interpretation.
+ * @param props - Saved null statistics and the locked observed statistic.
+ * @returns Histogram panels and the finite-permutation interpretation caveat.
+ */
 const NullDistribution = memo(function NullDistribution({
   values,
   observed,
@@ -558,6 +615,13 @@ const NullDistribution = memo(function NullDistribution({
   );
 });
 
+/**
+ * Renders 24 equal-width bins of saved null statistics on the supplied linear
+ * T interval, with a count axis starting at zero and an optional observed line.
+ * @param props - Saved values, ordered interval bounds, optional observed T, and
+ * whether this is the separately labeled null-only detail panel.
+ * @returns An accessible SVG with bin counts and saved-value data attributes.
+ */
 function HistogramChart({
   values,
   low,
@@ -579,7 +643,17 @@ function HistogramChart({
     width = 690,
     height = 218,
     baseline = top + height;
+  /**
+   * Converts a statistic or bin boundary to its linear position on this panel.
+   * @param value - T value within the panel's supplied display interval.
+   * @returns The horizontal SVG coordinate; no statistic is recomputed.
+   */
   const x = (value: number) => left + ((value - low) / (high - low)) * width;
+  /**
+   * Converts a bin count to the chart's vertical coordinate above zero baseline.
+   * @param value - Number of saved null statistics represented by a bin or tick.
+   * @returns The SVG y coordinate using this panel's rounded count maximum.
+   */
   const y = (value: number) => baseline - (value / yMax) * height;
   return (
     <svg
@@ -677,6 +751,13 @@ function HistogramChart({
   );
 }
 
+/**
+ * Displays committed artifact hashes, source links, execution identifiers, and
+ * pinned parameters alongside the limits of the saved primary-run evidence.
+ * It reports payload verification already required by the viewer's loader;
+ * it performs no experiment, independent replication, or registry promotion.
+ * @returns The immutable-artifact provenance and scientific-limitations section.
+ */
 function Provenance() {
   return (
     <section className={styles.provenance} aria-label="A01 artifact provenance">

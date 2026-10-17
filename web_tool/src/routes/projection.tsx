@@ -15,6 +15,12 @@ export const Route = createFileRoute("/projection")({
   component: ProjectionPage,
 });
 
+/**
+ * Provides distinct synthetic-demo and read-only A01 evidence display modes.
+ * Synthetic selection updates only the illustrative lab state; the separate
+ * astronomical viewer receives neither synthetic nor A01 arithmetic points.
+ * @returns The projection page with mode controls and scientific scope labels.
+ */
 function ProjectionPage() {
   const [mode, setMode] = useState<"synthetic" | "evidence">("synthetic");
   const [hydrated, setHydrated] = useState(false);
@@ -156,6 +162,11 @@ function ProjectionPage() {
   );
 }
 
+/**
+ * Displays one already formatted property of a selected synthetic demo curve.
+ * @param props - The property label and display value from the demo catalog.
+ * @returns A styled definition-list term and value for the selected curve.
+ */
 function Item({ k, v }: { k: string; v: string }) {
   return (
     <div>
