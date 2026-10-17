@@ -1,0 +1,22 @@
+{
+  "overall_status": "PASS_CORE_AND_AVAILABLE_MESH; GMSH_GUDHI_GATE_BLOCKED",
+  "counts": {
+    "PASS": 92,
+    "FAIL": 0
+  },
+  "out_dir": "/mnt/data/ECC_B01_Full_Independent_Reproduction_Kit/results",
+  "mesh_backend": "fallback"
+}
+test_candidate_c_face_integrals_and_nonzero_local_response (test_independent_reproduction.DiscreteTorusTests.test_candidate_c_face_integrals_and_nonzero_local_response) ... ok
+test_periods_and_closed_cochain_at_two_resolutions (test_independent_reproduction.DiscreteTorusTests.test_periods_and_closed_cochain_at_two_resolutions) ... ok
+test_independent_quadrature_controls_all_pass (test_independent_reproduction.ExactMathematicsTests.test_independent_quadrature_controls_all_pass) ... ok
+test_symbolic_controls_all_pass (test_independent_reproduction.ExactMathematicsTests.test_symbolic_controls_all_pass) ... ok
+test_solid_ball_homology_and_incidence (test_independent_reproduction.SimplicialTopologyTests.test_solid_ball_homology_and_incidence) ... ok
+test_sphere_flat_facet_quadrature_converges (test_independent_reproduction.SimplicialTopologyTests.test_sphere_flat_facet_quadrature_converges) ... ok
+test_sphere_homology_incidence_and_flux (test_independent_reproduction.SimplicialTopologyTests.test_sphere_homology_incidence_and_flux) ... ok
+test_torus_homology_and_incidence (test_independent_reproduction.SimplicialTopologyTests.test_torus_homology_and_incidence) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.507s
+
+OK
