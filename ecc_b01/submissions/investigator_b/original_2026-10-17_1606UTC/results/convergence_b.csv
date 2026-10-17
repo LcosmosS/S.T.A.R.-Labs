@@ -1,0 +1,41 @@
+candidate,metric,target_h,actual_max_edge,mesh_vertices,mesh_edges,mesh_faces,mesh_tetrahedra,measured_value,expected_value,absolute_error,convergence_rate,note
+B,solid_angle_normalized_flux,0.8,0.618033988749895,42,120,80,0,1.0000000000000013,1.0,1.3322676295501878e-15,,spherical solid-angle formula
+B,planar_face_quadrature_normalized_flux,0.8,0.618033988749895,42,120,80,0,1.0475673834751575,1.0,0.04756738347515754,,flat-facet midpoint quadrature
+topology,torus_betti_numbers,0.8,2.104758878007994,64,192,128,0,"[1, 2, 1]","[1, 2, 1]",0,,independent Python GF(2) boundary-rank fallback (ModuleNotFoundError: No module named 'gudhi')
+topology,ball_betti_numbers,0.8,0.8660254037844386,27,98,120,48,"[1, 0, 0, 0]","[1, 0, 0, 0]",0,,independent Python GF(2) boundary-rank fallback (ModuleNotFoundError: No module named 'gudhi')
+B,solid_angle_normalized_flux,0.5,0.3249196962329064,162,480,320,0,0.9999999999999976,1.0,2.4424906541753444e-15,,spherical solid-angle formula
+B,planar_face_quadrature_normalized_flux,0.5,0.3249196962329064,162,480,320,0,1.0116293263156688,1.0,0.01162932631566882,2.190813513975382,flat-facet midpoint quadrature
+topology,torus_betti_numbers,0.5,1.3443281796649662,169,507,338,0,"[1, 2, 1]","[1, 2, 1]",0,,independent Python GF(2) boundary-rank fallback (ModuleNotFoundError: No module named 'gudhi')
+topology,ball_betti_numbers,0.5,0.8660254037844386,27,98,120,48,"[1, 0, 0, 0]","[1, 0, 0, 0]",0,,independent Python GF(2) boundary-rank fallback (ModuleNotFoundError: No module named 'gudhi')
+B,solid_angle_normalized_flux,0.3,0.1646471600639204,642,1920,1280,0,1.0000000000000113,1.0,1.1324274851176597e-14,,spherical solid-angle formula
+B,planar_face_quadrature_normalized_flux,0.3,0.1646471600639204,642,1920,1280,0,1.0028907800435163,1.0,0.0028907800435162834,2.0477468818904803,flat-facet midpoint quadrature
+topology,torus_betti_numbers,0.3,0.8448669017568017,441,1323,882,0,"[1, 2, 1]","[1, 2, 1]",0,,independent Python GF(2) boundary-rank fallback (ModuleNotFoundError: No module named 'gudhi')
+topology,ball_betti_numbers,0.3,0.4330127018922193,125,604,864,384,"[1, 0, 0, 0]","[1, 0, 0, 0]",0,,independent Python GF(2) boundary-rank fallback (ModuleNotFoundError: No module named 'gudhi')
+B,solid_angle_normalized_flux,0.2,0.08260396653395065,2562,7680,5120,0,1.000000000000002,1.0,1.9984014443252818e-15,,spherical solid-angle formula
+B,planar_face_quadrature_normalized_flux,0.2,0.08260396653395065,2562,7680,5120,0,1.000721658293491,1.0,0.0007216582934910232,2.0119402999955294,flat-facet midpoint quadrature
+topology,torus_betti_numbers,0.2,0.5574192506270562,1024,3072,2048,0,"[1, 2, 1]","[1, 2, 1]",0,,independent Python GF(2) boundary-rank fallback (ModuleNotFoundError: No module named 'gudhi')
+topology,ball_betti_numbers,0.2,0.34641016151377557,216,1115,1650,750,"[1, 0, 0, 0]","[1, 0, 0, 0]",0,,independent Python GF(2) boundary-rank fallback (ModuleNotFoundError: No module named 'gudhi')
+A,phi_period,0.8,1.1107207345395915,64,192,128,0,6.283185307179586,6.283185307179586,0.0,,discrete cochain on representative phi-cycle
+A,psi_period,0.8,1.1107207345395915,64,192,128,0,12.566370614359174,12.566370614359172,1.7763568394002505e-15,,discrete cochain on representative psi-cycle
+A,max_triangle_circulation,0.8,1.1107207345395915,64,192,128,0,1.7763568394002505e-15,0.0,1.7763568394002505e-15,,max absolute discrete circulation
+C,analytic_face_flux,0.8,1.1107207345395915,64,192,128,0,39.47841760435743,39.47841760435743,0.0,,exact analytic integration on each oriented parameter triangle
+C,centroid_face_flux,0.8,1.1107207345395915,64,192,128,0,39.47841760435743,39.47841760435743,0.0,,barycentre quadrature of local density
+C,max_local_face_quadrature_error,0.8,1.1107207345395915,64,192,128,0,0.015067761022311221,0.0,0.015067761022311221,,max absolute local-face integral error versus exact face integral
+A,phi_period,0.5,0.6835204520243641,169,507,338,0,6.283185307179586,6.283185307179586,0.0,,discrete cochain on representative phi-cycle
+A,psi_period,0.5,0.6835204520243641,169,507,338,0,12.566370614359172,12.566370614359172,0.0,,discrete cochain on representative psi-cycle
+A,max_triangle_circulation,0.5,0.6835204520243641,169,507,338,0,4.440892098500626e-16,0.0,4.440892098500626e-16,,max absolute discrete circulation
+C,analytic_face_flux,0.5,0.6835204520243641,169,507,338,0,39.47841760435741,39.47841760435743,2.1316282072803006e-14,,exact analytic integration on each oriented parameter triangle
+C,centroid_face_flux,0.5,0.6835204520243641,169,507,338,0,39.47841760435744,39.47841760435743,7.105427357601002e-15,,barycentre quadrature of local density
+C,max_local_face_quadrature_error,0.5,0.6835204520243641,169,507,338,0,0.0022641380942736156,0.0,0.0022641380942736156,3.9038779891116735,max absolute local-face integral error versus exact face integral
+A,phi_period,0.3,0.4231317083960349,441,1323,882,0,6.283185307179588,6.283185307179586,1.7763568394002505e-15,,discrete cochain on representative phi-cycle
+A,psi_period,0.3,0.4231317083960349,441,1323,882,0,12.566370614359172,12.566370614359172,0.0,,discrete cochain on representative psi-cycle
+A,max_triangle_circulation,0.3,0.4231317083960349,441,1323,882,0,1.9984014443252818e-15,0.0,1.9984014443252818e-15,,max absolute discrete circulation
+C,analytic_face_flux,0.3,0.4231317083960349,441,1323,882,0,39.478417604357396,39.47841760435743,3.552713678800501e-14,,exact analytic integration on each oriented parameter triangle
+C,centroid_face_flux,0.3,0.4231317083960349,441,1323,882,0,39.478417604357446,39.47841760435743,1.4210854715202004e-14,,barycentre quadrature of local density
+C,max_local_face_quadrature_error,0.3,0.4231317083960349,441,1323,882,0,0.0003333719566513127,0.0,0.0003333719566513127,3.994574880151989,max absolute local-face integral error versus exact face integral
+A,phi_period,0.2,0.2776801836348979,1024,3072,2048,0,6.283185307179586,6.283185307179586,0.0,,discrete cochain on representative phi-cycle
+A,psi_period,0.2,0.2776801836348979,1024,3072,2048,0,12.566370614359176,12.566370614359172,3.552713678800501e-15,,discrete cochain on representative psi-cycle
+A,max_triangle_circulation,0.2,0.2776801836348979,1024,3072,2048,0,1.887379141862766e-15,0.0,1.887379141862766e-15,,max absolute discrete circulation
+C,analytic_face_flux,0.2,0.2776801836348979,1024,3072,2048,0,39.478417604357425,39.47841760435743,7.105427357601002e-15,,exact analytic integration on each oriented parameter triangle
+C,centroid_face_flux,0.2,0.2776801836348979,1024,3072,2048,0,39.478417604357425,39.47841760435743,7.105427357601002e-15,,barycentre quadrature of local density
+C,max_local_face_quadrature_error,0.2,0.2776801836348979,1024,3072,2048,0,6.173664208587726e-05,0.0,6.173664208587726e-05,4.0036261035458205,max absolute local-face integral error versus exact face integral
