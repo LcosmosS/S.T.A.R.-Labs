@@ -1,6 +1,6 @@
 # ECC-B01 — Investigator A fixture kit (draft PR #103)
 
-**Status:** documentation and source code only; mathematical fixture smoke test, **not** activated controlled execution, independent reproduction, or physical evidence.
+**Status:** documentation, source code, and a preliminary uploaded Investigator A WSL fixture report; **not** activated controlled execution, independent reproduction, or physical evidence.
 
 This folder is copied from the previously issued `ECC_B01_Investigator_A_Test_Kit.zip` for use on the **draft** branch `docs/ecc-b01-blinded-foundation-comparison`. The governing proposal is [EXP-ECC-B01_FOUNDATION_COMPARISON_PROPOSAL.md](../research/gates/EXP-ECC-B01_FOUNDATION_COMPARISON_PROPOSAL.md), under [ECC_RTCH_RECOVERY.md](../research/gates/ECC_RTCH_RECOVERY.md).
 
@@ -28,12 +28,14 @@ Do **not** run `python investigator_a.py` from the repository root: the script l
 
 If the file is still missing after checkout, inspect `pwd`, `git branch --show-current`, `ls -la ecc_b01`, and `find ~/S.T.A.R.-Labs -name investigator_a.py -print`.
 
-## Included / intentionally withheld
+## Included / submitted evidence
 
-- `investigator_a.py`: source copied from the original test kit.
+- `investigator_a.py`: original test-kit source, unchanged.
 - `protocol.md`: draft mathematical fixture specification accompanying the original kit.
-- `partner_handoff.md`: original partner handoff, previously written for SageMath/PARI-GP; the current Investigator B contingency may use Python/SymPy/Gmsh/GUDHI under the same independent mathematical protocol.
-- **Not committed:** `investigator_a_results.json` from the earlier demonstration run. That file is a preliminary fixture demonstration, not a frozen WSL investigator submission. Keep your new results local until the submission procedure and blinding boundary are agreed.
+- `partner_handoff.md`: original partner handoff; Investigator B can use a genuinely independent SageMath/PARI-GP or Python/SymPy/Gmsh/GUDHI workflow.
+- `submissions/investigator_a/preliminary_2026-10-17/results.json`: **user-uploaded WSL run**, reporting 15/15 PASS; source SHA-256 and environment recorded in file.
+- `submissions/investigator_a/preliminary_2026-10-17/README.md`: immutable report hash, provenance, known C-03 unconditional PASS defect, scope limits, and blinding caution.
+- Root-level `investigator_a_results.json` is still ignored as a local transient output; the separately archived preliminary submission is intentionally tracked. The earlier demonstration result is not being substituted for the user's WSL output.
 
 The supplied code performs 15 symbolic/numerical checks. **It does not run Gmsh/GUDHI meshes, four-resolution cochain convergence, or any physical/astronomical inference.** A `PASS` here is a smoke-test outcome, not the ECC-B01 primary decision.
 
@@ -41,6 +43,6 @@ Review note: the present `C-03` assertion passes an unconditional Boolean `True`
 
 ## Independence and governance
 
-Known exact fixture targets are public. The *implementations and investigator-specific observed outputs* must be kept independent until committed to separate immutable submissions. Neither investigator should inspect or port the other's implementation before submitting results. Code hosted in this PR is visible; coordinate access and implement independent derivations accordingly.
+Known exact fixture targets are public. **Investigator A's source and preliminary WSL results are now visible in this draft PR** at a clearly labeled submission path, so strict blind access is not enforced by GitHub. Investigator B should not inspect Investigator A's source or results until their own implementation and results have been committed; record any prior exposure transparently. A later blinded comparison requires independently frozen output submissions and a documented access protocol.
 
 This PR does not change experiment registries, support flags, claims, or the ECC monograph's dependent theorems. Keep it in draft, unmerged state pending two investigator submissions and documented adjudication.
