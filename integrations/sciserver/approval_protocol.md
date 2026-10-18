@@ -102,7 +102,7 @@ and reviewed PR after trust enrollment and verification**.
 ## Tests
 
 ```bash
-python -m pip install -e '.[sciserver-approval]' --no-deps
+python -m pip install "cryptography>=42,<47"
 python -m pytest -q tests/integrations/test_sciserver_approval.py
 python -m pytest -q tests/integrations/test_sciserver_policy.py
 git diff --check
