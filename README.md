@@ -1,3 +1,4 @@
+[![Collaboration invitation v0.1 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23447557.svg)](https://doi.org/10.5281/zenodo.23447557)
 [![A01 primary execution DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23409249.svg)](https://doi.org/10.5281/zenodo.23409249)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) [![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23292229.svg)](https://doi.org/10.5281/zenodo.23292229)
@@ -31,6 +32,9 @@ Start with the [collaboration invitation v0.1](release_packages/STAR-collaborati
 and [citation instructions](release_packages/STAR-collaboration-invitation-v0.1/CITATION_GUIDE.md).
 The package audits main at `d69868e3c1d9ae70944deb239369e53a9ecc1e5b` on 2026-10-18;
 it invites critique, source verification, and separately scoped reproduction planning.
+
+**Archived collaboration package:** [S.T.A.R.-Labs Collaboration Invitation v0.1](https://doi.org/10.5281/zenodo.23447557) (DOI: `10.5281/zenodo.23447557`). This bounded review package contains the dated repository assessment, ten specialist task contracts (C01–C10), reproducibility and independence requirements, an evidence-report template, baseline hashes, package checksums and artifact-specific citation guidance. The DOI was supplied for this package; its Zenodo record metadata and deposited file bytes have not been independently verified in this README update. The archive is an invitation to review, not a peer-reviewed scientific finding or an independently reproduced result.
+
 It grants no experiment activation, live CasJobs submission, key enrollment,
 new display admission, or scientific-support status. See [Contributing.md](Contributing.md)
 for setup, review receipts, and the PR process. Negative and inconclusive findings are welcome.
@@ -581,8 +585,11 @@ Record the exact source commit, access date, qualified claim/experiment IDs,
 input hashes and output manifest when applicable. Cite upstream catalogs and
 methods directly; a repository citation does not replace their attribution.
 A DOI identifies an archive and does not establish peer review, independent
-replication, physical support, or permission to execute. The collaboration
-invitation has no assigned DOI or published release tag.
+replication, physical support, or permission to execute. The collaboration invitation v0.1 has a supplied archive DOI:
+[`10.5281/zenodo.23447557`](https://doi.org/10.5281/zenodo.23447557).
+Verify the Zenodo record metadata, deposited bytes and artifact version before
+external citation; retain the exact Git commit of the materials inspected.
+The DOI does not imply a GitHub release tag or independent scientific review.
 
 ---
 

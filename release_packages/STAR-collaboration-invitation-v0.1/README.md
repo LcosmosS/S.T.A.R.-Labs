@@ -1,8 +1,11 @@
 # S.T.A.R.-Labs collaboration invitation v0.1
 
-**Disposition:** review/invitation package proposed for repository review. No
-GitHub Release, tag, DOI, peer review, scientific finding, experiment activation,
-operator enrollment or live submission is created by this package.
+**Disposition:** bounded collaboration-review package, now associated with the
+maintainer-supplied Zenodo DOI [10.5281/zenodo.23447557](https://doi.org/10.5281/zenodo.23447557).
+The resolver metadata and exact deposited-file bytes have not been independently
+verified in this documentation update; check the deposit before citing it.
+The package does not itself establish a GitHub release/tag, peer review,
+scientific finding, experiment activation, operator enrollment or live submission.
 
 **Audited source:** [`d69868e3c1d9ae70944deb239369e53a9ecc1e5b`](https://github.com/LcosmosS/S.T.A.R.-Labs/commit/d69868e3c1d9ae70944deb239369e53a9ecc1e5b),
 main inspected on **2026-10-18**. This is a dated audit, not a live status feed.
