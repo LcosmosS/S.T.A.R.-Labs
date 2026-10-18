@@ -1,0 +1,81 @@
+{
+  "artifacts": [
+    {
+      "bytes": 3329,
+      "file": "results.json",
+      "sha256": "fa4876b4220743282c8f1a3200c4524d4004b69ca6ba84067fb772df25ce029f"
+    },
+    {
+      "bytes": 98,
+      "file": "pytest.log",
+      "sha256": "c54535fdf64de7dd543ac5cf7cd316216de1791301cdb31631723f2ebdd0d41d"
+    },
+    {
+      "bytes": 2,
+      "file": "pytest_exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 909,
+      "file": "runner.log",
+      "sha256": "bef24ece56938d368bc60a63fa3f49227494622dcfcc4d84c065b59eaa52d093"
+    },
+    {
+      "bytes": 2,
+      "file": "runner_exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "bytes": 257,
+      "file": "pip-freeze.txt",
+      "sha256": "dfd1bda61f95aee6f6688e3e1d78ea142efad084d52a039cf2a655ac0283c8d2"
+    },
+    {
+      "bytes": 326,
+      "file": "command_and_platform.txt",
+      "sha256": "6f58b62c2e672df6ec713447c54e2bc9233f6f4aa782bea03dd4c57d2158da81"
+    }
+  ],
+  "checks": {
+    "artifact_exists:command_and_platform.txt": true,
+    "artifact_exists:pip-freeze.txt": true,
+    "artifact_exists:pytest.log": true,
+    "artifact_exists:pytest_exit_code.txt": true,
+    "artifact_exists:results.json": true,
+    "artifact_exists:runner.log": true,
+    "artifact_exists:runner_exit_code.txt": true,
+    "c03_wrong_comparator_rejected": true,
+    "c03_zero_passes": true,
+    "dependency_versions_match": true,
+    "fixtures_16_all_pass": true,
+    "pytest_exit_zero": true,
+    "python_3_12": true,
+    "result_source_hash_matches": true,
+    "runner_exit_zero": true,
+    "source_matches_pr103_v3": true
+  },
+  "created_utc": "2026-10-18T01:02:05.944345+00:00",
+  "dependencies": {
+    "numpy": "1.26.4",
+    "pytest": "9.0.2",
+    "scipy": "1.17.0",
+    "sympy": "1.14.0"
+  },
+  "expected_dependencies": {
+    "numpy": "1.26.4",
+    "pytest": "9.0.2",
+    "scipy": "1.17.0",
+    "sympy": "1.14.0"
+  },
+  "expected_source_sha256": "0855a2904171290cefeef6ae0bc2f8bec1dfb4505af41f846050f906ab0400dd",
+  "format": "ecc-b01-investigator-a-v3-run-receipt-v1",
+  "nonclaims": "SHA-256 integrity and passing fixtures do not establish authorship, human attestation, blinded replication, foundation selection or experiment activation",
+  "original_v2_source_sha256": "38c12d385f772edb9fbf6c76dfb6f11c0587cb450be8e37927c794bee089f0a8",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.15 (main, Oct 13 2026, 16:52:04) [GCC 15.3.0]",
+  "scope": "A-v3 symbolic and two quadrature fixtures, plus C-03 regression; no mesh/gauge or physical ECC validation",
+  "source_commit": "af142468a66849da90eeb95e97a20b5872a6b1d5",
+  "source_path": "ecc_b01/investigator_a_v3.py",
+  "source_sha256": "0855a2904171290cefeef6ae0bc2f8bec1dfb4505af41f846050f906ab0400dd",
+  "status": "PASS"
+}
