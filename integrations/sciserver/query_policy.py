@@ -204,4 +204,3 @@ def prepare_casjobs_run(
         state_root, run_id, "planned", plan, expected_previous_sha256=None
     )
     return {"plan": plan, "receipt_sha256": entry["record_sha256"]}
-
