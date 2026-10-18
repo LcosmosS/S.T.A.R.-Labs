@@ -1,154 +1,138 @@
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Program)
+# Contributing to S.T.A.R. Labs
 
-# Contributing to S.T.A.R. Labs Research Program
+Start with the [collaboration invitation](release_packages/STAR-collaboration-invitation-v0.1/README.md)
+and select one [task](release_packages/STAR-collaboration-invitation-v0.1/TASKS.md).
+Criticism, counterexamples, null results and reproducibility failures are useful
+contributions. The governing authority is the [full Charter PDF](charter/STAR_Research_Charter_v0-2.pdf);
+the [Markdown digest](charter/RESEARCH_CHARTER_v0.2.md) is a reading aid.
+Follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-**S.T.A.R. Labs Research Program** (Symbolic–Topological–Arithmetic–Relativity) is an open research project exploring a novel framework for mathematical and theoretical physics. Contributions are welcome from researchers, developers, and enthusiasts committed to rigorous, reproducible, and innovative work at the intersection of mathematical-physics and number theory, topology, symbolic computation, theroetical-physics, and cosmology.
+## Propose a bounded contribution
 
-## Code of Conduct
+Open a public issue or reply to the collaboration issue with the task ID,
+your relevant expertise, proposed files, deliverable, independence/conflict
+statement and validation plan. Use [this review report template](release_packages/STAR-collaboration-invitation-v0.1/REVIEW_REPORT_TEMPLATE.md).
+Issue participation and a passing check do not grant authority to activate an
+experiment, promote a claim, admit a sky overlay or enroll a signing key.
+Report vulnerabilities privately under [SECURITY.md](SECURITY.md); do not post
+credentials, tokens, private keys, personal data or exploit details in issues.
+The audit records a security-contact ambiguity for maintainer resolution.
 
-All contributors are expected to adhere to the [Code of Conduct](CODE_OF_CONDUCT.md), based on the [Contributor Covenant](https://www.contributor-covenant.org). Respectful, constructive, and inclusive collaboration is highly valued.
-
-## Ways to Contribute
-
-Contributions are welcome in several areas:
-
-- **Theoretical Developments** — Extensions to the ACSC or ECC conjectures, new lemmas, or mathematical refinements.
-- **Computational Cosmology** — Improvements to MCMC pipelines, likelihood functions, or symbolic regression.
-- **Topological Data Analysis** — Enhancements to persistent homology pipelines and stability analysis.
-- **Software Engineering** — Performance optimization, robustness, testing, and CI/CD improvements.
-- **Documentation & Visualization** — Better notebooks, figures, and explanatory materials.
-- **Data & Infrastructure** — Curating cosmological datasets and improving data loaders.
-
-## Development Setup
-
-### Prerequisites
-- Python 3.10+
-- SageMath (recommended for symbolic computation)
-- Git
-
-### Installation
+## Inspect a fixed revision first
 
 ```bash
-# Clone the repository
-git clone https://github.com/LcosmosS/S.T.A.R.-Labs.git
-```
-```bash
-# Checkout the repository
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/LcosmosS/S.T.A.R.-Labs.git
 cd S.T.A.R.-Labs
+git switch --detach d69868e3c1d9ae70944deb239369e53a9ecc1e5b
+git rev-parse HEAD
+git status --short
 ```
+
+This is the invitation's audited baseline, not a promise that main is unchanged.
+For a contribution, fetch current main, inspect differences from that baseline,
+then create your own branch. Do not edit main directly. Do not initialize every
+submodule or download all LFS data by default. Git LFS pointers are not payloads;
+fetch only the exact objects required by the chosen review. Record both the
+pointer's declared digest and the actual downloaded payload digest.
+
+## Software setup and checks
+
+Python **3.12+** is required by `pyproject.toml`. Use a clean virtual environment:
+
 ```bash
-# Install in editable mode with development dependencies
-pip install -e ".[dev]"
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m pip install -e . --no-deps
 ```
+
+Install additional tools explicitly when required by the selected tests; for
+example, the dedicated offline SciServer approval job installs
+`cryptography>=42,<47`. SageMath is required for the nine-notebook smoke job;
+consult [.github/workflows/notebooks.yml](.github/workflows/notebooks.yml).
+Dependency installation is software setup, not permission to execute research.
+
+Documentation/gate review can use these read-only commands without installing
+the full scientific environment:
+
 ```bash
-# (Optional but recommended) Install SageMath packages if needed
-sage -pip install -e ".[dev]"
+python scripts/independent_gate_report.py
+python scripts/independent_dataset_verification.py --format markdown
+git diff --check
 ```
-### Running Notebooks
 
-All core demonstrations are in the examples/ directory:
+Saved A01 archive inspection is separate from rerunning its experiment:
+
 ```bash
-jupyter nbconvert --to notebook --execute examples/full_cosmology_inference.ipynb --output examples/full_cosmology_inference-executed.ipynb
-```
-### Project Structure
-```
-textsrc/
-├── likelihoods/           # Data loaders and cosmological likelihoods
-├── physics/               # Core models, symbolic cosmology, and MCMC
-├── pipeline/              # Analysis and figure-generation pipelines
-├── visualization/         # Publication-quality plotting tools
-├── acsc/                  # Arithmetic-Cosmic Structure Conjecture modules
-├── ecc/                   # Entropy Cohomology Conjecture modules
-└── tda/                   # Topological Data Analysis tools
-
-examples/                  # Jupyter notebooks demonstrating key features
-data/                      # Raw and processed cosmological datasets
+python release_packages/EXP-MAP-A01-primary-execution-v0.1/verify_package.py
 ```
 
-### SageMath-Specific Notes
+That verifier needs the recorded source commit available in Git history.
+See its [package instructions](release_packages/EXP-MAP-A01-primary-execution-v0.1/README.md).
+It does not independently authenticate the original execution or regenerate
+the cohort, graph or permutations.
 
-Many symbolic and algebraic features rely on SageMath.
-Use SageMath kernels in Jupyter for best compatibility.
-When writing code that uses Sage features (RealNumber, Integer, symbolic rings, etc.), prefer explicit imports.
-Test notebooks with both standard Python and SageMath kernels when possible.
+For software changes, run the tests relevant to the changed behavior, then the
+required CI suite. `pytest -q` is the main software suite; some provenance tests
+require specifically hydrated archival objects. A failure due to missing bytes
+must be reported, not hidden or replaced with fabricated data. No blanket
+historical notebook execution is part of onboarding. The canonical notebook
+smoke set is only the nine files enumerated in `notebooks.yml`; do not run
+`examples/full_cosmology_inference.ipynb` or historical scripts as a setup check.
+Registered experiment transactions and live survey/database requests require
+their separately reviewed scope and applicable authorization.
 
-### Citation Guidelines
-If your contribution results in academic output (papers, theses, presentations), please cite the project as:
-```bash
-bibtex@software{star_labs,
-  author       = {Patrick J. McNamara and contributors},
-  title        = {S.T.A.R. Labs Research: A Symbolic--Topological--Arithmetic--Relativity Program},
-  year         = {2026},
-  url          = {https://github.com/LcosmosS/S.T.A.R.-Labs},
-  doi          = {TBD},
-}
-```
-We also encourage citing the foundational papers on ACSC and ECC once they are published. Contributors making significant theoretical or algorithmic contributions may be offered co-authorship on resulting publications.
+For web contributions, use Node 24 (matching CI), then follow
+[web_tool/README.md](web_tool/README.md). After intentional README publication
+changes, run `npm run registry:sync` and `npm run registry:check` inside
+`web_tool`; inspect the generated diff. Only source metadata/digests should
+change when canonical scientific records are unchanged. Required admitted-sky
+source bytes must be hydrated before `sky:check` or a production build.
 
-### Contributor Ladder & Governance
-We follow a lightweight, merit-based governance model:
+## Preserve the research record
 
-#### Roles
+- Keep namespace-qualified claim, experiment, dataset, parameter and null IDs.
+  Same strings across PDF/audit/repository namespaces are not aliases.
+- Preserve historical files, frozen release packages, source SQL, received logs,
+  manifests, provenance and negative results byte-for-byte. Put corrections in
+  dated companion records or a separate reviewed successor.
+- Separate archival intake, registry reconciliation, quarantine changes and
+  executable changes into reviewable commits or PRs. CI captures belong in
+  artifacts; CI must not rewrite the research source of record.
+- Distinguish source identity, software validation, primary execution,
+  independent reproduction, execution eligibility, controlled support, physical
+  support and display admission. No implicit promotion between these gates.
+- Record dependencies, environment, seeds, hashes, all outcomes and limitations.
+  Post-hoc choices cannot be retrospectively preregistered. Invalid protocol or
+  missing data is ineligible/inconclusive, not a scientific negative finding.
+- Preserve the disabled SciServer trust/catalog/submission settings. An operator
+  private key must be generated and held outside Codex/MCP access. A future grant
+  must bind the actual reviewed deployment commit after any squash merge;
+  feature-branch approval does not transfer to a different commit.
 
-- Maintainer: Final approval on PRs, strategic direction.
-- Core Contributor: Regular high-quality contributions, can review PRs.
-- Contributor: Anyone who has had a PR merged.
+## Submit a pull request
 
-### Recognition
-All contributors are listed in AUTHORS.md. Significant contributors (theoretical breakthroughs, major modules, sustained high-quality work) may be invited to join the core team.
+State the concrete problem, task ID, exact baseline/head commits, changed paths,
+validation commands and outcomes, skipped or unavailable checks, and remaining
+independent verification. Explain any scientific-status impact explicitly.
+Keep generated evidence separate from software fixtures and screenshots.
+A maintainer reviews scope and integrity; an accountable reviewer with relevant
+expertise reviews any proposed scientific or authorization transition separately.
+Inspect checks on the final PR head after every correction; local success and
+old-head CI do not establish current-head CI success.
 
-### Pull Request Process
+Use Black (88-column configuration in `pyproject.toml`) for changed Python code,
+explicit Sage imports where needed, and meaningful docstrings. Do not reformat
+frozen evidence. Documentation-only changes need link, citation and difference
+checks rather than unnecessary notebook execution.
 
-1. Fork the repository and create a feature branch:
-```bash
-git checkout -b feature/your-contribution-name
-```
-2. Make your changes following the style guidelines below.
-3. Ensure all modified notebooks execute successfully.
-4. Submit a Pull Request with a clear title and description.
+## Citation, licensing and credit
 
-#### PR Requirements
-
-1. Clear motivation and description of changes
-2. All affected notebooks must run end-to-end
-3. Code must pass Black formatting
-4. Appropriate tests or validation (when applicable)
-5. Updated documentation where relevant
-
-#### PR Checklist
-```
-▢ Code passes Black formatting
-▢ Notebooks run end-to-end without errors
-▢ Appropriate docstrings and comments
-▢ Follows SageMath compatibility practices (when applicable)
-▢ Updates to documentation or citation files if relevant
-```
-### Style Guide
-
-- Code Formatting: Use Black with default settings.
-- Docstrings: Google style.
-- Type Hints: Encouraged for new code.
-- Naming: Use descriptive variable and function names.
-- Reproducibility: Prefer explicit seeds and deterministic behavior where possible.
-
-### Testing
-```bash
-# Run all notebooks (recommended before submitting PR)
-./scripts/run_all_notebooks.sh
-```
-### Recognition
-All contributors will be acknowledged in the AUTHORS.md file and in relevant publications where appropriate. Significant theoretical or algorithmic contributions may warrant co-authorship on resulting papers.
-
-### Questions?
-- Use GitHub Discussions for ideas, questions, or theoretical discussions.
-- or Feel free to contact the maintainer.
-- *For bugs or feature requests, open an Issue.*
-
-**Thank you for contributing to the advancement of mathematical and theoretical physics.**
-
-
-## Large archival and provenance changes
-
-Large immutable research imports should be separated from executable logic changes. Prefer distinct commits or pull requests for (1) archival ingestion, (2) registry/status reconciliation, (3) quarantine operations, and (4) code or CI changes. This keeps scientific history intact while ensuring GitHub and automated reviewers can inspect the logic that changes execution or evidence eligibility.
-
-Generated source captures from scheduled CI must be uploaded as workflow artifacts or proposed through an explicit reviewed change; CI should not directly rewrite the research source of record.
+Follow [CITATION.cff](CITATION.cff) and the [citation guide](release_packages/STAR-collaboration-invitation-v0.1/CITATION_GUIDE.md).
+The repository [MIT license](LICENSE) does not replace upstream catalog,
+publication or third-party asset terms. Record source licenses and required
+acknowledgments before redistribution. Credit contributions accurately; discuss
+authorship based on actual contributions before submitting a manuscript.
+Participation, review or a merged PR does not automatically confer co-authorship,
+independence certification or endorsement. Track credit in the relevant PR and
+review receipt; no nonexistent AUTHORS file or publication outcome is promised.

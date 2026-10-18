@@ -2,12 +2,12 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23260882.svg)](https://doi.org/10.5281/zenodo.23260882) [![A03 Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23288785.svg)](https://doi.org/10.5281/zenodo.23288785) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23292229.svg)](https://doi.org/10.5281/zenodo.23292229)
 
-![badge](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/badge.jpg)![S.T.A.R. Labs](https://github.com/LcosmosS/S.T.A.R.-Labs/blob/main/web_tool/artifacts/imagine_images/starlabs.jpg)
+![S.T.A.R. Labs badge](web_tool/artifacts/imagine_images/badge.jpg) ![S.T.A.R. Labs](web_tool/artifacts/imagine_images/starlabs.jpg)
 ## Symbolic–Topological–Arithmetic–Relativity
 ### A Research Center for Testing Models in Mathematical & Theoretical Physics
 
 [![STARMAP EXP-MAP-A01 primary execution: arithmetic rank-permutation null rejected at p=0.001 (0/999 exceedances), alpha=0.01, 38,042 analysis rows; independent replication pending, controlled-support eligibility false, no physical ACSC support established](web_tool/artifacts/imagine_images/starmap.png)](https://starmap-star-labs.vercel.app/)
-`(Click Image for Web Tool Prototype)`
+**[Open the STARMAP prototype](https://starmap-star-labs.vercel.app/).** The image is a generated primary-evidence summary card, not a screenshot or measured-data figure. [Image provenance](web_tool/artifacts/exp-map-a01-primary-evidence-images.md). The deployed snapshot may lag the reviewed repository revision.
 
 [![Launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LcosmosS/S.T.A.R.-Labs-Binder/main?urlpath=lab/tree/notebooks/00_welcome.ipynb) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/LcosmosS/S.T.A.R.-Labs) [![Architecture diagram](https://gitdiagram.com/diagram-badge.svg)](https://gitdiagram.com/lcosmoss/s.t.a.r.-labs?utm_source=readme&utm_medium=badge) 
 
@@ -22,6 +22,18 @@ The repository is both a computational research center and a controlled-experime
 > **Scientific status:** ACSC, ECC, GLMPCT, RTCH, and related constructions are hypotheses and formal models under test. They are not presented by this repository as established physical laws or mathematical theorems.
 
 ---
+
+## Collaborate on a bounded review
+
+Start with the [collaboration invitation v0.1](release_packages/STAR-collaboration-invitation-v0.1/README.md):
+[review findings](release_packages/STAR-collaboration-invitation-v0.1/REVIEW.md),
+[expertise and task contracts](release_packages/STAR-collaboration-invitation-v0.1/TASKS.md),
+and [citation instructions](release_packages/STAR-collaboration-invitation-v0.1/CITATION_GUIDE.md).
+The package audits main at `d69868e3c1d9ae70944deb239369e53a9ecc1e5b` on 2026-10-18;
+it invites critique, source verification, and separately scoped reproduction planning.
+It grants no experiment activation, live CasJobs submission, key enrollment,
+new display admission, or scientific-support status. See [Contributing.md](Contributing.md)
+for setup, review receipts, and the PR process. Negative and inconclusive findings are welcome.
 
 # Research Charter
 
@@ -537,7 +549,7 @@ The current program is organized around several registered research areas:
 - RTCH standard-physics recovery;
 - ECC field/cohomology testing.
 
-The corresponding registered experiments are currently marked **planned** until their dataset versions, parameter definitions, null models, and execution specifications are sufficiently fixed.
+At the 2026-10-18 reviewed baseline, the 18 canonical experiments comprise **16 planned and two preregistered** (A01 and A03). A01 alone has separately approved execution eligibility and preserved primary evidence; A03 remains execution-ineligible. All experiment controlled-support and physical-support flags are false. Read the current canonical registries for later changes; a historical assessment field or a dated packet is not a live activation ledger.
 
 This distinction is intentional: the repository is being built so that future numerical results can be evaluated against predefined controls rather than retrofitted into the research record.
 
@@ -562,26 +574,15 @@ These are research directions, not claims of completed validation.
 
 ## Citation
 
-If you use S.T.A.R. Labs Research or associated software, please cite:
-
-```text
-McNamara, P. J. (2026).
-S.T.A.R. Labs Research: A Symbolic–Topological–Arithmetic–Relativity Program.
-GitHub Repository.
-https://github.com/LcosmosS/S.T.A.R.-Labs
-```
-
-BibTeX:
-
-```bibtex
-@misc{mcnamara2026star,
-  author       = {Patrick J. McNamara},
-  title        = {S.T.A.R. Labs Research: A Symbolic--Topological--Arithmetic--Relativity Program},
-  year         = {2026},
-  howpublished = {\url{https://github.com/LcosmosS/S.T.A.R.-Labs}},
-  note         = {Research framework combining ACSC, ECC, GLMPCT, RTCH, and related computational programs}
-}
-```
+Use [CITATION.cff](CITATION.cff) for repository software metadata and the
+[version-specific citation guide](release_packages/STAR-collaboration-invitation-v0.1/CITATION_GUIDE.md)
+for the distinct M1, A01 preregistration, A01 primary-evidence and A03 archives.
+Record the exact source commit, access date, qualified claim/experiment IDs,
+input hashes and output manifest when applicable. Cite upstream catalogs and
+methods directly; a repository citation does not replace their attribution.
+A DOI identifies an archive and does not establish peer review, independent
+replication, physical support, or permission to execute. The collaboration
+invitation has no assigned DOI or published release tag.
 
 ---
 
@@ -609,13 +610,16 @@ The Charter's canonical D/E/M/P/H/C/T/S categories are distinct from software re
 
 ---
 
-## Observational source intake and Aladin gate (2026-10-09)
+## Observational source intake and Aladin gate (updated 2026-10-18)
 
-**Status:** The Pipe3D, GEMA and corrected ALFALFA source-intake additions below are proposed by
-[PR #84](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/84). They are
-not canonical `main`-branch releases until the PR passes required checks
-and receives an approving review from a reviewer with write access. Source
-byte identity and scientific/release authorization are distinct decisions.
+**Status:** Source intake [PR #84](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/84)
+merged as `44c687ed72c741d575cf0268724c98d0d8cc3cc6` on 2026-10-09.
+The later [PR #95](https://github.com/LcosmosS/S.T.A.R.-Labs/pull/95)
+admission is limited to displaying 2,000 ALFALFA H I centroids; its
+[receipt](docs/registries/ALFALFA_HI_CENTROID_SKY_V1_REVIEW_RECEIPT.json) and
+[release manifest](web_tool/content/sky-overlay-releases.v1.json) bind the exact
+source, coordinates and ordered IDs. Source-byte verification, display
+admission, and scientific/release authorization remain separate decisions.
 
 - The SDSS DR17 Pipe3D publisher FITS is now preserved through Git LFS and bound to SHA-256 `ac714809044c02dcb2cc8b5007d02981d9316c34dc398a79f4c07bde4d3496fc` (55,889,280 bytes; 10,220 rows; 536 fields). Publisher, Dropbox and OneDrive copies match. Provenance is verified; SFR target construction and all eligibility remain unresolved/false.
 
@@ -625,13 +629,14 @@ byte identity and scientific/release authorization are distinct decisions.
 
 - The full 31,502-row H I-centroid derivative and a prospectively selected 2,000-row display candidate have separate hashes. The [matching protocol](research/acquisition/vizier_alfalfa100/matching_protocol_v1.md) fixes coordinate role, spherical geometry, multiplicity, selection and null boundaries, and blocks inferential matching until a cited positional-error model is frozen.
 
-- PR #84's [observational intake workflow](.github/workflows/observational_dataset_intake.yml)
+- The [observational intake workflow](.github/workflows/observational_dataset_intake.yml)
 fetches only governed LFS objects, recomputes source and derivative hashes, checks
 FITS/VOTable schemas and registry status, and publishes a human-readable
 [lineage record](docs/registries/OBSERVATIONAL_DATASET_LINEAGE_2026-10-09.md)
-and Actions artifact. **The ALADIN Lite release list remains empty** until a
-separate off-author review receipt authorizes the exact coordinate-extract,
-source-ID and transformation hashes. Passing CI does not approve a scientific
+and Actions artifact. **The ALADIN Lite release list contains the one display-only ALFALFA admission
+described above.** Additional or changed extracts require their own exact-byte
+review receipt; the existing admission does not authorize cross-matching,
+population inference, controlled execution, or scientific support. Passing CI does not approve a scientific
 claim, a crossmatch, or a web release.
 
 - The recovered SDSS 200k CasJobs sample is already LFS-preserved and is now CI-validated as a 200,000-row, 18-column historical source-binding candidate. Its archived/Dropbox `Zone.Identifier` binds renamed `SDSSDR18_200000.csv` to `MyTable_pmqr771_0.csv`; canonical provenance remains unknown because exact job/database identity and deterministic membership are unresolved.

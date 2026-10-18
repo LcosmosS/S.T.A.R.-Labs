@@ -118,3 +118,26 @@ Deployed pages are versioned snapshots, not a live GitHub status feed. Inspect
 the registry snapshot digest after each deployment to distinguish current source
 from old explanatory text. Notebook storage health and durable save/load verification
 remain separate from registry freshness and scientific evidence.
+
+## Collaboration and image references (2026-10-18)
+
+Use the [bounded invitation](../release_packages/STAR-collaboration-invitation-v0.1/README.md)
+for expertise requests, independent verification and citations. The audited
+baseline is main `d69868e3c1d9ae70944deb239369e53a9ecc1e5b`; unmerged PR #107's
+A01 viewer is a separate candidate, not a feature promised by this baseline.
+
+The current [README banner](artifacts/imagine_images/starmap.png) and
+[social card](public/og.jpg) are generated communication graphics, not app
+screenshots, measured coordinates or replication evidence. Their
+[provenance and scope](artifacts/exp-map-a01-primary-evidence-images.md) record
+respectively SHA-256 `33b7d5361353404ec8606247c964f164efc9d98db9296c0579f1311677389f05`
+and `1a737c65a2dae2b027ffa5da101de5b92f3c48e2a0c503311ed719197521322f`.
+The social-card path is resolved by `scripts/grok-pwa-shared.mjs` from
+`public/og.jpg`; the README banner is not that runtime asset. The October 18
+review confirmed these existing bytes and their caveats; no new image or
+scientific figure replaces them. Root README image links now resolve within
+the checked-out branch instead of forcing branding from mutable main.
+
+A deployed URL or cached social card may refer to an older build. Verify the
+served source digest, image bytes and deployment revision separately before
+asserting deployment parity; local build success does not establish it.
