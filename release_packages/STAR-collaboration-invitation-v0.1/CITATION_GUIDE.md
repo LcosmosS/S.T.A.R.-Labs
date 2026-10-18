@@ -2,10 +2,12 @@
 
 ## Match the citation to the material used
 
-The following DOI identifiers are **recorded in the audited repository**.
-Resolver access failed during this review; their current publisher metadata,
-deposited bytes, authorship and version relationships were **not independently
-verified here**. Before external publication, check the deposit directly and
+The four original DOI identifiers below were **recorded in the audited repository**.
+The collaboration-invitation DOI `10.5281/zenodo.23447557` was supplied after
+that dated audit, and has been added as a separately identified archive link.
+Resolver access was unavailable; publisher metadata, deposited bytes, authorship
+and version relationships for these records have **not been independently
+verified in this documentation update**. Before external publication, check the deposit directly and
 use its exact title, authors, date and version. If a record cannot be accessed,
 report that limitation and cite the inspected Git revision instead of inventing
 metadata. Do not infer publication or peer review from a badge.
@@ -17,7 +19,7 @@ metadata. Do not infer publication or peer review from a badge.
 | A01 saved primary execution | [10.5281/zenodo.23409249](https://doi.org/10.5281/zenodo.23409249), [package](../EXP-MAP-A01-primary-execution-v0.1/README.md) | Primary arithmetic-null evidence; independent replication and physical support not established |
 | A03 pre-execution verification | [10.5281/zenodo.23288785](https://doi.org/10.5281/zenodo.23288785), [lineage](../../docs/registries/EXP_MAP_A03_PREEXECUTION_RELEASE_LINEAGE_v0.1.md) | Author-produced reference verification, not A03 inference or activation |
 | M1-INH-E1b certificate/pre-review package | [10.5281/zenodo.23260882](https://doi.org/10.5281/zenodo.23260882), [package](../M1-INH-E1b-pre-review-v0.1/README.md) | Candidate class-relative mathematical result; independent proof review remains separate |
-| This invitation | `release_packages/STAR-collaboration-invitation-v0.1/` at its reviewed PR or actual merge commit | Dated collaboration/audit package; no DOI or release tag has been assigned |
+| This invitation | [10.5281/zenodo.23447557](https://doi.org/10.5281/zenodo.23447557), [`release_packages/STAR-collaboration-invitation-v0.1/`](README.md) at its actual reviewed commit | Bounded collaboration/audit materials; Zenodo metadata/deposit bytes require independent verification; not a scientific result or assertion of a GitHub release tag |
 | Frozen historical material | Original author/title/version and exact preserved path/hash, plus source/audit lineage | Historical, exploratory, quarantined or pending-review status as recorded; not silently promoted |
 | Catalogs, methods and third-party figures | Original publisher/data release, primary methods paper, version/access date, source URL, actual data hash and required acknowledgments | Repository citation is additional attribution, not a substitute for the primary source |
 
