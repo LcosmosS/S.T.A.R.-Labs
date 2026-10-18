@@ -1,0 +1,50 @@
+{
+  "receipt_format": "ecc-b01-a-v2-run-sha256-v1",
+  "created_utc": "2026-10-17T23:46:36.442850+00:00",
+  "source_commit": "ef5c829fb3ba8c8af764a6cf2f287819d16baa44",
+  "source_file": "ecc_b01/investigator_a_v2.py",
+  "source_sha256": "38c12d385f772edb9fbf6c76dfb6f11c0587cb450be8e37927c794bee089f0a8",
+  "scope": "16 synthetic symbolic and quadrature fixtures; C-03 regression only; no experiment activation",
+  "result_status": "PASS",
+  "fixture_count": 16,
+  "python": "3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0]",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "artifacts": [
+    {
+      "file": "command_and_platform.txt",
+      "sha256": "49e14025660823acbc1b182a2cc42fa85ae0437187a5de44ad2d46b29c089ec9",
+      "bytes": 540
+    },
+    {
+      "file": "environment_pip_freeze.txt",
+      "sha256": "73fc5022f0c7246c13a5b272783caef14813f159dc138e5b4317962095556bc6",
+      "bytes": 145
+    },
+    {
+      "file": "investigator_a_v2_results.json",
+      "sha256": "26fa56466d180e9cce04fbc85e261793790df2481649dc6f8bbe4b11950afdb6",
+      "bytes": 3336
+    },
+    {
+      "file": "pytest.log",
+      "sha256": "6070d8905eaaa2e95c9f17a0ebd778ab0f1b46932348c25bb3820ecc94c74ea6",
+      "bytes": 98
+    },
+    {
+      "file": "pytest_exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "file": "runner.log",
+      "sha256": "7c5d1af3de1bdde6c6606d3903f15042132deb9a02c9bd1acfaab1e414f7f04d",
+      "bytes": 913
+    },
+    {
+      "file": "runner_exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    }
+  ],
+  "note": "This run receipt excludes itself; neither hashes nor PASS certify investigator identity or physical theory."
+}
