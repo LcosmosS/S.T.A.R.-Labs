@@ -1,0 +1,31 @@
+name: SciServer operator approval offline verification
+
+on:
+  pull_request:
+    paths:
+      - 'integrations/sciserver/approval_policy.py'
+      - 'integrations/sciserver/trusted_approvers.json'
+      - 'integrations/sciserver/approval_protocol.md'
+      - 'tests/integrations/test_sciserver_approval.py'
+      - '.github/workflows/sciserver-approval-offline.yml'
+      - 'pyproject.toml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  approval-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install offline test dependencies only
+        run: python -m pip install pytest==9.0.2 cryptography==46.0.3
+      - name: Verify approval signatures and fail-closed boundaries
+        run: |
+          python -m compileall -q integrations/sciserver/approval_policy.py
+          python -m pytest -q tests/integrations/test_sciserver_approval.py tests/integrations/test_sciserver_policy.py
+          git diff --check origin/main...HEAD
