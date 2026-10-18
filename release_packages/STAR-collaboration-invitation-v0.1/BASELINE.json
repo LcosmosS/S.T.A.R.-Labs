@@ -10,6 +10,63 @@
   "audited_commit": "d69868e3c1d9ae70944deb239369e53a9ecc1e5b",
   "authority_path": "charter/STAR_Research_Charter_v0-2.pdf",
   "github_observations": {
+    "dependabot_open_alerts": [
+      {
+        "dependency": "jupyterlab",
+        "ecosystem": "pip",
+        "ghsa": "GHSA-jwrc-gm9j-263p",
+        "manifest": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-01217__requirements.txt__4595742d658e.txt",
+        "number": 116,
+        "severity": "medium",
+        "state": "open"
+      },
+      {
+        "dependency": "jupyterlab",
+        "ecosystem": "pip",
+        "ghsa": "GHSA-jwrc-gm9j-263p",
+        "manifest": "historical/r&d/code_log/2026-10-03/local/review candidates/LC-01043__requirements.txt__a6cb608a9aba.txt",
+        "number": 115,
+        "severity": "medium",
+        "state": "open"
+      },
+      {
+        "dependency": "jupyterlab",
+        "ecosystem": "pip",
+        "ghsa": "GHSA-jwrc-gm9j-263p",
+        "manifest": "historical/r&d/code_log/2026-10-03/local/LC-01341__requirements.txt__c31c6ec820ce.txt",
+        "number": 114,
+        "severity": "medium",
+        "state": "open"
+      },
+      {
+        "dependency": "jupyterlab",
+        "ecosystem": "pip",
+        "ghsa": "GHSA-jwrc-gm9j-263p",
+        "manifest": "historical/r&d/code_log/2026-10-03/local/LC-01164__requirements.txt__391f9172f2ff.txt",
+        "number": 113,
+        "severity": "medium",
+        "state": "open"
+      },
+      {
+        "dependency": "pytest",
+        "ecosystem": "pip",
+        "ghsa": "GHSA-6w46-j5rx-g56g",
+        "manifest": "release_packages/EXP-MAP-A03-preexecution-verification-v0.1/requirements.txt",
+        "number": 112,
+        "severity": "medium",
+        "state": "open"
+      },
+      {
+        "dependency": "pytest",
+        "ecosystem": "pip",
+        "ghsa": "GHSA-6w46-j5rx-g56g",
+        "manifest": "research/independent_review/2026-10-16/requirements.txt",
+        "number": 111,
+        "severity": "medium",
+        "state": "open"
+      }
+    ],
+    "dependency_alert_limit": "six medium-severity manifest alerts observed; runtime exposure and mitigation not independently established; frozen evidence not modified",
     "legacy_protection_endpoint": "HTTP 404 Branch not protected; effective rulesets inspected separately",
     "main_effective_rules": [
       {
@@ -172,6 +229,13 @@
     "src": "c95d7d3f8c3dd3c5c68a103d29bf4431e645b601",
     "tests": "bc01055db5d23bb901a18be81412dee1b4de9cfd",
     "verification": "c857a9be9fb3ec0fea5834eed12207a0dce697fe"
+  },
+  "publication_observations": {
+    "first_published_invitation_commit": "25ca584352d0b844362cbd420e99a933d623ef6e",
+    "limit": "push output confirms a bypass occurred; actor/control independence not authenticated by this audit",
+    "new_merge_commit_introduced": false,
+    "push_reported_rule_bypass": "required_linear_history; inherited merge 791c423514bd0d10c667c42106e55e41e445f09c (#77)",
+    "repository_policy_changed": false
   },
   "registry_observations": {
     "claim_count": 8,

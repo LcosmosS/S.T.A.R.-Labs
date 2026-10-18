@@ -88,7 +88,10 @@ randomization tests, independent numerical implementation. **Target:**
 `25cec5ecfec8b9f016eb1631ac633194c2bed39f` and source-file hash
 `259f3846329395b371e8079c77a6f1097adaebc98a054974573e241416efa968`.
 Follow the frozen package's checkout/environment instructions; its copied
-verifier is not a standalone latest-main script. Review the 106 exact j=0
+verifier is not a standalone latest-main script. First triage the open pytest
+advisories in its frozen/reference requirements. Preserve archived pins;
+any safer successor environment needs a separately reviewed compatibility and
+deviation receipt rather than a silent replacement of the historical archive. Review the 106 exact j=0
 exclusions, 37,936 accepted representatives, conductor-decile null and synthetic
 40-row reference checks. Distinguish later #87 compatibility code from #86.
 

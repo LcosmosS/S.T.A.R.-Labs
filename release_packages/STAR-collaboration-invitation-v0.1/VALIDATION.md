@@ -26,7 +26,7 @@ are recorded observations, not a claim of a fully identical CI environment.
 | `python scripts/independent_dataset_verification.py --format markdown` | Exit 0; nine non-quarantined datasets, four unknown source-provenance records | No `--live-public-sources`, CasJobs export or upload. Existing invalid-escape SyntaxWarnings are reported, not hidden or fixed in this scope. |
 | `python release_packages/EXP-MAP-A01-primary-execution-v0.1/verify_package.py` | Exit 0; real 965,169-byte archive, eight members, source bindings and saved-result checks pass | Source commit fetched into local history. Execution authenticity remains unverified; cohort/graph/permutations are not regenerated. |
 | Selective ALFALFA LFS hydration | Actual source VOTable SHA-256 `654217f9b3414856c1a8b09071c81eb834a0b0fbc6ec3aea9777e01fdaea1079` | Fresh checkout hydration from repository LFS for the web gate; not an independent publisher download or science/display reauthorization |
-| `npm ci` | Locked web dependency installation succeeded; install audit reported zero vulnerabilities | Package audit is not a security certification |
+| `npm ci` | Locked web dependency installation succeeded; install audit reported zero vulnerabilities | Package audit is not a security certification; six separate medium GitHub Python/historical dependency alerts remain recorded in BASELINE.json |
 | `npm test` | 296 passed, zero failed, four existing skips | Skips concern absent host-supplied `.grok/skills/og` instructions/references; no scientific tests inferred from them |
 | `npm run build` | Registry, research, hydrated sky checks and production build passed | Local build, not publication or deployed-site parity |
 | `npm run typecheck` | Passed | Static software check |
@@ -86,3 +86,9 @@ access failed for the four repository-recorded archive IDs; no Zenodo deposit
 metadata or bytes were authenticated. Review identity, authorship independence,
 private-key isolation and actual runtime trust enforcement remain unverified.
 See [REVIEW.md](REVIEW.md) for the remaining specialist and operational gaps.
+
+The first branch push reported a linear-history rule bypass for inherited merge
+`791c423514bd0d10c667c42106e55e41e445f09c` (#77), which is already in baseline
+history. This PR introduces no merge commit and changes no repository rules.
+That observed bypass reinforces the need for independent trust anchoring; it is
+not an assertion that GitHub review settings alone isolate a future operator.
