@@ -1,0 +1,7 @@
+run_start_utc=2026-10-17T23:46:33Z
+source_commit=ef5c829fb3ba8c8af764a6cf2f287819d16baa44
+commands=python -m pytest -q tests/test_ecc_b01_a_c03.py ; python ecc_b01/investigator_a_v2.py <run_dir>/investigator_a_v2_results.json
+Python 3.12.13
+pip 25.0.1 from /home/kepler/ecc_b01_A_v2_yO4dhjBD/ecc_b01_A_v2_package/.venv/lib/python3.12/site-packages/pip (python 3.12)
+Linux DESKTOP-P7J94AD 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+run_finish_utc=2026-10-17T23:46:36Z

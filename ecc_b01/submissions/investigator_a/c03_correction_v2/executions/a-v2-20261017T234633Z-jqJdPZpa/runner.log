@@ -1,0 +1,17 @@
+PASS 16 fixtures; /home/kepler/ecc_b01_A_v2_yO4dhjBD/ecc_b01_A_v2_package/runs/a-v2-20261017T234633Z-jqJdPZpa/investigator_a_v2_results.json
+A-01 PASS Exact entropy differential is closed and exact
+A-02 PASS Closedness of eta=dphi+2dpsi+dS
+A-03 PASS Period pairing
+A-04 PASS Reject nonclosed form sin(phi)dpsi
+B-01 PASS Patch curvatures agree
+B-02 PASS Normalized flux integral
+B-03 PASS Overlap transition differential n dphi
+B-04 PASS Transition exp(i*n*phi) not single-valued
+C-01 PASS Total flux unchanged
+C-02 PASS Local curvature density depends on entropy
+C-03 PASS Constant entropy shift invariance; zero residual required
+C-03-NEG PASS Wrong residual must fail the same zero-residual predicate
+C-04 PASS Flux independent of entropy amplitude
+C-05 PASS Reject z dx^dy on 3D domain
+N-01 PASS Independent SciPy quadrature for normalized S2 flux
+N-02 PASS Independent SciPy quadrature for first torus period
