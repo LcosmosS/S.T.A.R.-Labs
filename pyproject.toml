@@ -27,7 +27,7 @@ dev = ["pytest", "pytest-cov", "black", "isort", "pre-commit"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["src*", "scripts*", "tools*"]
+include = ["src*", "scripts*", "tools*", "integrations*"]
 namespaces = true
 
 [tool.black]

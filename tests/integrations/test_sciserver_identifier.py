@@ -4,7 +4,7 @@
 import pandas as pd
 import pytest
 
-from integrations.sciserver.server import exact_objid
+from integrations.sciserver.identifiers import exact_objid
 
 
 EXPECTED = "1237645876861272071"
