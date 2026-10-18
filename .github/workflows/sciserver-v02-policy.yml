@@ -1,0 +1,35 @@
+name: SciServer v0.2 policy-only verification
+
+on:
+  pull_request:
+    paths:
+      - 'integrations/sciserver/query_policy.py'
+      - 'integrations/sciserver/receipts.py'
+      - 'integrations/sciserver/query_catalog.json'
+      - 'integrations/sciserver/protocol.md'
+      - 'integrations/sciserver/README-v0.2.md'
+      - 'verification/datasets/casjobs/STAR_DR18_10_canary.sql'
+      - 'tests/integrations/test_sciserver_policy.py'
+      - '.github/workflows/sciserver-v02-policy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  policy-offline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install only offline test runner
+        run: python -m pip install pytest==9.0.2
+      - name: Run policy and provenance tests (no tokens, no network)
+        run: |
+          python -m compileall -q integrations/sciserver/query_policy.py integrations/sciserver/receipts.py
+          python -m pytest -q tests/integrations/test_sciserver_policy.py
+          git diff --check origin/main...HEAD
