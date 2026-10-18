@@ -6,6 +6,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
+
+# The production approval dependency is optional; the dedicated CI job
+# installs it explicitly and must execute (not skip) this full suite.
+pytest.importorskip("cryptography")
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
