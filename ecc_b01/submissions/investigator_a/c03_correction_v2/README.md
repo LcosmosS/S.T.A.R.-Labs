@@ -16,6 +16,8 @@ python -m pytest -q tests/test_ecc_b01_a_c03.py
 python ecc_b01/investigator_a_v2.py /tmp/ecc_b01_investigator_a_v2.json
 ```
 
-Local preliminary check on 2026-10-17 (assistant execution, not an Investigator A attestation): 16/16 symbolic/numerical fixtures passed; the two focused pytest regression tests passed. The C-03 residual evaluated to `0`, while the adversarial residual `1` was rejected. The output embeds the corrected source SHA-256.
+Local preliminary check on 2026-10-17 (**assistant execution, not an Investigator A attestation**): 16/16 symbolic/numerical fixtures and 2/2 focused pytest regressions passed. The C-03 residual was `0` and the injected residual `1` was rejected. The standalone v2 package pinned NumPy **2.3.5**, outside the **main repository's** declared `numpy>=1.26.0,<2.0` range (though within the standalone package's exact pin). Therefore the v2 preliminary and subsequently committed WSL results are **nonconformant repository-dependency evidence**; retain them historically, but do not present them as repository-conformant validation or independent mathematical approval.
+
+The further versioned `investigator_a_v3.py` tests the deliberately wrong comparator `2*S2` through the same `c03_record` path and verifies `pass_=False`. The new Python 3.12 / NumPy 1.26.4 workflow publishes its results separately as the `ecc-b01-a-v3-ci-evidence` artifact. Any successful CI run is an **automated, assistant-authored check, not an Investigator A attestation**; it must not retroactively replace v2 execution evidence.
 
 **Evidence boundary:** A fresh Investigator A-owned run, immutable output manifest, independent review, and cross-investigator adjudication are still required under `ecc_b01/GOVERNANCE_GATES.md`. This correction does not establish complete ECC-B01 mathematical validation, activate controlled execution, amend registries, or authorize any physical claim. PR #103 remains draft.
