@@ -37,9 +37,18 @@ If the file is still missing after checkout, inspect `pwd`, `git branch --show-c
 - `submissions/investigator_a/preliminary_2026-10-17/README.md`: immutable report hash, provenance, known C-03 unconditional PASS defect, scope limits, and blinding caution.
 - Root-level `investigator_a_results.json` is still ignored as a local transient output; the separately archived preliminary submission is intentionally tracked. The earlier demonstration result is not being substituted for the user's WSL output.
 
-The supplied code performs 15 symbolic/numerical checks. **It does not run Gmsh/GUDHI meshes, four-resolution cochain convergence, or any physical/astronomical inference.** A `PASS` here is a smoke-test outcome, not the ECC-B01 primary decision.
+The **original** `investigator_a.py` performs 15 symbolic/numerical checks. Its historical `C-03` assertion uses an unconditional Boolean `True` and is intentionally preserved so that the original source and preliminary 15/15 report remain traceable. **The actual residual predicate is corrected in `investigator_a_v2.py`**; `investigator_a_v3.py` additionally exercises a wrong comparator through the same C-03 record constructor and confirms that the resulting `pass_` value is false. The corrected versions each have 16 fixtures, not 15.
 
-Review note: the present `C-03` assertion passes an unconditional Boolean `True` rather than independently checking the computed residual. This should be corrected under the protocol review before the fixture suite is treated as frozen or comprehensive.
+Run the strengthened test from the repository root:
+
+```bash
+python -m pytest -q tests/test_ecc_b01_a_c03_v3.py
+python ecc_b01/investigator_a_v3.py /tmp/ecc_b01_a_v3_results.json
+```
+
+The repository declares `numpy>=1.26.0,<2.0`. The standalone **v2** package pinned NumPy 2.3.5, so its run is outside the **repository-wide** version range despite satisfying the standalone package pin. Retain that evidence as nonconformant to the repository dependency constraint. A dedicated Python 3.12 / NumPy 1.26.4 v3 CI workflow produces a separate, source-bound artifact; it is **not** an Investigator A attestation.
+
+**None of these fixtures runs Gmsh/GUDHI meshes, four-resolution cochain convergence, or physical/astronomical inference.** A fixture PASS is not the ECC-B01 primary decision.
 
 ## Independence and governance
 
